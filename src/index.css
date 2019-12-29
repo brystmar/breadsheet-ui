@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+a {
+  color: dodgerblue;
+}
+
+a:hover, a:focus {
+  color: darkcyan;
+}
+
+a:visited {
+  color: rebeccapurple;
+}
+
+a:active {
+  color: lightcyan;
+}
