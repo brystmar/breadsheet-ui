@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c470d8-d0e7-46ef-9649-3dedd32f678e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="c598c629-6f79-46ed-98fd-4789a121d423" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,14 +13,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1U4fl9BVTZds7IivN8hWAbUP1z2" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -31,21 +28,6 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="RunManager" selected="npm.npm start">
-    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
-      <method v="2" />
-    </configuration>
-    <configuration name="npm start" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -64,16 +46,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="17c470d8-d0e7-46ef-9649-3dedd32f678e" name="Default Changelist" comment="" />
-      <created>1574620936697</created>
+      <changelist id="c598c629-6f79-46ed-98fd-4789a121d423" name="Default Changelist" comment="" />
+      <created>1575327754519</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1574620936697</updated>
-      <workItem from="1574620938531" duration="4378000" />
-      <workItem from="1576075322190" duration="30000" />
-      <workItem from="1576075371928" duration="125000" />
-      <workItem from="1577292854459" duration="374000" />
-      <workItem from="1577626447094" duration="603000" />
+      <updated>1575327754519</updated>
+      <workItem from="1575327755781" duration="138000" />
+      <workItem from="1575329338180" duration="5000" />
+      <workItem from="1577627797329" duration="1220000" />
     </task>
     <servers />
   </component>
@@ -92,23 +72,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1358" height="271" key="GridCell.Tab.0.bottom" timestamp="1577640004333">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.bottom/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1577640004333" />
-    <state width="1358" height="271" key="GridCell.Tab.0.center" timestamp="1577640004333">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.center/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1577640004333" />
-    <state width="1358" height="271" key="GridCell.Tab.0.left" timestamp="1577640004332">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.left/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1577640004332" />
-    <state width="1358" height="271" key="GridCell.Tab.0.right" timestamp="1577640004333">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state width="1358" height="271" key="GridCell.Tab.0.right/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1577640004333" />
   </component>
 </project>
