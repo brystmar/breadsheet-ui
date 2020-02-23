@@ -1,31 +1,75 @@
 .App {
-  text-align: center;
+  font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-hamburger {
+  column-width: min-content;
+  alignment: left;
+  horiz-align: left;
+  height: 40px;
+  vertical-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-hamburger-logo {
+  /*height: 40vmin;*/
+  height: 40px;
+  vertical-align: center;
+}
+
+.header-title {
+  column-width: max-content;
+  text-align: left;
+  vertical-align: center;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-left: initial;
+}
+
+.App-footer {
+  font-size: small;
+  margin-left: 3px;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.page-title {
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 5px;
+}
+
+.recipe-list-item {
+  text-align: left;
+  margin-left: 3px;
+}
+
+.recipe-table {
+  text-align: left;
+  margin-left: 3px;
+}
+
+.table-header-row {
+  text-align: left;
+  font-weight: bold;
+  margin-left: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .header-hamburger {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 @keyframes App-logo-spin {
