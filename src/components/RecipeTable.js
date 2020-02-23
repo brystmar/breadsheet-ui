@@ -1,4 +1,5 @@
 import React from 'react';
+import seconds_to_string from "../scripts/seconds_to_string";
 import recipeData from './recipeData';
 import RecipeListItem from "./RecipeListItem";
 
@@ -11,13 +12,14 @@ class RecipeTable extends React.Component {
     }
 
     render() {
-        const recipeItems = this.state.recipes.map(item => <RecipeListItem key={item.id}
-                                                                           id={item.id}
-                                                                           name={item.name}
-                                                                           author={item.author}
-                                                                           source={item.source}
-                                                                           difficulty={item.difficulty}
-                                                                           added={item.date_added}/>
+        const recipeList = this.state.recipes.map(
+            recipe => <RecipeListItem key={recipe.id}
+                                      id={recipe.id}
+                                      name={recipe.name}
+                                      author={recipe.author}
+                                      source={recipe.source}
+                                      difficulty={recipe.difficulty}
+                                      length={seconds_to_string(recipe.length)}/>
         );
 
         return (
@@ -27,13 +29,13 @@ class RecipeTable extends React.Component {
                     <th>Name</th>
                     <th>Author</th>
                     <th>Source</th>
+                    <th>Length</th>
                     <th>Difficulty</th>
-                    <th>Added</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                {recipeItems}
+                {recipeList}
                 </tbody>
             </table>
         )

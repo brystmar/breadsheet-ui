@@ -1,3 +1,6 @@
+// Details section displayed on the recipe-specific page.
+// Data: author, source, total time, difficulty, date added.
+
 import React from 'react';
 
 function RecipeDetails() {
