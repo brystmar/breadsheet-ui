@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +17,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="newUI" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -143,9 +141,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -172,10 +168,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="852" y="488" key="Github.ShareDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582419683416" />
-    <state x="708" y="310" width="831" height="554" key="MultipleFileMergeDialog" timestamp="1582420739531">
+    <state x="708" y="310" key="MultipleFileMergeDialog" timestamp="1582420965837">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="708" y="310" width="831" height="554" key="MultipleFileMergeDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420739531" />
+    <state x="708" y="310" key="MultipleFileMergeDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420965837" />
     <state x="797" y="241" key="RollbackChangesDialog" timestamp="1582420546465">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -188,5 +184,9 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="655" y="344" width="683" height="486" key="find.popup/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582416785915" />
+    <state x="743" y="307" key="git4idea.branch.GitSmartOperationDialog" timestamp="1582420963869">
+      <screen x="0" y="23" width="1994" height="1129" />
+    </state>
+    <state x="743" y="307" key="git4idea.branch.GitSmartOperationDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420963869" />
   </component>
 </project>
