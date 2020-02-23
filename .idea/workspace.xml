@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/brystmar/breadsheet-ui" />
+      </set>
+    </option>
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1YB2zqliFrn3yTEqMtukGl4t7fN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings is-module-sdk="true" working-directory="$PROJECT_DIR$/..">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myWorkingDirectory" value="$PROJECT_DIR$/.." />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="" />
+      <created>1582401931128</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582401931128</updated>
+      <workItem from="1582401932811" duration="13824000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit w/raw pieces">
+      <created>1582419561164</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1582419561164</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Moved local changes to a new branch">
+      <created>1582420013348</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1582420013348</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Merging into master, take 1">
+      <created>1582420255561</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1582420255561</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
+    <MESSAGE value="Initial commit w/raw pieces" />
+    <MESSAGE value="Moved local changes to a new branch" />
+    <MESSAGE value="Merging into master, take 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merging into master, take 1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582414982737">
+      <screen x="0" y="23" width="1994" height="1129" />
+    </state>
+    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582414982737" />
+    <state x="577" y="190" key="CommitChangelistDialog2" timestamp="1582420255422">
+      <screen x="0" y="23" width="1994" height="1129" />
+    </state>
+    <state x="577" y="190" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420255422" />
+    <state x="852" y="488" key="Github.ShareDialog" timestamp="1582419683416">
+      <screen x="0" y="23" width="1994" height="1129" />
+    </state>
+    <state x="852" y="488" key="Github.ShareDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582419683416" />
+    <state x="708" y="310" width="831" height="554" key="MultipleFileMergeDialog" timestamp="1582420739531">
+      <screen x="0" y="23" width="1994" height="1129" />
+    </state>
+    <state x="708" y="310" width="831" height="554" key="MultipleFileMergeDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420739531" />
+    <state x="797" y="241" key="RollbackChangesDialog" timestamp="1582420546465">
+      <screen x="0" y="23" width="1994" height="1129" />
+    </state>
+    <state x="797" y="241" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420546465" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1582420270015">
+      <screen x="0" y="23" width="1994" height="1129" />
+    </state>
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420270015" />
+    <state x="655" y="344" width="683" height="486" key="find.popup" timestamp="1582416785915">
+      <screen x="0" y="23" width="1994" height="1129" />
+    </state>
+    <state x="655" y="344" width="683" height="486" key="find.popup/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582416785915" />
+  </component>
+</project>
