@@ -55,15 +55,48 @@
   margin-left: 3px;
 }
 
-.recipe-table {
-  text-align: left;
-  margin-left: 3px;
-}
-
 .table-header-row {
   text-align: left;
   font-weight: bold;
   margin-left: 3px;
+  margin-bottom: 5px;
+}
+
+.recipe-table {
+  padding-left: 5px;
+  margin-left: 5px;
+}
+
+.recipe-table-list {
+  text-align: left;
+  margin-left: 3px;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #DDDDDD;
+  padding: 5px;
+  line-height: 20px;
+}
+
+.recipe-table-list tr:nth-child(odd) {
+    background-color: #EEEEEE;
+}
+
+a:link {
+  text-decoration: none;
+  color: #037caf;
+}
+
+a:visited {
+  color: #3f5efc;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #0040ff;
+}
+
+a:active {
+
 }
 
 @media (prefers-reduced-motion: no-preference) {

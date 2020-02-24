@@ -4,6 +4,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AddRecipe from "./components/AddRecipe";
 import RecipeTable from "./components/RecipeTable";
 import './App.css';
 
@@ -18,6 +19,8 @@ function App() {
             </div>
             <hr />
             <RecipeTable/>
+            <br />
+            <AddRecipe/>
 
             <br />
             <br />

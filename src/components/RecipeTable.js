@@ -21,25 +21,25 @@ class RecipeTable extends React.Component {
             recipe => <RecipeListItem key={recipe.id}
                                       id={recipe.id}
                                       name={recipe.name}
+                                      difficulty={recipe.difficulty}
                                       author={recipe.author}
                                       source={recipe.source}
-                                      difficulty={recipe.difficulty}
                                       length={seconds_to_string(recipe.length)}/>
         );
 
         return (
-            <table className="recipe-table">
-                <thead>
+            <table>
+                <thead className="recipe-table">
                 <tr className="table-header-row">
                     <th>Name</th>
+                    <th>Difficulty</th>
+                    <th>Length</th>
                     <th>Author</th>
                     <th>Source</th>
-                    <th>Length</th>
-                    <th>Difficulty</th>
                 </tr>
                 </thead>
 
-                <tbody>
+                <tbody className="recipe-table-list">
                 {recipeList}
                 </tbody>
             </table>
