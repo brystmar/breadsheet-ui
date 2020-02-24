@@ -1,14 +1,19 @@
 import React from 'react';
 import seconds_to_string from "../scripts/seconds_to_string";
-import recipeData from './recipeData';
 import RecipeListItem from "./RecipeListItem";
 
 class RecipeTable extends React.Component {
     constructor() {
         super();
         this.state = {
-            recipes: recipeData
+            recipes: []
         };
+    }
+
+    componentDidMount() {
+        fetch("http://localhost:5000/api/v1/recipes")
+            .then(response => response.json())
+            .then(response => this.setState({recipes: response.data}))
     }
 
     render() {

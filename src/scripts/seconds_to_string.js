@@ -5,12 +5,12 @@
 // import moment from 'moment';
 
 function seconds_to_string(seconds) {
-    console.log("Starting seconds_to_string(" + seconds + ").");
+    // console.log("Starting seconds_to_string(" + seconds + ").");
 
     let result = "";
 
     if (seconds <= 0) {
-        console.log("Finished seconds_to_string(), returning --.")
+        // console.log("Finished seconds_to_string(), returning --.")
         return '--'
     }
 
@@ -45,7 +45,7 @@ function seconds_to_string(seconds) {
         }
     }
 
-    console.log("Finished seconds_to_string(" + seconds + "), result: " + result + ".");
+    // console.log("Finished seconds_to_string(" + seconds + "), result: " + result + ".");
     return result;
 }
 
