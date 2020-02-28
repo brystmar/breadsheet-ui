@@ -44,7 +44,7 @@ class AddRecipe extends React.Component {
             });
 
         // Now we can refresh the page
-        // window.location.reload(true);
+        window.location.reload(true);
     }
 
     render() {
