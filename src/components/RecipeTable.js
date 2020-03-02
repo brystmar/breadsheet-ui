@@ -1,13 +1,16 @@
 import React from 'react';
 import seconds_to_string from "../scripts/seconds_to_string";
 import RecipeListItem from "./RecipeListItem";
+import AddRecipe from "./AddRecipe";
 
 class RecipeTable extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             recipes: []
         };
+
+        this.deleteRecipeFromState = this.deleteRecipeFromState.bind(this);
     }
 
     componentDidMount() {
@@ -15,6 +18,22 @@ class RecipeTable extends React.Component {
             .then(response => response.json())
             .then(response => this.setState({recipes: response.data}))
     }
+
+    addRecipeToState(recipe) {
+        console.log("Called addRecipeToState for id=" + recipe.id);
+
+    }
+
+    deleteRecipeFromState(recipe_id) {
+        console.log("Called deleteRecipeFromState for id=" + recipe_id);
+
+        let newList = this.state.recipes.filter(
+            function (terminator) {
+                return terminator.id !== recipe_id
+            });
+        this.setState({recipes: newList});
+    }
+
 
     render() {
         const recipeList = this.state.recipes.map(
@@ -24,25 +43,31 @@ class RecipeTable extends React.Component {
                                       difficulty={recipe.difficulty}
                                       author={recipe.author}
                                       source={recipe.source}
-                                      length={seconds_to_string(recipe.length)}/>
+                                      length={seconds_to_string(recipe.length)}
+                                      delete_recipe={this.deleteRecipeFromState}/>
         );
 
         return (
-            <table>
-                <thead className="recipe-table">
-                <tr className="table-header-row">
-                    <th>Name</th>
-                    <th>Difficulty</th>
-                    <th>Length</th>
-                    <th>Author</th>
-                    <th>Source</th>
-                </tr>
-                </thead>
+            <div id="recipeTable">
+                <table className="recipe-table">
+                    <thead className="table-header-row">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Name</th>
+                        <th>Difficulty</th>
+                        <th>Length</th>
+                        <th>Author</th>
+                        <th>Source</th>
+                    </tr>
+                    </thead>
 
-                <tbody className="recipe-table-list">
-                {recipeList}
-                </tbody>
-            </table>
+                    <tbody className="recipe-table-list">
+                    {recipeList}
+                    </tbody>
+                </table>
+                <br/>
+                <AddRecipe />
+            </div>
         )
     }
 }

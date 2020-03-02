@@ -21,19 +21,18 @@ class AddRecipe extends React.Component {
     }
 
     handleSubmit(event) {
+        // Don't refresh the page
+        event.preventDefault();
+
         let recipe_data = {
             name: this.state.recipeName,
             difficulty: this.state.recipeDifficulty,
             author: this.state.recipeAuthor,
             source: this.state.recipeSource
         };
+        console.log("New recipe submitted: ", recipe_data);
 
-        console.log("About to POST the state object: ", recipe_data);
-
-        // Don't refresh the page yet
-        event.preventDefault();
-
-        // Send a POST request to the API
+        // POST new recipe to the backend
         fetch("http://localhost:5000/api/v1/recipes", {
             method: "POST",
             body: JSON.stringify(recipe_data)
@@ -43,7 +42,7 @@ class AddRecipe extends React.Component {
                 console.log(JSON.stringify(recipe_data))
             });
 
-        // Now we can refresh the page
+        // Refresh the page to reflect changes
         window.location.reload(true);
     }
 
@@ -64,7 +63,7 @@ class AddRecipe extends React.Component {
                     <label>
                         Difficulty &nbsp;
                         <select value={this.state.recipeDifficulty} onChange={this.handleChange}
-                                required={true}>
+                                name="recipeDifficulty" required={true}>
                             <option value="Beginner">Beginner</option>
                             <option defaultValue="Intermediate" value="Intermediate">Intermediate
                             </option>
@@ -85,7 +84,7 @@ class AddRecipe extends React.Component {
                         Author &nbsp;
                         <input type="text"
                                name="recipeAuthor"
-                               placeholder="Author"
+                               placeholder="Optional"
                                value={this.state.recipeAuthor}
                                onChange={this.handleChange}
                         />
@@ -95,7 +94,7 @@ class AddRecipe extends React.Component {
                         Source &nbsp;
                         <input type="text"
                                name="recipeSource"
-                               placeholder="Source"
+                               placeholder="Optional"
                                value={this.state.recipeSource}
                                onChange={this.handleChange}
                         />

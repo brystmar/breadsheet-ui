@@ -78,7 +78,7 @@
 }
 
 .recipe-table-list tr:nth-child(odd) {
-    background-color: #EEEEEE;
+  background-color: #EEEEEE;
 }
 
 a:link {
@@ -97,6 +97,16 @@ a:hover {
 
 a:active {
 
+}
+
+.delete-recipe-button {
+  background-color: white;
+  color: darkred;
+  font-weight: bolder;
+}
+
+.delete-recipe-button-column {
+  background-color: #FFFFFF;
 }
 
 @media (prefers-reduced-motion: no-preference) {
