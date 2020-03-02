@@ -103,6 +103,9 @@ a:active {
   background-color: white;
   color: darkred;
   font-weight: bolder;
+  height: 12px;
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 .delete-recipe-button-column {

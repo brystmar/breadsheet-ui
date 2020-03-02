@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/webResources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace-newish.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/button_minus.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="newUI" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -115,7 +110,6 @@
       <option name="presentableId" value="Default" />
       <updated>1582401931128</updated>
       <workItem from="1582401932811" duration="13824000" />
-      <workItem from="1582777523601" duration="25025000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit w/raw pieces">
       <created>1582419561164</created>
@@ -138,56 +132,7 @@
       <option name="project" value="LOCAL" />
       <updated>1582420255561</updated>
     </task>
-    <task id="LOCAL-00004" summary="Merge branch 'master' of https://github.com/brystmar/breadsheet-ui&#10;&#10;# Conflicts:&#10;#&#9;.gitignore&#10;#&#9;.idea/breadsheet-ui.iml&#10;#&#9;README.md&#10;#&#9;package-lock.json&#10;#&#9;package.json&#10;#&#9;public/favicon.ico&#10;#&#9;public/index.html&#10;#&#9;public/logo192.png&#10;#&#9;public/logo512.png&#10;#&#9;public/robots.txt&#10;#&#9;src/App.css&#10;#&#9;src/App.js&#10;#&#9;src/App.test.js&#10;#&#9;src/index.css&#10;#&#9;src/logo.svg&#10;#&#9;src/serviceWorker.js">
-      <created>1582420785588</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1582420785588</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Ready to kill the newUI branch">
-      <created>1582420989381</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1582420989381</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Now parsing seconds into a human-readable string">
-      <created>1582492835936</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1582492835936</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Now getting data from the breadsheet API!">
-      <created>1582504910216</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1582504910216</updated>
-    </task>
-    <task id="LOCAL-00008" summary="AddRecipe form for the main page.  Unsure if the POST request is properly formatted; fairly sure it's okay and the issue is on the backend.">
-      <created>1582511748346</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1582511748346</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Form POST works properly! Next up: find out why the deleteRecipe function has a mind of its own.">
-      <created>1582871424384</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1582871424384</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Delete works (via its own crappy button)">
-      <created>1583110840569</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1583110840569</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,51 +157,36 @@
     <MESSAGE value="Initial commit w/raw pieces" />
     <MESSAGE value="Moved local changes to a new branch" />
     <MESSAGE value="Merging into master, take 1" />
-    <MESSAGE value="Merge branch 'master' of https://github.com/brystmar/breadsheet-ui&#10;&#10;# Conflicts:&#10;#&#9;.gitignore&#10;#&#9;.idea/breadsheet-ui.iml&#10;#&#9;README.md&#10;#&#9;package-lock.json&#10;#&#9;package.json&#10;#&#9;public/favicon.ico&#10;#&#9;public/index.html&#10;#&#9;public/logo192.png&#10;#&#9;public/logo512.png&#10;#&#9;public/robots.txt&#10;#&#9;src/App.css&#10;#&#9;src/App.js&#10;#&#9;src/App.test.js&#10;#&#9;src/index.css&#10;#&#9;src/logo.svg&#10;#&#9;src/serviceWorker.js" />
-    <MESSAGE value="Ready to kill the newUI branch" />
-    <MESSAGE value="Now parsing seconds into a human-readable string" />
-    <MESSAGE value="Now getting data from the breadsheet API!" />
-    <MESSAGE value="AddRecipe form for the main page.  Unsure if the POST request is properly formatted; fairly sure it's okay and the issue is on the backend." />
-    <MESSAGE value="Form POST works properly! Next up: find out why the deleteRecipe function has a mind of its own." />
-    <MESSAGE value="Delete works (via its own crappy button)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete works (via its own crappy button)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merging into master, take 1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582504850118">
+    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582414982737">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582504850118" />
-    <state x="598" y="64" key="CommitChangelistDialog2" timestamp="1583110840282">
+    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582414982737" />
+    <state x="577" y="23" width="881" height="1129" key="CommitChangelistDialog2" timestamp="1582420785427">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="598" y="64" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1583110840282" />
+    <state x="577" y="23" width="881" height="1129" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420785427" />
     <state x="852" y="488" key="Github.ShareDialog" timestamp="1582419683416">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="852" y="488" key="Github.ShareDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582419683416" />
-    <state x="708" y="310" key="MultipleFileMergeDialog" timestamp="1582420965837">
+    <state x="708" y="310" width="831" height="554" key="MultipleFileMergeDialog" timestamp="1582420739531">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="708" y="310" key="MultipleFileMergeDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420965837" />
-    <state x="797" y="241" key="RollbackChangesDialog" timestamp="1583109806023">
+    <state x="708" y="310" width="831" height="554" key="MultipleFileMergeDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420739531" />
+    <state x="797" y="241" key="RollbackChangesDialog" timestamp="1582420546465">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="797" y="241" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1583109806023" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1583110843627">
+    <state x="797" y="241" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420546465" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1582420790710">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1583110843627" />
-    <state x="780" y="512" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583102756043">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state x="780" y="512" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1583102756043" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420790710" />
     <state x="655" y="344" width="683" height="486" key="find.popup" timestamp="1582416785915">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="655" y="344" width="683" height="486" key="find.popup/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582416785915" />
-    <state x="743" y="307" key="git4idea.branch.GitSmartOperationDialog" timestamp="1582420963869">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state x="743" y="307" key="git4idea.branch.GitSmartOperationDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420963869" />
   </component>
 </project>
