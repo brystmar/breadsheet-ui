@@ -4,13 +4,23 @@ class AddRecipe extends React.Component {
     constructor() {
         super();
         this.state = {
-            recipeName: "",
-            recipeDifficulty: "Intermediate",
-            recipeAuthor: "",
-            recipeSource: ""
+            name: "",
+            difficulty: "Intermediate",
+            author: "",
+            source: "",
+            visible: false
         };
+        this.handleFormToggle = this.handleFormToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleFormToggle() {
+        console.log("Clicked handleFormToggle");
+        this.setState({
+            visible: !this.state.visible
+        });
+        console.log("State.visible is now:", this.state.visible);
     }
 
     handleChange(event) {
@@ -21,25 +31,19 @@ class AddRecipe extends React.Component {
     }
 
     handleSubmit(event) {
+        console.log("New recipe submitted:", this.state);
+
         // Don't refresh the page
         event.preventDefault();
-
-        let recipe_data = {
-            name: this.state.recipeName,
-            difficulty: this.state.recipeDifficulty,
-            author: this.state.recipeAuthor,
-            source: this.state.recipeSource
-        };
-        console.log("New recipe submitted: ", recipe_data);
 
         // POST new recipe to the backend
         fetch("http://localhost:5000/api/v1/recipes", {
             method: "POST",
-            body: JSON.stringify(recipe_data)
+            body: JSON.stringify(this.state)
         })
             .then(response => {
                 console.log("POST complete!");
-                console.log(JSON.stringify(recipe_data))
+                console.log(JSON.stringify(this.state))
             });
 
         // Refresh the page to reflect changes
@@ -49,12 +53,19 @@ class AddRecipe extends React.Component {
     render() {
         return (
             <div className="add-recipe">
+                <img alt="Add recipe"
+                     src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_plus.png"
+                     className="add-recipe-toggle-button"
+                     onClick={this.handleFormToggle}/>
+                <label className="add-recipe-toggle-label"
+                       onClick={this.handleFormToggle}>Add Recipe</label>
+
                 <form className="add-recipe-form" onSubmit={this.handleSubmit}>
                     <label>Name &nbsp;
                         <input type="text"
-                               name="recipeName"
+                               name="name"
                                placeholder="Recipe Name"
-                               value={this.state.recipeName}
+                               value={this.state.name}
                                onChange={this.handleChange}
                                required={true}
                         />
@@ -62,8 +73,8 @@ class AddRecipe extends React.Component {
                     <br/>
                     <label>
                         Difficulty &nbsp;
-                        <select value={this.state.recipeDifficulty} onChange={this.handleChange}
-                                name="recipeDifficulty" required={true}>
+                        <select value={this.state.difficulty} onChange={this.handleChange}
+                                name="difficulty" required={true}>
                             <option value="Beginner">Beginner</option>
                             <option defaultValue="Intermediate" value="Intermediate">Intermediate
                             </option>
@@ -74,7 +85,7 @@ class AddRecipe extends React.Component {
                     {/*<label>*/}
                     {/*    Length &nbsp;*/}
                     {/*    <input type="text"*/}
-                    {/*           name="recipeLength"*/}
+                    {/*           name="length"*/}
                     {/*           placeholder="Automatic"*/}
                     {/*           disabled={true}*/}
                     {/*    />*/}
@@ -83,9 +94,9 @@ class AddRecipe extends React.Component {
                     <label>
                         Author &nbsp;
                         <input type="text"
-                               name="recipeAuthor"
+                               name="author"
                                placeholder="Optional"
-                               value={this.state.recipeAuthor}
+                               value={this.state.author}
                                onChange={this.handleChange}
                         />
                     </label>
@@ -93,9 +104,9 @@ class AddRecipe extends React.Component {
                     <label>
                         Source &nbsp;
                         <input type="text"
-                               name="recipeSource"
+                               name="source"
                                placeholder="Optional"
-                               value={this.state.recipeSource}
+                               value={this.state.source}
                                onChange={this.handleChange}
                         />
                     </label>

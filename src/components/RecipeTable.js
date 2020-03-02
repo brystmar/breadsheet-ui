@@ -65,7 +65,6 @@ class RecipeTable extends React.Component {
                     {recipeList}
                     </tbody>
                 </table>
-                <br/>
                 <AddRecipe />
             </div>
         )
