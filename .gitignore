@@ -155,6 +155,9 @@ sketch
 .env.development.local
 .env.test.local
 .env.production.local
+breadvars*
+breadvars.zip
+breadvars-ui.zip
 
 npm-debug.log*
 yarn-debug.log*

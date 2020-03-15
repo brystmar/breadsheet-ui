@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/button_plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PageTitle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeTable.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +59,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -114,7 +116,8 @@
       <option name="presentableId" value="Default" />
       <updated>1582401931128</updated>
       <workItem from="1582401932811" duration="13824000" />
-      <workItem from="1582777523601" duration="27667000" />
+      <workItem from="1582777523601" duration="29713000" />
+      <workItem from="1584207994727" duration="6315000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit w/raw pieces">
       <created>1582419561164</created>
@@ -193,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583112314743</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Framework in place to toggle the Add Recipe fields">
+      <created>1583115270234</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1583115270235</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,17 +236,22 @@
     <MESSAGE value="Form POST works properly! Next up: find out why the deleteRecipe function has a mind of its own." />
     <MESSAGE value="Delete works (via its own crappy button)" />
     <MESSAGE value="Delete button is less crappy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete button is less crappy" />
+    <MESSAGE value="Framework in place to toggle the Add Recipe fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="Framework in place to toggle the Add Recipe fields" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="597" y="253" key="#Notifications" timestamp="1583197787893">
+      <screen x="0" y="23" width="1994" height="1129" />
+    </state>
+    <state x="597" y="253" key="#Notifications/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1583197787893" />
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582504850118">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582504850118" />
-    <state x="598" y="64" key="CommitChangelistDialog2" timestamp="1583112314487">
+    <state x="598" y="64" key="CommitChangelistDialog2" timestamp="1583115270045">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="598" y="64" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1583112314487" />
+    <state x="598" y="64" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1583115270045" />
     <state x="852" y="488" key="Github.ShareDialog" timestamp="1582419683416">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -249,10 +264,14 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="797" y="241" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1583113764404" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1583112317094">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1583115272749">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1583112317094" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1583115272749" />
+    <state x="674" y="420" key="com.intellij.ide.util.TipDialog" timestamp="1584208287933">
+      <screen x="0" y="23" width="1994" height="1129" />
+    </state>
+    <state x="674" y="420" key="com.intellij.ide.util.TipDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1584208287933" />
     <state x="780" y="512" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583102756043">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

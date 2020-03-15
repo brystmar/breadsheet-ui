@@ -4,6 +4,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import PageTitle from "./components/PageTitle";
 import RecipeTable from "./components/RecipeTable";
 import './App.css';
 
@@ -13,9 +14,7 @@ function App() {
             <Header/>
             <br />
 
-            <div className="page-title">
-                Recipes
-            </div>
+            <PageTitle title="Recipes"/>
 
             <hr />
             <RecipeTable/>

@@ -2,11 +2,30 @@
   font-style: normal;
 }
 
+a:link {
+  text-decoration: none;
+  color: #037caf;
+}
+
+a:visited {
+  color: #3f5efc;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #0040ff;
+}
+
+a:active {
+
+}
+
 .header-hamburger {
   column-width: min-content;
   alignment: left;
   horiz-align: left;
   height: 40px;
+  width: 40px;
   vertical-align: center;
 }
 
@@ -20,7 +39,10 @@
   column-width: max-content;
   text-align: left;
   vertical-align: center;
+  cursor: default;
 }
+
+
 
 .App-header {
   background-color: #282c34;
@@ -48,6 +70,7 @@
   font-weight: bold;
   text-align: left;
   margin-left: 5px;
+  cursor: default;
 }
 
 .recipe-list-item {
@@ -60,6 +83,7 @@
   font-weight: bold;
   margin-left: 3px;
   margin-bottom: 5px;
+  cursor: default;
 }
 
 .recipe-table {
@@ -79,24 +103,6 @@
 
 .recipe-table-list tr:nth-child(odd) {
   background-color: #EEEEEE;
-}
-
-a:link {
-  text-decoration: none;
-  color: #037caf;
-}
-
-a:visited {
-  color: #3f5efc;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: #0040ff;
-}
-
-a:active {
-
 }
 
 .delete-recipe-button {
@@ -129,6 +135,15 @@ a:active {
 .add-recipe-form {
   margin-top: 5px;
   margin-left: 10px;
+}
+
+.add-recipe-form-label {
+  margin-right: 8px;
+  alignment: right;
+}
+
+.add-recipe-form-textbox {
+  alignment: right;
 }
 
 @media (prefers-reduced-motion: no-preference) {

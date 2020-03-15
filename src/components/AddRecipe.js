@@ -8,25 +8,37 @@ class AddRecipe extends React.Component {
             difficulty: "Intermediate",
             author: "",
             source: "",
-            visible: false
+            visible: true
         };
         this.handleFormToggle = this.handleFormToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleFormToggle() {
-        console.log("Clicked handleFormToggle");
+        // console.log("Clicked handleFormToggle");
         this.setState({
             visible: !this.state.visible
         });
-        console.log("State.visible is now:", this.state.visible);
+        // console.log("State.visible is now:", this.state.visible);
+        // this.state.visible ? ( do something ) : (do something else);
     }
 
     handleChange(event) {
         const {name, value} = event.target;
         this.setState({
             [name]: value
+        })
+    }
+
+    handleCancel() {
+        this.setState({
+            name: "",
+            difficulty: "Intermediate",
+            author: "",
+            source: "",
+            visible: true
         })
     }
 
@@ -52,66 +64,86 @@ class AddRecipe extends React.Component {
 
     render() {
         return (
-            <div className="add-recipe">
-                <img alt="Add recipe"
-                     src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_plus.png"
-                     className="add-recipe-toggle-button"
-                     onClick={this.handleFormToggle}/>
-                <label className="add-recipe-toggle-label"
-                       onClick={this.handleFormToggle}>Add Recipe</label>
+            <div className="add-recipe-parent">
+                <div className="add-recipe-icon">
+                    <img alt="Add recipe"
+                         src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_plus.png"
+                         className="add-recipe-toggle-button"
+                         onClick={this.handleFormToggle}/>
 
-                <form className="add-recipe-form" onSubmit={this.handleSubmit}>
-                    <label>Name &nbsp;
-                        <input type="text"
-                               name="name"
-                               placeholder="Recipe Name"
-                               value={this.state.name}
-                               onChange={this.handleChange}
-                               required={true}
-                        />
+                    <label className="add-recipe-toggle-label" onClick={this.handleFormToggle}>
+                        Add Recipe
                     </label>
-                    <br/>
-                    <label>
-                        Difficulty &nbsp;
-                        <select value={this.state.difficulty} onChange={this.handleChange}
-                                name="difficulty" required={true}>
-                            <option value="Beginner">Beginner</option>
-                            <option defaultValue="Intermediate" value="Intermediate">Intermediate
-                            </option>
-                            <option value="Advanced">Advanced</option>
-                        </select>
+                </div>
+
+                <form className="add-recipe-form"
+                      hidden={this.state.visible}
+                      onSubmit={this.handleSubmit}>
+                    <label className="add-recipe-form-label">
+                        Name
                     </label>
+                    <input className="add-recipe-form-textbox"
+                           type="text"
+                           name="name"
+                           placeholder="Recipe Name"
+                           value={this.state.name}
+                           onChange={this.handleChange}
+                           required={true}
+                    />
+
                     <br/>
-                    {/*<label>*/}
-                    {/*    Length &nbsp;*/}
-                    {/*    <input type="text"*/}
-                    {/*           name="length"*/}
-                    {/*           placeholder="Automatic"*/}
-                    {/*           disabled={true}*/}
-                    {/*    />*/}
-                    {/*</label>*/}
-                    {/*<br/>*/}
-                    <label>
-                        Author &nbsp;
-                        <input type="text"
-                               name="author"
-                               placeholder="Optional"
-                               value={this.state.author}
-                               onChange={this.handleChange}
-                        />
+
+                    <label className="add-recipe-form-label">
+                        Difficulty
                     </label>
+                    <select className="add-recipe-form-picklist"
+                            name="difficulty"
+                            value={this.state.difficulty}
+                            defaultValue="Intermediate"
+                            onChange={this.handleChange}
+                            required={true}>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+
                     <br/>
-                    <label>
-                        Source &nbsp;
-                        <input type="text"
-                               name="source"
-                               placeholder="Optional"
-                               value={this.state.source}
-                               onChange={this.handleChange}
-                        />
+
+                    <label className="add-recipe-form-label">
+                        Author
                     </label>
+                    <input className="add-recipe-form-textbox"
+                           type="text"
+                           name="author"
+                           placeholder="Optional"
+                           value={this.state.author}
+                           onChange={this.handleChange}
+                    />
+
                     <br/>
-                    <input type="submit" value="Submit"/>
+
+                    <label className="add-recipe-form-label">
+                        Source
+                    </label>
+                    <input className="add-recipe-form-textbox"
+                           type="text"
+                           name="source"
+                           placeholder="Optional"
+                           value={this.state.source}
+                           onChange={this.handleChange}
+                    />
+
+                    <br/>
+                    <input type="button"
+                           name="cancelNewRecipe"
+                           className="button-cancel"
+                           value="Cancel"
+                           onClick={this.handleCancel}/>
+                    <input type="submit"
+                           name="saveNewRecipe"
+                           className="button-submit"
+                           disabled={this.state.visible}
+                           value="Submit"/>
                 </form>
             </div>
         )
