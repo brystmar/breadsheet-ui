@@ -12,9 +12,13 @@ class AddRecipe extends React.Component {
         };
         this.handleFormToggle = this.handleFormToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleCancel = this.handleCancel.bind(this);
+        this.resetDefaults = this.resetDefaults.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    static defaultProps = {
+        difficulty: "Intermediate"
+    };
 
     handleFormToggle() {
         // console.log("Clicked handleFormToggle");
@@ -32,7 +36,7 @@ class AddRecipe extends React.Component {
         })
     }
 
-    handleCancel() {
+    resetDefaults() {
         this.setState({
             name: "",
             difficulty: "Intermediate",
@@ -54,12 +58,17 @@ class AddRecipe extends React.Component {
             body: JSON.stringify(this.state)
         })
             .then(response => {
-                console.log("POST complete!");
-                console.log(JSON.stringify(this.state))
-            });
+                console.log("POST complete, response:", response.status, response.ok);
+                return response.json();
+            })
+            .then(result => {
+                console.log("New recipe saved:", result.data);
+                // Reset form fields to their defaults
+                this.resetDefaults();
 
-        // Refresh the page to reflect changes
-        window.location.reload(true);
+                // Update state of the RecipeTable component using the provided function
+                this.props.render(result.data);
+            })
     }
 
     render() {
@@ -99,7 +108,6 @@ class AddRecipe extends React.Component {
                     <select className="add-recipe-form-picklist"
                             name="difficulty"
                             value={this.state.difficulty}
-                            defaultValue="Intermediate"
                             onChange={this.handleChange}
                             required={true}>
                         <option value="Beginner">Beginner</option>
@@ -138,7 +146,7 @@ class AddRecipe extends React.Component {
                            name="cancelNewRecipe"
                            className="button-cancel"
                            value="Cancel"
-                           onClick={this.handleCancel}/>
+                           onClick={this.resetDefaults}/>
                     <input type="submit"
                            name="saveNewRecipe"
                            className="button-submit"

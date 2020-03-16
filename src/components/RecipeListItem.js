@@ -2,7 +2,7 @@ import React from 'react';
 
 function RecipeListItem(props) {
     function handleDeleteRecipe() {
-        console.log("Atttempting to delete recipe " + props.id);
+        console.log("Attempting to delete recipe " + props.id);
 
         // Send a POST request to the API
         fetch("http://localhost:5000/api/v1/recipes/" + props.id, {

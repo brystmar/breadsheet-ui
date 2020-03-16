@@ -10,18 +10,25 @@ class RecipeTable extends React.Component {
             recipes: []
         };
 
+        this.addRecipeToState = this.addRecipeToState.bind(this);
         this.deleteRecipeFromState = this.deleteRecipeFromState.bind(this);
     }
 
     componentDidMount() {
         fetch("http://localhost:5000/api/v1/recipes")
             .then(response => response.json())
-            .then(response => this.setState({recipes: response.data}))
+            .then(result => this.setState({recipes: result.data}))
     }
 
     addRecipeToState(recipe) {
-        console.log("Called addRecipeToState for id=" + recipe.id);
+        console.log("Called addRecipeToState for", recipe);
 
+        let updatedRecipes = this.state.recipes;
+        updatedRecipes.push(recipe);
+
+        this.setState({
+            recipes: updatedRecipes
+        })
     }
 
     deleteRecipeFromState(recipe_id) {
@@ -31,9 +38,9 @@ class RecipeTable extends React.Component {
             function (terminator) {
                 return terminator.id !== recipe_id
             });
+
         this.setState({recipes: newList});
     }
-
 
     render() {
         const recipeList = this.state.recipes.map(
@@ -65,7 +72,7 @@ class RecipeTable extends React.Component {
                     {recipeList}
                     </tbody>
                 </table>
-                <AddRecipe />
+                <AddRecipe render={this.addRecipeToState} />
             </div>
         )
     }
