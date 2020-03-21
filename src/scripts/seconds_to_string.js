@@ -1,10 +1,10 @@
 // Converts a raw number of seconds (int) to a human-readable string
 //   in hours & minutes.  For inputs >36 hours, only the number of
-//   days are returned.
+//   days are returned by default.
 
 // import moment from 'moment';
 
-function seconds_to_string(seconds) {
+function seconds_to_string(seconds, ExactValue= false) {
     // console.log("Starting seconds_to_string(" + seconds + ").");
 
     let result = "";
@@ -18,16 +18,20 @@ function seconds_to_string(seconds) {
         // For >36 hours, only display the number of days
         result = Math.round(seconds / 86400) + " days";
     }
+
+    if (!ExactValue) {
+        return result;
+    }
     else {
         let hours = Math.floor(seconds / 3600);
         let minutes = Math.floor(seconds / 60) % 60;
 
         // Build the hours string
         if (hours === 0) {
-            result = "";
+            result += "";
         }
         else if (hours === 1) {
-            result = hours + " hr";
+            result += hours + " hr";
         }
         else {
             result = hours + " hrs";

@@ -2,6 +2,14 @@
   font-style: normal;
 }
 
+.nav-bar {
+  margin-left: 10px;
+}
+
+.nav-list {
+  margin-right: 8px;
+}
+
 a:link {
   text-decoration: none;
   color: #037caf;
@@ -42,8 +50,6 @@ a:active {
   cursor: default;
 }
 
-
-
 .App-header {
   background-color: #282c34;
   min-height: 60px;
@@ -59,6 +65,7 @@ a:active {
 .App-footer {
   font-size: small;
   margin-left: 3px;
+  margin-top: 20px;
 }
 
 .App-link {
@@ -144,6 +151,16 @@ a:active {
 
 .add-recipe-form-textbox {
   alignment: right;
+}
+
+.recipe-detail-summary-table-label {
+  font-weight: bold;
+  justify-content: right;
+}
+
+.recipe-detail-summary-table-value {
+  color: #282c34;
+  padding-right: 15px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

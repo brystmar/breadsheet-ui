@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function RecipeListItem(props) {
     function handleDeleteRecipe() {
@@ -11,10 +12,12 @@ function RecipeListItem(props) {
             .then(response => {
                 if (response.ok) {
                     console.log("Delete successful for: " + props.name + " (" + props.id + ")");
+                    props.delete_recipe(props.id);
+                }
+                else {
+                    console.log("Delete failed for: " + props.name + " (" + props.id + ")");
                 }
             });
-
-        props.delete_recipe(props.id);
     }
 
     return (
@@ -26,12 +29,12 @@ function RecipeListItem(props) {
                      onClick={handleDeleteRecipe}/>
             </td>
             <td className="recipe-list-item-name">
-                <a href={"/recipe?id=" + props.id}>{props.name}</a>
+                <Link to={`/recipe/${props.id}`}>{props.name}</Link>
             </td>
-            <td>{props.difficulty}</td>
-            <td>{props.length}</td>
-            <td>{props.author}</td>
-            <td>{props.source}</td>
+            <td className="recipe-list-item-difficulty">{props.difficulty}</td>
+            <td className="recipe-list-item-length">{props.length}</td>
+            <td className="recipe-list-item-author">{props.author}</td>
+            <td className="recipe-list-item-source">{props.source}</td>
         </tr>
     )
 }
