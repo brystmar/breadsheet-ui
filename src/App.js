@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import PageTitle from './components/PageTitle';
 import RecipeTable from './components/RecipeTable';
 import RecipeDetailContainer from './components/RecipeDetailContainer';
+import 'react-datepicker/dist/react-datepicker.css';
 import './App.css';
 
 function App() {

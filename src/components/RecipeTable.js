@@ -7,7 +7,7 @@ class RecipeTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            recipes: []
+            allRecipes: []
         };
 
         this.addRecipeToState = this.addRecipeToState.bind(this);
@@ -15,35 +15,36 @@ class RecipeTable extends React.Component {
     }
 
     componentDidMount() {
+        // Get the recipe details from the backend
         fetch("http://localhost:5000/api/v1/recipes")
             .then(response => response.json())
-            .then(result => this.setState({recipes: result.data}))
+            .then(result => this.setState({allRecipes: result.data}))
     }
 
     addRecipeToState(recipe) {
         console.log("Called addRecipeToState for", recipe);
 
-        let updatedRecipes = this.state.recipes;
+        let updatedRecipes = this.state.allRecipes;
         updatedRecipes.push(recipe);
 
         this.setState({
-            recipes: updatedRecipes
+            allRecipes: updatedRecipes
         })
     }
 
     deleteRecipeFromState(recipe_id) {
         console.log("Called deleteRecipeFromState for id=" + recipe_id);
 
-        let newList = this.state.recipes.filter(
+        let newList = this.state.allRecipes.filter(
             function (terminator) {
                 return terminator.id !== recipe_id
             });
 
-        this.setState({recipes: newList});
+        this.setState({allRecipes: newList});
     }
 
     render() {
-        const recipeList = this.state.recipes.map(
+        const recipeComponentList = this.state.allRecipes.map(
             recipe => <RecipeListItem key={recipe.id}
                                       id={recipe.id}
                                       name={recipe.name}
@@ -51,7 +52,7 @@ class RecipeTable extends React.Component {
                                       author={recipe.author}
                                       source={recipe.source}
                                       length={seconds_to_string(recipe.length)}
-                                      delete_recipe={this.deleteRecipeFromState}/>
+                                      delete_recipe={this.deleteRecipeFromState} />
         );
 
         return (
@@ -69,10 +70,10 @@ class RecipeTable extends React.Component {
                     </thead>
 
                     <tbody className="recipe-table-list">
-                    {recipeList}
+                    {recipeComponentList}
                     </tbody>
                 </table>
-                <AddRecipe render={this.addRecipeToState} />
+                <AddRecipe render={this.addRecipeToState}/>
             </div>
         )
     }

@@ -1,13 +1,23 @@
 .App {
   font-style: normal;
+  margin: 3px;
 }
 
 .nav-bar {
   margin-left: 10px;
+  margin-bottom: 5px;
 }
 
 .nav-list {
   margin-right: 8px;
+}
+
+.loading-icon-table {
+  height: 20px;
+}
+
+.loading-icon-title {
+  height: 50px;
 }
 
 a:link {
@@ -153,14 +163,43 @@ a:active {
   alignment: right;
 }
 
+.recipe-detail-summary-table {
+  margin-bottom: 5px;
+}
+
 .recipe-detail-summary-table-label {
   font-weight: bold;
   justify-content: right;
+  cursor: default;
 }
 
 .recipe-detail-summary-table-value {
   color: #282c34;
   padding-right: 15px;
+  cursor: default;
+}
+
+.start-finish-datepicker {
+  /* Long dates & times get cut off at 100% */
+  width: 100%;
+  /*width: 137%;*/
+}
+
+.react-datepicker {
+  width: 250px;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.recipe-start-end {
+  margin-left: 3px;
+}
+
+.start-finish-selector {
+  padding-right: 4px;
+  cursor: pointer;
 }
 
 @media (prefers-reduced-motion: no-preference) {
