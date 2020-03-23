@@ -1,11 +1,13 @@
 // Details section displayed on the recipe-specific page.
 // Data: author, source, total time, difficulty, date added.
 import React from 'react';
-import PageTitle from "./PageTitle";
-import seconds_to_string from "../scripts/seconds_to_string";
-import RecipeListItem from "./RecipeListItem";
-import RecipeStartEnd from "./RecipeStartEnd";
-import LoadingIcon from "./LoadingIcon";
+import PageTitle from './PageTitle';
+import seconds_to_string from '../scripts/seconds_to_string';
+import StepListItem from './StepListItem';
+import RecipeStartEnd from './RecipeStartEnd';
+import LoadingIcon from './LoadingIcon';
+import StepTable from './StepTable';
+import seconds_to_hhmm, {pad} from '../scripts/seconds_to_hhmm';
 
 class RecipeDetailSummary extends React.Component {
     constructor(props) {
@@ -16,6 +18,7 @@ class RecipeDetailSummary extends React.Component {
             hasSteps: false
         };
 
+        this.handleThenWaitChange = this.handleThenWaitChange.bind(this);
         this.updateRecipeState = this.updateRecipeState.bind(this);
     }
 
@@ -40,23 +43,48 @@ class RecipeDetailSummary extends React.Component {
             })
     }
 
+    handleThenWaitChange(stepNumber, newThenWaitSeconds) {
+        console.log("Called handleThenWaitChange(" + stepNumber + ", " + newThenWaitSeconds + ").");
+
+    }
+
     updateRecipeState(newStateData) {
         console.log("Called updateRecipeState for id=" + this.state.recipeData.id);
 
-        this.setState({recipeData: newStateData})
+        this.setState({
+            recipeData: newStateData,
+            hasData: this.state.hasData,
+            hasSteps: this.state.hasSteps
+        })
     }
 
     render() {
-        let stepComponentList = {};
+        // Until data from the backend arrives, don't render components w/props needing that data
+        let output = <LoadingIcon cssClass="loading-icon-title"/>;
         if (this.state.hasData && this.state.hasSteps) {
-            stepComponentList = this.state.recipeData.steps.map(
-                step => <RecipeListItem key={step.number}
-                                        id={step.number}
-                                        text={step.text}
-                                        when={step.when}
-                                        then_wait={step.then_wait}
-                                        note={step.note}/>
-            )
+
+            let stepComponentList = this.state.recipeData.steps.map(step => {
+                    let [then_wait_hh, then_wait_mm] = seconds_to_hhmm(step.then_wait);
+
+                    return <StepListItem key={step.number}
+                                         number={step.number}
+                                         text={step.text}
+                                         when={step.when}
+                                         then_wait_hh={then_wait_hh}
+                                         then_wait_mm={then_wait_mm}
+                                         then_wait={step.then_wait}
+                                         note={step.note}
+                                         thenWaitHandler={this.handleThenWaitChange}/>
+                }
+            );
+
+            output =
+                <div>
+                    <RecipeStartEnd start_time={Date.parse(this.state.recipeData.start_time)}
+                                    solve_for_start={true}
+                                    length={this.state.recipeData.length}/>
+                    <StepTable steps={stepComponentList}/>
+                </div>;
         }
 
         return (
@@ -100,7 +128,7 @@ class RecipeDetailSummary extends React.Component {
                     </tbody>
                 </table>
 
-                <RecipeStartEnd solve_for_start={true} length={this.state.recipeData.length} />
+                {output}
             </div>
         )
     }

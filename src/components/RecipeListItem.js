@@ -21,7 +21,7 @@ function RecipeListItem(props) {
     }
 
     return (
-        <tr className="recipe-list-item" id={"recipe-list-item-" + props.id}>
+        <tr className="recipe-table-list-item" id={"recipe-list-item-" + props.id}>
             <td className="delete-recipe-button-column">
                 <img alt="Delete recipe"
                      src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_minus.png"

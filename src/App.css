@@ -90,11 +90,6 @@ a:active {
   cursor: default;
 }
 
-.recipe-list-item {
-  text-align: left;
-  margin-left: 3px;
-}
-
 .table-header-row {
   text-align: left;
   font-weight: bold;
@@ -120,6 +115,11 @@ a:active {
 
 .recipe-table-list tr:nth-child(odd) {
   background-color: #EEEEEE;
+}
+
+.recipe-table-list-item {
+  text-align: left;
+  margin-left: 3px;
 }
 
 .delete-recipe-button {
@@ -179,12 +179,6 @@ a:active {
   cursor: default;
 }
 
-.start-finish-datepicker {
-  /* Long dates & times get cut off at 100% */
-  width: 100%;
-  /*width: 137%;*/
-}
-
 .react-datepicker {
   width: 250px;
 }
@@ -195,11 +189,38 @@ a:active {
 
 .recipe-start-end {
   margin-left: 3px;
+  margin-bottom: 10px;
 }
 
-.start-finish-selector {
+.start-finish-datepicker {
+  /* Long dates & times get cut off at 100% */
+  width: 100%;
+  /*width: 137%;*/
+}
+
+.start-finish-toggle {
   padding-right: 4px;
   cursor: pointer;
+}
+
+.step-table {
+  font-size: medium;
+  width: 100%;
+  column-width: auto;
+}
+
+.step-table-column-header {
+  cursor: default;
+}
+
+.step-table-then-wait-hh-input {
+  width: 30px;
+  margin-right: 2px;
+}
+
+.step-table-then-wait-mm-input {
+  width: 30px;
+  margin-left: 2px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
