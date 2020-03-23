@@ -213,6 +213,16 @@ a:active {
   cursor: default;
 }
 
+.step-table-list-item-then_wait-th {
+  width: 91px;
+  margin-right: 5px;
+}
+
+.step-table-list-item-then_wait {
+  width: 91px;
+  margin-right: 5px;
+}
+
 .step-table-then-wait-hh-input {
   width: 30px;
   margin-right: 2px;
