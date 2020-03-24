@@ -8,6 +8,7 @@ import RecipeStartEnd from './RecipeStartEnd';
 import LoadingIcon from './LoadingIcon';
 import StepTable from './StepTable';
 import seconds_to_hhmm, {pad} from '../scripts/seconds_to_hhmm';
+import AddStep from "./AddStep";
 
 class RecipeDetailSummary extends React.Component {
     constructor(props) {
@@ -58,6 +59,22 @@ class RecipeDetailSummary extends React.Component {
         })
     }
 
+    addStepToRecipe(newStep) {
+        console.log("Called addStepToRecipe for step:", newStep);
+        let newRecipeData = this.state.recipeData;
+        // Add a new step to the list
+        newRecipeData.steps.push(newStep);
+
+        // Sort by step.number
+        newRecipeData.steps.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
+
+        this.setState({
+            recipeData: newRecipeData,
+            hasData: true,
+            hasSteps: true
+        })
+    }
+
     render() {
         // Until data from the backend arrives, don't render components w/props needing that data
         let output = <LoadingIcon cssClass="loading-icon-title"/>;
@@ -85,6 +102,8 @@ class RecipeDetailSummary extends React.Component {
                                     length={this.state.recipeData.length}/>
                     <StepTable steps={stepComponentList}/>
                 </div>;
+        } else if (this.state.hasData) {
+            output = <AddStep render={this.addStepToRecipe} />
         }
 
         return (

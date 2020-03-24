@@ -48,6 +48,8 @@ class AddRecipe extends React.Component {
 
     handleSubmit(event) {
         console.log("New recipe submitted:", this.state);
+        let stateCopy = this.state;
+        delete stateCopy.visible;
 
         // Don't refresh the page
         event.preventDefault();
@@ -55,7 +57,7 @@ class AddRecipe extends React.Component {
         // POST new recipe to the backend
         fetch("http://localhost:5000/api/v1/recipes", {
             method: "POST",
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(stateCopy)
         })
             .then(response => {
                 console.log("POST complete, response:", response.status, response.ok);
