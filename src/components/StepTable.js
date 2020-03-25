@@ -8,7 +8,7 @@ function StepTable(props) {
                 <th>Step</th>
                 <th>When</th>
                 <th>Action</th>
-                <th className="step-table-list-item-then_wait-th">Then Wait...</th>
+                <th className="step-table-list-item-then-wait-header">Then Wait...</th>
                 <th>Notes</th>
             </tr>
             </thead>

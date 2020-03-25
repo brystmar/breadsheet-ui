@@ -12,10 +12,6 @@ class AddStep extends React.Component {
         this.resetDefaults();
     }
 
-    static defaultProps = {
-        nextStepNumber: 1
-    };
-
     handleFormToggle() {
         console.log("Clicked handleFormToggle. State.visible is now:", !this.state.visible);
         this.setState({
@@ -32,10 +28,11 @@ class AddStep extends React.Component {
 
     resetDefaults() {
         this.setState({
-            stepNumber: 1,
+            stepNumber: 0,
+            nextStepNumber: 1,
             text: "",
-            then_waitHH: 0,
-            then_waitMM: 0,
+            thenWaitHH: 0,
+            thenWaitMM: 0,
             note: "",
             when: "",
             visible: false
@@ -43,16 +40,20 @@ class AddStep extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log("New step submitted:", this.state);
-
         // Don't refresh the page
         event.preventDefault();
 
-        // Send this new step to the parent so it can POST to the backend
-        let stateCopy = this.state;
-        delete stateCopy.visible;
+        // Create an object that's congruent with the Step data model
+        let newStep = {
+            number: this.state.stepNumber,
+            text: this.state.text,
+            then_wait: this.state.thenWaitHH * 3600 + this.state.thenWaitMM * 60,
+            note: this.state.note
+        };
 
-        this.props.render(stateCopy);
+        // Send this new step to the parent so it can update the backend
+        console.log("New step to add:", newStep);
+        this.props.addStepToRecipe(newStep);
     }
 
     render() {
@@ -61,21 +62,20 @@ class AddStep extends React.Component {
                 <div className="add-step-icon">
                     <img alt="Add recipe"
                          src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_plus.png"
-                         className="add-step-toggle-button"
+                         className="add-recipe-toggle-button"
                          onClick={this.handleFormToggle}/>
 
-                    <label className="add-step-toggle-label" onClick={this.handleFormToggle}>
+                    <label className="add-recipe-toggle-label" onClick={this.handleFormToggle}>
                         Add Step
                     </label>
                 </div>
 
-                <form className="add-step-form"
+                <form className="add-recipe-form"
                       hidden={this.state.visible}
                       onSubmit={this.handleSubmit}>
-                    <label className="add-step-form-label">
-                        Number
-                    </label>
-                    <input className="add-step-form-number"
+
+                    <label className="add-recipe-form-label">Number</label>
+                    <input className="add-recipe-form-number"
                            type="number"
                            name="stepNumber"
                            placeholder="Step #"
@@ -86,10 +86,8 @@ class AddStep extends React.Component {
 
                     <br/>
 
-                    <label className="add-step-form-label">
-                        Text
-                    </label>
-                    <input className="add-step-form-textbox"
+                    <label className="add-recipe-form-label">Text</label>
+                    <input className="add-recipe-form-textbox"
                            type="text"
                            name="text"
                            placeholder="Text"
@@ -100,31 +98,27 @@ class AddStep extends React.Component {
 
                     <br/>
 
-                    <label className="add-step-form-label">
-                        Then Wait...
-                    </label>
-                    <input className="add-step-form-then_wait-hh"
+                    <label className="add-recipe-form-label">Then Wait...</label>
+                    <input className="then-wait-hh-input"
                            type="number"
-                           name="then_waitHH"
+                           name="thenWaitHH"
                            placeholder="Hrs"
-                           value={this.state.then_waitHH}
+                           value={this.state.thenWaitHH}
                            onChange={this.handleChange}
                     />
                     :
-                    <input className="add-step-form-then_wait-mm"
+                    <input className="then-wait-mm-input"
                            type="number"
-                           name="then_waitMM"
+                           name="thenWaitMM"
                            placeholder="Min"
-                           value={this.state.then_waitMM}
+                           value={this.state.thenWaitMM}
                            onChange={this.handleChange}
                     />
 
                     <br/>
 
-                    <label className="add-step-form-label">
-                        Note
-                    </label>
-                    <input className="add-step-form-textbox"
+                    <label className="add-recipe-form-label">Note</label>
+                    <input className="add-recipe-form-textbox"
                            type="text"
                            name="note"
                            placeholder="Optional"

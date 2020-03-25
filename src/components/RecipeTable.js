@@ -48,9 +48,10 @@ class RecipeTable extends React.Component {
             recipe => <RecipeListItem key={recipe.id}
                                       id={recipe.id}
                                       name={recipe.name}
-                                      difficulty={recipe.difficulty}
                                       author={recipe.author}
                                       source={recipe.source}
+                                      difficulty={recipe.difficulty}
+                                      solve_for_start={recipe.solve_for_start}
                                       length={seconds_to_string(recipe.length)}
                                       delete_recipe={this.deleteRecipeFromState} />
         );

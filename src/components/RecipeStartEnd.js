@@ -23,7 +23,7 @@ class RecipeStartEnd extends React.Component {
     }
 
     handleStartFinishToggle() {
-        console.log("Called handleStartFinishToggle(). Was:", this.state.solveForStart);
+        console.log("Called handleStartFinishToggle(). Now:", !this.state.solveForStart);
         this.setState({
             startTime: this.state.startTime,
             finishTime: this.state.finishTime,

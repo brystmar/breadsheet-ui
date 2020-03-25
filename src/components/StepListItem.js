@@ -12,13 +12,13 @@ function StepListItem(props) {
                 {props.when}
             </td>
             <td className="step-table-list-item-text">{props.text}</td>
-            <td className="step-table-list-item-then_wait">
+            <td className="step-table-list-item-then-wait">
                 {/* TODO: Figure out how to save these values to State & update/re-calc when changed */}
                 <input type="number"
                        value={thenWaitHH}
                        // defaultValue={props.then_wait_hh}
                        onChange={value => setThenWaitHH(value)}
-                       className="step-table-then-wait-hh-input"
+                       className="then-wait-hh-input"
                        id={"step-table-then-wait-hh-input-" + props.number}
                 />
                 :
@@ -30,7 +30,7 @@ function StepListItem(props) {
                            setThenWaitMM(value)
                        }}
                        //onChange={props.thenWaitHandler(props.number, 17)}
-                       className="step-table-then-wait-mm-input"
+                       className="then-wait-mm-input"
                        id={"step-table-then-wait-mm-input-" + props.number}
                 />
             </td>

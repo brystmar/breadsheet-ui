@@ -213,22 +213,22 @@ a:active {
   cursor: default;
 }
 
-.step-table-list-item-then_wait-th {
+.step-table-list-item-then-wait-header {
   width: 91px;
   margin-right: 5px;
 }
 
-.step-table-list-item-then_wait {
+.step-table-list-item-then-wait {
   width: 91px;
   margin-right: 5px;
 }
 
-.step-table-then-wait-hh-input {
+.then-wait-hh-input {
   width: 30px;
   margin-right: 2px;
 }
 
-.step-table-then-wait-mm-input {
+.then-wait-mm-input {
   width: 30px;
   margin-left: 2px;
 }
