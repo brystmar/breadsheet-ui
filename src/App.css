@@ -138,8 +138,11 @@ a:active {
 .add-recipe-toggle-button {
   height: 25px;
   margin-left: 7px;
-  margin-right: 3px;
   margin-top: 15px;
+
+  /* Add space between label & icon, but ensure that space is still clickable*/
+  padding-right: 3px;
+
   cursor: pointer;
 }
 
@@ -156,6 +159,11 @@ a:active {
 
 .add-recipe-form-label {
   margin-right: 8px;
+  alignment: right;
+}
+
+.add-step-form-number-label {
+  margin-right: 2px;
   alignment: right;
 }
 

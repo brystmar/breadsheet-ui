@@ -7,7 +7,7 @@ import StepListItem from './StepListItem';
 import RecipeStartEnd from './RecipeStartEnd';
 import LoadingIcon from './LoadingIcon';
 import StepTable from './StepTable';
-import seconds_to_hhmm, {pad} from '../scripts/seconds_to_hhmm';
+import seconds_to_hhmm from '../scripts/seconds_to_hhmm';
 import AddStep from "./AddStep";
 
 class RecipeDetailSummary extends React.Component {
@@ -20,7 +20,7 @@ class RecipeDetailSummary extends React.Component {
             nextStep: 1
         };
 
-        this.handleThenWaitChange = this.handleThenWaitChange.bind(this);
+        this.handleStepLengthChange = this.handleStepLengthChange.bind(this);
         this.updateRecipeState = this.updateRecipeState.bind(this);
         this.addStepToRecipe = this.addStepToRecipe.bind(this);
     }
@@ -65,8 +65,11 @@ class RecipeDetailSummary extends React.Component {
             })
     }
 
-    handleThenWaitChange(stepNumber, newThenWaitSeconds) {
-        console.log("Called handleThenWaitChange(" + stepNumber + ", " + newThenWaitSeconds + ").");
+    handleStepLengthChange(event, stepNumber, newThenWait) {
+        console.log("Called RDS.handleStepLengthChange(" + stepNumber + ").");
+        let newRecipe = this.state.recipeData;
+        console.log("Value:", event.target.value, "Step #" + stepNumber, "NewTW:", newThenWait);
+        console.log(newRecipe.steps[stepNumber - 1]);
 
     }
 
@@ -99,7 +102,7 @@ class RecipeDetailSummary extends React.Component {
             .then(result => {
                 console.log("New recipe saved:", result.data);
                 // Reset form fields to their defaults
-                this.resetDefaults();
+                this.resetAddRecipeForm();
 
                 // Update state of the RecipeTable component using the provided function
                 this.props.render(result.data);
@@ -118,20 +121,16 @@ class RecipeDetailSummary extends React.Component {
 
         if (this.state.hasData && this.state.hasSteps) {
             let stepComponentList = this.state.recipeData.steps.map(step => {
-                    let [then_wait_hh, then_wait_mm] = seconds_to_hhmm(step.then_wait);
-
                     step.step_id = step.step_id ? step.step_id : "iso";
 
                     return <StepListItem key={step.number}
                                          step_id={step.step_id}
-                                         number={step.number}
+                                         stepNumber={step.number}
                                          text={step.text}
                                          when={step.when}
                                          then_wait={step.then_wait}
-                                         then_wait_hh={then_wait_hh}
-                                         then_wait_mm={then_wait_mm}
                                          note={step.note}
-                                         thenWaitHandler={this.handleThenWaitChange}/>
+                                         handleStepLengthChange={this.handleStepLengthChange}/>
                 }
             );
 
@@ -143,8 +142,10 @@ class RecipeDetailSummary extends React.Component {
                     <StepTable steps={stepComponentList}/>
                     <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
                 </div>;
+
         } else if (this.state.hasData) {
-            output = <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
+            output =
+                <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
         }
 
         return (

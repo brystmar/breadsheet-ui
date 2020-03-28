@@ -12,7 +12,7 @@ class AddRecipe extends React.Component {
         };
         this.handleFormToggle = this.handleFormToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.resetDefaults = this.resetDefaults.bind(this);
+        this.resetAddRecipeForm = this.resetAddRecipeForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -36,7 +36,7 @@ class AddRecipe extends React.Component {
         })
     }
 
-    resetDefaults() {
+    resetAddRecipeForm() {
         this.setState({
             name: "",
             difficulty: "Intermediate",
@@ -66,7 +66,7 @@ class AddRecipe extends React.Component {
             .then(result => {
                 console.log("New recipe saved:", result.data);
                 // Reset form fields to their defaults
-                this.resetDefaults();
+                this.resetAddRecipeForm();
 
                 // Update state of the RecipeTable component using the provided function
                 this.props.render(result.data);
@@ -148,7 +148,7 @@ class AddRecipe extends React.Component {
                            name="cancelNewRecipe"
                            className="button-cancel"
                            value="Cancel"
-                           onClick={this.resetDefaults}/>
+                           onClick={this.resetAddRecipeForm}/>
                     <input type="submit"
                            name="saveNewRecipe"
                            className="button-submit"
