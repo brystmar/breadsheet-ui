@@ -4,45 +4,33 @@ import seconds_to_hhmm, {pad} from '../scripts/seconds_to_hhmm';
 class StepListItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            thenWaitHH: 0,
-            thenWaitMM: 0,
-            thenWait: 0
-        };
+        this.state = {};
 
-        this.handleChange = this.handleChange.bind(this);
         this.padValue = this.padValue.bind(this);
+        this.handleStepChange = this.handleStepChange.bind(this);
     }
 
     componentDidMount() {
-        let [twhh, twmm] = seconds_to_hhmm(this.props.then_wait);
+        let [hours, minutes] = seconds_to_hhmm(this.props.then_wait);
 
         this.setState({
-            thenWaitHH: twhh,
-            thenWaitMM: twmm,
+            thenWaitHH: hours,
+            thenWaitMM: minutes,
             thenWait: this.props.then_wait
         })
     }
 
-    handleChange(event) {
+    handleStepChange(event) {
         const {name, value} = event.target;
-        // console.log("name:", name, "[name]:", [name], "Type:", typeof ([name]));
 
         // Update this.state.thenWait along with the hours/minutes values
         if (name === "thenWaitHH") {
-            this.setState({
-                [name]: value,
-                thenWait: (value * 3600) + (this.state.thenWaitMM * 60)
-            })
+            this.props.handleStepLengthChange(event, this.props.stepNumber,
+                (value * 3600) + (this.state.thenWaitMM * 60));
+
         } else if (name === "thenWaitMM") {
-            this.setState({
-                [name]: value,
-                thenWait: (this.state.thenWaitHH * 3600) + (value * 60)
-            })
-        } else {
-            this.setState({
-                [name]: value
-            });
+            this.props.handleStepLengthChange(event, this.props.stepNumber,
+                (this.state.thenWaitHH * 3600) + (value * 60));
         }
     }
 
@@ -53,11 +41,7 @@ class StepListItem extends React.Component {
     }
 
     render() {
-        if (this.props.stepNumber === 2) {
-            console.log("Step #" + this.props.stepNumber, "then_wait:", this.props.then_wait,
-                "twhh:", this.state.thenWaitHH, "twmm:", this.state.thenWaitMM);
-        }
-
+        let [thenWaitHours, thenWaitMinutes] = seconds_to_hhmm(this.props.then_wait);
 
         return (
             <tr className="step-table-list-item"
@@ -74,8 +58,8 @@ class StepListItem extends React.Component {
                            min="0"
                            max="99"
                            name="thenWaitHH"
-                           value={pad(this.state.thenWaitHH)}
-                           onChange={this.handleChange}
+                           value={thenWaitHours}
+                           onChange={this.handleStepChange}
                         // onBlur={this.padValue}
                            className="then-wait-hh-input"
                            id={"step-table-then-wait-hh-input-" + this.props.stepNumber}
@@ -85,8 +69,8 @@ class StepListItem extends React.Component {
                            min="0"
                            max="59"
                            name="thenWaitMM"
-                           value={pad(this.state.thenWaitMM)}
-                           onChange={this.handleChange}
+                           value={thenWaitMinutes}
+                           onChange={this.handleStepChange}
                         // onBlur={this.padValue}
                            className="then-wait-mm-input"
                            id={"step-table-then-wait-mm-input-" + this.props.stepNumber}

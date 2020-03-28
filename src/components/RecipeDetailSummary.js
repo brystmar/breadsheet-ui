@@ -3,18 +3,21 @@
 import React from 'react';
 import PageTitle from './PageTitle';
 import seconds_to_string from '../scripts/seconds_to_string';
-import StepListItem from './StepListItem';
 import RecipeStartEnd from './RecipeStartEnd';
 import LoadingIcon from './LoadingIcon';
 import StepTable from './StepTable';
-import seconds_to_hhmm from '../scripts/seconds_to_hhmm';
 import AddStep from "./AddStep";
 
 class RecipeDetailSummary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            recipeData: {},
+            recipeData: {
+                steps: [],
+                length: 0,
+                solve_for_start: true,
+                start_time: Date()
+            },
             hasData: false,
             hasSteps: false,
             nextStep: 1
@@ -54,23 +57,25 @@ class RecipeDetailSummary extends React.Component {
                 } else {
                     console.log("Error retrieving Recipe details from backend.");
                     console.log(result.body);
-
-                    this.setState({
-                        recipeData: {},
-                        hasData: false,
-                        hasSteps: false,
-                        nextStep: 1
-                    });
                 }
             })
     }
 
     handleStepLengthChange(event, stepNumber, newThenWait) {
-        console.log("Called RDS.handleStepLengthChange(" + stepNumber + ").");
+        // console.log("Called RDS.handleStepLengthChange(" + stepNumber + ").");
         let newRecipe = this.state.recipeData;
+        let newLength = 0;
         console.log("Value:", event.target.value, "Step #" + stepNumber, "NewTW:", newThenWait);
-        console.log(newRecipe.steps[stepNumber - 1]);
 
+        newRecipe.steps[stepNumber - 1].then_wait = newThenWait;
+
+        // Re-calculate the total recipe length
+        newRecipe.steps.forEach(step => newLength += step.then_wait);
+        newRecipe.length = newLength;
+
+        this.setState({
+            recipeData: newRecipe
+        })
     }
 
     updateRecipeState(newStateData) {
@@ -101,52 +106,22 @@ class RecipeDetailSummary extends React.Component {
             })
             .then(result => {
                 console.log("New recipe saved:", result.data);
-                // Reset form fields to their defaults
-                this.resetAddRecipeForm();
 
-                // Update state of the RecipeTable component using the provided function
-                this.props.render(result.data);
+                // Update state with the new recipe (and step) data
+                this.setState({
+                    recipeData: result.data,
+                    hasData: true,
+                    hasSteps: true,
+                    nextStep: this.state.nextStep + 1
+                })
             });
-
-        this.setState({
-            recipeData: updatedRecipe,
-            hasData: true,
-            hasSteps: true
-        })
     }
 
     render() {
         // Until data from the backend arrives, don't render components w/props needing that data
-        let output = <LoadingIcon cssClass="loading-icon-title"/>;
+        // let output = <LoadingIcon cssClass="loading-icon-title"/>;
 
-        if (this.state.hasData && this.state.hasSteps) {
-            let stepComponentList = this.state.recipeData.steps.map(step => {
-                    step.step_id = step.step_id ? step.step_id : "iso";
-
-                    return <StepListItem key={step.number}
-                                         step_id={step.step_id}
-                                         stepNumber={step.number}
-                                         text={step.text}
-                                         when={step.when}
-                                         then_wait={step.then_wait}
-                                         note={step.note}
-                                         handleStepLengthChange={this.handleStepLengthChange}/>
-                }
-            );
-
-            output =
-                <div>
-                    <RecipeStartEnd start_time={Date.parse(this.state.recipeData.start_time)}
-                                    solve_for_start={true}
-                                    length={this.state.recipeData.length}/>
-                    <StepTable steps={stepComponentList}/>
-                    <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
-                </div>;
-
-        } else if (this.state.hasData) {
-            output =
-                <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
-        }
+        // <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
 
         return (
             <div className="recipe-detail-summary">
@@ -189,7 +164,17 @@ class RecipeDetailSummary extends React.Component {
                     </tbody>
                 </table>
 
-                {output}
+                <RecipeStartEnd start_time={Date.parse(this.state.recipeData.start_time)}
+                                solve_for_start={this.state.recipeData.solve_for_start}
+                                length={this.state.recipeData.length}/>
+                <StepTable steps={this.state.recipeData.steps}
+                           handleStepLengthChange={this.handleStepLengthChange}
+                           hasData={this.state.hasData}/>
+                <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
+
+                {/*<StepTable steps={this.state.recipeData.steps}*/}
+                {/*           handleStepLengthChange={this.handleStepLengthChange}/>*/}
+                {/*<AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>*/}
             </div>
         )
     }
