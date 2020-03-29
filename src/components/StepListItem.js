@@ -22,8 +22,9 @@ class StepListItem extends React.Component {
 
     handleStepChange(event) {
         const {name, value} = event.target;
+        console.log("Called handleStepChange for", name, value);
 
-        // Update this.state.thenWait along with the hours/minutes values
+        // When a thenWaitXX value changes, update the state on RecipeDetailSummary
         if (name === "thenWaitHH") {
             this.props.handleStepLengthChange(event, this.props.stepNumber,
                 (value * 3600) + (this.state.thenWaitMM * 60));
@@ -42,6 +43,8 @@ class StepListItem extends React.Component {
 
     render() {
         let [thenWaitHours, thenWaitMinutes] = seconds_to_hhmm(this.props.then_wait);
+        console.log("Render StepListItem #" + this.props.stepNumber, "Len:",
+            this.props.then_wait, "HH:", thenWaitHours, "MM:", thenWaitMinutes);
 
         return (
             <tr className="step-table-list-item"

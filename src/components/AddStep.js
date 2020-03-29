@@ -9,8 +9,8 @@ class AddStep extends React.Component {
             thenWaitMM: "",
             thenWait: 0,
             text: "",
-            visible: false,
-            number: 0
+            note: "",
+            hidden: false
         };
 
         this.handleFormToggle = this.handleFormToggle.bind(this);
@@ -19,16 +19,18 @@ class AddStep extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-        const nextStep = this.props.nextStep;
-
-        this.setState({stepNumber: nextStep})
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.nextStep !== this.props.nextStep) {
+            this.setState({
+                stepNumber: this.props.nextStep
+            })
+        }
     }
 
     handleFormToggle() {
-        console.log("Clicked handleFormToggle. State.visible is now:", !this.state.visible);
+        // console.log("Clicked handleFormToggle. State.hidden is now:", !this.state.hidden);
         this.setState({
-            visible: !this.state.visible
+            hidden: !this.state.hidden
         });
     }
 
@@ -44,9 +46,10 @@ class AddStep extends React.Component {
             stepNumber: this.props.nextStep,
             thenWaitHH: "",
             thenWaitMM: "",
-            thenWait: "",
+            thenWait: 0,
             text: "",
-            visible: false
+            note: "",
+            hidden: true
         })
     }
 
@@ -54,24 +57,21 @@ class AddStep extends React.Component {
         // Don't refresh the page
         event.preventDefault();
 
-        console.log("Type:", typeof (this.state.thenWaitHH), "Value:", this.state.thenWaitHH);
-
-        console.log("Hours is empty?", this.state.thenWaitHH === "");
-
+        // Null handling for thenWaitXX
         let hours = this.state.thenWaitHH === "" ? 0 : this.state.thenWaitHH;
         let minutes = this.state.thenWaitMM === "" ? 0 : this.state.thenWaitMM;
 
         // Create an object that's congruent with the Step data model
         let newStep = {
-            stepNumber: this.state.stepNumber,
+            number: this.state.stepNumber,
             text: this.state.text,
             then_wait: (hours * 3600) + (minutes * 60),
             note: this.state.note
         };
 
         // Send this new step to the parent so it can update the backend
-        console.log("New step to add:", newStep);
-        // this.props.addStepToRecipe(newStep);
+        // console.log("New step to add:", newStep);
+        this.props.addStepToRecipe(newStep);
     }
 
     render() {
@@ -89,7 +89,7 @@ class AddStep extends React.Component {
                 </div>
 
                 <form className="add-recipe-form"
-                      hidden={this.state.visible}
+                      hidden={this.state.hidden}
                       onSubmit={this.handleSubmit}>
 
                     <label className="add-step-form-number-label">Step #</label>
@@ -154,7 +154,7 @@ class AddStep extends React.Component {
                     <input type="submit"
                            name="saveNewStep"
                            className="button-submit"
-                           disabled={this.state.visible}
+                           disabled={this.state.hidden}
                            value="Submit"
                            onClick={this.handleSubmit}/>
                 </form>

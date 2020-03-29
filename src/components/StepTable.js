@@ -4,7 +4,7 @@ import LoadingIcon from './LoadingIcon';
 
 function StepTable(props) {
     // console.log("StepTable props:", props);
-    console.log("Rendered StepTable w/props:", props.hasData);
+    // console.log("Rendered StepTable w/props:", props.hasData);
     let stepComponentList = props.steps.map(step =>
         <StepListItem
             key={step.number}

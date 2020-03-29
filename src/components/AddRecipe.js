@@ -8,7 +8,7 @@ class AddRecipe extends React.Component {
             difficulty: "Intermediate",
             author: "",
             source: "",
-            visible: true
+            hidden: true
         };
         this.handleFormToggle = this.handleFormToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -21,12 +21,7 @@ class AddRecipe extends React.Component {
     };
 
     handleFormToggle() {
-        // console.log("Clicked handleFormToggle");
-        this.setState({
-            visible: !this.state.visible
-        });
-        // console.log("State.visible is now:", this.state.visible);
-        // this.state.visible ? ( do something ) : (do something else);
+        this.setState({hidden: !this.state.hidden});
     }
 
     handleChange(event) {
@@ -42,14 +37,14 @@ class AddRecipe extends React.Component {
             difficulty: "Intermediate",
             author: "",
             source: "",
-            visible: true
+            hidden: true
         })
     }
 
     handleSubmit(event) {
         console.log("New recipe submitted:", this.state);
         let stateCopy = this.state;
-        delete stateCopy.visible;
+        delete stateCopy.hidden;
 
         // Don't refresh the page
         event.preventDefault();
@@ -88,7 +83,7 @@ class AddRecipe extends React.Component {
                 </div>
 
                 <form className="add-recipe-form"
-                      hidden={this.state.visible}
+                      hidden={this.state.hidden}
                       onSubmit={this.handleSubmit}>
                     <label className="add-recipe-form-label">
                         Name
@@ -152,7 +147,7 @@ class AddRecipe extends React.Component {
                     <input type="submit"
                            name="saveNewRecipe"
                            className="button-submit"
-                           disabled={this.state.visible}
+                           disabled={this.state.hidden}
                            value="Submit"/>
                 </form>
             </div>

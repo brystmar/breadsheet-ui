@@ -45,14 +45,12 @@ class RecipeDetailSummary extends React.Component {
                             }
                         })
                     }
-
                     this.setState({
                         recipeData: result.data,
                         hasData: true,
                         hasSteps: result.data.steps.length > 0,
                         nextStep: largestStep + 1
                     });
-
                     console.log("State updated with recipe details. nextStep:", largestStep + 1)
                 } else {
                     console.log("Error retrieving Recipe details from backend.");
@@ -65,7 +63,7 @@ class RecipeDetailSummary extends React.Component {
         // console.log("Called RDS.handleStepLengthChange(" + stepNumber + ").");
         let newRecipe = this.state.recipeData;
         let newLength = 0;
-        console.log("Value:", event.target.value, "Step #" + stepNumber, "NewTW:", newThenWait);
+        console.log("RDS.hSLC Value:", event.target.value, "Step #" + stepNumber, "NewTW:", newThenWait);
 
         newRecipe.steps[stepNumber - 1].then_wait = newThenWait;
 
@@ -101,8 +99,14 @@ class RecipeDetailSummary extends React.Component {
             body: JSON.stringify(updatedRecipe)
         })
             .then(response => {
-                console.log("POST complete, response:", response.status, response.ok);
-                return response.json();
+                console.log("PUT response:", response.ok ? "Success" : "Error", response.status);
+
+                if (response.ok) {
+                    return response.json();
+                }
+                else {
+                    return Promise.reject(response.statusText);
+                }
             })
             .then(result => {
                 console.log("New recipe saved:", result.data);
@@ -114,7 +118,8 @@ class RecipeDetailSummary extends React.Component {
                     hasSteps: true,
                     nextStep: this.state.nextStep + 1
                 })
-            });
+            })
+            .catch(something => console.log("Caught:", something));
     }
 
     render() {
