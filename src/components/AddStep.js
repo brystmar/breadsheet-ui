@@ -54,6 +54,20 @@ class AddStep extends React.Component {
     }
 
     handleSubmit(event) {
+        // stepNumber validation
+        if (this.state.stepNumber <= 0) {
+            this.setState({
+                stepNumber: this.props.nextStep
+            });
+            return false;
+        }
+
+        // Require values for step# and text
+        if (this.state.stepNumber === "" || this.state.stepNumber.isNaN ||
+            this.state.text === "" || this.state.text.isNaN) {
+            return false;
+        }
+
         // Don't refresh the page
         event.preventDefault();
 

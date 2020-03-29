@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 function RecipeListItem(props) {
     function handleDeleteRecipe() {
-        console.log("Attempting to delete recipe " + props.id);
+        console.log("Attempting to delete recipe", props.id);
 
         // Send a POST request to the API
         fetch("http://localhost:5000/api/v1/recipes/" + props.id, {
@@ -16,6 +16,7 @@ function RecipeListItem(props) {
                 }
                 else {
                     console.log("Delete failed for: " + props.name + " (" + props.id + ")");
+                    console.log("Details:", response.body);
                 }
             });
     }

@@ -23,9 +23,11 @@ class RecipeDetailSummary extends React.Component {
             nextStep: 1
         };
 
+        this.findHighestStep = this.findHighestStep.bind(this);
         this.handleStepLengthChange = this.handleStepLengthChange.bind(this);
-        this.updateRecipeState = this.updateRecipeState.bind(this);
+        this.saveUpdatedRecipe = this.saveUpdatedRecipe.bind(this);
         this.addStepToRecipe = this.addStepToRecipe.bind(this);
+        this.deleteStep = this.deleteStep.bind(this);
     }
 
     componentDidMount() {
@@ -36,27 +38,38 @@ class RecipeDetailSummary extends React.Component {
                 if (result.message === "Success") {
                     console.log("Recipe details successfully retrieved from backend.");
 
-                    // Determine the largest step number
-                    let largestStep = 0;
-                    if (result.data.steps.length > 0) {
-                        result.data.steps.forEach((step) => {
-                            if (step.number > largestStep) {
-                                largestStep = step.number
-                            }
-                        })
-                    }
                     this.setState({
                         recipeData: result.data,
                         hasData: true,
                         hasSteps: result.data.steps.length > 0,
-                        nextStep: largestStep + 1
+                        nextStep: this.findHighestStep(result.data.steps) + 1
                     });
-                    console.log("State updated with recipe details. nextStep:", largestStep + 1)
                 } else {
-                    console.log("Error retrieving Recipe details from backend.");
+                    console.log("Error retrieving recipe data from backend.");
                     console.log(result.body);
+                    return Promise.reject(result.status);
                 }
             })
+            .catch(rejection => console.log(rejection));
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (!prevState.hasData && this.state.hasData) {
+            console.log("State updated with recipe data.")
+        }
+    }
+
+    findHighestStep(stepList) {
+        // From a list of provided steps, return the highest step number (int)
+        let highestStep = 0;
+        if (stepList.length > 0) {
+            stepList.forEach((step) => {
+                if (step.number > highestStep) {
+                    highestStep = step.number
+                }
+            })
+        }
+        return highestStep;
     }
 
     handleStepLengthChange(event, stepNumber, newThenWait) {
@@ -76,9 +89,31 @@ class RecipeDetailSummary extends React.Component {
         })
     }
 
-    updateRecipeState(newStateData) {
-        console.log("Called updateRecipeState for id=" + this.state.recipeData.id);
-        this.setState({recipeData: newStateData})
+    saveUpdatedRecipe(newState) {
+        // Update this recipe (and the component's state) in the database
+        console.log("Called saveUpdatedRecipe for recipe_id:", newState.recipeData.id);
+
+        fetch("http://localhost:5000/api/v1/recipe/" + newState.recipeData.id, {
+            method: "PUT",
+            body: JSON.stringify(newState.recipeData)
+        })
+            .then(response => {
+                console.log("PUT response:", response.ok ? "Success" : "Error", response.status);
+
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.log("Error updating the recipe in the database.");
+                    console.log(response.body);
+                    return Promise.reject(response.statusText);
+                }
+            })
+            .then(() => {
+                // Update state with the new recipe (and step) data
+                console.log("Recipe updated successfully.");
+                this.setState(newState)
+            })
+            .catch(something => console.log("Caught:", something));
     }
 
     addStepToRecipe(newStep) {
@@ -89,37 +124,34 @@ class RecipeDetailSummary extends React.Component {
         updatedRecipe.steps.push(newStep);
 
         // Sort by step.number
-        console.log("New steps before sort:", updatedRecipe.steps);
+        // console.log("New steps before sort:", updatedRecipe.steps);
         updatedRecipe.steps.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
-        console.log("New steps after sort:", updatedRecipe.steps);
+        // console.log("New steps after sort:", updatedRecipe.steps);
 
-        // Update this recipe in the database
-        fetch("http://localhost:5000/api/v1/recipe/" + updatedRecipe.id, {
-            method: "PUT",
-            body: JSON.stringify(updatedRecipe)
+        this.saveUpdatedRecipe({
+            recipeData: updatedRecipe,
+            hasData: true,
+            hasSteps: true,
+            nextStep: this.findHighestStep(updatedRecipe.steps) + 1
         })
-            .then(response => {
-                console.log("PUT response:", response.ok ? "Success" : "Error", response.status);
+    }
 
-                if (response.ok) {
-                    return response.json();
-                }
-                else {
-                    return Promise.reject(response.statusText);
-                }
-            })
-            .then(result => {
-                console.log("New recipe saved:", result.data);
+    deleteStep(stepId) {
+        console.log("Called deleteStep for step_id:", stepId);
 
-                // Update state with the new recipe (and step) data
-                this.setState({
-                    recipeData: result.data,
-                    hasData: true,
-                    hasSteps: true,
-                    nextStep: this.state.nextStep + 1
-                })
-            })
-            .catch(something => console.log("Caught:", something));
+        // Create a new representation of recipeData
+        let newRecipeData = this.state.recipeData;
+        newRecipeData.steps = newRecipeData.steps.filter(
+            function (terminator) {
+                return terminator.step_id !== stepId
+            });
+
+        // Update the backend, then update state
+        this.saveUpdatedRecipe({
+            recipeData: newRecipeData,
+            hasSteps: newRecipeData.steps.length > 0,
+            nextStep: this.findHighestStep(newRecipeData.steps) + 1
+        });
     }
 
     render() {
@@ -173,8 +205,9 @@ class RecipeDetailSummary extends React.Component {
                                 solve_for_start={this.state.recipeData.solve_for_start}
                                 length={this.state.recipeData.length}/>
                 <StepTable steps={this.state.recipeData.steps}
+                           hasData={this.state.hasData}
                            handleStepLengthChange={this.handleStepLengthChange}
-                           hasData={this.state.hasData}/>
+                           deleteStep={this.deleteStep}/>
                 <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
 
                 {/*<StepTable steps={this.state.recipeData.steps}*/}

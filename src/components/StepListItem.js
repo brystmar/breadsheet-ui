@@ -43,20 +43,31 @@ class StepListItem extends React.Component {
 
     render() {
         let [thenWaitHours, thenWaitMinutes] = seconds_to_hhmm(this.props.then_wait);
-        console.log("Render StepListItem #" + this.props.stepNumber, "Len:",
+        if (this.props.stepNumber === 1) {
+            console.log("Render StepListItem #" + this.props.stepNumber, "Len:",
             this.props.then_wait, "HH:", thenWaitHours, "MM:", thenWaitMinutes);
+        }
 
         return (
-            <tr className="step-table-list-item"
-                id={"step-table-list-item-" + this.props.stepNumber}>
+            <tr className="step-table-list-item" id={"step-table-list-item-" + this.props.stepNumber}>
+                <td className="delete-recipe-button-column">
+                <img alt={"Delete step " + this.props.stepNumber}
+                     src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_minus.png"
+                     className="delete-recipe-button"
+                     onClick={() => this.props.deleteStep(this.props.step_id)}/>
+            </td>
                 <td className="step-table-list-item-number">{this.props.stepNumber}</td>
+                <td className="step-table-list-item-number">
+                    {/*TODO: Find out why this StepListItem isn't updating when its props change */}
+                    {this.props.step_id ? this.props.step_id.slice(0,4) : this.props.stepNumber}
+                </td>
                 <td className="step-table-list-item-when">
                     {/* TODO: Set these values dynamically instead of blindly displaying the prop value */}
                     {this.props.when}
                 </td>
                 <td className="step-table-list-item-text">{this.props.text}</td>
                 <td className="step-table-list-item-then-wait">
-                    {/* TODO: Figure out how to save these values to State & update/re-calc when changed */}
+                    {/* TODO: Figure out how to re-calc all values when changed */}
                     <input type="number"
                            min="0"
                            max="99"
@@ -79,7 +90,9 @@ class StepListItem extends React.Component {
                            id={"step-table-then-wait-mm-input-" + this.props.stepNumber}
                     />
                 </td>
-                <td className="step-table-list-item-note">{this.props.note}</td>
+                <td className="step-table-list-item-note">
+                    {this.props.note === "None" ? "" : this.props.note}
+                </td>
             </tr>
         )
     }

@@ -221,6 +221,10 @@ a:active {
   cursor: default;
 }
 
+.step-table-list tr:nth-child(odd) {
+  background-color: #EEEEEE;
+}
+
 .step-table-list-item-then-wait-header {
   width: 91px;
   margin-right: 5px;
