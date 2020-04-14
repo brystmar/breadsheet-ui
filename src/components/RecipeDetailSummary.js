@@ -4,7 +4,6 @@ import React from 'react';
 import PageTitle from './PageTitle';
 import seconds_to_string from '../scripts/seconds_to_string';
 import RecipeStartEnd from './RecipeStartEnd';
-import LoadingIcon from './LoadingIcon';
 import StepTable from './StepTable';
 import AddStep from "./AddStep";
 
@@ -13,10 +12,16 @@ class RecipeDetailSummary extends React.Component {
         super(props);
         this.state = {
             recipeData: {
-                steps: [],
-                length: 0,
+                id: "",
+                name: "",
+                author: "",
+                source: "",
+                difficulty: "",
+                date_added: new Date(),
+                start_time: new Date(),
                 solve_for_start: true,
-                start_time: Date()
+                steps: [],
+                length: 0
             },
             hasData: false,
             hasSteps: false,
@@ -76,7 +81,6 @@ class RecipeDetailSummary extends React.Component {
         // console.log("Called RDS.handleStepLengthChange(" + stepNumber + ").");
         let newRecipe = this.state.recipeData;
         let newLength = 0;
-        console.log("RDS.hSLC Value:", event.target.value, "Step #" + stepNumber, "NewTW:", newThenWait);
 
         newRecipe.steps[stepNumber - 1].then_wait = newThenWait;
 
@@ -169,33 +173,21 @@ class RecipeDetailSummary extends React.Component {
                     <tr>
                         <td className="recipe-detail-summary-table-label">Difficulty:</td>
                         <td className="recipe-detail-summary-table-value">
-                            {this.state.hasData ?
-                                this.state.recipeData.difficulty :
-                                <LoadingIcon cssClass="loading-icon-table"/>
-                            }
+                            {this.state.recipeData.difficulty}
                         </td>
                         <td className="recipe-detail-summary-table-label">Source:</td>
                         <td className="recipe-detail-summary-table-value">
-                            {this.state.hasData ?
-                                this.state.recipeData.source :
-                                <LoadingIcon cssClass="loading-icon-table"/>
-                            }
+                            {this.state.recipeData.source}
                         </td>
                     </tr>
                     <tr>
                         <td className="recipe-detail-summary-table-label">Total Time:</td>
                         <td className="recipe-detail-summary-table-value">
-                            {this.state.hasData ?
-                                seconds_to_string(this.state.recipeData.length, true) :
-                                <LoadingIcon cssClass="loading-icon-table"/>
-                            }
+                            {seconds_to_string(this.state.recipeData.length, true)}
                         </td>
                         <td className="recipe-detail-summary-table-label">Author:</td>
                         <td className="recipe-detail-summary-table-value">
-                            {this.state.hasData ?
-                                this.state.recipeData.author :
-                                <LoadingIcon cssClass="loading-icon-table"/>
-                            }
+                            {this.state.recipeData.author}
                         </td>
                     </tr>
                     </tbody>
@@ -210,9 +202,6 @@ class RecipeDetailSummary extends React.Component {
                            deleteStep={this.deleteStep}/>
                 <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
 
-                {/*<StepTable steps={this.state.recipeData.steps}*/}
-                {/*           handleStepLengthChange={this.handleStepLengthChange}/>*/}
-                {/*<AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>*/}
             </div>
         )
     }

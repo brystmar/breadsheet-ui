@@ -4,10 +4,9 @@ class AddStep extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            stepNumber: "",
-            thenWaitHH: "",
-            thenWaitMM: "",
-            thenWait: 0,
+            stepNumber: 0,
+            thenWaitHH: 0,
+            thenWaitMM: 0,
             text: "",
             note: "",
             hidden: false
@@ -44,8 +43,8 @@ class AddStep extends React.Component {
     resetAddStepForm() {
         this.setState({
             stepNumber: this.props.nextStep,
-            thenWaitHH: "",
-            thenWaitMM: "",
+            thenWaitHH: 0,
+            thenWaitMM: 0,
             thenWait: 0,
             text: "",
             note: "",
@@ -72,8 +71,8 @@ class AddStep extends React.Component {
         event.preventDefault();
 
         // Null handling for thenWaitXX
-        let hours = this.state.thenWaitHH === "" ? 0 : this.state.thenWaitHH;
-        let minutes = this.state.thenWaitMM === "" ? 0 : this.state.thenWaitMM;
+        let hours = this.state.thenWaitHH;
+        let minutes = this.state.thenWaitMM;
 
         // Create an object that's congruent with the Step data model
         let newStep = {

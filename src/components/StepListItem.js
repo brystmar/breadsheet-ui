@@ -4,10 +4,14 @@ import seconds_to_hhmm, {pad} from '../scripts/seconds_to_hhmm';
 class StepListItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            thenWaitHH: pad(0),
+            thenWaitMM: pad(0),
+            thenWait: 0
+        };
 
         this.padValue = this.padValue.bind(this);
-        this.handleStepChange = this.handleStepChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -20,15 +24,41 @@ class StepListItem extends React.Component {
         })
     }
 
-    handleStepChange(event) {
-        const {name, value} = event.target;
-        console.log("Called handleStepChange for", name, value);
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        // TODO: It's updating multiple times because I'm calling componentDidUpdate after it's already updated
+        //   Find the replacement for componentWillUpdate and implement it instead.
+        console.log("Updated SLI", this.props.stepNumber);
 
-        // When a thenWaitXX value changes, update the state on RecipeDetailSummary
+        let [hours, minutes] = seconds_to_hhmm(this.props.then_wait);
+
+        this.setState({
+            thenWaitHH: hours,
+            thenWaitMM: minutes,
+            thenWait: this.props.then_wait
+        })
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        // console.log(this.props.stepNumber, "==> this.props:", this.props.then_wait, "| nextProps:", nextProps.then_wait,
+        //     "| this.state:", this.state.thenWait);
+        if (this.props.then_wait === nextProps.then_wait && this.state.thenWait === nextProps.then_wait) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    handleChange(event) {
+        const {name, value} = event.target;
+
+        this.setState({
+            [name]: value
+        });
+
+        // If a thenWaitXX value changes, update the state on RecipeDetailSummary
         if (name === "thenWaitHH") {
             this.props.handleStepLengthChange(event, this.props.stepNumber,
                 (value * 3600) + (this.state.thenWaitMM * 60));
-
         } else if (name === "thenWaitMM") {
             this.props.handleStepLengthChange(event, this.props.stepNumber,
                 (this.state.thenWaitHH * 3600) + (value * 60));
@@ -36,30 +66,31 @@ class StepListItem extends React.Component {
     }
 
     padValue(event) {
-        // TODO: How to use onBlur to pad numbers when focus is lost?
-        event.target.value = pad(event.target.value);
-        return event.target.value;
+        const {name, value} = event.target;
+
+        if (value.length === 1) {
+            this.setState({
+                [name]: pad(value)
+            })
+        }
     }
 
     render() {
-        let [thenWaitHours, thenWaitMinutes] = seconds_to_hhmm(this.props.then_wait);
-        if (this.props.stepNumber === 1) {
-            console.log("Render StepListItem #" + this.props.stepNumber, "Len:",
-            this.props.then_wait, "HH:", thenWaitHours, "MM:", thenWaitMinutes);
-        }
-
         return (
-            <tr className="step-table-list-item" id={"step-table-list-item-" + this.props.stepNumber}>
+            <tr className="step-table-list-item"
+                id={"step-table-list-item-" + this.props.stepNumber}>
                 <td className="delete-recipe-button-column">
-                <img alt={"Delete step " + this.props.stepNumber}
-                     src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_minus.png"
-                     className="delete-recipe-button"
-                     onClick={() => this.props.deleteStep(this.props.step_id)}/>
-            </td>
-                <td className="step-table-list-item-number">{this.props.stepNumber}</td>
+                    <img alt={"Delete step " + this.props.stepNumber}
+                         src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_minus.png"
+                         className="delete-recipe-button"
+                         onClick={() => this.props.deleteStep(this.props.step_id)}/>
+                </td>
                 <td className="step-table-list-item-number">
-                    {/*TODO: Find out why this StepListItem isn't updating when its props change */}
-                    {this.props.step_id ? this.props.step_id.slice(0,4) : this.props.stepNumber}
+                    {this.props.stepNumber}
+                </td>
+                <td className="step-table-list-item-number">
+                    {/*TODO: Remove once Prod data is updated. */}
+                    {this.props.step_id ? this.props.step_id.slice(0, 4) : "n/a"}
                 </td>
                 <td className="step-table-list-item-when">
                     {/* TODO: Set these values dynamically instead of blindly displaying the prop value */}
@@ -67,14 +98,13 @@ class StepListItem extends React.Component {
                 </td>
                 <td className="step-table-list-item-text">{this.props.text}</td>
                 <td className="step-table-list-item-then-wait">
-                    {/* TODO: Figure out how to re-calc all values when changed */}
                     <input type="number"
                            min="0"
                            max="99"
                            name="thenWaitHH"
-                           value={thenWaitHours}
-                           onChange={this.handleStepChange}
-                        // onBlur={this.padValue}
+                           value={this.state.thenWaitHH}
+                           onChange={this.handleChange}
+                           onBlur={this.padValue}
                            className="then-wait-hh-input"
                            id={"step-table-then-wait-hh-input-" + this.props.stepNumber}
                     />
@@ -83,9 +113,9 @@ class StepListItem extends React.Component {
                            min="0"
                            max="59"
                            name="thenWaitMM"
-                           value={thenWaitMinutes}
-                           onChange={this.handleStepChange}
-                        // onBlur={this.padValue}
+                           value={this.state.thenWaitMM}
+                           onChange={this.handleChange}
+                           onBlur={this.padValue}
                            className="then-wait-mm-input"
                            id={"step-table-then-wait-mm-input-" + this.props.stepNumber}
                     />

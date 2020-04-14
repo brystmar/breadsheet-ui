@@ -5,12 +5,20 @@ class RecipeStartEnd extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            startTime: this.props.start_time,
-            finishTime: this.props.start_time + (this.props.length * 1000),
-            solveForStart: this.props.solve_for_start
+            startTime: new Date(),
+            finishTime: new Date(),
+            solveForStart: true
         };
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleStartFinishToggle = this.handleStartFinishToggle.bind(this);
+    }
+
+    componentDidMount() {
+        this.setState({
+            startTime: this.props.start_time,
+            finishTime: this.props.start_time + (this.props.length * 1000),
+            solveForStart: this.props.solve_for_start
+        })
     }
 
     handleDateChange(newDate) {
@@ -41,7 +49,9 @@ class RecipeStartEnd extends React.Component {
                 </label>
 
                 <DatePicker
-                    selected={this.state.solveForStart ? this.state.startTime : this.state.finishTime}
+                    selected={this.state.solveForStart ?
+                        this.state.startTime :
+                        this.state.finishTime}
                     onChange={this.handleDateChange}
                     className="start-finish-datepicker"
                     showTimeSelect
