@@ -27,7 +27,8 @@ class StepListItem extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         // TODO: It's updating multiple times because I'm calling componentDidUpdate after it's already updated
         //   Find the replacement for componentWillUpdate and implement it instead.
-        console.log("Updated SLI", this.props.stepNumber) // , "| state:", this.state);
+        console.log("Updated SLI", this.props.stepNumber);
+        // console.log("State:", this.state);
 
         // let [hours, minutes] = seconds_to_hhmm(this.props.then_wait);
         //
@@ -43,8 +44,7 @@ class StepListItem extends React.Component {
         //     "nextP:", nextProps.then_wait, "thisSt:", this.state.thenWait, "nextSt:",
         //     nextState.thenWait);
 
-        // Only update if upcoming props or state change
-        if (this.props.then_wait !== nextProps.then_wait || this.state.thenWait !== nextState.thenWait) {
+        if (this.props.then_wait !== nextProps.then_wait || this.state !== nextState) {
             return true
         } else {
             return false
@@ -53,54 +53,44 @@ class StepListItem extends React.Component {
 
     handleChange(event) {
         const {name, value} = event.target;
-
+        this.setState({
+            [name]: Number(value)
+        });
 
         // If a thenWaitXX value changes, update the state on RecipeDetailSummary
         if (name === "thenWaitHH") {
-            if (Number(value) < 10) {
-                this.setState({
-                    [name]: pad(value)
-                });
-            } else {
-                this.setState({
-                    [name]: Number(value)
-                });
-            }
-
             this.props.handleStepLengthChange(event, this.props.stepNumber,
                 (value * 3600) + (this.state.thenWaitMM * 60));
 
         } else if (name === "thenWaitMM") {
-            if (Number(value) < 10) {
-                this.setState({
-                    [name]: pad(value)
-                });
-            } else {
-                this.setState({
-                    [name]: Number(value)
-                });
-            }
-
             this.props.handleStepLengthChange(event, this.props.stepNumber,
                 (this.state.thenWaitHH * 3600) + (value * 60));
-        } else {
-            this.setState({
-                [name]: value
-            });
         }
     }
 
     padValue(event) {
+        // Adds zero-padding to single digit numbers.
+        // Also re-calculates hours & minutes if ThenWaitMM >= 60.
         const {name, value} = event.target;
+        const numValue = Number(value);
 
-        // console.log("Value:", value, "| Len:", value.length);
-        if (Number(value) < 10) {
+        // Re-allocate minutes if ThenWaitMM value is >= 60
+        if (name === "thenWaitMM" && numValue >= 60) {
+            let hours = Math.floor(numValue / 60) + Number(this.state.thenWaitHH);
+            let minutes = numValue % 60;
+
+            this.setState({
+                thenWaitHH: pad(hours),
+                thenWaitMM: pad(minutes)
+            })
+        } else if (numValue >= 0 && numValue < 10) {
             this.setState({
                 [name]: pad(value)
             })
-        } else if (Number(value) >= 10 && value.length >= 3) {
+        } else if (value.length >= 3 && value.toString().charAt(0) === "0") {
+            // In case user enters a superfluous leading zero
             this.setState({
-                [name]: Number(value)
+                [name]: numValue
             })
         }
     }

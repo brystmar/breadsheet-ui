@@ -1,12 +1,13 @@
 import React from 'react';
+import {pad} from "../scripts/seconds_to_hhmm";
 
 class AddStep extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             stepNumber: 0,
-            thenWaitHH: 0,
-            thenWaitMM: 0,
+            thenWaitHH: pad(0),
+            thenWaitMM: pad(0),
             text: "",
             note: "",
             hidden: false
@@ -14,6 +15,7 @@ class AddStep extends React.Component {
 
         this.handleFormToggle = this.handleFormToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.padValue = this.padValue.bind(this);
         this.resetAddStepForm = this.resetAddStepForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -40,11 +42,38 @@ class AddStep extends React.Component {
         });
     }
 
+    padValue(event) {
+        // Adds zero-padding to single digit numbers.
+        // Also re-calculates hours & minutes if ThenWaitMM >= 60.
+        const {name, value} = event.target;
+        const numValue = Number(value);
+
+        // Re-allocate minutes if ThenWaitMM value is >= 60
+        if (name === "thenWaitMM" && numValue >= 60) {
+            let hours = Math.floor(numValue / 60) + Number(this.state.thenWaitHH);
+            let minutes = numValue % 60;
+
+            this.setState({
+                thenWaitHH: pad(hours),
+                thenWaitMM: pad(minutes)
+            })
+        } else if (numValue >= 0 && numValue < 10) {
+            this.setState({
+                [name]: pad(value)
+            })
+        } else if (value.length >= 3 && value.toString().charAt(0) === "0") {
+            // In case user enters a superfluous leading zero
+            this.setState({
+                [name]: numValue
+            })
+        }
+    }
+
     resetAddStepForm() {
         this.setState({
             stepNumber: this.props.nextStep,
-            thenWaitHH: 0,
-            thenWaitMM: 0,
+            thenWaitHH: pad(0),
+            thenWaitMM: pad(0),
             thenWait: 0,
             text: "",
             note: "",
@@ -70,15 +99,11 @@ class AddStep extends React.Component {
         // Don't refresh the page
         event.preventDefault();
 
-        // Null handling for thenWaitXX
-        let hours = this.state.thenWaitHH;
-        let minutes = this.state.thenWaitMM;
-
         // Create an object that's congruent with the Step data model
         let newStep = {
             number: this.state.stepNumber,
             text: this.state.text,
-            then_wait: (hours * 3600) + (minutes * 60),
+            then_wait: (Number(this.state.thenWaitHH) * 3600) + (Number(this.state.thenWaitMM) * 60),
             note: this.state.note
         };
 
@@ -137,7 +162,8 @@ class AddStep extends React.Component {
                            name="thenWaitHH"
                            placeholder="h"
                            value={this.state.thenWaitHH}
-                           onChange={this.handleChange}/>
+                           onChange={this.handleChange}
+                           onBlur={this.padValue}/>
                     :
                     <input className="then-wait-mm-input"
                            type="number"
@@ -146,8 +172,8 @@ class AddStep extends React.Component {
                            name="thenWaitMM"
                            placeholder="m"
                            value={this.state.thenWaitMM}
-                           onChange={this.handleChange}/>
-
+                           onChange={this.handleChange}
+                           onBlur={this.padValue}/>
                     <br/>
 
                     <label className="add-recipe-form-label">Note</label>
@@ -157,7 +183,6 @@ class AddStep extends React.Component {
                            placeholder="Optional"
                            value={this.state.note}
                            onChange={this.handleChange}/>
-
                     <br/>
                     <input type="button"
                            name="cancelNewStep"
