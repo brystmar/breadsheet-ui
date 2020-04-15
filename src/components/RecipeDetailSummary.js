@@ -30,6 +30,7 @@ class RecipeDetailSummary extends React.Component {
 
         this.findHighestStep = this.findHighestStep.bind(this);
         this.handleStepLengthChange = this.handleStepLengthChange.bind(this);
+        this.handleUpdateStartTime = this.handleUpdateStartTime.bind(this);
         this.saveUpdatedRecipe = this.saveUpdatedRecipe.bind(this);
         this.addStepToRecipe = this.addStepToRecipe.bind(this);
         this.deleteStep = this.deleteStep.bind(this);
@@ -93,6 +94,18 @@ class RecipeDetailSummary extends React.Component {
         })
     }
 
+    handleUpdateStartTime(newStartTime) {
+        console.log("Called handleUST:", newStartTime);
+
+        let newRecipeData = this.state.recipeData;
+
+        newRecipeData.start_time = newStartTime;
+
+        this.setState({
+            recipeData: newRecipeData
+        })
+    }
+
     saveUpdatedRecipe(newState) {
         // Update this recipe (and the component's state) in the database
         console.log("Called saveUpdatedRecipe for recipe_id:", newState.recipeData.id);
@@ -128,9 +141,7 @@ class RecipeDetailSummary extends React.Component {
         updatedRecipe.steps.push(newStep);
 
         // Sort by step.number
-        // console.log("New steps before sort:", updatedRecipe.steps);
         updatedRecipe.steps.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
-        // console.log("New steps after sort:", updatedRecipe.steps);
 
         this.saveUpdatedRecipe({
             recipeData: updatedRecipe,
@@ -190,8 +201,10 @@ class RecipeDetailSummary extends React.Component {
 
                 <RecipeStartEnd start_time={this.state.recipeData.start_time}
                                 solve_for_start={this.state.recipeData.solve_for_start}
-                                length={this.state.recipeData.length}/>
+                                length={this.state.recipeData.length}
+                                handleUST={this.handleUpdateStartTime}/>
                 <StepTable steps={this.state.recipeData.steps}
+                           start_time={this.state.recipeData.start_time}
                            hasData={this.state.hasData}
                            handleStepLengthChange={this.handleStepLengthChange}
                            deleteStep={this.deleteStep}/>

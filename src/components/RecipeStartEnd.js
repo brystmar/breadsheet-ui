@@ -53,6 +53,9 @@ class RecipeStartEnd extends React.Component {
             finishTime: newDate.getTime() + (this.props.length * 1000),
             solveForStart: this.state.solveForStart
         });
+
+        // Update state on RecipeDetailSummary with the new time
+        this.props.handleUST(newDate.getTime());
     }
 
     handleStartFinishToggle() {

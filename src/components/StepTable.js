@@ -5,17 +5,19 @@ import LoadingIcon from './LoadingIcon';
 function StepTable(props) {
     // console.log("StepTable props:", props);
     // console.log("Rendered StepTable w/steps:", props.steps);
-    let stepComponentList = props.steps.map(step =>
-        <StepListItem
+    let stepComponentList = props.steps.map(step => {
+
+        return <StepListItem
             key={step.number}
             step_id={step.step_id}
+            start_time={step.start_time}
             stepNumber={step.number}
             text={step.text}
-            when={step.when}
             then_wait={step.then_wait}
             note={step.note}
             deleteStep={props.deleteStep}
-            handleStepLengthChange={props.handleStepLengthChange}/>);
+            handleStepLengthChange={props.handleStepLengthChange}/>
+    });
 
     return (
         <table className="step-table">
@@ -34,7 +36,9 @@ function StepTable(props) {
             <tbody className="step-table-list">
             {props.hasData ?
                 stepComponentList :
-                <tr><td><LoadingIcon cssClass="loading-icon-table"/></td></tr>}
+                <tr>
+                    <td><LoadingIcon cssClass="loading-icon-table"/></td>
+                </tr>}
             </tbody>
         </table>
     )

@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepTable.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +127,7 @@
       <workItem from="1584207994727" duration="116883000" />
       <workItem from="1585706851861" duration="599000" />
       <workItem from="1586229832804" duration="1810000" />
-      <workItem from="1586479131280" duration="25122000" />
+      <workItem from="1586479131280" duration="27453000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit w/raw pieces">
       <created>1582419561164</created>
@@ -324,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586919157912</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Fixed RecipeStartEnd">
+      <created>1586924324362</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1586924324362</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +354,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Merge branch 'master' of https://github.com/brystmar/breadsheet-ui&#10;&#10;# Conflicts:&#10;#&#9;.gitignore&#10;#&#9;.idea/breadsheet-ui.iml&#10;#&#9;README.md&#10;#&#9;package-lock.json&#10;#&#9;package.json&#10;#&#9;public/favicon.ico&#10;#&#9;public/index.html&#10;#&#9;public/logo192.png&#10;#&#9;public/logo512.png&#10;#&#9;public/robots.txt&#10;#&#9;src/App.css&#10;#&#9;src/App.js&#10;#&#9;src/App.test.js&#10;#&#9;src/index.css&#10;#&#9;src/logo.svg&#10;#&#9;src/serviceWorker.js" />
     <MESSAGE value="Ready to kill the newUI branch" />
     <MESSAGE value="Now parsing seconds into a human-readable string" />
     <MESSAGE value="Now getting data from the breadsheet API!" />
@@ -371,7 +378,8 @@
     <MESSAGE value="Fixed the ThenWaitHH/MM state issue!  Next: figure out a performant replacement for componentWillUpdate" />
     <MESSAGE value="Overly aggressive zero-padding for ThenWaitXX fields" />
     <MESSAGE value="ThenWaitXX works like a charm!" />
-    <option name="LAST_COMMIT_MESSAGE" value="ThenWaitXX works like a charm!" />
+    <MESSAGE value="Fixed RecipeStartEnd" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed RecipeStartEnd" />
   </component>
   <component name="WindowStateProjectService">
     <state x="597" y="253" key="#Notifications" timestamp="1583197787893">
@@ -382,10 +390,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582504850118" />
-    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1586919157773">
+    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1586924324228">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586919157773" />
+    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586924324228" />
     <state x="852" y="488" key="Github.ShareDialog" timestamp="1582419683416">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -402,10 +410,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="495" y="226" key="SettingsEditor/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586479205662" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1586919160489">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1586924326419">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586919160489" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586924326419" />
     <state x="674" y="420" key="com.intellij.ide.util.TipDialog" timestamp="1584208287933">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

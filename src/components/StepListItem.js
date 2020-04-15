@@ -1,5 +1,6 @@
 import React from 'react';
 import seconds_to_hhmm, {pad} from '../scripts/seconds_to_hhmm';
+import Moment from 'react-moment';
 
 class StepListItem extends React.Component {
     constructor(props) {
@@ -103,7 +104,8 @@ class StepListItem extends React.Component {
                 </td>
                 <td className="step-table-list-item-when">
                     {/* TODO: Set these values dynamically instead of blindly displaying the prop value */}
-                    {this.props.when}
+                    {this.props.start_time}
+                    <Moment format="ddd HH:mm">{this.props.start_time}</Moment>
                 </td>
                 <td className="step-table-list-item-text">{this.props.text}</td>
                 <td className="step-table-list-item-then-wait">
