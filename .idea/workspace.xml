@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PageTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +124,7 @@
       <workItem from="1584207994727" duration="116883000" />
       <workItem from="1585706851861" duration="599000" />
       <workItem from="1586229832804" duration="1810000" />
-      <workItem from="1586479131280" duration="13477000" />
+      <workItem from="1586479131280" duration="16681000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit w/raw pieces">
       <created>1582419561164</created>
@@ -305,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585520089164</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Fixed the ThenWaitHH/MM state issue!  Next: figure out a performant replacement for componentWillUpdate">
+      <created>1586837034582</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1586837034582</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +330,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Initial commit w/raw pieces" />
     <MESSAGE value="Moved local changes to a new branch" />
     <MESSAGE value="Merging into master, take 1" />
     <MESSAGE value="Merge branch 'master' of https://github.com/brystmar/breadsheet-ui&#10;&#10;# Conflicts:&#10;#&#9;.gitignore&#10;#&#9;.idea/breadsheet-ui.iml&#10;#&#9;README.md&#10;#&#9;package-lock.json&#10;#&#9;package.json&#10;#&#9;public/favicon.ico&#10;#&#9;public/index.html&#10;#&#9;public/logo192.png&#10;#&#9;public/logo512.png&#10;#&#9;public/robots.txt&#10;#&#9;src/App.css&#10;#&#9;src/App.js&#10;#&#9;src/App.test.js&#10;#&#9;src/index.css&#10;#&#9;src/logo.svg&#10;#&#9;src/serviceWorker.js" />
@@ -352,7 +354,8 @@
     <MESSAGE value="Did I just get StepListItem to work properly?!" />
     <MESSAGE value="Still having issues w/StepListItem not updating its own state properly" />
     <MESSAGE value="Add &amp; remove Steps works!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add &amp; remove Steps works!" />
+    <MESSAGE value="Fixed the ThenWaitHH/MM state issue!  Next: figure out a performant replacement for componentWillUpdate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the ThenWaitHH/MM state issue!  Next: figure out a performant replacement for componentWillUpdate" />
   </component>
   <component name="WindowStateProjectService">
     <state x="597" y="253" key="#Notifications" timestamp="1583197787893">
@@ -363,10 +366,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582504850118" />
-    <state x="280" y="162" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1585520089017">
+    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1586837034437">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="280" y="162" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1585520089017" />
+    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586837034437" />
     <state x="852" y="488" key="Github.ShareDialog" timestamp="1582419683416">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -383,10 +386,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="495" y="226" key="SettingsEditor/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586479205662" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1585520091412">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1586837037288">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1585520091412" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586837037288" />
     <state x="674" y="420" key="com.intellij.ide.util.TipDialog" timestamp="1584208287933">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

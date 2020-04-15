@@ -18,8 +18,8 @@ class StepListItem extends React.Component {
         let [hours, minutes] = seconds_to_hhmm(this.props.then_wait);
 
         this.setState({
-            thenWaitHH: hours,
-            thenWaitMM: minutes,
+            thenWaitHH: pad(hours),
+            thenWaitMM: pad(minutes),
             thenWait: this.props.then_wait
         })
     }
@@ -27,50 +27,80 @@ class StepListItem extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         // TODO: It's updating multiple times because I'm calling componentDidUpdate after it's already updated
         //   Find the replacement for componentWillUpdate and implement it instead.
-        console.log("Updated SLI", this.props.stepNumber);
+        console.log("Updated SLI", this.props.stepNumber) // , "| state:", this.state);
 
-        let [hours, minutes] = seconds_to_hhmm(this.props.then_wait);
-
-        this.setState({
-            thenWaitHH: hours,
-            thenWaitMM: minutes,
-            thenWait: this.props.then_wait
-        })
+        // let [hours, minutes] = seconds_to_hhmm(this.props.then_wait);
+        //
+        // this.setState({
+        //     thenWaitHH: hours,
+        //     thenWaitMM: minutes,
+        //     thenWait: this.props.then_wait
+        // })
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-        // console.log(this.props.stepNumber, "==> this.props:", this.props.then_wait, "| nextProps:", nextProps.then_wait,
-        //     "| this.state:", this.state.thenWait);
-        if (this.props.then_wait === nextProps.then_wait && this.state.thenWait === nextProps.then_wait) {
-            return false
-        } else {
+        // console.log("Step", this.props.stepNumber.toString() + ":", "thisP:", this.props.then_wait,
+        //     "nextP:", nextProps.then_wait, "thisSt:", this.state.thenWait, "nextSt:",
+        //     nextState.thenWait);
+
+        // Only update if upcoming props or state change
+        if (this.props.then_wait !== nextProps.then_wait || this.state.thenWait !== nextState.thenWait) {
             return true
+        } else {
+            return false
         }
     }
 
     handleChange(event) {
         const {name, value} = event.target;
 
-        this.setState({
-            [name]: value
-        });
 
         // If a thenWaitXX value changes, update the state on RecipeDetailSummary
         if (name === "thenWaitHH") {
+            if (Number(value) < 10) {
+                this.setState({
+                    [name]: pad(value)
+                });
+            } else {
+                this.setState({
+                    [name]: Number(value)
+                });
+            }
+
             this.props.handleStepLengthChange(event, this.props.stepNumber,
                 (value * 3600) + (this.state.thenWaitMM * 60));
+
         } else if (name === "thenWaitMM") {
+            if (Number(value) < 10) {
+                this.setState({
+                    [name]: pad(value)
+                });
+            } else {
+                this.setState({
+                    [name]: Number(value)
+                });
+            }
+
             this.props.handleStepLengthChange(event, this.props.stepNumber,
                 (this.state.thenWaitHH * 3600) + (value * 60));
+        } else {
+            this.setState({
+                [name]: value
+            });
         }
     }
 
     padValue(event) {
         const {name, value} = event.target;
 
-        if (value.length === 1) {
+        // console.log("Value:", value, "| Len:", value.length);
+        if (Number(value) < 10) {
             this.setState({
                 [name]: pad(value)
+            })
+        } else if (Number(value) >= 10 && value.length >= 3) {
+            this.setState({
+                [name]: Number(value)
             })
         }
     }
@@ -99,7 +129,7 @@ class StepListItem extends React.Component {
                 <td className="step-table-list-item-text">{this.props.text}</td>
                 <td className="step-table-list-item-then-wait">
                     <input type="number"
-                           min="0"
+                           min="00"
                            max="99"
                            name="thenWaitHH"
                            value={this.state.thenWaitHH}
@@ -110,7 +140,7 @@ class StepListItem extends React.Component {
                     />
                     :
                     <input type="number"
-                           min="0"
+                           min="00"
                            max="59"
                            name="thenWaitMM"
                            value={this.state.thenWaitMM}
