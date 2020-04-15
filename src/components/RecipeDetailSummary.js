@@ -17,8 +17,8 @@ class RecipeDetailSummary extends React.Component {
                 author: "",
                 source: "",
                 difficulty: "",
-                date_added: new Date(),
-                start_time: new Date(),
+                date_added: new Date(0).getTime(),
+                start_time: new Date(0).getTime(),
                 solve_for_start: true,
                 steps: [],
                 length: 0
@@ -159,11 +159,6 @@ class RecipeDetailSummary extends React.Component {
     }
 
     render() {
-        // Until data from the backend arrives, don't render components w/props needing that data
-        // let output = <LoadingIcon cssClass="loading-icon-title"/>;
-
-        // <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
-
         return (
             <div className="recipe-detail-summary">
                 <PageTitle title={this.state.recipeData.name}/>
@@ -193,7 +188,7 @@ class RecipeDetailSummary extends React.Component {
                     </tbody>
                 </table>
 
-                <RecipeStartEnd start_time={Date.parse(this.state.recipeData.start_time)}
+                <RecipeStartEnd start_time={this.state.recipeData.start_time}
                                 solve_for_start={this.state.recipeData.solve_for_start}
                                 length={this.state.recipeData.length}/>
                 <StepTable steps={this.state.recipeData.steps}

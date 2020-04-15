@@ -25,18 +25,7 @@ class StepListItem extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        // TODO: It's updating multiple times because I'm calling componentDidUpdate after it's already updated
-        //   Find the replacement for componentWillUpdate and implement it instead.
-        console.log("Updated SLI", this.props.stepNumber);
-        // console.log("State:", this.state);
-
-        // let [hours, minutes] = seconds_to_hhmm(this.props.then_wait);
-        //
-        // this.setState({
-        //     thenWaitHH: hours,
-        //     thenWaitMM: minutes,
-        //     thenWait: this.props.then_wait
-        // })
+        // console.log("Updated SLI", this.props.stepNumber);
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
