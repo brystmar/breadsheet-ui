@@ -6,10 +6,22 @@
 .nav-bar {
   margin-left: 10px;
   margin-bottom: 5px;
+  background-color: #282c34;
 }
 
 .nav-list {
   margin-right: 8px;
+}
+
+.app-top {
+  background-color: #282c34;
+  text-decoration: none;
+}
+
+.app-top a a:hover {
+  background-color: #282c34;
+  text-decoration: none;
+  /*font-size: medium;*/
 }
 
 .loading-icon-table {
@@ -57,10 +69,26 @@ a:active {
   column-width: max-content;
   text-align: left;
   vertical-align: center;
-  cursor: default;
+  cursor: pointer;
+
+  padding-left: 8px;
+  padding-right: 8px;
+
+  font-style: normal;
+  /*font-size: calc(10px + 2vmin);*/
+  /*font-size: 28pt;*/
+  color: white;
 }
 
-.App-header {
+.header-title a, a:hover, a:active {
+  font-style: normal;
+  /*font-size: calc(10px + 2vmin);*/
+  /*font-size: 28pt;*/
+  color: white;
+  text-decoration: none;
+}
+
+.app-header {
   background-color: #282c34;
   min-height: 60px;
   display: flex;
@@ -249,6 +277,10 @@ a:active {
   .header-hamburger {
     animation: App-logo-spin infinite 20s linear;
   }
+
+  .header-hamburger-reverse {
+    animation: App-logo-spin-reverse infinite 20s linear;
+  }
 }
 
 @keyframes App-logo-spin {
@@ -257,5 +289,14 @@ a:active {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }

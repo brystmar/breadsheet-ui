@@ -15,32 +15,32 @@ import './App.css';
 function App() {
     return (
         <div className="App">
-            <NavBar />
+            <div className="app-top">
+                <NavBar/>
+                <Header/>
+            </div>
 
             <Switch>
                 <Route exact path="/">
-                    <Header />
-                    <br/>
-
-                    <PageTitle title="Recipes" />
+                    <PageTitle title="Recipes"/>
 
                     <hr/>
-                    <RecipeTable />
+                    <RecipeTable/>
                     <br/>
                 </Route>
 
                 <Route path="/recipe/:recipeId">
-                    <Header />
-                    <RecipeDetailContainer />
+                    <Header/>
+                    <RecipeDetailContainer/>
                 </Route>
 
                 <Route path="/convert">
-                    <PageTitle title="Paprika Text Conversion" />
+                    <PageTitle title="Paprika Text Conversion"/>
                 </Route>
 
             </Switch>
 
-            <Footer />
+            <Footer/>
         </div>
     );
 }

@@ -5,7 +5,6 @@
 // import moment from 'moment';
 
 function seconds_to_string(seconds, ExactValue= false) {
-    // console.log("Starting seconds_to_string(" + seconds + ").");
     let result = "";
 
     // Null handling
