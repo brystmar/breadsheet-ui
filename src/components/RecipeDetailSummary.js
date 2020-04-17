@@ -5,7 +5,7 @@ import PageTitle from './PageTitle';
 import seconds_to_string from '../scripts/seconds_to_string';
 import RecipeStartEnd from './RecipeStartEnd';
 import StepTable from './StepTable';
-import AddStep from "./AddStep";
+import AddStep from './AddStep';
 
 class RecipeDetailSummary extends React.Component {
     constructor(props) {
@@ -30,6 +30,7 @@ class RecipeDetailSummary extends React.Component {
 
         this.findHighestStep = this.findHighestStep.bind(this);
         this.handleStepLengthChange = this.handleStepLengthChange.bind(this);
+        this.handleStartFinishToggle = this.handleStartFinishToggle.bind(this);
         this.handleUpdateStartTime = this.handleUpdateStartTime.bind(this);
         this.saveUpdatedRecipe = this.saveUpdatedRecipe.bind(this);
         this.addStepToRecipe = this.addStepToRecipe.bind(this);
@@ -94,11 +95,19 @@ class RecipeDetailSummary extends React.Component {
         })
     }
 
+    handleStartFinishToggle() {
+        let newRecipeData = this.state.recipeData;
+        newRecipeData.solve_for_start = !newRecipeData.solve_for_start;
+
+        this.setState({
+            recipeData: newRecipeData
+        })
+    }
+
     handleUpdateStartTime(newStartTime) {
         console.log("Called handleUST:", newStartTime);
 
         let newRecipeData = this.state.recipeData;
-
         newRecipeData.start_time = newStartTime;
 
         this.setState({
@@ -202,9 +211,12 @@ class RecipeDetailSummary extends React.Component {
                 <RecipeStartEnd start_time={this.state.recipeData.start_time}
                                 solve_for_start={this.state.recipeData.solve_for_start}
                                 length={this.state.recipeData.length}
-                                handleUST={this.handleUpdateStartTime}/>
+                                handleUpdateStartTime={this.handleUpdateStartTime}
+                                handleStartFinishToggle={this.handleStartFinishToggle}/>
                 <StepTable steps={this.state.recipeData.steps}
                            start_time={this.state.recipeData.start_time}
+                           solve_for_start={this.state.recipeData.solve_for_start}
+                           length={this.state.recipeData.length}
                            hasData={this.state.hasData}
                            handleStepLengthChange={this.handleStepLengthChange}
                            deleteStep={this.deleteStep}/>

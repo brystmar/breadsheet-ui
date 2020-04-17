@@ -34,7 +34,13 @@ class StepListItem extends React.Component {
         //     "nextP:", nextProps.then_wait, "thisSt:", this.state.thenWait, "nextSt:",
         //     nextState.thenWait);
 
-        if (this.props.then_wait !== nextProps.then_wait || this.state !== nextState) {
+        if (this.state !== nextState
+            || this.props.step_id !== nextProps.step_id
+            || this.props.stepNumber !== nextProps.stepNumber
+            || this.props.when !== nextProps.when
+            || this.props.text !== nextProps.text
+            || this.props.then_wait !== nextProps.then_wait
+            || this.props.note !== nextProps.note) {
             return true
         } else {
             return false
@@ -104,8 +110,7 @@ class StepListItem extends React.Component {
                 </td>
                 <td className="step-table-list-item-when">
                     {/* TODO: Set these values dynamically instead of blindly displaying the prop value */}
-                    {this.props.start_time}
-                    <Moment format="ddd HH:mm">{this.props.start_time}</Moment>
+                    <Moment format="ddd HH:mm">{this.props.when}</Moment>
                 </td>
                 <td className="step-table-list-item-text">{this.props.text}</td>
                 <td className="step-table-list-item-then-wait">

@@ -30,12 +30,13 @@ class RecipeStartEnd extends React.Component {
         // console.log("ThisProps", this.props)
         // console.log("nextProps", nextProps);
         if (this.props !== nextProps) {
+            // console.log("SCU: yes (props)");
             this.setState({
                 startTime: moment(nextProps.start_time).valueOf(),
                 finishTime: moment(nextProps.start_time).add(nextProps.length, 'seconds').valueOf(),
                 solveForStart: nextProps.solve_for_start
             })
-            // console.log("SCU: yes (props)");
+
             return true;
         } else if (this.state !== nextState) {
             // console.log("SCU: yes (state)");
@@ -48,14 +49,28 @@ class RecipeStartEnd extends React.Component {
 
     handleDateChange(newDate) {
         // console.log("Called handleDateChange(" + newDate.getTime() + ").");
-        this.setState({
-            startTime: newDate.getTime(),
-            finishTime: newDate.getTime() + (this.props.length * 1000),
-            solveForStart: this.state.solveForStart
-        });
+        let newStartTime = 0;
 
-        // Update state on RecipeDetailSummary with the new time
-        this.props.handleUST(newDate.getTime());
+        if (this.props.solve_for_start) {
+            // User modified startTime, so determine the new finishTime
+            newStartTime = newDate.getTime();
+
+            this.setState({
+                startTime: newStartTime,
+                finishTime: newStartTime + (this.props.length * 1000),
+            });
+        } else {
+            // User modified finishTime, so determine the new startTime
+            newStartTime = newDate.getTime() - (this.props.length * 1000);
+
+            this.setState({
+                startTime: newStartTime,
+                finishTime: newDate.getTime(),
+            });
+        }
+
+        // Update state on RecipeDetailSummary with the new start time
+        this.props.handleUpdateStartTime(newStartTime);
     }
 
     handleStartFinishToggle() {
@@ -63,6 +78,9 @@ class RecipeStartEnd extends React.Component {
         this.setState({
             solveForStart: !this.state.solveForStart
         })
+
+        // Update state on RecipeDetailSummary
+        this.props.handleStartFinishToggle();
     }
 
     render() {
@@ -76,7 +94,7 @@ class RecipeStartEnd extends React.Component {
                 </label>
 
                 <DatePicker
-                    selected={this.state.solveForStart ?
+                    selected={this.state.solveForStart ?  // `selected`: the value for this object
                         this.state.startTime :
                         this.state.finishTime}
                     onChange={this.handleDateChange}
@@ -87,8 +105,8 @@ class RecipeStartEnd extends React.Component {
                     timeCaption="Time"
                     todayButton="Today"
                     useWeekdaysShort={true}
-                    dateFormat="MMM dd, yyyy HH:mm"
-                />
+                    dateFormat="MMM dd, yyyy HH:mm"/>
+
             </div>
         )
     }
