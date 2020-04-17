@@ -30,6 +30,7 @@ function App() {
                 </Route>
 
                 <Route path="/recipe/:recipeId">
+                    <Header />
                     <RecipeDetailContainer />
                 </Route>
 

@@ -6,50 +6,51 @@
 
 function seconds_to_string(seconds, ExactValue= false) {
     // console.log("Starting seconds_to_string(" + seconds + ").");
-
     let result = "";
 
-    if (seconds <= 0) {
-        // console.log("Finished seconds_to_string(), returning --.")
+    // Null handling
+    if (seconds.isNaN || seconds <= 0 || seconds === "") {
         return '--'
     }
 
-    if (seconds >= 129600) {
-        // For >36 hours, only display the number of days
+    if (!ExactValue && seconds >= 129600) {
+        // For >36 hours, only display the number of days by default
         result = Math.round(seconds / 86400) + " days";
-    }
-
-    if (!ExactValue) {
         return result;
     }
     else {
         let hours = Math.floor(seconds / 3600);
         let minutes = Math.floor(seconds / 60) % 60;
 
+        // Round up for 30+ minutes
+        if (minutes >= 30) {
+            hours += 1;
+        }
+
         // Build the hours string
         if (hours === 0) {
             result += "";
         }
         else if (hours === 1) {
-            result += hours + " hr";
+            result += hours + " hour";
         }
         else {
-            result = hours + " hrs";
+            result = hours + " hours";
         }
 
         // Build the minutes string
-        if (minutes === 0) {
-            result += "";
-        }
-        else if (result === "") {
-            result = minutes + " min";
-        }
-        else {
-            result += " " + minutes + " min";
-        }
+        // if (minutes === 0) {
+        //     result += "";
+        // }
+        // else if (result === "") {
+        //     result = minutes + " min";
+        // }
+        // else {
+        //     result += " " + minutes + " min";
+        // }
     }
 
-    // console.log("Finished seconds_to_string(" + seconds + "), result: " + result + ".");
+    console.log("Finished seconds_to_string(" + seconds + "), result: " + result + ".");
     return result;
 }
 

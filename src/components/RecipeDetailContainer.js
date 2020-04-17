@@ -1,6 +1,6 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
-import RecipeDetailSummary from "./RecipeDetailSummary";
+import RecipeDetailSummary from './RecipeDetailSummary';
 
 function RecipeDetailContainer() {
     const {recipeId} = useParams();
