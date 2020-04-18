@@ -101,18 +101,18 @@ class StepListItem extends React.Component {
                          className="delete-recipe-button"
                          onClick={() => this.props.deleteStep(this.props.step_id)}/>
                 </td>
+
                 <td className="step-table-list-item-number">
                     {this.props.stepNumber}
                 </td>
-                <td className="step-table-list-item-number">
-                    {/*TODO: Remove once Prod data is updated. */}
-                    {this.props.step_id ? this.props.step_id.slice(0, 4) : "n/a"}
-                </td>
+
                 <td className="step-table-list-item-when">
                     {/* TODO: Set these values dynamically instead of blindly displaying the prop value */}
                     <Moment format="ddd HH:mm">{this.props.when}</Moment>
                 </td>
+
                 <td className="step-table-list-item-text">{this.props.text}</td>
+
                 <td className="step-table-list-item-then-wait">
                     <input type="number"
                            min="00"
@@ -136,8 +136,14 @@ class StepListItem extends React.Component {
                            id={"step-table-then-wait-mm-input-" + this.props.stepNumber}
                     />
                 </td>
+
                 <td className="step-table-list-item-note">
                     {this.props.note === "None" ? "" : this.props.note}
+                </td>
+
+                <td className="step-table-list-item-id">
+                    {/*TODO: Remove once Prod data is updated. */}
+                    {this.props.step_id ? this.props.step_id.slice(0, 4) : "n/a"}
                 </td>
             </tr>
         )

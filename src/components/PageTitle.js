@@ -5,6 +5,7 @@ function PageTitle(props) {
     return (
         <div className="page-title">
             {props.title ? props.title : <LoadingIcon cssClass="loading-icon-title" />}
+            {props.includeHr ? <hr/> : ""}
         </div>
     )
 }

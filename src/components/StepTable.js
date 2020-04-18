@@ -12,11 +12,11 @@ function StepTable(props) {
             <tr>
                 <th>&nbsp;</th>
                 <th>Step</th>
-                <th>ID</th>
                 <th>When</th>
                 <th>Action</th>
                 <th className="step-table-list-item-then-wait-header">Then Wait...</th>
                 <th>Notes</th>
+                <th>ID</th>
             </tr>
             </thead>
 
@@ -33,7 +33,8 @@ function StepTable(props) {
 }
 
 function BuildStepComponentList(props) {
-    // Transform a list of recipe steps into a list of StepListItem components
+    // Transforms a list of recipe steps into a list of StepListItem components.
+    // Needs to be its own function because we calculate `when` differently if solving for start.
     let stepList = props.steps;
     let stepComponentList = [];
 

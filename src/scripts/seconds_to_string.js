@@ -49,7 +49,7 @@ function seconds_to_string(seconds, ExactValue= false) {
         // }
     }
 
-    console.log("Finished seconds_to_string(" + seconds + "), result: " + result + ".");
+    // console.log("Finished seconds_to_string(" + seconds + "), result: " + result + ".");
     return result;
 }
 

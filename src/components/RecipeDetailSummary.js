@@ -2,7 +2,7 @@
 // Data: author, source, total time, difficulty, date added.
 import React from 'react';
 import PageTitle from './PageTitle';
-import seconds_to_string from '../scripts/seconds_to_string';
+import RecipeDetailAttributes from './RecipeDetailAttributes';
 import RecipeStartEnd from './RecipeStartEnd';
 import StepTable from './StepTable';
 import AddStep from './AddStep';
@@ -181,38 +181,20 @@ class RecipeDetailSummary extends React.Component {
     render() {
         return (
             <div className="recipe-detail-summary">
-                <PageTitle title={this.state.recipeData.name}/>
-                <hr/>
-                <table className="recipe-detail-summary-table">
-                    <tbody>
-                    <tr>
-                        <td className="recipe-detail-summary-table-label">Difficulty:</td>
-                        <td className="recipe-detail-summary-table-value">
-                            {this.state.recipeData.difficulty}
-                        </td>
-                        <td className="recipe-detail-summary-table-label">Source:</td>
-                        <td className="recipe-detail-summary-table-value">
-                            {this.state.recipeData.source}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="recipe-detail-summary-table-label">Total Time:</td>
-                        <td className="recipe-detail-summary-table-value">
-                            {seconds_to_string(this.state.recipeData.length, true)}
-                        </td>
-                        <td className="recipe-detail-summary-table-label">Author:</td>
-                        <td className="recipe-detail-summary-table-value">
-                            {this.state.recipeData.author}
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <PageTitle title={this.state.recipeData.name}
+                           includeHr={true}/>
+
+                <RecipeDetailAttributes difficulty={this.state.recipeData.difficulty}
+                                        source={this.state.recipeData.source}
+                                        author={this.state.recipeData.author}
+                                        length={this.state.recipeData.length}/>
 
                 <RecipeStartEnd start_time={this.state.recipeData.start_time}
                                 solve_for_start={this.state.recipeData.solve_for_start}
                                 length={this.state.recipeData.length}
                                 handleUpdateStartTime={this.handleUpdateStartTime}
                                 handleStartFinishToggle={this.handleStartFinishToggle}/>
+
                 <StepTable steps={this.state.recipeData.steps}
                            start_time={this.state.recipeData.start_time}
                            solve_for_start={this.state.recipeData.solve_for_start}
@@ -220,7 +202,9 @@ class RecipeDetailSummary extends React.Component {
                            hasData={this.state.hasData}
                            handleStepLengthChange={this.handleStepLengthChange}
                            deleteStep={this.deleteStep}/>
-                <AddStep nextStep={this.state.nextStep} addStepToRecipe={this.addStepToRecipe}/>
+
+                <AddStep nextStep={this.state.nextStep}
+                         addStepToRecipe={this.addStepToRecipe}/>
 
             </div>
         )

@@ -4,7 +4,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import NavBar from './components/NavBar';
-import Header from './components/Header';
 import Footer from './components/Footer';
 import PageTitle from './components/PageTitle';
 import RecipeTable from './components/RecipeTable';
@@ -15,31 +14,30 @@ import './App.css';
 function App() {
     return (
         <div className="App">
-            <div className="app-top">
-                <NavBar/>
-                <Header/>
-            </div>
-
             <Switch>
                 <Route exact path="/">
-                    <PageTitle title="Recipes"/>
-
-                    <hr/>
-                    <RecipeTable/>
-                    <br/>
+                    <NavBar includeHeader={true} includeRecipeList={false}/>
+                    <div className="recipe-table-container">
+                        <PageTitle title="Recipes" includeHr={true}/>
+                        <RecipeTable/>
+                    </div>
                 </Route>
 
                 <Route path="/recipe/:recipeId">
-                    <Header/>
-                    <RecipeDetailContainer/>
+                    <NavBar includeHeader={false} includeRecipeList={true}/>
+                    <div className="recipe-detail-container">
+                        <RecipeDetailContainer/>
+                    </div>
                 </Route>
 
                 <Route path="/convert">
-                    <PageTitle title="Paprika Text Conversion"/>
+                    <NavBar includeHeader={false} includeRecipeList={true}/>
+                    <div className="text-conversion-container">
+                        <PageTitle title="Paprika Text Conversion" includeHr={true}/>
+                    </div>
                 </Route>
 
             </Switch>
-
             <Footer/>
         </div>
     );

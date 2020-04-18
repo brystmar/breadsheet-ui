@@ -6,9 +6,7 @@ function RecipeDetailContainer() {
     const {recipeId} = useParams();
 
     return (
-        <div className="recipe-detail-container">
-            <RecipeDetailSummary recipeId={recipeId} />
-        </div>
+        <RecipeDetailSummary recipeId={recipeId}/>
     )
 }
 
