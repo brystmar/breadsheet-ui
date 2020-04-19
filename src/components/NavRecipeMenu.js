@@ -8,9 +8,9 @@ function NavRecipeMenu(props) {
 
     return (
         <div className="nav-dropdown">
-            <label className="nav-dropdown-label">
+            <Link to="/">
                 Recipes <i className="fa fa-caret-down"/>
-            </label>
+            </Link>
             <div className="nav-dropdown-content">
                 {recipeList}
             </div>

@@ -16,22 +16,22 @@ function App() {
         <div className="App">
             <Switch>
                 <Route exact path="/">
-                    <NavBar includeHeader={true} includeRecipeList={false}/>
+                    <NavBar/>
                     <div className="recipe-table-container">
-                        <PageTitle title="Recipes" includeHr={true}/>
+                        <PageTitle title="Breadsheet" includeHr={true}/>
                         <RecipeTable/>
                     </div>
                 </Route>
 
                 <Route path="/recipe/:recipeId">
-                    <NavBar includeHeader={false} includeRecipeList={true}/>
+                    <NavBar/>
                     <div className="recipe-detail-container">
                         <RecipeDetailContainer/>
                     </div>
                 </Route>
 
                 <Route path="/convert">
-                    <NavBar includeHeader={false} includeRecipeList={true}/>
+                    <NavBar/>
                     <div className="text-conversion-container">
                         <PageTitle title="Paprika Text Conversion" includeHr={true}/>
                     </div>

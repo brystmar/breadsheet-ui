@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 function WebsiteTitle() {
     return (
         <div className="website-title">
-            <Link to="/">Breadsheet</Link>
-            <img src={logo} className="bread-clipart-image" alt="logo"/>
+            <Link to="/">Home</Link>
+            {/*<img src={logo} className="bread-clipart-image" alt="logo"/>*/}
         </div>
     )
 }

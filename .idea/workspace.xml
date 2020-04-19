@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/NavRecipeMenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NavRecipeMenuItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecipeDetailAttributes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/WebsiteTitle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/bread-loaf-long.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/bread-loaf-long.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PageTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeDetailContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/seconds_to_string.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/seconds_to_string.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavRecipeMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavRecipeMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WebsiteTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WebsiteTitle.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +129,7 @@
       <workItem from="1584207994727" duration="116883000" />
       <workItem from="1585706851861" duration="599000" />
       <workItem from="1586229832804" duration="1810000" />
-      <workItem from="1586479131280" duration="63074000" />
+      <workItem from="1586479131280" duration="69434000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit w/raw pieces">
       <created>1582419561164</created>
@@ -372,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587096341952</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="More CSS work on the navbar">
+      <created>1587244768741</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1587244768741</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +391,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Form POST works properly! Next up: find out why the deleteRecipe function has a mind of its own." />
     <MESSAGE value="Delete works (via its own crappy button)" />
     <MESSAGE value="Delete button is less crappy" />
     <MESSAGE value="Framework in place to toggle the Add Recipe fields" />
@@ -419,7 +415,8 @@
     <MESSAGE value="Finished display &amp; calculations for step.when!" />
     <MESSAGE value="Fixed an issue w/length display on the homepage" />
     <MESSAGE value="Working on a goofy header" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on a goofy header" />
+    <MESSAGE value="More CSS work on the navbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="More CSS work on the navbar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="597" y="253" key="#Notifications" timestamp="1583197787893">
@@ -430,10 +427,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582504850118" />
-    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1587096341803">
+    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1587244768564">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587096341803" />
+    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587244768564" />
     <state x="852" y="488" key="Github.ShareDialog" timestamp="1582419683416">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -450,10 +447,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="495" y="226" key="SettingsEditor/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586479205662" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1587096344818">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1587244770239">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587096344818" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587244770239" />
     <state x="674" y="420" key="com.intellij.ide.util.TipDialog" timestamp="1584208287933">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

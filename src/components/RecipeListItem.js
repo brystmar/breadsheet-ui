@@ -13,8 +13,7 @@ function RecipeListItem(props) {
                 if (response.ok) {
                     console.log("Delete successful for: " + props.name + " (" + props.id + ")");
                     props.delete_recipe(props.id);
-                }
-                else {
+                } else {
                     console.log("Delete failed for: " + props.name + " (" + props.id + ")");
                     console.log("Details:", response.body);
                 }

@@ -4,8 +4,8 @@ import NavRecipeMenu from './NavRecipeMenu';
 import {Link} from 'react-router-dom';
 
 class NavBar extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.state = {
             recipeList: []
@@ -22,13 +22,9 @@ class NavBar extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-        if (this.props.includeRecipeList !== nextProps.includeRecipeList || this.props.includeHeader !== nextProps.includeHeader) {
-            // Refresh when props change
-            console.log("sCU: true (props)")
-            return true;
-        } else if (this.state.recipeList !== nextState.recipeList) {
+        if (this.state.recipeList !== nextState.recipeList) {
             // Refresh when the recipeList data changes
-            console.log("sCU: true (state.recipeList)")
+            console.log("Update NavBar? Yes (state.recipeList)")
             return true;
         } else {
             console.log("sCU: false")
@@ -56,13 +52,9 @@ class NavBar extends React.Component {
         return (
             <header className="header">
                 <nav className="navbar">
-                    <Link to="/">
-                        <WebsiteTitle/>
-                    </Link>
+                    <WebsiteTitle/>
 
-                    <Link to="/">
-                        <NavRecipeMenu recipeList={this.state.recipeList}/>
-                    </Link>
+                    <NavRecipeMenu recipeList={this.state.recipeList}/>
 
                     <Link to="/convert">
                         Convert Text
