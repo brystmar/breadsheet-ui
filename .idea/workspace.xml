@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ConvertText.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/navbar_sticky.js" afterDir="false" />
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Skeleton of the ConvertText page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeDetailContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertText.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertText.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +127,7 @@
       <workItem from="1584207994727" duration="116883000" />
       <workItem from="1585706851861" duration="599000" />
       <workItem from="1586229832804" duration="1810000" />
-      <workItem from="1586479131280" duration="92249000" />
+      <workItem from="1586479131280" duration="95519000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit w/raw pieces">
       <created>1582419561164</created>
@@ -386,7 +381,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587348982968</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Tweaked the StartFinish toggle display">
+      <created>1587358399158</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1587358399158</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,7 +410,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Framework in place to toggle the Add Recipe fields" />
     <MESSAGE value="Add Recipe toggle, cancel, &amp; submit all work" />
     <MESSAGE value="Favicon assets" />
     <MESSAGE value="New recipes now update the state of RecipeTable (via addRecipeToState)" />
@@ -433,7 +434,8 @@
     <MESSAGE value="More CSS work on the navbar" />
     <MESSAGE value="Looks so much better!" />
     <MESSAGE value="Dropdown nav works(ish), tons of other progress too" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dropdown nav works(ish), tons of other progress too" />
+    <MESSAGE value="Tweaked the StartFinish toggle display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tweaked the StartFinish toggle display" />
   </component>
   <component name="WindowStateProjectService">
     <state x="597" y="253" key="#Notifications" timestamp="1583197787893">
@@ -444,10 +446,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582504850118" />
-    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1587348982775">
+    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1587360745067">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587348982775" />
+    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587360745067" />
     <state x="852" y="488" key="Github.ShareDialog" timestamp="1582419683416">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -464,10 +466,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="495" y="226" key="SettingsEditor/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586479205662" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1587348985161">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1587358403315">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587348985161" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587358403315" />
     <state x="674" y="420" key="com.intellij.ide.util.TipDialog" timestamp="1584208287933">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -484,9 +486,9 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="743" y="307" key="git4idea.branch.GitSmartOperationDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420963869" />
-    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup" timestamp="1587337362722">
+    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup" timestamp="1587359288731">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587337362722" />
+    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587359288731" />
   </component>
 </project>

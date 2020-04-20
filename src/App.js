@@ -30,7 +30,7 @@ function App() {
                     </Route>
 
                     <Route path="/convert">
-                        <PageTitle title="Paprika Text Conversion" includeHr={true}/>
+                        <PageTitle title="Convert Recipe Text" includeHr={true}/>
                         <ConvertText/>
                     </Route>
                 </Switch>

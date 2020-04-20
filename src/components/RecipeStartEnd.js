@@ -49,7 +49,7 @@ class RecipeStartEnd extends React.Component {
 
     handleDateChange(newDate) {
         // console.log("Called handleDateChange(" + newDate.getTime() + ").");
-        let newStartTime = 0;
+        let newStartTime;
 
         if (this.props.solve_for_start) {
             // User modified startTime, so determine the new finishTime
