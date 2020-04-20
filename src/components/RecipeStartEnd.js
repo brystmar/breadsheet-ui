@@ -86,27 +86,33 @@ class RecipeStartEnd extends React.Component {
     render() {
         // console.log("Raw start time:", this.props.start_time, moment(this.props.start_time).valueOf());
         return (
-            <div className="recipe-start-end">
-                <label className="start-finish-toggle"
-                       id="start-finish-toggle"
-                       onClick={this.handleStartFinishToggle}>
-                    {this.state.solveForStart ? "Start at" : "Finish at"}
-                </label>
-
-                <DatePicker
-                    selected={this.state.solveForStart ?  // `selected`: the value for this object
-                        this.state.startTime :
-                        this.state.finishTime}
-                    onChange={this.handleDateChange}
-                    className="start-finish-datepicker"
-                    showTimeSelect
-                    timeFormat="HH:mm"
-                    timeIntervals={30}
-                    timeCaption="Time"
-                    todayButton="Today"
-                    useWeekdaysShort={true}
-                    dateFormat="MMM dd, yyyy HH:mm"/>
-
+            <div className="recipe-start-finish">
+                <table className="recipe-start-finish-table">
+                    <tr>
+                        <td className="recipe-start-finish-table-label">
+                            <label className="start-finish-toggle-label"
+                                   id="start-finish-toggle"
+                                   onClick={this.handleStartFinishToggle}>
+                                {this.state.solveForStart ? "Start at" : "Finish at"}
+                            </label>
+                        </td>
+                        <td className="recipe-start-finish-table-datepicker">
+                            <DatePicker
+                                selected={this.state.solveForStart ?  // `selected`: the value for this object
+                                    this.state.startTime :
+                                    this.state.finishTime}
+                                onChange={this.handleDateChange}
+                                className="start-finish-datepicker"
+                                showTimeSelect
+                                timeFormat="HH:mm"
+                                timeIntervals={30}
+                                timeCaption="Time"
+                                todayButton="Today"
+                                useWeekdaysShort={true}
+                                dateFormat="MMM dd, yyyy HH:mm"/>
+                        </td>
+                    </tr>
+                </table>
             </div>
         )
     }

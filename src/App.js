@@ -10,6 +10,7 @@ import RecipeTable from './components/RecipeTable';
 import RecipeDetailContainer from './components/RecipeDetailContainer';
 import 'react-datepicker/dist/react-datepicker.css';
 import './App.css';
+import ConvertText from "./components/ConvertText";
 
 function App() {
     return (
@@ -18,10 +19,8 @@ function App() {
             <div className="content">
                 <Switch>
                     <Route exact path="/">
-                        <div className="recipe-table-container">
-                            <PageTitle title="Breadsheet" includeHr={true}/>
-                            <RecipeTable/>
-                        </div>
+                        <PageTitle title="Breadsheet" includeHr={true}/>
+                        <RecipeTable/>
                     </Route>
 
                     <Route path="/recipe/:recipeId">
@@ -31,11 +30,9 @@ function App() {
                     </Route>
 
                     <Route path="/convert">
-                        <div className="text-conversion-container">
-                            <PageTitle title="Paprika Text Conversion" includeHr={true}/>
-                        </div>
+                        <PageTitle title="Paprika Text Conversion" includeHr={true}/>
+                        <ConvertText/>
                     </Route>
-
                 </Switch>
             </div>
             <Footer/>

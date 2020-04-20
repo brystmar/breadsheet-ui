@@ -5,9 +5,7 @@ import RecipeDetailSummary from './RecipeDetailSummary';
 function RecipeDetailContainer() {
     const {recipeId} = useParams();
 
-    return (
-        <RecipeDetailSummary recipeId={recipeId}/>
-    )
+    return <RecipeDetailSummary recipeId={recipeId}/>
 }
 
 export default RecipeDetailContainer;

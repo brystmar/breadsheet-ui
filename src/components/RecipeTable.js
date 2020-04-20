@@ -57,7 +57,7 @@ class RecipeTable extends React.Component {
         );
 
         return (
-            <div id="recipeTable">
+            <div className="recipe-detail.container" id="recipeTable">
                 <table className="recipe-table">
                     <thead className="table-header-row">
                     <tr>

@@ -187,8 +187,7 @@ class RecipeDetailSummary extends React.Component {
     render() {
         return (
             <div className="recipe-detail-summary">
-                <PageTitle title={this.state.recipeData.name}
-                           includeHr={true}/>
+                <PageTitle title={this.state.recipeData.name} includeHr={true}/>
 
                 <RecipeDetailAttributes difficulty={this.state.recipeData.difficulty}
                                         source={this.state.recipeData.source}
