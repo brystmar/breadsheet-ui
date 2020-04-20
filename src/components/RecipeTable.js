@@ -52,7 +52,7 @@ class RecipeTable extends React.Component {
                                       source={recipe.source}
                                       difficulty={recipe.difficulty}
                                       solve_for_start={recipe.solve_for_start}
-                                      length={seconds_to_string(recipe.length)}
+                                      length={seconds_to_string(recipe.length, true, true, false)}
                                       delete_recipe={this.deleteRecipeFromState} />
         );
 

@@ -1,16 +1,24 @@
 .App {
 	font-style: normal;
 	/*margin: 3px;*/
+	width: 100%;
+	max-width: 1200px;
+}
+
+.App table.tr {
+	/*vertical-align: middle;*/
 }
 
 .navbar {
 	overflow: hidden;
+	float: none;
 	/*margin-left: 10px;*/
 	margin-bottom: 5px;
 	background-color: #282c34;
 	font-weight: normal;
 	font-size: 20pt;
 	vertical-align: center;
+	z-index: 2;
 }
 
 .navbar a, a:visited {
@@ -59,7 +67,7 @@
 
 	box-shadow: 0px 4px 152px 0px rgba(0, 0, 0, .7);
 	min-width: auto;
-	z-index: 1;
+	z-index: 3;
 }
 
 .nav-dropdown-content a {
@@ -86,8 +94,18 @@
 	display: block;
 }
 
-.website-title {
-	/*column-width: max-content;*/
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+.sticky + .content {
+	padding-top: 40px;
+}
+
+.content {
+	padding: 6px 6px;
 }
 
 .loading-icon-table {
@@ -98,7 +116,19 @@
 	height: 50px;
 }
 
-.recipe-list-item-name a:hover {
+.table-header-row {
+	padding: 4px 10px;
+}
+
+.recipe-table td {
+	padding: 4px 8px;
+}
+
+.recipe-table th {
+	padding: 4px 8px;
+}
+
+.recipe-list-item a:hover {
 	color: #0040ff;
 	/*color: #037caf;*/
 }
@@ -119,6 +149,10 @@
 	text-align: left;
 	margin-left: 5px;
 	cursor: default;
+}
+
+hr {
+	margin-top: 2px;
 }
 
 .recipe-table-container {
@@ -142,8 +176,11 @@
 }
 
 .recipe-table {
-	padding-left: 5px;
 	margin-left: 5px;
+	font-size: medium;
+	width: 100%;
+	max-width: 1000px;
+	column-width: auto;
 }
 
 .recipe-table a:link {
@@ -159,10 +196,6 @@
 .recipe-table a:hover {
 	text-decoration: underline;
 	color: #0040ff;
-}
-
-.recipe-table a:active {
-
 }
 
 .recipe-table-list {
@@ -252,10 +285,12 @@
 
 .react-datepicker {
 	width: 250px;
+	z-index: 0;
 }
 
 .react-datepicker__input-container {
 	width: 100%;
+	z-index: 1;
 }
 
 .recipe-start-end {
@@ -267,6 +302,7 @@
 	/* Long dates & times get cut off at 100% */
 	width: 100%;
 	/*width: 137%;*/
+	z-index: 1;
 }
 
 .start-finish-toggle {
@@ -291,16 +327,32 @@
 .step-table-list-item-number {
 	text-align: right;
 	padding-right: 6px;
+	width: 38px;
 }
 
-.step-table-list-item-then-wait-header {
-	width: 91px;
-	margin-right: 5px;
+.step-table-list-item-when {
+	width: 80px;
 }
 
-.step-table-list-item-then-wait {
-	width: 91px;
-	margin-right: 5px;
+.step-table-list-item-text {
+	width: 160px;
+}
+
+.step-table-list-item-id {
+	width: 45px;
+}
+
+.delete-recipe-button-column {
+	width: 18px;
+}
+
+.step-table-list-item-then-wait-header, .step-table-list-item-then-wait {
+	width: 93px;
+	/*margin: 0 5px;*/
+}
+
+.step-table-list-item-note {
+	max-width: 450px;
 }
 
 .then-wait-hh-input {
@@ -330,9 +382,10 @@
 	alignment: left;
 	horiz-align: left;
 	vertical-align: center;
+	margin: 0px 4px;
 
-	height: 25px;
-	width: 25px;
+	height: 15px;
+	width: 15px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

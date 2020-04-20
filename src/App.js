@@ -14,30 +14,30 @@ import './App.css';
 function App() {
     return (
         <div className="App">
-            <Switch>
-                <Route exact path="/">
-                    <NavBar/>
-                    <div className="recipe-table-container">
-                        <PageTitle title="Breadsheet" includeHr={true}/>
-                        <RecipeTable/>
-                    </div>
-                </Route>
+            <NavBar/>
+            <div className="content">
+                <Switch>
+                    <Route exact path="/">
+                        <div className="recipe-table-container">
+                            <PageTitle title="Breadsheet" includeHr={true}/>
+                            <RecipeTable/>
+                        </div>
+                    </Route>
 
-                <Route path="/recipe/:recipeId">
-                    <NavBar/>
-                    <div className="recipe-detail-container">
-                        <RecipeDetailContainer/>
-                    </div>
-                </Route>
+                    <Route path="/recipe/:recipeId">
+                        <div className="recipe-detail-container">
+                            <RecipeDetailContainer/>
+                        </div>
+                    </Route>
 
-                <Route path="/convert">
-                    <NavBar/>
-                    <div className="text-conversion-container">
-                        <PageTitle title="Paprika Text Conversion" includeHr={true}/>
-                    </div>
-                </Route>
+                    <Route path="/convert">
+                        <div className="text-conversion-container">
+                            <PageTitle title="Paprika Text Conversion" includeHr={true}/>
+                        </div>
+                    </Route>
 
-            </Switch>
+                </Switch>
+            </div>
             <Footer/>
         </div>
     );

@@ -1,5 +1,4 @@
 import React from 'react';
-import WebsiteTitle from './WebsiteTitle';
 import NavRecipeMenu from './NavRecipeMenu';
 import {Link} from 'react-router-dom';
 
@@ -50,9 +49,11 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <header className="header">
+            <header id="header">
                 <nav className="navbar">
-                    <WebsiteTitle/>
+                    <Link to="/">
+                        Home
+                    </Link>
 
                     <NavRecipeMenu recipeList={this.state.recipeList}/>
 

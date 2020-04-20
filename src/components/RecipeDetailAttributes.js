@@ -10,19 +10,19 @@ function RecipeDetailAttributes(props) {
                 <td className="recipe-detail-summary-table-value">
                     {props.difficulty}
                 </td>
-                <td className="recipe-detail-summary-table-label">Source</td>
+                <td className="recipe-detail-summary-table-label">Author</td>
                 <td className="recipe-detail-summary-table-value">
-                    {props.source}
+                    {props.author}
                 </td>
             </tr>
             <tr>
                 <td className="recipe-detail-summary-table-label">Total Time</td>
                 <td className="recipe-detail-summary-table-value">
-                    {seconds_to_string(props.length, true)}
+                    {seconds_to_string(props.length, true, true, true)}
                 </td>
-                <td className="recipe-detail-summary-table-label">Author</td>
+                <td className="recipe-detail-summary-table-label">Source</td>
                 <td className="recipe-detail-summary-table-value">
-                    {props.author}
+                    {props.source}
                 </td>
             </tr>
             </tbody>

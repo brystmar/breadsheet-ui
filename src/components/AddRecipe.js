@@ -110,6 +110,7 @@ class AddRecipe extends React.Component {
                         <option value="Beginner">Beginner</option>
                         <option value="Intermediate">Intermediate</option>
                         <option value="Advanced">Advanced</option>
+                        <option value="Iron Chef">Iron Chef</option>
                     </select>
 
                     <br/>

@@ -93,13 +93,12 @@ class StepListItem extends React.Component {
 
     render() {
         return (
-            <tr className="step-table-list-item"
-                id={"step-table-list-item-" + this.props.stepNumber}>
+            <tr className="step-table-list-item">
                 <td className="delete-recipe-button-column">
                     <img alt={"Delete step " + this.props.stepNumber}
                          src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_minus.png"
                          className="delete-recipe-button"
-                         onClick={() => this.props.deleteStep(this.props.step_id)}/>
+                         onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}/>
                 </td>
 
                 <td className="step-table-list-item-number">
@@ -107,7 +106,6 @@ class StepListItem extends React.Component {
                 </td>
 
                 <td className="step-table-list-item-when">
-                    {/* TODO: Set these values dynamically instead of blindly displaying the prop value */}
                     <Moment format="ddd HH:mm">{this.props.when}</Moment>
                 </td>
 
@@ -122,7 +120,6 @@ class StepListItem extends React.Component {
                            onChange={this.handleChange}
                            onBlur={this.padValue}
                            className="then-wait-hh-input"
-                           id={"step-table-then-wait-hh-input-" + this.props.stepNumber}
                     />
                     :
                     <input type="number"
@@ -133,7 +130,6 @@ class StepListItem extends React.Component {
                            onChange={this.handleChange}
                            onBlur={this.padValue}
                            className="then-wait-mm-input"
-                           id={"step-table-then-wait-mm-input-" + this.props.stepNumber}
                     />
                 </td>
 

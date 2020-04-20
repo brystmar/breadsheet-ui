@@ -5,7 +5,7 @@ class AddStep extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            stepNumber: 0,
+            stepNumber: 1,
             thenWaitHH: pad(0),
             thenWaitMM: pad(0),
             text: "",
@@ -109,7 +109,8 @@ class AddStep extends React.Component {
 
         // Send this new step to the parent so it can update the backend
         // console.log("New step to add:", newStep);
-        this.props.addStepToRecipe(newStep);
+        this.props.addStepToRecipe(newStep, newStep.then_wait);
+        this.resetAddStepForm();
     }
 
     render() {
@@ -133,7 +134,7 @@ class AddStep extends React.Component {
                     <label className="add-step-form-number-label">Step #</label>
                     <input className="add-recipe-form-number"
                            type="number"
-                           min="0"
+                           min="1"
                            max="99"
                            name="stepNumber"
                            placeholder="#"

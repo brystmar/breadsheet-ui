@@ -142,7 +142,7 @@ class RecipeDetailSummary extends React.Component {
             .catch(something => console.log("Caught:", something));
     }
 
-    addStepToRecipe(newStep) {
+    addStepToRecipe(newStep, newStepLength) {
         console.log("Called addStepToRecipe for step:", newStep);
         let updatedRecipe = this.state.recipeData;
 
@@ -152,6 +152,9 @@ class RecipeDetailSummary extends React.Component {
         // Sort by step.number
         updatedRecipe.steps.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
 
+        // Update the recipe length
+        updatedRecipe.length += newStepLength;
+
         this.saveUpdatedRecipe({
             recipeData: updatedRecipe,
             hasData: true,
@@ -160,7 +163,7 @@ class RecipeDetailSummary extends React.Component {
         })
     }
 
-    deleteStep(stepId) {
+    deleteStep(stepId, stepLength) {
         console.log("Called deleteStep for step_id:", stepId);
 
         // Create a new representation of recipeData
@@ -169,6 +172,9 @@ class RecipeDetailSummary extends React.Component {
             function (terminator) {
                 return terminator.step_id !== stepId
             });
+
+        // Subtract the step's length from the updated recipe
+        newRecipeData.length -= stepLength;
 
         // Update the backend, then update state
         this.saveUpdatedRecipe({
