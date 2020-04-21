@@ -443,3 +443,8 @@ hr {
 .text-conversion-table td {
 	padding: 2px 10px;
 }
+
+.button-clipboard {
+	padding: 0 5px;
+	cursor: pointer;
+}

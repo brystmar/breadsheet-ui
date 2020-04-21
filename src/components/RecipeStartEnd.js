@@ -88,6 +88,7 @@ class RecipeStartEnd extends React.Component {
         return (
             <div className="recipe-start-finish">
                 <table className="recipe-start-finish-table">
+                    <tbody>
                     <tr>
                         <td className="recipe-start-finish-table-label">
                             <label className="start-finish-toggle-label"
@@ -112,6 +113,7 @@ class RecipeStartEnd extends React.Component {
                                 dateFormat="MMM dd, yyyy HH:mm"/>
                         </td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         )
