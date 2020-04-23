@@ -27,7 +27,7 @@ function RecipeListItem(props) {
         <tr className="recipe-table-list-item">
             <td className="delete-recipe-button-column">
                 <img alt="Delete recipe"
-                     src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_minus.png"
+                     src="./button_minus.png"
                      className="delete-recipe-button"
                      onClick={handleDeleteRecipe}/>
             </td>

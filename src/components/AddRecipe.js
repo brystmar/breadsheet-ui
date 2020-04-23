@@ -1,8 +1,8 @@
 import React from 'react';
 
 class AddRecipe extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             name: "",
             difficulty: "Intermediate",
@@ -73,7 +73,7 @@ class AddRecipe extends React.Component {
             <div className="add-recipe-parent">
                 <div className="add-recipe-icon">
                     <img alt="Add recipe"
-                         src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_plus.png"
+                         src="./button_plus.png"
                          className="add-recipe-toggle-button"
                          onClick={this.handleFormToggle}/>
 

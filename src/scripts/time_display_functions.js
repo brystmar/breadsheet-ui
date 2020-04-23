@@ -1,10 +1,11 @@
-// Converts a raw number of seconds (int) to a human-readable string
-//   in hours & minutes.  For inputs >36 hours, only the number of
-//   days are returned by default.
+// Helper functions to tweak the display of various time-based elements
 
 function seconds_to_string(seconds, IncludeDays = false,
                            IncludeHours = true,
                            IncludeMinutes = true) {
+    // Converts a raw number of seconds (int) to a human-readable string
+    //   in days, hours, and/or minutes.
+
     // Null handling
     if (seconds.isNaN || seconds <= 0 || seconds === "") {
         return "";
@@ -71,8 +72,27 @@ function seconds_to_string(seconds, IncludeDays = false,
 
     result += minutes.toString() + " min";
 
-    // console.log("Finished seconds_to_string(", seconds, IncludeDays, IncludeHours, IncludeMinutes, "), result: " + result + ".");
+    // console.log("Finished seconds_to_string(", seconds, IncludeDays, IncludeHours,
+    //   IncludeMinutes, "), result: " + result + ".");
     return result;
 }
 
+function seconds_to_hhmm(seconds) {
+    // Input: a raw number of seconds (int)
+    // Output: a zero-padded number of hours (str), and a zero-padded number of minutes (str).
+    let hours = Math.floor(seconds / 3600);
+    let minutes = Math.floor((seconds - (hours * 3600)) / 60);
+
+    return [pad(hours, 2), pad(minutes, 2)];
+}
+
+function pad(input, desiredLength = 2) {
+    input = input.toString();
+    while (input.length < desiredLength) {
+        input = "0" + input;
+    }
+    return input;
+}
+
 export default seconds_to_string;
+export {seconds_to_hhmm, pad};

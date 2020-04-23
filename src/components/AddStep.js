@@ -1,5 +1,5 @@
 import React from 'react';
-import {pad} from "../scripts/seconds_to_hhmm";
+import {pad} from '../scripts/time_display_functions';
 
 class AddStep extends React.Component {
     constructor(props) {
@@ -118,7 +118,7 @@ class AddStep extends React.Component {
             <div className="add-step-parent">
                 <div className="add-step-icon">
                     <img alt="Add recipe"
-                         src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_plus.png"
+                         src="./button_plus.png"
                          className="add-recipe-toggle-button"
                          onClick={this.handleFormToggle}/>
 

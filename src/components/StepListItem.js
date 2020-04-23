@@ -1,5 +1,5 @@
 import React from 'react';
-import seconds_to_hhmm, {pad} from '../scripts/seconds_to_hhmm';
+import {seconds_to_hhmm, pad} from '../scripts/time_display_functions';
 import Moment from 'react-moment';
 
 class StepListItem extends React.Component {
@@ -96,7 +96,7 @@ class StepListItem extends React.Component {
             <tr className="step-table-list-item">
                 <td className="delete-recipe-button-column">
                     <img alt={"Delete step " + this.props.stepNumber}
-                         src="https://breadsheet-public.s3-us-west-2.amazonaws.com/button_minus.png"
+                         src="./button_minus.png"
                          className="delete-recipe-button"
                          onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}/>
                 </td>

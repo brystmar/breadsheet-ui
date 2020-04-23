@@ -10,7 +10,7 @@ import RecipeTable from './components/RecipeTable';
 import RecipeDetailContainer from './components/RecipeDetailContainer';
 import 'react-datepicker/dist/react-datepicker.css';
 import './App.css';
-import ConvertText from './components/ConvertText';
+import ConvertTextPageContainer from './components/ConvertTextPageContainer';
 
 function App() {
     return (
@@ -31,7 +31,7 @@ function App() {
 
                     <Route path="/convert">
                         <PageTitle title="Convert Recipe Text" includeHr={true}/>
-                        <ConvertText/>
+                        <ConvertTextPageContainer/>
                     </Route>
                 </Switch>
             </div>

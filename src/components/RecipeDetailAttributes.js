@@ -1,5 +1,5 @@
 import React from 'react';
-import seconds_to_string from "../scripts/seconds_to_string";
+import seconds_to_string from '../scripts/time_display_functions';
 
 function RecipeDetailAttributes(props) {
     return (
