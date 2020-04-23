@@ -15,6 +15,7 @@ class ConvertTextPageContainer extends React.Component {
     }
 
     componentDidMount() {
+        // console.log(this.state);
         this.getReplacements("ingredients");
         this.getReplacements("directions");
     }

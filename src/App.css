@@ -156,18 +156,6 @@ hr {
 	max-width: 1200px;
 }
 
-/*.recipe-table-container {*/
-/*	margin-left: 5px;*/
-/*}*/
-
-/*.recipe-detail-container {*/
-/*	margin-left: 5px;*/
-/*}*/
-
-/*.text-conversion-container {*/
-/*	margin-left: 5px;*/
-/*}*/
-
 .table-header-row {
 	text-align: left;
 	font-weight: bold;
@@ -453,7 +441,7 @@ hr {
 }
 
 .text-conversion-list-container {
-	/*margin-left: 250px;*/
+
 }
 
 .text-conversion-listbox-header-table th {
@@ -484,8 +472,5 @@ hr {
 	font-family: CMUTypewriterTextRegular, monospace;
 	padding: 0 2px;
 	background-color: inherit;
-	/*border-right-style: dotted;*/
-	/*border-right-width: thin;*/
-	/*border-color: black;*/
 	white-space: pre;  /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
 }

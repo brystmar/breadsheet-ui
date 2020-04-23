@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {FixedSizeList, FixedSizeGrid} from 'react-window';
+import {FixedSizeGrid} from 'react-window';
 
 class ConversionListContainer extends React.Component {
     constructor(props) {
@@ -78,21 +78,6 @@ class ConversionListContainer extends React.Component {
                 </button>
 
                 <br/>
-
-                {/*<FixedSizeList className="text-conversion-listbox"*/}
-                {/*               layout="vertical"*/}
-                {/*               height={300}*/}
-                {/*               itemSize={20}*/}
-                {/*               itemCount={this.state.scope === "ingredients" ?*/}
-                {/*                   this.props.ingredientsList.length :*/}
-                {/*                   this.props.directionsList.length}*/}
-                {/*               itemData={this.state.scope === "ingredients" ?*/}
-                {/*                   this.props.ingredientsList :*/}
-                {/*                   this.props.directionsList}>*/}
-
-                {/*    {ItemRendererL}*/}
-                {/*</FixedSizeList>*/}
-                {/*<br/>*/}
 
                 <table className="text-conversion-listbox-header-table">
                     <thead>

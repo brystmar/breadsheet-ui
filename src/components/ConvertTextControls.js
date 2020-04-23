@@ -42,7 +42,17 @@ class ConvertTextControls extends React.Component {
 
     copyToClipboard() {
         console.log("Copy to clipboard...");
-        // TODO: Figure this out
+        let clipboardPromise;
+        // Add some line breaks when both outputs are used
+        if (this.state.outputIngredients.length > 0 && this.state.outputDirections.length > 0) {
+            clipboardPromise = navigator.clipboard.writeText(
+                this.state.outputIngredients + "\n\n" + this.state.outputDirections)
+        } else {
+            clipboardPromise = navigator.clipboard.writeText(
+                this.state.outputIngredients + this.state.outputDirections)
+        }
+
+        console.log(clipboardPromise.finally(result => console.log(result)));
     }
 
     resetForm() {
