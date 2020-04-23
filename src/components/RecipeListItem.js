@@ -1,45 +1,58 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import BackendUrlContext from './BackendUrlContext';
 
-function RecipeListItem(props) {
-    function handleDeleteRecipe() {
-        console.log("Attempting to delete recipe", props.id);
+class RecipeListItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {}
 
-        // Ask the backend to remove this recipe from the database
-        fetch("http://localhost:5000/api/v1/recipe/" + props.id, {
+        this.handleDeleteRecipe = this.handleDeleteRecipe.bind(this);
+    }
+
+    handleDeleteRecipe() {
+        // TODO: This belongs in the parent class, not here
+        console.log("Attempting to delete recipe", this.props.id);
+
+        // Tell the backend to remove this recipe from the database
+        fetch(this.context + "/api/v1/recipe/" + this.props.id, {
             method: "DELETE"
         })
             .then(response => {
                 if (response.ok) {
-                    console.log("Delete successful for: " + props.name + " (" + props.id + ")");
-                    props.delete_recipe(props.id);
+                    console.log("Delete successful for: " + this.props.name + " (" + this.props.id + ")");
+                    this.props.delete_recipe(this.props.id);
 
-                    // TODO: Figure out how to update the NavBar recipe list
+                    // TODO: Remove this recipe from the NavBar recipe list
 
                 } else {
-                    console.log("Delete failed for: " + props.name + " (" + props.id + ")");
+                    console.log("Delete failed for: " + this.props.name + " (" + this.props.id + ")");
                     console.log("Details:", response.body);
                 }
             }).catch(rejection => console.log("Delete failed:", rejection));
     }
 
-    return (
-        <tr className="recipe-table-list-item">
-            <td className="delete-recipe-button-column">
-                <img alt="Delete recipe"
-                     src="./button_minus.png"
-                     className="delete-recipe-button"
-                     onClick={handleDeleteRecipe}/>
-            </td>
-            <td className="recipe-list-item-name">
-                <Link to={`/recipe/${props.id}`}>{props.name}</Link>
-            </td>
-            <td>{props.difficulty}</td>
-            <td>{props.length}</td>
-            <td>{props.author}</td>
-            <td>{props.source}</td>
-        </tr>
-    )
+    render() {
+        return (
+            <tr className="recipe-table-list-item">
+                <td className="delete-recipe-button-column">
+                    <img alt="Delete recipe"
+                         src="./button_minus.png"
+                         className="delete-recipe-button"
+                         onClick={this.handleDeleteRecipe}/>
+                </td>
+                <td className="recipe-list-item-name">
+                    <Link to={`/${this.props.id}`}>{this.props.name}</Link>
+                </td>
+                <td>{this.props.difficulty}</td>
+                <td>{this.props.length}</td>
+                <td>{this.props.author}</td>
+                <td>{this.props.source}</td>
+            </tr>
+        )
+    }
 }
+
+RecipeListItem.contextType = BackendUrlContext;
 
 export default RecipeListItem;

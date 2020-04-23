@@ -22,7 +22,7 @@ serviceWorker.unregister();
 window.onscroll = () => makeNavBarSticky();
 
 // Get the navbar & offset position of the navbar
-let navbar = document.getElementById("header")
+let navbar = document.getElementById("navbar")
 let sticky = navbar.offsetTop;
 
 // Apply .sticky class to the navbar when its scroll position is reached

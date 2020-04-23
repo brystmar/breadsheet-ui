@@ -3,9 +3,11 @@ import BreadsheetLogo from './BreadsheetLogo';
 
 function Footer() {
     return (
-        <footer className="App-footer">
-            Another mediocre app by brystmar <BreadsheetLogo/>
-        </footer>
+        <div className="app-footer">
+            {/* TODO: Why are targeted CSS styles for .navbar affecting this component? */}
+            Another mediocre app by brystmar
+            <a href="http://github.com/brystmar/"><BreadsheetLogo/></a>
+        </div>
     )
 }
 

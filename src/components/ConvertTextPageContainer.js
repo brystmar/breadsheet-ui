@@ -1,7 +1,7 @@
 import React from 'react';
-import ConvertTextControls from "./ConvertTextControls";
-import ConversionListContainer from "./ConversionListContainer";
-
+import ConvertTextControls from './ConvertTextControls';
+import ConversionListContainer from './ConversionListContainer';
+import BackendUrlContext from './BackendUrlContext';
 
 class ConvertTextPageContainer extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class ConvertTextPageContainer extends React.Component {
 
     getReplacements(scope) {
         // Get the list of replacements
-        fetch("http://localhost:5000/api/v1/replacements/" + scope)
+        fetch(this.context + "/api/v1/replacements/" + scope)
             .then(response => response.json())
             .then(result => {
                     if (result.message === "Success") {
@@ -65,5 +65,7 @@ class ConvertTextPageContainer extends React.Component {
         )
     }
 }
+
+ConvertTextPageContainer.contextType = BackendUrlContext;
 
 export default ConvertTextPageContainer;

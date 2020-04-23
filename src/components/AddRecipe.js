@@ -1,4 +1,5 @@
 import React from 'react';
+import BackendUrlContext from './BackendUrlContext';
 
 class AddRecipe extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class AddRecipe extends React.Component {
             source: "",
             hidden: true
         };
+
         this.handleFormToggle = this.handleFormToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.resetAddRecipeForm = this.resetAddRecipeForm.bind(this);
@@ -50,7 +52,7 @@ class AddRecipe extends React.Component {
         event.preventDefault();
 
         // POST new recipe to the backend
-        fetch("http://localhost:5000/api/v1/recipes", {
+        fetch(this.context + "/api/v1/recipes", {
             method: "POST",
             body: JSON.stringify(stateCopy)
         })
@@ -155,5 +157,7 @@ class AddRecipe extends React.Component {
         )
     }
 }
+
+AddRecipe.contextType = BackendUrlContext;
 
 export default AddRecipe;

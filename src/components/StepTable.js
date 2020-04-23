@@ -16,7 +16,6 @@ function StepTable(props) {
                 <th>Action</th>
                 <th className="step-table-list-item-then-wait-header">Then Wait...</th>
                 <th>Notes</th>
-                <th>ID</th>
             </tr>
             </thead>
 

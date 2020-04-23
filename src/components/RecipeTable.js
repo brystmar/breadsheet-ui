@@ -1,7 +1,8 @@
 import React from 'react';
-import seconds_to_string from "../scripts/time_display_functions";
-import RecipeListItem from "./RecipeListItem";
-import AddRecipe from "./AddRecipe";
+import seconds_to_string from '../scripts/time_display_functions';
+import RecipeListItem from './RecipeListItem';
+import AddRecipe from './AddRecipe';
+import BackendUrlContext from './BackendUrlContext';
 
 class RecipeTable extends React.Component {
     constructor(props) {
@@ -15,8 +16,9 @@ class RecipeTable extends React.Component {
     }
 
     componentDidMount() {
+        console.log("RecipeTable Context:", this.context);
         // Get the recipe details from the backend
-        fetch("http://localhost:5000/api/v1/recipes")
+        fetch(this.context + "/api/v1/recipes")
             .then(response => response.json())
             .then(result => this.setState({allRecipes: result.data}))
     }
@@ -79,5 +81,7 @@ class RecipeTable extends React.Component {
         )
     }
 }
+
+RecipeTable.contextType = BackendUrlContext;
 
 export default RecipeTable;

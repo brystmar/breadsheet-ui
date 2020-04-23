@@ -70,6 +70,7 @@ class ConversionListContainer extends React.Component {
                        value={this.state.searchString}
                        placeholder={"Search " + this.state.scope + " list"}
                        maxLength={160}
+                       disabled  // TODO: Re-enable once search filtering works
                        onChange={this.handleChange}/>
 
                 <button name="scopeChange"

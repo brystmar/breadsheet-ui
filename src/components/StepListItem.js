@@ -136,11 +136,6 @@ class StepListItem extends React.Component {
                 <td className="step-table-list-item-note">
                     {this.props.note === "None" ? "" : this.props.note}
                 </td>
-
-                <td className="step-table-list-item-id">
-                    {/*TODO: Remove once Prod data is updated. */}
-                    {this.props.step_id ? this.props.step_id.slice(0, 4) : "n/a"}
-                </td>
             </tr>
         )
     }

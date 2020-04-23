@@ -1,6 +1,7 @@
 import React from 'react';
 import NavRecipeMenu from './NavRecipeMenu';
 import {Link} from 'react-router-dom';
+import BackendUrlContext from './BackendUrlContext';
 
 class NavBar extends React.Component {
     constructor() {
@@ -26,13 +27,13 @@ class NavBar extends React.Component {
             console.log("Update NavBar? Yes (state.recipeList)")
             return true;
         } else {
-            console.log("sCU: false")
+            console.log("Update NavBar? No")
             return false;
         }
     }
 
     getSkinnyRecipeList() {
-        fetch("http://localhost:5000/api/v1/recipe_list")
+        fetch(this.context + "/api/v1/recipe_list")
             .then(response => {
                 if (response.ok) {
                     console.log("Skinny recipe data retrieved!");
@@ -49,21 +50,19 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <header id="header">
-                <nav className="navbar">
-                    <Link to="/">
-                        Home
-                    </Link>
+            <span id="navbar"> {/* For appending the 'sticky' class when scrolling */}
+                <div className="navbar">
+                    <Link to="/">Home</Link>
 
                     <NavRecipeMenu recipeList={this.state.recipeList}/>
 
-                    <Link to="/convert">
-                        Convert Text
-                    </Link>
-                </nav>
-            </header>
+                    <Link to="/convert">Convert Text</Link>
+                </div>
+            </span>
         )
     }
 }
+
+NavBar.contextType = BackendUrlContext;
 
 export default NavBar;

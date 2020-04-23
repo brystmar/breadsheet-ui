@@ -10,7 +10,7 @@ class AddStep extends React.Component {
             thenWaitMM: pad(0),
             text: "",
             note: "",
-            hidden: false
+            hidden: true
         };
 
         this.handleFormToggle = this.handleFormToggle.bind(this);

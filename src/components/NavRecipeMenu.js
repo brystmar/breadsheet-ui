@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 function NavRecipeMenu(props) {
     let recipeList = props.recipeList.map(recipe =>
-        <Link to={`/recipe/${recipe.id}`} key={recipe.id}>{recipe.name}</Link>
+        <Link to={`/${recipe.id}`} key={recipe.id}>{recipe.name}</Link>
     )
 
     return (

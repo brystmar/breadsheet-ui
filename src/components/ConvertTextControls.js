@@ -52,7 +52,7 @@ class ConvertTextControls extends React.Component {
                 this.state.outputIngredients + this.state.outputDirections)
         }
 
-        console.log(clipboardPromise.finally(result => console.log(result)));
+        clipboardPromise.catch(error => console.log("Error copying text to clipboard:", error));
     }
 
     resetForm() {
@@ -74,12 +74,8 @@ class ConvertTextControls extends React.Component {
                             Ingredients
                         </label>
                     </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-
-                    </td>
+                    <td> </td>
+                    <td> </td>
                 </tr>
                 <tr className="text-conversion-table-textarea">
                     <td>
@@ -92,9 +88,9 @@ class ConvertTextControls extends React.Component {
                                           rows={15}
                                           cols={60}/>
                     </td>
-                    <td>
+                    <th className="text-conversion-table-arrow">
                         -->
-                    </td>
+                    </th>
                     <td>
                                 <textarea name="outputIngredients"
                                           value={this.state.outputIngredients}
@@ -104,11 +100,8 @@ class ConvertTextControls extends React.Component {
                                           cols={60}/>
                     </td>
                 </tr>
-
                 <tr>
-                    <td>
-                        &nbsp;
-                    </td>
+                    <td> </td>
                 </tr>
 
                 <tr className="text-conversion-table-label">
@@ -117,12 +110,8 @@ class ConvertTextControls extends React.Component {
                             Directions
                         </label>
                     </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-
-                    </td>
+                    <td> </td>
+                    <td> </td>
                 </tr>
                 <tr className="text-conversion-table-textarea">
                     <td>
@@ -134,9 +123,9 @@ class ConvertTextControls extends React.Component {
                                           rows={15}
                                           cols={60}/>
                     </td>
-                    <td>
+                    <th className="text-conversion-table-arrow">
                         -->
-                    </td>
+                    </th>
                     <td>
                                 <textarea name="outputDirections"
                                           value={this.state.outputDirections}

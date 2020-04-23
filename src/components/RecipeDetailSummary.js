@@ -6,6 +6,7 @@ import RecipeDetailAttributes from './RecipeDetailAttributes';
 import RecipeStartEnd from './RecipeStartEnd';
 import StepTable from './StepTable';
 import AddStep from './AddStep';
+import BackendUrlContext from './BackendUrlContext';
 
 class RecipeDetailSummary extends React.Component {
     constructor(props) {
@@ -39,7 +40,7 @@ class RecipeDetailSummary extends React.Component {
 
     componentDidMount() {
         // Get the recipe details from the backend
-        fetch("http://localhost:5000/api/v1/recipe/" + this.props.recipeId)
+        fetch(this.context + "/api/v1/recipe/" + this.props.recipeId)
             .then(response => response.json())
             .then(result => {
                 if (result.message === "Success") {
@@ -105,8 +106,6 @@ class RecipeDetailSummary extends React.Component {
     }
 
     handleUpdateStartTime(newStartTime) {
-        console.log("Called handleUST:", newStartTime);
-
         let newRecipeData = this.state.recipeData;
         newRecipeData.start_time = newStartTime;
 
@@ -119,7 +118,7 @@ class RecipeDetailSummary extends React.Component {
         // Update this recipe (and the component's state) in the database
         console.log("Called saveUpdatedRecipe for recipe_id:", newState.recipeData.id);
 
-        fetch("http://localhost:5000/api/v1/recipe/" + newState.recipeData.id, {
+        fetch(this.context + "/api/v1/recipe/" + newState.recipeData.id, {
             method: "PUT",
             body: JSON.stringify(newState.recipeData)
         })
@@ -215,5 +214,7 @@ class RecipeDetailSummary extends React.Component {
         )
     }
 }
+
+RecipeDetailSummary.contextType = BackendUrlContext;
 
 export default RecipeDetailSummary;
