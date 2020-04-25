@@ -115,22 +115,6 @@ class ConversionListContainer extends React.Component {
 }
 
 
-// class ItemRendererL extends PureComponent {
-//     render() {
-//         const {data, index, style} = this.props;
-//
-//         // Access the data source using the `data` prop:
-//         let find = data[index]['old'];
-//         let replaceWith = data[index]['new'];
-//
-//         return (
-//             <div style={style} className="text-conversion-list-item">
-//                 {find} ==> {replaceWith}
-//             </div>
-//         );
-//     }
-// }
-
 class GridItemRenderer extends PureComponent {
     render() {
         // Access the data source using the `data` prop
@@ -157,6 +141,11 @@ class GridItemRenderer extends PureComponent {
             </div>
         );
     }
+}
+
+ConversionListContainer.defaultProps = {
+    ingredientsList: [],
+    directionsList: []
 }
 
 export default ConversionListContainer;

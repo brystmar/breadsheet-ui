@@ -12,20 +12,20 @@ class RecipeTable extends React.Component {
         };
 
         this.addRecipeToState = this.addRecipeToState.bind(this);
+        this.deleteRecipe = this.deleteRecipe.bind(this);
         this.deleteRecipeFromState = this.deleteRecipeFromState.bind(this);
     }
 
     componentDidMount() {
-        console.log("RecipeTable Context:", this.context);
         // Get the recipe details from the backend
         fetch(this.context + "/api/v1/recipes")
             .then(response => response.json())
             .then(result => this.setState({allRecipes: result.data}))
+            .catch(error => console.log("Error retrieving data for all recipes:", error));
     }
 
     addRecipeToState(recipe) {
-        console.log("Called addRecipeToState for", recipe);
-
+        // console.log("Called addRecipeToState for", recipe);
         let updatedRecipes = this.state.allRecipes;
         updatedRecipes.push(recipe);
 
@@ -34,9 +34,32 @@ class RecipeTable extends React.Component {
         })
     }
 
-    deleteRecipeFromState(recipe_id) {
-        console.log("Called deleteRecipeFromState for id=" + recipe_id);
+    deleteRecipe(recipe_id) {
+        console.log("Attempting to delete recipe", recipe_id);
 
+        // Tell the backend to remove this recipe from the database
+        fetch(this.context + "/api/v1/recipe/" + recipe_id, {
+            method: "DELETE"
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Delete successful for recipe_id=" + recipe_id.toString());
+                    // Remove this recipe from local state
+                    this.deleteRecipeFromState(recipe_id)
+
+                    // Remove this recipe from the NavBar recipe list
+                    // TODO: Remove this recipe from the NavBar recipe list
+
+                } else {
+                    console.log("Delete failed for recipe_id=" + recipe_id.toString());
+                    console.log("Details:", response.body);
+                }
+            })
+            .catch(error => console.log("Delete failed:", error));
+    }
+
+    deleteRecipeFromState(recipe_id) {
+        // console.log("Called deleteRecipeFromState for id=" + recipe_id);
         let newList = this.state.allRecipes.filter(
             function (terminator) {
                 return terminator.id !== recipe_id
@@ -55,7 +78,7 @@ class RecipeTable extends React.Component {
                                       difficulty={recipe.difficulty}
                                       solve_for_start={recipe.solve_for_start}
                                       length={seconds_to_string(recipe.length, true, true, false)}
-                                      delete_recipe={this.deleteRecipeFromState} />
+                                      delete_recipe={this.deleteRecipe}/>
         );
 
         return (
