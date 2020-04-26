@@ -1,10 +1,11 @@
 import React from 'react';
 import StepListItem from './StepListItem';
 import LoadingIcon from './LoadingIcon';
+import Table from 'react-bootstrap/Table';
 
 function StepTable(props) {
     return (
-        <table className="step-table">
+        <Table className="step-table" striped>
             <thead className="table-header-row">
             <tr>
                 <th hidden={props.hidden}>&nbsp;</th>
@@ -24,7 +25,7 @@ function StepTable(props) {
                 </tr>
             }
             </tbody>
-        </table>
+        </Table>
     )
 }
 

@@ -1,20 +1,20 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {LinkContainer} from 'react-router-bootstrap'
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavRecipeMenu(props) {
     let recipeList = props.recipeList.map(recipe =>
-        <Link to={`/${recipe.id}`} key={recipe.id}>{recipe.name}</Link>
+            <LinkContainer to={`/${recipe.id}`} key={recipe.id}>
+                <NavDropdown.Item>
+                    {recipe.name}
+                </NavDropdown.Item>
+            </LinkContainer>
     )
 
     return (
-        <div className="nav-dropdown">
-            <Link to="/">
-                Recipes <i className="fa fa-caret-down"/>
-            </Link>
-            <div className="nav-dropdown-content">
-                {recipeList}
-            </div>
-        </div>
+        <NavDropdown title="Recipes" id="collapsible-nav-dropdown">
+            {recipeList}
+        </NavDropdown>
     )
 }
 

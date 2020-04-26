@@ -1,13 +1,14 @@
 import React from 'react';
+import Spinner from 'react-bootstrap/Spinner';
 
 function LoadingIcon(props) {
     return (
-        <img alt="Loading..."
-            // src="%PUBLIC_URL%/loading.gif"
-            // src="https://breadsheet-public.s3-us-west-2.amazonaws.com/loading.gif"
-             src="./loading.gif"
-             className={props.cssClass}
-        />
+        <Spinner animation="border"
+                 variant="secondary"
+                 role="status"
+                 className={props.cssClass}>
+            <span className="sr-only">Loading...</span>
+        </Spinner>
     )
 }
 

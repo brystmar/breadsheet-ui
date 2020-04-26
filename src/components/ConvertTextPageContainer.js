@@ -26,8 +26,7 @@ class ConvertTextPageContainer extends React.Component {
             .then(response => response.json())
             .then(result => {
                     if (result.message === "Success") {
-                        console.log("Successfully retrieved list of", scope);
-
+                        // console.log("Successfully retrieved list of", scope);
                         if (scope === "ingredients") {
                             this.setState({
                                 repListIngredients: result.data,

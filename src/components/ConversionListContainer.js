@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import Table from 'react-bootstrap/Table';
 import {FixedSizeGrid} from 'react-window';
 
 class ConversionListContainer extends React.Component {
@@ -80,7 +81,7 @@ class ConversionListContainer extends React.Component {
 
                 <br/>
 
-                <table className="text-conversion-listbox-header-table">
+                <Table className="text-conversion-listbox-header-table">
                     <thead>
                     <tr>
                         <th>
@@ -91,7 +92,7 @@ class ConversionListContainer extends React.Component {
                         </th>
                     </tr>
                     </thead>
-                </table>
+                </Table>
                 <FixedSizeGrid className="text-conversion-listbox"
                                columnCount={2}
                                columnWidth={185}

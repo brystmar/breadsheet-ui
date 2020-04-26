@@ -3,6 +3,7 @@ import seconds_to_string from '../scripts/time_display_functions';
 import RecipeListItem from './RecipeListItem';
 import AddRecipe from './AddRecipe';
 import BackendUrlContext from './BackendUrlContext';
+import Table from 'react-bootstrap/Table';
 
 class RecipeTable extends React.Component {
     constructor() {
@@ -91,12 +92,12 @@ class RecipeTable extends React.Component {
         );
 
         return (
-            <div className="recipe-detail.container" id="recipeTable">
-                <table className="recipe-table">
+            <div className="recipe-detail-container4" id="recipeTable4">
+                <Table className="recipe-table4" striped>
                     <thead className="table-header-row">
                     <tr>
                         <th hidden={!this.state.editMode}>&nbsp;</th>
-                        <th>Name</th>
+                        <th>Recipe Name</th>
                         <th>Difficulty</th>
                         <th>Length</th>
                         <th>Author</th>
@@ -107,7 +108,7 @@ class RecipeTable extends React.Component {
                     <tbody className="recipe-table-list">
                     {recipeComponentList}
                     </tbody>
-                </table>
+                </Table>
                 <AddRecipe addRecipeToState={this.addRecipeToState}
                            hidden={!this.state.editMode}
                            toggleEditMode={this.toggleEditMode}/>

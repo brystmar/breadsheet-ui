@@ -104,7 +104,7 @@ class StepListItem extends React.Component {
                 </td>
 
                 <td className="step-table-list-item-number">
-                    {this.props.stepNumber}
+                    {this.props.stepNumber}.
                 </td>
 
                 <td className="step-table-list-item-when">

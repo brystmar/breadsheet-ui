@@ -1,9 +1,11 @@
 import React from 'react';
 import NavRecipeMenu from './NavRecipeMenu';
-import {Link} from 'react-router-dom';
+import {LinkContainer} from 'react-router-bootstrap'
 import BackendUrlContext from './BackendUrlContext';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
-class NavBar extends React.Component {
+class NavBar extends React.PureComponent {
     constructor() {
         super();
 
@@ -21,22 +23,22 @@ class NavBar extends React.Component {
         this.getSkinnyRecipeList();
     }
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        if (this.state.recipeList !== nextState.recipeList) {
-            // Refresh when the recipeList data changes
-            console.log("Update NavBar? Yes (state.recipeList)")
-            return true;
-        } else {
-            console.log("Update NavBar? No")
-            return false;
-        }
-    }
+    // shouldComponentUpdate(nextProps, nextState, nextContext) {
+    //     if (this.state.recipeList !== nextState.recipeList) {
+    //         // Refresh when the recipeList data changes
+    //         console.log("Update NavBar? Yes (state.recipeList)")
+    //         return true;
+    //     } else {
+    //         console.log("Update NavBar? No")
+    //         return false;
+    //     }
+    // }
 
     getSkinnyRecipeList() {
         fetch(this.context + "/api/v1/recipe_list")
             .then(response => {
                 if (response.ok) {
-                    console.log("Skinny recipe data retrieved!");
+                    // console.log("Skinny recipe data retrieved!");
                     return response.json();
                 } else {
                     console.log("Error grabbing skinny recipe data.");
@@ -50,15 +52,24 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <span id="navbar"> {/* For appending the 'sticky' class when scrolling */}
-                <div className="navbar">
-                    <Link to="/">Home</Link>
+            <Navbar sticky="top" bg="dark" variant="dark" expand="lg" className="navbar">
+                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav>
+                        <LinkContainer to="/">
+                            <Nav.Link>Home</Nav.Link>
+                        </LinkContainer>
+                        {/*<Link to="/">Home</Link>*/}
 
-                    <NavRecipeMenu recipeList={this.state.recipeList}/>
+                        <NavRecipeMenu recipeList={this.state.recipeList}/>
 
-                    <Link to="/convert">Convert Text</Link>
-                </div>
-            </span>
+                        <LinkContainer to="/convert">
+                            <Nav.Link>Convert Text</Nav.Link>
+                        </LinkContainer>
+                        {/*<Link to="/convert">Convert Text</Link>*/}
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         )
     }
 }

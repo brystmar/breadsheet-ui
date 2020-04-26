@@ -94,7 +94,7 @@ class RecipeStartEnd extends React.Component {
                             <label className="start-finish-toggle-label"
                                    id="start-finish-toggle"
                                    onClick={this.handleStartFinishToggle}>
-                                {this.state.solveForStart ? "Start at" : "Finish at"}
+                                {this.state.solveForStart ? "Start at:" : "Finish at:"}
                             </label>
                         </td>
                         <td className="recipe-start-finish-table-datepicker">

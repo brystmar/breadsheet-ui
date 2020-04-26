@@ -6,7 +6,10 @@ import Footer from './components/Footer';
 import PageTitle from './components/PageTitle';
 import RecipeTable from './components/RecipeTable';
 import 'react-datepicker/dist/react-datepicker.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+// import './accompany-bootstrap.css';
+
 import ConvertTextPageContainer from './components/ConvertTextPageContainer';
 import RecipeDetailSummary from './components/RecipeDetailSummary';
 
@@ -18,7 +21,7 @@ function App() {
             <div className="content">
                 <Switch>
                     <Route exact path="/">
-                        <PageTitle title="Breadsheet" includeHr={true}/>
+                        <PageTitle title="Breadsheet" includeHr={false}/>
                         <RecipeTable/>
                     </Route>
 
