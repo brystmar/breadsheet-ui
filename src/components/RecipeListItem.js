@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom';
 function RecipeListItem(props) {
     return (
         <tr className="recipe-table-list-item">
-            <td className="delete-recipe-button-column">
+            <td className="delete-recipe-button-column"
+                hidden={props.hidden}>
                 <img alt="Delete recipe"
                      src="./button_minus.png"
                      className="delete-recipe-button"

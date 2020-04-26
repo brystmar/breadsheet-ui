@@ -3,14 +3,11 @@ import StepListItem from './StepListItem';
 import LoadingIcon from './LoadingIcon';
 
 function StepTable(props) {
-    // console.log("StepTable props:", props);
-    // console.log("Rendered StepTable w/steps:", props.steps);
-
     return (
         <table className="step-table">
             <thead className="table-header-row">
             <tr>
-                <th>&nbsp;</th>
+                <th hidden={props.hidden}>&nbsp;</th>
                 <th>Step</th>
                 <th>When</th>
                 <th>Action</th>
@@ -56,6 +53,7 @@ function BuildStepComponentList(props) {
                               text={stepList[i].text}
                               then_wait={stepList[i].then_wait}
                               note={stepList[i].note}
+                              hidden={props.hidden}
                               deleteStep={props.deleteStep}
                               handleStepLengthChange={props.handleStepLengthChange}/>);
 
@@ -82,6 +80,7 @@ function BuildStepComponentList(props) {
                               text={stepList[i].text}
                               then_wait={stepList[i].then_wait}
                               note={stepList[i].note}
+                              hidden={props.hidden}
                               deleteStep={props.deleteStep}
                               handleStepLengthChange={props.handleStepLengthChange}/>);
 
@@ -95,6 +94,12 @@ function BuildStepComponentList(props) {
 
     // console.log("Finished BuildStepComponentList:", stepComponentList);
     return stepComponentList;
+}
+
+StepTable.defaultProps = {
+    hidden: true,
+    hasData: false,
+    steps: []
 }
 
 export default StepTable;

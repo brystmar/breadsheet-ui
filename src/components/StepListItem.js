@@ -40,7 +40,8 @@ class StepListItem extends React.Component {
             || this.props.when !== nextProps.when
             || this.props.text !== nextProps.text
             || this.props.then_wait !== nextProps.then_wait
-            || this.props.note !== nextProps.note) {
+            || this.props.note !== nextProps.note
+            || this.props.hidden !== nextProps.hidden) {
             return true
         } else {
             return false
@@ -94,7 +95,8 @@ class StepListItem extends React.Component {
     render() {
         return (
             <tr className="step-table-list-item">
-                <td className="delete-recipe-button-column">
+                <td className="delete-recipe-button-column"
+                    hidden={this.props.hidden}>
                     <img alt={"Delete step " + this.props.stepNumber}
                          src="./button_minus.png"
                          className="delete-recipe-button"
@@ -139,6 +141,10 @@ class StepListItem extends React.Component {
             </tr>
         )
     }
+}
+
+StepListItem.defaultProps = {
+    hidden: true
 }
 
 export default StepListItem;

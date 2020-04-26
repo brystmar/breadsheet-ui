@@ -5,13 +5,15 @@ import AddRecipe from './AddRecipe';
 import BackendUrlContext from './BackendUrlContext';
 
 class RecipeTable extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            allRecipes: []
+            allRecipes: [],
+            editMode: false
         };
 
         this.addRecipeToState = this.addRecipeToState.bind(this);
+        this.toggleEditMode = this.toggleEditMode.bind(this);
         this.deleteRecipe = this.deleteRecipe.bind(this);
         this.deleteRecipeFromState = this.deleteRecipeFromState.bind(this);
     }
@@ -31,6 +33,12 @@ class RecipeTable extends React.Component {
 
         this.setState({
             allRecipes: updatedRecipes
+        })
+    }
+
+    toggleEditMode(mode = !this.state.editMode) {
+        this.setState({
+            editMode: mode
         })
     }
 
@@ -78,6 +86,7 @@ class RecipeTable extends React.Component {
                                       difficulty={recipe.difficulty}
                                       solve_for_start={recipe.solve_for_start}
                                       length={seconds_to_string(recipe.length, true, true, false)}
+                                      hidden={!this.state.editMode}
                                       delete_recipe={this.deleteRecipe}/>
         );
 
@@ -86,7 +95,7 @@ class RecipeTable extends React.Component {
                 <table className="recipe-table">
                     <thead className="table-header-row">
                     <tr>
-                        <th>&nbsp;</th>
+                        <th hidden={!this.state.editMode}>&nbsp;</th>
                         <th>Name</th>
                         <th>Difficulty</th>
                         <th>Length</th>
@@ -99,7 +108,9 @@ class RecipeTable extends React.Component {
                     {recipeComponentList}
                     </tbody>
                 </table>
-                <AddRecipe render={this.addRecipeToState}/>
+                <AddRecipe addRecipeToState={this.addRecipeToState}
+                           hidden={!this.state.editMode}
+                           toggleEditMode={this.toggleEditMode}/>
             </div>
         )
     }

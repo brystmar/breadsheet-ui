@@ -9,7 +9,7 @@ class AddRecipe extends React.Component {
             difficulty: "Intermediate",
             author: "",
             source: "",
-            hidden: true
+            hidden: this.props.hidden
         };
 
         this.handleFormToggle = this.handleFormToggle.bind(this);
@@ -18,12 +18,9 @@ class AddRecipe extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    static defaultProps = {
-        difficulty: "Intermediate"
-    };
-
     handleFormToggle() {
         this.setState({hidden: !this.state.hidden});
+        this.props.toggleEditMode();
     }
 
     handleChange(event) {
@@ -41,6 +38,7 @@ class AddRecipe extends React.Component {
             source: "",
             hidden: true
         })
+        this.props.toggleEditMode(false);
     }
 
     handleSubmit(event) {
@@ -66,7 +64,7 @@ class AddRecipe extends React.Component {
                 this.resetAddRecipeForm();
 
                 // Update state of the RecipeTable component using the provided function
-                this.props.render(result.data);
+                this.props.addRecipeToState(result.data);
             })
     }
 
@@ -156,6 +154,11 @@ class AddRecipe extends React.Component {
             </div>
         )
     }
+}
+
+AddRecipe.defaultProps = {
+    difficulty: "Intermediate",
+    hidden: true
 }
 
 AddRecipe.contextType = BackendUrlContext;

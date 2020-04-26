@@ -26,7 +26,8 @@ class RecipeDetailSummary extends React.Component {
             },
             hasData: false,
             hasSteps: false,
-            nextStep: 1
+            nextStep: 1,
+            editMode: false
         };
 
         this.findHighestStep = this.findHighestStep.bind(this);
@@ -36,6 +37,7 @@ class RecipeDetailSummary extends React.Component {
         this.saveUpdatedRecipe = this.saveUpdatedRecipe.bind(this);
         this.addStepToRecipe = this.addStepToRecipe.bind(this);
         this.deleteStep = this.deleteStep.bind(this);
+        this.toggleEditMode = this.toggleEditMode.bind(this);
     }
 
     componentDidMount() {
@@ -65,6 +67,12 @@ class RecipeDetailSummary extends React.Component {
         if (!prevState.hasData && this.state.hasData) {
             console.log("State updated with recipe data.")
         }
+    }
+
+    toggleEditMode(mode = !this.state.editMode) {
+        this.setState({
+            editMode: mode
+        })
     }
 
     findHighestStep(stepList) {
@@ -203,12 +211,15 @@ class RecipeDetailSummary extends React.Component {
                            start_time={this.state.recipeData.start_time}
                            solve_for_start={this.state.recipeData.solve_for_start}
                            length={this.state.recipeData.length}
+                           hidden={!this.state.editMode}
                            hasData={this.state.hasData}
                            handleStepLengthChange={this.handleStepLengthChange}
                            deleteStep={this.deleteStep}/>
 
                 <AddStep nextStep={this.state.nextStep}
-                         addStepToRecipe={this.addStepToRecipe}/>
+                         addStepToRecipe={this.addStepToRecipe}
+                         hidden={!this.state.editMode}
+                         toggleEditMode={this.toggleEditMode}/>
 
             </div>
         )

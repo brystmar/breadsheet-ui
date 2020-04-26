@@ -10,7 +10,7 @@ class AddStep extends React.Component {
             thenWaitMM: pad(0),
             text: "",
             note: "",
-            hidden: true
+            hidden: this.props.hidden
         };
 
         this.handleFormToggle = this.handleFormToggle.bind(this);
@@ -29,10 +29,10 @@ class AddStep extends React.Component {
     }
 
     handleFormToggle() {
-        // console.log("Clicked handleFormToggle. State.hidden is now:", !this.state.hidden);
         this.setState({
             hidden: !this.state.hidden
         });
+        this.props.toggleEditMode()
     }
 
     handleChange(event) {
@@ -78,7 +78,8 @@ class AddStep extends React.Component {
             text: "",
             note: "",
             hidden: true
-        })
+        });
+        this.props.toggleEditMode(false);
     }
 
     handleSubmit(event) {
@@ -200,6 +201,11 @@ class AddStep extends React.Component {
             </div>
         )
     }
+}
+
+AddStep.defaultProps = {
+    hidden: true,
+    nextStep: 0
 }
 
 export default AddStep;
