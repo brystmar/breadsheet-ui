@@ -16,27 +16,30 @@ import RecipeDetailSummary from './components/RecipeDetailSummary';
 function App() {
     return (
         <div className="App">
-            <BackendUrlContext.Provider value="http://localhost:5000">
-            {/*<BackendUrlContext.Provider value="http://breadsheet.wl.r.appspot.com">*/}
-            <NavBar/>
-            <div className="content">
-                <Switch>
-                    <Route exact path="/">
-                        <PageTitle title="Breadsheet" includeHr={false}/>
-                        <RecipeTable/>
-                    </Route>
+            {/*Dev:*/}
+            {/*<BackendUrlContext.Provider value="http://localhost:5000">*/}
 
-                    <Route exact path="/convert">
-                        <PageTitle title="Convert Recipe Text" includeHr={true}/>
-                        <ConvertTextPageContainer/>
-                    </Route>
+            {/*Prod:*/}
+            <BackendUrlContext.Provider value="http://breadsheet.wl.r.appspot.com">
+                <NavBar/>
+                <div className="content">
+                    <Switch>
+                        <Route exact path="/">
+                            <PageTitle title="Breadsheet" includeHr={false}/>
+                            <RecipeTable/>
+                        </Route>
 
-                    <Route path="/:recipeId">
-                        <RecipeContainer/>
-                    </Route>
-                </Switch>
-            </div>
-            <Footer/>
+                        <Route exact path="/convert">
+                            <PageTitle title="Convert Recipe Text" includeHr={true}/>
+                            <ConvertTextPageContainer/>
+                        </Route>
+
+                        <Route path="/:recipeId">
+                            <RecipeContainer/>
+                        </Route>
+                    </Switch>
+                </div>
+                <Footer/>
             </BackendUrlContext.Provider>
         </div>
     )

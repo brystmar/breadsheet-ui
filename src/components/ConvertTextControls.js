@@ -16,7 +16,6 @@ class ConvertTextControls extends React.Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
-        this.copyToClipboard = this.copyToClipboard.bind(this);
         this.clipboardConfirmation = this.clipboardConfirmation.bind(this);
         this.resetForm = this.resetForm.bind(this);
     }
@@ -45,20 +44,9 @@ class ConvertTextControls extends React.Component {
         }
     }
 
-    copyToClipboard() {
-        console.log("Copy to clipboard...");
-        // Add some line breaks when both outputs are used
-        if (this.state.outputIngredients.length > 0 && this.state.outputDirections.length > 0) {
-            return ;
-        } else {
-            return this.state.outputIngredients + this.state.outputDirections;
-        }
-    }
-
     clipboardConfirmation() {
         // Briefly display a confirmation that text was copied to the clipboard
         // Consider some epic CSS animations from https://daneden.github.io/animate.css/
-        console.log("ClipboardConfirmation!")
         this.setState({
             transition: !this.state.transition
         })
