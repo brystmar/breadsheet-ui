@@ -18,22 +18,15 @@ class NavBar extends React.PureComponent {
 
     componentDidMount() {
         // We should grab the list of recipes when this component mounts, even
-        // if we're not displaying it initially.  This is a lightweight service
-        // call, and its data is highly likely to be relevant during the session.
+        //   if we're not displaying it initially.  This is a lightweight service
+        //   call, and its data is always relevant.
 
         this.getSkinnyRecipeList();
     }
 
-    // shouldComponentUpdate(nextProps, nextState, nextContext) {
-    //     if (this.state.recipeList !== nextState.recipeList) {
-    //         // Refresh when the recipeList data changes
-    //         console.log("Update NavBar? Yes (state.recipeList)")
-    //         return true;
-    //     } else {
-    //         console.log("Update NavBar? No")
-    //         return false;
-    //     }
-    // }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.getSkinnyRecipeList();
+    }
 
     getSkinnyRecipeList() {
         fetch(this.context + "/api/v1/recipe_list")

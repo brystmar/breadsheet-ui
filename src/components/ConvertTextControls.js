@@ -12,7 +12,6 @@ class ConvertTextControls extends React.Component {
             inputDirections: "",
             outputIngredients: "",
             outputDirections: "",
-            separator: "",
             transition: false
         }
 
@@ -44,27 +43,13 @@ class ConvertTextControls extends React.Component {
                 })
             }
         }
-
-        // TODO: Learn how to use JS functions for CopyToClipboard
-        // Update the separator since I'm a newbie who doesn't understand JS
-        if (this.state.outputIngredients.length > 0 && this.state.outputDirections.length > 0) {
-            if (this.state.separator !== "\n\n") {
-                this.setState({
-                    separator: "\n\n"
-                });
-            }
-        } else {
-            this.setState({
-                separator: ""
-            });
-        }
     }
 
     copyToClipboard() {
         console.log("Copy to clipboard...");
         // Add some line breaks when both outputs are used
         if (this.state.outputIngredients.length > 0 && this.state.outputDirections.length > 0) {
-            return this.state.outputIngredients + "\n\n" + this.state.outputDirections;
+            return ;
         } else {
             return this.state.outputIngredients + this.state.outputDirections;
         }
@@ -73,6 +58,7 @@ class ConvertTextControls extends React.Component {
     clipboardConfirmation() {
         // Briefly display a confirmation that text was copied to the clipboard
         // Consider some epic CSS animations from https://daneden.github.io/animate.css/
+        console.log("ClipboardConfirmation!")
         this.setState({
             transition: !this.state.transition
         })
@@ -162,8 +148,7 @@ class ConvertTextControls extends React.Component {
                 <tr className="text-conversion-table-buttons">
                     <td>
                         <CopyToClipboard
-                            text={this.state.outputIngredients + this.state.separator + this.state.outputDirections}
-                            // text={() => this.copyToClipboard()}  // Can't get this to work properly
+                            text={(this.state.outputIngredients + "\n\n" + this.state.outputDirections).trim()}
                             onCopy={this.clipboardConfirmation}>
                             <button name="copyToClipboard"
                                     className="button-clipboard"

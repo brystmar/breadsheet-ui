@@ -35,6 +35,9 @@ class RecipeTable extends React.Component {
         this.setState({
             allRecipes: updatedRecipes
         })
+
+        // TODO: Add to the NavBar's recipe list
+        // something
     }
 
     toggleEditMode(mode = !this.state.editMode) {
@@ -76,7 +79,7 @@ class RecipeTable extends React.Component {
 
         this.setState({allRecipes: newList});
 
-        // Remove from the navbar Recipe list's state
+        // Remove from the NavBar's recipe list
 
     }
 
