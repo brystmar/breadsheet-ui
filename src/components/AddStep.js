@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 import {pad} from '../scripts/time_display_functions';
 
 class AddStep extends React.Component {
@@ -117,16 +118,13 @@ class AddStep extends React.Component {
     render() {
         return (
             <div className="add-step-parent">
-                <div className="add-step-icon">
-                    <img alt="Add recipe"
-                         src="./button_plus.png"
-                         className="add-recipe-toggle-button"
-                         onClick={this.handleFormToggle}/>
-
-                    <label className="add-recipe-toggle-label" onClick={this.handleFormToggle}>
+                <span className="add-recipe-toggle-text" onClick={this.handleFormToggle}>
+                        <img alt="Add step"
+                             src="./button_plus.png"
+                             className="add-recipe-toggle-button"
+                             onClick={this.handleFormToggle}/>
                         Add Step
-                    </label>
-                </div>
+                    </span>
 
                 <form className="add-recipe-form"
                       hidden={this.state.hidden}
@@ -186,17 +184,20 @@ class AddStep extends React.Component {
                            value={this.state.note}
                            onChange={this.handleChange}/>
                     <br/>
-                    <input type="button"
-                           name="cancelNewStep"
-                           className="button-cancel"
-                           value="Cancel"
-                           onClick={this.resetAddStepForm}/>
-                    <input type="submit"
-                           name="saveNewStep"
-                           className="button-submit"
-                           disabled={this.state.hidden}
-                           value="Submit"
-                           onClick={this.handleSubmit}/>
+
+                    <Button variant="danger"
+                            name="cancelNewStep"
+                            className="button-cancel"
+                            size="sm"
+                            onClick={this.resetAddStepForm}>Cancel</Button>
+                    &nbsp;
+                    <Button variant="primary"
+                            type="submit"
+                            name="saveNewStep"
+                            className="button-submit"
+                            disabled={this.state.hidden}
+                            size="sm"
+                            onClick={this.handleSubmit}>Submit</Button>
                 </form>
             </div>
         )

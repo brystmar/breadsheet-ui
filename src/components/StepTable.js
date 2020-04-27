@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 
 function StepTable(props) {
     return (
-        <Table className="step-table" striped>
+        <Table className="step-table" striped size="sm">
             <thead className="table-header-row">
             <tr>
                 <th hidden={props.hidden}>&nbsp;</th>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 import BackendUrlContext from '../context/BackendUrlContext';
 
 class AddRecipe extends React.Component {
@@ -71,16 +72,13 @@ class AddRecipe extends React.Component {
     render() {
         return (
             <div className="add-recipe-parent">
-                <div className="add-recipe-icon">
-                    <img alt="Add recipe"
-                         src="./button_plus.png"
-                         className="add-recipe-toggle-button"
-                         onClick={this.handleFormToggle}/>
-
-                    <label className="add-recipe-toggle-label" onClick={this.handleFormToggle}>
+                    <span className="add-recipe-toggle-text" onClick={this.handleFormToggle}>
+                        <img alt="Add recipe"
+                             src="./button_plus.png"
+                             className="add-recipe-toggle-button"
+                             onClick={this.handleFormToggle}/>
                         Add Recipe
-                    </label>
-                </div>
+                    </span>
 
                 <form className="add-recipe-form"
                       hidden={this.state.hidden}
@@ -140,16 +138,19 @@ class AddRecipe extends React.Component {
                     />
 
                     <br/>
-                    <input type="button"
-                           name="cancelNewRecipe"
-                           className="button-cancel"
-                           value="Cancel"
-                           onClick={this.resetAddRecipeForm}/>
-                    <input type="submit"
-                           name="saveNewRecipe"
-                           className="button-submit"
-                           disabled={this.state.hidden}
-                           value="Submit"/>
+                    <Button variant="danger"
+                            name="cancelNewRecipe"
+                            className="button-cancel"
+                            size="sm"
+                            onClick={this.resetAddRecipeForm}>Cancel</Button>
+                    &nbsp;
+                    <Button variant="primary"
+                            type="submit"
+                            name="saveNewRecipe"
+                            className="button-submit"
+                            disabled={this.state.hidden}
+                            size="sm"
+                            value="Submit">Submit</Button>
                 </form>
             </div>
         )

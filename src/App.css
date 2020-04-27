@@ -121,7 +121,7 @@
 
 .app-footer {
 	font-size: small;
-	margin: 10px 3px;
+	margin: 20px 3px 10px;
 	cursor: default;
 }
 
@@ -212,19 +212,15 @@ hr {
 
 .add-recipe-toggle-button {
 	height: 25px;
-	margin-left: 7px;
-	margin-top: 15px;
-
-	/* Add space between label & icon, but ensure that space is still clickable*/
-	padding-right: 3px;
-
-	cursor: pointer;
+	margin: 0 3px;
 }
 
-.add-recipe-toggle-label {
+.add-recipe-toggle-text {
 	line-height: 30px;
-	vertical-align: text-bottom;
+	margin-bottom: 0;
+	vertical-align: center;
 	cursor: pointer;
+	width: auto;
 }
 
 .add-recipe-form {
