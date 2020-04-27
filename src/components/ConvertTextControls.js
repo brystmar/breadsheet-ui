@@ -1,4 +1,6 @@
 import React from 'react';
+import {CSSTransition} from 'react-transition-group';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import convert_text_using_provided_list from '../scripts/convert_text_functions';
 
 class ConvertTextControls extends React.Component {
@@ -9,11 +11,14 @@ class ConvertTextControls extends React.Component {
             inputIngredients: "",
             inputDirections: "",
             outputIngredients: "",
-            outputDirections: ""
+            outputDirections: "",
+            separator: "",
+            transition: false
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.copyToClipboard = this.copyToClipboard.bind(this);
+        this.clipboardConfirmation = this.clipboardConfirmation.bind(this);
         this.resetForm = this.resetForm.bind(this);
     }
 
@@ -26,6 +31,7 @@ class ConvertTextControls extends React.Component {
                 [name]: value
             });
         } else {
+            // Convert the relevant text
             if (name === "inputIngredients") {
                 this.setState({
                     [name]: value,
@@ -38,21 +44,38 @@ class ConvertTextControls extends React.Component {
                 })
             }
         }
+
+        // TODO: Learn how to use JS functions for CopyToClipboard
+        // Update the separator since I'm a newbie who doesn't understand JS
+        if (this.state.outputIngredients.length > 0 && this.state.outputDirections.length > 0) {
+            if (this.state.separator !== "\n\n") {
+                this.setState({
+                    separator: "\n\n"
+                });
+            }
+        } else {
+            this.setState({
+                separator: ""
+            });
+        }
     }
 
     copyToClipboard() {
         console.log("Copy to clipboard...");
-        let clipboardPromise;
         // Add some line breaks when both outputs are used
         if (this.state.outputIngredients.length > 0 && this.state.outputDirections.length > 0) {
-            clipboardPromise = navigator.clipboard.writeText(
-                this.state.outputIngredients + "\n\n" + this.state.outputDirections)
+            return this.state.outputIngredients + "\n\n" + this.state.outputDirections;
         } else {
-            clipboardPromise = navigator.clipboard.writeText(
-                this.state.outputIngredients + this.state.outputDirections)
+            return this.state.outputIngredients + this.state.outputDirections;
         }
+    }
 
-        clipboardPromise.catch(error => console.log("Error copying text to clipboard:", error));
+    clipboardConfirmation() {
+        // Briefly display a confirmation that text was copied to the clipboard
+        // Consider some epic CSS animations from https://daneden.github.io/animate.css/
+        this.setState({
+            transition: !this.state.transition
+        })
     }
 
     resetForm() {
@@ -74,34 +97,34 @@ class ConvertTextControls extends React.Component {
                             Ingredients
                         </label>
                     </td>
-                    <td> </td>
-                    <td> </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                 </tr>
                 <tr className="text-conversion-table-textarea">
                     <td>
-                                <textarea name="inputIngredients"
-                                          value={this.state.inputIngredients}
-                                          placeholder="Input"
-                                          onChange={this.handleChange}
-                                          autoFocus={true}
-                                          tabIndex={1}
-                                          rows={15}
-                                          cols={60}/>
+                        <textarea name="inputIngredients"
+                                  value={this.state.inputIngredients}
+                                  placeholder="Input"
+                                  onChange={this.handleChange}
+                                  autoFocus={true}
+                                  tabIndex={1}
+                                  rows={12}
+                                  cols={50}/>
                     </td>
                     <th className="text-conversion-table-arrow">
                         -->
                     </th>
                     <td>
-                                <textarea name="outputIngredients"
-                                          value={this.state.outputIngredients}
-                                          placeholder="Output"
-                                          disabled={true}
-                                          rows={15}
-                                          cols={60}/>
+                        <textarea name="outputIngredients"
+                                  value={this.state.outputIngredients}
+                                  placeholder="Output"
+                                  disabled={true}
+                                  rows={12}
+                                  cols={50}/>
                     </td>
                 </tr>
                 <tr>
-                    <td> </td>
+                    <td>&nbsp;</td>
                 </tr>
 
                 <tr className="text-conversion-table-label">
@@ -110,40 +133,53 @@ class ConvertTextControls extends React.Component {
                             Directions
                         </label>
                     </td>
-                    <td> </td>
-                    <td> </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                 </tr>
                 <tr className="text-conversion-table-textarea">
                     <td>
-                                <textarea name="inputDirections"
-                                          value={this.state.inputDirections}
-                                          placeholder="Input"
-                                          onChange={this.handleChange}
-                                          tabIndex={2}
-                                          rows={15}
-                                          cols={60}/>
+                        <textarea name="inputDirections"
+                                  value={this.state.inputDirections}
+                                  placeholder="Input"
+                                  onChange={this.handleChange}
+                                  tabIndex={2}
+                                  rows={12}
+                                  cols={50}/>
                     </td>
                     <th className="text-conversion-table-arrow">
                         -->
                     </th>
                     <td>
-                                <textarea name="outputDirections"
-                                          value={this.state.outputDirections}
-                                          placeholder="Output"
-                                          disabled={true}
-                                          rows={15}
-                                          cols={60}/>
+                        <textarea name="outputDirections"
+                                  value={this.state.outputDirections}
+                                  placeholder="Output"
+                                  disabled={true}
+                                  rows={12}
+                                  cols={50}/>
                     </td>
                 </tr>
 
                 <tr className="text-conversion-table-buttons">
                     <td>
-                        <button name="copyToClipboard"
-                                className="button-clipboard"
-                                onClick={this.copyToClipboard}
-                                tabIndex={3}>
-                            <i className="far fa-copy"/> Copy to Clipboard
-                        </button>
+                        <CopyToClipboard
+                            text={this.state.outputIngredients + this.state.separator + this.state.outputDirections}
+                            // text={() => this.copyToClipboard()}  // Can't get this to work properly
+                            onCopy={this.clipboardConfirmation}>
+                            <button name="copyToClipboard"
+                                    className="button-clipboard"
+                                    tabIndex={3}>
+                                <i className="far fa-copy"/> Copy to Clipboard
+                            </button>
+                        </CopyToClipboard>
+
+                        <CSSTransition in={this.state.transition}
+                                       timeout={1000}
+                                       classNames="clipboard-confirmation"
+                                       onEntered={this.clipboardConfirmation}>
+                            <span className="clipboard-confirmation">
+                                Copied!
+                            </span>
+                        </CSSTransition>
                     </td>
                     <td>
 
@@ -161,6 +197,11 @@ class ConvertTextControls extends React.Component {
             </table>
         )
     }
+}
+
+ConvertTextControls.defaultProps = {
+    ingredientsList: [],
+    directionsList: []
 }
 
 export default ConvertTextControls;

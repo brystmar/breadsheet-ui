@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route, useParams} from 'react-router-dom';
-import BackendUrlContext from './components/BackendUrlContext';
+import BackendUrlContext from './context/BackendUrlContext';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import PageTitle from './components/PageTitle';
@@ -16,7 +16,8 @@ import RecipeDetailSummary from './components/RecipeDetailSummary';
 function App() {
     return (
         <div className="App">
-            <BackendUrlContext.Provider value="http://breadsheet.wl.r.appspot.com">
+            <BackendUrlContext.Provider value="http://localhost:5000">
+            {/*<BackendUrlContext.Provider value="http://breadsheet.wl.r.appspot.com">*/}
             <NavBar/>
             <div className="content">
                 <Switch>
@@ -25,13 +26,12 @@ function App() {
                         <RecipeTable/>
                     </Route>
 
-                    {/*TODO: Fix routing issues */}
                     <Route exact path="/convert">
                         <PageTitle title="Convert Recipe Text" includeHr={true}/>
                         <ConvertTextPageContainer/>
                     </Route>
 
-                    <Route exact path="/:recipeId">
+                    <Route path="/:recipeId">
                         <RecipeContainer/>
                     </Route>
                 </Switch>

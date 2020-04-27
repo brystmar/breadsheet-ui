@@ -1,5 +1,5 @@
 import React from 'react';
-import BackendUrlContext from './BackendUrlContext';
+import BackendUrlContext from '../context/BackendUrlContext';
 
 class AddRecipe extends React.Component {
     constructor(props) {

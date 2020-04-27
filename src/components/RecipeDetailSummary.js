@@ -6,7 +6,7 @@ import RecipeDetailAttributes from './RecipeDetailAttributes';
 import RecipeStartEnd from './RecipeStartEnd';
 import StepTable from './StepTable';
 import AddStep from './AddStep';
-import BackendUrlContext from './BackendUrlContext';
+import BackendUrlContext from '../context/BackendUrlContext';
 
 class RecipeDetailSummary extends React.Component {
     constructor(props) {
@@ -38,11 +38,25 @@ class RecipeDetailSummary extends React.Component {
         this.addStepToRecipe = this.addStepToRecipe.bind(this);
         this.deleteStep = this.deleteStep.bind(this);
         this.toggleEditMode = this.toggleEditMode.bind(this);
+        this.getRecipeData = this.getRecipeData.bind(this);
     }
 
     componentDidMount() {
-        // Get the recipe details from the backend
-        fetch(this.context + "/api/v1/recipe/" + this.props.recipeId)
+        this.getRecipeData(this.props.recipeId);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        // if (!prevState.hasData && this.state.hasData) {
+        //     console.log("State updated with recipe data.")
+        // }
+
+        if (prevProps.recipeId !== this.props.recipeId) {
+            this.getRecipeData(this.props.recipeId);
+        }
+    }
+
+    getRecipeData(recipe_id) {
+        fetch(this.context + "/api/v1/recipe/" + recipe_id)
             .then(response => response.json())
             .then(result => {
                 if (result.message === "Success") {
@@ -61,12 +75,6 @@ class RecipeDetailSummary extends React.Component {
                 }
             })
             .catch(rejection => console.log(rejection));
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (!prevState.hasData && this.state.hasData) {
-            console.log("State updated with recipe data.")
-        }
     }
 
     toggleEditMode(mode = !this.state.editMode) {

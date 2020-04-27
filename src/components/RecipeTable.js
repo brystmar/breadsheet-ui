@@ -2,7 +2,7 @@ import React from 'react';
 import seconds_to_string from '../scripts/time_display_functions';
 import RecipeListItem from './RecipeListItem';
 import AddRecipe from './AddRecipe';
-import BackendUrlContext from './BackendUrlContext';
+import BackendUrlContext from '../context/BackendUrlContext';
 import Table from 'react-bootstrap/Table';
 
 class RecipeTable extends React.Component {
@@ -68,19 +68,22 @@ class RecipeTable extends React.Component {
     }
 
     deleteRecipeFromState(recipe_id) {
-        // console.log("Called deleteRecipeFromState for id=" + recipe_id);
+        // Remove from local state
         let newList = this.state.allRecipes.filter(
             function (terminator) {
                 return terminator.id !== recipe_id
             });
 
         this.setState({allRecipes: newList});
+
+        // Remove from the navbar Recipe list's state
+
     }
 
     render() {
         const recipeComponentList = this.state.allRecipes.map(
             recipe => <RecipeListItem key={recipe.id}
-                                      id={recipe.id}
+                                      recipe_id={recipe.id}
                                       name={recipe.name}
                                       author={recipe.author}
                                       source={recipe.source}

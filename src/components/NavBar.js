@@ -1,7 +1,7 @@
 import React from 'react';
 import NavRecipeMenu from './NavRecipeMenu';
 import {LinkContainer} from 'react-router-bootstrap'
-import BackendUrlContext from './BackendUrlContext';
+import BackendUrlContext from '../context/BackendUrlContext';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
@@ -13,6 +13,7 @@ class NavBar extends React.PureComponent {
             recipeList: []
         }
         this.getSkinnyRecipeList = this.getSkinnyRecipeList.bind(this);
+
     }
 
     componentDidMount() {

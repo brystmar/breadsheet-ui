@@ -1,7 +1,7 @@
 import React from 'react';
 import ConvertTextControls from './ConvertTextControls';
 import ConversionListContainer from './ConversionListContainer';
-import BackendUrlContext from './BackendUrlContext';
+import BackendUrlContext from '../context/BackendUrlContext';
 
 class ConvertTextPageContainer extends React.Component {
     constructor(props) {

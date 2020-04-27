@@ -9,10 +9,10 @@ function RecipeListItem(props) {
                 <img alt="Delete recipe"
                      src="./button_minus.png"
                      className="delete-recipe-button"
-                     onClick={props.delete_recipe}/>
+                     onClick={() => props.delete_recipe(props.recipe_id)}/>
             </td>
             <td className="recipe-list-item-name">
-                <Link to={`/${props.id}`}>{props.name}</Link>
+                <Link to={`/${props.recipe_id}`}>{props.name}</Link>
             </td>
             <td>{props.difficulty}</td>
             <td>{props.length}</td>
@@ -23,13 +23,14 @@ function RecipeListItem(props) {
 }
 
 RecipeListItem.defaultProps = {
-    id: 0,
+    recipe_id: 0,
     name: "Default Recipe",
     author: "tberg",
     source: "The interwebs",
     difficulty: "Beginner",
     solve_for_start: true,
-    length: 0
+    length: 0,
+    hidden: true
 }
 
 export default RecipeListItem;

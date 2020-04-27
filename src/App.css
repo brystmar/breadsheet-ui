@@ -429,7 +429,7 @@ hr {
 }
 
 .text-conversion-table-label {
-	font-size: large;
+	font-size: x-large;
 	font-weight: bold;
 }
 
@@ -481,4 +481,36 @@ hr {
 	padding: 0 2px;
 	background-color: inherit;
 	white-space: pre;  /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
+}
+
+.clipboard-confirmation {
+	visibility: hidden;
+	margin-left: 8px;
+	font-size: smaller;
+	color: forestgreen;
+}
+/*	opacity: 1;*/
+/*    -webkit-transition: all 2s ease-in-out;*/
+/*    -moz-transition: all 2s ease-in-out;*/
+/*    -o-transition: all 2s ease-in-out;*/
+/*    transition: all 2s ease-in-out;*/
+/*}*/
+
+.clipboard-confirmation-enter {
+	visibility: visible;
+	opacity: 0;
+}
+
+.clipboard-confirmation-enter-active {
+	opacity: 1;
+	transition: opacity 1000ms;
+}
+
+.clipboard-confirmation-exit {
+	opacity: 1;
+}
+
+.clipboard-confirmation-exit-active {
+	opacity: 0;
+	transition: opacity 1000ms;
 }
