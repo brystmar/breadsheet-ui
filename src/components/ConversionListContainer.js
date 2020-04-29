@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 import {MDBDataTable} from 'mdbreact';
 
 class ConversionListContainer extends React.Component {
@@ -14,7 +15,6 @@ class ConversionListContainer extends React.Component {
         this.toggleScope = this.toggleScope.bind(this);
         this.onRowHover = this.onRowHover.bind(this);
         this.reformatSpaces = this.reformatSpaces.bind(this);
-        this.objectToArray = this.objectToArray.bind(this);
         this.newbieHacks = this.newbieHacks.bind(this);
     }
 
@@ -107,10 +107,6 @@ class ConversionListContainer extends React.Component {
         return output;
     }
 
-    objectToArray(something) {
-        return [something['old'], something['new']];
-    }
-
     render() {
         let dtData = {
             columns: [
@@ -133,19 +129,25 @@ class ConversionListContainer extends React.Component {
         };
 
         return (
-            <div className="text-conversion-list-container333">
-
+            <>
                 <MDBDataTable scrollY
                               striped
                               small
                               responsiveSm
                               hover
                               bordered
-                              maxHeight="500px"
+                              maxHeight="550px"
                               className="text-conversion-list-item"
                               data={dtData}
                               entries={15}/>
-            </div>
+
+                <h4>
+                    <Button variant="secondary" name="scopeChange" onClick={this.toggleScope}>
+                        <i className="fas fa-retweet"/>
+                    </Button>
+                    &nbsp;{this.state.scope === "ingredients" ? "Ingredients" : "Directions"} Replacements
+                </h4>
+            </>
         )
     }
 }
