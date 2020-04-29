@@ -46,21 +46,19 @@ class NavBar extends React.PureComponent {
 
     render() {
         return (
-            <Navbar sticky="top" bg="dark" variant="dark" expand="lg" className="navbar">
+            <Navbar sticky="top" bg="dark" variant="dark" expand="sm" className="navbar">
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav>
                         <LinkContainer to="/">
                             <Nav.Link>Home</Nav.Link>
                         </LinkContainer>
-                        {/*<Link to="/">Home</Link>*/}
 
                         <NavRecipeMenu recipeList={this.state.recipeList}/>
 
                         <LinkContainer to="/convert">
                             <Nav.Link>Convert Text</Nav.Link>
                         </LinkContainer>
-                        {/*<Link to="/convert">Convert Text</Link>*/}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

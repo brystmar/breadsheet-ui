@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Removed copyToClipboard since it's no longer needed">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/accompany-bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeTable.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +77,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT&#10;JavaScript" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript&#10;TEXT" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -470,7 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588029776819</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Removed copyToClipboard since it's no longer needed">
+      <created>1588030039287</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1588030039287</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,7 +509,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Still having issues w/StepListItem not updating its own state properly" />
     <MESSAGE value="Add &amp; remove Steps works!" />
     <MESSAGE value="Fixed the ThenWaitHH/MM state issue!  Next: figure out a performant replacement for componentWillUpdate" />
     <MESSAGE value="Overly aggressive zero-padding for ThenWaitXX fields" />
@@ -517,7 +533,8 @@
     <MESSAGE value="Fixed the NavBar dropdown link issue!  Working on CSS transitions." />
     <MESSAGE value="Copy to clipboard &amp; relevant animations should work now" />
     <MESSAGE value="Fixed add Recipe &amp; Step text, buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed add Recipe &amp; Step text, buttons" />
+    <MESSAGE value="Removed copyToClipboard since it's no longer needed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed copyToClipboard since it's no longer needed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="597" y="253" key="#Notifications" timestamp="1583197787893">
@@ -528,10 +545,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587915934635" />
-    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1588029945720">
+    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1588030039139">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588029945720" />
+    <state x="366" y="178" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588030039139" />
     <state x="852" y="488" key="Github.ShareDialog" timestamp="1582419683416">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -548,10 +565,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="495" y="226" key="SettingsEditor/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1586479205662" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1588029779003">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1588030042297">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588029779003" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588030042297" />
     <state x="674" y="420" key="com.intellij.ide.util.TipDialog" timestamp="1584208287933">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -568,9 +585,9 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="743" y="307" key="git4idea.branch.GitSmartOperationDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420963869" />
-    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup" timestamp="1587868140588">
+    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup" timestamp="1588131150692">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1587868140588" />
+    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588131150692" />
   </component>
 </project>

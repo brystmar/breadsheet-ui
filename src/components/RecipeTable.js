@@ -92,7 +92,10 @@ class RecipeTable extends React.Component {
                                       source={recipe.source}
                                       difficulty={recipe.difficulty}
                                       solve_for_start={recipe.solve_for_start}
-                                      length={seconds_to_string(recipe.length, true, true, false)}
+                                      length={seconds_to_string(recipe.length,
+                                          recipe.length >= 86400,
+                                          recipe.length < 86400,
+                                          false)}
                                       hidden={!this.state.editMode}
                                       delete_recipe={this.deleteRecipe}/>
         );

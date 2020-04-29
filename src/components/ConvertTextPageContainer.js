@@ -53,7 +53,6 @@ class ConvertTextPageContainer extends React.Component {
                                      directionsList={this.state.repListDirections}
                                      updateReplacementList={this.getReplacements}/>
                 <br/>
-                <br/>
                 {this.state.repListDirections.length > 10 ?
                 <ConversionListContainer ingredientsList={this.state.repListIngredients}
                                          directionsList={this.state.repListDirections}

@@ -14,10 +14,10 @@ function RecipeListItem(props) {
             <td className="recipe-list-item-name">
                 <Link to={`/${props.recipe_id}`}>{props.name}</Link>
             </td>
-            <td>{props.difficulty}</td>
-            <td>{props.length}</td>
-            <td>{props.author}</td>
-            <td>{props.source}</td>
+            <td className="recipe-list-item-difficulty">{props.difficulty}</td>
+            <td className="recipe-list-item-length">{props.length}</td>
+            <td className="recipe-list-item-author">{props.author}</td>
+            <td className="recipe-list-item-source">{props.source}</td>
         </tr>
     )
 }

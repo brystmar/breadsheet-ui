@@ -1,6 +1,5 @@
-import React, {PureComponent} from 'react';
-import Table from 'react-bootstrap/Table';
-import {FixedSizeGrid} from 'react-window';
+import React from 'react';
+import {MDBDataTable} from 'mdbreact';
 
 class ConversionListContainer extends React.Component {
     constructor(props) {
@@ -14,8 +13,28 @@ class ConversionListContainer extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.toggleScope = this.toggleScope.bind(this);
         this.onRowHover = this.onRowHover.bind(this);
-        this.filterArray = this.filterArray.bind(this);
+        this.reformatSpaces = this.reformatSpaces.bind(this);
         this.objectToArray = this.objectToArray.bind(this);
+        this.newbieHacks = this.newbieHacks.bind(this);
+    }
+
+    componentDidMount() {
+        this.newbieHacks()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.newbieHacks()
+    }
+
+    newbieHacks() {
+        // Two minor hacks to remove items I can't customize from a package
+        // Remove the `Entries per page` selector
+        document.getElementsByClassName("dataTables_length bs-select")[0].innerHTML = "";
+
+        // TODO: Remove the text label above the search box
+        // let searchLabel = document.getElementsByClassName("dataTables_filter")[0];
+        // searchLabel = searchLabel.getElementsByTagName("label")[0];
+        // console.log(searchLabel)
     }
 
     reset() {
@@ -49,12 +68,41 @@ class ConversionListContainer extends React.Component {
         }
     }
 
-    filterArray(array) {
+    reformatSpaces(array) {
+        // For visibility, replace all spaces with · and newlines with ¶
         let output = [];
+        let updated_old = "";
+        let updated_new = "";
+
+        // For each item in the array...
         for (let i = 0; i < array.length; i++) {
-            if (array[i].toString().includes(this.state.searchString)) {
-                output.push(this.objectToArray(array[i]));
+            updated_old = "";
+            updated_new = "";
+
+            // Replace these characters in the 'find' column
+            for (let j = 0; j < array[i]['old'].length; j++) {
+                if (array[i]['old'][j] === " ") {
+                    updated_old += String.fromCharCode(183);
+                } else if (array[i]['old'][j] === "\n") {
+                    updated_old += String.fromCharCode(182);
+                } else {
+                    updated_old += array[i]['old'][j];
+                }
             }
+
+            // Ditto for the 'replace' column
+            for (let k = 0; k < array[i]['new'].length; k++) {
+                if (array[i]['new'][k] === " ") {
+                    updated_new += String.fromCharCode(183);
+                } else if (array[i]['new'][k] === "\n") {
+                    updated_new += String.fromCharCode(182);
+                } else {
+                    updated_new += array[i]['new'][k];
+                }
+            }
+
+            // Append to the array
+            output.push({old: updated_old, new: updated_new});
         }
         return output;
     }
@@ -64,83 +112,41 @@ class ConversionListContainer extends React.Component {
     }
 
     render() {
+        let dtData = {
+            columns: [
+                {
+                    label: "Find",
+                    field: "old",
+                    sort: "asc",
+                    width: 150
+                },
+                {
+                    label: "Replace",
+                    field: "new",
+                    sort: "asc",
+                    width: 150
+                }
+            ],
+            rows: this.state.scope === "ingredients" && this.props.ingredientsList.length > 0 ?
+                this.reformatSpaces(this.props.ingredientsList) :
+                this.reformatSpaces(this.props.directionsList)
+        };
+
         return (
-            <div className="text-conversion-list-container">
-                <input type="text"
-                       name="searchString"
-                       value={this.state.searchString}
-                       placeholder={"Search " + this.state.scope + " list"}
-                       maxLength={160}
-                       disabled  // TODO: Re-enable once search filtering works
-                       onChange={this.handleChange}/>
+            <div className="text-conversion-list-container333">
 
-                <button name="scopeChange"
-                        onClick={this.toggleScope}>
-                    <i className="fas fa-retweet"/>
-                </button>
-
-                <br/>
-
-                <Table className="text-conversion-listbox-header-table">
-                    <thead>
-                    <tr>
-                        <th>
-                            Find
-                        </th>
-                        <th>
-                            Replace With
-                        </th>
-                    </tr>
-                    </thead>
-                </Table>
-                <FixedSizeGrid className="text-conversion-listbox"
-                               columnCount={2}
-                               columnWidth={185}
-                               columnHeight={30}
-                               height={300}
-                               width={420}
-                               rowHeight={30}
-                               rowWidth={80}
-                               rowCount={this.state.scope === "ingredients" ?
-                                   this.props.ingredientsList.length :
-                                   this.props.directionsList.length}
-                               itemData={this.state.scope === "ingredients" && this.props.ingredientsList.length > 0 ?
-                                   this.filterArray(this.props.ingredientsList) :
-                                   this.filterArray(this.props.directionsList)}>
-                    {GridItemRenderer}
-                </FixedSizeGrid>
-                <br/>
+                <MDBDataTable scrollY
+                              striped
+                              small
+                              responsiveSm
+                              hover
+                              bordered
+                              maxHeight="500px"
+                              className="text-conversion-list-item"
+                              data={dtData}
+                              entries={15}/>
             </div>
         )
-    }
-}
-
-
-class GridItemRenderer extends PureComponent {
-    render() {
-        // Access the data source using the `data` prop
-        const {data, columnIndex, rowIndex, style} = this.props;
-
-        let datum = data[rowIndex][columnIndex];
-        let output = "";
-
-        // Replace spaces with · and newlines with ¶
-        for (let i = 0; i < datum.length; i++) {
-            if (datum[i] === " ") {
-                output += String.fromCharCode(183);
-            } else if (datum[i] === "\n") {
-                output += String.fromCharCode(182);
-            } else {
-                output += datum[i];
-            }
-        }
-
-        return (
-            <div style={style}
-                 className="text-conversion-list-item">
-                {output}
-            </div>
-        );
     }
 }
 

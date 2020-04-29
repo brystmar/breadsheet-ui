@@ -8,7 +8,6 @@ import RecipeTable from './components/RecipeTable';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-// import './accompany-bootstrap.css';
 
 import ConvertTextPageContainer from './components/ConvertTextPageContainer';
 import RecipeDetailSummary from './components/RecipeDetailSummary';
@@ -17,10 +16,10 @@ function App() {
     return (
         <div className="App">
             {/*Dev:*/}
-            {/*<BackendUrlContext.Provider value="http://localhost:5000">*/}
+            <BackendUrlContext.Provider value="http://localhost:5000">
 
             {/*Prod:*/}
-            <BackendUrlContext.Provider value="http://breadsheet.wl.r.appspot.com">
+            {/*<BackendUrlContext.Provider value="http://breadsheet.wl.r.appspot.com">*/}
                 <NavBar/>
                 <div className="content">
                     <Switch>
