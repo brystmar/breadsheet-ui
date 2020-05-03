@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, useParams } from 'react-router-dom';
-import BackendUrlContext from "./context/BackendUrlContext";
+import BackendUrlContext from './context/BackendUrlContext';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import PageTitle from './components/PageTitle';
