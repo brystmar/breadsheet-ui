@@ -6,18 +6,22 @@ import Nav from 'react-bootstrap/Nav';
 
 function NavBar(props) {
     return (
-        <Navbar sticky="top" bg="dark" variant="dark" expand="sm" className="navbar">
+        <Navbar sticky="top"
+                bg="dark"
+                variant="dark"
+                expand="sm"
+                className="navbar-custom-container">
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav>
                     <LinkContainer to="/">
-                        <Nav.Link>Home</Nav.Link>
+                        <Nav.Link className="navbar-custom-link">Home</Nav.Link>
                     </LinkContainer>
 
                     <NavRecipeMenu allRecipes={props.allRecipes}/>
 
                     <LinkContainer to="/convert">
-                        <Nav.Link>Convert Text</Nav.Link>
+                        <Nav.Link className="navbar-custom-link">Convert Text</Nav.Link>
                     </LinkContainer>
                 </Nav>
             </Navbar.Collapse>

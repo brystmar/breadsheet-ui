@@ -18,7 +18,7 @@ function RecipeDetailAttributes(props) {
             <tr>
                 <td className="recipe-detail-summary-table-label">Total Time</td>
                 <td className="recipe-detail-summary-table-value">
-                    {seconds_to_string(props.length, true, true, true)}
+                    {seconds_to_string(props.length ? props.length : 0, true, true, true)}
                 </td>
                 <td className="recipe-detail-summary-table-label">Source</td>
                 <td className="recipe-detail-summary-table-value">

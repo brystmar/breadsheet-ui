@@ -136,10 +136,10 @@ class ConversionListContainer extends React.Component {
                               responsiveSm
                               hover
                               bordered
-                              maxHeight="550px"
+                              maxHeight="600px"
                               className="text-conversion-list-item"
                               data={dtData}
-                              entries={15}/>
+                              entries={12}/>
 
                 <h4>
                     <Button variant="secondary" name="scopeChange" onClick={this.toggleScope}>

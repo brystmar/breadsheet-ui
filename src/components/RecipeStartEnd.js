@@ -1,6 +1,5 @@
 import React from 'react';
 import DatePicker from 'react-datepicker/es';
-// import Moment from 'react-moment';
 import moment from "moment";
 
 class RecipeStartEnd extends React.Component {

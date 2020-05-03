@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import BackendUrlContext from '../context/BackendUrlContext';
 import { v4 as uuid } from 'uuid';
 
 class AddRecipe extends React.Component {
@@ -54,7 +53,8 @@ class AddRecipe extends React.Component {
         event.preventDefault();
 
         // POST new recipe to the backend
-        fetch(this.context + "/api/v1/recipes", {
+        console.log("Calling endpoint: [POST]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes")
+        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes", {
             method: "POST",
             body: JSON.stringify(stateCopy)
         })
@@ -164,7 +164,5 @@ AddRecipe.defaultProps = {
     difficulty: "Intermediate",
     hidden: true
 }
-
-AddRecipe.contextType = BackendUrlContext;
 
 export default AddRecipe;

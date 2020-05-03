@@ -6,25 +6,13 @@ import RecipeDetailAttributes from './RecipeDetailAttributes';
 import RecipeStartEnd from './RecipeStartEnd';
 import StepTable from './StepTable';
 import AddStep from './AddStep';
-import BackendUrlContext from '../context/BackendUrlContext';
 
 class RecipeDetailSummary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            recipeData: {
-                id: "",
-                name: "",
-                author: "",
-                source: "",
-                difficulty: "",
-                date_added: new Date(0).getTime(),
-                start_time: new Date(0).getTime(),
-                solve_for_start: true,
-                steps: [],
-                length: 0
-            },
-            hasData: false,
+            recipeData: this.props.recipeData,
+            hasData: this.props.hasData,
             hasSteps: false,
             nextStep: 1,
             editMode: false
@@ -52,12 +40,11 @@ class RecipeDetailSummary extends React.Component {
     }
 
     getRecipeData(recipe_id) {
-        fetch(this.context + "/api/v1/recipe/" + recipe_id)
+        console.log("Calling endpoint: [GET]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id)
+        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id)
             .then(response => response.json())
             .then(result => {
                 if (result.message === "Success") {
-                    console.log("Recipe details successfully retrieved from backend.");
-
                     this.setState({
                         recipeData: result.data,
                         hasData: true,
@@ -128,9 +115,9 @@ class RecipeDetailSummary extends React.Component {
 
     saveUpdatedRecipe(newState) {
         // Update this recipe (and the component's state) in the database
-        console.log("Called saveUpdatedRecipe for recipe_id:", newState.recipeData.id);
+        console.log("Calling endpoint: [PUT]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + newState.recipeData.id);
 
-        fetch(this.context + "/api/v1/recipe/" + newState.recipeData.id, {
+        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + newState.recipeData.id, {
             method: "PUT",
             body: JSON.stringify(newState.recipeData)
         })
@@ -236,9 +223,13 @@ class RecipeDetailSummary extends React.Component {
     }
 }
 
-RecipeDetailSummary.contextType = BackendUrlContext;
 RecipeDetailSummary.defaultProps = {
-    recipeId: 1560122081.000008
+    // recipeId: 1560122081.000008,
+    recipeId: 0,
+    recipeData: {
+        id: 0
+    },
+    hasData: false
 }
 
 export default RecipeDetailSummary;

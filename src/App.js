@@ -1,6 +1,5 @@
 import React from 'react';
-import { Switch, Route, useParams } from 'react-router-dom';
-import BackendUrlContext from './context/BackendUrlContext';
+import {Switch, Route, useParams} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import PageTitle from './components/PageTitle';
@@ -32,8 +31,8 @@ class App extends React.Component {
 
     getAllRecipes() {
         // Get the recipe details from the backend
-        console.log("Calling endpoint:", this.context + "/api/v1/recipes");
-        fetch(this.context + "/api/v1/recipes")
+        console.log("Calling endpoint:", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes");
+        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes")
             .then(response => response.json())
             .then(result => this.setState({allRecipes: result.data}))
             .catch(error => console.log("Error retrieving data for all recipes:", error));
@@ -53,7 +52,8 @@ class App extends React.Component {
         console.log("Attempting to delete recipe", recipe_id);
 
         // Tell the backend to remove this recipe from the database
-        fetch(this.context + "/api/v1/recipe/" + recipe_id, {
+        console.log("Calling endpoint: [DELETE]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id);
+        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id, {
             method: "DELETE"
         })
             .then(response => {
@@ -96,9 +96,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="app-container">
                 <NavBar allRecipes={this.state.allRecipes}/>
-                <div className="content">
+                <div className="content-container">
                     <Switch>
                         <Route exact path="/">
                             <PageTitle title="Breadsheet" includeHr={false}/>
@@ -113,7 +113,8 @@ class App extends React.Component {
                         </Route>
 
                         <Route path="/:recipeId">
-                            <RecipeContainer updateRecipeLength={this.updateRecipeLength}
+                            <RecipeContainer allRecipes={this.state.allRecipes}
+                                             updateRecipeLength={this.updateRecipeLength}
                                              updateMasterRecipeList={this.getAllRecipes}
                             />
                         </Route>
@@ -127,11 +128,20 @@ class App extends React.Component {
 
 function RecipeContainer(props) {
     let {recipeId} = useParams();
+    let recipeDeets = {};
+
+    for (let i=0; i<props.allRecipes.length; i++) {
+        if (props.allRecipes[i].id === {recipeId}) {
+            recipeDeets = props.allRecipes[i];
+            break;
+        }
+    }
+
     return <RecipeDetailSummary recipeId={recipeId}
+                                recipeData={recipeDeets}
+                                hasData={!!recipeDeets.id}
                                 updateRecipeLength={props.updateRecipeLength}
                                 updateMasterRecipeList={props.updateMasterRecipeList}/>
 }
-
-App.contextType = BackendUrlContext;
 
 export default App;
