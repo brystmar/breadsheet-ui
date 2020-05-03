@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import {pad} from '../scripts/time_display_functions';
+import { pad } from '../scripts/time_display_functions';
+import { v4 as uuid } from 'uuid';
 
 class AddStep extends React.Component {
     constructor(props) {
@@ -93,8 +94,10 @@ class AddStep extends React.Component {
         }
 
         // Require values for step# and text
-        if (this.state.stepNumber === "" || this.state.stepNumber.isNaN ||
-            this.state.text === "" || this.state.text.isNaN) {
+        if (this.state.stepNumber === ""
+            || this.state.stepNumber.isNaN
+            || this.state.text === ""
+            || this.state.text.isNaN) {
             return false;
         }
 
@@ -103,11 +106,14 @@ class AddStep extends React.Component {
 
         // Create an object that's congruent with the Step data model
         let newStep = {
-            number: this.state.stepNumber,
+            step_id: uuid(),
+            number: Number(this.state.stepNumber),
             text: this.state.text,
             then_wait: (Number(this.state.thenWaitHH) * 3600) + (Number(this.state.thenWaitMM) * 60),
             note: this.state.note
         };
+
+        console.log("New Step:", newStep);
 
         // Send this new step to the parent so it can update the backend
         // console.log("New step to add:", newStep);

@@ -5,8 +5,8 @@ import Form from 'react-bootstrap/Form';
 // import FormControl from 'react-bootstrap/FormText';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {CSSTransition} from 'react-transition-group';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CSSTransition } from 'react-transition-group';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import convert_text_using_provided_list from '../scripts/convert_text_functions';
 
 class ConvertTextControls extends React.Component {

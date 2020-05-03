@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import BackendUrlContext from '../context/BackendUrlContext';
+import { v4 as uuid } from 'uuid';
 
 class AddRecipe extends React.Component {
     constructor(props) {
@@ -45,7 +46,9 @@ class AddRecipe extends React.Component {
     handleSubmit(event) {
         console.log("New recipe submitted:", this.state);
         let stateCopy = this.state;
+        stateCopy.id = uuid();
         delete stateCopy.hidden;
+        console.log("StateCopy:", stateCopy);
 
         // Don't refresh the page
         event.preventDefault();

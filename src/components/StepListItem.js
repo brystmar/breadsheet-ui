@@ -1,5 +1,5 @@
 import React from 'react';
-import {seconds_to_hhmm, pad} from '../scripts/time_display_functions';
+import { seconds_to_hhmm, pad } from '../scripts/time_display_functions';
 import Moment from 'react-moment';
 
 class StepListItem extends React.Component {
@@ -144,6 +144,11 @@ class StepListItem extends React.Component {
 }
 
 StepListItem.defaultProps = {
+    step_id: 0,
+    stepNumber: 0,
+    text: "",
+    then_wait: 0,
+    note: "",
     hidden: true
 }
 

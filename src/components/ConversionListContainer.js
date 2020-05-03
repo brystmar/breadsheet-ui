@@ -1,15 +1,15 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import {MDBDataTable} from 'mdbreact';
+import { MDBDataTable } from 'mdbreact';
 
 class ConversionListContainer extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             searchString: "",
             scope: "ingredients"
         }
+
         this.reset = this.reset.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.toggleScope = this.toggleScope.bind(this);

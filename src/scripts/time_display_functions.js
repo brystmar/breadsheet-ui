@@ -8,7 +8,7 @@ function seconds_to_string(seconds, IncludeDays = false,
 
     // Null handling
     if (seconds.isNaN || seconds <= 0 || seconds === "") {
-        return "";
+        return "--";
     }
 
     let result = "";

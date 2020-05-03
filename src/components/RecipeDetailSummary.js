@@ -46,10 +46,6 @@ class RecipeDetailSummary extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        // if (!prevState.hasData && this.state.hasData) {
-        //     console.log("State updated with recipe data.")
-        // }
-
         if (prevProps.recipeId !== this.props.recipeId) {
             this.getRecipeData(this.props.recipeId);
         }
@@ -152,7 +148,10 @@ class RecipeDetailSummary extends React.Component {
             .then(() => {
                 // Update state with the new recipe (and step) data
                 console.log("Recipe updated successfully.");
-                this.setState(newState)
+                this.setState(newState);
+
+                // Update the master recipe list in App.js
+                this.props.updateMasterRecipeList();
             })
             .catch(something => console.log("Caught:", something));
     }
@@ -197,6 +196,9 @@ class RecipeDetailSummary extends React.Component {
             hasSteps: newRecipeData.steps.length > 0,
             nextStep: this.findHighestStep(newRecipeData.steps) + 1
         });
+
+        // Update the length on the main recipe table
+        this.props.updateRecipeLength(newRecipeData.id, newRecipeData.length);
     }
 
     render() {
@@ -235,5 +237,8 @@ class RecipeDetailSummary extends React.Component {
 }
 
 RecipeDetailSummary.contextType = BackendUrlContext;
+RecipeDetailSummary.defaultProps = {
+    recipeId: 1560122081.000008
+}
 
 export default RecipeDetailSummary;
