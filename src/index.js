@@ -10,9 +10,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 ReactDOM.render(
     <Router>
         {/*Dev:*/}
-        <BackendUrlContext.Provider value="http://localhost:5000">
+        {/*<BackendUrlContext.Provider value="http://localhost:5000">*/}
         {/*Prod:*/}
-        {/*<BackendUrlContext.Provider value="http://breadsheet.wl.r.appspot.com">*/}
+        <BackendUrlContext.Provider value="http://breadsheet.wl.r.appspot.com">
             <App/>
         </BackendUrlContext.Provider>
     </Router>, document.getElementById("root"));
