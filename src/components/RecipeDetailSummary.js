@@ -40,7 +40,7 @@ class RecipeDetailSummary extends React.Component {
     }
 
     getRecipeData(recipe_id) {
-        console.log("Calling endpoint: [GET]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id)
+        // console.log("Calling endpoint: [GET]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id)
         fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id)
             .then(response => response.json())
             .then(result => {
@@ -115,7 +115,7 @@ class RecipeDetailSummary extends React.Component {
 
     saveUpdatedRecipe(newState) {
         // Update this recipe (and the component's state) in the database
-        console.log("Calling endpoint: [PUT]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + newState.recipeData.id);
+        // console.log("Calling endpoint: [PUT]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + newState.recipeData.id);
 
         fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + newState.recipeData.id, {
             method: "PUT",

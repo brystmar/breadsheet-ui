@@ -15,19 +15,13 @@ class ConvertTextPageContainer extends React.Component {
 
     componentDidMount() {
         // console.log(this.state);
-        console.log("Starting on the /convert page.")
-        console.log("App running in", process.env.NODE_ENV, "mode.")
-        console.log("Backend URL:", process.env.REACT_APP_BACKEND_URL)
-        console.log("Public URL:", process.env.PUBLIC_URL)
-        console.log("Window origin, href:", window.location.origin, window.location.href)
-
         this.getReplacements("ingredients");
         this.getReplacements("directions");
     }
 
     getReplacements(scope) {
         // Get the list of replacements
-        console.log("Calling endpoint:", process.env.REACT_APP_BACKEND_URL + "/api/v1/replacements/" + scope)
+        // console.log("Calling endpoint:", process.env.REACT_APP_BACKEND_URL + "/api/v1/replacements/" + scope)
         fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/replacements/" + scope)
             .then(response => response.json())
             .then(result => {

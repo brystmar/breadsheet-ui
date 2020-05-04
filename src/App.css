@@ -354,7 +354,7 @@ hr {
 	font-family: CMUTypewriterTextRegular, monospace;
 	padding: 0 2px;
 	background-color: inherit;
-	white-space: pre;  /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
+	white-space: pre; /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
 }
 
 .dataTables_scrollHeadInner {
@@ -397,9 +397,23 @@ hr {
 
 .navbar-custom-link {
 	font-size: larger;
-	color: rgba(255,255,255,.5);
+	color: rgba(255, 255, 255, .5);
 }
 
 .navbar-custom-link-dropdown {
 	font-size: medium;
+}
+
+.toggle-replacements {
+	text-align: -webkit-left;
+}
+
+.text-conversion-list-container {
+	padding: 5px 5px;
+	text-align: -webkit-left;
+}
+
+.text-conversion-accordion {
+	text-align: -webkit-left;
+	cursor: pointer;
 }

@@ -31,7 +31,7 @@ class App extends React.Component {
 
     getAllRecipes() {
         // Get the recipe details from the backend
-        console.log("Calling endpoint:", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes");
+        // console.log("Calling endpoint:", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes");
         fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes")
             .then(response => response.json())
             .then(result => this.setState({allRecipes: result.data}))
@@ -52,7 +52,7 @@ class App extends React.Component {
         console.log("Attempting to delete recipe", recipe_id);
 
         // Tell the backend to remove this recipe from the database
-        console.log("Calling endpoint: [DELETE]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id);
+        // console.log("Calling endpoint: [DELETE]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id);
         fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id, {
             method: "DELETE"
         })

@@ -1,13 +1,16 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { MDBDataTable } from 'mdbreact';
+import Accordion from 'react-bootstrap/Accordion';
+import {MDBDataTable} from 'mdbreact';
+import Card from "react-bootstrap/Card";
 
 class ConversionListContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             searchString: "",
-            scope: "ingredients"
+            scope: "ingredients",
+            hidden: true
         }
 
         this.reset = this.reset.bind(this);
@@ -128,26 +131,41 @@ class ConversionListContainer extends React.Component {
                 this.reformatSpaces(this.props.directionsList)
         };
 
-        return (
-            <>
-                <MDBDataTable scrollY
-                              striped
-                              small
-                              responsiveSm
-                              hover
-                              bordered
-                              maxHeight="600px"
-                              className="text-conversion-list-item"
-                              data={dtData}
-                              entries={12}/>
+        let toggleLabel = this.state.scope === "ingredients" ? "Ingredients" : "Directions";
 
-                <h4>
-                    <Button variant="secondary" name="scopeChange" onClick={this.toggleScope}>
-                        <i className="fas fa-retweet"/>
-                    </Button>
-                    &nbsp;{this.state.scope === "ingredients" ? "Ingredients" : "Directions"} Replacements
-                </h4>
-            </>
+        return (
+            <div className="text-conversion-list-container">
+                <Accordion>
+                    <Card>
+                        <Accordion.Toggle as={Card.Header}
+                                          className="text-conversion-accordion"
+                                          eventKey="0">
+                            What's being replaced?
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="0">
+                            <Card.Body>
+                                <h4 className="toggle-replacements">
+                                    Replacements for &nbsp;
+                                    <Button variant="secondary" name="scopeChange"
+                                            onClick={this.toggleScope}>
+                                        {toggleLabel} <i className="fas fa-retweet"/>
+                                    </Button>
+                                </h4>
+                                <MDBDataTable scrollY
+                                              striped
+                                              small
+                                              responsiveSm
+                                              hover
+                                              bordered
+                                              maxHeight="600px"
+                                              className="text-conversion-list-item"
+                                              data={dtData}
+                                              entries={12}/>
+                            </Card.Body>
+                        </Accordion.Collapse>
+                    </Card>
+                </Accordion>
+            </div>
         )
     }
 }
