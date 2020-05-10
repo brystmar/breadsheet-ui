@@ -130,7 +130,7 @@ function RecipeContainer(props) {
     let {recipeId} = useParams();
     let recipeDeets = {};
 
-    for (let i=0; i<props.allRecipes.length; i++) {
+    for (let i = 0; i < props.allRecipes.length; i++) {
         if (props.allRecipes[i].id === {recipeId}) {
             recipeDeets = props.allRecipes[i];
             break;

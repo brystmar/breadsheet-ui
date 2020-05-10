@@ -1,6 +1,7 @@
 import React from 'react';
-import { seconds_to_hhmm, pad } from '../scripts/time_display_functions';
+import {seconds_to_hhmm, pad} from '../scripts/time_display_functions';
 import Moment from 'react-moment';
+
 
 class StepListItem extends React.Component {
     constructor(props) {
@@ -95,14 +96,6 @@ class StepListItem extends React.Component {
     render() {
         return (
             <tr className="step-table-list-item">
-                <td className="delete-recipe-button-column"
-                    hidden={this.props.hidden}>
-                    <img alt={"Delete step " + this.props.stepNumber}
-                         src="./button_minus.png"
-                         className="delete-recipe-button"
-                         onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}/>
-                </td>
-
                 <td className="step-table-list-item-number">
                     {this.props.stepNumber}.
                 </td>
@@ -111,7 +104,9 @@ class StepListItem extends React.Component {
                     <Moment format="ddd HH:mm">{this.props.when}</Moment>
                 </td>
 
-                <td className="step-table-list-item-text">{this.props.text}</td>
+                <td className="step-table-list-item-text">
+                    {this.props.text}
+                </td>
 
                 <td className="step-table-list-item-then-wait">
                     <input type="number"
@@ -137,6 +132,14 @@ class StepListItem extends React.Component {
 
                 <td className="step-table-list-item-note">
                     {this.props.note === "None" ? "" : this.props.note}
+                </td>
+
+                <td className="delete-icon-column">
+                    <img alt={"Delete step " + this.props.stepNumber}
+                         src="./button_minus.png"
+                         className="delete-recipe-icon"
+                         onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}
+                         hidden={this.props.hidden}/>
                 </td>
             </tr>
         )

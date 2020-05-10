@@ -209,6 +209,7 @@ class RecipeDetailSummary extends React.Component {
                            solve_for_start={this.state.recipeData.solve_for_start}
                            length={this.state.recipeData.length}
                            hidden={!this.state.editMode}
+                           toggleEditMode={this.toggleEditMode}
                            hasData={this.state.hasData}
                            handleStepLengthChange={this.handleStepLengthChange}
                            deleteStep={this.deleteStep}/>

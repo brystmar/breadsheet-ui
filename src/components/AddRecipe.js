@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { v4 as uuid } from 'uuid';
+import {v4 as uuid} from 'uuid';
 
 class AddRecipe extends React.Component {
     constructor(props) {
@@ -20,8 +20,9 @@ class AddRecipe extends React.Component {
     }
 
     handleFormToggle() {
-        this.setState({hidden: !this.state.hidden});
-        this.props.toggleEditMode();
+        this.setState({
+            hidden: !this.state.hidden
+        });
     }
 
     handleChange(event) {
@@ -39,7 +40,7 @@ class AddRecipe extends React.Component {
             source: "",
             hidden: true
         })
-        this.props.toggleEditMode(false);
+        // this.props.toggleEditMode(false);
     }
 
     handleSubmit(event) {

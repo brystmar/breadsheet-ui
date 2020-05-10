@@ -3,6 +3,7 @@ import seconds_to_string from '../scripts/time_display_functions';
 import RecipeListItem from './RecipeListItem';
 import AddRecipe from './AddRecipe';
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 class RecipeTable extends React.Component {
     constructor() {
@@ -42,12 +43,19 @@ class RecipeTable extends React.Component {
                 <Table className="recipe-table4" striped>
                     <thead className="table-header-row">
                     <tr>
-                        <th hidden={!this.state.editMode}>&nbsp;</th>
                         <th>Recipe Name</th>
                         <th>Difficulty</th>
                         <th>Length</th>
                         <th>Author</th>
                         <th>Source</th>
+                        <th>
+                            <Button size="sm"
+                                    variant={this.state.editMode ? "secondary" : "outline-secondary"}
+                                    className="table-edit-button"
+                                    onClick={() => this.toggleEditMode()}>
+                                <i className="fas fa-edit"/>
+                            </Button>
+                        </th>
                     </tr>
                     </thead>
 

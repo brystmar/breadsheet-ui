@@ -30,10 +30,6 @@ body div {
 	height: 50px;
 }
 
-.table-header-row {
-	padding: 4px 10px;
-}
-
 .footer-container {
 	font-size: small;
 	margin: 20px 3px 10px;
@@ -51,19 +47,46 @@ body div {
 
 hr {
 	margin-top: 2px;
-	/*max-width: 1200px;*/
 }
 
 .table-header-row {
 	text-align: left;
+	vertical-align: center;
 	font-weight: bold;
-	margin-left: 3px;
-	margin-bottom: 5px;
+	margin: 5px 3px;
 	cursor: default;
+}
+
+.table-edit-button {
+	width: auto;
+	height: auto;
+	text-align: -webkit-center;
 }
 
 .recipe-list-item-name {
 	min-width: 320px;
+}
+
+.difficulty-icon {
+	height: 21px;
+	position: relative;
+}
+
+.difficulty-icon .difficulty-tooltip-text {
+	/*display: none;*/
+	width: auto;
+	background-color: #282c34;
+	color: #EEEEEE;
+	text-align: -webkit-center;
+	padding: 5px 0;
+	border-radius: 6px;
+
+	position: absolute;
+	z-index: 1;
+}
+
+.difficulty-icon:hover .difficulty-tooltip-text {
+	display: block;
 }
 
 .recipe-list-item-difficulty {
@@ -82,17 +105,22 @@ hr {
 	min-width: 190px;
 }
 
-.delete-recipe-button {
+.delete-recipe-icon {
 	background-color: white;
 	color: darkred;
 	font-weight: bolder;
+	vertical-align: center;
+
 	height: 12px;
-	margin-right: 5px;
+	margin-right: 7px;
+
 	cursor: pointer;
 }
 
-.delete-recipe-button-column {
-	background-color: #FFFFFF;
+.delete-icon-column {
+	text-align: -webkit-center;
+	vertical-align: center;
+	width: min-content;
 }
 
 .add-recipe-parent {
@@ -189,13 +217,15 @@ hr {
 }
 
 .recipe-start-finish-table {
-	width: 250px;
+	width: 300px;
 	vertical-align: center;
+	text-align: left;
 }
 
 .recipe-start-finish-table-label {
-	width: 35%;
-	text-align: right;
+	/*width: 35%;*/
+	/*margin-left: 20px;*/
+	text-align: -webkit-right;
 	vertical-align: center;
 }
 
@@ -243,10 +273,6 @@ hr {
 
 .step-table-list-item-id {
 	width: 45px;
-}
-
-.delete-recipe-button-column {
-	width: 18px;
 }
 
 .step-table-list-item-note {

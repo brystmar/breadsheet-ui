@@ -2,26 +2,35 @@ import React from 'react';
 import StepListItem from './StepListItem';
 import LoadingIcon from './LoadingIcon';
 import Table from 'react-bootstrap/Table';
+import Button from "react-bootstrap/Button";
 
 function StepTable(props) {
     return (
         <Table className="step-table" striped size="sm">
             <thead className="table-header-row">
             <tr>
-                <th hidden={props.hidden}>&nbsp;</th>
                 <th>Step</th>
                 <th>When</th>
                 <th>Action</th>
                 <th className="step-table-list-item-then-wait-header">Then Wait...</th>
                 <th>Notes</th>
+                <th>
+                    <Button size="sm"
+                            variant={!props.hidden ? "secondary" : "outline-secondary"}
+                            className="table-edit-button"
+                            onClick={() => props.toggleEditMode()}>
+                        <i className="fas fa-edit"/>
+                    </Button>
+                </th>
             </tr>
             </thead>
 
             <tbody className="step-table-list">
-            {props.hasData ?
-                BuildStepComponentList(props) :
+            {props.hasData ? BuildStepComponentList(props) :
                 <tr>
-                    <td><LoadingIcon cssClass="loading-icon-table"/></td>
+                    <td>
+                        <LoadingIcon cssClass="loading-icon-table"/>
+                    </td>
                 </tr>
             }
             </tbody>

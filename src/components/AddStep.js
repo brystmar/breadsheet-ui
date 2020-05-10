@@ -34,7 +34,6 @@ class AddStep extends React.Component {
         this.setState({
             hidden: !this.state.hidden
         });
-        this.props.toggleEditMode()
     }
 
     handleChange(event) {
