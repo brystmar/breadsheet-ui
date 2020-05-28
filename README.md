@@ -6,3 +6,8 @@ Although you love sourdough, you're also aware it can be challenging to properly
 But wait, this is `${DateJoke.getFullYear()}`.  There _must_ be a better way!
 
 Enter [breadsheet](http://breadsheet.com): a tool that calculates the start & finish times for any recipe -- and each step along the way. Focus on the bread, and leave the scheduling to [breadsheet](http://breadsheet.com).
+
+### Attribution
+Uses icons from:
+* [Font Awesome](https://fontawesome.com/)
+* David from [The Noun Project](https://thenounproject.com/)

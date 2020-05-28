@@ -1,8 +1,8 @@
 import React from 'react';
-import NavRecipeMenu from './NavRecipeMenu';
-import { LinkContainer } from 'react-router-bootstrap'
-import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import {LinkContainer} from 'react-router-bootstrap';
+import NavRecipeMenu from './NavRecipeMenu';
 
 function NavBar(props) {
     return (

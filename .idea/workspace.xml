@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/difficulty-1-tsp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/difficulty-2-tsp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/difficulty-3-tsp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/difficulty-4-tsp.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeDetailAttributes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepTable.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,13 +143,9 @@
       <workItem from="1586229832804" duration="1810000" />
       <workItem from="1586479131280" duration="188384000" />
       <workItem from="1588326061416" duration="10444000" />
-    </task>
-    <task id="LOCAL-00007" summary="Now getting data from the breadsheet API!">
-      <created>1582504910216</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1582504910216</updated>
+      <workItem from="1589144154909" duration="7159000" />
+      <workItem from="1590104509323" duration="1476000" />
+      <workItem from="1590422989307" duration="4164000" />
     </task>
     <task id="LOCAL-00008" summary="AddRecipe form for the main page.  Unsure if the POST request is properly formatted; fairly sure it's okay and the issue is on the backend.">
       <created>1582511748346</created>
@@ -497,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588555362507</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Updated difficulty icons &amp; edit mode">
+      <created>1589083289093</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1589083289093</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,7 +512,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Finished display &amp; calculations for step.when!" />
     <MESSAGE value="Fixed an issue w/length display on the homepage" />
     <MESSAGE value="Working on a goofy header" />
     <MESSAGE value="More CSS work on the navbar" />
@@ -544,7 +536,8 @@
     <MESSAGE value="Now pointing to Prod backend" />
     <MESSAGE value="Post-merge commit w/updated fetch" />
     <MESSAGE value="Finally figured out wtf was happening!  Stable once again!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally figured out wtf was happening!  Stable once again!" />
+    <MESSAGE value="Updated difficulty icons &amp; edit mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated difficulty icons &amp; edit mode" />
   </component>
   <component name="WindowStateProjectService">
     <state x="597" y="253" key="#Notifications" timestamp="1583197787893">
@@ -559,10 +552,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588496515274" />
-    <state x="542" y="148" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1588555362296">
+    <state x="542" y="148" width="1246" height="795" key="CommitChangelistDialog2" timestamp="1589083288873">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="542" y="148" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588555362296" />
+    <state x="542" y="148" width="1246" height="795" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1589083288873" />
     <state x="852" y="488" key="Github.ShareDialog" timestamp="1582419683416">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -579,10 +572,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="495" y="117" width="997" height="831" key="SettingsEditor/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588546224917" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1588555365263">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1589083292096">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588555365263" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1589083292096" />
     <state x="674" y="420" key="com.intellij.ide.util.TipDialog" timestamp="1584208287933">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -599,9 +592,9 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="743" y="307" key="git4idea.branch.GitSmartOperationDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1582420963869" />
-    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup" timestamp="1588494596777">
+    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup" timestamp="1590466625524">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588494596777" />
+    <state x="662" y="276" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1590466625524" />
   </component>
 </project>

@@ -10,4 +10,8 @@ function PageTitle(props) {
     )
 }
 
+PageTitle.defaultProps = {
+    title: "Default Title"
+}
+
 export default PageTitle;

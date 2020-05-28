@@ -19,7 +19,7 @@ function RecipeListItem(props) {
                           alt={"Difficulty: " + props.difficulty}
                           className="difficulty-icon"/>
 
-    } else if (props.difficulty === "Expert") {
+    } else if (props.difficulty === "Iron Chef") {
         difficulty = <img src="./difficulty-4-tsp.png"
                           alt={"Difficulty: " + props.difficulty}
                           className="difficulty-icon"/>
