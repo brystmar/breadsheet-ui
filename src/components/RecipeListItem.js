@@ -1,30 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
 
 function RecipeListItem(props) {
-    let difficulty;
-
-    if (props.difficulty === "Beginner") {
-        difficulty = <img src="./difficulty-1-tsp.png"
-                          alt={"Difficulty: " + props.difficulty}
-                          className="difficulty-icon"/>
-
-    } else if (props.difficulty === "Intermediate") {
-        difficulty = <img src="./difficulty-2-tsp.png"
-                          alt={"Difficulty: " + props.difficulty}
-                          className="difficulty-icon"/>
-
-    } else if (props.difficulty === "Advanced") {
-        difficulty = <img src="./difficulty-3-tsp.png"
-                          alt={"Difficulty: " + props.difficulty}
-                          className="difficulty-icon"/>
-
-    } else if (props.difficulty === "Iron Chef") {
-        difficulty = <img src="./difficulty-4-tsp.png"
-                          alt={"Difficulty: " + props.difficulty}
-                          className="difficulty-icon"/>
-    }
-
     return (
         <tr className="recipe-table-list-item">
             <td className="recipe-list-item-name">
@@ -32,7 +10,7 @@ function RecipeListItem(props) {
             </td>
 
             <td className="recipe-list-item-difficulty">
-                {difficulty}
+                {map_difficulty_to_icon(props.difficulty)}
             </td>
             <td className="recipe-list-item-length">{props.length}</td>
             <td className="recipe-list-item-author">{props.author ? props.author : "--"}</td>

@@ -285,12 +285,12 @@ hr {
 }
 
 .then-wait-hh-input {
-	width: 40px;
+	width: auto;
 	margin-right: 2px;
 }
 
 .then-wait-mm-input {
-	width: 40px;
+	width: auto;
 	margin-left: 2px;
 }
 

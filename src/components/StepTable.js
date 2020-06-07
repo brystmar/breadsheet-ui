@@ -2,7 +2,7 @@ import React from 'react';
 import StepListItem from './StepListItem';
 import LoadingIcon from './LoadingIcon';
 import Table from 'react-bootstrap/Table';
-import Button from "react-bootstrap/Button";
+import Button from 'react-bootstrap/Button';
 
 function StepTable(props) {
     return (

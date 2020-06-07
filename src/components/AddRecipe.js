@@ -45,7 +45,7 @@ class AddRecipe extends React.Component {
 
     handleSubmit(event) {
         console.log("New recipe submitted:", this.state);
-        let stateCopy = this.state;
+        let stateCopy = {...this.state};
         stateCopy.id = uuid();
         delete stateCopy.hidden;
         console.log("StateCopy:", stateCopy);
@@ -71,6 +71,7 @@ class AddRecipe extends React.Component {
                 // Update state of the RecipeTable component using the provided function
                 this.props.addRecipeToState(result.data);
             })
+            .catch(error => console.log("Error submitting new recipe:", error))
     }
 
     render() {
