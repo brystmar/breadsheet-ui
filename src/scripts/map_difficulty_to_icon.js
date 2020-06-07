@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function map_difficulty_to_icon(difficulty) {
     if (difficulty === "Beginner") {
@@ -21,10 +21,8 @@ function map_difficulty_to_icon(difficulty) {
                     alt={"Difficulty: " + difficulty}
                     className="difficulty-icon"/>
     } else {
-        console.log("Unable to map difficulty icon for", difficulty);
-        return <img src="./button_minus.png"
-                    alt={"Difficulty: " + difficulty}
-                    className="difficulty-icon"/>
+        // console.log("Unable to map difficulty icon for", difficulty);
+        return ""
     }
 }
 

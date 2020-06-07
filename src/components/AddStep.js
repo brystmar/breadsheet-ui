@@ -191,6 +191,7 @@ class AddStep extends React.Component {
                     <br/>
 
                     <Button variant="danger"
+                            type="button"
                             name="cancelNewStep"
                             className="button-cancel"
                             size="sm"

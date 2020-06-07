@@ -281,7 +281,9 @@ hr {
 }
 
 .step-table-list-item-then-wait-header, .step-table-list-item-then-wait {
-	min-width: 108px;
+	min-width: 115px;
+	align-items: center;
+	vertical-align: middle;
 }
 
 .then-wait-hh-input {
@@ -368,12 +370,12 @@ hr {
 	text-align: -webkit-right;
 }
 
-.text-conversion-arrow {
-	width: 5%;
-}
-
 .button-reset-column {
 	text-align: right;
+}
+
+.text-conversion-arrow {
+	width: 5%;
 }
 
 .text-conversion-list-item {

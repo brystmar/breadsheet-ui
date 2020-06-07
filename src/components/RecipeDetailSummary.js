@@ -22,6 +22,7 @@ class RecipeDetailSummary extends React.Component {
         this.handleStepLengthChange = this.handleStepLengthChange.bind(this);
         this.handleStartFinishToggle = this.handleStartFinishToggle.bind(this);
         this.handleUpdateStartTime = this.handleUpdateStartTime.bind(this);
+        this.handleSaveRecipe = this.handleSaveRecipe.bind(this);
         this.saveUpdatedRecipe = this.saveUpdatedRecipe.bind(this);
         this.addStepToRecipe = this.addStepToRecipe.bind(this);
         this.deleteStep = this.deleteStep.bind(this);
@@ -113,17 +114,24 @@ class RecipeDetailSummary extends React.Component {
         })
     }
 
-    saveUpdatedRecipe(newState) {
-        // Update this recipe (and the component's state) in the database
-        // console.log("Calling endpoint: [PUT]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + newState.recipeData.id);
+    handleSaveRecipe() {
+        // this.saveUpdatedRecipe({
+        //     recipeData: this.state.recipeData,
+        //     hasData: true
+        // })
+        this.props.updateOneRecipe(this.state.recipeData.id, this.state.recipeData);
+    }
 
-        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + newState.recipeData.id, {
+    saveUpdatedRecipe(updatedRecipe) {
+        // Update this recipe (and the component's state) in the database
+        // console.log("Calling endpoint: [PUT]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + updatedRecipe.recipeData.id);
+
+        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + updatedRecipe.recipeData.id, {
             method: "PUT",
-            body: JSON.stringify(newState.recipeData)
+            body: JSON.stringify(updatedRecipe.recipeData)
         })
             .then(response => {
-                console.log("PUT response:", response.ok ? "Success" : "Error", response.status);
-
+                // console.log("PUT response:", response.ok ? "Success" : "Error", response.status);
                 if (response.ok) {
                     return response.json();
                 } else {
@@ -135,7 +143,7 @@ class RecipeDetailSummary extends React.Component {
             .then(() => {
                 // Update state with the new recipe (and step) data
                 console.log("Recipe updated successfully.");
-                this.setState(newState);
+                this.setState(updatedRecipe);
 
                 // Update the master recipe list in App.js
                 this.props.updateMasterRecipeList();
@@ -144,7 +152,6 @@ class RecipeDetailSummary extends React.Component {
     }
 
     addStepToRecipe(newStep, newStepLength) {
-        console.log("Called addStepToRecipe for step:", newStep);
         let updatedRecipe = this.state.recipeData;
 
         // Add a new step to the list
@@ -165,8 +172,6 @@ class RecipeDetailSummary extends React.Component {
     }
 
     deleteStep(stepId, stepLength) {
-        console.log("Called deleteStep for step_id:", stepId);
-
         // Create a new representation of recipeData
         let newRecipeData = this.state.recipeData;
         newRecipeData.steps = newRecipeData.steps.filter(
@@ -202,7 +207,8 @@ class RecipeDetailSummary extends React.Component {
                                 solve_for_start={this.state.recipeData.solve_for_start}
                                 length={this.state.recipeData.length}
                                 handleUpdateStartTime={this.handleUpdateStartTime}
-                                handleStartFinishToggle={this.handleStartFinishToggle}/>
+                                handleStartFinishToggle={this.handleStartFinishToggle}
+                                saveRecipe={this.handleSaveRecipe}/>
 
                 <StepTable steps={this.state.recipeData.steps}
                            start_time={this.state.recipeData.start_time}
@@ -225,7 +231,6 @@ class RecipeDetailSummary extends React.Component {
 }
 
 RecipeDetailSummary.defaultProps = {
-    // recipeId: 1560122081.000008,
     recipeId: 0,
     recipeData: {
         id: 0

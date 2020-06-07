@@ -1,6 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker/es';
-import moment from "moment";
+import moment from 'moment';
+import Button from 'react-bootstrap/Button';
 
 class RecipeStartEnd extends React.Component {
     constructor(props) {
@@ -83,7 +84,6 @@ class RecipeStartEnd extends React.Component {
     }
 
     render() {
-        // console.log("Raw start time:", this.props.start_time, moment(this.props.start_time).valueOf());
         return (
             <div className="recipe-start-finish">
                 <table className="recipe-start-finish-table">
@@ -98,9 +98,9 @@ class RecipeStartEnd extends React.Component {
                         </td>
                         <td className="recipe-start-finish-table-datepicker">
                             <DatePicker
-                                selected={this.state.solveForStart ?  // `selected`: the value for this object
-                                    this.state.startTime :
-                                    this.state.finishTime}
+                                selected={this.state.solveForStart  // `selected`: the value for this object
+                                    ? this.state.startTime
+                                    : this.state.finishTime}
                                 onChange={this.handleDateChange}
                                 className="start-finish-datepicker"
                                 showTimeSelect
@@ -110,6 +110,14 @@ class RecipeStartEnd extends React.Component {
                                 todayButton="Today"
                                 useWeekdaysShort={true}
                                 dateFormat="MMM dd, yyyy HH:mm"/>
+                        </td>
+                        <td>
+                            <Button type="button"
+                                    name="updateRecipe"
+                                    className="button-save-recipe"
+                                    size="sm"
+                                    variant="secondary"
+                                    onClick={this.props.saveRecipe}>Save</Button>
                         </td>
                     </tr>
                     </tbody>

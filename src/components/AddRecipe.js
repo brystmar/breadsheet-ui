@@ -44,11 +44,11 @@ class AddRecipe extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log("New recipe submitted:", this.state);
+        // console.log("New recipe submitted:", this.state);
         let stateCopy = {...this.state};
         stateCopy.id = uuid();
         delete stateCopy.hidden;
-        console.log("StateCopy:", stateCopy);
+        // console.log("StateCopy:", stateCopy);
 
         // Don't refresh the page
         event.preventDefault();
@@ -60,7 +60,7 @@ class AddRecipe extends React.Component {
             body: JSON.stringify(stateCopy)
         })
             .then(response => {
-                console.log("POST complete, response:", response.status, response.ok);
+                // console.log("POST complete, response:", response.status, response.ok);
                 return response.json();
             })
             .then(result => {
