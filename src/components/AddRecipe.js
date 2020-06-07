@@ -68,7 +68,7 @@ class AddRecipe extends React.Component {
                 // Reset form fields to their defaults
                 this.resetAddRecipeForm();
 
-                // Update state of the RecipeTable component using the provided function
+                // Update state of the RecipeListTable component using the provided function
                 this.props.addRecipeToState(result.data);
             })
             .catch(error => console.log("Error submitting new recipe:", error))

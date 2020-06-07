@@ -1,11 +1,11 @@
 import React from 'react';
-import seconds_to_string from '../scripts/time_display_functions';
 import RecipeListItem from './RecipeListItem';
 import AddRecipe from './AddRecipe';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import seconds_to_string from '../scripts/time_display_functions';
 
-class RecipeTable extends React.Component {
+class RecipeListTable extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -71,8 +71,8 @@ class RecipeTable extends React.Component {
     }
 }
 
-RecipeTable.defaultProps = {
+RecipeListTable.defaultProps = {
     allRecipes: []
 }
 
-export default RecipeTable;
+export default RecipeListTable;

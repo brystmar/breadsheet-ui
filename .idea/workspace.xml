@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/scripts/map_difficulty_to_icon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RecipeDetailContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeDetailAttributes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,14 +149,7 @@
       <workItem from="1590422989307" duration="4283000" />
       <workItem from="1590758426276" duration="331000" />
       <workItem from="1591369982243" duration="141000" />
-      <workItem from="1591371390376" duration="4285000" />
-    </task>
-    <task id="LOCAL-00009" summary="Form POST works properly! Next up: find out why the deleteRecipe function has a mind of its own.">
-      <created>1582871424384</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1582871424384</updated>
+      <workItem from="1591371390376" duration="5116000" />
     </task>
     <task id="LOCAL-00010" summary="Delete works (via its own crappy button)">
       <created>1583110840569</created>
@@ -495,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590688246949</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="UI was cutting off text for ThenWaitHH/MM">
+      <created>1591547899229</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1591547899230</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -517,7 +516,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Working on a goofy header" />
     <MESSAGE value="More CSS work on the navbar" />
     <MESSAGE value="Looks so much better!" />
     <MESSAGE value="Dropdown nav works(ish), tons of other progress too" />
@@ -542,7 +540,8 @@
     <MESSAGE value="Finally figured out wtf was happening!  Stable once again!" />
     <MESSAGE value="Updated difficulty icons &amp; edit mode" />
     <MESSAGE value="Updated difficulties &amp; icons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated difficulties &amp; icons" />
+    <MESSAGE value="UI was cutting off text for ThenWaitHH/MM" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI was cutting off text for ThenWaitHH/MM" />
   </component>
   <component name="WindowStateProjectService">
     <state x="597" y="253" key="#Notifications" timestamp="1583197787893">
@@ -557,10 +556,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588496515274" />
-    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2" timestamp="1590688246808">
+    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2" timestamp="1591547899066">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1590688246808" />
+    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1591547899066" />
     <state x="797" y="241" key="RollbackChangesDialog" timestamp="1589066476757">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -573,10 +572,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state width="500" height="445" key="SwitcherDM/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1591370078391" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1590688249316">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1591547901614">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1590688249316" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1591547901614" />
     <state x="674" y="420" key="com.intellij.ide.util.TipDialog" timestamp="1584208287933">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

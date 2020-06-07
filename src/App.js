@@ -1,14 +1,14 @@
 import React from 'react';
-import {Switch, Route, useParams} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import PageTitle from './components/PageTitle';
-import RecipeTable from './components/RecipeTable';
+import RecipeDetailContainer from './components/RecipeDetailContainer';
+import RecipeListTable from './components/RecipeListTable';
+import ConvertTextPageContainer from './components/ConvertTextPageContainer';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import ConvertTextPageContainer from './components/ConvertTextPageContainer';
-import RecipeDetailSummary from './components/RecipeDetailSummary';
 
 class App extends React.Component {
     constructor() {
@@ -102,9 +102,9 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/">
                             <PageTitle title="Breadsheet" includeHr={false}/>
-                            <RecipeTable allRecipes={this.state.allRecipes}
-                                         addRecipeToState={this.addRecipeToState}
-                                         deleteRecipe={this.deleteRecipe}/>
+                            <RecipeListTable allRecipes={this.state.allRecipes}
+                                             addRecipeToState={this.addRecipeToState}
+                                             deleteRecipe={this.deleteRecipe}/>
                         </Route>
 
                         <Route exact path="/convert">
@@ -113,10 +113,10 @@ class App extends React.Component {
                         </Route>
 
                         <Route path="/:recipeId">
-                            <RecipeContainer allRecipes={this.state.allRecipes}
-                                             updateRecipeLength={this.updateRecipeLength}
-                                             updateMasterRecipeList={this.getAllRecipes}
-                            />
+                            <RecipeDetailContainer allRecipes={this.state.allRecipes}
+                                                   hasData={this.state.hasData}
+                                                   updateRecipeLength={this.updateRecipeLength}
+                                                   updateMasterRecipeList={this.getAllRecipes}/>
                         </Route>
                     </Switch>
                 </div>
@@ -124,24 +124,6 @@ class App extends React.Component {
             </div>
         )
     }
-}
-
-function RecipeContainer(props) {
-    let {recipeId} = useParams();
-    let recipeDeets = {};
-
-    for (let i = 0; i < props.allRecipes.length; i++) {
-        if (props.allRecipes[i].id === {recipeId}) {
-            recipeDeets = props.allRecipes[i];
-            break;
-        }
-    }
-
-    return <RecipeDetailSummary recipeId={recipeId}
-                                recipeData={recipeDeets}
-                                hasData={!!recipeDeets.id}
-                                updateRecipeLength={props.updateRecipeLength}
-                                updateMasterRecipeList={props.updateMasterRecipeList}/>
 }
 
 export default App;
