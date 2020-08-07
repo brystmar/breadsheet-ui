@@ -4,26 +4,21 @@ import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
 
 function RecipeListItem(props) {
     return (
-        <tr className="recipe-table-list-item">
-            <td className="recipe-list-item-name">
-                <Link to={`/${props.recipe_id}`}>{props.name}</Link>
-            </td>
+        <div className="recipe-list-item">
+            <span><Link to={`/${props.recipe_id}`}>{props.name}</Link></span>
+            <span>{map_difficulty_to_icon(props.difficulty)}</span>
+            <span>{props.length}</span>
+            <span>{props.author ? props.author : "--"}</span>
+            <span>{props.source ? props.source : "--"}</span>
 
-            <td className="recipe-list-item-difficulty">
-                {map_difficulty_to_icon(props.difficulty)}
-            </td>
-            <td className="recipe-list-item-length">{props.length}</td>
-            <td className="recipe-list-item-author">{props.author ? props.author : "--"}</td>
-            <td className="recipe-list-item-source">{props.source ? props.source : "--"}</td>
-
-            <td className="delete-icon-column">
+            <span>
                 <img alt="Delete recipe"
-                     src="./button_minus.png"
-                     className="delete-recipe-icon"
+                     src="./icons/button_minus.png"
+                     className="icon icon-delete"
                      onClick={() => props.deleteRecipe(props.recipe_id)}
                      hidden={props.hidden}/>
-            </td>
-        </tr>
+            </span>
+        </div>
     )
 }
 
@@ -32,6 +27,7 @@ RecipeListItem.defaultProps = {
     name: "",
     author: "",
     source: "",
+    url: "",
     difficulty: "Beginner",
     solve_for_start: true,
     length: 0,

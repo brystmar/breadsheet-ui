@@ -4,7 +4,8 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import PageTitle from './components/PageTitle';
 import RecipeDetailContainer from './components/RecipeDetailContainer';
-import RecipeListTable from './components/RecipeListTable';
+import AddRecipe from './components/AddRecipe';
+import RecipeListContainer from './components/RecipeListContainer';
 import ConvertTextPageContainer from './components/ConvertTextPageContainer';
 
 class App extends React.Component {
@@ -136,10 +137,15 @@ class App extends React.Component {
                 <div className="content-container">
                     <Switch>
                         <Route exact path="/">
-                            <PageTitle title="Breadsheet" includeHr={false}/>
-                            <RecipeListTable allRecipes={this.state.allRecipes}
-                                             addRecipeToState={this.addRecipeToState}
-                                             deleteRecipe={this.deleteRecipe}/>
+                            <PageTitle
+                                title="Breadsheet"
+                                includeHr={false}/>
+                            <RecipeListContainer
+                                allRecipes={this.state.allRecipes}
+                                addRecipeToState={this.addRecipeToState}
+                                deleteRecipe={this.deleteRecipe}/>
+                            <AddRecipe
+                                addRecipeToState={this.addRecipeToState}/>
                         </Route>
 
                         <Route exact path="/convert">

@@ -136,7 +136,7 @@ class StepListItem extends React.Component {
 
                 <td className="delete-icon-column">
                     <img alt={"Delete step " + this.props.stepNumber}
-                         src="./button_minus.png"
+                         src="./icons/button_minus.png"
                          className="delete-recipe-icon"
                          onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}
                          hidden={this.props.hidden}/>

@@ -4,17 +4,11 @@
 .navbar-custom-container, .content-container, .footer-container
   max-width: 1200px
   margin: 0 auto
-/*float: none !important*/
-/*text-align: -webkit-center*/
 
 .app-container
   font-style: normal
-  /*margin: 3px*/
-  /*width: auto*/
   max-width: 1200px
-  /*alignment: center*/
   text-align: -webkit-center
-
 
 .content-container
   padding: 6px 6px
@@ -24,12 +18,6 @@
 
 .loading-icon-title
   height: 50px
-
-.footer-container
-  font-size: small
-  margin: 20px 3px 10px
-  cursor: default
-  text-align: -webkit-left
 
 .page-title
   font-size: xx-large
@@ -86,14 +74,13 @@ hr
 .recipe-list-item-source
   min-width: 190px
 
-.delete-recipe-icon
+.icon-delete
   background-color: white
   color: darkred
   font-weight: bolder
-  vertical-align: center
   height: 12px
-  margin-right: 7px
   cursor: pointer
+  text-align: right
 
 .delete-icon-column
   text-align: -webkit-center
@@ -125,31 +112,6 @@ hr
 
 .add-recipe-form-textbox
   alignment: right
-
-.add-step-parent
-  text-align: -webkit-left
-
-.add-step-form-number-label
-  margin-right: 2px
-  alignment: right
-
-.recipe-detail-summary
-  text-align: -webkit-left
-
-.recipe-detail-summary-table
-  margin-bottom: 5px
-  alignment: left
-
-.recipe-detail-summary-table-label
-  font-weight: bold
-  alignment: right
-  cursor: default
-  padding-right: 10px
-
-.recipe-detail-summary-table-value
-  color: #282c34
-  padding-right: 15px
-  cursor: default
 
 .start-finish-datepicker
   // Long dates & times get cut off at 100%
@@ -187,70 +149,40 @@ hr
   border-bottom-style: solid
   vertical-align: center
 
-.step-table
-  font-size: medium
-  width: 100%
-  column-width: auto
-
-.step-table-column-header
-  cursor: default
-
-.step-table-list tr:nth-child(odd)
-  background-color: #EEEEEE
-
-.step-table-list-item-number
-  text-align: right
-  padding-right: 6px
-
-.step-table-list-item-when
-  min-width: 92px
-
-.step-table-list-item-text
-  min-width: 180px
-
-.step-table-list-item-id
-  width: 45px
-
-.step-table-list-item-note
-  /*TODO: Add breakpoints to fully collapse Notes column*/
-  width: auto
-
-.step-table-list-item-then-wait-header, .step-table-list-item-then-wait
-  min-width: 115px
-  align-items: center
-  vertical-align: middle
-
-.then-wait-hh-input
-  width: auto
-  margin-right: 2px
-
-.then-wait-mm-input
-  width: auto
-  margin-left: 2px
-
-.bread-clipart-container .bread-clipart-container-reverse
-  alignment: left
-  column-width: min-content
-  horiz-align: left
-  vertical-align: center
-  height: 30px
-  width: 30px
-
-.bread-clipart-image
-  column-width: min-content
-  alignment: left
-  horiz-align: left
-  vertical-align: center
-  margin: 0 4px
-  height: 15px
-  width: 15px
-
 .text-conversion-table-bs-label
   font-size: larger
   font-weight: bold
 
 .text-conversion-table-bs-row
   margin: 10px 0
+
+.btn
+  height: 2.5rem
+  text-align: center
+  margin: 0
+  padding: 0.35rem 0.9rem
+  border-radius: 5px
+  background: none
+  border: none
+
+.btn-edit-mode
+  height: 2.25rem
+  width: 2.5rem
+  padding: 0 0.1rem 0.2rem 0.3rem
+  margin: auto
+  background: #eeeeee
+  .icon-button
+    height: 1rem
+    filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%)
+    // SVG color conversion tool: https://codepen.io/sosuke/pen/Pjoqqp
+    //  -> Prefix with _brightness(0) saturate(100%)_ to ensure all SVGs start completely black.
+    //  -> Now we can set SVG color to #808080 gray.
+.btn-edit-mode:hover,
+.btn-edit-mode:focus
+  border: 1px solid #808080
+.btn-edit-mode:active
+  background: #ddd
+  border: 1px solid #808080
 
 .button-clipboard-row
   margin: 0 3px
@@ -328,22 +260,3 @@ hr
 @media (max-width: 767px)
   .app-container
     background-color: lightblue
-
-@media (prefers-reduced-motion: no-preference)
-  .bread-clipart-image
-    animation: App-logo-spin infinite 20s linear
-
-  .bread-clipart-container-reverse
-    animation: App-logo-spin-reverse infinite 20s linear
-
-@keyframes App-logo-spin
-  from
-    transform: rotate(0deg)
-  to
-    transform: rotate(360deg)
-
-@keyframes App-logo-spin-reverse
-  from
-    transform: rotate(360deg)
-  to
-    transform: rotate(0deg)

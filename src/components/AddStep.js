@@ -124,12 +124,12 @@ class AddStep extends React.Component {
         return (
             <div className="add-step-parent">
                 <span className="add-recipe-toggle-text" onClick={this.handleFormToggle}>
-                        <img alt="Add step"
-                             src="./button_plus.png"
-                             className="add-recipe-toggle-button"
-                             onClick={this.handleFormToggle}/>
-                        Add Step
-                    </span>
+                    <img alt="Add step"
+                         src="./icons/button_plus.png"
+                         className="add-recipe-toggle-button"
+                         onClick={this.handleFormToggle}/>
+                    Add Step
+                </span>
 
                 <form className="add-recipe-form"
                       hidden={this.state.hidden}

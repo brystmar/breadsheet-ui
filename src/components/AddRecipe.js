@@ -68,7 +68,7 @@ class AddRecipe extends React.Component {
                 // Reset form fields to their defaults
                 this.resetAddRecipeForm();
 
-                // Update state of the RecipeListTable component using the provided function
+                // Update state of the RecipeListContainer component using the provided function
                 this.props.addRecipeToState(result.data);
             })
             .catch(error => console.log("Error submitting new recipe:", error))
@@ -79,7 +79,7 @@ class AddRecipe extends React.Component {
             <div className="add-recipe-parent">
                     <span className="add-recipe-toggle-text" onClick={this.handleFormToggle}>
                         <img alt="Add recipe"
-                             src="./button_plus.png"
+                             src="./icons/button_plus.png"
                              className="add-recipe-toggle-button"
                              onClick={this.handleFormToggle}/>
                         Add Recipe
