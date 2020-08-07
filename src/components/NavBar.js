@@ -9,7 +9,6 @@ function NavBar(props) {
         <Navbar sticky="top"
                 bg="dark"
                 variant="dark"
-                expand="sm"
                 className="navbar-custom-container">
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">

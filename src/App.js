@@ -6,9 +6,6 @@ import PageTitle from './components/PageTitle';
 import RecipeDetailContainer from './components/RecipeDetailContainer';
 import RecipeListTable from './components/RecipeListTable';
 import ConvertTextPageContainer from './components/ConvertTextPageContainer';
-import 'react-datepicker/dist/react-datepicker.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 
 class App extends React.Component {
     constructor() {
