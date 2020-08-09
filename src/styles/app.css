@@ -10,7 +10,7 @@
 .app-container {
   font-style: normal;
   max-width: 1200px;
-  text-align: -webkit-center;
+  text-align: center;
 }
 
 .content-container {
@@ -48,12 +48,13 @@ hr {
 .table-edit-button {
   width: auto;
   height: auto;
-  text-align: -webkit-center;
+  text-align: center;
 }
 
 .difficulty-icon {
   height: 21px;
   position: relative;
+  margin: 0 5px;
 }
 
 .difficulty-icon .difficulty-tooltip-text {
@@ -61,7 +62,7 @@ hr {
   width: auto;
   background-color: #282c34;
   color: #EEEEEE;
-  text-align: -webkit-center;
+  text-align: center;
   padding: 5px 0;
   border-radius: 6px;
   position: absolute;
@@ -70,38 +71,6 @@ hr {
 
 .difficulty-icon:hover .difficulty-tooltip-text {
   display: block;
-}
-
-.add-recipe-parent {
-  text-align: -webkit-left;
-}
-
-.add-recipe-toggle-button {
-  height: 25px;
-  margin: 0 3px;
-}
-
-.add-recipe-toggle-text {
-  line-height: 30px;
-  margin-bottom: 0;
-  vertical-align: center;
-  cursor: pointer;
-  width: auto;
-  text-align: -webkit-left;
-}
-
-.add-recipe-form {
-  margin-top: 5px;
-  margin-left: 10px;
-}
-
-.add-recipe-form-label {
-  margin-right: 8px;
-  alignment: right;
-}
-
-.add-recipe-form-textbox {
-  alignment: right;
 }
 
 .start-finish-datepicker {
@@ -113,7 +82,7 @@ hr {
   margin-left: 3px;
   margin-bottom: 10px;
   vertical-align: center;
-  text-align: -webkit-left;
+  text-align: left;
 }
 
 .recipe-start-finish-table {
@@ -123,7 +92,7 @@ hr {
 }
 
 .recipe-start-finish-table-label {
-  text-align: -webkit-right;
+  text-align: right;
   vertical-align: center;
 }
 
@@ -208,14 +177,14 @@ hr {
   margin: 0 3px;
   padding: 0 8px;
   height: auto;
-  text-align: -webkit-left;
+  text-align: left;
 }
 
 .button-reset {
   margin: 0 0;
   padding: 0 8px;
   height: auto;
-  text-align: -webkit-right;
+  text-align: right;
 }
 
 .text-conversion-arrow {
@@ -278,24 +247,29 @@ hr {
 }
 
 .toggle-replacements {
-  text-align: -webkit-left;
+  text-align: left;
 }
 
 .text-conversion-list-container {
   padding: 5px 5px;
-  text-align: -webkit-left;
+  text-align: left;
 }
 
 .text-conversion-accordion {
-  text-align: -webkit-left;
+  text-align: left;
   cursor: pointer;
 }
 
 .icon-ext-link {
+  display: inline;
   max-height: 0.55rem;
   max-width: 0.55rem;
   margin-left: 4px;
   filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%);
+}
+
+.icon-transparent {
+  background: white;
 }
 
 @media (max-width: 767px) {

@@ -3,15 +3,15 @@ import EditButton from "./EditButton";
 
 function RecipeListHeader(props) {
     return (
-        <div className="list-header recipe-list-item">
-            <span>Recipe Name</span>
-            <span>Difficulty</span>
-            <span>Length</span>
-            <span>Author</span>
-            <span>Source</span>
-            <div className="icon-cell">
+        <div className="recipe-list-header list-header">
+            <span className="recipe-list-item">Recipe Name</span>
+            <span className="recipe-list-item">Difficulty</span>
+            <span className="recipe-list-item">Length</span>
+            <span className="recipe-list-item">Author</span>
+            <span className="recipe-list-item">Source</span>
+            <span className="recipe-list-item icon-cell">
                 <EditButton onClickFn={props.onClickFn} onClickParam={props.onClickParam}/>
-            </div>
+            </span>
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import {v4 as uuid} from 'uuid';
+import AddRecipeButton from "./AddRecipeButton";
+import map_difficulty_to_icon from "../scripts/map_difficulty_to_icon";
 
 class AddRecipe extends React.Component {
     constructor(props) {
@@ -10,16 +12,17 @@ class AddRecipe extends React.Component {
             difficulty: "Intermediate",
             author: "",
             source: "",
+            url: "",
             hidden: this.props.hidden
         };
 
-        this.handleFormToggle = this.handleFormToggle.bind(this);
+        this.handleButtonToggle = this.handleButtonToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.resetAddRecipeForm = this.resetAddRecipeForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleFormToggle() {
+    handleButtonToggle() {
         this.setState({
             hidden: !this.state.hidden
         });
@@ -38,6 +41,7 @@ class AddRecipe extends React.Component {
             difficulty: "Intermediate",
             author: "",
             source: "",
+            url: "",
             hidden: true
         })
         // this.props.toggleEditMode(false);
@@ -76,14 +80,8 @@ class AddRecipe extends React.Component {
 
     render() {
         return (
-            <div className="add-recipe-parent">
-                    <span className="add-recipe-toggle-text" onClick={this.handleFormToggle}>
-                        <img alt="Add recipe"
-                             src="./icons/button_plus.png"
-                             className="add-recipe-toggle-button"
-                             onClick={this.handleFormToggle}/>
-                        Add Recipe
-                    </span>
+            <div className="add-recipe-container">
+                <AddRecipeButton onClickFn={this.handleButtonToggle}/>
 
                 <form className="add-recipe-form"
                       hidden={this.state.hidden}
@@ -97,8 +95,7 @@ class AddRecipe extends React.Component {
                            placeholder="Recipe Name"
                            value={this.state.name}
                            onChange={this.handleChange}
-                           required={true}
-                    />
+                           required={true}/>
 
                     <br/>
 
@@ -115,6 +112,7 @@ class AddRecipe extends React.Component {
                         <option value="Advanced">Advanced</option>
                         <option value="Iron Chef">Iron Chef</option>
                     </select>
+                    {map_difficulty_to_icon(this.state.difficulty)}
 
                     <br/>
 
@@ -126,8 +124,7 @@ class AddRecipe extends React.Component {
                            name="author"
                            placeholder="Optional"
                            value={this.state.author}
-                           onChange={this.handleChange}
-                    />
+                           onChange={this.handleChange}/>
 
                     <br/>
 
@@ -139,8 +136,19 @@ class AddRecipe extends React.Component {
                            name="source"
                            placeholder="Optional"
                            value={this.state.source}
-                           onChange={this.handleChange}
-                    />
+                           onChange={this.handleChange}/>
+
+                    <br/>
+
+                    <label className="add-recipe-form-label">
+                        URL
+                    </label>
+                    <input className="add-recipe-form-textbox"
+                           type="text"
+                           name="url"
+                           placeholder="Optional"
+                           value={this.state.url}
+                           onChange={this.handleChange}/>
 
                     <br/>
                     <Button variant="danger"
@@ -163,7 +171,11 @@ class AddRecipe extends React.Component {
 }
 
 AddRecipe.defaultProps = {
+    name: "",
     difficulty: "Intermediate",
+    author: "",
+    source: "",
+    url: "",
     hidden: true
 }
 

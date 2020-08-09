@@ -9,6 +9,7 @@ import './index.css';
 import './styles/app.css';
 import './styles/recipe_list.css';
 import './styles/steps.css';
+import './styles/add_recipe_or_step.css';
 import './styles/footer.css';
 
 

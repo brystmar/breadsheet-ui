@@ -1,0 +1,49 @@
+.add-recipe-container {
+  text-align: left;
+  margin-top: 5px;
+}
+
+.btn-add-recipe {
+  border: none;
+  background: none;
+  margin: auto 0 auto 3px;
+  font-size: 2.2vh;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.btn-add-recipe img {
+  margin-right: 3px;
+}
+.btn-add-recipe span {
+  font-weight: 400;
+}
+
+.add-recipe-toggle-button {
+  height: 2.6vh;
+}
+
+.add-recipe-toggle-text {
+  line-height: 30px;
+  margin-bottom: 0;
+  vertical-align: center;
+  cursor: pointer;
+  width: auto;
+  text-align: left;
+}
+
+.add-recipe-form {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.add-recipe-form-label {
+  margin-right: 8px;
+  alignment: right;
+}
+
+.add-recipe-form-textbox {
+  alignment: right;
+}
+
+/*# sourceMappingURL=add_recipe_or_step.css.map */
