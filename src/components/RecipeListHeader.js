@@ -9,7 +9,9 @@ function RecipeListHeader(props) {
             <span>Length</span>
             <span>Author</span>
             <span>Source</span>
-            <span><EditButton onClickFn={props.onClickFn} onClickParam={props.onClickParam}/></span>
+            <div className="icon-cell">
+                <EditButton onClickFn={props.onClickFn} onClickParam={props.onClickParam}/>
+            </div>
         </div>
     )
 }

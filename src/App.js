@@ -34,9 +34,12 @@ class App extends React.Component {
         // console.log("Calling endpoint:", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes");
         fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes")
             .then(response => response.json())
-            .then(result => this.setState({
-                allRecipes: this.sortAllRecipes(result.data)
-            }))
+            .then(result => {
+                this.setState({
+                    allRecipes: this.sortAllRecipes(result.data)
+                })
+                console.log(result.data);
+            })
             .catch(error => console.log("Error retrieving data for all recipes:", error));
     }
 

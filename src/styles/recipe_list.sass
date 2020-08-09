@@ -4,13 +4,14 @@
 .recipe-list-item
   display: grid
   grid-gap: 4px
-  grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 1.75fr 0.5fr
+  grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
   text-align: left
   margin: 0
-  span
+  span, div
     border: 1px solid lightcoral
     display: flex
-    justify-content: flex-start
+    height: 70px
+    align-items: center  //center vertically
 
 .list-header
   border: 1px solid purple
@@ -18,3 +19,32 @@
     padding: 0.7rem 0
     font-size: 1.15rem
     font-weight: 700
+    display: flex
+
+.icon-cell
+  display: flex
+  align-items: center
+  justify-content: center
+  margin: 0
+  width: 60px
+
+//.recipe-list-item-name
+//  min-width: 320px
+
+//.recipe-list-item-difficulty
+//  min-width: 110px
+
+//.recipe-list-item-length
+//  min-width: 90px
+
+.recipe-list-item-source
+  flex-direction: column
+  justify-content: center  //center vertically
+  align-items: flex-start
+  //min-width: 138px
+  *
+    border: 1px blue solid
+
+//.recipe-list-item-source
+//  min-width: 190px
+

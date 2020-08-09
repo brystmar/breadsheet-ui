@@ -41,9 +41,6 @@ hr
   height: auto
   text-align: -webkit-center
 
-.recipe-list-item-name
-  min-width: 320px
-
 .difficulty-icon
   height: 21px
   position: relative
@@ -61,31 +58,6 @@ hr
 
 .difficulty-icon:hover .difficulty-tooltip-text
   display: block
-
-.recipe-list-item-difficulty
-  min-width: 110px
-
-.recipe-list-item-length
-  min-width: 90px
-
-.recipe-list-item-author
-  min-width: 138px
-
-.recipe-list-item-source
-  min-width: 190px
-
-.icon-delete
-  background-color: white
-  color: darkred
-  font-weight: bolder
-  height: 12px
-  cursor: pointer
-  text-align: right
-
-.delete-icon-column
-  text-align: -webkit-center
-  vertical-align: center
-  width: min-content
 
 .add-recipe-parent
   text-align: -webkit-left
@@ -184,6 +156,23 @@ hr
   background: #ddd
   border: 1px solid #808080
 
+.btn-delete
+  border: none
+  border-radius: 10px
+  height: 1rem
+  width: 1rem
+  margin: 0
+  display: flex
+  align-content: center
+  justify-content: center
+.btn-delete:hover,
+.btn-delete:focus
+  background: black
+
+.icon-delete
+  background-color: white
+  height: 100%
+
 .button-clipboard-row
   margin: 0 3px
   padding: 0 8px
@@ -195,9 +184,6 @@ hr
   padding: 0 8px
   height: auto
   text-align: -webkit-right
-
-.button-reset-column
-  text-align: right
 
 .text-conversion-arrow
   width: 5%
@@ -256,6 +242,12 @@ hr
 .text-conversion-accordion
   text-align: -webkit-left
   cursor: pointer
+
+.icon-ext-link
+  max-height: 0.55rem
+  max-width: 0.55rem
+  margin-left: 4px
+  filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%)
 
 @media (max-width: 767px)
   .app-container
