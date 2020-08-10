@@ -1,26 +1,28 @@
 .recipe-list-container
   display: grid
+  margin: 0
 
-.recipe-list,
-.recipe-list-header
+.recipe-list-row
   display: grid
   grid-gap: 4px
   grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
   text-align: left
   margin: 0
-  span:nth-of-type(even)
-    background: grey
-
-  .recipe-list-item
-    border: 1px solid lightcoral
+  padding: 8px 0
+  .recipe-list-cell
+    //border: 1px solid lightcoral
     display: flex
     align-items: center  //center vertically
+    padding: 0 8px
+
+.recipe-list-row-highlighted
+  background: rgb(242,242,242)
 
 .list-header
-  span
-    font-size: 1.25rem
-    font-weight: 700
-    padding: 0.7rem 0
+  font-size: 1.35rem
+  font-weight: 700
+  padding: 0.7rem 0
+  cursor: default
 
 .icon-cell
   justify-content: center
@@ -36,14 +38,13 @@
 //.recipe-list-item-length
 //  min-width: 90px
 
-.recipe-list-item-source
+//.recipe-list-item-source
   //min-width: 138px
   //display: inline
 
 .text-with-ext-link-icon
-  display: inline
+  white-space: nowrap
   margin: auto 0
-  //flex-direction: column
 
 //.recipe-list-item-source
 //  min-width: 190px

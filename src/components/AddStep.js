@@ -15,7 +15,7 @@ class AddStep extends React.Component {
             hidden: this.props.hidden
         };
 
-        this.handleFormToggle = this.handleFormToggle.bind(this);
+        this.handleButtonToggle = this.handleButtonToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.padValue = this.padValue.bind(this);
         this.resetAddStepForm = this.resetAddStepForm.bind(this);
@@ -30,7 +30,7 @@ class AddStep extends React.Component {
         }
     }
 
-    handleFormToggle() {
+    handleButtonToggle() {
         this.setState({
             hidden: !this.state.hidden
         });
@@ -123,13 +123,14 @@ class AddStep extends React.Component {
     render() {
         return (
             <div className="add-step-parent">
-                <span className="add-recipe-toggle-text" onClick={this.handleFormToggle}>
-                    <img alt="Add step"
-                         src="./icons/button_plus.png"
-                         className="add-recipe-toggle-button"
-                         onClick={this.handleFormToggle}/>
-                    Add Step
-                </span>
+                <button type="button"
+                        className="btn-add-recipe-or-step"
+                        onClick={this.handleButtonToggle}>
+                    <img alt="Add a new step"
+                         src="/icons/button_plus.png"
+                         className="add-recipe-or-step-toggle-button icon-transparent"/>
+                    New Step
+                </button>
 
                 <form className="add-recipe-form"
                       hidden={this.state.hidden}

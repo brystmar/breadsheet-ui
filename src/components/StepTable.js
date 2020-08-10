@@ -2,7 +2,7 @@ import React from 'react';
 import StepListItem from './StepListItem';
 import LoadingIcon from './LoadingIcon';
 import Table from 'react-bootstrap/Table';
-import EditButton from './EditButton';
+import BtnEdit from './buttons/BtnEdit';
 
 function StepTable(props) {
     return (
@@ -15,8 +15,8 @@ function StepTable(props) {
                 <th className="step-table-list-item-then-wait-header">Then Wait...</th>
                 <th>Notes</th>
                 <th>
-                    <EditButton onClickFn={props.toggleEditMode}
-                        onClickParam={props.hidden}/>
+                    <BtnEdit onClickFn={props.toggleEditMode}
+                             onClickParam={props.hidden}/>
                 </th>
             </tr>
             </thead>

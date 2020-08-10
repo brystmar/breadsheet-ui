@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import {v4 as uuid} from 'uuid';
-import AddRecipeButton from "./AddRecipeButton";
+import BtnAdd from "./buttons/BtnAdd";
 import map_difficulty_to_icon from "../scripts/map_difficulty_to_icon";
 
 class AddRecipe extends React.Component {
@@ -81,7 +81,14 @@ class AddRecipe extends React.Component {
     render() {
         return (
             <div className="add-recipe-container">
-                <AddRecipeButton onClickFn={this.handleButtonToggle}/>
+                <button type="button"
+                        className="btn-add-recipe-or-step"
+                        onClick={this.handleButtonToggle}>
+                    <img alt="Add a new recipe"
+                         src="/icons/button_plus.png"
+                         className="add-recipe-or-step-toggle-button icon-transparent"/>
+                    New Recipe
+                </button>
 
                 <form className="add-recipe-form"
                       hidden={this.state.hidden}

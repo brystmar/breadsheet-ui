@@ -1,16 +1,16 @@
 import React from 'react';
-import EditButton from "./EditButton";
+import BtnEdit from './buttons/BtnEdit';
 
 function RecipeListHeader(props) {
     return (
-        <div className="recipe-list-header list-header">
-            <span className="recipe-list-item">Recipe Name</span>
-            <span className="recipe-list-item">Difficulty</span>
-            <span className="recipe-list-item">Length</span>
-            <span className="recipe-list-item">Author</span>
-            <span className="recipe-list-item">Source</span>
-            <span className="recipe-list-item icon-cell">
-                <EditButton onClickFn={props.onClickFn} onClickParam={props.onClickParam}/>
+        <div className="recipe-list-row list-header">
+            <span className="recipe-list-cell">Recipe Name</span>
+            <span className="recipe-list-cell">Difficulty</span>
+            <span className="recipe-list-cell">Length</span>
+            <span className="recipe-list-cell">Author</span>
+            <span className="recipe-list-cell">Source</span>
+            <span className="recipe-list-cell icon-cell">
+                <BtnEdit onClickFn={props.onClickFn} onClickParam={props.onClickParam}/>
             </span>
         </div>
     )

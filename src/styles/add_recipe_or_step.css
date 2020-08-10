@@ -3,7 +3,7 @@
   margin-top: 5px;
 }
 
-.btn-add-recipe {
+.btn-add-recipe-or-step {
   border: none;
   background: none;
   margin: auto 0 auto 3px;
@@ -12,14 +12,14 @@
   display: flex;
   align-items: center;
 }
-.btn-add-recipe img {
+.btn-add-recipe-or-step img {
   margin-right: 3px;
 }
-.btn-add-recipe span {
+.btn-add-recipe-or-step span {
   font-weight: 400;
 }
 
-.add-recipe-toggle-button {
+.add-recipe-or-step-toggle-button {
   height: 2.6vh;
 }
 

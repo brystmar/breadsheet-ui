@@ -5,21 +5,23 @@ import RecipeListHeader from "./RecipeListHeader";
 
 function RecipeListContainer(props) {
     const [editMode, toggleEditMode] = useState(false)
-    const recipeComponentList = props.allRecipes.map(
-        recipe => <RecipeListItem key={recipe.id}
-                                  recipe_id={recipe.id}
-                                  name={recipe.name}
-                                  author={recipe.author}
-                                  source={recipe.source}
-                                  url={recipe.url}
-                                  difficulty={recipe.difficulty}
-                                  solve_for_start={recipe.solve_for_start}
-                                  length={seconds_to_string(recipe.length,
-                                      recipe.length >= 86400,
-                                      recipe.length < 86400,
-                                      false)}
-                                  hidden={!editMode}
-                                  deleteRecipe={props.deleteRecipe}/>
+    const recipeComponentList = props.allRecipes.map((recipe, index) =>
+        <RecipeListItem key={index}
+                        recipe_id={recipe.id}
+                        name={recipe.name}
+                        author={recipe.author}
+                        source={recipe.source}
+                        url={recipe.url}
+                        difficulty={recipe.difficulty}
+                        solve_for_start={recipe.solve_for_start}
+                        length={seconds_to_string(recipe.length,
+                            recipe.length >= 86400,
+                            recipe.length < 86400,
+                            false)}
+                        hidden={!editMode}
+                        // Used to add a class to alternating rows for table-like background stripes
+                        highlight={index % 2 === 0}
+                        deleteRecipe={props.deleteRecipe}/>
     );
 
     return (
