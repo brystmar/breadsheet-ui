@@ -1,36 +1,17 @@
 import React from 'react';
 import StepListItem from './StepListItem';
-import LoadingIcon from './LoadingIcon';
-import Table from 'react-bootstrap/Table';
-import BtnEdit from './buttons/BtnEdit';
+import ListHeaderRow from './ListHeaderRow';
 
-function StepTable(props) {
+function StepContainer(props) {
     return (
-        <Table className="step-table" striped size="sm">
-            <thead className="table-header-row">
-            <tr>
-                <th>Step</th>
-                <th>When</th>
-                <th>Action</th>
-                <th className="step-table-list-item-then-wait-header">Then Wait...</th>
-                <th>Notes</th>
-                <th>
-                    <BtnEdit onClickFn={props.toggleEditMode}
-                             onClickParam={props.hidden}/>
-                </th>
-            </tr>
-            </thead>
-
-            <tbody className="step-table-list">
-            {props.hasData ? BuildStepComponentList(props) :
-                <tr>
-                    <td>
-                        <LoadingIcon cssClass="loading-icon-table"/>
-                    </td>
-                </tr>
-            }
-            </tbody>
-        </Table>
+        <div className="recipe-list-container">
+            <ListHeaderRow
+                for="step"
+                colTitles={["Step", "When", "Action", "Then Wait...", "Notes"]}
+                onClickFn={props.toggleEditMode}
+                onClickParam={props.hidden}/>
+            {BuildStepComponentList(props)}
+        </div>
     )
 }
 
@@ -60,6 +41,7 @@ function BuildStepComponentList(props) {
                               then_wait={stepList[i].then_wait}
                               note={stepList[i].note}
                               hidden={props.hidden}
+                              highlight={i % 2 === 0}
                               deleteStep={props.deleteStep}
                               handleStepLengthChange={props.handleStepLengthChange}/>);
 
@@ -102,10 +84,10 @@ function BuildStepComponentList(props) {
     return stepComponentList;
 }
 
-StepTable.defaultProps = {
+StepContainer.defaultProps = {
     hidden: true,
     hasData: false,
     steps: []
 }
 
-export default StepTable;
+export default StepContainer;

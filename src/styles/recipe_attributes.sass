@@ -1,0 +1,28 @@
+.recipe-attributes-container
+  display: grid
+  grid-template: 2fr 2fr / 2fr 2fr
+  grid-gap: 4px
+  .recipe-attribute
+    display: grid
+    grid-template: 1fr / 1fr 4fr
+    border: 1px solid green
+    height: 40px
+    text-align: left
+    .attribute-label
+      margin: 0 5px 0 0
+      font-size: 1.15rem
+      font-weight: 500
+      white-space: nowrap
+      width: min-content
+    .attribute-value
+      white-space: nowrap
+
+@media (max-width: 767px)
+  .recipe-attributes-container
+    grid-template: repeat(4, 1fr) / 1fr
+    background: lightcoral
+    .recipe-attribute
+      display: flex
+
+
+

@@ -55,7 +55,7 @@ class StepListItem extends React.Component {
             [name]: Number(value)
         });
 
-        // If a thenWaitXX value changes, update the state on RecipeDetailSummary
+        // If a thenWaitXX value changes, update the state on RecipePage
         if (name === "thenWaitHH") {
             this.props.handleStepLengthChange(event, this.props.stepNumber,
                 (value * 3600) + (this.state.thenWaitMM * 60));
@@ -94,21 +94,26 @@ class StepListItem extends React.Component {
     }
 
     render() {
+        let divClass = "step-list-row";
+        if (this.props.highlight) {
+            divClass += " list-row-highlighted"
+        }
+
         return (
-            <tr className="step-table-list-item">
-                <td className="step-table-list-item-number">
+            <div className={divClass}>
+                <span className="step-list-cell">
                     {this.props.stepNumber}.
-                </td>
+                </span>
 
-                <td className="step-table-list-item-when">
+                <span className="step-list-cell">
                     <Moment format="ddd HH:mm">{this.props.when}</Moment>
-                </td>
+                </span>
 
-                <td className="step-table-list-item-text">
+                <span className="step-list-cell">
                     {this.props.text}
-                </td>
+                </span>
 
-                <td className="step-table-list-item-then-wait">
+                <span className="step-list-cell">
                     <input type="number"
                            min="00"
                            max="99"
@@ -128,20 +133,22 @@ class StepListItem extends React.Component {
                            onBlur={this.padValue}
                            className="then-wait-mm-input"
                     />
-                </td>
+                </span>
 
-                <td className="step-table-list-item-note">
+                <span className="step-list-cell">
                     {this.props.note === "None" ? "" : this.props.note}
-                </td>
+                </span>
 
-                <td className="delete-icon-column">
+                <span className="step-list-cell icon-cell">
+                    <button className="btn-delete"
+                            onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}
+                            hidden={this.props.hidden}>
                     <img alt={"Delete step " + this.props.stepNumber}
                          src="./icons/button_minus.png"
-                         className="delete-recipe-icon"
-                         onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}
-                         hidden={this.props.hidden}/>
-                </td>
-            </tr>
+                         className="icon icon-delete"/>
+                    </button>
+                </span>
+            </div>
         )
     }
 }

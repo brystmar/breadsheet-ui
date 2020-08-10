@@ -69,7 +69,7 @@ class RecipeStartEnd extends React.Component {
             });
         }
 
-        // Update state on RecipeDetailSummary with the new start time
+        // Update state on RecipePage with the new start time
         this.props.handleUpdateStartTime(newStartTime);
     }
 
@@ -79,49 +79,41 @@ class RecipeStartEnd extends React.Component {
             solveForStart: !this.state.solveForStart
         })
 
-        // Update state on RecipeDetailSummary
+        // Update state on RecipePage
         this.props.handleStartFinishToggle();
     }
 
     render() {
         return (
-            <div className="recipe-start-finish">
-                <table className="recipe-start-finish-table">
-                    <tbody>
-                    <tr>
-                        <td className="recipe-start-finish-table-label">
-                            <label className="start-finish-toggle-label"
-                                   id="start-finish-toggle"
-                                   onClick={this.handleStartFinishToggle}>
-                                {this.state.solveForStart ? "Start at:" : "Finish at:"}
-                            </label>
-                        </td>
-                        <td className="recipe-start-finish-table-datepicker">
-                            <DatePicker
-                                selected={this.state.solveForStart  // `selected`: the value for this object
-                                    ? this.state.startTime
-                                    : this.state.finishTime}
-                                onChange={this.handleDateChange}
-                                className="start-finish-datepicker"
-                                showTimeSelect
-                                timeFormat="HH:mm"
-                                timeIntervals={30}
-                                timeCaption="Time"
-                                todayButton="Today"
-                                useWeekdaysShort={true}
-                                dateFormat="MMM dd, yyyy HH:mm"/>
-                        </td>
-                        <td>
-                            <Button type="button"
-                                    name="updateRecipe"
-                                    className="button-save-recipe"
-                                    size="sm"
-                                    variant="secondary"
-                                    onClick={this.props.saveRecipe}>Save</Button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div className="recipe-start-finish-container">
+                <span className="recipe-start-finish-table-label">
+                    <label className="start-finish-toggle-label"
+                           id="start-finish-toggle"
+                           onClick={this.handleStartFinishToggle}>
+                        {this.state.solveForStart ? "Start at:" : "Finish at:"}
+                    </label>
+                </span>
+                <span className="recipe-start-finish-table-datepicker">
+                    <DatePicker
+                        selected={this.state.solveForStart  // `selected`: the value for this object
+                            ? this.state.startTime
+                            : this.state.finishTime}
+                        onChange={this.handleDateChange}
+                        className="start-finish-datepicker"
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={30}
+                        timeCaption="Time"
+                        todayButton="Today"
+                        useWeekdaysShort={true}
+                        dateFormat="MMM dd, yyyy HH:mm"/>
+                </span>
+                <span>
+                    <button type="button"
+                            name="updateRecipe"
+                            className="btn btn-save"
+                            onClick={this.props.saveRecipe}>Save</button>
+                </span>
             </div>
         )
     }

@@ -1,11 +1,11 @@
 import React from 'react';
-import RecipeDetailSummary from './RecipeDetailSummary';
+import RecipePage from './RecipePage';
 import {useParams} from 'react-router-dom';
 
 // Middleware because I couldn't figure out how to grab the recipeId for
 //   a requested page without useParams.  A hash table would solve this!
 // TODO: Make allRecipes a hash table instead of a list
-function RecipeDetailContainer(props) {
+function RecipePageContainer(props) {
     let {recipeId} = useParams();
     let recipeDeets = {};
 
@@ -16,17 +16,17 @@ function RecipeDetailContainer(props) {
         }
     }
 
-    return <RecipeDetailSummary recipeId={recipeId}
-                                recipeData={recipeDeets}
-                                hasData={!!recipeDeets.id}
-                                updateOneRecipe={props.updateOneRecipe}
-                                updateRecipeLength={props.updateRecipeLength}
-                                updateMasterRecipeList={props.updateMasterRecipeList}/>
+    return <RecipePage recipeId={recipeId}
+                       recipeData={recipeDeets}
+                       hasData={!!recipeDeets.id}
+                       updateOneRecipe={props.updateOneRecipe}
+                       updateRecipeLength={props.updateRecipeLength}
+                       updateMasterRecipeList={props.updateMasterRecipeList}/>
 }
 
-RecipeDetailContainer.defaultProps = {
+RecipePageContainer.defaultProps = {
     allRecipes: [{id: ""}],
     hasData: false
 }
 
-export default RecipeDetailContainer;
+export default RecipePageContainer;

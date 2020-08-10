@@ -6,7 +6,7 @@ function RecipeListItem(props) {
     let divClass = "recipe-list-row";
 
     if (props.highlight) {
-        divClass += " recipe-list-row-highlighted"
+        divClass += " list-row-highlighted"
     }
 
     let source = props.source ? props.source : "--";
@@ -28,7 +28,7 @@ function RecipeListItem(props) {
         <div className={divClass}>
             <span className="recipe-list-cell"><Link to={`/${props.recipe_id}`}>{props.name}</Link></span>
             <span className="recipe-list-cell">{map_difficulty_to_icon(props.difficulty)}</span>
-            <span className="recipe-list-cell">{props.length} {props.key}</span>
+            <span className="recipe-list-cell">{props.length}</span>
             <span className="recipe-list-cell">{props.author ? props.author : "--"}</span>
             <span className={sourceClass}>{sourceWithLink}</span>
 

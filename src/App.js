@@ -3,7 +3,7 @@ import {Switch, Route} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import PageTitle from './components/PageTitle';
-import RecipeDetailContainer from './components/RecipeDetailContainer';
+import RecipePageContainer from './components/RecipePageContainer';
 import AddRecipe from './components/AddRecipe';
 import RecipeListContainer from './components/RecipeListContainer';
 import ConvertTextPageContainer from './components/ConvertTextPageContainer';
@@ -139,6 +139,18 @@ class App extends React.Component {
                 <NavBar allRecipes={this.state.allRecipes}/>
                 <div className="content-container">
                     <Switch>
+                        <Route path="/:recipeId">
+                            <RecipePageContainer allRecipes={this.state.allRecipes}
+                                                 updateOneRecipe={this.updateOneRecipe}
+                                                 updateRecipeLength={this.updateRecipeLength}
+                                                 updateMasterRecipeList={this.getAllRecipes}/>
+                        </Route>
+
+                        <Route exact path="/convert">
+                            <PageTitle title="Convert Recipe Text" includeHr={true}/>
+                            <ConvertTextPageContainer/>
+                        </Route>
+
                         <Route exact path="/">
                             <PageTitle
                                 title="Breadsheet"
@@ -149,18 +161,6 @@ class App extends React.Component {
                                 deleteRecipe={this.deleteRecipe}/>
                             <AddRecipe
                                 addRecipeToState={this.addRecipeToState}/>
-                        </Route>
-
-                        <Route exact path="/convert">
-                            <PageTitle title="Convert Recipe Text" includeHr={true}/>
-                            <ConvertTextPageContainer/>
-                        </Route>
-
-                        <Route path="/:recipeId">
-                            <RecipeDetailContainer allRecipes={this.state.allRecipes}
-                                                   updateOneRecipe={this.updateOneRecipe}
-                                                   updateRecipeLength={this.updateRecipeLength}
-                                                   updateMasterRecipeList={this.getAllRecipes}/>
                         </Route>
                     </Switch>
                 </div>

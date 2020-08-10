@@ -2,12 +2,12 @@
 // Data: author, source, total time, difficulty, date added.
 import React from 'react';
 import PageTitle from './PageTitle';
-import RecipeDetailAttributes from './RecipeDetailAttributes';
+import RecipePageAttributes from './RecipePageAttributes';
 import RecipeStartEnd from './RecipeStartEnd';
-import StepTable from './StepTable';
+import StepContainer from './StepContainer';
 import AddStep from './AddStep';
 
-class RecipeDetailSummary extends React.Component {
+class RecipePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -61,9 +61,9 @@ class RecipeDetailSummary extends React.Component {
             .catch(rejection => console.log(rejection));
     }
 
-    toggleEditMode(mode = !this.state.editMode) {
+    toggleEditMode(newEditMode = !this.state.editMode) {
         this.setState({
-            editMode: mode
+            editMode: newEditMode
         })
     }
 
@@ -115,10 +115,6 @@ class RecipeDetailSummary extends React.Component {
     }
 
     handleSaveRecipe() {
-        // this.saveUpdatedRecipe({
-        //     recipeData: this.state.recipeData,
-        //     hasData: true
-        // })
         this.props.updateOneRecipe(this.state.recipeData.id, this.state.recipeData);
     }
 
@@ -196,12 +192,13 @@ class RecipeDetailSummary extends React.Component {
     render() {
         return (
             <div className="recipe-detail-summary">
-                <PageTitle title={this.state.recipeData.name} includeHr={true}/>
+                <PageTitle title={this.state.recipeData.name}
+                           includeHr={true}/>
 
-                <RecipeDetailAttributes difficulty={this.state.recipeData.difficulty}
-                                        source={this.state.recipeData.source}
-                                        author={this.state.recipeData.author}
-                                        length={this.state.recipeData.length}/>
+                <RecipePageAttributes difficulty={this.state.recipeData.difficulty}
+                                      source={this.state.recipeData.source}
+                                      author={this.state.recipeData.author}
+                                      length={this.state.recipeData.length}/>
 
                 <RecipeStartEnd start_time={this.state.recipeData.start_time}
                                 solve_for_start={this.state.recipeData.solve_for_start}
@@ -210,15 +207,15 @@ class RecipeDetailSummary extends React.Component {
                                 handleStartFinishToggle={this.handleStartFinishToggle}
                                 saveRecipe={this.handleSaveRecipe}/>
 
-                <StepTable steps={this.state.recipeData.steps}
-                           start_time={this.state.recipeData.start_time}
-                           solve_for_start={this.state.recipeData.solve_for_start}
-                           length={this.state.recipeData.length}
-                           hidden={!this.state.editMode}
-                           toggleEditMode={this.toggleEditMode}
-                           hasData={this.state.hasData}
-                           handleStepLengthChange={this.handleStepLengthChange}
-                           deleteStep={this.deleteStep}/>
+                <StepContainer steps={this.state.recipeData.steps}
+                               start_time={this.state.recipeData.start_time}
+                               solve_for_start={this.state.recipeData.solve_for_start}
+                               length={this.state.recipeData.length}
+                               hidden={!this.state.editMode}
+                               toggleEditMode={this.toggleEditMode}
+                               hasData={this.state.hasData}
+                               handleStepLengthChange={this.handleStepLengthChange}
+                               deleteStep={this.deleteStep}/>
 
                 <AddStep nextStep={this.state.nextStep}
                          addStepToRecipe={this.addStepToRecipe}
@@ -230,7 +227,7 @@ class RecipeDetailSummary extends React.Component {
     }
 }
 
-RecipeDetailSummary.defaultProps = {
+RecipePage.defaultProps = {
     recipeId: 0,
     recipeData: {
         id: 0
@@ -238,4 +235,4 @@ RecipeDetailSummary.defaultProps = {
     hasData: false
 }
 
-export default RecipeDetailSummary;
+export default RecipePage;

@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import {v4 as uuid} from 'uuid';
-import BtnAdd from "./buttons/BtnAdd";
 import map_difficulty_to_icon from "../scripts/map_difficulty_to_icon";
 
 class AddRecipe extends React.Component {

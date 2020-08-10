@@ -2,20 +2,34 @@
   display: grid
   margin: 0
 
-.recipe-list-row
+.recipe-list-row,
+.step-list-row
   display: grid
   grid-gap: 4px
-  grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
   text-align: left
   margin: 0
   padding: 8px 0
-  .recipe-list-cell
+  .recipe-list-cell,
+  .step-list-cell
     //border: 1px solid lightcoral
     display: flex
     align-items: center  //center vertically
     padding: 0 8px
 
-.recipe-list-row-highlighted
+.recipe-list-row
+  grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
+
+.step-list-row
+  grid-template: 1fr / 0.5fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
+
+@media (max-width: 767px)
+  .recipe-list-row
+    grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
+
+  .step-list-row
+    grid-template: 1fr / 0.5fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
+
+.list-row-highlighted
   background: rgb(242,242,242)
 
 .list-header

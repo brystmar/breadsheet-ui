@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import RecipeListItem from './RecipeListItem';
 import seconds_to_string from '../scripts/time_display_functions';
-import RecipeListHeader from "./RecipeListHeader";
+import ListHeaderRow from './ListHeaderRow';
 
 function RecipeListContainer(props) {
     const [editMode, toggleEditMode] = useState(false)
@@ -26,7 +26,9 @@ function RecipeListContainer(props) {
 
     return (
         <div className="recipe-list-container">
-            <RecipeListHeader
+            <ListHeaderRow
+                for="recipe"
+                colTitles={["Recipe Name", "Difficulty", "Length", "Author", "Source"]}
                 onClickFn={toggleEditMode}
                 onClickParam={!editMode}/>
             {recipeComponentList}
