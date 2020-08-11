@@ -1,7 +1,6 @@
 import React from 'react';
-import DatePicker from 'react-datepicker/es';
 import moment from 'moment';
-import Button from 'react-bootstrap/Button';
+import DatePicker from 'react-datepicker/es';
 
 class RecipeStartEnd extends React.Component {
     constructor(props) {
@@ -85,7 +84,7 @@ class RecipeStartEnd extends React.Component {
 
     render() {
         return (
-            <div className="recipe-start-finish-container">
+            <div className="start-finish-container">
                 <span className="recipe-start-finish-table-label">
                     <label className="start-finish-toggle-label"
                            id="start-finish-toggle"
@@ -93,6 +92,7 @@ class RecipeStartEnd extends React.Component {
                         {this.state.solveForStart ? "Start at:" : "Finish at:"}
                     </label>
                 </span>
+
                 <span className="recipe-start-finish-table-datepicker">
                     <DatePicker
                         selected={this.state.solveForStart  // `selected`: the value for this object
@@ -108,12 +108,11 @@ class RecipeStartEnd extends React.Component {
                         useWeekdaysShort={true}
                         dateFormat="MMM dd, yyyy HH:mm"/>
                 </span>
-                <span>
-                    <button type="button"
-                            name="updateRecipe"
-                            className="btn btn-save"
-                            onClick={this.props.saveRecipe}>Save</button>
-                </span>
+
+                <button type="button"
+                        name="updateRecipe"
+                        className="btn btn-save"
+                        onClick={this.props.saveRecipe}>Save</button>
             </div>
         )
     }

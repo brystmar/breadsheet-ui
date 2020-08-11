@@ -101,7 +101,7 @@ class StepListItem extends React.Component {
 
         return (
             <div className={divClass}>
-                <span className="step-list-cell">
+                <span className="step-list-cell right-justify">
                     {this.props.stepNumber}.
                 </span>
 

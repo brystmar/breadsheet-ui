@@ -2,25 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/attributes/AttrSource.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailAttributes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeDetailSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeListHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListHeaderRow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/BtnAdd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/recipe_list.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_list.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +38,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Sass File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -129,11 +121,11 @@
       <recent name="$PROJECT_DIR$/src/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/attributes" />
       <recent name="$PROJECT_DIR$/src/components/buttons" />
       <recent name="$PROJECT_DIR$/public/icons" />
       <recent name="$PROJECT_DIR$/src/styles" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/context" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -179,13 +171,6 @@
       <workItem from="1594952249110" duration="155000" />
       <workItem from="1596144641192" duration="478000" />
       <workItem from="1596145142626" duration="723000" />
-    </task>
-    <task id="LOCAL-00016" summary="Added routes, working on the RecipeDetail page">
-      <created>1584762622138</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1584762622138</updated>
     </task>
     <task id="LOCAL-00017" summary="Basic StartFinish functionality">
       <created>1584837228297</created>
@@ -523,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597018797042</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Step page is mostly done">
+      <created>1597028850488</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1597028850488</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -548,7 +540,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Added react-window to view Replacement lists.  Many enhancements across the board." />
     <MESSAGE value="Copy to clipboard works" />
     <MESSAGE value="First successful Prod deployment!" />
     <MESSAGE value="Converted RecipeListItem from class to functional component" />
@@ -573,7 +564,8 @@
     <MESSAGE value="Recipe list is basically done" />
     <MESSAGE value="Support for URLs in AddRecipe" />
     <MESSAGE value="Ready to tackle the Step page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ready to tackle the Step page" />
+    <MESSAGE value="Step page is mostly done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Step page is mostly done" />
   </component>
   <component name="WindowStateProjectService">
     <state x="858" y="487" key="#ESLint" timestamp="1596999325142">
@@ -588,10 +580,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588496515274" />
-    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2" timestamp="1597018796889">
+    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2" timestamp="1597028850306">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597018796889" />
+    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597028850306" />
     <state x="620" y="297" width="695" height="665" key="EditFileWatcherDialog" timestamp="1596746668162">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -630,10 +622,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state width="500" height="445" key="SwitcherDM/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1591370078391" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1597018799219">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1597028852286">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597018799219" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597028852286" />
     <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597021842348">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

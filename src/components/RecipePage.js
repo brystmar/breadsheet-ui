@@ -198,6 +198,7 @@ class RecipePage extends React.Component {
                 <RecipePageAttributes difficulty={this.state.recipeData.difficulty}
                                       source={this.state.recipeData.source}
                                       author={this.state.recipeData.author}
+                                      url={this.state.recipeData.url ? this.state.recipeData.url : ""}
                                       length={this.state.recipeData.length}/>
 
                 <RecipeStartEnd start_time={this.state.recipeData.start_time}
@@ -230,7 +231,8 @@ class RecipePage extends React.Component {
 RecipePage.defaultProps = {
     recipeId: 0,
     recipeData: {
-        id: 0
+        id: 0,
+        difficulty: "Intermediate"
     },
     hasData: false
 }

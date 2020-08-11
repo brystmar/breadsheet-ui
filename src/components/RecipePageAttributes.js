@@ -1,6 +1,7 @@
 import React from 'react';
 import seconds_to_string from '../scripts/time_display_functions';
 import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
+import AttrSource from "./attributes/AttrSource";
 
 function RecipePageAttributes(props) {
     return (
@@ -28,12 +29,20 @@ function RecipePageAttributes(props) {
 
             <div className="recipe-attribute">
                 <span className="attribute-label">Source</span>
-                <span className="attribute-value">
-                    {props.source}
-                </span>
+                <AttrSource name={props.source}
+                            url={props.url}
+                            extraClassString="attribute-value"/>
             </div>
         </div>
     )
+}
+
+RecipePageAttributes.defaultProps = {
+    difficulty: "Intermediate",
+    author: "",
+    source: "",
+    url: "",
+    length: 0
 }
 
 export default RecipePageAttributes;

@@ -30,6 +30,7 @@
   font-weight: 700;
   text-align: left;
   cursor: default;
+  white-space: nowrap;
 }
 
 hr {
@@ -70,32 +71,6 @@ hr {
 
 .difficulty-icon:hover .difficulty-tooltip-text {
   display: block;
-}
-
-.recipe-start-finish-container {
-  border: 1px solid blue;
-  display: flex;
-  margin: 4px 0;
-}
-
-.start-finish-datepicker {
-  z-index: 1;
-  margin-left: 2px;
-}
-
-.start-finish-toggle-label {
-  padding: 0 3px;
-  cursor: pointer;
-  font-weight: inherit;
-  margin-bottom: 0;
-  border-bottom: black;
-  border-bottom-style: dotted;
-  border-bottom-width: 1px;
-}
-
-.start-finish-toggle-label:hover {
-  border-bottom-style: solid;
-  vertical-align: center;
 }
 
 .text-conversion-table-bs-label {
