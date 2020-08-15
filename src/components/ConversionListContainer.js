@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 import {MDBDataTable} from 'mdbreact';
 import Card from 'react-bootstrap/Card';
@@ -146,10 +145,11 @@ class ConversionListContainer extends React.Component {
                             <Card.Body>
                                 <h4 className="toggle-replacements">
                                     Replacements for &nbsp;
-                                    <Button variant="secondary" name="scopeChange"
+                                    <button name="scopeChange"
+                                            className="btn btn-replacement-toggle"
                                             onClick={this.toggleScope}>
                                         {toggleLabel} <i className="fas fa-retweet"/>
-                                    </Button>
+                                    </button>
                                 </h4>
                                 <MDBDataTable scrollY
                                               striped

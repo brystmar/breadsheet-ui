@@ -83,14 +83,21 @@ class RecipeStartEnd extends React.Component {
     }
 
     render() {
+        // const startAt = <span className="start-finish-toggle">
+        //     This {this.state.solveForStart ? "Start at:" : "Finish at:"}
+        // </span>;
+
         return (
             <div className="start-finish-container">
-                <span className="recipe-start-finish-table-label">
+                <span className="start-finish-toggle">
                     <label className="start-finish-toggle-label"
                            id="start-finish-toggle"
                            onClick={this.handleStartFinishToggle}>
                         {this.state.solveForStart ? "Start at:" : "Finish at:"}
                     </label>
+                    <span className="tooltipz start-finish-toggle-tooltip">
+                        Toggle
+                    </span>
                 </span>
 
                 <span className="recipe-start-finish-table-datepicker">

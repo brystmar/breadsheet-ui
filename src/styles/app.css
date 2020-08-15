@@ -41,14 +41,6 @@ hr {
   margin-top: 2px;
 }
 
-.table-header-row {
-  text-align: left;
-  vertical-align: center;
-  font-weight: bold;
-  margin: 5px 3px;
-  cursor: default;
-}
-
 .table-edit-button {
   width: auto;
   height: auto;
@@ -118,6 +110,29 @@ hr {
   border: 1px solid #808080;
 }
 
+.btn-clipboard {
+  background: green;
+}
+
+.btn-reset {
+  margin: 0;
+  padding: 0 8px;
+  width: 4.5em;
+  background: red;
+}
+
+.btn-replacement-toggle {
+  width: max-content;
+  background: lightgray;
+  color: #212f29;
+  border: none;
+}
+
+.btn-replacement-toggle:hover,
+.btn-replacement-toggle:focus {
+  background: #5a6268;
+}
+
 .btn-save {
   background: lightblue;
 }
@@ -146,15 +161,13 @@ hr {
 .button-clipboard-row {
   margin: 0 3px;
   padding: 0 8px;
-  height: auto;
-  text-align: left;
+  width: max-content;
+  height: min-content;
 }
 
-.button-reset {
-  margin: 0 0;
-  padding: 0 8px;
-  height: auto;
-  text-align: right;
+.tooltipz {
+  visibility: visible;
+  background: khaki;
 }
 
 .text-conversion-arrow {
@@ -170,14 +183,6 @@ hr {
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
 .dataTables_scrollHeadInner {
-  padding-right: 0;
-}
-
-.table-responsive-sm {
-  padding-right: 0;
-}
-
-.table-wrapper-scroll-y table {
   padding-right: 0;
 }
 

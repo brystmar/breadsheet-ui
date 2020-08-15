@@ -1,8 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import FormLabel from 'react-bootstrap/FormLabel';
-// import FormControl from 'react-bootstrap/FormText';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { CSSTransition } from 'react-transition-group';
@@ -139,7 +137,7 @@ class ConvertTextControls extends React.Component {
                             <Button variant="success"
                                     size="sm"
                                     name="copyToClipboard"
-                                    className="button-clipboard-row"
+                                    className="btn btn-clipboard"
                                     tabIndex={3}>
                                 <i className="far fa-copy"/> Copy to Clipboard
                             </Button>
@@ -158,7 +156,7 @@ class ConvertTextControls extends React.Component {
                         <Button variant="danger"
                                 size="sm"
                                 name="resetForm"
-                                className="button-reset"
+                                className="btn btn-reset"
                                 onClick={this.resetForm}
                                 tabIndex={4}>
                             Reset
