@@ -2,8 +2,8 @@ import React from 'react';
 import BtnEdit from './buttons/BtnEdit';
 
 function ListHeaderRow(props) {
-    const columns = props.colTitles.map(title =>
-        <span className={props.for + "-list-cell"}>{title}</span>)
+    const columns = props.colTitles.map((title, index) =>
+        <span key={index} className={props.for + "-list-cell"}>{title}</span>)
 
     return (
         <div className={props.for + "-list-row list-header"}>

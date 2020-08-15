@@ -33,6 +33,10 @@
   white-space: nowrap;
 }
 
+.page-title-border {
+  border-bottom: 1px solid gray;
+}
+
 hr {
   margin-top: 2px;
 }

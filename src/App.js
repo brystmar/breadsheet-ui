@@ -139,16 +139,19 @@ class App extends React.Component {
                 <NavBar allRecipes={this.state.allRecipes}/>
                 <div className="content-container">
                     <Switch>
-                        <Route path="/:recipeId">
-                            <RecipePageContainer allRecipes={this.state.allRecipes}
-                                                 updateOneRecipe={this.updateOneRecipe}
-                                                 updateRecipeLength={this.updateRecipeLength}
-                                                 updateMasterRecipeList={this.getAllRecipes}/>
+                        <Route exact path="/convert">
+                            <PageTitle
+                                title="Convert Recipe Text"
+                                includeHr={true}/>
+                            <ConvertTextPageContainer/>
                         </Route>
 
-                        <Route exact path="/convert">
-                            <PageTitle title="Convert Recipe Text" includeHr={true}/>
-                            <ConvertTextPageContainer/>
+                        <Route path="/:recipeId">
+                            <RecipePageContainer
+                                allRecipes={this.state.allRecipes}
+                                updateOneRecipe={this.updateOneRecipe}
+                                updateRecipeLength={this.updateRecipeLength}
+                                updateMasterRecipeList={this.getAllRecipes}/>
                         </Route>
 
                         <Route exact path="/">
