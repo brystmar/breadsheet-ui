@@ -89,18 +89,17 @@ class RecipeStartEnd extends React.Component {
 
         return (
             <div className="start-finish-container">
-                <span className="start-finish-toggle">
-                    <label className="start-finish-toggle-label"
-                           id="start-finish-toggle"
-                           onClick={this.handleStartFinishToggle}>
+                <span className="start-finish-toggle-container"
+                      title="Toggle solving for start/finish time">
+                    <button
+                        type="button"
+                        className="btn btn-start-finish-toggle"
+                        onClick={this.handleStartFinishToggle}>
                         {this.state.solveForStart ? "Start at:" : "Finish at:"}
-                    </label>
-                    <span className="tooltipz start-finish-toggle-tooltip">
-                        Toggle
-                    </span>
+                    </button>
                 </span>
 
-                <span className="recipe-start-finish-table-datepicker">
+                <span className="start-finish-datepicker">
                     <DatePicker
                         selected={this.state.solveForStart  // `selected`: the value for this object
                             ? this.state.startTime
@@ -119,7 +118,9 @@ class RecipeStartEnd extends React.Component {
                 <button type="button"
                         name="updateRecipe"
                         className="btn btn-save"
-                        onClick={this.props.saveRecipe}>Save</button>
+                        onClick={this.props.saveRecipe}>
+                    Save
+                </button>
             </div>
         )
     }

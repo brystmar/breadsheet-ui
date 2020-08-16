@@ -35,34 +35,77 @@
       display: flex
 
 
-/*** Start/End Controls ***/
+/*** Start/Finish Controls ***/
 
 .start-finish-container
-  border: 1px solid blue
-  margin: 4px 10px
-  display: flex
+  margin: 4px 0
+  display: grid
+  grid-template: 1fr / 1fr 2fr 0.5fr
   align-items: center
   justify-content: flex-start
-  span
-    //margin: 0 3px
-  button
-    margin-left: 5px
+  height: max-content
+  width: max-content
+  white-space: nowrap
+  .btn-save
+    margin: auto 5px
+    height: 2em
+    width: min-content
+    background: rgb(108, 117, 125)
+    color: white
+    line-height: 1px
+    text-align: center
+  .btn-save:hover,
+  .btn-save:focus
+    background: rgb(90, 98, 104)
 
   .start-finish-datepicker
-    // Long dates & times get cut off at 100%
-    //width: 100%
-    //width: 137%
+    z-index: 10
+
+  .start-finish-toggle-container
+    padding: 2px 5px 2px 0
+    .btn-start-finish-toggle
+      //text-decoration: underline dotted red
+      border: none
+      border-bottom: 1px dotted gray
+      border-radius: 0
+      margin: 0
+      padding: 0 5px
+      height: min-content
+      width: max-content
+      vertical-align: center
+    .btn-start-finish-toggle:hover,
+    .btn-start-finish-toggle:focus
+      border: none
+      border-bottom: 1px solid gray
+
+  // Tooltip contents
+  .start-finish-toggle-container::before
+    display: none
+    position: absolute
+    content: attr(title)
+    z-index: 2
+    background: rgba(0, 0, 0, 0.8)
+    color: white
+    font-size: 0.8em
+    border-radius: 5px
+    width: max-content
+    padding: 1px 6px
+    white-space: nowrap
+    transform: translateY(150%)
+
+  .start-finish-toggle-container:hover::before,
+  .start-finish-toggle-container:hover::after
+    display: inline-block
+
+  // Arrow for the tooltip
+  .start-finish-toggle-container::after
+    display: none
+    position: absolute
+    content: ""
     z-index: 1
-    margin-left: 2px
+    width: 0
+    height: 0
+    border: 5px solid transparent
+    border-bottom-color: rgba(0, 0, 0, 0.8)
+    transform: translateY(225%) translateX(-400%)
 
-  .start-finish-toggle-label
-    padding: 0 3px
-    cursor: pointer
-    font-weight: inherit
-    margin-bottom: 0
-    border-bottom: black
-    border-bottom-style: dotted
-    border-bottom-width: 1px
-
-  .start-finish-toggle-label:hover
-    border-bottom-style: solid
