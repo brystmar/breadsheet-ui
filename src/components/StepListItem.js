@@ -101,19 +101,19 @@ class StepListItem extends React.Component {
 
         return (
             <div className={divClass}>
-                <span className="step-list-cell right-justify">
+                <span className="step-list-cell right-justify col-step">
                     {this.props.stepNumber}.
                 </span>
 
-                <span className="step-list-cell">
+                <span className="step-list-cell col-when">
                     <Moment format="ddd HH:mm">{this.props.when}</Moment>
                 </span>
 
-                <span className="step-list-cell">
+                <span className="step-list-cell col-action">
                     {this.props.text}
                 </span>
 
-                <span className="step-list-cell">
+                <span className="step-list-cell col-then">
                     <input type="number"
                            min="00"
                            max="99"
@@ -121,8 +121,7 @@ class StepListItem extends React.Component {
                            value={this.state.thenWaitHH}
                            onChange={this.handleChange}
                            onBlur={this.padValue}
-                           className="then-wait-hh-input"
-                    />
+                           className="then-wait-hh-input"/>
                     :
                     <input type="number"
                            min="00"
@@ -131,15 +130,14 @@ class StepListItem extends React.Component {
                            value={this.state.thenWaitMM}
                            onChange={this.handleChange}
                            onBlur={this.padValue}
-                           className="then-wait-mm-input"
-                    />
+                           className="then-wait-mm-input"/>
                 </span>
 
-                <span className="step-list-cell">
+                <span className="step-list-cell col-note">
                     {this.props.note === "None" ? "" : this.props.note}
                 </span>
 
-                <span className="step-list-cell icon-cell">
+                <span className="step-list-cell icon-cell col-button">
                     <button className="btn-delete"
                             onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}
                             hidden={this.props.hidden}>

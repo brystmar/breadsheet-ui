@@ -2,10 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/styles/buttons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/buttons.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/buttons.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListHeaderRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListHeaderRow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PageTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/map_difficulty_to_icon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/map_difficulty_to_icon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/add_recipe_or_step.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/add_recipe_or_step.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/add_recipe_or_step.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/add_recipe_or_step.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/app.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/app.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/recipe_list.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_list.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/steps.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/steps.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/steps.sass" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +47,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Sass File" />
         <option value="JavaScript File" />
+        <option value="Sass File" />
       </list>
     </option>
   </component>
@@ -163,13 +180,6 @@
       <workItem from="1594952249110" duration="155000" />
       <workItem from="1596144641192" duration="478000" />
       <workItem from="1596145142626" duration="723000" />
-    </task>
-    <task id="LOCAL-00021" summary="More work on AddStep.  Adding support for Recipe.solve_for_start &amp; Step.step_id">
-      <created>1585104918149</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1585104918149</updated>
     </task>
     <task id="LOCAL-00022" summary="StepListItem works w/local state, need to use props instead">
       <created>1585426418932</created>
@@ -507,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597547508993</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Fixed PageTitle border, added titles to difficulty icons">
+      <created>1597548109491</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1597548109491</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -532,7 +549,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Last commit before the bootstrap refactor" />
     <MESSAGE value="Fixed the NavBar dropdown link issue!  Working on CSS transitions." />
     <MESSAGE value="Copy to clipboard &amp; relevant animations should work now" />
     <MESSAGE value="Fixed add Recipe &amp; Step text, buttons" />
@@ -557,7 +573,8 @@
     <MESSAGE value="Smoother title transitions on page load" />
     <MESSAGE value="Convert page needs a ton of cleanup work" />
     <MESSAGE value="Added start/finish tooltip" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added start/finish tooltip" />
+    <MESSAGE value="Fixed PageTitle border, added titles to difficulty icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed PageTitle border, added titles to difficulty icons" />
   </component>
   <component name="WindowStateProjectService">
     <state x="858" y="487" key="#ESLint" timestamp="1596999325142">
@@ -568,14 +585,14 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="523" y="361" width="819" height="565" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588534493469" />
-    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588496515274">
+    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597606492364">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588496515274" />
-    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2" timestamp="1597547508803">
+    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597606492364" />
+    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2" timestamp="1597548109369">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597547508803" />
+    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597548109369" />
     <state x="620" y="297" width="695" height="665" key="EditFileWatcherDialog" timestamp="1596746668162">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

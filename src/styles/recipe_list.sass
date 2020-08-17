@@ -1,9 +1,18 @@
-.recipe-list-container
-  display: grid
-  margin: 0
+.recipe-list-container,
+.step-list-container
+  display: flex
+  flex-direction: column
+  border: 2px solid green
+  padding: 0.15em
+  div
+    border: 1px dotted blue
 
 .recipe-list-row,
 .step-list-row
+  span
+  span, h3
+    margin: 0 0.15em
+    border: 1px solid brown
   display: grid
   grid-gap: 4px
   text-align: left
@@ -15,28 +24,55 @@
     display: flex
     align-items: center  //center vertically
     padding: 0 8px
+    // Prevent text wrapping for all columns except notes
+    min-width: max-content
+    white-space: nowrap
+
+  .col-note,
+  .col-source
+    min-width: revert
+    white-space: revert
 
 .recipe-list-row
-  grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
+  grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2fr 0.4fr
+  grid-template-areas: "name diff len author source r-button"
 
 .step-list-row
-  grid-template: 1fr / 0.5fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
+  grid-template: 1fr / 0.4fr 0.65fr 1fr 0.75fr 2fr 0.4fr
+  grid-template-areas: "step when action then note s-button"
+//.col-note,
+//.col-button
+//  display: none
+//  visibility: hidden
+
+@media (max-width: 920px)
+  .col-source
+    display: none
+    visibility: hidden
+  .recipe-list-row
+    grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 0.4fr
+    grid-template-areas: "name diff len author r-button"
 
 @media (max-width: 767px)
-  .recipe-list-row
-    grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
+  //.recipe-list-row
+  //  grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2.45fr 0.4fr
 
   .step-list-row
-    grid-template: 1fr / 0.5fr 1fr 1.25fr 1.5fr 2.45fr 0.5fr
+    //grid-template: auto / auto
+    grid-template: 1fr / 0.4fr 0.65fr 1fr 0.75fr
+    grid-template-areas: "step when action then"
+
+  .col-note,
+  .col-button
+    display: inline
+    visibility: hidden
+
 
 .list-row-highlighted
   background: rgb(242,242,242)
 
 .list-header
-  font-size: 1.35rem
-  font-weight: 700
-  padding: 0.7rem 0
-  border-top: 1px solid gray
+  padding: 0.7em 0
   //border-bottom: 1px solid gray
   cursor: default
   white-space: nowrap
@@ -46,26 +82,50 @@
   margin: 0
   width: 60px
 
+.then-wait-hh-input
+  margin-right: 2px
+.then-wait-mm-input
+  margin-left: 2px
+
+
 .right-justify
   justify-content: flex-end
-
-//.recipe-list-item-name
-//  min-width: 320px
-
-//.recipe-list-item-difficulty
-//  min-width: 110px
-
-//.recipe-list-item-length
-//  min-width: 90px
-
-//.recipe-list-item-source
-  //min-width: 138px
-  //display: inline
 
 .text-with-ext-link-icon
   white-space: nowrap
   margin: auto 0
 
-//.recipe-list-item-source
-//  min-width: 190px
 
+/*** Grid Cell Assignments ***/
+
+// Recipe list columns
+.col-name
+  grid-area: name
+.col-difficulty
+  grid-area: diff
+.col-length
+  grid-area: len
+.col-author
+  grid-area: author
+.col-source
+  grid-area: source
+.recipe-list-cell .col-button
+  grid-area: r-button
+
+// Step list columns
+.col-step
+  grid-area: step
+  min-width: 68px
+.col-when
+  grid-area: when
+  min-width: 106px
+.col-action
+  grid-area: action
+  min-width: 180px
+.col-then
+  grid-area: then
+  min-width: 145px
+.col-note
+  grid-area: note
+.step-list-cell .col-button
+  grid-area: s-button

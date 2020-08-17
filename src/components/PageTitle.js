@@ -7,14 +7,14 @@ function PageTitle(props) {
         console.log("Loading Default Title...")
     }
     return (
-        <div className={props.includeHr ? "page-title page-title-border" : "page-title"}>
+        <h1 className={props.includeHr ? "page-title page-title-border" : "page-title"}>
             {props.title ? props.title : <LoadingIcon cssClass="loading-icon-title"/>}
-        </div>
+        </h1>
     )
 }
 
 PageTitle.defaultProps = {
-    title: "Breadsheet",
+    title: "Recipes",
     includeHr: true
 }
 

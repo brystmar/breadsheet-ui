@@ -28,7 +28,7 @@ function RecipeListContainer(props) {
         <div className="recipe-list-container">
             <ListHeaderRow
                 for="recipe"
-                colTitles={["Recipe Name", "Difficulty", "Length", "Author", "Source"]}
+                colTitles={["Name", "Difficulty", "Length", "Author", "Source"]}
                 onClickFn={toggleEditMode}
                 onClickParam={!editMode}/>
             {recipeComponentList}

@@ -1,3 +1,35 @@
+/*** Rules of Thumb for Responsive Units ***/
+// font-size: rem
+// padding:   em
+// margin:    em
+// widths:    em or pct (pixels can be okay)
+
+/*** Globals ***/
+*
+  box-sizing: border-box
+
+html
+  font-size: 16px
+
+h1, h2, h3, h4
+  margin: 0
+  white-space: nowrap
+  text-align: left
+  cursor: default
+
+h1
+  font-size: 2.75rem
+  font-weight: 700
+  margin: 0.25em 0 0.1em
+
+h2
+  font-size: 2rem
+  font-weight: 700
+
+h3
+  font-size: 1.5rem
+  font-weight: 600
+
 .app-container
   margin: 0 auto
 
@@ -19,18 +51,8 @@
 .loading-icon-title
   height: 50px
 
-.page-title
-  font-size: 2.5rem
-  font-weight: 700
-  text-align: left
-  cursor: default
-  white-space: nowrap
-
 .page-title-border
   border-bottom: 1px solid gray
-
-hr
-  margin-top: 2px
 
 .table-edit-button
   width: auto
@@ -62,68 +84,6 @@ hr
 
 .text-conversion-table-bs-row
   margin: 10px 0
-
-.btn
-  height: 2.5rem
-  text-align: center
-  margin: 0
-  padding: 0.35rem 0.9rem
-  border-radius: 5px
-  background: none
-  border: none
-
-.btn-edit-mode
-  height: 2.25rem
-  width: 2.5rem
-  padding: 0 0.1rem 0.2rem 0.3rem
-  margin: auto
-  background: #eeeeee
-  .icon-button
-    height: 1rem
-    filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%)
-    // SVG color conversion tool: https://codepen.io/sosuke/pen/Pjoqqp
-    //  -> Prefix with _brightness(0) saturate(100%)_ to ensure all SVGs start completely black.
-    //  -> Now we can set SVG color to #808080 gray.
-.btn-edit-mode:hover,
-.btn-edit-mode:focus
-  border: 1px solid #808080
-.btn-edit-mode:active
-  background: #ddd
-  border: 1px solid #808080
-
-.btn-clipboard
-  background: green
-
-.btn-reset
-  margin: 0
-  padding: 0 8px
-  width: 4.5em
-  background: red
-
-.btn-replacement-toggle
-  width: max-content
-  background: lightgray
-  color: rgb(33, 47, 41)
-  border: none
-.btn-replacement-toggle:hover,
-.btn-replacement-toggle:focus
-  background: rgb(90, 98, 104)
-
-.btn-save
-  background: lightblue
-
-.btn-delete
-  border: none
-  border-radius: 10px
-  height: 1rem
-  width: 1rem
-  margin: 0
-  display: flex
-  align-content: center
-  justify-content: center
-.btn-delete:hover,
-.btn-delete:focus
-  background: black
 
 .icon-delete
   background-color: white

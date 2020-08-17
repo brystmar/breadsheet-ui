@@ -156,7 +156,7 @@ class App extends React.Component {
 
                         <Route exact path="/">
                             <PageTitle
-                                title="Breadsheet"
+                                title="Recipes"
                                 includeHr={false}/>
                             <RecipeListContainer
                                 allRecipes={this.state.allRecipes}

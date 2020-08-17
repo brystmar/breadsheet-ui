@@ -4,10 +4,10 @@ import ListHeaderRow from './ListHeaderRow';
 
 function StepContainer(props) {
     return (
-        <div className="recipe-list-container">
+        <div className="step-list-container">
             <ListHeaderRow
                 for="step"
-                colTitles={["Step", "When", "Action", "Then Wait...", "Notes"]}
+                colTitles={["Step", "When", "Action", "Then Wait", "Note"]}
                 onClickFn={props.toggleEditMode}
                 onClickParam={props.hidden}/>
             {BuildStepComponentList(props)}
@@ -17,13 +17,12 @@ function StepContainer(props) {
 
 function BuildStepComponentList(props) {
     // Transforms a list of recipe steps into a list of StepListItem components.
-    // Needs to be its own function because we calculate `when` differently if solving for start.
+    // Needs to be its own function since `when` is calculated differently solving for start vs finish.
     let stepList = props.steps;
     let stepComponentList = [];
 
     if (props.solve_for_start) {
-        // Using the provided start date, add time for each step
-        //  to determine when the next step should start.
+        // Using the provided start date, add time for each step to find when the next step should start.
         let stepStartTime = props.start_time;
         let prevStepLength = 0;
 
@@ -49,8 +48,8 @@ function BuildStepComponentList(props) {
             prevStepLength = stepList[i].then_wait;
         }
     } else {
-        // Add total recipe length to the provided start date, then work backwards
-        //  to determine when the next step should start.
+        // Add total recipe length to the provided start date, then work backwards to determine
+        //  when the next step should start.
         let stepFinishTime = props.start_time + (props.length * 1000);
         // let nextStepLength = 0;
 
@@ -71,9 +70,6 @@ function BuildStepComponentList(props) {
                               hidden={props.hidden}
                               deleteStep={props.deleteStep}
                               handleStepLengthChange={props.handleStepLengthChange}/>);
-
-            // Update prevStepLength for the next step
-            // nextStepLength = stepList[i].then_wait;
         }
 
         // Since we started with the last step working backwards, reverse the order
