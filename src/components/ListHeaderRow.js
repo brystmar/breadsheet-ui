@@ -8,7 +8,8 @@ function ListHeaderRow(props) {
         const classString = props.for + "-list-cell col-" + title.toLowerCase()
             .split(" ")[0]
             .split(".")[0]
-        return <h3 key={index} className={classString}>{title}</h3>
+
+        return <h3 key={index} className={classString} title={title}>{title}</h3>
     })
 
     return (

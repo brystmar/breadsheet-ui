@@ -134,7 +134,7 @@ class StepListItem extends React.Component {
                 </span>
 
                 <span className="step-list-cell col-note">
-                    {this.props.note === "None" ? "" : this.props.note}
+                    {this.props.note}
                 </span>
 
                 <span className="step-list-cell icon-cell col-button">

@@ -1,93 +1,4 @@
-.recipe-list-container,
-.step-list-container
-  display: flex
-  flex-direction: column
-  padding: 0.15em
-  div
-    border: 1px dotted blue
-
-.recipe-list-row,
-.step-list-row
-  span, h3
-    margin: 0 0.15em
-    border: 1px solid brown
-  display: grid
-  grid-gap: 4px
-  text-align: left
-  margin: 0
-  padding: 8px 0
-  .recipe-list-cell,
-  .step-list-cell
-    //border: 1px solid lightcoral
-    //display: flex
-    //align-items: center  //center vertically
-    margin: auto 0
-    padding: 0 8px
-    // Prevent text wrapping for all columns except notes
-    min-width: max-content
-    white-space: nowrap
-
-  .col-note,
-  .col-source
-    min-width: revert
-    white-space: revert
-
-.recipe-list-row
-  grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2fr auto
-  grid-template-areas: "name diff len author source r-button"
-
-.step-list-row
-  grid-template: 1fr / 0.4fr 0.65fr 1fr 0.75fr 2fr auto
-  grid-template-areas: "step when action then note s-button"
-//.col-note,
-//.col-button
-//  display: none
-//  visibility: hidden
-
-@media (max-width: 975px)
-  .col-source,
-  .col-note
-    display: none
-  .recipe-list-row
-    grid-template: 1fr / 4fr 1.3fr 1.25fr 1.5fr auto
-    grid-template-areas: "name diff len author r-button"
-
-@media (max-width: 825px)
-  .col-author
-    display: none
-
-  .recipe-list-row
-    grid-template: 1fr / 4fr 1.3fr 1.25fr auto
-    grid-template-areas: "name diff len r-button"
-
-@media (max-width: 700px)
-  .col-note,
-  .col-author,
-  .col-button
-    display: none
-
-  .recipe-list-row
-    grid-template: 1fr / 3fr 1fr 1fr
-    grid-template-areas: "name diff len"
-
-  .step-list-row
-    //grid-template: auto / auto
-    grid-template: 1fr / 0.4fr 0.65fr 1fr 0.75fr
-    grid-template-areas: "step when action then"
-
-@media (max-width: 620px)
-  .col-difficulty
-    display: none
-  .recipe-list-row
-    grid-template: 1fr / 3.5fr 1fr
-    grid-template-areas: "name len"
-
-@media (max-width: 450px)
-  .col-length
-    display: none
-  .recipe-list-row
-    grid-template: 1fr / 1fr
-    grid-template-areas: "name"
+/*** Non-Grid Thingies ***/
 
 .list-row-highlighted
   background: rgb(242,242,242)
@@ -107,7 +18,6 @@
   margin-right: 2px
 .then-wait-mm-input
   margin-left: 2px
-
 
 .right-justify
   justify-content: flex-end
@@ -141,14 +51,132 @@
   min-width: 68px
 .col-when
   grid-area: when
-  min-width: 106px
+  width: 98px
 .col-action
   grid-area: action
   min-width: 180px
 .col-then
   grid-area: then
-  min-width: 145px
+  //min-width: 145px
 .col-note
   grid-area: note
 .step-list-cell .col-button
   grid-area: s-button
+
+// Define the grid
+.recipe-list-container,
+.step-list-container
+  display: flex
+  flex-direction: column
+  padding: 0.15em
+
+.recipe-list-row,
+.step-list-row
+  display: grid
+  grid-gap: 4px
+  text-align: left
+  margin: 0
+  padding: 8px 0
+  .recipe-list-cell,
+  .step-list-cell
+    //border: 1px solid lightcoral
+    margin: 0 0
+    padding: 0 6px
+    // Prevent text wrapping for all columns except source, action, & note
+    //min-width: max-content
+    white-space: nowrap
+  .col-source,
+  .col-action,
+  .col-note
+    min-width: revert
+    white-space: normal
+
+.recipe-list-row
+  grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2fr auto
+  grid-template-areas: "name diff len author source r-button"
+
+.step-list-row
+  grid-template: 1fr / 0.4fr auto 1fr 0.75fr 2fr auto
+  grid-template-areas: "step when action then note s-button"
+
+
+/*** Gettin' Responsive ***/
+
+@media (max-width: 974px)
+  .col-source,
+  .col-note
+    display: none
+  .recipe-list-row
+    grid-template: 1fr / 4fr 1.3fr 1.25fr 1.5fr auto
+    grid-template-areas: "name diff len author r-button"
+  .step-list-row
+    grid-template: 1fr / 0.4fr auto 1fr 0.75fr auto
+    grid-template-areas: "step when action then s-button"
+
+@media (max-width: 824px)
+  .col-author
+    display: none
+  .recipe-list-row
+    grid-template: 1fr / 4fr 1.3fr 1.25fr auto
+    grid-template-areas: "name diff len r-button"
+
+@media (max-width: 699px)
+  .col-note,
+  .col-author
+    display: none
+  .recipe-list-row
+    .col-button
+      display: none
+  .recipe-list-row
+    grid-template: 1fr / 3fr 1fr 1fr
+    grid-template-areas: "name diff len"
+
+@media (max-width: 659px)
+  .step-list-row
+    .col-button
+      display: none
+  .step-list-row
+    grid-template: 1fr / 0.4fr auto 1fr 0.75fr
+    grid-template-areas: "step when action then"
+
+@media (max-width: 619px)
+  .col-difficulty
+    display: none
+  .recipe-list-row
+    grid-template: 1fr / 3.5fr 1fr
+    grid-template-areas: "name len"
+
+@media (max-width: 549px)
+  .col-then
+    display: none
+  .step-list-row
+    grid-template: 1fr / 0.4fr auto 1fr
+    grid-template-areas: "step when action"
+
+@media (max-width: 424px)
+  .col-length
+    display: none
+  .recipe-list-row
+    grid-template: 1fr / 1fr
+    grid-template-areas: "name"
+  .col-action
+    white-space: normal !important  //TODO: What's overriding this?  Why does it need a hack?
+    overflow-wrap: break-spaces
+
+@media (max-width: 409px)
+  .list-header
+    .col-step
+      visibility: hidden
+      //white-space: normal
+      //overflow-wrap: break-word
+      //width: 40px
+      margin: 0
+      padding: 0
+  .col-step
+    min-width: 30px
+    width: 30px
+  .col-action
+    min-width: 80px
+  .step-list-row
+    grid-template: 1fr / auto auto 3fr
+    grid-template-areas: "step when action"
