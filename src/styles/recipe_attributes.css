@@ -1,0 +1,113 @@
+/*** Recipe Attributes ***/
+.recipe-attributes-container {
+  display: grid;
+  grid-template: 2fr 2fr/2fr 2fr;
+  grid-gap: 4px;
+  cursor: default;
+  margin: 5px auto;
+}
+.recipe-attributes-container .recipe-attribute {
+  display: grid;
+  grid-template: 1fr/1fr 4fr;
+  text-align: left;
+}
+.recipe-attributes-container .recipe-attribute .attribute-label,
+.recipe-attributes-container .recipe-attribute .attribute-value {
+  display: flex;
+  align-items: center;
+  width: min-content;
+  min-width: 100px;
+  white-space: nowrap;
+}
+.recipe-attributes-container .recipe-attribute .attribute-label {
+  flex-grow: 0;
+  margin: 0 5px 0 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+.recipe-attributes-container .recipe-attribute .attribute-value {
+  flex-grow: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 549px) {
+  .recipe-attributes-container {
+    grid-template: repeat(4, 1fr)/1fr;
+  }
+}
+/*** Start/Finish Controls ***/
+.start-finish-container {
+  margin: 4px 0;
+  display: grid;
+  grid-template: 1fr/1fr 2fr 0.5fr;
+  align-items: center;
+  justify-content: flex-start;
+  height: max-content;
+  width: max-content;
+  white-space: nowrap;
+}
+.start-finish-container .btn-save {
+  margin: auto 5px;
+  height: 2em;
+  width: min-content;
+  background: #6c757d;
+  color: white;
+  line-height: 1px;
+  text-align: center;
+}
+.start-finish-container .btn-save:hover,
+.start-finish-container .btn-save:focus {
+  background: #5a6268;
+}
+.start-finish-container .start-finish-datepicker {
+  z-index: 10;
+}
+.start-finish-container .start-finish-toggle-container {
+  padding: 2px 1px 2px 0;
+}
+.start-finish-container .start-finish-toggle-container .btn-start-finish-toggle {
+  border: none;
+  border-bottom: 1px dotted gray;
+  border-radius: 0;
+  margin: 0;
+  padding: 0 5px;
+  height: min-content;
+  width: max-content;
+  vertical-align: center;
+}
+.start-finish-container .start-finish-toggle-container .btn-start-finish-toggle:hover,
+.start-finish-container .start-finish-toggle-container .btn-start-finish-toggle:focus {
+  border: none;
+  border-bottom: 1px solid gray;
+}
+.start-finish-container .start-finish-toggle-container::before {
+  display: none;
+  position: absolute;
+  content: attr(title);
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 0.8em;
+  border-radius: 5px;
+  width: max-content;
+  padding: 1px 6px;
+  white-space: nowrap;
+  transform: translateY(150%);
+}
+.start-finish-container .start-finish-toggle-container:hover::before,
+.start-finish-container .start-finish-toggle-container:hover::after {
+  display: inline-block;
+}
+.start-finish-container .start-finish-toggle-container::after {
+  display: none;
+  position: absolute;
+  content: "";
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(225%) translateX(-400%);
+}
+
+/*# sourceMappingURL=recipe_attributes.css.map */

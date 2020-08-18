@@ -1,0 +1,241 @@
+/*** Non-Grid Thingies ***/
+.list-row-highlighted {
+  background: #f2f2f2;
+}
+
+.list-header {
+  padding: 0.7em 0;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.icon-cell {
+  justify-content: center;
+  margin: 0;
+  width: 60px;
+}
+
+.then-wait-hh-input {
+  margin-right: 2px;
+}
+
+.then-wait-mm-input {
+  margin-left: 2px;
+}
+
+.right-justify {
+  justify-content: flex-end;
+}
+
+.text-with-ext-link-icon {
+  white-space: nowrap;
+  margin: auto 0;
+}
+
+/*** Grid Cell Assignments ***/
+.col-name {
+  grid-area: name;
+}
+
+.col-difficulty {
+  grid-area: diff;
+  min-width: 125px;
+}
+
+.col-length {
+  grid-area: len;
+  min-width: 96px;
+}
+
+.col-author {
+  grid-area: author;
+}
+
+.col-source {
+  grid-area: source;
+}
+
+.recipe-list-cell .col-button {
+  grid-area: r-button;
+}
+
+.col-step {
+  grid-area: step;
+  min-width: 68px;
+}
+
+.col-when {
+  grid-area: when;
+  width: 98px;
+}
+
+.col-action {
+  grid-area: action;
+  min-width: 180px;
+}
+
+.col-then {
+  grid-area: then;
+}
+
+.col-note {
+  grid-area: note;
+}
+
+.step-list-cell .col-button {
+  grid-area: s-button;
+}
+
+.recipe-list-container,
+.step-list-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0.15em;
+}
+
+.recipe-list-row,
+.step-list-row {
+  display: grid;
+  grid-gap: 4px;
+  text-align: left;
+  margin: 0;
+  padding: 8px 0;
+}
+.recipe-list-row .recipe-list-cell,
+.recipe-list-row .step-list-cell,
+.step-list-row .recipe-list-cell,
+.step-list-row .step-list-cell {
+  margin: 0 0;
+  padding: 0 6px;
+  white-space: nowrap;
+}
+.recipe-list-row .col-source,
+.recipe-list-row .col-action,
+.recipe-list-row .col-note,
+.step-list-row .col-source,
+.step-list-row .col-action,
+.step-list-row .col-note {
+  min-width: revert;
+  white-space: normal;
+}
+
+.recipe-list-row {
+  grid-template: 1fr/4fr 1fr 1.25fr 1.5fr 2fr auto;
+  grid-template-areas: "name diff len author source r-button";
+}
+
+.step-list-row {
+  grid-template: 1fr/0.4fr auto 1fr 0.75fr 2fr auto;
+  grid-template-areas: "step when action then note s-button";
+}
+
+/*** Gettin' Responsive ***/
+@media (max-width: 974px) {
+  .col-source,
+.col-note {
+    display: none;
+  }
+
+  .recipe-list-row {
+    grid-template: 1fr/4fr 1.3fr 1.25fr 1.5fr auto;
+    grid-template-areas: "name diff len author r-button";
+  }
+
+  .step-list-row {
+    grid-template: 1fr/0.4fr auto 1fr 0.75fr auto;
+    grid-template-areas: "step when action then s-button";
+  }
+}
+@media (max-width: 824px) {
+  .col-author {
+    display: none;
+  }
+
+  .recipe-list-row {
+    grid-template: 1fr/4fr 1.3fr 1.25fr auto;
+    grid-template-areas: "name diff len r-button";
+  }
+}
+@media (max-width: 699px) {
+  .col-note,
+.col-author {
+    display: none;
+  }
+
+  .recipe-list-row .col-button {
+    display: none;
+  }
+
+  .recipe-list-row {
+    grid-template: 1fr/3fr 1fr 1fr;
+    grid-template-areas: "name diff len";
+  }
+}
+@media (max-width: 659px) {
+  .step-list-row .col-button {
+    display: none;
+  }
+
+  .step-list-row {
+    grid-template: 1fr/0.4fr auto 1fr 0.75fr;
+    grid-template-areas: "step when action then";
+  }
+}
+@media (max-width: 619px) {
+  .col-difficulty {
+    display: none;
+  }
+
+  .recipe-list-row {
+    grid-template: 1fr/3.5fr 1fr;
+    grid-template-areas: "name len";
+  }
+}
+@media (max-width: 549px) {
+  .col-then {
+    display: none;
+  }
+
+  .step-list-row {
+    grid-template: 1fr/0.4fr auto 1fr;
+    grid-template-areas: "step when action";
+  }
+}
+@media (max-width: 424px) {
+  .col-length {
+    display: none;
+  }
+
+  .recipe-list-row {
+    grid-template: 1fr/1fr;
+    grid-template-areas: "name";
+  }
+
+  .col-action {
+    white-space: normal !important;
+    overflow-wrap: break-spaces;
+  }
+}
+@media (max-width: 409px) {
+  .list-header .col-step {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  .col-step {
+    min-width: 30px;
+    width: 30px;
+  }
+
+  .col-action {
+    min-width: 80px;
+  }
+
+  .step-list-row {
+    grid-template: 1fr/auto auto 3fr;
+    grid-template-areas: "step when action";
+  }
+}
+
+/*# sourceMappingURL=recipe_list.css.map */
