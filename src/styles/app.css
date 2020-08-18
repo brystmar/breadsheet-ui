@@ -35,7 +35,9 @@ h3 {
   margin: 0 auto;
 }
 
-.navbar-custom-container, .content-container, .footer-container {
+.navbar-custom-container,
+.content-container,
+.footer-container {
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -192,12 +194,6 @@ h3 {
 
 .icon-transparent {
   background: white;
-}
-
-@media (max-width: 767px) {
-  .app-container {
-    background-color: lightblue;
-  }
 }
 
 /*# sourceMappingURL=app.css.map */

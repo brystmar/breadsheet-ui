@@ -20,7 +20,7 @@ function NavBar(props) {
                     <NavRecipeMenu allRecipes={props.allRecipes}/>
 
                     <LinkContainer to="/convert">
-                        <Nav.Link className="navbar-custom-link">Convert Text</Nav.Link>
+                        <Nav.Link className="navbar-custom-link">Convert</Nav.Link>
                     </LinkContainer>
                 </Nav>
             </Navbar.Collapse>
