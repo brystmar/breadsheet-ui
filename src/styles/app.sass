@@ -4,6 +4,83 @@
 // margin:    em
 // widths:    em or pct (pixels can be okay)
 
+// Fonts
+$font-stack-headings: 'Montserrat', sans-serif
+$font-stack-body: 'Lato', sans-serif
+
+// Colors
+$color-primary: #0068d5
+$color-primary-dark: #003fa3
+$color-primary-light: #5f95ff
+$color-primary-lighter: #69a4ff
+$color-primary-lighterer: #c3deff
+$color-primary-lightest: #e6f2ff
+$color-on-primary: #f5f5f5
+$color-on-primary-light: #121212
+$color-on-primary-dark: #f5f5f5
+$color-on-primary-dark-alt: #f0f0f0
+
+$color-brown1: #D79922
+$color-brown2: #BC986A
+$color-brown3: #907163
+$color-brown4: #7E685A
+$color-brown5: #4F4A41
+$color-brown6: #844D36
+$color-brown7: #935614
+$color-brown8: #dbb37e
+
+$c1: #c7c1ab
+$c2: #ecece8
+$c3: #f7ebdd
+$c4: #dbb37e
+$c5: #935614
+$color-light-alt: #D1D7E0
+$color-background: #F8F8F8
+$color-lightest: #F2F2F2
+
+.test1
+  background: $c1
+.test2
+  background: $c2
+.test3
+  background: $c3
+.test4
+  background: $c4
+.test5
+  background: $c5
+
+$color-tooltip-background: #282c34
+$color-tooltip-text: #EEEEEE
+
+$color-secondary: #ccc
+$color-on-background: #121212
+$color-background-darker-1: #eee
+$color-background-darker-2: #ccc
+$color-background-darker-3: #aaa
+$color-danger: #B81F11
+$color-danger-light: #d78f8c
+$color-danger-dark: #8C180D
+$color-on-danger: #f5f5f5
+$color-on-danger-light: #121212
+$color-on-danger-dark: #f5f5f5
+
+$color-primary-complementary: #d56e00
+$color-primary-analogous-1: #00d1d5
+$color-primary-analogous-2: #0400d5
+$color-primary-triadic-1: #6e00d5
+$color-primary-triadic-2: #d50067
+
+// Page Layout
+$header-height: 3rem
+$footer-height: $header-height - 1rem
+$app-max-width: 1200px
+
+// Debugging
+$border-default-1: 1px solid red
+$border-default-2: 1px solid lightblue
+$border-default-3: 3px solid brown
+
+
 /*** Globals ***/
 *
   box-sizing: border-box
@@ -32,18 +109,17 @@ h3
   font-weight: 600
 
 .app-container
+  background: $color-background
   margin: 0 auto
+  font-style: normal
+  max-width: 1200px
+  text-align: center
 
 .navbar-custom-container,
 .content-container,
 .footer-container
   max-width: 1200px
   margin: 0 auto
-
-.app-container
-  font-style: normal
-  max-width: 1200px
-  text-align: center
 
 .content-container
   margin: 0.65rem
@@ -70,8 +146,8 @@ h3
 .difficulty-icon .difficulty-tooltip-text
   /*display: none*/
   width: auto
-  background-color: #282c34
-  color: #EEEEEE
+  background-color: $color-tooltip-background
+  color: $color-tooltip-text
   text-align: center
   padding: 5px 0
   border-radius: 6px
@@ -89,7 +165,7 @@ h3
   margin: 10px 0
 
 .icon-delete
-  background-color: white
+  background-color: $color-background
   height: 100%
 
 .button-clipboard-row
@@ -101,8 +177,8 @@ h3
 .tooltipz2
   //TODO: Adjust when Bootstrap is removed
   visibility: hidden
-  background: rgba(0, 0, 0, 0.8)
-  color: white
+  background: $color-tooltip-background
+  color: $color-tooltip-text
 
 .text-conversion-arrow
   width: 5%
@@ -140,7 +216,7 @@ h3
 
 .navbar-custom-link
   font-size: larger
-  color: rgba(255, 255, 255, .5)
+  color: rgba(255,255,255,0.5)
 
 .navbar-custom-link-dropdown
   font-size: medium
@@ -164,4 +240,4 @@ h3
   filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%)
 
 .icon-transparent
-  background: white
+  background: $color-background

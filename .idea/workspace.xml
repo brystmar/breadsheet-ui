@@ -3,12 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ListHeaderRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListHeaderRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/buttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/buttons.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/buttons.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/buttons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/buttons.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/recipe_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/recipe_list.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_list.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/recipe_list.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_list.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,16 +121,16 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/components" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/attributes" />
       <recent name="$PROJECT_DIR$/src/components/buttons" />
       <recent name="$PROJECT_DIR$/public/icons" />
       <recent name="$PROJECT_DIR$/src/styles" />
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">

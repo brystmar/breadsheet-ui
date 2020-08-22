@@ -34,11 +34,16 @@
   background: green;
 }
 
+.btn-reset,
+.btn-cancel {
+  background: #c82333;
+  color: #ffffff;
+  margin: 0 4px;
+}
+
 .btn-reset {
-  margin: 0;
   padding: 0 8px;
   width: 4.5em;
-  background: red;
 }
 
 .btn-replacement-toggle {
@@ -53,8 +58,10 @@
   background: #5a6268;
 }
 
-.btn-save {
-  background: lightblue;
+.btn-save,
+.btn-submit {
+  background: #0069d9;
+  color: #ffffff;
 }
 
 .btn-delete {

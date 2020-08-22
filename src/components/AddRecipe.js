@@ -1,7 +1,8 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import {v4 as uuid} from 'uuid';
-import map_difficulty_to_icon from "../scripts/map_difficulty_to_icon";
+import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
+import Button from 'react-bootstrap/Button';
+
 
 class AddRecipe extends React.Component {
     constructor(props) {
@@ -157,19 +158,16 @@ class AddRecipe extends React.Component {
                            onChange={this.handleChange}/>
 
                     <br/>
-                    <Button variant="danger"
-                            name="cancelNewRecipe"
-                            className="button-cancel"
-                            size="sm"
-                            onClick={this.resetAddRecipeForm}>Cancel</Button>
-                    &nbsp;
-                    <Button variant="primary"
-                            type="submit"
-                            name="saveNewRecipe"
-                            className="button-submit"
+                    <button name="cancelNewRecipe"
+                            className="btn btn-cancel"
                             disabled={this.state.hidden}
-                            size="sm"
-                            value="Submit">Submit</Button>
+                            onClick={this.resetAddRecipeForm}>Cancel</button>
+
+                    <button type="submit"
+                            name="saveNewRecipe"
+                            className="btn btn-submit"
+                            disabled={this.state.hidden}
+                            value="Submit">Submit</button>
                 </form>
             </div>
         )
