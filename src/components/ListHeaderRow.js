@@ -9,7 +9,7 @@ function ListHeaderRow(props) {
             .split(" ")[0]
             .split(".")[0]
 
-        return <h3 key={index} className={classString} title={title}>{title}</h3>
+        return <h2 key={index} className={classString} title={title}>{title}</h2>
     })
 
     return (

@@ -3,16 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListHeaderRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListHeaderRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/add_recipe_or_step.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/add_recipe_or_step.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/add_recipe_or_step.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/add_recipe_or_step.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/add_recipe_or_step.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/add_recipe_or_step.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/buttons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/buttons.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/buttons.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/buttons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/buttons.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" afterDir="false" />
@@ -176,13 +174,6 @@
       <workItem from="1594952249110" duration="155000" />
       <workItem from="1596144641192" duration="478000" />
       <workItem from="1596145142626" duration="723000" />
-    </task>
-    <task id="LOCAL-00024" summary="Still having issues w/StepListItem not updating its own state properly">
-      <created>1585447791117</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1585447791117</updated>
     </task>
     <task id="LOCAL-00025" summary="Add &amp; remove Steps works!">
       <created>1585520089164</created>
@@ -520,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597714175183</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Working on color palette">
+      <created>1598112018139</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1598112018139</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -545,7 +543,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Fixed add Recipe &amp; Step text, buttons" />
     <MESSAGE value="Removed copyToClipboard since it's no longer needed" />
     <MESSAGE value="Overhauled the Convert Text page" />
     <MESSAGE value="Readme update" />
@@ -570,25 +567,22 @@
     <MESSAGE value="Fixed PageTitle border, added titles to difficulty icons" />
     <MESSAGE value="Plenty of work left on responsive tables" />
     <MESSAGE value="Media queries work for the main page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Media queries work for the main page" />
+    <MESSAGE value="Working on color palette" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on color palette" />
   </component>
   <component name="WindowStateProjectService">
     <state x="858" y="487" key="#ESLint" timestamp="1596999325142">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="858" y="487" key="#ESLint/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1596999325142" />
-    <state x="523" y="361" width="819" height="565" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1588534493469">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state x="523" y="361" width="819" height="565" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1588534493469" />
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597606492364">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597606492364" />
-    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2" timestamp="1597714175039">
+    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2" timestamp="1598112017884">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597714175039" />
+    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598112017884" />
     <state x="620" y="297" width="695" height="665" key="EditFileWatcherDialog" timestamp="1596746668162">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -614,10 +608,6 @@
     </state>
     <state width="1855" height="219" key="GridCell.Tab.0.right/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1596746675035" />
     <state width="1358" height="267" key="GridCell.Tab.0.right/0.23.1628.1027@0.23.1628.1027" timestamp="1594948610498" />
-    <state x="797" y="241" key="RollbackChangesDialog" timestamp="1589066476757">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state x="797" y="241" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1589066476757" />
     <state x="495" y="117" width="900" height="756" key="SettingsEditor" timestamp="1596746669063">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

@@ -125,6 +125,12 @@
     grid-template-areas: "name diff len r-button"
 
 @media (max-width: 699px)
+  h1
+    font-size: 2.4rem
+  h2
+    font-size: 1.75rem
+  h3
+    font-size: 1.3rem
   .col-note,
   .col-author
     display: none
@@ -151,6 +157,12 @@
     grid-template-areas: "name len"
 
 @media (max-width: 549px)
+  h1
+    font-size: 2rem
+  h2
+    font-size: 1.4rem
+  h3
+    font-size: 1.2rem
   .col-then
     display: none
   .step-list-row
@@ -168,6 +180,38 @@
     overflow-wrap: break-spaces
 
 @media (max-width: 409px)
+  h1
+    font-size: 1.7rem
+  h2
+    font-size: 1.25rem
+  h3
+    font-size: 1.1rem
+  .list-header
+    .col-step
+      visibility: hidden
+      //white-space: normal
+      //overflow-wrap: break-word
+      //width: 40px
+      margin: 0
+      padding: 0
+  .col-step
+    min-width: 30px
+    width: 30px
+  .col-action
+    min-width: 80px
+  .step-list-row
+    grid-template: 1fr / auto auto 3fr
+    grid-template-areas: "step when action"
+
+@media (max-width: 359px)
+  h1
+    font-size: 1.4rem
+  h2
+    font-size: 1.2rem
+  h3
+    font-size: 1.05rem
+  p
+    font-size: 0.9rem
   .list-header
     .col-step
       visibility: hidden
