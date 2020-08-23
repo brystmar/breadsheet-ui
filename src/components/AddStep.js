@@ -1,5 +1,7 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
+import BtnAdd from './buttons/BtnAdd';
+import BtnCancel from './buttons/BtnCancel';
+import BtnSubmit from './buttons/BtnSubmit';
 import { pad } from '../scripts/time_display_functions';
 import { v4 as uuid } from 'uuid';
 
@@ -123,14 +125,9 @@ class AddStep extends React.Component {
     render() {
         return (
             <div className="add-step-parent">
-                <button type="button"
-                        className="btn-add-recipe-or-step"
-                        onClick={this.handleButtonToggle}>
-                    <img alt="Add a new step"
-                         src="/icons/button_plus.png"
-                         className="add-recipe-or-step-toggle-button icon-transparent"/>
-                    New Step
-                </button>
+                <BtnAdd btnText="New Step"
+                        altText="Add a new step"
+                        onClickFn={this.handleButtonToggle}/>
 
                 <form className="add-recipe-form"
                       hidden={this.state.hidden}
@@ -191,20 +188,15 @@ class AddStep extends React.Component {
                            onChange={this.handleChange}/>
                     <br/>
 
-                    <Button variant="danger"
-                            type="button"
-                            name="cancelNewStep"
-                            className="button-cancel"
-                            size="sm"
-                            onClick={this.resetAddStepForm}>Cancel</Button>
-                    &nbsp;
-                    <Button variant="primary"
-                            type="submit"
-                            name="saveNewStep"
-                            className="button-submit"
-                            disabled={this.state.hidden}
-                            size="sm"
-                            onClick={this.handleSubmit}>Submit</Button>
+                    <BtnCancel btnName="cancelNewStep"
+                               btnText="Cancel"
+                               disabled={this.state.hidden}
+                               onClickFn={this.resetAddStepForm}/>
+
+                    <BtnSubmit btnName="saveNewStep"
+                               btnText="Submit"
+                               disabled={this.state.hidden}
+                               onClickFn={this.handleSubmit}/>
                 </form>
             </div>
         )

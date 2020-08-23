@@ -157,7 +157,7 @@ class App extends React.Component {
                         <Route exact path="/">
                             <PageTitle
                                 title="Recipes"
-                                includeHr={false}/>
+                                includeHr={true}/>
                             <RecipeListContainer
                                 allRecipes={this.state.allRecipes}
                                 addRecipeToState={this.addRecipeToState}

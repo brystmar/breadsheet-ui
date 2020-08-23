@@ -1,7 +1,9 @@
 import React from 'react';
+import BtnAdd from './buttons/BtnAdd';
+import BtnCancel from './buttons/BtnCancel';
+import BtnSubmit from './buttons/BtnSubmit';
 import {v4 as uuid} from 'uuid';
 import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
-import Button from 'react-bootstrap/Button';
 
 
 class AddRecipe extends React.Component {
@@ -81,20 +83,15 @@ class AddRecipe extends React.Component {
     render() {
         return (
             <div className="add-recipe-container">
-                <button type="button"
-                        className="btn-add-recipe-or-step"
-                        onClick={this.handleButtonToggle}>
-                    <img alt="Add a new recipe"
-                         src="/icons/button_plus.png"
-                         className="add-recipe-or-step-toggle-button icon-transparent"/>
-                    New Recipe
-                </button>
+                <BtnAdd btnText="New Recipe"
+                        altText="Add a new recipe"
+                        onClickFn={this.handleButtonToggle}/>
 
                 <form className="add-recipe-form"
                       hidden={this.state.hidden}
                       onSubmit={this.handleSubmit}>
                     <label className="add-recipe-form-label">
-                        Name
+                        Recipe Name
                     </label>
                     <input className="add-recipe-form-textbox"
                            type="text"
@@ -144,7 +141,6 @@ class AddRecipe extends React.Component {
                            placeholder="Optional"
                            value={this.state.source}
                            onChange={this.handleChange}/>
-
                     <br/>
 
                     <label className="add-recipe-form-label">
@@ -158,16 +154,15 @@ class AddRecipe extends React.Component {
                            onChange={this.handleChange}/>
 
                     <br/>
-                    <button name="cancelNewRecipe"
-                            className="btn btn-cancel"
-                            disabled={this.state.hidden}
-                            onClick={this.resetAddRecipeForm}>Cancel</button>
+                    <BtnCancel btnName="cancelNewRecipe"
+                               btnText="Cancel"
+                               disabled={this.state.hidden}
+                               onClickFn={this.resetAddRecipeForm}/>
 
-                    <button type="submit"
-                            name="saveNewRecipe"
-                            className="btn btn-submit"
-                            disabled={this.state.hidden}
-                            value="Submit">Submit</button>
+                    <BtnSubmit btnName="saveNewRecipe"
+                               btnText="Submit"
+                               disabled={this.state.hidden}
+                               onClickFn={this.handleSubmit}/>
                 </form>
             </div>
         )

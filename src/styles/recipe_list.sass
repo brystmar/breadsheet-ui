@@ -2,7 +2,6 @@
 
 .add-recipe-form
   display: inline-block
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.04)
 
 .list-row-highlighted
   background: rgb(242,242,242)
@@ -26,10 +25,6 @@
 .right-justify
   justify-content: flex-end
 
-.text-with-ext-link-icon
-  white-space: nowrap
-  margin: auto 0
-
 
 /*** Grid Cell Assignments ***/
 
@@ -44,6 +39,8 @@
   min-width: 96px
 .col-author
   grid-area: author
+  .attribute-label
+    margin-right: 0
 .col-source
   grid-area: source
 .recipe-list-cell .col-button
@@ -53,6 +50,8 @@
 .col-step
   grid-area: step
   min-width: 68px
+  max-width: 80px
+  flex-grow: 0
 .col-when
   grid-area: when
   width: 98px
@@ -85,9 +84,10 @@
   .step-list-cell
     //border: 1px solid lightcoral
     margin: 0 0
-    padding: 0 6px
+    padding: 0 0.25rem
     // Prevent text wrapping for all columns except source, action, & note
     //min-width: max-content
+    max-width: max-content
     white-space: nowrap
   .col-source,
   .col-action,
@@ -96,44 +96,65 @@
     white-space: normal
 
 .recipe-list-row
-  grid-template: 1fr / 4fr 1fr 1.25fr 1.5fr 2fr auto
+  grid-template: 1fr / 4fr 1fr 1.1fr 1.4fr 2.25fr min-content
   grid-template-areas: "name diff len author source r-button"
 
 .step-list-row
-  grid-template: 1fr / 0.4fr auto 1fr 0.75fr 2fr auto
-  grid-template-areas: "step when action then note s-button"
+  grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2fr  min-content
+  grid-template-areas: "step                     when                       action             then                       note s-button"
 
 
 /*** Gettin' Responsive ***/
 
-@media (max-width: 974px)
-  .col-source,
-  .col-note
-    display: none
+@media (max-width: 999px)
   .recipe-list-row
-    grid-template: 1fr / 4fr 1.3fr 1.25fr 1.5fr auto
-    grid-template-areas: "name diff len author r-button"
-  .step-list-row
-    grid-template: 1fr / 0.4fr auto 1fr 0.75fr auto
-    grid-template-areas: "step when action then s-button"
+    grid-template: 1fr / 4fr 1.1fr 1.25fr 1.5fr 2.3fr
+    grid-template-areas: "name diff len author source"
+    .col-button
+      display: none
 
-@media (max-width: 824px)
+  .step-list-row
+    grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2.2fr
+    grid-template-areas: "step                     when                       action             then                       note"
+    .col-button
+      display: none
+
+@media (max-width: 899px)
+  .recipe-list-row
+    grid-template: 1fr / 4fr 1.1fr 1.25fr 1.5fr
+    grid-template-areas: "name diff len author"
+    .col-source
+      display: none
+
+@media (max-width: 769px)
   .col-author
     display: none
   .recipe-list-row
     grid-template: 1fr / 4fr 1.3fr 1.25fr auto
     grid-template-areas: "name diff len r-button"
 
+  .step-list-row
+    grid-gap: 0
+    flex-grow: 0
+  .col-source,
+  .col-note
+    display: none
+  .step-list-row
+    grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px)
+    grid-template-areas: "step                     when                       action             then"
+
 @media (max-width: 699px)
   h1
     font-size: 2.4rem
   h2
-    font-size: 1.75rem
+    font-size: 1.5rem
   h3
     font-size: 1.3rem
   .col-note,
   .col-author
     display: none
+  .col-step
+    max-width: 70px
   .recipe-list-row
     .col-button
       display: none
@@ -145,20 +166,22 @@
   .step-list-row
     .col-button
       display: none
-  .step-list-row
-    grid-template: 1fr / 0.4fr auto 1fr 0.75fr
-    grid-template-areas: "step when action then"
+  //.step-list-row
+  //  grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px)
+  //  grid-template-areas: "step                     when                       action             then"
 
-@media (max-width: 619px)
+@media (max-width: 599px)
+  h1
+    font-size: 2.1rem
   .col-difficulty
     display: none
   .recipe-list-row
     grid-template: 1fr / 3.5fr 1fr
     grid-template-areas: "name len"
 
-@media (max-width: 549px)
+@media (max-width: 569px)
   h1
-    font-size: 2rem
+    font-size: 1.9rem
   h2
     font-size: 1.4rem
   h3
@@ -166,8 +189,12 @@
   .col-then
     display: none
   .step-list-row
-    grid-template: 1fr / 0.4fr auto 1fr
-    grid-template-areas: "step when action"
+    grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr)
+    grid-template-areas: "step                     when                       action"
+
+@media (max-width: 494px)
+  h1
+    font-size: 1.7rem
 
 @media (max-width: 424px)
   .col-length
@@ -181,7 +208,7 @@
 
 @media (max-width: 409px)
   h1
-    font-size: 1.7rem
+    font-size: 1.4rem
   h2
     font-size: 1.25rem
   h3
@@ -189,35 +216,32 @@
   .list-header
     .col-step
       visibility: hidden
-      //white-space: normal
-      //overflow-wrap: break-word
-      //width: 40px
       margin: 0
       padding: 0
+    .col-step::before
+      content: "#"
+      visibility: visible
+      font-size: 1.25rem
+      position: relative
+      left: 5px
   .col-step
     min-width: 30px
     width: 30px
   .col-action
     min-width: 80px
-  .step-list-row
-    grid-template: 1fr / auto auto 3fr
-    grid-template-areas: "step when action"
 
 @media (max-width: 359px)
   h1
-    font-size: 1.4rem
+    font-size: 1.3rem
   h2
-    font-size: 1.2rem
+    font-size: 1.15rem
   h3
-    font-size: 1.05rem
+    font-size: 1.08rem
   p
     font-size: 0.9rem
   .list-header
     .col-step
       visibility: hidden
-      //white-space: normal
-      //overflow-wrap: break-word
-      //width: 40px
       margin: 0
       padding: 0
   .col-step
@@ -225,6 +249,10 @@
     width: 30px
   .col-action
     min-width: 80px
-  .step-list-row
-    grid-template: 1fr / auto auto 3fr
-    grid-template-areas: "step when action"
+
+.text-with-ext-link-icon
+  //white-space: nowrap
+  margin: auto 0
+  .icon-ext-link
+    //TODO: Understand why this is needed to keep the text + link icon on the same line
+    width: 10px

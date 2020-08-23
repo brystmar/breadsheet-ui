@@ -2,15 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/buttons/BtnAdd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/buttons/BtnCancel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/buttons/BtnSubmit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ListHeaderRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListHeaderRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BreadsheetLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BreadsheetLogo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/attributes/AttrSource.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/attributes/AttrSource.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/add_recipe_or_step.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/add_recipe_or_step.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/add_recipe_or_step.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/add_recipe_or_step.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/add_recipe_or_step.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/add_recipe_or_step.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/footer.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/footer.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/footer.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/footer.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/recipe_attributes.sass" afterDir="false" />
@@ -41,8 +53,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Sass File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -174,13 +186,6 @@
       <workItem from="1594952249110" duration="155000" />
       <workItem from="1596144641192" duration="478000" />
       <workItem from="1596145142626" duration="723000" />
-    </task>
-    <task id="LOCAL-00025" summary="Add &amp; remove Steps works!">
-      <created>1585520089164</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1585520089164</updated>
     </task>
     <task id="LOCAL-00026" summary="Fixed the ThenWaitHH/MM state issue!  Next: figure out a performant replacement for componentWillUpdate">
       <created>1586837034582</created>
@@ -518,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598112018139</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Updated font stack, adjusted recipe attribute display">
+      <created>1598119220696</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1598119220696</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -543,7 +555,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Removed copyToClipboard since it's no longer needed" />
     <MESSAGE value="Overhauled the Convert Text page" />
     <MESSAGE value="Readme update" />
     <MESSAGE value="Moved Recipe fetch to the top-level App component" />
@@ -568,7 +579,8 @@
     <MESSAGE value="Plenty of work left on responsive tables" />
     <MESSAGE value="Media queries work for the main page" />
     <MESSAGE value="Working on color palette" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on color palette" />
+    <MESSAGE value="Updated font stack, adjusted recipe attribute display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated font stack, adjusted recipe attribute display" />
   </component>
   <component name="WindowStateProjectService">
     <state x="858" y="487" key="#ESLint" timestamp="1596999325142">
@@ -579,10 +591,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597606492364" />
-    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2" timestamp="1598112017884">
+    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2" timestamp="1598119220515">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598112017884" />
+    <state x="542" y="148" width="1246" height="981" key="CommitChangelistDialog2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598119220515" />
     <state x="620" y="297" width="695" height="665" key="EditFileWatcherDialog" timestamp="1596746668162">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -617,14 +629,14 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state width="500" height="445" key="SwitcherDM/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1591370078391" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1597714176876">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1598119222722">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597714176876" />
-    <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597021842348">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598119222722" />
+    <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598209132275">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1597021842348" />
+    <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598209132275" />
     <state x="561" y="310" width="700" height="530" key="recent.locations.popup" timestamp="1591370083970">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

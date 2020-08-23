@@ -7,7 +7,10 @@ function AttrSource(props) {
     if (props.url && props.name) {
         classes += " text-with-ext-link-icon"
         sourceWithLink =
-            <a href={props.url}>
+            <a href={props.url}
+               target="_blank"
+               rel="noopener noreferrer">
+                {/*{props.name === "Gluten Free on a Shoestring" ? "GF on a Shoestring" : props.name}*/}
                 {props.name}
                 <img src="./icons/external-link-alt-solid.svg"
                      alt="Link opens in a separate tab"

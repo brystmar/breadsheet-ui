@@ -1,7 +1,6 @@
 /*** Non-Grid Thingies ***/
 .add-recipe-form {
   display: inline-block;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.04);
 }
 
 .list-row-highlighted {
@@ -32,11 +31,6 @@
   justify-content: flex-end;
 }
 
-.text-with-ext-link-icon {
-  white-space: nowrap;
-  margin: auto 0;
-}
-
 /*** Grid Cell Assignments ***/
 .col-name {
   grid-area: name;
@@ -55,6 +49,9 @@
 .col-author {
   grid-area: author;
 }
+.col-author .attribute-label {
+  margin-right: 0;
+}
 
 .col-source {
   grid-area: source;
@@ -67,6 +64,8 @@
 .col-step {
   grid-area: step;
   min-width: 68px;
+  max-width: 80px;
+  flex-grow: 0;
 }
 
 .col-when {
@@ -111,7 +110,8 @@
 .step-list-row .recipe-list-cell,
 .step-list-row .step-list-cell {
   margin: 0 0;
-  padding: 0 6px;
+  padding: 0 0.25rem;
+  max-width: max-content;
   white-space: nowrap;
 }
 .recipe-list-row .col-source,
@@ -125,33 +125,43 @@
 }
 
 .recipe-list-row {
-  grid-template: 1fr/4fr 1fr 1.25fr 1.5fr 2fr auto;
+  grid-template: 1fr/4fr 1fr 1.1fr 1.4fr 2.25fr min-content;
   grid-template-areas: "name diff len author source r-button";
 }
 
 .step-list-row {
-  grid-template: 1fr/0.4fr auto 1fr 0.75fr 2fr auto;
-  grid-template-areas: "step when action then note s-button";
+  grid-template: 1fr/minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2fr min-content;
+  grid-template-areas: "step                     when                       action             then                       note s-button";
 }
 
 /*** Gettin' Responsive ***/
-@media (max-width: 974px) {
-  .col-source,
-.col-note {
+@media (max-width: 999px) {
+  .recipe-list-row {
+    grid-template: 1fr/4fr 1.1fr 1.25fr 1.5fr 2.3fr;
+    grid-template-areas: "name diff len author source";
+  }
+  .recipe-list-row .col-button {
     display: none;
   }
 
-  .recipe-list-row {
-    grid-template: 1fr/4fr 1.3fr 1.25fr 1.5fr auto;
-    grid-template-areas: "name diff len author r-button";
-  }
-
   .step-list-row {
-    grid-template: 1fr/0.4fr auto 1fr 0.75fr auto;
-    grid-template-areas: "step when action then s-button";
+    grid-template: 1fr/minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2.2fr;
+    grid-template-areas: "step                     when                       action             then                       note";
+  }
+  .step-list-row .col-button {
+    display: none;
   }
 }
-@media (max-width: 824px) {
+@media (max-width: 899px) {
+  .recipe-list-row {
+    grid-template: 1fr/4fr 1.1fr 1.25fr 1.5fr;
+    grid-template-areas: "name diff len author";
+  }
+  .recipe-list-row .col-source {
+    display: none;
+  }
+}
+@media (max-width: 769px) {
   .col-author {
     display: none;
   }
@@ -160,6 +170,21 @@
     grid-template: 1fr/4fr 1.3fr 1.25fr auto;
     grid-template-areas: "name diff len r-button";
   }
+
+  .step-list-row {
+    grid-gap: 0;
+    flex-grow: 0;
+  }
+
+  .col-source,
+.col-note {
+    display: none;
+  }
+
+  .step-list-row {
+    grid-template: 1fr/minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px);
+    grid-template-areas: "step                     when                       action             then";
+  }
 }
 @media (max-width: 699px) {
   h1 {
@@ -167,7 +192,7 @@
   }
 
   h2 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   h3 {
@@ -177,6 +202,10 @@
   .col-note,
 .col-author {
     display: none;
+  }
+
+  .col-step {
+    max-width: 70px;
   }
 
   .recipe-list-row .col-button {
@@ -192,13 +221,12 @@
   .step-list-row .col-button {
     display: none;
   }
-
-  .step-list-row {
-    grid-template: 1fr/0.4fr auto 1fr 0.75fr;
-    grid-template-areas: "step when action then";
-  }
 }
-@media (max-width: 619px) {
+@media (max-width: 599px) {
+  h1 {
+    font-size: 2.1rem;
+  }
+
   .col-difficulty {
     display: none;
   }
@@ -208,9 +236,9 @@
     grid-template-areas: "name len";
   }
 }
-@media (max-width: 549px) {
+@media (max-width: 569px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   h2 {
@@ -226,8 +254,13 @@
   }
 
   .step-list-row {
-    grid-template: 1fr/0.4fr auto 1fr;
-    grid-template-areas: "step when action";
+    grid-template: 1fr/minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr);
+    grid-template-areas: "step                     when                       action";
+  }
+}
+@media (max-width: 494px) {
+  h1 {
+    font-size: 1.7rem;
   }
 }
 @media (max-width: 424px) {
@@ -247,7 +280,7 @@
 }
 @media (max-width: 409px) {
   h1 {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
   }
 
   h2 {
@@ -263,6 +296,13 @@
     margin: 0;
     padding: 0;
   }
+  .list-header .col-step::before {
+    content: "#";
+    visibility: visible;
+    font-size: 1.25rem;
+    position: relative;
+    left: 5px;
+  }
 
   .col-step {
     min-width: 30px;
@@ -272,23 +312,18 @@
   .col-action {
     min-width: 80px;
   }
-
-  .step-list-row {
-    grid-template: 1fr/auto auto 3fr;
-    grid-template-areas: "step when action";
-  }
 }
 @media (max-width: 359px) {
   h1 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 
   h3 {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
   }
 
   p {
@@ -309,11 +344,12 @@
   .col-action {
     min-width: 80px;
   }
-
-  .step-list-row {
-    grid-template: 1fr/auto auto 3fr;
-    grid-template-areas: "step when action";
-  }
+}
+.text-with-ext-link-icon {
+  margin: auto 0;
+}
+.text-with-ext-link-icon .icon-ext-link {
+  width: 10px;
 }
 
 /*# sourceMappingURL=recipe_list.css.map */

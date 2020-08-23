@@ -137,7 +137,7 @@ class StepListItem extends React.Component {
                     {this.props.note}
                 </span>
 
-                <span className="step-list-cell icon-cell col-button">
+                <span className="step-list-cell col-button icon-cell">
                     <button className="btn-delete"
                             onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}
                             hidden={this.props.hidden}>

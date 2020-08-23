@@ -1,52 +1,26 @@
 .footer-container {
-  font-size: small;
-  margin: 20px 3px 10px;
+  font-size: 0.8rem;
+  margin: 2em 1em 1em;
   cursor: default;
-  text-align: -webkit-left;
+  text-align: left;
 }
 
-.bread-clipart-container .bread-clipart-container-reverse {
-  alignment: left;
-  column-width: min-content;
-  horiz-align: left;
-  vertical-align: center;
-  height: 30px;
-  width: 30px;
-}
-
-.bread-clipart-image {
-  column-width: min-content;
-  alignment: left;
-  horiz-align: left;
-  vertical-align: center;
-  margin: 0 4px;
-  height: 15px;
-  width: 15px;
+.icon-bread {
+  margin: 0 0.5em;
+  height: 1em;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .bread-clipart-image {
-    animation: App-logo-spin infinite 20s linear;
-  }
-
-  .bread-clipart-container-reverse {
-    animation: App-logo-spin-reverse infinite 20s linear;
+  .icon-bread {
+    animation: bread-icon-spin infinite 20s linear;
   }
 }
-@keyframes App-logo-spin {
+@keyframes bread-icon-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
-  }
-}
-@keyframes App-logo-spin-reverse {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
   }
 }
 
