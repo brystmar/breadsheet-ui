@@ -42,20 +42,6 @@ $color-light-alt: #D1D7E0
 $color-background: #F8F8F8
 $color-lightest: #F2F2F2
 
-.test0
-  background: $color-0
-  margin-top: 2em
-.test1
-  background: $color-1
-.test2
-  background: $color-2
-.test3
-  background: $color-3
-.test4
-  background: $color-4
-.test5
-  background: $color-5
-
 $color-tooltip-background: #282c34
 $color-tooltip-text: #EEEEEE
 
@@ -84,9 +70,10 @@ $footer-height: $header-height - 1rem
 $app-max-width: 1200px
 
 // Debugging
-$border-default-1: 1px solid red
-$border-default-2: 1px solid lightblue
-$border-default-3: 3px solid brown
+$border1: 1px solid black
+$border2: 1px solid red
+$border3: 1px solid lightblue
+$border4: 1px solid darkgreen
 
 
 /*** Globals ***/
@@ -496,18 +483,18 @@ select
 /*** Start/Finish Controls ***/
 
 .start-finish-container
-  margin: 0.5em 0
-  display: grid
-  grid-template: 1fr / 1fr 2fr 0.5fr
+  background: rgba(199,193,171,0.3)
+  border-radius: 5px
+  padding: 0.5em
+  width: max-content
+  display: flex
   align-items: center
   justify-content: flex-start
-  height: max-content
-  width: max-content
+  //height: max-content
+  //width: max-content
   white-space: nowrap
   .btn-save
-    margin: auto 0.5em
     height: 2em
-    width: min-content
     background: $color-5
     color: $color-lightest
     line-height: 1
@@ -515,22 +502,20 @@ select
   .btn-save:focus
     background: $color-4
     color: $color-on-light
-
   .start-finish-datepicker
     z-index: 10
-
+    margin: 0 0.25em
   .start-finish-toggle-container
-    padding: 2px 1px 2px 0
     .btn-start-finish-toggle
-      //text-decoration: underline dotted red
       border: none
       border-bottom: 1px dotted gray
       border-radius: 0
       margin: 0
-      padding: 0 5px
+      padding: 0 .5px
       height: min-content
       width: max-content
-      vertical-align: center
+      text-align: left
+      display: inline
     .btn-start-finish-toggle:hover,
     .btn-start-finish-toggle:focus
       border: none
