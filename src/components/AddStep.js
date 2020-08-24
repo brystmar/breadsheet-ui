@@ -2,8 +2,8 @@ import React from 'react';
 import BtnAdd from './buttons/BtnAdd';
 import BtnCancel from './buttons/BtnCancel';
 import BtnSubmit from './buttons/BtnSubmit';
-import { pad } from '../scripts/time_display_functions';
-import { v4 as uuid } from 'uuid';
+import {pad} from '../scripts/time_display_functions';
+import {v4 as uuid} from 'uuid';
 
 class AddStep extends React.Component {
     constructor(props) {
@@ -14,11 +14,13 @@ class AddStep extends React.Component {
             thenWaitMM: pad(0),
             text: "",
             note: "",
-            hidden: this.props.hidden
+            hidden: false
+            // hidden: this.props.hidden
         };
 
         this.handleButtonToggle = this.handleButtonToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.retainStep = this.retainStep.bind(this);
         this.padValue = this.padValue.bind(this);
         this.resetAddStepForm = this.resetAddStepForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,8 +47,17 @@ class AddStep extends React.Component {
         });
     }
 
+    retainStep(event) {
+        // Replaces the step number if the user deletes it
+        if (event.target.value === "" || event.target.value.isNaN) {
+            this.setState({
+                [event.target.name]: this.props.nextStep
+            })
+        }
+    }
+
     padValue(event) {
-        // Adds zero-padding to single digit numbers.
+        // Adds zero-padding to single-digit numbers.
         // Also re-calculates hours & minutes if ThenWaitMM >= 60.
         const {name, value} = event.target;
         const numValue = Number(value);
@@ -94,7 +105,7 @@ class AddStep extends React.Component {
             return false;
         }
 
-        // Require values for step# and text
+        // Require values for step# and text/action
         if (this.state.stepNumber === ""
             || this.state.stepNumber.isNaN
             || this.state.text === ""
@@ -129,74 +140,99 @@ class AddStep extends React.Component {
                         altText="Add a new step"
                         onClickFn={this.handleButtonToggle}/>
 
-                <form className="add-recipe-form"
+                <form className="add-step-form"
+                      id="add-step-form"
                       hidden={this.state.hidden}
                       onSubmit={this.handleSubmit}>
 
-                    <label className="add-step-form-number-label">Step #</label>
-                    <input className="add-recipe-form-number"
-                           type="number"
-                           min="1"
-                           max="99"
-                           name="stepNumber"
-                           placeholder="#"
-                           value={this.state.stepNumber}
-                           onChange={this.handleChange}
-                           required={true}/>
+                    <span className="add-step-form-group">
+                        <label htmlFor="number" className="add-step-form-label">
+                            Step
+                        </label>
+                        <span className="add-step-form-input-group">
+                            <input className="add-step-form-input-number"
+                                   type="number"
+                                   min="1"
+                                   max="99"
+                                   name="stepNumber"
+                                   id="number"
+                                   placeholder="#"
+                                   value={this.state.stepNumber}
+                                   onChange={this.handleChange}
+                                   onBlur={this.retainStep}
+                                   required={true}/>
+                        </span>
+                    </span>
 
-                    <br/>
+                    <span className="add-step-form-group">
+                        <label htmlFor="action" className="add-step-form-label">
+                            Action
+                        </label>
+                        <input className="add-step-form-input-group"
+                               type="text"
+                               name="text"
+                               id="action"
+                               placeholder="Mix ingredients"
+                               value={this.state.text}
+                               onChange={this.handleChange}
+                               required={true}/>
+                    </span>
 
-                    <label className="add-recipe-form-label">Text</label>
-                    <input className="add-recipe-form-textbox"
-                           type="text"
-                           name="text"
-                           placeholder="Text"
-                           value={this.state.text}
-                           onChange={this.handleChange}
-                           required={true}/>
+                    <span className="add-step-form-group">
+                        <label htmlFor="then-wait-hh" className="add-step-form-label">
+                            Then Wait...
+                        </label>
+                        <span className="add-step-form-input-group">
+                            <input className="then-wait-hh-input"
+                                   type="number"
+                                   min="0"
+                                   max="99"
+                                   name="thenWaitHH"
+                                   id="then-wait-hh"
+                                   placeholder="h"
+                                   value={this.state.thenWaitHH}
+                                   onChange={this.handleChange}
+                                   onBlur={this.padValue}/>
+                            <span className="then-wait-helper-text">hrs</span>
 
-                    <br/>
+                            <input className="then-wait-mm-input"
+                                   type="number"
+                                   min="0"
+                                   max="59"
+                                   name="thenWaitMM"
+                                   id="then-wait-mm"
+                                   placeholder="m"
+                                   value={this.state.thenWaitMM}
+                                   onChange={this.handleChange}
+                                   onBlur={this.padValue}/>
+                            <span className="then-wait-helper-text">min</span>
+                        </span>
+                    </span>
 
-                    <label className="add-recipe-form-label">Then Wait...</label>
-                    <input className="then-wait-hh-input"
-                           type="number"
-                           min="0"
-                           max="99"
-                           name="thenWaitHH"
-                           placeholder="h"
-                           value={this.state.thenWaitHH}
-                           onChange={this.handleChange}
-                           onBlur={this.padValue}/>
-                    :
-                    <input className="then-wait-mm-input"
-                           type="number"
-                           min="0"
-                           max="59"
-                           name="thenWaitMM"
-                           placeholder="m"
-                           value={this.state.thenWaitMM}
-                           onChange={this.handleChange}
-                           onBlur={this.padValue}/>
-                    <br/>
+                    <span className="add-step-form-group">
+                        <label htmlFor="note" className="add-step-form-label">
+                            Note
+                        </label>
+                        <input className="add-step-form-input-group"
+                               type="text"
+                               name="note"
+                               id="note"
+                               placeholder="Rest until size doubles, 2 to 4 hrs"
+                               value={this.state.note}
+                               onChange={this.handleChange}/>
+                    </span>
 
-                    <label className="add-recipe-form-label">Note</label>
-                    <input className="add-recipe-form-textbox"
-                           type="text"
-                           name="note"
-                           placeholder="Optional"
-                           value={this.state.note}
-                           onChange={this.handleChange}/>
-                    <br/>
-
-                    <BtnCancel btnName="cancelNewStep"
-                               btnText="Cancel"
-                               disabled={this.state.hidden}
-                               onClickFn={this.resetAddStepForm}/>
-
-                    <BtnSubmit btnName="saveNewStep"
-                               btnText="Submit"
-                               disabled={this.state.hidden}
-                               onClickFn={this.handleSubmit}/>
+                    <span className="add-step-form-group button-group">
+                        <BtnCancel btnName="cancelNewStep"
+                                   btnText="Cancel"
+                                   disabled={this.state.hidden}
+                                   onClickFn={this.resetAddStepForm}/>
+    
+                        <BtnSubmit btnName="saveNewStep"
+                                   btnText="Submit"
+                                   disabled={this.state.hidden}
+                                   onClickFn={this.handleSubmit}/>
+                    </span>
                 </form>
             </div>
         )

@@ -107,7 +107,7 @@
 .recipe-list-row .step-list-cell,
 .step-list-row .recipe-list-cell,
 .step-list-row .step-list-cell {
-  margin: 0 0;
+  margin: 0;
   padding: 0 0.25rem;
   max-width: max-content;
   white-space: nowrap;
@@ -269,7 +269,6 @@
   .col-step {
     min-width: 35px;
     width: 35px;
-    background: pink;
   }
 
   .list-header .col-step {

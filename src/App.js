@@ -166,7 +166,9 @@ class App extends React.Component {
                                 addRecipeToState={this.addRecipeToState}/>
                         </Route>
                     </Switch>
-                    <p className="test1">
+                    <p className="test0">
+                        c0
+                    </p><p className="test1">
                         c1
                     </p>
                     <p className="test2">

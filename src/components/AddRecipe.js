@@ -89,6 +89,7 @@ class AddRecipe extends React.Component {
                         onClickFn={this.handleButtonToggle}/>
 
                 <form className="add-recipe-form"
+                      id="add-recipe-form"
                       hidden={this.state.hidden}
                       onSubmit={this.handleSubmit}>
 
@@ -96,7 +97,7 @@ class AddRecipe extends React.Component {
                         <label htmlFor="name" className="add-recipe-form-label">
                             Recipe Name
                         </label>
-                        <input className="add-recipe-form-input-group input-textbox"
+                        <input className="add-recipe-form-input-group"
                                type="text"
                                name="name"
                                id="name"
@@ -124,14 +125,13 @@ class AddRecipe extends React.Component {
                             </select>
                             {map_difficulty_to_icon(this.state.difficulty)}
                         </span>
-
                     </span>
 
                     <span className="add-recipe-form-group">
                         <label htmlFor="author" className="add-recipe-form-label">
                             Author
                         </label>
-                        <input className="add-recipe-form-input-group input-textbox"
+                        <input className="add-recipe-form-input-group"
                                type="text"
                                name="author"
                                id="author"
@@ -144,7 +144,7 @@ class AddRecipe extends React.Component {
                         <label htmlFor="source" className="add-recipe-form-label">
                             Source
                         </label>
-                        <input className="add-recipe-form-input-group input-textbox"
+                        <input className="add-recipe-form-input-group"
                                type="text"
                                name="source"
                                id="source"
@@ -158,7 +158,7 @@ class AddRecipe extends React.Component {
                         <label htmlFor="url" className="add-recipe-form-label">
                             URL
                         </label>
-                        <input className="add-recipe-form-input-group input-textbox"
+                        <input className="add-recipe-form-input-group"
                                type="text"
                                name="url"
                                id="url"

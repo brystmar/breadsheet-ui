@@ -19,9 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Consolidated SASS files, more work on the add recipe/step forms.">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Add recipe form is properly responsive">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/app.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.sass" afterDir="false" />
@@ -185,13 +187,6 @@
       <workItem from="1594952249110" duration="155000" />
       <workItem from="1596144641192" duration="478000" />
       <workItem from="1596145142626" duration="723000" />
-    </task>
-    <task id="LOCAL-00028" summary="ThenWaitXX works like a charm!">
-      <created>1586919157912</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1586919157912</updated>
     </task>
     <task id="LOCAL-00029" summary="Fixed RecipeStartEnd">
       <created>1586924324362</created>
@@ -529,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598241227565</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Add recipe form is properly responsive">
+      <created>1598292009701</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1598292009701</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -554,7 +556,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Moved Recipe fetch to the top-level App component" />
     <MESSAGE value="Now pointing to Prod backend" />
     <MESSAGE value="Post-merge commit w/updated fetch" />
     <MESSAGE value="Finally figured out wtf was happening!  Stable once again!" />
@@ -579,7 +580,8 @@
     <MESSAGE value="Updated font stack, adjusted recipe attribute display" />
     <MESSAGE value="Improved grid display for media queries; updated add recipe/step." />
     <MESSAGE value="Consolidated SASS files, more work on the add recipe/step forms." />
-    <option name="LAST_COMMIT_MESSAGE" value="Consolidated SASS files, more work on the add recipe/step forms." />
+    <MESSAGE value="Add recipe form is properly responsive" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add recipe form is properly responsive" />
   </component>
   <component name="WindowStateProjectService">
     <state x="858" y="487" key="#ESLint" timestamp="1596999325142">
@@ -628,10 +630,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state width="500" height="445" key="SwitcherDM/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1591370078391" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1598241230570">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1598292012640">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598241230570" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598292012640" />
     <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598209132275">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
