@@ -122,6 +122,24 @@ p
   line-height: 1em
 
 
+/*** Inputs ***/
+
+input[type="text"],
+select
+  background: $color-background
+  color: $color-on-background
+  border: 1px solid $color-5
+  border-radius: 0.2em
+  height: 2em
+  margin: 0
+
+input[type="text"]
+  padding: 0.5em 0.5em
+
+select
+  padding: 0 0.2em
+
+
 /*** Buttons ***/
 
 .btn
@@ -273,41 +291,102 @@ p
   padding: 1em
   text-align: left
   margin-top: 0.5em
-
-.btn-add
-  background: $color-2
-  border: 1px solid $color-1
-  margin: 0
-  //width: 250px
-  //box-shadow: 3px 3px 1px rgba(0,0,0,0.14)
-  font-size: 1.45rem
-  font-weight: 400
-  white-space: nowrap
-  height: 2em
-  width: 9em
-  display: flex
-  align-items: center
-  justify-content: center
-  .icon-add
+  border-radius: 10px
+  min-width: 280px
+  .btn-add
     background: $color-2
-    margin-right: 0.2em
-    height: 1.2em
+    border: 1px solid $color-1
+    margin: 0
+    //width: 250px
+    //box-shadow: 3px 3px 1px rgba(0,0,0,0.14)
+    font-size: 1.25rem
+    font-weight: 400
+    white-space: nowrap
+    height: 2em
+    width: 9em
+    display: flex
+    align-items: center
+    justify-content: center
+    .icon-add
+      background: $color-2
+      margin: 0.2em
+      height: 1.2em
 
 .add-recipe-form
   background: $color-2
+  border: 1px solid black
   border-radius: 10px
-  margin: 0.7em 0
+  margin: 0.5em 0
   padding: 1em
   display: flex
   flex-direction: column
-  .add-recipe-form-group
-    //padding: 2em
-    display: grid
-    grid-gap: 0.5em 0.5em
-    grid-template: 1fr / minmax(140px, 10%) minmax(200px, 30%)
+  align-items: flex-start
+  justify-content: center
   .button-group
+    //display: flex
+    //justify-content: flex-end
+    text-align: left
+    .btn-cancel
+      display: none
+  .add-recipe-form-group
+    padding: 0.25em
     display: flex
-    align-items: flex-end
+    align-items: center
+    //width: 60%
+    min-width: 500px
+    .input-textbox:placeholder-shown
+      font-style: italic
+    //grid-template: 1fr / minmax(140px, 10%) minmax(200px, 30%)
+    .add-recipe-form-label
+      margin: auto 0.25em auto
+      min-width: 140px
+      width: 20%
+    .add-recipe-form-input-group
+      white-space: nowrap
+      min-width: 180px
+      width: 80%
+      .input-picklist
+        min-width: calc(70% - 61px)
+        width: 70%
+        margin-right: 0.3em
+      .difficulty-icon
+        min-width: 50px
+
+
+@media (max-width: 599px)
+  .add-recipe-container,
+  .add-step-container
+    padding: 0.25em
+  .add-recipe-form
+    .add-recipe-form-group
+      width: 100%
+      min-width: unset
+      .add-recipe-form-label
+        min-width: 120px
+        width: 15%
+
+@media (max-width: 494px)
+  .add-recipe-form
+    .add-recipe-form-group
+      flex-direction: column
+      justify-content: flex-start
+      align-items: flex-start
+      .add-recipe-form-label
+        margin-bottom: 0.3em
+        width: 100%
+      .add-recipe-form-input-group
+        width: 100%
+        //min-width: 270px
+
+@media (max-width: 399px)
+  .content-container
+    margin: 0.65em 0.25em
+  .add-recipe-form
+    margin: 0.15em 0
+    padding: 0.15em
+    .add-recipe-form-group
+      .btn-submit
+        width: 100%
 
 
 /*** Recipe Attributes ***/

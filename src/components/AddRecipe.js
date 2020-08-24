@@ -15,7 +15,8 @@ class AddRecipe extends React.Component {
             author: "",
             source: "",
             url: "",
-            hidden: this.props.hidden
+            hidden: false
+            // hidden: this.props.hidden
         };
 
         this.handleButtonToggle = this.handleButtonToggle.bind(this);
@@ -92,74 +93,76 @@ class AddRecipe extends React.Component {
                       onSubmit={this.handleSubmit}>
 
                     <span className="add-recipe-form-group">
-                        <label for="name" className="add-recipe-form-label">
+                        <label htmlFor="name" className="add-recipe-form-label">
                             Recipe Name
                         </label>
-                        <input className="add-recipe-form-textbox"
+                        <input className="add-recipe-form-input-group input-textbox"
                                type="text"
                                name="name"
                                id="name"
-                               placeholder="Recipe Name"
+                               placeholder="Neapolitan Pizza Dough"
                                value={this.state.name}
                                onChange={this.handleChange}
                                required={true}/>
                     </span>
 
                     <span className="add-recipe-form-group">
-                        <label for="difficulty" className="add-recipe-form-label">
+                        <label htmlFor="difficulty" className="add-recipe-form-label">
                             Difficulty
                         </label>
-                        <select className="add-recipe-form-picklist"
-                                name="difficulty"
-                                id="difficulty"
-                                value={this.state.difficulty}
-                                onChange={this.handleChange}
-                                required={true}>
-                            <option value="Beginner">Beginner</option>
-                            <option value="Intermediate">Intermediate</option>
-                            <option value="Advanced">Advanced</option>
-                            <option value="Iron Chef">Iron Chef</option>
-                        </select>
-                        {map_difficulty_to_icon(this.state.difficulty)}
+                        <span className="add-recipe-form-input-group">
+                            <select className="input-picklist"
+                                    name="difficulty"
+                                    id="difficulty"
+                                    value={this.state.difficulty}
+                                    onChange={this.handleChange}
+                                    required={true}>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                                <option value="Iron Chef">Iron Chef</option>
+                            </select>
+                            {map_difficulty_to_icon(this.state.difficulty)}
+                        </span>
 
                     </span>
 
                     <span className="add-recipe-form-group">
-                        <label for="author" className="add-recipe-form-label">
+                        <label htmlFor="author" className="add-recipe-form-label">
                             Author
                         </label>
-                        <input className="add-recipe-form-textbox"
+                        <input className="add-recipe-form-input-group input-textbox"
                                type="text"
                                name="author"
                                id="author"
-                               placeholder="Optional"
+                               placeholder="Kenji Lopez-Alt"
                                value={this.state.author}
                                onChange={this.handleChange}/>
                     </span>
 
                     <span className="add-recipe-form-group">
-                        <label for="source" className="add-recipe-form-label">
+                        <label htmlFor="source" className="add-recipe-form-label">
                             Source
                         </label>
-                        <input className="add-recipe-form-textbox"
+                        <input className="add-recipe-form-input-group input-textbox"
                                type="text"
                                name="source"
                                id="source"
-                               placeholder="Optional"
+                               placeholder="Serious Eats"
                                value={this.state.source}
                                onChange={this.handleChange}/>
 
                     </span>
 
-                    <span className="add-recipe-form-group button-group">
-                        <label for="url" className="add-recipe-form-label">
+                    <span className="add-recipe-form-group">
+                        <label htmlFor="url" className="add-recipe-form-label">
                             URL
                         </label>
-                        <input className="add-recipe-form-textbox"
+                        <input className="add-recipe-form-input-group input-textbox"
                                type="text"
                                name="url"
                                id="url"
-                               placeholder="Optional"
+                               placeholder="https://www.seriouseats.com/...."
                                value={this.state.url}
                                onChange={this.handleChange}/>
                     </span>
