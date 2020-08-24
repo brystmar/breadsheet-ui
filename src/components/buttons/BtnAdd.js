@@ -7,7 +7,7 @@ function BtnAdd(props) {
                 onClick={props.onClickFn}>
             <img alt={props.altText}
                  src="/icons/button_plus.png"
-                 className="icon-add-recipe-or-step icon-transparent"/>
+                 className="icon-add icon-transparent"/>
             {props.btnText}
         </button>
     )

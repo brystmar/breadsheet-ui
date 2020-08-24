@@ -7,11 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import './styles/app.css';
-import './styles/buttons.css';
 import './styles/recipe_list.css';
-import './styles/recipe_attributes.css';
-import './styles/add_recipe_or_step.css';
-import './styles/footer.css';
 
 
 ReactDOM.render(

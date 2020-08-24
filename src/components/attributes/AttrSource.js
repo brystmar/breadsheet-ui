@@ -10,7 +10,6 @@ function AttrSource(props) {
             <a href={props.url}
                target="_blank"
                rel="noopener noreferrer">
-                {/*{props.name === "Gluten Free on a Shoestring" ? "GF on a Shoestring" : props.name}*/}
                 {props.name}
                 <img src="./icons/external-link-alt-solid.svg"
                      alt="Link opens in a separate tab"

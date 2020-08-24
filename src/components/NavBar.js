@@ -14,7 +14,7 @@ function NavBar(props) {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav>
                     <LinkContainer to="/">
-                        <Nav.Link className="navbar-custom-link">Home</Nav.Link>
+                        <Nav.Link className="navbar-custom-link">Breadsheet</Nav.Link>
                     </LinkContainer>
 
                     <NavRecipeMenu allRecipes={props.allRecipes}/>

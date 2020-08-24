@@ -90,79 +90,91 @@ class AddRecipe extends React.Component {
                 <form className="add-recipe-form"
                       hidden={this.state.hidden}
                       onSubmit={this.handleSubmit}>
-                    <label className="add-recipe-form-label">
-                        Recipe Name
-                    </label>
-                    <input className="add-recipe-form-textbox"
-                           type="text"
-                           name="name"
-                           placeholder="Recipe Name"
-                           value={this.state.name}
-                           onChange={this.handleChange}
-                           required={true}/>
 
-                    <br/>
+                    <span className="add-recipe-form-group">
+                        <label for="name" className="add-recipe-form-label">
+                            Recipe Name
+                        </label>
+                        <input className="add-recipe-form-textbox"
+                               type="text"
+                               name="name"
+                               id="name"
+                               placeholder="Recipe Name"
+                               value={this.state.name}
+                               onChange={this.handleChange}
+                               required={true}/>
+                    </span>
 
-                    <label className="add-recipe-form-label">
-                        Difficulty
-                    </label>
-                    <select className="add-recipe-form-picklist"
-                            name="difficulty"
-                            value={this.state.difficulty}
-                            onChange={this.handleChange}
-                            required={true}>
-                        <option value="Beginner">Beginner</option>
-                        <option value="Intermediate">Intermediate</option>
-                        <option value="Advanced">Advanced</option>
-                        <option value="Iron Chef">Iron Chef</option>
-                    </select>
-                    {map_difficulty_to_icon(this.state.difficulty)}
+                    <span className="add-recipe-form-group">
+                        <label for="difficulty" className="add-recipe-form-label">
+                            Difficulty
+                        </label>
+                        <select className="add-recipe-form-picklist"
+                                name="difficulty"
+                                id="difficulty"
+                                value={this.state.difficulty}
+                                onChange={this.handleChange}
+                                required={true}>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                            <option value="Iron Chef">Iron Chef</option>
+                        </select>
+                        {map_difficulty_to_icon(this.state.difficulty)}
 
-                    <br/>
+                    </span>
 
-                    <label className="add-recipe-form-label">
-                        Author
-                    </label>
-                    <input className="add-recipe-form-textbox"
-                           type="text"
-                           name="author"
-                           placeholder="Optional"
-                           value={this.state.author}
-                           onChange={this.handleChange}/>
+                    <span className="add-recipe-form-group">
+                        <label for="author" className="add-recipe-form-label">
+                            Author
+                        </label>
+                        <input className="add-recipe-form-textbox"
+                               type="text"
+                               name="author"
+                               id="author"
+                               placeholder="Optional"
+                               value={this.state.author}
+                               onChange={this.handleChange}/>
+                    </span>
 
-                    <br/>
+                    <span className="add-recipe-form-group">
+                        <label for="source" className="add-recipe-form-label">
+                            Source
+                        </label>
+                        <input className="add-recipe-form-textbox"
+                               type="text"
+                               name="source"
+                               id="source"
+                               placeholder="Optional"
+                               value={this.state.source}
+                               onChange={this.handleChange}/>
 
-                    <label className="add-recipe-form-label">
-                        Source
-                    </label>
-                    <input className="add-recipe-form-textbox"
-                           type="text"
-                           name="source"
-                           placeholder="Optional"
-                           value={this.state.source}
-                           onChange={this.handleChange}/>
-                    <br/>
+                    </span>
 
-                    <label className="add-recipe-form-label">
-                        URL
-                    </label>
-                    <input className="add-recipe-form-textbox"
-                           type="text"
-                           name="url"
-                           placeholder="Optional"
-                           value={this.state.url}
-                           onChange={this.handleChange}/>
+                    <span className="add-recipe-form-group button-group">
+                        <label for="url" className="add-recipe-form-label">
+                            URL
+                        </label>
+                        <input className="add-recipe-form-textbox"
+                               type="text"
+                               name="url"
+                               id="url"
+                               placeholder="Optional"
+                               value={this.state.url}
+                               onChange={this.handleChange}/>
+                    </span>
 
-                    <br/>
-                    <BtnCancel btnName="cancelNewRecipe"
-                               btnText="Cancel"
-                               disabled={this.state.hidden}
-                               onClickFn={this.resetAddRecipeForm}/>
+                    <span className="add-recipe-form-group button-group">
+                        <BtnCancel btnName="cancelNewRecipe"
+                                   btnText="Cancel"
+                                   disabled={this.state.hidden}
+                                   onClickFn={this.resetAddRecipeForm}/>
 
-                    <BtnSubmit btnName="saveNewRecipe"
-                               btnText="Submit"
-                               disabled={this.state.hidden}
-                               onClickFn={this.handleSubmit}/>
+                        <BtnSubmit btnName="saveNewRecipe"
+                                   btnText="Submit"
+                                   disabled={this.state.hidden}
+                                   onClickFn={this.handleSubmit}/>
+                    </span>
                 </form>
             </div>
         )

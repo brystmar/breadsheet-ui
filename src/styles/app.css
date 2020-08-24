@@ -66,6 +66,89 @@ p {
   line-height: 1em;
 }
 
+/*** Buttons ***/
+.btn {
+  height: 2.5rem;
+  text-align: center;
+  margin: 0;
+  padding: 0.35rem 0.9rem;
+  border-radius: 5px;
+  background: none;
+  border: none;
+}
+
+.btn-edit-mode {
+  height: 2.25rem;
+  width: 2.5rem;
+  padding: 0 0.1rem 0.2rem 0.3rem;
+  background: #eeeeee;
+}
+.btn-edit-mode .icon-button {
+  height: 1em;
+  filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%);
+}
+
+.btn-edit-mode:hover,
+.btn-edit-mode:focus {
+  border: 1px solid #808080;
+}
+
+.btn-edit-mode:active {
+  background: #ddd;
+  border: 1px solid #808080;
+}
+
+.btn-clipboard {
+  background: green;
+}
+
+.btn-reset,
+.btn-cancel {
+  background: #c82333;
+  color: #ffffff;
+  margin: 0 4px;
+}
+
+.btn-reset {
+  padding: 0 8px;
+  width: 4.5em;
+}
+
+.btn-replacement-toggle {
+  width: max-content;
+  background: lightgray;
+  color: #212f29;
+  border: none;
+}
+
+.btn-replacement-toggle:hover,
+.btn-replacement-toggle:focus {
+  background: #5a6268;
+}
+
+.btn-save,
+.btn-submit {
+  background: #0069d9;
+  color: #ffffff;
+}
+
+.btn-delete {
+  border: none;
+  border-radius: 10px;
+  height: 1rem;
+  width: 1rem;
+  margin: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.btn-delete:hover,
+.btn-delete:focus {
+  background: black;
+}
+
+/*** Page-Level ***/
 .app-container {
   background: #F8F8F8;
   margin: 0 auto;
@@ -85,12 +168,8 @@ p {
   margin: 0.65em;
 }
 
-.loading-icon-table {
-  height: 20px;
-}
-
 .loading-icon-title {
-  height: 50px;
+  height: 2em;
 }
 
 .page-title {
@@ -101,12 +180,6 @@ p {
   border-bottom: 1px solid gray;
 }
 
-.table-edit-button {
-  width: auto;
-  height: auto;
-  text-align: center;
-}
-
 .difficulty-icon {
   height: 21px;
   position: relative;
@@ -114,7 +187,6 @@ p {
 }
 
 .difficulty-icon .difficulty-tooltip-text {
-  /*display: none*/
   width: auto;
   background-color: #282c34;
   color: #EEEEEE;
@@ -129,25 +201,9 @@ p {
   display: block;
 }
 
-.text-conversion-table-bs-label {
-  font-size: larger;
-  font-weight: bold;
-}
-
-.text-conversion-table-bs-row {
-  margin: 10px 0;
-}
-
 .icon-delete {
   background-color: #F8F8F8;
   height: 100%;
-}
-
-.button-clipboard-row {
-  margin: 0 3px;
-  padding: 0 8px;
-  width: max-content;
-  height: min-content;
 }
 
 .tooltipz2 {
@@ -156,6 +212,206 @@ p {
   color: #EEEEEE;
 }
 
+.navbar-custom-link {
+  font-size: larger;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-custom-link-dropdown {
+  font-size: medium;
+}
+
+.icon-ext-link {
+  display: inline;
+  max-height: 0.55rem;
+  max-width: 0.55rem;
+  margin-left: 4px;
+  filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%);
+}
+
+.icon-transparent {
+  background: #F8F8F8;
+}
+
+/*** Add Recipe/Step ***/
+.add-recipe-container,
+.add-step-container {
+  background: #dbb37e;
+  padding: 1em;
+  text-align: left;
+  margin-top: 0.5em;
+}
+
+.btn-add {
+  background: #ecece8;
+  border: 1px solid #c7c1ab;
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 400;
+  white-space: nowrap;
+  height: 2em;
+  width: 9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-add .icon-add {
+  background: #ecece8;
+  margin-right: 0.2em;
+  height: 1.2em;
+}
+
+.add-recipe-form {
+  background: #ecece8;
+  border-radius: 10px;
+  margin: 0.7em 0;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+.add-recipe-form .add-recipe-form-group {
+  display: grid;
+  grid-gap: 0.5em 0.5em;
+  grid-template: 1fr/minmax(140px, 10%) minmax(200px, 30%);
+}
+.add-recipe-form .button-group {
+  display: flex;
+  align-items: flex-end;
+}
+
+/*** Recipe Attributes ***/
+.recipe-attributes-container {
+  display: grid;
+  grid-template: 1fr/repeat(2, minmax(min-content, 250px));
+  grid-gap: 0.5em 3em;
+  cursor: default;
+  margin: 5px auto;
+}
+.recipe-attributes-container .recipe-attribute {
+  display: grid;
+  grid-template: 1fr/1fr 4fr;
+  text-align: left;
+}
+.recipe-attributes-container .recipe-attribute .attribute-label,
+.recipe-attributes-container .recipe-attribute .attribute-value {
+  display: flex;
+  align-items: flex-end;
+  width: min-content;
+  min-width: 95px;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+.recipe-attributes-container .recipe-attribute .attribute-label {
+  flex-grow: 0;
+  margin-right: 1em;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.recipe-attributes-container .recipe-attribute .attribute-value {
+  flex-grow: 1;
+  white-space: nowrap;
+  font-size: 1.1rem;
+}
+.recipe-attributes-container .attr-author .attribute-label,
+.recipe-attributes-container .attr-source .attribute-label {
+  margin-right: 0.5em;
+}
+
+@media (max-width: 699px) {
+  .recipe-attributes-container {
+    grid-gap: 0.5em 1.25em;
+  }
+}
+@media (max-width: 569px) {
+  .recipe-attributes-container {
+    grid-template: repeat(4, 1fr)/1fr;
+    grid-gap: 0.2em;
+  }
+  .recipe-attributes-container .attr-author .attribute-label,
+.recipe-attributes-container .attr-source .attribute-label {
+    margin-right: 1em;
+  }
+  .recipe-attributes-container .attribute-label,
+.recipe-attributes-container .attribute-value {
+    flex-grow: 0;
+  }
+}
+/*** Start/Finish Controls ***/
+.start-finish-container {
+  margin: 4px 0;
+  display: grid;
+  grid-template: 1fr/1fr 2fr 0.5fr;
+  align-items: center;
+  justify-content: flex-start;
+  height: max-content;
+  width: max-content;
+  white-space: nowrap;
+}
+.start-finish-container .btn-save {
+  margin: auto 5px;
+  height: 2em;
+  width: min-content;
+  background: #6c757d;
+  color: white;
+  line-height: 1px;
+  text-align: center;
+}
+.start-finish-container .btn-save:hover,
+.start-finish-container .btn-save:focus {
+  background: #5a6268;
+}
+.start-finish-container .start-finish-datepicker {
+  z-index: 10;
+}
+.start-finish-container .start-finish-toggle-container {
+  padding: 2px 1px 2px 0;
+}
+.start-finish-container .start-finish-toggle-container .btn-start-finish-toggle {
+  border: none;
+  border-bottom: 1px dotted gray;
+  border-radius: 0;
+  margin: 0;
+  padding: 0 5px;
+  height: min-content;
+  width: max-content;
+  vertical-align: center;
+}
+.start-finish-container .start-finish-toggle-container .btn-start-finish-toggle:hover,
+.start-finish-container .start-finish-toggle-container .btn-start-finish-toggle:focus {
+  border: none;
+  border-bottom: 1px solid gray;
+}
+.start-finish-container .start-finish-toggle-container::before {
+  display: none;
+  position: absolute;
+  content: attr(title);
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 0.8em;
+  border-radius: 5px;
+  width: max-content;
+  padding: 2px 6px;
+  white-space: nowrap;
+  transform: translateY(147%);
+}
+.start-finish-container .start-finish-toggle-container:hover::before,
+.start-finish-container .start-finish-toggle-container:hover::after {
+  display: inline-block;
+}
+.start-finish-container .start-finish-toggle-container::after {
+  display: none;
+  position: absolute;
+  content: "";
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(200%) translateX(-400%);
+}
+
+/*** Text Conversion Page ***/
 .text-conversion-arrow {
   width: 5%;
 }
@@ -170,6 +426,27 @@ p {
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
 .dataTables_scrollHeadInner {
   padding-right: 0;
+}
+
+.button-clipboard-row {
+  margin: 0 3px;
+  padding: 0 8px;
+  width: max-content;
+  height: min-content;
+}
+
+.toggle-replacements {
+  text-align: left;
+}
+
+.text-conversion-list-container {
+  padding: 5px 5px;
+  text-align: left;
+}
+
+.text-conversion-accordion {
+  text-align: left;
+  cursor: pointer;
 }
 
 .clipboard-confirmation {
@@ -198,39 +475,30 @@ p {
   transition: opacity 1000ms;
 }
 
-.navbar-custom-link {
-  font-size: larger;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.navbar-custom-link-dropdown {
-  font-size: medium;
-}
-
-.toggle-replacements {
+/*** Footer ***/
+.footer-container {
+  font-size: 0.8rem;
+  margin: 2em 1em 1em;
+  cursor: default;
   text-align: left;
 }
-
-.text-conversion-list-container {
-  padding: 5px 5px;
-  text-align: left;
+.footer-container .icon-bread {
+  margin: 0 0.5em;
+  height: 1em;
 }
 
-.text-conversion-accordion {
-  text-align: left;
-  cursor: pointer;
+@media (prefers-reduced-motion: no-preference) {
+  .icon-bread {
+    animation: bread-icon-spin infinite 20s linear;
+  }
 }
-
-.icon-ext-link {
-  display: inline;
-  max-height: 0.55rem;
-  max-width: 0.55rem;
-  margin-left: 4px;
-  filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%);
-}
-
-.icon-transparent {
-  background: #F8F8F8;
+@keyframes bread-icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

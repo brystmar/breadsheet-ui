@@ -124,7 +124,7 @@ class AddStep extends React.Component {
 
     render() {
         return (
-            <div className="add-step-parent">
+            <div className="add-step-container">
                 <BtnAdd btnText="New Step"
                         altText="Add a new step"
                         onClickFn={this.handleButtonToggle}/>

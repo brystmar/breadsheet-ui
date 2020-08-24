@@ -12,4 +12,8 @@ function LoadingIcon(props) {
     )
 }
 
+LoadingIcon.defaultProps = {
+    cssClass: ""
+}
+
 export default LoadingIcon;
