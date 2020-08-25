@@ -15,8 +15,8 @@ class AddRecipe extends React.Component {
             author: "",
             source: "",
             url: "",
-            hidden: false
-            // hidden: this.props.hidden
+            // hidden: false
+            hidden: this.props.hidden
         };
 
         this.handleButtonToggle = this.handleButtonToggle.bind(this);

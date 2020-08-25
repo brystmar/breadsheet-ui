@@ -14,8 +14,8 @@ class AddStep extends React.Component {
             thenWaitMM: pad(0),
             text: "",
             note: "",
-            hidden: false
-            // hidden: this.props.hidden
+            // hidden: false
+            hidden: this.props.hidden
         };
 
         this.handleButtonToggle = this.handleButtonToggle.bind(this);

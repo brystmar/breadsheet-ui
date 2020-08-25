@@ -148,6 +148,9 @@ sketch
 # production
 /build
 
+# Local SSL
+/.cert
+
 # misc
 **/.env
 .env
