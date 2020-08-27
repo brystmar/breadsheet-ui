@@ -19,26 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="SSL support">
-      <change afterPath="$PROJECT_DIR$/public/icons/file-excel-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navbar.js" afterDir="false" />
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Removed bootstrap from everything but the convert page">
+      <change afterPath="$PROJECT_DIR$/public/icons/copy-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/icons/reverse-solid.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoadingIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoadingIcon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavRecipeMenu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/app.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/app.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/recipe_list.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/recipe_list.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/recipe_list.sass" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,14 +188,7 @@
       <workItem from="1594952249110" duration="155000" />
       <workItem from="1596144641192" duration="478000" />
       <workItem from="1596145142626" duration="723000" />
-      <workItem from="1598419648862" duration="10183000" />
-    </task>
-    <task id="LOCAL-00032" summary="Fixed an issue w/length display on the homepage">
-      <created>1587093071637</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1587093071637</updated>
+      <workItem from="1598419648862" duration="15974000" />
     </task>
     <task id="LOCAL-00033" summary="Working on a goofy header">
       <created>1587096341952</created>
@@ -541,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598399273036</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Removed bootstrap from everything but the convert page">
+      <created>1598488126657</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1598488126657</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -566,7 +558,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Updated difficulty icons &amp; edit mode" />
     <MESSAGE value="Updated difficulties &amp; icons" />
     <MESSAGE value="UI was cutting off text for ThenWaitHH/MM" />
     <MESSAGE value="Re-organized &amp; renamed a few things for clarity" />
@@ -591,7 +582,8 @@
     <MESSAGE value="Add step form is properly responsive" />
     <MESSAGE value="Ready for prod deploy" />
     <MESSAGE value="SSL support" />
-    <option name="LAST_COMMIT_MESSAGE" value="SSL support" />
+    <MESSAGE value="Removed bootstrap from everything but the convert page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed bootstrap from everything but the convert page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="858" y="487" key="#ESLint" timestamp="1596999325142">
@@ -644,10 +636,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state width="500" height="445" key="SwitcherDM/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1591370078391" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1598399277402">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1598488131006">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598399277402" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598488131006" />
     <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598209132275">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

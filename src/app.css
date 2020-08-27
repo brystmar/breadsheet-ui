@@ -61,6 +61,7 @@ body {
   font-size: 16px;
   color: #121212;
   line-height: 1.3;
+  text-align: left;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -98,13 +99,19 @@ p {
 /*** Inputs ***/
 input[type=text],
 input[type=number],
-select {
+select,
+textarea {
   background: #F8F8F8;
   color: #121212;
   border: 1px solid #979AA0;
   border-radius: 0.2em;
-  height: 2em;
   margin: 0;
+}
+
+input[type=text],
+input[type=number],
+select {
+  height: 2em;
 }
 
 input[type=text] {
@@ -116,8 +123,17 @@ input[type=text]:placeholder-shown {
 }
 
 input[type=number] {
-  width: max-content0.5em;
   padding: 0 0.5em;
+  width: max-content0.5em;
+}
+
+textarea {
+  padding: 0.5em;
+}
+
+textarea:disabled,
+textarea:read-only {
+  background: #F2F2F2;
 }
 
 select {
@@ -174,15 +190,19 @@ select {
 }
 
 .btn-replacement-toggle {
-  width: max-content;
-  background: #F8F8F8;
+  width: 15em;
+  background: #935614;
   color: #121212;
-  border: none;
+  border: 2px solid transparent;
 }
 
 .btn-replacement-toggle:hover,
 .btn-replacement-toggle:focus {
-  background: #5a6268;
+  background: #dbb37e;
+}
+
+.btn-replacement-toggle:active {
+  border: 2px solid saddlebrown;
 }
 
 .btn-save,
@@ -1036,8 +1056,33 @@ select {
 }
 
 /*** Text Conversion Page ***/
+.text-conversion-inputs-container {
+  display: grid;
+  grid-template: 6fr 6fr 1fr/1fr 1fr;
+  grid-gap: 1em 2em;
+}
+
+.text-conversion-input,
+.text-conversion-output {
+  height: 90%;
+  width: 90%;
+}
+
 .text-conversion-arrow {
   width: 5%;
+}
+
+.text-conversion-list-container {
+  margin: 1.5em 0;
+  background: #ecece8;
+  border: 1px solid #979AA0;
+  border-radius: 5px;
+  padding: 1em;
+  text-align: left;
+}
+.text-conversion-list-container .replacement-list-header {
+  cursor: default;
+  margin-bottom: 1em;
 }
 
 .text-conversion-list-item {
@@ -1052,25 +1097,14 @@ select {
   padding-right: 0;
 }
 
-.button-clipboard-row {
-  margin: 0 3px;
-  padding: 0 8px;
-  width: max-content;
-  height: min-content;
+.icon-on-btn {
+  display: inline-block;
+  max-height: 15px;
 }
 
-.toggle-replacements {
-  text-align: left;
-}
-
-.text-conversion-list-container {
-  padding: 5px 5px;
-  text-align: left;
-}
-
-.text-conversion-accordion {
-  text-align: left;
-  cursor: pointer;
+.btn-clipboard {
+  display: inline-block;
+  width: 15em;
 }
 
 .clipboard-confirmation {

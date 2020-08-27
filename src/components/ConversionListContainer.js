@@ -1,7 +1,5 @@
 import React from 'react';
-import Accordion from 'react-bootstrap/Accordion';
 import {MDBDataTable} from 'mdbreact';
-import Card from 'react-bootstrap/Card';
 
 class ConversionListContainer extends React.Component {
     constructor(props) {
@@ -15,6 +13,7 @@ class ConversionListContainer extends React.Component {
         this.reset = this.reset.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.toggleScope = this.toggleScope.bind(this);
+        this.toggleAccordion = this.toggleAccordion.bind(this);
         this.onRowHover = this.onRowHover.bind(this);
         this.reformatSpaces = this.reformatSpaces.bind(this);
         this.newbieHacks = this.newbieHacks.bind(this);
@@ -56,6 +55,12 @@ class ConversionListContainer extends React.Component {
 
     onRowHover(event) {
         console.log(JSON.stringify(event));
+    }
+
+    toggleAccordion(event) {
+        this.setState({
+            hidden: !this.state.hidden
+        })
     }
 
     toggleScope() {
@@ -134,37 +139,33 @@ class ConversionListContainer extends React.Component {
 
         return (
             <div className="text-conversion-list-container">
-                <Accordion>
-                    <Card>
-                        <Accordion.Toggle as={Card.Header}
-                                          className="text-conversion-accordion"
-                                          eventKey="0">
-                            What's being replaced?
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey="0">
-                            <Card.Body>
-                                <h4 className="toggle-replacements">
+                <h3 className="replacement-list-header" onClick={this.toggleAccordion}>
+                    What's being replaced?
+                </h3>
+                <span className="replacement-list-content"
+                      hidden={this.state.hidden}>
+                    <h4 className="toggle-replacements">
                                     Replacements for &nbsp;
-                                    <button name="scopeChange"
-                                            className="btn btn-replacement-toggle"
-                                            onClick={this.toggleScope}>
-                                        {toggleLabel} <i className="fas fa-retweet"/>
-                                    </button>
-                                </h4>
-                                <MDBDataTable scrollY
-                                              striped
-                                              small
-                                              responsiveSm
-                                              hover
-                                              bordered
-                                              maxHeight="600px"
-                                              className="text-conversion-list-item"
-                                              data={dtData}
-                                              entries={12}/>
-                            </Card.Body>
-                        </Accordion.Collapse>
-                    </Card>
-                </Accordion>
+                        <button name="scopeChange"
+                                className="btn btn-replacement-toggle"
+                                onClick={this.toggleScope}>
+                            {toggleLabel}
+                            <img src="./icons/reverse-solid.svg"
+                                 alt="Toggle the replacements list displayed"
+                                 className="icon-on-btn"/>
+                        </button>
+                    </h4>
+                    <MDBDataTable scrollY
+                                  striped
+                                  small
+                                  responsiveSm
+                                  hover
+                                  bordered
+                                  maxHeight="600px"
+                                  className="text-conversion-list-item"
+                                  data={dtData}
+                                  entries={12}/>
+                </span>
             </div>
         )
     }

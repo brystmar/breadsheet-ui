@@ -1,10 +1,6 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { CSSTransition } from 'react-transition-group';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import {CSSTransition} from 'react-transition-group';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import convert_text_using_provided_list from '../scripts/convert_text_functions';
 
 class ConvertTextControls extends React.Component {
@@ -71,99 +67,101 @@ class ConvertTextControls extends React.Component {
 
     render() {
         return (
-            <Form className="text-conversion-table">
-                <Row className="text-conversion-table-bs-row">
-                    <Col>
-                        {/*<Form.Label*/}
-                        {/*    className="text-conversion-table-bs-label">Ingredients</Form.Label>*/}
-                        <Form.Control as="textarea"
-                                      name="inputIngredients"
-                                      value={this.state.inputIngredients}
-                                      placeholder="Ingredients Input"
-                                      onChange={this.handleChange}
-                                      autoFocus={true}
-                                      tabIndex={1}
-                                      rows={this.state.textboxRows}
-                                      cols={this.state.textboxCols}/>
-                    </Col>
-                    {/*<Col className="text-conversion-arrow">*/}
-                    {/*    -->*/}
-                    {/*</Col>*/}
-                    <Col>
-                        {/*<Form.Label*/}
-                        {/*    className="text-conversion-table-bs-label"> &nbsp; </Form.Label>*/}
-                        <Form.Control as="textarea"
-                                      name="outputIngredients"
-                                      value={this.state.outputIngredients}
-                                      placeholder="Ingredients Output"
-                                      disabled={true}
-                                      rows={this.state.textboxRows}
-                                      cols={this.state.textboxCols}/>
-                    </Col>
-                </Row>
-                <Row className="text-conversion-table-bs-row">
-                    <Col>
-                        {/*<Form.Label*/}
-                        {/*    className="text-conversion-table-bs-label">Directions</Form.Label>*/}
-                        <Form.Control as="textarea"
-                                      name="inputDirections"
-                                      value={this.state.inputDirections}
-                                      placeholder="Directions Input"
-                                      onChange={this.handleChange}
-                                      tabIndex={2}
-                                      rows={this.state.textboxRows}
-                                      cols={this.state.textboxCols}/>
-                    </Col>
-                    {/*<Col className="text-conversion-arrow">*/}
-                    {/*    -->*/}
-                    {/*</Col>*/}
-                    <Col>
-                        {/*<Form.Label*/}
-                        {/*    className="text-conversion-table-bs-label"> &nbsp; </Form.Label>*/}
-                        <Form.Control as="textarea"
-                                      name="outputDirections"
-                                      value={this.state.outputDirections}
-                                      placeholder="Directions Output"
-                                      disabled={true}
-                                      rows={this.state.textboxRows}
-                                      cols={this.state.textboxCols}/>
-                    </Col>
-                </Row>
-                <Row className="text-conversion-table-bs-row">
-                    <Col className="button-clipboard-row">
-                        <CopyToClipboard
-                            text={(this.state.outputIngredients + "\n\n" + this.state.outputDirections).trim()}
-                            onCopy={this.clipboardConfirmation}>
-                            <Button variant="success"
-                                    size="sm"
-                                    name="copyToClipboard"
-                                    className="btn btn-clipboard"
-                                    tabIndex={3}>
-                                <i className="far fa-copy"/> Copy to Clipboard
-                            </Button>
-                        </CopyToClipboard>
+            <div className="text-conversion-inputs-container">
+                <span className="text-conversion-group">
+                    <label htmlFor="inputIngredients" className="text-conversion-label">
+                        Ingredients Input
+                    </label>
+                    <textarea name="inputIngredients"
+                              id="inputIngredients"
+                              className="text-conversion-input"
+                              value={this.state.inputIngredients}
+                              placeholder="Ingredients Input"
+                              onChange={this.handleChange}
+                              autoFocus={true}
+                              tabIndex={1}
+                              rows={8}
+                              cols={10}/>
+                </span>
 
-                        <CSSTransition in={this.state.transition}
-                                       timeout={1000}
-                                       classNames="clipboard-confirmation"
-                                       onEntered={this.clipboardConfirmation}>
-                            <span className="clipboard-confirmation">
-                                Copied!
-                            </span>
-                        </CSSTransition>
-                    </Col>
-                    <Col className="button-reset-column">
-                        <Button variant="danger"
-                                size="sm"
-                                name="resetForm"
-                                className="btn btn-reset"
-                                onClick={this.resetForm}
-                                tabIndex={4}>
-                            Reset
-                        </Button>
-                    </Col>
-                </Row>
-            </Form>
+                <span className="text-conversion-group">
+                    <label htmlFor="outputIngredients" className="text-conversion-label">
+                        Ingredients Output
+                    </label>
+                    <textarea name="outputIngredients"
+                              id="outputIngredients"
+                              className="text-conversion-output"
+                              value={this.state.outputIngredients}
+                              placeholder="Ingredients Output"
+                              readOnly={true}
+                              rows={8}
+                              cols={10}/>
+                </span>
+
+                <span className="text-conversion-group">
+                    <label htmlFor="inputDirections" className="text-conversion-label">
+                        Directions Input
+                    </label>
+                    <textarea name="inputDirections"
+                              id="inputDirections"
+                              className="text-conversion-input"
+                              value={this.state.inputDirections}
+                              placeholder="Directions Input"
+                              onChange={this.handleChange}
+                              tabIndex={2}
+                              rows={8}
+                              cols={10}/>
+                </span>
+
+                <span className="text-conversion-group">
+                    <label htmlFor="outputDirections" className="text-conversion-label">
+                        Directions Output
+                    </label>
+                    <textarea name="outputDirections"
+                              id="outputDirections"
+                              className="text-conversion-output"
+                              value={this.state.outputDirections}
+                              placeholder="Directions Output"
+                              readOnly={true}
+                              rows={8}
+                              cols={10}/>
+                </span>
+
+                <span className="button-group">
+                    <CopyToClipboard
+                        text={(this.state.outputIngredients + "\n\n" + this.state.outputDirections).trim()}
+                        onCopy={this.clipboardConfirmation}>
+                        <button type="button"
+                                name="copyToClipboard"
+                                className="btn btn-clipboard"
+                                tabIndex={3}>
+                            <img src="./icons/copy-regular.svg"
+                                 alt="Clipboard copy icon"
+                                 className="icon-on-btn"/>
+                                 Copy to Clipboard
+                        </button>
+                    </CopyToClipboard>
+
+                    <CSSTransition in={this.state.transition}
+                                   timeout={1000}
+                                   classNames="clipboard-confirmation"
+                                   onEntered={this.clipboardConfirmation}>
+                        <span className="clipboard-confirmation">
+                            Copied!
+                        </span>
+                    </CSSTransition>
+                </span>
+
+                <span className="button-group">
+                    <button type="button"
+                            name="resetForm"
+                            className="btn btn-reset"
+                            onClick={this.resetForm}
+                            tabIndex={4}>
+                        Reset
+                    </button>
+                </span>
+            </div>
         )
     }
 }
