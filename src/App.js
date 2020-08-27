@@ -1,12 +1,12 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 import PageTitle from './components/PageTitle';
+import RecipeListContainer from './components/RecipeListContainer';
 import RecipePageContainer from './components/RecipePageContainer';
 import AddRecipe from './components/AddRecipe';
-import RecipeListContainer from './components/RecipeListContainer';
 import ConvertTextPageContainer from './components/ConvertTextPageContainer';
+import Footer from './components/Footer';
 
 class App extends React.Component {
     constructor() {
@@ -136,13 +136,15 @@ class App extends React.Component {
     render() {
         return (
             <div className="app-container">
-                <NavBar allRecipes={this.state.allRecipes}/>
-                <div className="content-container">
+                <header className="header-container">
+                    <Navbar />
+                </header>
+                <main className="content-container">
                     <Switch>
                         <Route exact path="/convert">
                             <PageTitle
                                 title="Convert Recipe Text"
-                                includeHr={true}/>
+                                includeHr={false}/>
                             <ConvertTextPageContainer/>
                         </Route>
 
@@ -166,7 +168,17 @@ class App extends React.Component {
                                 addRecipeToState={this.addRecipeToState}/>
                         </Route>
                     </Switch>
-                </div>
+                </main>
+                <p className="test-bg-header"> bg header </p>
+                <p className="test0"> c0 </p>
+                <p className="test1"> c1 </p>
+                <p className="test2"> c2 </p>
+                <p className="test3"> c3 </p>
+                <p className="test4"> c4 </p>
+                <p className="test5"> c5 </p>
+                <p className="test6"> c6 </p>
+                <p className="test7"> c7 </p>
+                <p className="test8"> c8 </p>
                 <Footer/>
             </div>
         )

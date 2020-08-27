@@ -11,7 +11,9 @@ class RecipeStartEnd extends React.Component {
             solveForStart: true
         };
 
+        this.refSaveText = React.createRef();
         this.handleDateChange = this.handleDateChange.bind(this);
+        this.handleSave = this.handleSave.bind(this);
         this.handleStartFinishToggle = this.handleStartFinishToggle.bind(this);
     }
 
@@ -72,6 +74,12 @@ class RecipeStartEnd extends React.Component {
         this.props.handleUpdateStartTime(newStartTime);
     }
 
+    handleSave() {
+        this.props.saveRecipe();
+        // this.refSaveText.current.addClass("show-hidden")
+        // console.log(this.refSaveText.current.classList);
+    }
+
     handleStartFinishToggle() {
         // console.log("Called handleStartFinishToggle(). Now:", !this.state.solveForStart);
         this.setState({
@@ -89,38 +97,43 @@ class RecipeStartEnd extends React.Component {
 
         return (
             <div className="start-finish-container">
-                <span className="start-finish-toggle-container"
-                      title="Toggle solving for start/finish time">
-                    <button
-                        type="button"
-                        className="btn btn-start-finish-toggle"
-                        onClick={this.handleStartFinishToggle}>
-                        {this.state.solveForStart ? "Start at:" : "Finish at:"}
+                <div className="start-finish-contents">
+                    <span className="start-finish-toggle-container"
+                          title="Toggle solving for start/finish time">
+                        <button
+                            type="button"
+                            className="btn btn-start-finish-toggle"
+                            onClick={this.handleStartFinishToggle}>
+                            {this.state.solveForStart ? "Start at:" : "Finish at:"}
+                        </button>
+                    </span>
+
+                    <span className="start-finish-datepicker">
+                        <DatePicker
+                            selected={this.state.solveForStart  // `selected`: the value for this object
+                                ? this.state.startTime
+                                : this.state.finishTime}
+                            onChange={this.handleDateChange}
+                            className="start-finish-datepicker"
+                            showTimeSelect
+                            timeFormat="HH:mm"
+                            timeIntervals={30}
+                            timeCaption="Time"
+                            todayButton="Today"
+                            useWeekdaysShort={true}
+                            dateFormat="MMM dd, yyyy HH:mm"/>
+                    </span>
+
+                    <button type="button"
+                            name="updateRecipe"
+                            className="btn btn-save"
+                            onClick={this.handleSave}>
+                        Save
                     </button>
+                </div>
+                <span ref={this.refSaveText} className="start-finish-save-confirmation">
+                    ✔
                 </span>
-
-                <span className="start-finish-datepicker">
-                    <DatePicker
-                        selected={this.state.solveForStart  // `selected`: the value for this object
-                            ? this.state.startTime
-                            : this.state.finishTime}
-                        onChange={this.handleDateChange}
-                        className="start-finish-datepicker"
-                        showTimeSelect
-                        timeFormat="HH:mm"
-                        timeIntervals={30}
-                        timeCaption="Time"
-                        todayButton="Today"
-                        useWeekdaysShort={true}
-                        dateFormat="MMM dd, yyyy HH:mm"/>
-                </span>
-
-                <button type="button"
-                        name="updateRecipe"
-                        className="btn btn-save"
-                        onClick={this.props.saveRecipe}>
-                    Save
-                </button>
             </div>
         )
     }

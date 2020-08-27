@@ -1,7 +1,7 @@
 import React from 'react';
 import seconds_to_string from '../scripts/time_display_functions';
 import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
-import AttrSource from "./attributes/AttrSource";
+import AttrSource from './attributes/AttrSource';
 
 function RecipePageAttributes(props) {
     return (

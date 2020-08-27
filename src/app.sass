@@ -1,17 +1,11 @@
-/*** Rules of Thumb for Responsive Units ***/
-// font-size: rem
-// padding:   em
-// margin:    em
-// widths:    em or pct (pixels can be okay)
-
-// Fonts
+/*** Fonts ***/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap')
 //@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap')
 $font-stack: 'Noto Sans', 'IBM Plex Sans', 'Roboto', sans-serif
 
-// Colors
+/*** Colors ***/
 $color-primary: #0068d5
 $color-primary-dark: #003fa3
 $color-primary-light: #5f95ff
@@ -38,9 +32,41 @@ $color-2: #ecece8
 $color-3: #f7ebdd
 $color-4: #dbb37e
 $color-5: #935614
+$color-6: #612c00
+$color-7: #370300
+$color-8: #160000
+$color-text-light: #f5f5f5
+$color-text-dark: #121212
 $color-light-alt: #D1D7E0
-$color-background: #F8F8F8
 $color-lightest: #F2F2F2
+$color-background: #F8F8F8
+$color-nav-background: #160000
+
+.test-bg-header
+  background: $color-nav-background
+  color: $color-lightest
+  margin-top: 2em
+.test0
+  background: $color-0
+.test1
+  background: $color-1
+.test2
+  background: $color-2
+.test3
+  background: $color-3
+.test4
+  background: $color-4
+.test5
+  background: $color-5
+.test6
+  background: $color-6
+  color: $color-text-light
+.test7
+  background: $color-7
+  color: $color-text-light
+.test8
+  background: $color-8
+  color: $color-text-light
 
 $color-tooltip-background: #282c34
 $color-tooltip-text: #EEEEEE
@@ -64,19 +90,19 @@ $color-primary-analogous-2: #0400d5
 $color-primary-triadic-1: #6e00d5
 $color-primary-triadic-2: #d50067
 
-// Page Layout
+/*** Page Layout ***/
 $header-height: 3rem
 $footer-height: $header-height - 1rem
 $app-max-width: 1200px
 
-// Debugging
+/*** Debugging ***/
 $border1: 1px solid black
 $border2: 1px solid red
 $border3: 1px solid lightblue
 $border4: 1px solid darkgreen
 
 
-/*** Globals ***/
+/*** Basic HTML Tags ***/
 *
   box-sizing: border-box
 
@@ -84,8 +110,10 @@ body
   font-family: $font-stack
   font-variant: slashed-zero
   font-size: 16px
-  color: $color-on-background
+  color: $color-text-dark
   line-height: 1.3
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
 h1, h2, h3, h4
   margin: 0
@@ -149,6 +177,7 @@ select
   border-radius: 5px
   background: none
   border: none
+  transition: all 0.3s
 
 .btn-edit-mode
   height: 2.25rem
@@ -174,7 +203,7 @@ select
 .btn-reset,
 .btn-cancel
   background: #c82333
-  color: #ffffff
+  color: $color-text-light
   margin: 0 4px
 
 .btn-reset
@@ -183,8 +212,8 @@ select
 
 .btn-replacement-toggle
   width: max-content
-  background: lightgray
-  color: rgb(33, 47, 41)
+  background: $color-background
+  color: $color-text-dark
   border: none
 .btn-replacement-toggle:hover,
 .btn-replacement-toggle:focus
@@ -193,14 +222,21 @@ select
 .btn-save,
 .btn-submit
   background: $color-5
-  color: $color-lightest
-
+  color: $color-text-light
+  border: 2px transparent $color-7
+  height: 2.25em
+  width: 4.5em
+  line-height: 1
 .btn-save:hover,
 .btn-save:focus,
 .btn-submit:hover,
 .btn-submit:focus
-  background: $color-4
-  color: $color-on-light
+  background: $color-6
+  color: $color-text-light
+.btn-save:active
+  border: 2px solid $color-7
+  background: $color-6
+  color: $color-text-light
 
 .btn-delete
   border: none
@@ -225,7 +261,7 @@ select
   max-width: 1200px
   text-align: center
 
-.navbar-custom-container,
+.header-container,
 .content-container,
 .footer-container
   max-width: 1200px
@@ -233,6 +269,32 @@ select
 
 .content-container
   margin: 0.65em
+
+
+/*** Nav ***/
+
+.header-container
+  background: $color-nav-background
+  color: $color-text-light
+  margin: 0
+  padding: 0.25em 1em
+  font-size: 1.5rem
+  .nav-content
+    text-align: center
+    .nav-list
+      list-style: none
+      margin: 0
+      padding: 0
+    .nav-link
+      display: inline
+      color: $color-text-light
+      text-decoration: none
+    .nav-link:hover,
+    .nav-link:focus
+      color: #ffffff
+
+
+/*** Other ***/
 
 .loading-icon-title
   height: 2em
@@ -271,13 +333,6 @@ select
   background: $color-tooltip-background
   color: $color-tooltip-text
 
-.navbar-custom-link
-  font-size: larger
-  color: rgba(255,255,255,0.5)
-
-.navbar-custom-link-dropdown
-  font-size: medium
-
 .icon-ext-link
   display: inline
   max-height: 0.55rem
@@ -287,6 +342,274 @@ select
 
 .icon-transparent
   background: $color-background
+
+
+/*** Recipe List Styles ***/
+
+.list-row-highlighted
+  background: rgb(242,242,242)
+
+.list-header
+  padding: 0.7em 0
+  cursor: default
+  white-space: nowrap
+
+.icon-cell
+  justify-content: center
+  margin: 0
+  width: 60px
+
+.then-wait-hh-input
+  margin-right: 2px
+.then-wait-mm-input
+  margin-left: 2px
+
+.right-justify
+  justify-content: flex-end
+
+
+/*** Grid Cell Assignments ***/
+
+// Recipe list columns
+.col-name
+  grid-area: name
+.col-difficulty
+  grid-area: diff
+  min-width: 125px
+.col-length
+  grid-area: len
+  min-width: 96px
+.col-author
+  grid-area: author
+  .attribute-label
+    margin-right: 0
+.col-source
+  grid-area: source
+.recipe-list-cell .col-button
+  grid-area: r-button
+
+// Step list columns
+.col-step
+  grid-area: step
+  min-width: 68px
+  max-width: 80px
+  flex-grow: 0
+.col-when
+  grid-area: when
+  min-width: 96px
+  max-width: 110px
+  flex-grow: 0
+.col-action
+  grid-area: action
+  min-width: 180px
+.col-then
+  grid-area: then
+  //min-width: 145px
+.col-note
+  grid-area: note
+.step-list-cell .col-button
+  grid-area: s-button
+
+// Define the grid
+.recipe-list-container,
+.step-list-container
+  display: flex
+  flex-direction: column
+  padding: 0.15em
+
+.recipe-list-row,
+.step-list-row
+  display: grid
+  grid-gap: 4px
+  text-align: left
+  margin: 0
+  padding: 8px 0
+  .recipe-list-cell,
+  .step-list-cell
+    //border: 1px solid lightcoral
+    margin: 0
+    padding: 0 0.25rem
+    // Prevent text wrapping for all columns except source, action, & note
+    //min-width: max-content
+    max-width: max-content
+    white-space: nowrap
+    display: flex
+    align-items: center
+  .col-source,
+  .col-action,
+  .col-note
+    min-width: revert
+    white-space: normal
+
+.recipe-list-row
+  grid-template: 1fr / 4fr 1fr 1.1fr 1.4fr 2.25fr min-content
+  grid-template-areas: "name diff len author source r-button"
+
+.step-list-row
+  grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2fr  min-content
+  grid-template-areas: "step                     when                       action             then                       note s-button"
+
+
+/*** Gettin' Responsive ***/
+
+@media (max-width: 999px)
+  .recipe-list-row
+    grid-template: 1fr / 4fr 1.1fr 1.25fr 1.5fr 2.3fr
+    grid-template-areas: "name diff len author source"
+    .col-button
+      display: none
+
+  .step-list-row
+    grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2.2fr
+    grid-template-areas: "step                     when                       action             then                       note"
+    .col-button
+      display: none
+
+@media (max-width: 899px)
+  .recipe-list-row
+    grid-template: 1fr / 4fr 1.1fr 1.25fr 1.5fr
+    grid-template-areas: "name diff len author"
+    .col-source
+      display: none
+
+@media (max-width: 769px)
+  .col-author
+    display: none
+  .recipe-list-row
+    grid-template: 1fr / 4fr 1.3fr 1.25fr auto
+    grid-template-areas: "name diff len r-button"
+
+  .step-list-row
+    grid-gap: 0
+    flex-grow: 0
+  .col-source,
+  .col-note
+    display: none
+  .step-list-row
+    grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px)
+    grid-template-areas: "step                     when                       action             then"
+
+@media (max-width: 699px)
+  h1
+    font-size: 2.4rem
+  h2
+    font-size: 1.5rem
+  h3,
+  .nav-content
+    font-size: 1.3rem
+  .col-note,
+  .col-author
+    display: none
+  .col-step
+    max-width: 70px
+  .recipe-list-row
+    .col-button
+      display: none
+  .recipe-list-row
+    grid-template: 1fr / 3fr 1fr 1fr
+    grid-template-areas: "name diff len"
+
+@media (max-width: 659px)
+  .step-list-row
+    .col-button
+      display: none
+  //.step-list-row
+  //  grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px)
+  //  grid-template-areas: "step                     when                       action             then"
+
+@media (max-width: 599px)
+  h1
+    font-size: 2.1rem
+  .col-difficulty
+    display: none
+  .recipe-list-row
+    grid-template: 1fr / 3.5fr 1fr
+    grid-template-areas: "name len"
+
+@media (max-width: 569px)
+  h1
+    font-size: 1.9rem
+  h2
+    font-size: 1.4rem
+  h3,
+  .nav-content
+    font-size: 1.2rem
+  .nav-content
+    font-size: 1.2rem
+  .col-then
+    display: none
+  .step-list-row
+    grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(250px, 1fr)
+    grid-template-areas: "step                     when                       action"
+
+@media (max-width: 494px)
+  h1
+    font-size: 1.7rem
+  .recipe-list-row
+    .col-name
+      white-space: normal
+      word-wrap: normal
+  .col-step
+    min-width: 35px
+    width: 35px
+  .list-header
+    .col-step
+      visibility: hidden
+    .col-step::before
+      content: ""
+      visibility: visible
+      font-size: 1.25rem
+      position: relative
+      left: 5px
+  .step-list-row
+    grid-template: 1fr / minmax(min-content, 50px) minmax(max-content, 105px) minmax(250px, 1fr)
+    grid-template-areas: "step                     when                       action"
+
+@media (max-width: 424px)
+  .col-length
+    display: none
+  .recipe-list-row
+    grid-template: 1fr / 1fr
+    grid-template-areas: "name"
+  .col-action
+    white-space: normal !important  //TODO: What's overriding this?  Why does it need a hack?
+    overflow-wrap: break-spaces
+
+@media (max-width: 409px)
+  h2
+    font-size: 1.25rem
+  h3,
+  .nav-content
+    font-size: 1.1rem
+  .list-header
+    .col-action
+      min-width: 80px
+
+@media (max-width: 359px)
+  h2
+    font-size: 1.15rem
+  h3,
+  .nav-content
+    font-size: 1.08rem
+  p
+    font-size: 0.9rem
+  .list-header
+    .col-step
+      visibility: hidden
+      margin: 0
+      padding: 0
+  .col-step
+    min-width: 30px
+    width: 30px
+  .col-action
+    min-width: 80px
+
+.text-with-ext-link-icon
+  //white-space: nowrap
+  margin: auto 0
+  .icon-ext-link
+    //TODO: Understand why this is needed to keep the text + link icon on the same line
+    width: 10px
 
 
 /*** Add Recipe/Step ***/
@@ -482,75 +805,85 @@ select
 
 /*** Start/Finish Controls ***/
 
+.show-hidden
+  display: inline
+  visibility: visible
+  //animation: my-fade-in 2s
+
+@keyframes my-fade-in
+  from
+    opacity: 0
+  to
+    opacity: 1
+
 .start-finish-container
-  background: rgba(199,193,171,0.3)
-  border-radius: 5px
-  padding: 0.5em
-  width: max-content
   display: flex
   align-items: center
-  justify-content: flex-start
-  //height: max-content
-  //width: max-content
-  white-space: nowrap
-  .btn-save
-    height: 2em
-    background: $color-5
-    color: $color-lightest
-    line-height: 1
-  .btn-save:hover,
-  .btn-save:focus
-    background: $color-4
-    color: $color-on-light
-  .start-finish-datepicker
-    z-index: 10
-    margin: 0 0.25em
-  .start-finish-toggle-container
-    .btn-start-finish-toggle
-      border: none
-      border-bottom: 1px dotted gray
-      border-radius: 0
-      margin: 0
-      padding: 0 .5px
-      height: min-content
-      width: max-content
-      text-align: left
-      display: inline
-    .btn-start-finish-toggle:hover,
-    .btn-start-finish-toggle:focus
-      border: none
-      border-bottom: 1px solid gray
-
-  // Tooltip contents
-  .start-finish-toggle-container::before
+  .start-finish-save-confirmation
+    color: $color-7
     display: none
-    position: absolute
-    content: attr(title)
-    z-index: 2
-    background: rgba(0, 0, 0, 0.8)
-    color: white
-    font-size: 0.8em
+    font-size: 1.5rem
+    margin-left: 0.3em
+    transition: display 0.5s
+  .start-finish-contents
+    background: rgba(199,193,171,0.3)
     border-radius: 5px
+    padding: 0.5em
     width: max-content
-    padding: 2px 6px
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    //height: max-content
+    //width: max-content
     white-space: nowrap
-    transform: translateY(147%)
+    .start-finish-datepicker
+      z-index: 10
+      margin: 0 0.25em
+    .start-finish-toggle-container
+      .btn-start-finish-toggle
+        border: none
+        border-bottom: 1px dotted gray
+        border-radius: 0
+        margin: 0
+        padding: 0 .5px
+        height: min-content
+        width: max-content
+        text-align: left
+        display: inline
+      .btn-start-finish-toggle:hover,
+      .btn-start-finish-toggle:focus
+        border: none
+        border-bottom: 1px solid gray
 
-  .start-finish-toggle-container:hover::before,
-  .start-finish-toggle-container:hover::after
-    display: inline-block
+    // Tooltip contents
+    .start-finish-toggle-container::before
+      display: none
+      position: absolute
+      content: attr(title)
+      z-index: 2
+      background: $color-tooltip-background
+      color: #ffffff
+      font-size: 0.8em
+      border-radius: 5px
+      width: max-content
+      padding: 2px 6px
+      white-space: nowrap
+      transform: translateY(147%)
+    .start-finish-toggle-container:hover::before,
+    .start-finish-toggle-container:hover::after
+      display: inline-block
 
-  // Arrow for the tooltip
-  .start-finish-toggle-container::after
-    display: none
-    position: absolute
-    content: ""
-    z-index: 1
-    width: 0
-    height: 0
-    border: 5px solid transparent
-    border-bottom-color: rgba(0, 0, 0, 0.8)
-    transform: translateY(200%) translateX(-400%)
+    // Arrow for the tooltip
+    .start-finish-toggle-container::after
+      display: none
+      position: absolute
+      content: ""
+      z-index: 1
+      width: 0
+      height: 0
+      border: 5px solid transparent
+      border-bottom-color: $color-tooltip-background
+      transform: translateY(200%) translateX(-400%)
 
 
 /*** Text Conversion Page ***/
@@ -611,7 +944,7 @@ select
 
 .footer-container
   font-size: 0.8rem
-  margin: 2em 1em 1em
+  margin: 2em 1em
   cursor: default
   text-align: left
   .icon-bread
@@ -620,9 +953,11 @@ select
 
 @media (prefers-reduced-motion: no-preference)
   .icon-bread
-    animation: bread-icon-spin infinite 20s linear
+    animation: spinning-bread infinite 20s linear
+  .start-finish-save-confirmation
+    animation: 1 ease-in 2s linear
 
-@keyframes bread-icon-spin
+@keyframes spinning-bread
   from
     transform: rotate(0deg)
   to
