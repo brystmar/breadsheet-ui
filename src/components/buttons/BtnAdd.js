@@ -5,9 +5,6 @@ function BtnAdd(props) {
         <button type="button"
                 className="btn btn-add"
                 onClick={props.onClickFn}>
-            <img alt={props.altText}
-                 src="/icons/button_plus.png"
-                 className="icon-add icon-transparent"/>
             {props.btnText}
         </button>
     )

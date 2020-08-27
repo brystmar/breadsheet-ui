@@ -26,15 +26,18 @@ function RecipeListItem(props) {
                         url={props.url}
                         extraClassString="recipe-list-cell col-source"/>
 
-            <span className="recipe-list-cell col-button icon-cell">
-                <button className="btn-delete"
-                        onClick={() => props.deleteRecipe(props.recipe_id)}
-                        hidden={props.hidden}>
-                    <img alt="Delete recipe"
-                         src="./icons/button_minus.png"
-                         className="icon icon-delete"/>
-                </button>
-            </span>
+            {props.hidden ?
+                "" :
+                <span className="recipe-list-cell col-button icon-cell">
+                    <button className="btn-delete"
+                            onClick={() => props.deleteRecipe(props.recipe_id)}>
+                        <img alt="Delete this recipe"
+                             title="Delete this recipe"
+                             src="./icons/button_minus.png"
+                             className="icon icon-delete"/>
+                    </button>
+                </span>
+            }
         </div>
     )
 }

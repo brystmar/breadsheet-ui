@@ -3,14 +3,23 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap");
 /*** Colors ***/
-.test-bg-header {
-  background: #160000;
-  color: #F2F2F2;
-  margin-top: 2em;
+.color-test {
+  display: flex;
+  justify-content: space-evenly;
+}
+.color-test span {
+  width: 120px;
 }
 
-.test0 {
+.test-border {
   background: #979AA0;
+  color: #121212;
+  margin-top: 1em;
+}
+
+.test-border-2 {
+  background: #696c72;
+  color: #F2F2F2;
 }
 
 .test1 {
@@ -94,6 +103,22 @@ p {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1em;
+  cursor: default;
+  margin: 0;
+}
+
+a {
+  color: #003fa3;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #0068d5;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
 }
 
 /*** Inputs ***/
@@ -106,6 +131,18 @@ textarea {
   border: 1px solid #979AA0;
   border-radius: 0.2em;
   margin: 0;
+  cursor: text;
+}
+
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=number]:hover,
+input[type=number]:focus,
+select:hover,
+select:focus,
+textarea:hover,
+textarea:focus {
+  border: 1px solid #696c72;
 }
 
 input[type=text],
@@ -142,35 +179,67 @@ select {
 
 /*** Buttons ***/
 .btn {
-  height: 2.5rem;
+  height: 2.5em;
+  width: 7em;
   text-align: center;
   margin: 0;
-  padding: 0.35rem 0.9rem;
-  border-radius: 5px;
-  background: none;
+  border-radius: 0.2em;
+  cursor: pointer;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: all 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.5;
   border: none;
-  transition: all 0.3s;
+}
+
+.btn:disabled:active,
+.btn:disabled:focus,
+.btn:disabled:hover {
+  opacity: 0.5;
+  border: none;
+}
+
+.btn-default {
+  background: #ecece8;
+  color: #241933;
+  border: 1px solid #979AA0;
+}
+
+.btn-default:focus,
+.btn-default:hover {
+  background: #979AA0;
+  color: #F2F2F2;
+  border: 1px solid #696c72;
+}
+
+.btn-default:active {
+  border: 2px solid #696c72;
 }
 
 .btn-edit-mode {
-  height: 2.25rem;
-  width: 2.5rem;
-  padding: 0 0.1rem 0.2rem 0.3rem;
+  height: 2.25em;
+  width: 2.5em;
+  padding: 0 0.1em 0.2em 0.3em;
+  border: 1px solid #979AA0;
   background: #eeeeee;
 }
 .btn-edit-mode .icon-button {
-  height: 1em;
+  height: 80%;
+  margin-top: 3px;
   filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%);
 }
 
 .btn-edit-mode:hover,
 .btn-edit-mode:focus {
-  border: 1px solid #808080;
+  border-color: #696c72;
+  background: #ddd;
 }
 
 .btn-edit-mode:active {
-  background: #ddd;
-  border: 1px solid #808080;
+  background: #ccc;
 }
 
 .btn-clipboard {
@@ -202,16 +271,14 @@ select {
 }
 
 .btn-replacement-toggle:active {
-  border: 2px solid saddlebrown;
+  border: 2px solid #612c00;
 }
 
 .btn-save,
 .btn-submit {
   background: #935614;
   color: #f5f5f5;
-  border: 2px transparent #370300;
-  height: 2.25em;
-  width: 4.5em;
+  border: 1px solid #612c00;
   line-height: 1;
 }
 
@@ -221,19 +288,49 @@ select {
 .btn-submit:focus {
   background: #612c00;
   color: #f5f5f5;
+  border: 1px solid #370300;
 }
 
-.btn-save:active {
-  border: 2px solid #370300;
-  background: #612c00;
-  color: #f5f5f5;
+.btn-save:active,
+.btn-submit:active {
+  border: 2px solid #935614;
+}
+
+.btn-add {
+  background: #ecece8;
+  border: 1px solid #ecece8;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 400;
+  white-space: nowrap;
+  height: 2em;
+  width: 9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-add .icon-add {
+  background: inherit;
+  margin-right: 0.2em;
+  height: 1.1em;
+}
+
+.btn-add:hover {
+  background: #ddddd9;
+  border-color: #ddddd9;
+}
+
+.btn-add:focus,
+.btn-add:active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .btn-delete {
   border: none;
   border-radius: 10px;
-  height: 1rem;
-  width: 1rem;
+  height: 1em;
+  width: 1em;
   margin: 0;
   display: flex;
   align-content: center;
@@ -242,7 +339,7 @@ select {
 
 .btn-delete:hover,
 .btn-delete:focus {
-  background: black;
+  background: white;
 }
 
 /*** Page-Level ***/
@@ -328,6 +425,7 @@ select {
 .icon-delete {
   background-color: #F8F8F8;
   height: 100%;
+  cursor: pointer;
 }
 
 .tooltipz2 {
@@ -338,8 +436,8 @@ select {
 
 .icon-ext-link {
   display: inline;
-  max-height: 0.55rem;
-  max-width: 0.55rem;
+  max-height: 0.55em;
+  max-width: 0.55em;
   margin-left: 4px;
   filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%);
 }
@@ -458,9 +556,10 @@ select {
 .step-list-row .recipe-list-cell,
 .step-list-row .step-list-cell {
   margin: 0;
-  padding: 0 0.25rem;
+  padding: 0 0.25em;
   max-width: max-content;
   white-space: nowrap;
+  cursor: default;
   display: flex;
   align-items: center;
 }
@@ -720,113 +819,132 @@ select {
   border-radius: 3px;
   min-width: 280px;
 }
-.add-recipe-container .btn-add,
-.add-step-container .btn-add {
+.add-recipe-container .add-recipe-form,
+.add-recipe-container .add-step-form,
+.add-step-container .add-recipe-form,
+.add-step-container .add-step-form {
   background: #ecece8;
-  border: 1px solid #c7c1ab;
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 400;
-  white-space: nowrap;
-  height: 2em;
-  width: 9em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.add-recipe-container .btn-add .icon-add,
-.add-step-container .btn-add .icon-add {
-  background: #ecece8;
-  margin-right: 0.2em;
-  height: 1.1em;
-}
-
-.add-recipe-form,
-.add-step-form {
-  background: #ecece8;
-  border-radius: 10px;
-  margin: 0.5em 0;
   padding: 1em;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
-.add-recipe-form .button-group,
-.add-step-form .button-group {
+.add-recipe-container .add-recipe-form .button-group,
+.add-recipe-container .add-step-form .button-group,
+.add-step-container .add-recipe-form .button-group,
+.add-step-container .add-step-form .button-group {
   text-align: left;
 }
-.add-recipe-form .button-group .btn-cancel,
-.add-step-form .button-group .btn-cancel {
+.add-recipe-container .add-recipe-form .button-group .btn-cancel,
+.add-recipe-container .add-step-form .button-group .btn-cancel,
+.add-step-container .add-recipe-form .button-group .btn-cancel,
+.add-step-container .add-step-form .button-group .btn-cancel {
   display: none;
 }
-.add-recipe-form .add-recipe-form-group,
-.add-recipe-form .add-step-form-group,
-.add-step-form .add-recipe-form-group,
-.add-step-form .add-step-form-group {
+.add-recipe-container .add-recipe-form .add-recipe-form-group,
+.add-recipe-container .add-recipe-form .add-step-form-group,
+.add-recipe-container .add-step-form .add-recipe-form-group,
+.add-recipe-container .add-step-form .add-step-form-group,
+.add-step-container .add-recipe-form .add-recipe-form-group,
+.add-step-container .add-recipe-form .add-step-form-group,
+.add-step-container .add-step-form .add-recipe-form-group,
+.add-step-container .add-step-form .add-step-form-group {
   padding: 0.25em;
   display: flex;
   align-items: center;
   min-width: 500px;
 }
-.add-recipe-form .add-recipe-form-group .add-recipe-form-label,
-.add-recipe-form .add-step-form-group .add-recipe-form-label,
-.add-step-form .add-recipe-form-group .add-recipe-form-label,
-.add-step-form .add-step-form-group .add-recipe-form-label {
+.add-recipe-container .add-recipe-form .add-recipe-form-group .add-recipe-form-label,
+.add-recipe-container .add-recipe-form .add-step-form-group .add-recipe-form-label,
+.add-recipe-container .add-step-form .add-recipe-form-group .add-recipe-form-label,
+.add-recipe-container .add-step-form .add-step-form-group .add-recipe-form-label,
+.add-step-container .add-recipe-form .add-recipe-form-group .add-recipe-form-label,
+.add-step-container .add-recipe-form .add-step-form-group .add-recipe-form-label,
+.add-step-container .add-step-form .add-recipe-form-group .add-recipe-form-label,
+.add-step-container .add-step-form .add-step-form-group .add-recipe-form-label {
   margin: auto 0.25em auto;
   min-width: 140px;
   width: 20%;
 }
-.add-recipe-form .add-recipe-form-group .add-recipe-form-input-group,
-.add-recipe-form .add-step-form-group .add-recipe-form-input-group,
-.add-step-form .add-recipe-form-group .add-recipe-form-input-group,
-.add-step-form .add-step-form-group .add-recipe-form-input-group {
+.add-recipe-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group,
+.add-recipe-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group,
+.add-recipe-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group,
+.add-recipe-container .add-step-form .add-step-form-group .add-recipe-form-input-group,
+.add-step-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group,
+.add-step-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group,
+.add-step-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group,
+.add-step-container .add-step-form .add-step-form-group .add-recipe-form-input-group {
   white-space: nowrap;
   min-width: 180px;
   width: 80%;
 }
-.add-recipe-form .add-recipe-form-group .add-recipe-form-input-group .input-picklist,
-.add-recipe-form .add-step-form-group .add-recipe-form-input-group .input-picklist,
-.add-step-form .add-recipe-form-group .add-recipe-form-input-group .input-picklist,
-.add-step-form .add-step-form-group .add-recipe-form-input-group .input-picklist {
+.add-recipe-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group .input-picklist,
+.add-recipe-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group .input-picklist,
+.add-recipe-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group .input-picklist,
+.add-recipe-container .add-step-form .add-step-form-group .add-recipe-form-input-group .input-picklist,
+.add-step-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group .input-picklist,
+.add-step-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group .input-picklist,
+.add-step-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group .input-picklist,
+.add-step-container .add-step-form .add-step-form-group .add-recipe-form-input-group .input-picklist {
   min-width: calc(70% - 61px);
   width: 70%;
   margin-right: 0.3em;
 }
-.add-recipe-form .add-recipe-form-group .add-recipe-form-input-group .difficulty-icon,
-.add-recipe-form .add-step-form-group .add-recipe-form-input-group .difficulty-icon,
-.add-step-form .add-recipe-form-group .add-recipe-form-input-group .difficulty-icon,
-.add-step-form .add-step-form-group .add-recipe-form-input-group .difficulty-icon {
+.add-recipe-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group .difficulty-icon,
+.add-recipe-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group .difficulty-icon,
+.add-recipe-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group .difficulty-icon,
+.add-recipe-container .add-step-form .add-step-form-group .add-recipe-form-input-group .difficulty-icon,
+.add-step-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group .difficulty-icon,
+.add-step-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group .difficulty-icon,
+.add-step-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group .difficulty-icon,
+.add-step-container .add-step-form .add-step-form-group .add-recipe-form-input-group .difficulty-icon {
   min-width: 50px;
 }
-.add-recipe-form .add-recipe-form-group .add-step-form-label,
-.add-recipe-form .add-step-form-group .add-step-form-label,
-.add-step-form .add-recipe-form-group .add-step-form-label,
-.add-step-form .add-step-form-group .add-step-form-label {
+.add-recipe-container .add-recipe-form .add-recipe-form-group .add-step-form-label,
+.add-recipe-container .add-recipe-form .add-step-form-group .add-step-form-label,
+.add-recipe-container .add-step-form .add-recipe-form-group .add-step-form-label,
+.add-recipe-container .add-step-form .add-step-form-group .add-step-form-label,
+.add-step-container .add-recipe-form .add-recipe-form-group .add-step-form-label,
+.add-step-container .add-recipe-form .add-step-form-group .add-step-form-label,
+.add-step-container .add-step-form .add-recipe-form-group .add-step-form-label,
+.add-step-container .add-step-form .add-step-form-group .add-step-form-label {
   margin: auto 0.25em auto;
   min-width: 110px;
   width: 10%;
 }
-.add-recipe-form .add-recipe-form-group .add-step-form-input-group,
-.add-recipe-form .add-step-form-group .add-step-form-input-group,
-.add-step-form .add-recipe-form-group .add-step-form-input-group,
-.add-step-form .add-step-form-group .add-step-form-input-group {
+.add-recipe-container .add-recipe-form .add-recipe-form-group .add-step-form-input-group,
+.add-recipe-container .add-recipe-form .add-step-form-group .add-step-form-input-group,
+.add-recipe-container .add-step-form .add-recipe-form-group .add-step-form-input-group,
+.add-recipe-container .add-step-form .add-step-form-group .add-step-form-input-group,
+.add-step-container .add-recipe-form .add-recipe-form-group .add-step-form-input-group,
+.add-step-container .add-recipe-form .add-step-form-group .add-step-form-input-group,
+.add-step-container .add-step-form .add-recipe-form-group .add-step-form-input-group,
+.add-step-container .add-step-form .add-step-form-group .add-step-form-input-group {
   white-space: nowrap;
   min-width: 200px;
   width: 90%;
 }
-.add-recipe-form .add-recipe-form-group .then-wait-helper-text,
-.add-recipe-form .add-step-form-group .then-wait-helper-text,
-.add-step-form .add-recipe-form-group .then-wait-helper-text,
-.add-step-form .add-step-form-group .then-wait-helper-text {
+.add-recipe-container .add-recipe-form .add-recipe-form-group .then-wait-helper-text,
+.add-recipe-container .add-recipe-form .add-step-form-group .then-wait-helper-text,
+.add-recipe-container .add-step-form .add-recipe-form-group .then-wait-helper-text,
+.add-recipe-container .add-step-form .add-step-form-group .then-wait-helper-text,
+.add-step-container .add-recipe-form .add-recipe-form-group .then-wait-helper-text,
+.add-step-container .add-recipe-form .add-step-form-group .then-wait-helper-text,
+.add-step-container .add-step-form .add-recipe-form-group .then-wait-helper-text,
+.add-step-container .add-step-form .add-step-form-group .then-wait-helper-text {
   opacity: 0.6;
   margin-left: 0.25em;
   margin-right: 0.5em;
 }
-.add-recipe-form .add-recipe-form-group #action,
-.add-recipe-form .add-step-form-group #action,
-.add-step-form .add-recipe-form-group #action,
-.add-step-form .add-step-form-group #action {
+.add-recipe-container .add-recipe-form .add-recipe-form-group #action,
+.add-recipe-container .add-recipe-form .add-step-form-group #action,
+.add-recipe-container .add-step-form .add-recipe-form-group #action,
+.add-recipe-container .add-step-form .add-step-form-group #action,
+.add-step-container .add-recipe-form .add-recipe-form-group #action,
+.add-step-container .add-recipe-form .add-step-form-group #action,
+.add-step-container .add-step-form .add-recipe-form-group #action,
+.add-step-container .add-step-form .add-step-form-group #action {
   max-width: 250px;
 }
 

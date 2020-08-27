@@ -115,6 +115,7 @@ class RecipePage extends React.Component {
     }
 
     handleSaveRecipe() {
+        console.log("Called handleSaveRecipe w/data:", this.state.recipeData);
         this.props.updateOneRecipe(this.state.recipeData.id, this.state.recipeData);
     }
 

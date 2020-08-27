@@ -30,9 +30,9 @@ class StepListItem extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-        // console.log("Step", this.props.stepNumber.toString() + ":", "thisP:", this.props.then_wait,
-        //     "nextP:", nextProps.then_wait, "thisSt:", this.state.thenWait, "nextSt:",
-        //     nextState.thenWait);
+        // console.log("Step", this.props.stepNumber.toString() + ":", "thisP:", this.props.hidden,
+        //     "nextP:", nextProps.hidden, "thisSt:", this.state.hidden, "nextSt:",
+        //     nextState.hidden);
 
         if (this.state !== nextState
             || this.props.step_id !== nextProps.step_id
@@ -136,15 +136,18 @@ class StepListItem extends React.Component {
                     {this.props.note}
                 </span>
 
-                <span className="step-list-cell col-button icon-cell">
-                    <button className="btn-delete"
-                            onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}
-                            hidden={this.props.hidden}>
-                    <img alt={"Delete step " + this.props.stepNumber}
-                         src="./icons/button_minus.png"
-                         className="icon icon-delete"/>
-                    </button>
-                </span>
+                {this.props.hidden ?
+                    "" :
+                    <span className="step-list-cell col-button icon-cell">
+                        <button className="btn btn-delete"
+                                onClick={() => this.props.deleteStep(this.props.step_id, this.props.then_wait)}>
+                            <img alt={"Delete step " + this.props.stepNumber}
+                                 title={"Delete step " + this.props.stepNumber}
+                                 src="./icons/button_minus.png"
+                                 className="icon icon-delete"/>
+                        </button>
+                    </span>
+                }
             </div>
         )
     }

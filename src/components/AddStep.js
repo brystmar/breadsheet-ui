@@ -1,6 +1,5 @@
 import React from 'react';
 import BtnAdd from './buttons/BtnAdd';
-import BtnCancel from './buttons/BtnCancel';
 import BtnSubmit from './buttons/BtnSubmit';
 import {pad} from '../scripts/time_display_functions';
 import {v4 as uuid} from 'uuid';
@@ -139,101 +138,97 @@ class AddStep extends React.Component {
                 <BtnAdd btnText="New Step"
                         altText="Add a new step"
                         onClickFn={this.handleButtonToggle}/>
+                {this.state.hidden ?
+                    "" :
+                    <form className="add-step-form"
+                          id="add-step-form"
+                          onSubmit={this.handleSubmit}>
 
-                <form className="add-step-form"
-                      id="add-step-form"
-                      hidden={this.state.hidden}
-                      onSubmit={this.handleSubmit}>
+                        <span className="add-step-form-group">
+                            <label htmlFor="number" className="add-step-form-label">
+                                Step
+                            </label>
+                            <span className="add-step-form-input-group">
+                                <input className="add-step-form-input-number"
+                                       type="number"
+                                       min="1"
+                                       max="99"
+                                       name="stepNumber"
+                                       id="number"
+                                       placeholder="#"
+                                       value={this.state.stepNumber}
+                                       onChange={this.handleChange}
+                                       onBlur={this.retainStep}
+                                       required={true}/>
+                            </span>
+                        </span>
 
-                    <span className="add-step-form-group">
-                        <label htmlFor="number" className="add-step-form-label">
-                            Step
-                        </label>
-                        <span className="add-step-form-input-group">
-                            <input className="add-step-form-input-number"
-                                   type="number"
-                                   min="1"
-                                   max="99"
-                                   name="stepNumber"
-                                   id="number"
-                                   placeholder="#"
-                                   value={this.state.stepNumber}
+                        <span className="add-step-form-group">
+                            <label htmlFor="action" className="add-step-form-label">
+                                Action
+                            </label>
+                            <input className="add-step-form-input-group"
+                                   type="text"
+                                   name="text"
+                                   id="action"
+                                   placeholder="Mix ingredients"
+                                   value={this.state.text}
                                    onChange={this.handleChange}
-                                   onBlur={this.retainStep}
                                    required={true}/>
                         </span>
-                    </span>
 
-                    <span className="add-step-form-group">
-                        <label htmlFor="action" className="add-step-form-label">
-                            Action
-                        </label>
-                        <input className="add-step-form-input-group"
-                               type="text"
-                               name="text"
-                               id="action"
-                               placeholder="Mix ingredients"
-                               value={this.state.text}
-                               onChange={this.handleChange}
-                               required={true}/>
-                    </span>
+                        <span className="add-step-form-group">
+                            <label htmlFor="then-wait-hh" className="add-step-form-label">
+                                Then Wait...
+                            </label>
+                            <span className="add-step-form-input-group">
+                                <input className="then-wait-hh-input"
+                                       type="number"
+                                       min="0"
+                                       max="99"
+                                       name="thenWaitHH"
+                                       id="then-wait-hh"
+                                       placeholder="h"
+                                       value={this.state.thenWaitHH}
+                                       onChange={this.handleChange}
+                                       onBlur={this.padValue}/>
+                                <span className="then-wait-helper-text">hrs</span>
 
-                    <span className="add-step-form-group">
-                        <label htmlFor="then-wait-hh" className="add-step-form-label">
-                            Then Wait...
-                        </label>
-                        <span className="add-step-form-input-group">
-                            <input className="then-wait-hh-input"
-                                   type="number"
-                                   min="0"
-                                   max="99"
-                                   name="thenWaitHH"
-                                   id="then-wait-hh"
-                                   placeholder="h"
-                                   value={this.state.thenWaitHH}
-                                   onChange={this.handleChange}
-                                   onBlur={this.padValue}/>
-                            <span className="then-wait-helper-text">hrs</span>
-
-                            <input className="then-wait-mm-input"
-                                   type="number"
-                                   min="0"
-                                   max="59"
-                                   name="thenWaitMM"
-                                   id="then-wait-mm"
-                                   placeholder="m"
-                                   value={this.state.thenWaitMM}
-                                   onChange={this.handleChange}
-                                   onBlur={this.padValue}/>
-                            <span className="then-wait-helper-text">min</span>
+                                <input className="then-wait-mm-input"
+                                       type="number"
+                                       min="0"
+                                       max="59"
+                                       name="thenWaitMM"
+                                       id="then-wait-mm"
+                                       placeholder="m"
+                                       value={this.state.thenWaitMM}
+                                       onChange={this.handleChange}
+                                       onBlur={this.padValue}/>
+                                <span className="then-wait-helper-text">min</span>
+                            </span>
                         </span>
-                    </span>
 
-                    <span className="add-step-form-group">
-                        <label htmlFor="note" className="add-step-form-label">
-                            Note
-                        </label>
-                        <input className="add-step-form-input-group"
-                               type="text"
-                               name="note"
-                               id="note"
-                               placeholder="Rest until size doubles, 2 to 4 hrs"
-                               value={this.state.note}
-                               onChange={this.handleChange}/>
-                    </span>
+                        <span className="add-step-form-group">
+                            <label htmlFor="note" className="add-step-form-label">
+                                Note
+                            </label>
+                            <input className="add-step-form-input-group"
+                                   type="text"
+                                   name="note"
+                                   id="note"
+                                   placeholder="Rest until size doubles, 2 to 4 hrs"
+                                   value={this.state.note}
+                                   onChange={this.handleChange}/>
+                        </span>
 
-                    <span className="add-step-form-group button-group">
-                        <BtnCancel btnName="cancelNewStep"
-                                   btnText="Cancel"
-                                   disabled={this.state.hidden}
-                                   onClickFn={this.resetAddStepForm}/>
-    
+                        <span className="add-step-form-group button-group">
                         <BtnSubmit btnName="saveNewStep"
                                    btnText="Submit"
                                    disabled={this.state.hidden}
                                    onClickFn={this.handleSubmit}/>
-                    </span>
-                </form>
+                        </span>
+                    </form>
+                }
             </div>
         )
     }

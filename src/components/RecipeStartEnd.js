@@ -11,6 +11,7 @@ class RecipeStartEnd extends React.Component {
             solveForStart: true
         };
 
+        // TODO: Learn best practice to add/remove CSS classes from React
         this.refSaveText = React.createRef();
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleSave = this.handleSave.bind(this);

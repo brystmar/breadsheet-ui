@@ -26,7 +26,6 @@ $color-brown6: #844D36
 $color-brown7: #935614
 $color-brown8: #dbb37e
 
-$color-0: #979AA0
 $color-1: #c7c1ab
 $color-2: #ecece8
 $color-3: #f7ebdd
@@ -41,13 +40,21 @@ $color-light-alt: #D1D7E0
 $color-lightest: #F2F2F2
 $color-background: #F8F8F8
 $color-nav-background: #160000
+$color-border: #979AA0
+$color-border-darker: #696c72
 
-.test-bg-header
-  background: $color-nav-background
+.color-test
+  display: flex
+  justify-content: space-evenly
+  span
+    width: 120px
+.test-border
+  background: $color-border
+  color: $color-text-dark
+  margin-top: 1em
+.test-border-2
+  background: $color-border-darker
   color: $color-lightest
-  margin-top: 2em
-.test0
-  background: $color-0
 .test1
   background: $color-1
 .test2
@@ -91,8 +98,8 @@ $color-primary-triadic-1: #6e00d5
 $color-primary-triadic-2: #d50067
 
 /*** Page Layout ***/
-$header-height: 3rem
-$footer-height: $header-height - 1rem
+$header-height: 3em
+$footer-height: $header-height - 1em
 $app-max-width: 1200px
 
 /*** Debugging ***/
@@ -140,7 +147,17 @@ p
   font-size: 1rem
   font-weight: 400
   line-height: 1em
+  cursor: default
+  margin: 0
 
+a
+  color: $color-primary-dark
+  text-decoration: none
+a:visited
+  color: $color-primary
+a:hover,
+a:focus
+  text-decoration: underline
 
 /*** Inputs ***/
 
@@ -150,9 +167,20 @@ select,
 textarea
   background: $color-background
   color: $color-on-background
-  border: 1px solid $color-0
+  border: 1px solid $color-border
   border-radius: 0.2em
   margin: 0
+  cursor: text
+
+input[type="text"]:hover,
+input[type="text"]:focus,
+input[type="number"]:hover,
+input[type="number"]:focus,
+select:hover,
+select:focus,
+textarea:hover,
+textarea:focus
+  border: 1px solid $color-border-darker
 
 input[type="text"],
 input[type="number"],
@@ -183,32 +211,56 @@ select
 /*** Buttons ***/
 
 .btn
-  height: 2.5rem
+  height: 2.5em
+  width: 7em
   text-align: center
   margin: 0
-  padding: 0.35rem 0.9rem
-  border-radius: 5px
-  background: none
+  border-radius: 0.2em
+  cursor: pointer
+  outline: none !important  // To override settings from packages w/bootstrap
+  box-shadow: none !important  // To override settings from packages w/bootstrap
+  transition: all 0.2s
+.btn:disabled
+  opacity: 0.5
   border: none
-  transition: all 0.3s
+.btn:disabled:active,
+.btn:disabled:focus,
+.btn:disabled:hover
+  opacity: 0.5
+  border: none
+
+.btn-default
+  background: $color-2
+  color: $color-on-light
+  border: 1px solid $color-border
+.btn-default:focus,
+.btn-default:hover
+  background: $color-border
+  color: $color-lightest
+  border: 1px solid $color-border-darker
+.btn-default:active
+  border: 2px solid $color-border-darker
 
 .btn-edit-mode
-  height: 2.25rem
-  width: 2.5rem
-  padding: 0 0.1rem 0.2rem 0.3rem
+  height: 2.25em
+  width: 2.5em
+  padding: 0 0.1em 0.2em 0.3em
+  border: 1px solid $color-border
   background: #eeeeee
   .icon-button
-    height: 1em
+    height: 80%
+    margin-top: 3px
     filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%)
     // SVG color conversion tool: https://codepen.io/sosuke/pen/Pjoqqp
     //  -> Prefix with _brightness(0) saturate(100%)_ to ensure all SVGs start completely black.
     //  -> Now we can set SVG color to #808080 gray.
 .btn-edit-mode:hover,
 .btn-edit-mode:focus
-  border: 1px solid #808080
-.btn-edit-mode:active
+  border-color: $color-border-darker
   background: #ddd
-  border: 1px solid #808080
+.btn-edit-mode:active
+  background: #ccc
+  //border: 1px solid $color-5
 
 .btn-clipboard
   background: green
@@ -232,16 +284,13 @@ select
 .btn-replacement-toggle:focus
   background: $color-4
 .btn-replacement-toggle:active
-  border: 2px solid saddlebrown
-
+  border: 2px solid $color-6
 
 .btn-save,
 .btn-submit
   background: $color-5
   color: $color-text-light
-  border: 2px transparent $color-7
-  height: 2.25em
-  width: 4.5em
+  border: 1px solid $color-6
   line-height: 1
 .btn-save:hover,
 .btn-save:focus,
@@ -249,23 +298,49 @@ select
 .btn-submit:focus
   background: $color-6
   color: $color-text-light
-.btn-save:active
-  border: 2px solid $color-7
-  background: $color-6
-  color: $color-text-light
+  border: 1px solid $color-7
+.btn-save:active,
+.btn-submit:active
+  border: 2px solid $color-5
+
+.btn-add
+  background: $color-2
+  border: 1px solid $color-2
+  margin: 0
+  //width: 250px
+  //box-shadow: 3px 3px 1px rgba(0,0,0,0.14)
+  font-size: 1.25rem
+  font-weight: 400
+  white-space: nowrap
+  height: 2em
+  width: 9em
+  display: flex
+  align-items: center
+  justify-content: center
+  .icon-add
+    background: inherit
+    margin-right: 0.2em
+    height: 1.1em
+.btn-add:hover
+  background: #ddddd9
+  border-color: #ddddd9
+.btn-add:focus,
+.btn-add:active
+  border-bottom-left-radius: 0
+  border-bottom-right-radius: 0
 
 .btn-delete
   border: none
   border-radius: 10px
-  height: 1rem
-  width: 1rem
+  height: 1em
+  width: 1em
   margin: 0
   display: flex
   align-content: center
   justify-content: center
 .btn-delete:hover,
 .btn-delete:focus
-  background: black
+  background: white
 
 
 /*** Page-Level ***/
@@ -342,6 +417,7 @@ select
 .icon-delete
   background-color: $color-background
   height: 100%
+  cursor: pointer
 
 .tooltipz2
   //TODO: Adjust when Bootstrap is removed
@@ -351,8 +427,8 @@ select
 
 .icon-ext-link
   display: inline
-  max-height: 0.55rem
-  max-width: 0.55rem
+  max-height: 0.55em
+  max-width: 0.55em
   margin-left: 4px
   filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%)
 
@@ -444,11 +520,12 @@ select
   .step-list-cell
     //border: 1px solid lightcoral
     margin: 0
-    padding: 0 0.25rem
+    padding: 0 0.25em
     // Prevent text wrapping for all columns except source, action, & note
     //min-width: max-content
     max-width: max-content
     white-space: nowrap
+    cursor: default
     display: flex
     align-items: center
   .col-source,
@@ -638,78 +715,59 @@ select
   margin-top: 0.5em
   border-radius: 3px
   min-width: 280px
-  .btn-add
+  .add-recipe-form,
+  .add-step-form
     background: $color-2
-    border: 1px solid $color-1
-    margin: 0
-    //width: 250px
-    //box-shadow: 3px 3px 1px rgba(0,0,0,0.14)
-    font-size: 1.25rem
-    font-weight: 400
-    white-space: nowrap
-    height: 2em
-    width: 9em
+    //border: 1px solid $color-1
+    //margin: 0.5em 0
+    padding: 1em
     display: flex
-    align-items: center
+    flex-direction: column
+    align-items: flex-start
     justify-content: center
-    .icon-add
-      background: $color-2
-      margin-right: 0.2em
-      height: 1.1em
-
-.add-recipe-form,
-.add-step-form
-  background: $color-2
-  border-radius: 10px
-  margin: 0.5em 0
-  padding: 1em
-  display: flex
-  flex-direction: column
-  align-items: flex-start
-  justify-content: center
-  .button-group
-    //display: flex
-    //justify-content: flex-end
-    text-align: left
-    .btn-cancel
-      display: none
-  .add-recipe-form-group,
-  .add-step-form-group
-    padding: 0.25em
-    display: flex
-    align-items: center
-    //width: 60%
-    min-width: 500px
-    //grid-template: 1fr / minmax(140px, 10%) minmax(200px, 30%)
-    .add-recipe-form-label
-      margin: auto 0.25em auto
-      min-width: 140px
-      width: 20%
-    .add-recipe-form-input-group
-      white-space: nowrap
-      min-width: 180px
-      width: 80%
-      .input-picklist
-        min-width: calc(70% - 61px)
-        width: 70%
-        margin-right: 0.3em
-      .difficulty-icon
-        min-width: 50px
-    .add-step-form-label
-      margin: auto 0.25em auto
-      min-width: 110px
-      width: 10%
-    .add-step-form-input-group
-      white-space: nowrap
-      min-width: 200px
-      width: 90%
-    .then-wait-helper-text
-      //font-style: italic
-      opacity: 0.6
-      margin-left: 0.25em
-      margin-right: 0.5em
-    #action
-      max-width: 250px
+    .button-group
+      //display: flex
+      //justify-content: flex-end
+      text-align: left
+      .btn-cancel
+        display: none
+    .add-recipe-form-group,
+    .add-step-form-group
+      padding: 0.25em
+      display: flex
+      align-items: center
+      //width: 60%
+      min-width: 500px
+      //grid-template: 1fr / minmax(140px, 10%) minmax(200px, 30%)
+      .add-recipe-form-label
+        margin: auto 0.25em auto
+        min-width: 140px
+        width: 20%
+      .add-recipe-form-input-group
+        white-space: nowrap
+        min-width: 180px
+        width: 80%
+        .input-picklist
+          min-width: calc(70% - 61px)
+          width: 70%
+          margin-right: 0.3em
+        .difficulty-icon
+          min-width: 50px
+      .add-step-form-label
+        margin: auto 0.25em auto
+        min-width: 110px
+        width: 10%
+      .add-step-form-input-group
+        white-space: nowrap
+        min-width: 200px
+        width: 90%
+      .then-wait-helper-text
+        //font-style: italic
+        opacity: 0.6
+        margin-left: 0.25em
+        margin-right: 0.5em
+      #action
+        max-width: 250px
 
 @media (max-width: 599px)
   .add-recipe-container,
@@ -920,7 +978,7 @@ select
 .text-conversion-list-container
   margin: 1.5em 0
   background: $color-2
-  border: 1px solid $color-0
+  border: 1px solid $color-border
   border-radius: 5px
   padding: 1em
   text-align: left
