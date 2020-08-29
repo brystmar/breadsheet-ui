@@ -7,6 +7,8 @@ import RecipePageContainer from './components/RecipePageContainer';
 import AddRecipe from './components/AddRecipe';
 import ConvertTextPageContainer from './components/ConvertTextPageContainer';
 import Footer from './components/Footer';
+import 'react-datepicker/dist/react-datepicker.css';
+import './styles.sass';
 
 class App extends React.Component {
     constructor() {

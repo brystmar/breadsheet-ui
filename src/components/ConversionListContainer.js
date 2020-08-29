@@ -7,7 +7,9 @@ class ConversionListContainer extends React.Component {
         this.state = {
             searchString: "",
             scope: "ingredients",
-            hidden: true
+            hidden: false
+            // TODO: Switch before deploy
+            // hidden: true
         }
 
         this.reset = this.reset.bind(this);
@@ -58,6 +60,7 @@ class ConversionListContainer extends React.Component {
     }
 
     toggleAccordion(event) {
+        // TODO: Apply .collapse to the parent div, then remove when finished
         this.setState({
             hidden: !this.state.hidden
         })
@@ -138,16 +141,16 @@ class ConversionListContainer extends React.Component {
         let toggleLabel = this.state.scope === "ingredients" ? "Ingredients" : "Directions";
 
         return (
-            <div className="text-conversion-list-container">
+            <div className="replacement-list-container">
                 <h3 className="replacement-list-header" onClick={this.toggleAccordion}>
                     What's being replaced?
                 </h3>
                 <span className="replacement-list-content"
                       hidden={this.state.hidden}>
                     <h4 className="toggle-replacements">
-                                    Replacements for &nbsp;
+                                    Replacements for
                         <button name="scopeChange"
-                                className="btn btn-replacement-toggle"
+                                className="btn btn-save btn-replacement-toggle"
                                 onClick={this.toggleScope}>
                             {toggleLabel}
                             <img src="./icons/reverse-solid.svg"
@@ -155,6 +158,7 @@ class ConversionListContainer extends React.Component {
                                  className="icon-on-btn"/>
                         </button>
                     </h4>
+
                     <MDBDataTable scrollY
                                   striped
                                   small
@@ -162,7 +166,7 @@ class ConversionListContainer extends React.Component {
                                   hover
                                   bordered
                                   maxHeight="600px"
-                                  className="text-conversion-list-item"
+                                  className="replacement-list-item"
                                   data={dtData}
                                   entries={12}/>
                 </span>

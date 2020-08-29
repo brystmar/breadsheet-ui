@@ -7,6 +7,7 @@ function BtnEdit(props) {
             <img src="/icons/edit-solid.svg"
                  alt="Toggle Edit Mode"
                  className="icon icon-button"/>
+            {/*O*/}
         </button>
     )
 }

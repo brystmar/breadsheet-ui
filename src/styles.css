@@ -2,10 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap");
-/*** Colors ***/
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+/*** Color Palette ***/
 .color-test {
   display: flex;
   justify-content: space-evenly;
+  cursor: initial;
 }
 .color-test span {
   width: 120px;
@@ -59,7 +61,7 @@
 
 /*** Page Layout ***/
 /*** Debugging ***/
-/*** Basic HTML Tags ***/
+/*** Global Tags ***/
 * {
   box-sizing: border-box;
 }
@@ -222,19 +224,17 @@ select {
 .btn-edit-mode {
   height: 2.25em;
   width: 2.5em;
-  padding: 0 0.1em 0.2em 0.3em;
-  border: 1px solid #979AA0;
+  border: 1px solid rgba(151, 154, 160, 0.6);
   background: #eeeeee;
 }
 .btn-edit-mode .icon-button {
-  height: 80%;
-  margin-top: 3px;
+  height: 60%;
   filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%);
 }
 
 .btn-edit-mode:hover,
 .btn-edit-mode:focus {
-  border-color: #696c72;
+  border-color: #979AA0;
   background: #ddd;
 }
 
@@ -258,22 +258,6 @@ select {
   width: 4.5em;
 }
 
-.btn-replacement-toggle {
-  width: 15em;
-  background: #935614;
-  color: #121212;
-  border: 2px solid transparent;
-}
-
-.btn-replacement-toggle:hover,
-.btn-replacement-toggle:focus {
-  background: #dbb37e;
-}
-
-.btn-replacement-toggle:active {
-  border: 2px solid #612c00;
-}
-
 .btn-save,
 .btn-submit {
   background: #935614;
@@ -294,6 +278,14 @@ select {
 .btn-save:active,
 .btn-submit:active {
   border: 2px solid #935614;
+}
+
+.btn-replacement-toggle {
+  width: 9em;
+  margin-left: 0.35em;
+}
+.btn-replacement-toggle .icon-on-btn {
+  margin-left: 0.25em;
 }
 
 .btn-add {
@@ -360,6 +352,17 @@ select {
 
 .content-container {
   margin: 0.65em;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 /*** Nav ***/
@@ -532,8 +535,14 @@ select {
   grid-area: note;
 }
 
-.step-list-cell .col-button {
-  grid-area: s-button;
+.list-header .col-note {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border: 1px solid red;
+}
+.list-header .col-note h2 {
+  margin-right: 100%;
 }
 
 .recipe-list-container,
@@ -579,8 +588,8 @@ select {
 }
 
 .step-list-row {
-  grid-template: 1fr/minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2fr min-content;
-  grid-template-areas: "step                     when                       action             then                       note s-button";
+  grid-template: 1fr/minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2fr;
+  grid-template-areas: "step                     when                       action             then                       note";
 }
 
 /*** Gettin' Responsive ***/
@@ -1174,23 +1183,47 @@ select {
 }
 
 /*** Text Conversion Page ***/
-.text-conversion-inputs-container {
+.text-conversion-container .text-conversion-inputs-container {
   display: grid;
   grid-template: 6fr 6fr 1fr/1fr 1fr;
   grid-gap: 1em 2em;
 }
-
-.text-conversion-input,
-.text-conversion-output {
+.text-conversion-container .text-conversion-input,
+.text-conversion-container .text-conversion-output {
   height: 90%;
   width: 90%;
 }
-
-.text-conversion-arrow {
-  width: 5%;
+.text-conversion-container .btn-clipboard {
+  display: inline-block;
+  width: 15em;
 }
-
-.text-conversion-list-container {
+.text-conversion-container .clipboard-confirmation {
+  visibility: hidden;
+  margin: 4px 0 0 8px;
+  font-size: initial;
+  color: forestgreen;
+}
+.text-conversion-container .clipboard-confirmation-enter {
+  visibility: visible;
+  opacity: 1;
+}
+.text-conversion-container .clipboard-confirmation-enter-active {
+  opacity: 0;
+  transition: opacity 3000ms;
+}
+.text-conversion-container .clipboard-confirmation-exit {
+  opacity: 1;
+}
+.text-conversion-container .clipboard-confirmation-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms;
+}
+.text-conversion-container .icon-on-btn {
+  display: inline-block;
+  max-height: 20px;
+  max-width: 20px;
+}
+.text-conversion-container .replacement-list-container {
   margin: 1.5em 0;
   background: #ecece8;
   border: 1px solid #979AA0;
@@ -1198,59 +1231,67 @@ select {
   padding: 1em;
   text-align: left;
 }
-.text-conversion-list-container .replacement-list-header {
+.text-conversion-container .replacement-list-container .replacement-list-header {
   cursor: default;
   margin-bottom: 1em;
 }
-
-.text-conversion-list-item {
-  font-family: CMUTypewriterTextRegular, monospace;
-  padding: 0 2px;
-  background-color: inherit;
-  white-space: pre;
+.text-conversion-container .replacement-list-container .replacement-list-item {
+  font-family: "Roboto Mono", "Courier New", Courier, monospace;
 }
-
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
-.dataTables_scrollHeadInner {
+.text-conversion-container .dataTables_wrapper {
+  padding: 0 1em;
+}
+.text-conversion-container .dataTables_wrapper .dataTables_scrollHeadInner {
   padding-right: 0;
 }
-
-.icon-on-btn {
-  display: inline-block;
-  max-height: 15px;
+.text-conversion-container .dataTables_wrapper .row .dataTables_info {
+  font-style: italic;
+  text-align: center;
+  margin: 0.5em 0;
 }
-
-.btn-clipboard {
-  display: inline-block;
-  width: 15em;
+.text-conversion-container .dataTables_wrapper .row .dataTables_paginate a {
+  cursor: pointer;
+  color: #0068d5;
 }
-
-.clipboard-confirmation {
-  visibility: hidden;
-  margin: 4px 0 0 8px;
-  font-size: initial;
-  color: forestgreen;
+.text-conversion-container .dataTables_wrapper .row .dataTables_paginate a:visited {
+  color: #0068d5;
 }
-
-.clipboard-confirmation-enter {
+.text-conversion-container .dataTables_wrapper .row .dataTables_paginate a:hover {
+  text-decoration: none;
+  color: #003fa3;
+}
+.text-conversion-container .dataTables_wrapper .row .dataTables_paginate .active {
+  padding: 0;
+  border-bottom: 2px solid #0068d5;
+}
+.text-conversion-container .dataTables_wrapper .row .dataTables_paginate ul {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+.text-conversion-container .dataTables_wrapper .row .dataTables_paginate li {
+  list-style: none;
+  margin: 0 0.1em;
+}
+.text-conversion-container .dataTables_wrapper .row .dataTables_paginate li:first-child .page-link span {
+  margin-right: 0.25em;
+}
+.text-conversion-container .dataTables_wrapper .row .dataTables_paginate li:first-child .page-link span::before {
+  content: "<-";
+  margin-right: 0.25em;
   visibility: visible;
-  opacity: 1;
+}
+.text-conversion-container .dataTables_wrapper .row .dataTables_paginate li:last-child .page-link span {
+  margin-left: 0.25em;
+}
+.text-conversion-container .dataTables_wrapper .row .dataTables_paginate li:last-child .page-link span::after {
+  content: "->";
+  margin-left: 0.25em;
+  visibility: visible;
 }
 
-.clipboard-confirmation-enter-active {
-  opacity: 0;
-  transition: opacity 3000ms;
-}
-
-.clipboard-confirmation-exit {
-  opacity: 1;
-}
-
-.clipboard-confirmation-exit-active {
-  opacity: 0;
-  transition: opacity 1000ms;
-}
-
+/*** Active Elements ***/
 /*** Footer ***/
 .footer-container {
   font-size: 0.8rem;
@@ -1281,4 +1322,4 @@ select {
   }
 }
 
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=styles.css.map */

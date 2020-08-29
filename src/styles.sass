@@ -1,22 +1,13 @@
 /*** Fonts ***/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap')
-//@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap')
+//@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap')
 $font-stack: 'Noto Sans', 'IBM Plex Sans', 'Roboto', sans-serif
+$font-stack-mono: 'Roboto Mono', 'Courier New', Courier, monospace
 
-/*** Colors ***/
-$color-primary: #0068d5
-$color-primary-dark: #003fa3
-$color-primary-light: #5f95ff
-$color-primary-lighter: #69a4ff
-$color-primary-lighter-er: #c3deff
-$color-primary-lightest: #e6f2ff
-$color-on-primary: #f5f5f5
-$color-on-primary-light: #121212
-$color-on-primary-dark: #f5f5f5
-$color-on-primary-dark-alt: #f0f0f0
-
+/*** Color Palette ***/
 $color-brown1: #D79922
 $color-brown2: #BC986A
 $color-brown3: #907163
@@ -41,11 +32,15 @@ $color-lightest: #F2F2F2
 $color-background: #F8F8F8
 $color-nav-background: #160000
 $color-border: #979AA0
+$color-border-lighter: rgba(151,154,160,0.6)
 $color-border-darker: #696c72
+$color-link: #003fa3
+$color-link-visited: #0068d5
 
 .color-test
   display: flex
   justify-content: space-evenly
+  cursor: initial
   span
     width: 120px
 .test-border
@@ -109,7 +104,7 @@ $border3: 1px solid lightblue
 $border4: 1px solid darkgreen
 
 
-/*** Basic HTML Tags ***/
+/*** Global Tags ***/
 *
   box-sizing: border-box
 
@@ -151,13 +146,14 @@ p
   margin: 0
 
 a
-  color: $color-primary-dark
+  color: $color-link
   text-decoration: none
 a:visited
-  color: $color-primary
+  color: $color-link-visited
 a:hover,
 a:focus
   text-decoration: underline
+
 
 /*** Inputs ***/
 
@@ -189,7 +185,6 @@ select
 
 input[type="text"]
   padding: 0.5em 0.5em
-
 input[type="text"]:placeholder-shown
   font-style: italic
 
@@ -244,19 +239,22 @@ select
 .btn-edit-mode
   height: 2.25em
   width: 2.5em
-  padding: 0 0.1em 0.2em 0.3em
-  border: 1px solid $color-border
+  border: 1px solid $color-border-lighter
   background: #eeeeee
+  //text-align: center
   .icon-button
-    height: 80%
-    margin-top: 3px
+    height: 60%
+    //text-align: center
+    //border: 1px solid black
+    //display: inherit
+    //margin-top: 3px
     filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%)
     // SVG color conversion tool: https://codepen.io/sosuke/pen/Pjoqqp
     //  -> Prefix with _brightness(0) saturate(100%)_ to ensure all SVGs start completely black.
     //  -> Now we can set SVG color to #808080 gray.
 .btn-edit-mode:hover,
 .btn-edit-mode:focus
-  border-color: $color-border-darker
+  border-color: $color-border
   background: #ddd
 .btn-edit-mode:active
   background: #ccc
@@ -275,17 +273,6 @@ select
   padding: 0 8px
   width: 4.5em
 
-.btn-replacement-toggle
-  width: 15em
-  background: $color-5
-  color: $color-text-dark
-  border: 2px solid transparent
-.btn-replacement-toggle:hover,
-.btn-replacement-toggle:focus
-  background: $color-4
-.btn-replacement-toggle:active
-  border: 2px solid $color-6
-
 .btn-save,
 .btn-submit
   background: $color-5
@@ -302,6 +289,12 @@ select
 .btn-save:active,
 .btn-submit:active
   border: 2px solid $color-5
+
+.btn-replacement-toggle
+  width: 9em
+  margin-left: 0.35em
+  .icon-on-btn
+    margin-left: 0.25em
 
 .btn-add
   background: $color-2
@@ -361,6 +354,15 @@ select
 .content-container
   margin: 0.65em
 
+.sr-only
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0,0,0,0)
+  border: 0
 
 /*** Nav ***/
 
@@ -499,8 +501,15 @@ select
   //min-width: 145px
 .col-note
   grid-area: note
-.step-list-cell .col-button
-  grid-area: s-button
+.list-header
+  .col-note
+      display: flex
+      width: 100%
+      justify-content: space-between
+      border: 1px solid red
+      h2
+        margin-right: 100%
+
 
 // Define the grid
 .recipe-list-container,
@@ -539,8 +548,8 @@ select
   grid-template-areas: "name diff len author source r-button"
 
 .step-list-row
-  grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2fr  min-content
-  grid-template-areas: "step                     when                       action             then                       note s-button"
+  grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2fr
+  grid-template-areas: "step                     when                       action             then                       note"
 
 
 /*** Gettin' Responsive ***/
@@ -962,68 +971,117 @@ select
 
 /*** Text Conversion Page ***/
 
-.text-conversion-inputs-container
-  display: grid
-  grid-template: 6fr 6fr 1fr / 1fr 1fr
-  grid-gap: 1em 2em
+.text-conversion-container
 
-.text-conversion-input,
-.text-conversion-output
-  height: 90%
-  width: 90%
+  .text-conversion-inputs-container
+    display: grid
+    grid-template: 6fr 6fr 1fr / 1fr 1fr
+    grid-gap: 1em 2em
 
-.text-conversion-arrow
-  width: 5%
+  .text-conversion-input,
+  .text-conversion-output
+    height: 90%
+    width: 90%
 
-.text-conversion-list-container
-  margin: 1.5em 0
-  background: $color-2
-  border: 1px solid $color-border
-  border-radius: 5px
-  padding: 1em
-  text-align: left
-  .replacement-list-header
-    cursor: default
-    margin-bottom: 1em
+  .btn-clipboard
+    display: inline-block
+    width: 15em
 
-.text-conversion-list-item
-  font-family: CMUTypewriterTextRegular, monospace
-  padding: 0 2px
-  background-color: inherit
-  white-space: pre
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
+  .clipboard-confirmation
+    visibility: hidden
+    margin: 4px 0 0 8px
+    font-size: initial
+    color: forestgreen
 
-.dataTables_scrollHeadInner
-  padding-right: 0
+  .clipboard-confirmation-enter
+    visibility: visible
+    opacity: 1
 
-.icon-on-btn
-  display: inline-block
-  max-height: 15px
-.btn-clipboard
-  display: inline-block
-  width: 15em
+  .clipboard-confirmation-enter-active
+    opacity: 0
+    transition: opacity 3000ms
 
-.clipboard-confirmation
-  visibility: hidden
-  margin: 4px 0 0 8px
-  font-size: initial
-  color: forestgreen
+  .clipboard-confirmation-exit
+    opacity: 1
 
-.clipboard-confirmation-enter
-  visibility: visible
-  opacity: 1
+  .clipboard-confirmation-exit-active
+    opacity: 0
+    transition: opacity 1000ms
 
-.clipboard-confirmation-enter-active
-  opacity: 0
-  transition: opacity 3000ms
+  .icon-on-btn
+    display: inline-block
+    max-height: 20px
+    max-width: 20px
 
-.clipboard-confirmation-exit
-  opacity: 1
+  .replacement-list-container
+    margin: 1.5em 0
+    background: $color-2
+    border: 1px solid $color-border
+    border-radius: 5px
+    padding: 1em
+    text-align: left
+    .replacement-list-header
+      cursor: default
+      margin-bottom: 1em
+    .replacement-list-item
+      font-family: $font-stack-mono
 
-.clipboard-confirmation-exit-active
-  opacity: 0
-  transition: opacity 1000ms
+  .dataTables_wrapper
+    padding: 0 1em
+    .dataTables_scrollHeadInner
+      padding-right: 0
+    .row
+      .dataTables_info
+        font-style: italic
+        text-align: center
+        margin: 0.5em 0
+      .dataTables_paginate
+        a
+          cursor: pointer
+          color: $color-link-visited
+        a:visited
+          color: $color-link-visited
+        a:hover
+          text-decoration: none
+          color: $color-link
+        .active
+          //text-decoration: underline
+          padding: 0
+          border-bottom: 2px solid $color-link-visited
+        ul
+          display: flex
+          justify-content: center
+          padding: 0
+          margin: 0
+        li
+          list-style: none
+          margin: 0 0.1em
+        li:first-child
+          .page-link
+            span
+              margin-right: 0.25em
+            span::before
+              content: "<-"
+              margin-right: 0.25em
+              visibility: visible
+        li:last-child
+          .page-link
+            span
+              margin-left: 0.25em
+            span::after
+              content: "->"
+              margin-left: 0.25em
+              visibility: visible
 
+
+/*** Active Elements ***/
+//.collapse:not(.show)
+//  display: none
+//.collapsing
+//  position: relative
+//  overflow: hidden
+//  height: 0
+//  transition: height 0.35s ease
 
 /*** Footer ***/
 

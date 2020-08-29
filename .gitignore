@@ -117,7 +117,7 @@ fabric.properties
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
-### react ###
+### React ###
 .DS_*
 *.log
 logs

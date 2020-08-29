@@ -5,7 +5,7 @@ function Navbar() {
         <nav className="nav-content">
             <ul className="nav-list">
                 <li className="nav-item">
-                    <a href="/" className="nav-link">Breadsheet</a>
+                    <a href="/" className="nav-link">breadsheet</a>
                 </li>
             </ul>
         </nav>

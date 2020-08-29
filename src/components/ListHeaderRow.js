@@ -9,16 +9,22 @@ function ListHeaderRow(props) {
             .split(" ")[0]
             .split(".")[0]
 
-        return <h2 key={index} className={classString} title={title}>{title}</h2>
+        if (index === props.colTitles.length - 1) {
+            return <span key={index} className={classString}>
+                <h2 title={title}>{title}</h2>
+                <BtnEdit onClickFn={props.onClickFn}
+                         onClickParam={props.onClickParam}/>
+            </span>
+        } else {
+            return <h2 key={index} className={classString} title={title}>{title}</h2>
+        }
     })
+
+    console.log(props.colTitles.length);
 
     return (
         <div className={props.for + "-list-row list-header"}>
             {columns}
-            <span className={props.for + "-list-cell col-button icon-cell"}>
-                <BtnEdit onClickFn={props.onClickFn}
-                         onClickParam={props.onClickParam}/>
-            </span>
         </div>
     )
 }
