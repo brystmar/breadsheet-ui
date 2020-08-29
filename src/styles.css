@@ -21,7 +21,7 @@
 
 .test-border-2 {
   background: #696c72;
-  color: #F2F2F2;
+  color: #F8F8F8;
 }
 
 .test1 {
@@ -167,12 +167,12 @@ input[type=number] {
 }
 
 textarea {
-  padding: 0.5em;
+  padding: 1em 0.9em;
 }
 
 textarea:disabled,
 textarea:read-only {
-  background: #F2F2F2;
+  background: #F8F8F8;
 }
 
 select {
@@ -213,11 +213,28 @@ select {
 .btn-default:focus,
 .btn-default:hover {
   background: #979AA0;
-  color: #F2F2F2;
+  color: #F8F8F8;
   border: 1px solid #696c72;
 }
 
 .btn-default:active {
+  border: 2px solid #696c72;
+}
+
+.btn-default-reverse {
+  background: #979AA0;
+  color: #F8F8F8;
+  border: 1px solid #696c72;
+}
+
+.btn-default-reverse:focus,
+.btn-default-reverse:hover {
+  background: #ecece8;
+  color: #241933;
+  border: 1px solid #979AA0;
+}
+
+.btn-default-reverse:active {
   border: 2px solid #696c72;
 }
 
@@ -242,14 +259,8 @@ select {
   background: #ccc;
 }
 
-.btn-clipboard {
-  background: green;
-}
-
 .btn-reset,
 .btn-cancel {
-  background: #c82333;
-  color: #f5f5f5;
   margin: 0 4px;
 }
 
@@ -278,14 +289,6 @@ select {
 .btn-save:active,
 .btn-submit:active {
   border: 2px solid #935614;
-}
-
-.btn-replacement-toggle {
-  width: 9em;
-  margin-left: 0.35em;
-}
-.btn-replacement-toggle .icon-on-btn {
-  margin-left: 0.25em;
 }
 
 .btn-add {
@@ -537,14 +540,9 @@ select {
 
 .list-header .col-note {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   border: 1px solid red;
 }
-.list-header .col-note h2 {
-  margin-right: 100%;
-}
-
 .recipe-list-container,
 .step-list-container {
   display: flex;
@@ -844,12 +842,6 @@ select {
 .add-step-container .add-recipe-form .button-group,
 .add-step-container .add-step-form .button-group {
   text-align: left;
-}
-.add-recipe-container .add-recipe-form .button-group .btn-cancel,
-.add-recipe-container .add-step-form .button-group .btn-cancel,
-.add-step-container .add-recipe-form .button-group .btn-cancel,
-.add-step-container .add-step-form .button-group .btn-cancel {
-  display: none;
 }
 .add-recipe-container .add-recipe-form .add-recipe-form-group,
 .add-recipe-container .add-recipe-form .add-step-form-group,
@@ -1183,9 +1175,16 @@ select {
 }
 
 /*** Text Conversion Page ***/
+.text-conversion-container {
+  margin: 1em 0;
+}
+.text-conversion-container .text-conversion-group .text-conversion-label {
+  display: inline-block;
+  margin-bottom: 0.25em;
+}
 .text-conversion-container .text-conversion-inputs-container {
   display: grid;
-  grid-template: 6fr 6fr 1fr/1fr 1fr;
+  grid-template: 4fr 4fr 1fr/1fr 1fr;
   grid-gap: 1em 2em;
 }
 .text-conversion-container .text-conversion-input,
@@ -1193,15 +1192,14 @@ select {
   height: 90%;
   width: 90%;
 }
-.text-conversion-container .btn-clipboard {
-  display: inline-block;
-  width: 15em;
+.text-conversion-container .button-group .btn-clipboard {
+  width: 11em;
 }
 .text-conversion-container .clipboard-confirmation {
   visibility: hidden;
+  position: relative;
   margin: 4px 0 0 8px;
-  font-size: initial;
-  color: forestgreen;
+  color: #370300;
 }
 .text-conversion-container .clipboard-confirmation-enter {
   visibility: visible;
@@ -1209,19 +1207,7 @@ select {
 }
 .text-conversion-container .clipboard-confirmation-enter-active {
   opacity: 0;
-  transition: opacity 3000ms;
-}
-.text-conversion-container .clipboard-confirmation-exit {
-  opacity: 1;
-}
-.text-conversion-container .clipboard-confirmation-exit-active {
-  opacity: 0;
   transition: opacity 1000ms;
-}
-.text-conversion-container .icon-on-btn {
-  display: inline-block;
-  max-height: 20px;
-  max-width: 20px;
 }
 .text-conversion-container .replacement-list-container {
   margin: 1.5em 0;
@@ -1235,11 +1221,20 @@ select {
   cursor: default;
   margin-bottom: 1em;
 }
-.text-conversion-container .replacement-list-container .replacement-list-item {
-  font-family: "Roboto Mono", "Courier New", Courier, monospace;
+.text-conversion-container .replacement-list-container .btn-replacement-toggle {
+  width: 9em;
+  margin-left: 0.35em;
+}
+.text-conversion-container .replacement-list-container .btn-replacement-toggle .icon-on-btn {
+  margin-left: 0.25em;
+  max-width: 20px;
+  max-height: 20px;
 }
 .text-conversion-container .dataTables_wrapper {
   padding: 0 1em;
+}
+.text-conversion-container .dataTables_wrapper .dataTables_scroll {
+  font-family: "Roboto Mono", "Courier New", Courier, monospace;
 }
 .text-conversion-container .dataTables_wrapper .dataTables_scrollHeadInner {
   padding-right: 0;

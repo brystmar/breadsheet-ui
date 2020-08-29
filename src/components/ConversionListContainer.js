@@ -7,9 +7,7 @@ class ConversionListContainer extends React.Component {
         this.state = {
             searchString: "",
             scope: "ingredients",
-            hidden: false
-            // TODO: Switch before deploy
-            // hidden: true
+            hidden: true
         }
 
         this.reset = this.reset.bind(this);
@@ -147,17 +145,17 @@ class ConversionListContainer extends React.Component {
                 </h3>
                 <span className="replacement-list-content"
                       hidden={this.state.hidden}>
-                    <h4 className="toggle-replacements">
+                    <p className="toggle-replacements">
                                     Replacements for
                         <button name="scopeChange"
-                                className="btn btn-save btn-replacement-toggle"
+                                className="btn btn-default-reverse btn-replacement-toggle"
                                 onClick={this.toggleScope}>
                             {toggleLabel}
                             <img src="./icons/reverse-solid.svg"
                                  alt="Toggle the replacements list displayed"
                                  className="icon-on-btn"/>
                         </button>
-                    </h4>
+                    </p>
 
                     <MDBDataTable scrollY
                                   striped

@@ -28,7 +28,7 @@ $color-8: #160000
 $color-text-light: #f5f5f5
 $color-text-dark: #121212
 $color-light-alt: #D1D7E0
-$color-lightest: #F2F2F2
+$color-lightest: #F8F8F8
 $color-background: #F8F8F8
 $color-nav-background: #160000
 $color-border: #979AA0
@@ -193,7 +193,7 @@ input[type="number"]
   width: max-content + 0.5em
 
 textarea
-  padding: 0.5em
+  padding: 1em 0.9em
 
 textarea:disabled,
 textarea:read-only
@@ -236,6 +236,18 @@ select
 .btn-default:active
   border: 2px solid $color-border-darker
 
+.btn-default-reverse
+  background: $color-border
+  color: $color-lightest
+  border: 1px solid $color-border-darker
+.btn-default-reverse:focus,
+.btn-default-reverse:hover
+  background: $color-2
+  color: $color-on-light
+  border: 1px solid $color-border
+.btn-default-reverse:active
+  border: 2px solid $color-border-darker
+
 .btn-edit-mode
   height: 2.25em
   width: 2.5em
@@ -260,13 +272,10 @@ select
   background: #ccc
   //border: 1px solid $color-5
 
-.btn-clipboard
-  background: green
-
 .btn-reset,
 .btn-cancel
-  background: #c82333
-  color: $color-text-light
+  //background: $color-7
+  //color: $color-text-light
   margin: 0 4px
 
 .btn-reset
@@ -289,12 +298,6 @@ select
 .btn-save:active,
 .btn-submit:active
   border: 2px solid $color-5
-
-.btn-replacement-toggle
-  width: 9em
-  margin-left: 0.35em
-  .icon-on-btn
-    margin-left: 0.25em
 
 .btn-add
   background: $color-2
@@ -503,12 +506,12 @@ select
   grid-area: note
 .list-header
   .col-note
-      display: flex
-      width: 100%
-      justify-content: space-between
-      border: 1px solid red
-      h2
-        margin-right: 100%
+    display: flex
+    //width: 100%
+    justify-content: space-between
+    border: 1px solid red
+    h2
+      //margin-right: 100%
 
 
 // Define the grid
@@ -735,11 +738,7 @@ select
     align-items: flex-start
     justify-content: center
     .button-group
-      //display: flex
-      //justify-content: flex-end
       text-align: left
-      .btn-cancel
-        display: none
     .add-recipe-form-group,
     .add-step-form-group
       padding: 0.25em
@@ -972,46 +971,36 @@ select
 /*** Text Conversion Page ***/
 
 .text-conversion-container
-
+  margin: 1em 0
+  .text-conversion-group
+    .text-conversion-label
+      display: inline-block
+      margin-bottom: 0.25em
+      //border: 1px solid red
   .text-conversion-inputs-container
     display: grid
-    grid-template: 6fr 6fr 1fr / 1fr 1fr
+    grid-template: 4fr 4fr 1fr / 1fr 1fr
     grid-gap: 1em 2em
-
   .text-conversion-input,
   .text-conversion-output
     height: 90%
     width: 90%
-
-  .btn-clipboard
-    display: inline-block
-    width: 15em
+  .button-group
+    .btn-clipboard
+      width: 11em
 
   .clipboard-confirmation
     visibility: hidden
+    //display: none
+    position: relative
     margin: 4px 0 0 8px
-    font-size: initial
-    color: forestgreen
-
+    color: $color-7
   .clipboard-confirmation-enter
     visibility: visible
     opacity: 1
-
   .clipboard-confirmation-enter-active
     opacity: 0
-    transition: opacity 3000ms
-
-  .clipboard-confirmation-exit
-    opacity: 1
-
-  .clipboard-confirmation-exit-active
-    opacity: 0
     transition: opacity 1000ms
-
-  .icon-on-btn
-    display: inline-block
-    max-height: 20px
-    max-width: 20px
 
   .replacement-list-container
     margin: 1.5em 0
@@ -1023,11 +1012,18 @@ select
     .replacement-list-header
       cursor: default
       margin-bottom: 1em
-    .replacement-list-item
-      font-family: $font-stack-mono
+    .btn-replacement-toggle
+      width: 9em
+      margin-left: 0.35em
+      .icon-on-btn
+        margin-left: 0.25em
+        max-width: 20px
+        max-height: 20px
 
   .dataTables_wrapper
     padding: 0 1em
+    .dataTables_scroll
+      font-family: $font-stack-mono
     .dataTables_scrollHeadInner
       padding-right: 0
     .row
@@ -1045,7 +1041,6 @@ select
           text-decoration: none
           color: $color-link
         .active
-          //text-decoration: underline
           padding: 0
           border-bottom: 2px solid $color-link-visited
         ul

@@ -14,7 +14,7 @@ class ConvertTextControls extends React.Component {
             outputDirections: "",
             transition: false,
             textboxRows: 8,
-            textboxCols: 10
+            textboxCols: 8
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -61,7 +61,7 @@ class ConvertTextControls extends React.Component {
             outputIngredients: "",
             outputDirections: "",
             textboxRows: 8,
-            textboxCols: 20
+            textboxCols: 10
         })
     }
 
@@ -80,8 +80,8 @@ class ConvertTextControls extends React.Component {
                               onChange={this.handleChange}
                               autoFocus={true}
                               tabIndex={1}
-                              rows={8}
-                              cols={10}/>
+                              rows={this.state.textboxRows}
+                              cols={this.state.textboxCols}/>
                 </span>
 
                 <span className="text-conversion-group">
@@ -94,8 +94,8 @@ class ConvertTextControls extends React.Component {
                               value={this.state.outputIngredients}
                               placeholder="Ingredients Output"
                               readOnly={true}
-                              rows={8}
-                              cols={10}/>
+                              rows={this.state.textboxRows}
+                              cols={this.state.textboxCols}/>
                 </span>
 
                 <span className="text-conversion-group">
@@ -109,8 +109,8 @@ class ConvertTextControls extends React.Component {
                               placeholder="Directions Input"
                               onChange={this.handleChange}
                               tabIndex={2}
-                              rows={8}
-                              cols={10}/>
+                              rows={this.state.textboxRows}
+                              cols={this.state.textboxCols}/>
                 </span>
 
                 <span className="text-conversion-group">
@@ -123,27 +123,26 @@ class ConvertTextControls extends React.Component {
                               value={this.state.outputDirections}
                               placeholder="Directions Output"
                               readOnly={true}
-                              rows={8}
-                              cols={10}/>
+                              rows={this.state.textboxRows}
+                              cols={this.state.textboxCols}/>
                 </span>
 
                 <span className="button-group">
                     <CopyToClipboard
-                        text={(this.state.outputIngredients + "\n\n" + this.state.outputDirections).trim()}
+                        text={(this.state.outputIngredients + "\n" + this.state.outputDirections).trim()}
                         onCopy={this.clipboardConfirmation}>
                         <button type="button"
                                 name="copyToClipboard"
-                                className="btn btn-clipboard"
+                                className="btn btn-save btn-clipboard"
                                 tabIndex={3}>
-                            <img src="./icons/copy-regular.svg"
-                                 alt="Clipboard copy icon"
-                                 className="icon-on-btn"/>
-                                 Copy to Clipboard
+                            Copy to Clipboard
                         </button>
                     </CopyToClipboard>
 
+                    <br/>
+
                     <CSSTransition in={this.state.transition}
-                                   timeout={1000}
+                                   timeout={500}
                                    classNames="clipboard-confirmation"
                                    onEntered={this.clipboardConfirmation}>
                         <span className="clipboard-confirmation">
@@ -155,7 +154,7 @@ class ConvertTextControls extends React.Component {
                 <span className="button-group">
                     <button type="button"
                             name="resetForm"
-                            className="btn btn-reset"
+                            className="btn btn-default btn-reset"
                             onClick={this.resetForm}
                             tabIndex={4}>
                         Reset
