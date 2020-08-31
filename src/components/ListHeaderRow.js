@@ -1,5 +1,4 @@
 import React from 'react';
-import BtnEdit from './buttons/BtnEdit';
 
 function ListHeaderRow(props) {
     const columns = props.colTitles.map((title, index) => {
@@ -9,15 +8,7 @@ function ListHeaderRow(props) {
             .split(" ")[0]
             .split(".")[0]
 
-        if (index === props.colTitles.length - 1) {
-            return <span key={index} className={classString} id="list-header-last">
-                <h2 title={title}>{title}</h2>
-                <BtnEdit onClickFn={props.onClickFn}
-                         onClickParam={props.onClickParam}/>
-            </span>
-        } else {
-            return <h2 key={index} className={classString} title={title}>{title}</h2>
-        }
+        return <h2 key={index} className={classString} title={title}>{title}</h2>
     })
 
     console.log(props.colTitles.length);

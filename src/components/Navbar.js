@@ -5,6 +5,7 @@ function Navbar() {
         <nav className="nav-content">
             <ul className="nav-list">
                 <li className="nav-item">
+                    {/*TODO: App icon top-left, then recipe title */}
                     <a href="/" className="nav-link">breadsheet</a>
                 </li>
             </ul>

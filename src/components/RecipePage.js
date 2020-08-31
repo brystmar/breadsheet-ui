@@ -195,12 +195,14 @@ class RecipePage extends React.Component {
             <div className="recipe-detail-summary">
                 <PageTitle title={this.state.recipeData.name}
                            includeHr={true}/>
+                {/*TODO: Move the title to the header bar */}
 
                 <RecipePageAttributes difficulty={this.state.recipeData.difficulty}
                                       source={this.state.recipeData.source}
                                       author={this.state.recipeData.author}
                                       url={this.state.recipeData.url ? this.state.recipeData.url : ""}
-                                      length={this.state.recipeData.length}/>
+                                      length={this.state.recipeData.length}
+                                      toggleEditMode={this.toggleEditMode}/>
 
                 <RecipeStartEnd start_time={this.state.recipeData.start_time}
                                 solve_for_start={this.state.recipeData.solve_for_start}

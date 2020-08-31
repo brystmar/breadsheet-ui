@@ -3,11 +3,10 @@ import React from 'react';
 function BtnEdit(props) {
     return (
         <button className="btn btn-edit-mode"
-                onClick={() => props.onClickFn(props.onClickParam)}>
+                onClick={() => props.onClickFn(props.onClickParam ? props.onClickParam : "")}>
             <img src="/icons/edit-solid.svg"
                  alt="Toggle Edit Mode"
                  className="icon icon-button"/>
-            {/*O*/}
         </button>
     )
 }

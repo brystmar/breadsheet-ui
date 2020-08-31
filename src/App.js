@@ -8,7 +8,7 @@ import AddRecipe from './components/AddRecipe';
 import ConvertTextPageContainer from './components/ConvertTextPageContainer';
 import Footer from './components/Footer';
 import 'react-datepicker/dist/react-datepicker.css';
-import './styles.sass';
+import './styles/styles.sass';
 
 class App extends React.Component {
     constructor() {
@@ -162,6 +162,7 @@ class App extends React.Component {
                             <PageTitle
                                 title="Recipes"
                                 includeHr={true}/>
+                            {/*TODO: Edit button right-justified, opposite the title */}
                             <RecipeListContainer
                                 allRecipes={this.state.allRecipes}
                                 addRecipeToState={this.addRecipeToState}
