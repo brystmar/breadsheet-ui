@@ -10,11 +10,11 @@ class AddRecipe extends React.Component {
         super(props);
         this.state = {
             name: "",
-            difficulty: "Intermediate",
+            difficulty: "Beginner",
             author: "",
             source: "",
             url: "",
-            // hidden: false
+
             hidden: this.props.hidden
         };
 
@@ -40,7 +40,7 @@ class AddRecipe extends React.Component {
     resetAddRecipeForm() {
         this.setState({
             name: "",
-            difficulty: "Intermediate",
+            difficulty: "Beginner",
             author: "",
             source: "",
             url: "",
@@ -182,7 +182,7 @@ class AddRecipe extends React.Component {
 
 AddRecipe.defaultProps = {
     name: "",
-    difficulty: "Intermediate",
+    difficulty: "Beginner",
     author: "",
     source: "",
     url: "",

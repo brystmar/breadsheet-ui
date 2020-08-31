@@ -10,7 +10,7 @@ function ListHeaderRow(props) {
             .split(".")[0]
 
         if (index === props.colTitles.length - 1) {
-            return <span key={index} className={classString}>
+            return <span key={index} className={classString} id="list-header-last">
                 <h2 title={title}>{title}</h2>
                 <BtnEdit onClickFn={props.onClickFn}
                          onClickParam={props.onClickParam}/>
