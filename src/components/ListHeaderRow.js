@@ -11,8 +11,6 @@ function ListHeaderRow(props) {
         return <h2 key={index} className={classString} title={title}>{title}</h2>
     })
 
-    console.log(props.colTitles.length);
-
     return (
         <div className={props.for + "-list-row list-header"}>
             {columns}

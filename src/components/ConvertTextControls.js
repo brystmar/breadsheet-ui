@@ -66,6 +66,13 @@ class ConvertTextControls extends React.Component {
     }
 
     render() {
+        const inputIngredientsPlaceholder = "2.25 grams yeast\n1 1/2 teaspoons table salt...";
+        const outputIngredientsPlaceholder = "2¼ g yeast\n1½ tsp table salt...";
+        const inputDirectionsPlaceholder = "Preheat the oven to 350 degrees.\n\n" +
+            "Meanwhile, melt 3 tablespoons butter in a 12-inch skillet over medium heat...";
+        const outputDirectionsPlaceholder = "Preheat the oven to 350°.\n\n" +
+            "Meanwhile, melt 3 tbsp butter in a 12\" skillet over **medium** heat...";
+
         return (
             <div className="text-conversion-inputs-container">
                 <span className="text-conversion-group">
@@ -74,9 +81,9 @@ class ConvertTextControls extends React.Component {
                     </label>
                     <textarea name="inputIngredients"
                               id="inputIngredients"
-                              className="text-conversion-input"
+                              className="text-conversion-box text-conversion-input"
                               value={this.state.inputIngredients}
-                              placeholder="Ingredients Input"
+                              placeholder={inputIngredientsPlaceholder}
                               onChange={this.handleChange}
                               autoFocus={true}
                               tabIndex={1}
@@ -90,9 +97,9 @@ class ConvertTextControls extends React.Component {
                     </label>
                     <textarea name="outputIngredients"
                               id="outputIngredients"
-                              className="text-conversion-output"
+                              className="text-conversion-box text-conversion-output"
                               value={this.state.outputIngredients}
-                              placeholder="Ingredients Output"
+                              placeholder={outputIngredientsPlaceholder}
                               readOnly={true}
                               rows={this.state.textboxRows}
                               cols={this.state.textboxCols}/>
@@ -104,9 +111,9 @@ class ConvertTextControls extends React.Component {
                     </label>
                     <textarea name="inputDirections"
                               id="inputDirections"
-                              className="text-conversion-input"
+                              className="text-conversion-box text-conversion-input"
                               value={this.state.inputDirections}
-                              placeholder="Directions Input"
+                              placeholder={inputDirectionsPlaceholder}
                               onChange={this.handleChange}
                               tabIndex={2}
                               rows={this.state.textboxRows}
@@ -119,9 +126,9 @@ class ConvertTextControls extends React.Component {
                     </label>
                     <textarea name="outputDirections"
                               id="outputDirections"
-                              className="text-conversion-output"
+                              className="text-conversion-box text-conversion-output"
                               value={this.state.outputDirections}
-                              placeholder="Directions Output"
+                              placeholder={outputDirectionsPlaceholder}
                               readOnly={true}
                               rows={this.state.textboxRows}
                               cols={this.state.textboxCols}/>
@@ -138,8 +145,6 @@ class ConvertTextControls extends React.Component {
                             Copy to Clipboard
                         </button>
                     </CopyToClipboard>
-
-                    <br/>
 
                     <CSSTransition in={this.state.transition}
                                    timeout={500}

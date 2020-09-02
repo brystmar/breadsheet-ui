@@ -19,22 +19,28 @@ $color-6: #612c00
 $color-7: #370300
 $color-8: #160000
 
-$color-brown1: #D79922
-$color-brown2: #BC986A
+$color-brown1: #d79922
+$color-brown2: #bc986a
 $color-brown3: #907163
-$color-brown4: #7E685A
-$color-brown5: #4F4A41
-$color-brown6: #844D36
+$color-brown4: #7e685a
+$color-brown5: #4f4a41
+$color-brown6: #844d36
 $color-brown7: #935614
 $color-brown8: #dbb37e
 
-$color-text-light: #F5F5F5
+$color-gray-lighter: #f4f4f0
+$color-gray-light: #ecece8
+$color-gray: #ddddd9
+$color-gray-dark: #babab6
+$color-gray-darker: #9a9a97
+
+$color-text-light: #f5f5f5
 $color-text-dark: #121212
-$color-light-alt: #D1D7E0
-$color-lightest: #F8F8F8
-$color-background: #F8F8F8
+$color-light-alt: #d1d7e0
+$color-lightest: #f8f8f8
+$color-background: #f8f8f8
 $color-nav-background: #160000
-$color-border: #979AA0
+$color-border: #979aa0
 $color-border-lighter: rgba(151,154,160,0.6)
 $color-border-darker: #696c72
 $color-link: #003fa3
@@ -168,10 +174,10 @@ a:focus
 
 /*** Inputs ***/
 
-input[type="text"],
-input[type="number"],
+input,
 select,
 textarea
+  font-family: inherit
   background: $color-background
   color: $color-on-background
   border: 1px solid $color-border
@@ -179,10 +185,8 @@ textarea
   margin: 0
   cursor: text
 
-input[type="text"]:hover,
-input[type="text"]:focus,
-input[type="number"]:hover,
-input[type="number"]:focus,
+input:hover,
+input:focus,
 select:hover,
 select:focus,
 textarea:hover,
@@ -204,8 +208,7 @@ input[type="number"]
   width: max-content + 0.5em
 
 textarea
-  padding: 1em 0.9em
-
+  padding: 0.3em 0.5em
 textarea:disabled,
 textarea:read-only
   background: $color-lightest
@@ -236,26 +239,30 @@ select
   border: none
 
 .btn-default
-  background: $color-2
+  background: $color-gray-light
   color: $color-on-light
   border: 1px solid $color-border
 .btn-default:focus,
 .btn-default:hover
-  background: $color-border
-  color: $color-lightest
+  background: $color-gray
   border: 1px solid $color-border-darker
 .btn-default:active
   border: 2px solid $color-border-darker
 
 .btn-default-reverse
-  background: $color-border
+  background: $color-gray-darker
   color: $color-lightest
   border: 1px solid $color-border-darker
+  img
+    transition: all 0.2s
+    filter: invert(97%) sepia(69%) saturate(201%) hue-rotate(209deg) brightness(112%) contrast(86%)
 .btn-default-reverse:focus,
 .btn-default-reverse:hover
-  background: $color-2
-  color: $color-on-light
+  background: $color-gray-dark
+  color: $color-text-dark
   border: 1px solid $color-border
+  img
+    filter: invert(0%) sepia(1%) saturate(5017%) hue-rotate(319deg) brightness(93%) contrast(86%)
 .btn-default-reverse:active
   border: 2px solid $color-border-darker
 
@@ -288,10 +295,6 @@ select
   //background: $color-7
   //color: $color-text-light
   margin: 0 4px
-
-.btn-reset
-  padding: 0 8px
-  width: 4.5em
 
 .btn-save,
 .btn-submit
@@ -587,15 +590,19 @@ select
     grid-template-areas: "name diff len r-button"
     .col-author
       display: none
-  .step-list-row
-    grid-gap: 0
-    flex-grow: 0
-    .col-source,
-    .col-note
-      display: none
-    .step-list-row
-      grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px)
-      grid-template-areas: "step                     when                       action             then"
+  .recipe-detail-summary
+    .step-list-container
+      .step-list-row
+        grid-gap: 0
+        flex-grow: 0
+        grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px)
+        grid-template-areas: "step                     when                       action             then"
+        .col-note
+          display: none
+        .col-action
+          width: initial
+          min-width: initial
+          max-width: initial
 
 @media (max-width: 699px)
   h1
@@ -618,12 +625,12 @@ select
     grid-template-areas: "name diff len"
 
 @media (max-width: 659px)
-  .step-list-row
-    .col-button
-      display: none
-  //.step-list-row
-  //  grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px)
-  //  grid-template-areas: "step                     when                       action             then"
+  .recipe-detail-summary
+    .step-list-container
+      .step-list-row
+        grid-auto-flow: dense
+        .col-button
+          display: none
 
 @media (max-width: 599px)
   h1
@@ -642,31 +649,37 @@ select
   h3,
   .nav-content
     font-size: 1.2rem
-  .step-list-row
-    grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(250px, 1fr)
-    grid-template-areas: "step                     when                       action"
-    .col-then
-      display: none
-
+  .recipe-detail-summary
+    .step-list-container
+      .step-list-row
+        grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(250px, 1fr)
+        grid-template-areas: "step                     when                       action"
+        .col-then
+          display: none
 
 @media (max-width: 494px)
   h1
-    font-size: 1.7rem
+    //font-size: 1.7rem
   .recipe-list-row
     .col-name
       white-space: normal
       word-wrap: normal
-  .col-step
-    min-width: 35px
-    width: 35px
+  .recipe-detail-summary
+    .step-list-container
+      .step-list-row
+        .col-step
+          min-width: 35px
+          width: 35px
+          justify-self: end
+          margin-right: 0.75em
   .list-header
     .col-step
       visibility: hidden
     .col-step::before
       content: ""
+      //display: block
       visibility: visible
       font-size: 1.25rem
-      position: relative
       left: 5px
   .step-list-row
     grid-template: 1fr / minmax(min-content, 50px) minmax(max-content, 105px) minmax(250px, 1fr)
@@ -987,26 +1000,28 @@ select
 .text-conversion-container
   margin: 1em 0
   .text-conversion-group
+    display: inline
     .text-conversion-label
       display: inline-block
+      text-align: left
       margin-bottom: 0.25em
       //border: 1px solid red
+      width: 90%
+    .text-conversion-box
+      height: 90%
+      width: 90%
   .text-conversion-inputs-container
     display: grid
     grid-template: 4fr 4fr 1fr / 1fr 1fr
-    grid-gap: 1em 2em
-  .text-conversion-input,
-  .text-conversion-output
-    height: 90%
-    width: 90%
+    grid-gap: 1em
   .button-group
     .btn-clipboard
-      width: 11em
+      width: 12em
 
   .clipboard-confirmation
     visibility: hidden
-    //display: none
-    position: relative
+    display: flex
+    justify-content: center
     margin: 4px 0 0 8px
     color: $color-7
   .clipboard-confirmation-enter
@@ -1030,6 +1045,7 @@ select
       width: 9em
       margin-left: 0.35em
       .icon-on-btn
+        display: inline-block
         margin-left: 0.25em
         max-width: 20px
         max-height: 20px
@@ -1081,6 +1097,21 @@ select
               content: "->"
               margin-left: 0.25em
               visibility: visible
+
+@media (max-width: 569px)
+  .text-conversion-container
+    .replacement-list-container
+      display: none
+    .text-conversion-inputs-container
+      grid-template: 1fr / auto
+      grid-gap: 0.75em
+      .button-group
+        .btn-clipboard,
+        .btn-reset
+          min-width: 15em
+          min-height: 3em
+    .clipboard-confirmation
+      display: none
 
 
 /*** Active Elements ***/

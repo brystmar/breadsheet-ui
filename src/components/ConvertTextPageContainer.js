@@ -1,6 +1,7 @@
 import React from 'react';
 import ConvertTextControls from './ConvertTextControls';
 import ConversionListContainer from './ConversionListContainer';
+import LoadingIcon from "./LoadingIcon";
 
 class ConvertTextPageContainer extends React.Component {
     constructor(props) {
@@ -8,7 +9,8 @@ class ConvertTextPageContainer extends React.Component {
 
         this.state = {
             repListIngredients: [],
-            repListDirections: []
+            repListDirections: [],
+            hasData: false
         }
         this.getReplacements = this.getReplacements.bind(this);
     }
@@ -30,10 +32,12 @@ class ConvertTextPageContainer extends React.Component {
                         if (scope === "ingredients") {
                             this.setState({
                                 repListIngredients: result.data,
+                                hasData: true
                             });
                         } else if (scope === "directions") {
                             this.setState({
                                 repListDirections: result.data,
+                                hasData: true
                             });
                         }
                     } else {
@@ -53,11 +57,11 @@ class ConvertTextPageContainer extends React.Component {
                                      directionsList={this.state.repListDirections}
                                      updateReplacementList={this.getReplacements}/>
                 <br/>
-                {this.state.repListDirections.length > 10 ?
-                <ConversionListContainer ingredientsList={this.state.repListIngredients}
-                                         directionsList={this.state.repListDirections}
-                                         updateReplacementList={this.getReplacements}/>
-                : "waiting for data"}
+                {this.state.hasData ?
+                    <ConversionListContainer ingredientsList={this.state.repListIngredients}
+                                             directionsList={this.state.repListDirections}
+                                             updateReplacementList={this.getReplacements}/>
+                    : <LoadingIcon cssClass="replacement-list-container"/>}
 
             </div>
         )
