@@ -129,6 +129,9 @@ body
   text-align: left
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+  *
+    transition: all 0.35s
+
 
 h1, h2, h3, h4
   margin: 0
@@ -438,8 +441,7 @@ select
   height: 100%
   cursor: pointer
 
-.tooltipz2
-  //TODO: Adjust when Bootstrap is removed
+.tooltip
   visibility: hidden
   background: $color-tooltip-background
   color: $color-tooltip-text
@@ -480,7 +482,7 @@ select
   justify-content: flex-end
 
 
-/*** Grid Cell Assignments ***/
+/*** Recipe & Step List Grids ***/
 
 // Recipe list columns
 .col-name
@@ -561,13 +563,7 @@ select
   grid-template: 1fr / minmax(min-content, 80px) minmax(max-content, 120px) minmax(165px, 1fr) minmax(max-content, 140px) 2fr
   grid-template-areas: "step                     when                       action             then                       note"
 
-
-/*** Gettin' Responsive ***/
-
 @media (max-width: 999px)
-  body
-    *
-      transition: all 0.35s
   .recipe-list-row
     grid-template: 1fr / 4fr 1.1fr 1.25fr 1.5fr 2.3fr
     grid-template-areas: "name diff len author source"
@@ -657,7 +653,7 @@ select
           display: none
 
 @media (max-width: 494px)
-  h1
+  //h1
     //font-size: 1.7rem
   .recipe-list-row
     .col-name
@@ -692,7 +688,7 @@ select
     grid-template: 1fr / 1fr
     grid-template-areas: "name"
   .col-action
-    white-space: normal !important  //TODO: What's overriding this?  Why does it need a hack?
+    white-space: normal
     overflow-wrap: break-spaces
 
 @media (max-width: 409px)
@@ -725,8 +721,9 @@ select
     min-width: 80px
 
 .text-with-ext-link-icon
-  //white-space: nowrap
   margin: auto 0
+  //white-space: nowrap
+  //border: 1px solid red
   .icon-ext-link
     //TODO: Understand why this is needed to keep the text + link icon on the same line
     width: 10px
@@ -736,8 +733,6 @@ select
 
 .add-recipe-container,
 .add-step-container
-  *
-    transition: all 0.35s
   background: $color-1
   padding: 1em
   text-align: left
@@ -773,7 +768,6 @@ select
         width: 80%
         display: flex
         align-items: center
-        border: 1px solid red
       .picklist-group
         max-width: max-content
         .input-picklist
@@ -796,6 +790,8 @@ select
         opacity: 0.6
         margin-left: 0.25em
         margin-right: 0.5em
+  *
+    transition: all 0.35s
 
 #name
   max-width: 280px
@@ -844,9 +840,9 @@ select
             margin-left: 0
             margin-bottom: 0.3em
           .add-step-form-input-group
-            margin-bottom: 0.25em
+            margin-bottom: 0.3em
           .add-recipe-form-input-group
-            margin-bottom: 0.25em
+            margin-bottom: 0.3em
   #note
     max-width: 310px
 
@@ -867,13 +863,9 @@ select
           min-width: unset
           .difficulty-icon
             min-width: 50px
-        .add-recipe-form-input-group
-          //width: 50%
         .btn-submit
           margin-top: 0.3em
           width: 100%
-  //#note
-  //  min-width: unset
 
 
 /*** Recipe Attributes ***/
@@ -886,20 +878,11 @@ select
   .edit-button-container
     margin: 0
   .recipe-attributes-container
-    *
-      transition: all 0.35s
     display: grid
     grid-template: 1fr / repeat(2, minmax(min-content, 250px))
-    //grid-template: auto / auto
     grid-gap: 0.5em 3em
-    //grid-column-gap: 2em
     cursor: default
-    //margin: 5px auto
-    //alignment-baseline: baseline
     .recipe-attribute
-      *
-        transition: all 0.35s
-      //border: 1px dashed green
       display: grid
       grid-template: 1fr / 1fr 4fr
       text-align: left
@@ -922,6 +905,8 @@ select
         flex-grow: 1
         white-space: nowrap
         font-size: 1.1rem
+      *
+        transition: all 0.35s
     .attr-author,
     .attr-source
       .attribute-label
@@ -941,7 +926,6 @@ select
     .recipe-attributes-container
       grid-template: repeat(4, 1fr) / 1fr
       grid-gap: 0.4em
-      transition: all 1.35s
       .attr-author,
       .attr-source
         .attribute-label
@@ -956,13 +940,6 @@ select
 .show-hidden
   display: inline
   visibility: visible
-  //animation: my-fade-in 2s
-
-@keyframes my-fade-in
-  from
-    opacity: 0
-  to
-    opacity: 1
 
 .start-finish-container
   display: flex
@@ -998,10 +975,15 @@ select
         width: max-content
         text-align: left
         display: inline
+        background: inherit
       .btn-start-finish-toggle:hover,
       .btn-start-finish-toggle:focus
         border: none
         border-bottom: 1px solid gray
+    .btn-save
+      padding: 0
+      height: 2em
+      width: 5em
 
     // Tooltip contents
     .start-finish-toggle-container::before
@@ -1032,6 +1014,17 @@ select
       border: 5px solid transparent
       border-bottom-color: $color-tooltip-background
       transform: translateY(200%) translateX(-400%)
+
+@media (max-width: 399px)
+  .start-finish-container
+    .start-finish-contents
+      transition: all 0.4s
+      flex-direction: column
+      align-items: flex-start
+      justify-content: center
+      width: 100%
+      .start-finish-datepicker
+        margin: 0.25em 0
 
 
 /*** Text Conversion Page ***/
@@ -1068,7 +1061,7 @@ select
     opacity: 1
   .clipboard-confirmation-enter-active
     opacity: 0
-    transition: opacity 1000ms
+    transition: opacity 1s
 
   .replacement-list-container
     margin: 1.5em 0

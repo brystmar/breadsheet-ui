@@ -3,7 +3,7 @@
 import React from 'react';
 import PageTitle from './PageTitle';
 import RecipePageAttributes from './RecipePageAttributes';
-import RecipeStartEnd from './RecipeStartEnd';
+import RecipeStartFinish from './RecipeStartFinish';
 import StepContainer from './StepContainer';
 import AddStep from './AddStep';
 
@@ -204,12 +204,12 @@ class RecipePage extends React.Component {
                                       length={this.state.recipeData.length}
                                       toggleEditMode={this.toggleEditMode}/>
 
-                <RecipeStartEnd start_time={this.state.recipeData.start_time}
-                                solve_for_start={this.state.recipeData.solve_for_start}
-                                length={this.state.recipeData.length}
-                                handleUpdateStartTime={this.handleUpdateStartTime}
-                                handleStartFinishToggle={this.handleStartFinishToggle}
-                                saveRecipe={this.handleSaveRecipe}/>
+                <RecipeStartFinish start_time={this.state.recipeData.start_time}
+                                   solve_for_start={this.state.recipeData.solve_for_start}
+                                   length={this.state.recipeData.length}
+                                   handleUpdateStartTime={this.handleUpdateStartTime}
+                                   handleStartFinishToggle={this.handleStartFinishToggle}
+                                   saveRecipe={this.handleSaveRecipe}/>
 
                 <StepContainer steps={this.state.recipeData.steps}
                                start_time={this.state.recipeData.start_time}

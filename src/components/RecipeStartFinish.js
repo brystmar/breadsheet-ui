@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker/es';
 
-class RecipeStartEnd extends React.Component {
+class RecipeStartFinish extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -92,10 +92,6 @@ class RecipeStartEnd extends React.Component {
     }
 
     render() {
-        // const startAt = <span className="start-finish-toggle">
-        //     This {this.state.solveForStart ? "Start at:" : "Finish at:"}
-        // </span>;
-
         return (
             <div className="start-finish-container">
                 <div className="start-finish-contents">
@@ -132,7 +128,7 @@ class RecipeStartEnd extends React.Component {
                         Save
                     </button>
                 </div>
-                <span ref={this.refSaveText} className="start-finish-save-confirmation">
+                <span ref={this.refSaveText} className="start-finish-save-confirmation animation">
                     ✔
                 </span>
             </div>
@@ -140,4 +136,4 @@ class RecipeStartEnd extends React.Component {
     }
 }
 
-export default RecipeStartEnd;
+export default RecipeStartFinish;
