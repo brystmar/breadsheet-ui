@@ -136,8 +136,9 @@ class AddStep extends React.Component {
         return (
             <div className="add-step-container">
                 <BtnAdd btnText="New Step"
-                        altText="Add a new step"
+                        altText="Show or hide the 'Add new step' form"
                         onClickFn={this.handleButtonToggle}/>
+
                 {this.state.hidden ?
                     "" :
                     <form className="add-step-form"

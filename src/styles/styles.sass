@@ -565,6 +565,9 @@ select
 /*** Gettin' Responsive ***/
 
 @media (max-width: 999px)
+  body
+    *
+      transition: all 0.35s
   .recipe-list-row
     grid-template: 1fr / 4fr 1.1fr 1.25fr 1.5fr 2.3fr
     grid-template-areas: "name diff len author source"
@@ -599,10 +602,6 @@ select
         grid-template-areas: "step                     when                       action             then"
         .col-note
           display: none
-        .col-action
-          width: initial
-          min-width: initial
-          max-width: initial
 
 @media (max-width: 699px)
   h1
@@ -675,6 +674,7 @@ select
   .list-header
     .col-step
       visibility: hidden
+      transition: none
     .col-step::before
       content: ""
       //display: block
@@ -736,17 +736,20 @@ select
 
 .add-recipe-container,
 .add-step-container
+  *
+    transition: all 0.35s
   background: $color-1
   padding: 1em
   text-align: left
   margin-top: 0.5em
   border-radius: 3px
   min-width: 280px
+  display: flex
+  flex-direction: column
+  width: 100%
   .add-recipe-form,
   .add-step-form
     background: $color-2
-    //border: 1px solid $color-1
-    //margin: 0.5em 0
     padding: 1em
     display: flex
     flex-direction: column
@@ -759,23 +762,27 @@ select
       padding: 0.25em
       display: flex
       align-items: center
-      //width: 60%
       min-width: 500px
-      //grid-template: 1fr / minmax(140px, 10%) minmax(200px, 30%)
+      width: 100%
       .add-recipe-form-label
         margin: auto 0.25em auto
         min-width: 140px
-        width: 20%
       .add-recipe-form-input-group
         white-space: nowrap
         min-width: 180px
         width: 80%
+        display: flex
+        align-items: center
+        border: 1px solid red
+      .picklist-group
+        max-width: max-content
         .input-picklist
-          min-width: calc(70% - 61px)
-          width: 70%
+          min-width: 180px
+          width: 180px
           margin-right: 0.3em
         .difficulty-icon
           min-width: 50px
+
       .add-step-form-label
         margin: auto 0.25em auto
         min-width: 110px
@@ -789,57 +796,84 @@ select
         opacity: 0.6
         margin-left: 0.25em
         margin-right: 0.5em
-      #action
-        max-width: 250px
+
+#name
+  max-width: 280px
+#author,
+#source
+  max-width: 200px
+#url
+  width: 100%
+
+#action
+  max-width: 258px
+#note
+  max-width: 400px
 
 @media (max-width: 599px)
   .add-recipe-container,
   .add-step-container
     padding: 0.25em
-  .add-recipe-form,
-  .add-step-form
-    .add-recipe-form-group,
-    .add-step-form-group
-      width: 100%
-      min-width: unset
-      .add-recipe-form-label
-        width: 15%
-        min-width: 120px
-      .add-step-form-label
-        width: 8%
-        min-width: 100px
+    .add-recipe-form,
+    .add-step-form
+      .add-recipe-form-group,
+      .add-step-form-group
+        width: 100%
+        min-width: unset
+        .add-recipe-form-label
+          width: 15%
+          min-width: 120px
+        .add-step-form-label
+          width: 8%
+          min-width: 100px
 
 @media (max-width: 494px)
-  .add-recipe-form,
-  .add-step-form
-    padding: 0.5em
-    .add-recipe-form-group,
-    .add-step-form-group
-      flex-direction: column
-      justify-content: flex-start
-      align-items: flex-start
-      .add-recipe-form-label,
-      .add-step-form-label
-        margin-left: 0
-        margin-bottom: 0.3em
-        width: 100%
-      .add-recipe-form-input-group,
-      .add-step-form-input-group
-        width: 100%
+  .content-container
+    .add-recipe-container,
+    .add-step-container
+      .add-recipe-form,
+      .add-step-form
+        padding: 0.5em
+        .add-recipe-form-group,
+        .add-step-form-group
+          flex-direction: column
+          justify-content: flex-start
+          align-items: flex-start
+          .add-recipe-form-label,
+          .add-step-form-label
+            margin-left: 0
+            margin-bottom: 0.3em
+          .add-step-form-input-group
+            margin-bottom: 0.25em
+          .add-recipe-form-input-group
+            margin-bottom: 0.25em
+  #note
+    max-width: 310px
 
-@media (max-width: 399px)
+
+@media (max-width: 410px)
   .content-container
     margin-left: 0.25em
     margin-right: 0.25em
-  .add-recipe-form,
-  .add-step-form
-    margin: 0.15em 0
-    padding: 0.15em
-    .add-recipe-form-group,
-    .add-step-form-group
-      .btn-submit
-        margin-top: 0.3em
-        width: 100%
+    .add-recipe-form,
+    .add-step-form
+      margin: 0 0 0.15em
+      padding: 0.15em
+      .add-recipe-form-group,
+      .add-step-form-group
+        .add-recipe-form-input-group,
+        .add-step-form-input-group
+          width: 100%
+          min-width: unset
+          .difficulty-icon
+            min-width: 50px
+        .add-recipe-form-input-group
+          //width: 50%
+        .btn-submit
+          margin-top: 0.3em
+          width: 100%
+  //#note
+  //  min-width: unset
 
 
 /*** Recipe Attributes ***/
@@ -852,6 +886,8 @@ select
   .edit-button-container
     margin: 0
   .recipe-attributes-container
+    *
+      transition: all 0.35s
     display: grid
     grid-template: 1fr / repeat(2, minmax(min-content, 250px))
     //grid-template: auto / auto
@@ -861,6 +897,8 @@ select
     //margin: 5px auto
     //alignment-baseline: baseline
     .recipe-attribute
+      *
+        transition: all 0.35s
       //border: 1px dashed green
       display: grid
       grid-template: 1fr / 1fr 4fr
@@ -893,16 +931,17 @@ select
   .recipe-attributes-container
     grid-gap: 0.5em 1.25em
   .edit-button-container
-      display: none
+    display: none
 
 @media (max-width: 569px)
   .recipe-attributes-and-button-container
-    display: inline
+    margin-bottom: 0.75em
     .edit-button-container
       display: none
     .recipe-attributes-container
       grid-template: repeat(4, 1fr) / 1fr
-      grid-gap: 0.2em
+      grid-gap: 0.4em
+      transition: all 1.35s
       .attr-author,
       .attr-source
         .attribute-label
@@ -1100,6 +1139,8 @@ select
 
 @media (max-width: 569px)
   .text-conversion-container
+    *
+      transition: all 0.35s
     .replacement-list-container
       display: none
     .text-conversion-inputs-container
@@ -1128,12 +1169,17 @@ select
   margin: 1em
   cursor: default
   display: flex
+  opacity: 0.75
   .footer-link
     margin-left: 0.35em
-
   .icon-bread
     margin-left: 0.2em
     height: 1em
+
+@media (max-width: 494px)
+  .footer-container
+    justify-content: center
+    transition: all 0.35s
 
 @media (prefers-reduced-motion: no-preference)
   .icon-bread

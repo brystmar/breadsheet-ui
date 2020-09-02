@@ -84,7 +84,7 @@ class AddRecipe extends React.Component {
         return (
             <div className="add-recipe-container">
                 <BtnAdd btnText="New Recipe"
-                        altText="Add a new recipe"
+                        altText="Show or hide the 'Add new recipe' form"
                         onClickFn={this.handleButtonToggle}/>
 
                 {this.state.hidden ?
@@ -111,7 +111,7 @@ class AddRecipe extends React.Component {
                             <label htmlFor="difficulty" className="add-recipe-form-label">
                                 Difficulty
                             </label>
-                            <span className="add-recipe-form-input-group">
+                            <span className="add-recipe-form-input-group picklist-group">
                                 <select className="input-picklist"
                                         name="difficulty"
                                         id="difficulty"
