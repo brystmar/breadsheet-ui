@@ -131,8 +131,6 @@ body
   text-align: left
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  *
-    transition: all 0.35s
 
 
 h1, h2, h3, h4
@@ -533,7 +531,7 @@ select
   .recipe-list-row,
   .step-list-row
     display: grid
-    grid-gap: 0.25em
+    grid-gap: 0.35em
     text-align: left
     margin: 0
     padding: 0.5em 0
@@ -586,7 +584,26 @@ select
 
   .step-list-container
     .step-list-row
-      padding: 0.35em 0
+      padding: 0.4em 0
+
+@media (max-width: 819px)
+  html
+    font-size: 0.9rem
+    transition: font-size 0.35s
+
+  .step-list-container
+    // Narrow the Step column
+    .list-header
+      .col-step
+        visibility: hidden
+        transition: none
+    .step-list-row
+      grid-template: 1fr /  2.75em  minmax(max-content, 6.5em)  minmax(11em, 0.85fr)  minmax(max-content, 9em)  2.2fr
+      grid-template-areas: "step    when                        action                then                      note"
+      .col-step
+        width: 2.2em
+        min-width: 2.2em
+        justify-self: center
 
 @media (max-width: 769px)
   .recipe-list-container
@@ -596,29 +613,16 @@ select
       .col-author
         display: none
 
+  // Move some width from Action to the Notes column
   .step-list-container
-    .list-header
-      .col-step
-        visibility: hidden
-        transition: none
     .step-list-row
-      grid-template: 1fr /  2.75em  minmax(max-content, 6.5em)  minmax(11em, 2fr)     minmax(max-content, 1fr)
-      grid-template-areas: "step    when                        action                then"
-      .col-step
-        width: 2.2em
-        min-width: 2.2em
-        justify-self: center
-      .col-note
-        display: none
+      grid-template: 1fr /  2.75em  minmax(max-content, 6.5em)  minmax(9.5em, 0.85fr)  minmax(max-content, 9em)  2fr
+      grid-template-areas: "step    when                        action                then                      note"
 
 @media (max-width: 699px)
-  h1
-    font-size: 2.4rem
-  h2
-    font-size: 1.5rem
-  h3,
-  .nav-content
-    font-size: 1.3rem
+  html
+    font-size: 0.85rem
+    transition: font-size 0.35s
 
   .recipe-list-container
     .recipe-list-row
@@ -631,27 +635,18 @@ select
         display: none
 
 @media (max-width: 599px)
-  h1
-    font-size: 2.1rem
-  .recipe-list-row
-    grid-template: 1fr /  3.5fr  1fr
-    grid-template-areas: "name   len"
-    .col-difficulty
-      display: none
+  .recipe-list-container
+    .recipe-list-row
+      grid-template: 1fr /  3.5fr  1fr
+      grid-template-areas: "name   len"
+      .col-difficulty
+        display: none
 
-@media (max-width: 569px)
-  h1
-    font-size: 1.9rem
-  h2
-    font-size: 1.4rem
-  h3,
-  .nav-content
-    font-size: 1.2rem
   .step-list-container
     .step-list-row
-      grid-template: 1fr /  minmax(min-content, 80px)  minmax(max-content, 120px)  minmax(250px, 1fr)
-      grid-template-areas: "step                       when                        action"
-      .col-then
+      grid-template: 1fr /  2.75em  minmax(max-content, 6.5em)  1fr     minmax(max-content, 9em)
+      grid-template-areas: "step    when                        action  then"
+      .col-note
         display: none
 
 @media (max-width: 494px)
@@ -662,26 +657,33 @@ select
   .recipe-detail-summary
     .step-list-container
       .step-list-row
-        grid-column-gap: 0.4em
-        grid-template: 1fr /  2.2em  5.7rem  minmax(250px, 1fr)
-        grid-template-areas: "step   when    action"
+        //grid-column-gap: 0.4em
+        //grid-template: 1fr /  2.2em  5.7rem  minmax(250px, 1fr)
+        //grid-template-areas: "step   when    action"
 
-@media (max-width: 424px)
+@media (max-width: 439px)
+  html
+    font-size: 0.8rem
+    transition: font-size 0.35s
   .col-action
     white-space: normal
     overflow-wrap: break-spaces
 
 @media (max-width: 409px)
-  html
-    //font-size: 0.7rem
-  h2
-    font-size: 1.25rem
-  h3,
   .nav-content
     font-size: 1.1rem
   .list-header
     .col-action
       min-width: 80px
+  .step-list-container
+    .step-list-row
+      grid-template: 1fr /  2.75em  5.7rem  1fr     minmax(max-content, 9em)
+      grid-template-areas: "step    when    action  then"
+
+@media (max-width: 389px)
+  html
+    font-size: 0.75rem
+    transition: font-size 0.35s
 
 @media (max-width: 369px)
   //h2
@@ -777,8 +779,6 @@ select
         opacity: 0.6
         margin-left: 0.25em
         margin-right: 0.5em
-  *
-    transition: all 0.35s
 
 #name
   max-width: 280px
@@ -892,8 +892,6 @@ select
         flex-grow: 1
         white-space: nowrap
         font-size: 1.1rem
-      *
-        transition: all 0.35s
     .attr-author,
     .attr-source
       .attribute-label
