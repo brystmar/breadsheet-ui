@@ -172,7 +172,7 @@ class AddStep extends React.Component {
                                    type="text"
                                    name="text"
                                    id="action"
-                                   placeholder="Mix ingredients"
+                                   placeholder="Mix the dough"
                                    value={this.state.text}
                                    onChange={this.handleChange}
                                    required={true}/>

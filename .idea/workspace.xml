@@ -19,10 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Responsive tweaks for add recipe &amp; step forms">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Start/finish component is now responsive">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeStartEnd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.sass" afterDir="false" />
@@ -185,14 +185,8 @@
       <workItem from="1596145142626" duration="723000" />
       <workItem from="1598419648862" duration="29131000" />
       <workItem from="1598563311806" duration="41363000" />
-      <workItem from="1598848066400" duration="23059000" />
-    </task>
-    <task id="LOCAL-00041" summary="Copy to clipboard works">
-      <created>1587628827466</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1587628827466</updated>
+      <workItem from="1598848066400" duration="26062000" />
+      <workItem from="1599429376790" duration="7927000" />
     </task>
     <task id="LOCAL-00042" summary="First successful Prod deployment!">
       <created>1587662485814</created>
@@ -530,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599013940554</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Start/finish component is now responsive">
+      <created>1599020912021</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1599020912021</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -555,7 +556,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Step page is mostly done" />
     <MESSAGE value="Polishing up the step page" />
     <MESSAGE value="Smoother title transitions on page load" />
     <MESSAGE value="Convert page needs a ton of cleanup work" />
@@ -580,7 +580,8 @@
     <MESSAGE value="Moved recipe-level edit button to the attributes container" />
     <MESSAGE value="Much improved Convert page, and fixed step list grid issues" />
     <MESSAGE value="Responsive tweaks for add recipe &amp; step forms" />
-    <option name="LAST_COMMIT_MESSAGE" value="Responsive tweaks for add recipe &amp; step forms" />
+    <MESSAGE value="Start/finish component is now responsive" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start/finish component is now responsive" />
   </component>
   <component name="WindowStateProjectService">
     <state x="858" y="487" key="#ESLint" timestamp="1596999325142">
@@ -641,10 +642,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state width="500" height="445" key="SwitcherDM/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1591370078391" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1599013942772">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1599020914330">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1599013942772" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1599020914330" />
     <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598209132275">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
