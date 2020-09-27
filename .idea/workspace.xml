@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Optimizing step page responsive breakpoints for iPhone">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Optimizations for mobile devices">
+      <change afterPath="$PROJECT_DIR$/coding-style-guide.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
@@ -184,14 +186,7 @@
       <workItem from="1598419648862" duration="29131000" />
       <workItem from="1598563311806" duration="41363000" />
       <workItem from="1598848066400" duration="26062000" />
-      <workItem from="1599429376790" duration="10470000" />
-    </task>
-    <task id="LOCAL-00043" summary="Converted RecipeListItem from class to functional component">
-      <created>1587843461026</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1587843461026</updated>
+      <workItem from="1599429376790" duration="21071000" />
     </task>
     <task id="LOCAL-00044" summary="Added editMode boolean to Recipe &amp; Step containers">
       <created>1587862742927</created>
@@ -529,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599438317437</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Optimizations for mobile devices">
+      <created>1599522051239</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1599522051239</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -554,7 +556,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Smoother title transitions on page load" />
     <MESSAGE value="Convert page needs a ton of cleanup work" />
     <MESSAGE value="Added start/finish tooltip" />
     <MESSAGE value="Fixed PageTitle border, added titles to difficulty icons" />
@@ -579,7 +580,8 @@
     <MESSAGE value="Responsive tweaks for add recipe &amp; step forms" />
     <MESSAGE value="Start/finish component is now responsive" />
     <MESSAGE value="Optimizing step page responsive breakpoints for iPhone" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimizing step page responsive breakpoints for iPhone" />
+    <MESSAGE value="Optimizations for mobile devices" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimizations for mobile devices" />
   </component>
   <component name="WindowStateProjectService">
     <state x="858" y="487" key="#ESLint" timestamp="1596999325142">
@@ -640,10 +642,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state width="500" height="445" key="SwitcherDM/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1591370078391" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1599438320686">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1599522053590">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1599438320686" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1599522053590" />
     <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598209132275">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

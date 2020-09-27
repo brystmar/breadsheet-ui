@@ -62,7 +62,7 @@
 
 /*** Page Layout ***/
 /*** Debugging ***/
-/*** Global Tags ***/
+/*** Base Tags ***/
 *,
 *::before,
 *::after {
@@ -84,7 +84,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
   line-height: 1.1;
   white-space: nowrap;
