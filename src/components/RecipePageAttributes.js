@@ -36,10 +36,10 @@ function RecipePageAttributes(props) {
                                 extraClassString="attribute-value"/>
                 </div>
             </div>
-            <div className="edit-button-container">
-                <BtnEdit onClickFn={props.toggleEditMode}/>
-                {/*TODO: Button doesn't toggle off */}
-            </div>
+            {/*<div className="edit-button-container">*/}
+            {/*    <BtnEdit onClickFn={props.toggleEditMode}/>*/}
+            {/*    /!*TODO: Button doesn't toggle off *!/*/}
+            {/*</div>*/}
         </div>
     )
 }

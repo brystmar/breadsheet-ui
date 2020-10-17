@@ -19,10 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Installed prop-types">
-      <change beforePath="$PROJECT_DIR$/.idea/breadsheet-ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/breadsheet-ui.iml" afterDir="false" />
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Added more space between ingredients &amp; directions output">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,14 +194,8 @@
       <workItem from="1601835103882" duration="2723000" />
       <workItem from="1602129551104" duration="491000" />
       <workItem from="1602721945281" duration="143000" />
-      <workItem from="1602960718453" duration="176000" />
-    </task>
-    <task id="LOCAL-00046" summary="Fixed the NavBar dropdown link issue!  Working on CSS transitions.">
-      <created>1587964254264</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1587964254264</updated>
+      <workItem from="1602960718453" duration="1002000" />
+      <workItem from="1602963202364" duration="2660000" />
     </task>
     <task id="LOCAL-00047" summary="Copy to clipboard &amp; relevant animations should work now">
       <created>1588027180234</created>
@@ -535,7 +533,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602722065188</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Added more space between ingredients &amp; directions output">
+      <created>1602961044391</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1602961044391</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -560,7 +565,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Fixed PageTitle border, added titles to difficulty icons" />
     <MESSAGE value="Plenty of work left on responsive tables" />
     <MESSAGE value="Media queries work for the main page" />
     <MESSAGE value="Working on color palette" />
@@ -585,7 +589,8 @@
     <MESSAGE value="Optimizations for mobile devices" />
     <MESSAGE value="Introduced a coding style guide" />
     <MESSAGE value="Installed prop-types" />
-    <option name="LAST_COMMIT_MESSAGE" value="Installed prop-types" />
+    <MESSAGE value="Added more space between ingredients &amp; directions output" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more space between ingredients &amp; directions output" />
   </component>
   <component name="WindowStateProjectService">
     <state x="858" y="487" key="#ESLint" timestamp="1596999325142">
@@ -642,10 +647,10 @@
     </state>
     <state x="495" y="117" width="997" height="831" key="SettingsEditor/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598645969943" />
     <state x="404" y="109" width="900" height="756" key="SettingsEditor/0.23.1628.1027@0.23.1628.1027" timestamp="1596145317399" />
-    <state x="-1345" y="340" key="Vcs.Push.Dialog.v2" timestamp="1602722069012">
+    <state x="-1345" y="340" key="Vcs.Push.Dialog.v2" timestamp="1602961046770">
       <screen x="-1920" y="23" width="1920" height="1177" />
     </state>
-    <state x="-1345" y="340" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@-1920.23.1920.1177" timestamp="1602722069012" />
+    <state x="-1345" y="340" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@-1920.23.1920.1177" timestamp="1602961046770" />
     <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1601168722595" />
     <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598209132275">
       <screen x="0" y="23" width="1994" height="1129" />
