@@ -136,7 +136,7 @@ class ConvertTextControls extends React.Component {
 
                 <span className="button-group">
                     <CopyToClipboard
-                        text={(this.state.outputIngredients + "\n" + this.state.outputDirections).trim()}
+                        text={(this.state.outputIngredients + "\n\n" + this.state.outputDirections).trim()}
                         onCopy={this.clipboardConfirmation}>
                         <button type="button"
                                 name="copyToClipboard"

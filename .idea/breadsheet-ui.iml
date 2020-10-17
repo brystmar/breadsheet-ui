@@ -6,6 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea/dictionaries" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/certs" />
+      <excludeFolder url="file://$MODULE_DIR$/mockups" />
       <excludeFolder url="file://$MODULE_DIR$/public/fonts" />
     </content>
     <orderEntry type="inheritedJdk" />
