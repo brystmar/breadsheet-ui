@@ -19,14 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Added more space between ingredients &amp; directions output">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Fixed tooltip hover alignment; hid the edit button.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,14 +190,10 @@
       <workItem from="1602129551104" duration="491000" />
       <workItem from="1602721945281" duration="143000" />
       <workItem from="1602960718453" duration="1002000" />
-      <workItem from="1602963202364" duration="2660000" />
-    </task>
-    <task id="LOCAL-00047" summary="Copy to clipboard &amp; relevant animations should work now">
-      <created>1588027180234</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1588027180234</updated>
+      <workItem from="1602963202364" duration="2779000" />
+      <workItem from="1602974187909" duration="2431000" />
+      <workItem from="1605057546866" duration="1423000" />
+      <workItem from="1606005557553" duration="1977000" />
     </task>
     <task id="LOCAL-00048" summary="Fixed add Recipe &amp; Step text, buttons">
       <created>1588029776819</created>
@@ -540,7 +531,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602961044391</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Fixed tooltip hover alignment; hid the edit button.">
+      <created>1602974169053</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1602974169053</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -565,7 +563,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Plenty of work left on responsive tables" />
     <MESSAGE value="Media queries work for the main page" />
     <MESSAGE value="Working on color palette" />
     <MESSAGE value="Updated font stack, adjusted recipe attribute display" />
@@ -590,13 +587,10 @@
     <MESSAGE value="Introduced a coding style guide" />
     <MESSAGE value="Installed prop-types" />
     <MESSAGE value="Added more space between ingredients &amp; directions output" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more space between ingredients &amp; directions output" />
+    <MESSAGE value="Fixed tooltip hover alignment; hid the edit button." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed tooltip hover alignment; hid the edit button." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="858" y="487" key="#ESLint" timestamp="1596999325142">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state x="858" y="487" key="#ESLint/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1596999325142" />
     <state x="299" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598645841476">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
@@ -617,41 +611,19 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="620" y="297" width="853" height="665" key="EditFileWatcherDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598645968568" />
-    <state x="506" y="272" width="695" height="665" key="EditFileWatcherDialog/0.23.1628.1027@0.23.1628.1027" timestamp="1596145315157" />
-    <state width="1855" height="219" key="GridCell.Tab.0.bottom" timestamp="1596746675035">
+    <state x="777" y="297" key="RollbackChangesDialog" timestamp="1606007954864">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state width="1855" height="219" key="GridCell.Tab.0.bottom/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1596746675035" />
-    <state width="1358" height="267" key="GridCell.Tab.0.bottom/0.23.1628.1027@0.23.1628.1027" timestamp="1594948610499" />
-    <state width="1855" height="219" key="GridCell.Tab.0.center" timestamp="1596746675034">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state width="1855" height="219" key="GridCell.Tab.0.center/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1596746675034" />
-    <state width="1358" height="267" key="GridCell.Tab.0.center/0.23.1628.1027@0.23.1628.1027" timestamp="1594948610497" />
-    <state width="1855" height="219" key="GridCell.Tab.0.left" timestamp="1596746675034">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state width="1855" height="219" key="GridCell.Tab.0.left/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1596746675034" />
-    <state width="1358" height="267" key="GridCell.Tab.0.left/0.23.1628.1027@0.23.1628.1027" timestamp="1594948610497" />
-    <state width="1855" height="219" key="GridCell.Tab.0.right" timestamp="1596746675035">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state width="1855" height="219" key="GridCell.Tab.0.right/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1596746675035" />
-    <state width="1358" height="267" key="GridCell.Tab.0.right/0.23.1628.1027@0.23.1628.1027" timestamp="1594948610498" />
-    <state x="777" y="297" key="RollbackChangesDialog" timestamp="1598550789230">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state x="777" y="297" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598550789230" />
+    <state x="777" y="297" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1606007954864" />
     <state x="495" y="117" width="900" height="756" key="SettingsEditor" timestamp="1598645969943">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="495" y="117" width="997" height="831" key="SettingsEditor/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598645969943" />
-    <state x="404" y="109" width="900" height="756" key="SettingsEditor/0.23.1628.1027@0.23.1628.1027" timestamp="1596145317399" />
-    <state x="-1345" y="340" key="Vcs.Push.Dialog.v2" timestamp="1602961046770">
-      <screen x="-1920" y="23" width="1920" height="1177" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1602974614179">
+      <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="-1345" y="340" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@-1920.23.1920.1177" timestamp="1602961046770" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1601168722595" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1602974614179" />
     <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598209132275">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
