@@ -139,7 +139,7 @@ class App extends React.Component {
         return (
             <div className="app-container">
                 <header className="header-container">
-                    <Navbar />
+                    <Navbar/>
                 </header>
                 <main className="content-container">
                     <Switch>
@@ -172,16 +172,7 @@ class App extends React.Component {
                         </Route>
                     </Switch>
                 </main>
-                <p className="color-test test-border"><span>border</span><span>#979AA0</span><span>151,154,160</span></p>
-                <p className="color-test test-border-2"><span>border-darker</span><span>#696c72</span><span>105,108,114</span></p>
-                <p className="color-test test1"><span>c1</span><span>#c7c1ab</span><span>199,193,171</span></p>
-                <p className="color-test test2"><span>c2</span><span>#ecece8</span><span>236,236,232</span></p>
-                <p className="color-test test3"><span>c3</span><span>#f7ebdd</span><span>247,235,221</span></p>
-                <p className="color-test test4"><span>c4</span><span>#dbb37e</span><span>219,179,126</span></p>
-                <p className="color-test test5"><span>c5</span><span>#935614</span><span>147,86,20</span></p>
-                <p className="color-test test6"><span>c6</span><span>#612c00</span><span>97,44,0</span></p>
-                <p className="color-test test7"><span>c7</span><span>#370300</span><span>55,3,0</span></p>
-                <p className="color-test test8"><span>c8</span><span>#160000</span><span>22,0,0</span></p>
+
                 <Footer/>
             </div>
         )

@@ -19,9 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Fixed tooltip hover alignment; hid the edit button.">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Updated readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,13 +195,8 @@
       <workItem from="1602974187909" duration="2431000" />
       <workItem from="1605057546866" duration="1423000" />
       <workItem from="1606005557553" duration="1977000" />
-    </task>
-    <task id="LOCAL-00048" summary="Fixed add Recipe &amp; Step text, buttons">
-      <created>1588029776819</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1588029776819</updated>
+      <workItem from="1606110107876" duration="93000" />
+      <workItem from="1607289539104" duration="200000" />
     </task>
     <task id="LOCAL-00049" summary="Removed copyToClipboard since it's no longer needed">
       <created>1588030039287</created>
@@ -538,7 +534,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602974169053</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="Updated readme">
+      <created>1606110193955</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1606110193956</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -563,7 +566,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Media queries work for the main page" />
     <MESSAGE value="Working on color palette" />
     <MESSAGE value="Updated font stack, adjusted recipe attribute display" />
     <MESSAGE value="Improved grid display for media queries; updated add recipe/step." />
@@ -588,7 +590,8 @@
     <MESSAGE value="Installed prop-types" />
     <MESSAGE value="Added more space between ingredients &amp; directions output" />
     <MESSAGE value="Fixed tooltip hover alignment; hid the edit button." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed tooltip hover alignment; hid the edit button." />
+    <MESSAGE value="Updated readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated readme" />
   </component>
   <component name="WindowStateProjectService">
     <state x="299" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598645841476">
@@ -619,11 +622,11 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="495" y="117" width="997" height="831" key="SettingsEditor/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598645969943" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1602974614179">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1606110196598">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="-1345" y="340" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@-1920.23.1920.1177" timestamp="1602961046770" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1602974614179" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1606110196598" />
     <state x="795" y="508" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598209132275">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>

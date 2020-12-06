@@ -53,15 +53,17 @@ class ConvertTextPageContainer extends React.Component {
     render() {
         return (
             <div className="text-conversion-container">
-                <ConvertTextControls ingredientsList={this.state.repListIngredients}
-                                     directionsList={this.state.repListDirections}
-                                     updateReplacementList={this.getReplacements}/>
-                <br/>
                 {this.state.hasData ?
-                    <ConversionListContainer ingredientsList={this.state.repListIngredients}
+                    <>
+                        <ConvertTextControls ingredientsList={this.state.repListIngredients}
                                              directionsList={this.state.repListDirections}
                                              updateReplacementList={this.getReplacements}/>
-                    : <LoadingIcon cssClass="replacement-list-container"/>}
+                        <br/>
+                        <ConversionListContainer ingredientsList={this.state.repListIngredients}
+                                                 directionsList={this.state.repListDirections}
+                                                 updateReplacementList={this.getReplacements}/>
+                    </> :
+                    <LoadingIcon cssClass="replacement-list-container"/>}
 
             </div>
         )
