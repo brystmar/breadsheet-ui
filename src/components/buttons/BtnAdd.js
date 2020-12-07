@@ -3,7 +3,8 @@ import React from 'react';
 function BtnAdd(props) {
     return (
         <button type="button"
-                className="btn btn-add"
+                className={props.isCollapsed ?
+                    "btn btn-add btn-collapsed" : "btn btn-add"}
                 onClick={props.onClickFn}>
             {props.btnText}
         </button>
@@ -12,7 +13,8 @@ function BtnAdd(props) {
 
 BtnAdd.defaultProps = {
     btnText: "",
-    altText: "Add a new recipe or step"
+    altText: "Add a new recipe or step",
+    isCollapsed: true
 }
 
 export default BtnAdd;

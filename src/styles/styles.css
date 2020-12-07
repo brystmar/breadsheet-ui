@@ -286,7 +286,8 @@ select {
 }
 
 .btn-save,
-.btn-submit {
+.btn-submit,
+.btn-add {
   background: #935614;
   color: #f5f5f5;
   border: 1px solid #612c00;
@@ -295,21 +296,19 @@ select {
 
 .btn-save:hover,
 .btn-save:focus,
-.btn-submit:hover,
-.btn-submit:focus {
+.btn-add:hover,
+.btn-add:focus {
   background: #612c00;
   color: #f5f5f5;
   border: 1px solid #370300;
 }
 
 .btn-save:active,
-.btn-submit:active {
-  border: 2px solid #935614;
+.btn-add:active {
+  border-color: #f8f8f8;
 }
 
 .btn-add {
-  background: #ecece8;
-  border: 1px solid #ecece8;
   margin: 0;
   font-weight: 400;
   white-space: nowrap;
@@ -325,15 +324,23 @@ select {
   height: 1.1em;
 }
 
-.btn-add:hover {
-  background: #ddddd9;
-  border-color: #ddddd9;
-}
-
-.btn-add:focus,
-.btn-add:active {
+.btn-collapsed.btn-add {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.btn-submit {
+  background-color: #160000;
+  border-color: #160000;
+}
+
+.btn-submit:hover,
+.btn-submit:focus {
+  background-color: #252525;
+}
+
+.btn-submit:active {
+  border-color: white;
 }
 
 .btn-delete {
@@ -723,7 +730,6 @@ select {
 
   .col-action {
     white-space: normal;
-    overflow-wrap: break-spaces;
   }
 }
 @media (max-width: 409px) {
@@ -789,7 +795,6 @@ select {
 /*** Add Recipe/Step ***/
 .add-recipe-container,
 .add-step-container {
-  background: #c7c1ab;
   padding: 1em;
   text-align: left;
   margin-top: 0.5em;
@@ -804,6 +809,8 @@ select {
 .add-step-container .add-recipe-form,
 .add-step-container .add-step-form {
   background: #ecece8;
+  border: 1px solid #612c00;
+  border-radius: 0 5px 5px 5px;
   padding: 1em;
   display: flex;
   flex-direction: column;

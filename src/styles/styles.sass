@@ -308,28 +308,27 @@ select
   margin: 0 0.25em
 
 .btn-save,
-.btn-submit
+.btn-submit,
+.btn-add
   background: $color-5
   color: $color-text-light
   border: 1px solid $color-6
   line-height: 1
 .btn-save:hover,
 .btn-save:focus,
-.btn-submit:hover,
-.btn-submit:focus
+.btn-add:hover,
+.btn-add:focus
   background: $color-6
   color: $color-text-light
   border: 1px solid $color-7
 .btn-save:active,
-.btn-submit:active
-  border: 2px solid $color-5
+.btn-add:active
+  border-color: $color-background
 
 .btn-add
-  background: $color-2
-  border: 1px solid $color-2
+  //background: $color-2
+  //border: 1px solid $color-2
   margin: 0
-  //width: 250px
-  //box-shadow: 3px 3px 1px rgba(0,0,0,0.14)
   font-weight: 400
   white-space: nowrap
   height: 2em
@@ -341,14 +340,22 @@ select
     background: inherit
     margin-right: 0.2em
     height: 1.1em
-.btn-add:hover
-  background: #ddddd9
-  border-color: #ddddd9
-.btn-add:focus,
-.btn-add:active
+//.btn-add:hover
+//  background: #ddddd9
+//  border-color: #ddddd9
+.btn-collapsed.btn-add
   border-bottom-left-radius: 0
   border-bottom-right-radius: 0
 
+.btn-submit
+  background-color: $color-nav-background
+  border-color: $color-nav-background
+.btn-submit:hover,
+.btn-submit:focus
+  background-color: #252525
+.btn-submit:active
+  border-color: white
+  
 .btn-delete
   border: none
   border-radius: 0.625em
@@ -662,9 +669,9 @@ select
     .col-name
       white-space: normal
       word-wrap: normal
-  .recipe-detail-summary
-    .step-list-container
-      .step-list-row
+  //.recipe-detail-summary
+  //  .step-list-container
+  //    .step-list-row
         //grid-column-gap: 0.4em
         //grid-template: 1fr /  2.2em  5.7rem  minmax(250px, 1fr)
         //grid-template-areas: "step   when    action"
@@ -675,7 +682,7 @@ select
     transition: font-size 0.35s
   .col-action
     white-space: normal
-    overflow-wrap: break-spaces
+    //overflow-wrap: break-spaces
 
 @media (max-width: 409px)
   .nav-content
@@ -730,7 +737,6 @@ select
 
 .add-recipe-container,
 .add-step-container
-  background: $color-1
   padding: 1em
   text-align: left
   margin-top: 0.5em
@@ -742,6 +748,8 @@ select
   .add-recipe-form,
   .add-step-form
     background: $color-2
+    border: 1px solid $color-6
+    border-radius: 0 5px 5px 5px
     padding: 1em
     display: flex
     flex-direction: column

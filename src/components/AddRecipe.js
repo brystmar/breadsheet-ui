@@ -85,6 +85,7 @@ class AddRecipe extends React.Component {
             <div className="add-recipe-container">
                 <BtnAdd btnText="New Recipe"
                         altText="Show or hide the 'Add new recipe' form"
+                        isCollapsed={!this.state.hidden}
                         onClickFn={this.handleButtonToggle}/>
 
                 {this.state.hidden ?
