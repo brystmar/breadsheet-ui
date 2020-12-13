@@ -19,13 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Hide debugging UI elements; don't allow conversion without data.">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Cleaned up button inconsistencies.  My color palettes still need tons of work.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/BtnAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/BtnAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,14 +196,7 @@
       <workItem from="1605057546866" duration="1423000" />
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
-      <workItem from="1607289539104" duration="2551000" />
-    </task>
-    <task id="LOCAL-00050" summary="Overhauled the Convert Text page">
-      <created>1588140091583</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1588140091584</updated>
+      <workItem from="1607289539104" duration="4615000" />
     </task>
     <task id="LOCAL-00051" summary="Readme update">
       <created>1588141429476</created>
@@ -544,7 +534,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607289779871</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Cleaned up button inconsistencies.  My color palettes still need tons of work.">
+      <created>1607321454815</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1607321454815</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -569,7 +566,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Updated font stack, adjusted recipe attribute display" />
     <MESSAGE value="Improved grid display for media queries; updated add recipe/step." />
     <MESSAGE value="Consolidated SASS files, more work on the add recipe/step forms." />
     <MESSAGE value="Add recipe form is properly responsive" />
@@ -594,7 +590,8 @@
     <MESSAGE value="Fixed tooltip hover alignment; hid the edit button." />
     <MESSAGE value="Updated readme" />
     <MESSAGE value="Hide debugging UI elements; don't allow conversion without data." />
-    <option name="LAST_COMMIT_MESSAGE" value="Hide debugging UI elements; don't allow conversion without data." />
+    <MESSAGE value="Cleaned up button inconsistencies.  My color palettes still need tons of work." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up button inconsistencies.  My color palettes still need tons of work." />
   </component>
   <component name="WindowStateProjectService">
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598846840164">
@@ -609,10 +606,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="777" y="297" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1606007954864" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1607289781955">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1607321457453">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="-1345" y="340" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@-1920.23.1920.1177" timestamp="1602961046770" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607289781955" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607321457453" />
   </component>
 </project>
