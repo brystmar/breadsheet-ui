@@ -19,10 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Cleaned up button inconsistencies.  My color palettes still need tons of work.">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Prep for the hook refactor">
+      <change afterPath="$PROJECT_DIR$/src/data/defaultValues.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useStep.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/reallocate_hh_mm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/time_display_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/time_display_functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +51,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Sass File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -196,14 +200,7 @@
       <workItem from="1605057546866" duration="1423000" />
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
-      <workItem from="1607289539104" duration="4615000" />
-    </task>
-    <task id="LOCAL-00051" summary="Readme update">
-      <created>1588141429476</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1588141429476</updated>
+      <workItem from="1607289539104" duration="10143000" />
     </task>
     <task id="LOCAL-00052" summary="Moved Recipe fetch to the top-level App component">
       <created>1588493777159</created>
@@ -541,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607321454815</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Prep for the hook refactor">
+      <created>1607889465065</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1607889465065</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -566,7 +570,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Improved grid display for media queries; updated add recipe/step." />
     <MESSAGE value="Consolidated SASS files, more work on the add recipe/step forms." />
     <MESSAGE value="Add recipe form is properly responsive" />
     <MESSAGE value="Add step form is properly responsive" />
@@ -591,7 +594,8 @@
     <MESSAGE value="Updated readme" />
     <MESSAGE value="Hide debugging UI elements; don't allow conversion without data." />
     <MESSAGE value="Cleaned up button inconsistencies.  My color palettes still need tons of work." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up button inconsistencies.  My color palettes still need tons of work." />
+    <MESSAGE value="Prep for the hook refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prep for the hook refactor" />
   </component>
   <component name="WindowStateProjectService">
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598846840164">
@@ -602,14 +606,14 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="100" y="123" width="1794" height="929" key="DiffContextDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607320028998" />
-    <state x="777" y="297" key="RollbackChangesDialog" timestamp="1606007954864">
+    <state x="777" y="297" key="RollbackChangesDialog" timestamp="1607889693373">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
-    <state x="777" y="297" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1606007954864" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1607321457453">
+    <state x="777" y="297" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607889693373" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1607889467672">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="-1345" y="340" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@-1920.23.1920.1177" timestamp="1602961046770" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607321457453" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607889467672" />
   </component>
 </project>

@@ -87,6 +87,7 @@ function seconds_to_hhmm(seconds) {
 }
 
 function pad(input, desiredLength = 2) {
+    // Adds zero-padding to single-digit numbers, up to the specified length
     input = input.toString();
     while (input.length < desiredLength) {
         input = "0" + input;
