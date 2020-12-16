@@ -145,7 +145,7 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/convert">
                             <PageTitle
-                                title="Convert Recipe Text"
+                                title="Breadsheet | Convert Text"
                                 includeHr={true}/>
                             <ConvertTextPageContainer/>
                         </Route>
@@ -160,7 +160,7 @@ class App extends React.Component {
 
                         <Route exact path="/">
                             <PageTitle
-                                title="Recipes"
+                                title="Breadsheet | Recipes"
                                 includeHr={true}/>
                             {/*TODO: Edit button right-justified, opposite the title */}
                             <RecipeListContainer

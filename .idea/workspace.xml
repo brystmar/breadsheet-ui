@@ -19,14 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Prep for the hook refactor">
-      <change afterPath="$PROJECT_DIR$/src/data/defaultValues.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useStep.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/reallocate_hh_mm.js" afterDir="false" />
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="First crack at AddStep">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/time_display_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/time_display_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,14 +196,7 @@
       <workItem from="1605057546866" duration="1423000" />
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
-      <workItem from="1607289539104" duration="10143000" />
-    </task>
-    <task id="LOCAL-00052" summary="Moved Recipe fetch to the top-level App component">
-      <created>1588493777159</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1588493777159</updated>
+      <workItem from="1607289539104" duration="10794000" />
     </task>
     <task id="LOCAL-00053" summary="Now pointing to Prod backend">
       <created>1588494953933</created>
@@ -545,7 +534,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607889465065</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="First crack at AddStep">
+      <created>1607894981684</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1607894981684</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -570,7 +566,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Consolidated SASS files, more work on the add recipe/step forms." />
     <MESSAGE value="Add recipe form is properly responsive" />
     <MESSAGE value="Add step form is properly responsive" />
     <MESSAGE value="Ready for prod deploy" />
@@ -595,7 +590,8 @@
     <MESSAGE value="Hide debugging UI elements; don't allow conversion without data." />
     <MESSAGE value="Cleaned up button inconsistencies.  My color palettes still need tons of work." />
     <MESSAGE value="Prep for the hook refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prep for the hook refactor" />
+    <MESSAGE value="First crack at AddStep" />
+    <option name="LAST_COMMIT_MESSAGE" value="First crack at AddStep" />
   </component>
   <component name="WindowStateProjectService">
     <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598846840164">
@@ -610,10 +606,10 @@
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="777" y="297" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607889693373" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1607889467672">
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1607894984030">
       <screen x="0" y="23" width="1994" height="1129" />
     </state>
     <state x="-1345" y="340" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@-1920.23.1920.1177" timestamp="1602961046770" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607889467672" />
+    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607894984030" />
   </component>
 </project>
