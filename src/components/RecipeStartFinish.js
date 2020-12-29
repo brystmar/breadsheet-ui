@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker/es';
 
+// TODO: Refactor to functional component
 class RecipeStartFinish extends React.Component {
     constructor(props) {
         super(props);
@@ -11,7 +12,6 @@ class RecipeStartFinish extends React.Component {
             solveForStart: true
         };
 
-        // TODO: Learn best practice to add/remove CSS classes from React
         this.refSaveText = React.createRef();
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleSave = this.handleSave.bind(this);

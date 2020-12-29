@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles/styles.sass';
 
+// TODO: Refactor to functional component
 class App extends React.Component {
     constructor() {
         super();
@@ -145,8 +146,9 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/convert">
                             <PageTitle
-                                title="Breadsheet | Convert Text"
-                                includeHr={true}/>
+                                title="Convert Text"
+                                includeHr={true}
+                            />
                             <ConvertTextPageContainer/>
                         </Route>
 
@@ -155,20 +157,23 @@ class App extends React.Component {
                                 allRecipes={this.state.allRecipes}
                                 updateOneRecipe={this.updateOneRecipe}
                                 updateRecipeLength={this.updateRecipeLength}
-                                updateMasterRecipeList={this.getAllRecipes}/>
+                                updateMasterRecipeList={this.getAllRecipes}
+                            />
                         </Route>
 
                         <Route exact path="/">
                             <PageTitle
-                                title="Breadsheet | Recipes"
-                                includeHr={true}/>
-                            {/*TODO: Edit button right-justified, opposite the title */}
+                                title="Breadsheet"
+                                includeHr={true}
+                            />
                             <RecipeListContainer
                                 allRecipes={this.state.allRecipes}
                                 addRecipeToState={this.addRecipeToState}
-                                deleteRecipe={this.deleteRecipe}/>
+                                deleteRecipe={this.deleteRecipe}
+                            />
                             <AddRecipe
-                                addRecipeToState={this.addRecipeToState}/>
+                                addRecipeToState={this.addRecipeToState}
+                            />
                         </Route>
                     </Switch>
                 </main>

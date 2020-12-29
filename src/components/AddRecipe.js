@@ -4,7 +4,7 @@ import BtnSubmit from './buttons/BtnSubmit';
 import {v4 as uuid} from 'uuid';
 import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
 
-
+// TODO: Refactor to functional component
 class AddRecipe extends React.Component {
     constructor(props) {
         super(props);

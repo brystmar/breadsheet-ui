@@ -2,6 +2,7 @@ import React from 'react';
 import {seconds_to_hhmm, pad} from '../scripts/time_display_functions';
 import Moment from 'react-moment';
 
+// TODO: Refactor to functional component
 class StepListItem extends React.Component {
     constructor(props) {
         super(props);
@@ -23,10 +24,6 @@ class StepListItem extends React.Component {
             thenWaitMM: pad(minutes),
             thenWait: this.props.then_wait
         })
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        // console.log("Updated SLI", this.props.stepNumber);
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {

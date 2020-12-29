@@ -3,6 +3,7 @@ import ConvertTextControls from './ConvertTextControls';
 import ConversionListContainer from './ConversionListContainer';
 import LoadingIcon from "./LoadingIcon";
 
+// TODO: Refactor to functional component
 class ConvertTextPageContainer extends React.Component {
     constructor(props) {
         super(props);

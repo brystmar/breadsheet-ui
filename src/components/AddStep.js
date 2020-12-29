@@ -7,7 +7,7 @@ import {pad} from '../scripts/time_display_functions';
 import {v4 as uuid} from 'uuid';
 import reallocate_hh_mm from "../scripts/reallocate_hh_mm";
 
-
+// TODO: Validate the new functional component
 function AddStepNew(props) {
     const [newStep, updateStep, handleStepChange] = useStep({
         ...defaultStep,
