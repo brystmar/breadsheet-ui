@@ -2,6 +2,7 @@ import React from 'react';
 import ConvertTextControls from './ConvertTextControls';
 import ConversionListContainer from './ConversionListContainer';
 import LoadingIcon from "./LoadingIcon";
+import "../styles/text-conversion.sass"
 
 // TODO: Refactor to functional component
 class ConvertTextPageContainer extends React.Component {

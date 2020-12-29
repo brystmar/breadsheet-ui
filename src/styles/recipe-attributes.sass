@@ -1,0 +1,64 @@
+@import "variables"
+
+
+.recipe-attributes-and-button-container
+  margin: 0.5em 0 1em
+  display: flex
+  align-items: center
+  justify-content: space-between
+  .edit-button-container
+    margin: 0
+  .recipe-attributes-container
+    display: grid
+    grid-gap: 0.5em 3em
+    grid-template: 1fr / repeat(2, minmax(min-content, 250px))
+    cursor: default
+    .recipe-attribute
+      display: grid
+      grid-template: 1fr / 1fr 4fr
+      text-align: left
+      .attribute-label,
+      .attribute-value
+        //border: 1px solid brown
+        display: flex
+        align-items: flex-end  //align text to use the same baseline
+        width: min-content
+        min-width: 95px
+        white-space: nowrap
+        vertical-align: baseline
+      .attribute-label
+        flex-grow: 0
+        margin-right: 1em
+        font-size: 1.15rem
+        font-weight: 700
+        //color: #282c34
+      .attribute-value
+        flex-grow: 1
+        white-space: nowrap
+        font-size: 1.1rem
+    .attr-author,
+    .attr-source
+      .attribute-label
+        margin-right: 0.5em
+
+@media (max-width: 699px)
+  .recipe-attributes-container
+    grid-gap: 0.5em 1.25em
+  .edit-button-container
+    display: none
+
+@media (max-width: 569px)
+  .recipe-attributes-and-button-container
+    margin-bottom: 0.75em
+    .edit-button-container
+      display: none
+    .recipe-attributes-container
+      grid-template: repeat(4, 1fr) / 1fr
+      grid-gap: 0.4em
+      .attr-author,
+      .attr-source
+        .attribute-label
+          margin-right: 1em
+      .attribute-label,
+      .attribute-value
+        flex-grow: 0

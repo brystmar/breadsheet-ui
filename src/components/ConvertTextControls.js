@@ -3,6 +3,7 @@ import {CSSTransition} from 'react-transition-group';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import convert_text_using_provided_list from '../scripts/convert_text_functions';
 
+// TODO: Refactor to functional component
 class ConvertTextControls extends React.Component {
     constructor(props) {
         super(props);

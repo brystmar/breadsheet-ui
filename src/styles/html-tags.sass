@@ -1,0 +1,88 @@
+@import "variables"
+
+
+*,
+*::before,
+*::after
+  box-sizing: border-box
+
+html
+  font-size: 16px
+  transition: font-size 350ms linear
+
+@media (max-width: 819px)
+  html
+    font-size: 0.9rem
+
+@media (max-width: 699px)
+  html
+    font-size: 0.85rem
+
+@media (max-width: 439px)
+  html
+    font-size: 0.8rem
+
+@media (max-width: 389px)
+  html
+    font-size: 0.75rem
+
+
+body
+  font-family: $font-stack-primary
+  font-variant: slashed-zero
+  font-weight: 400
+  color: $color-text-dark
+  line-height: 1.5
+  text-align: left
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+h1,
+h2,
+h3,
+h4
+  margin: 0
+  line-height: 1.1
+  white-space: nowrap
+  text-align: left
+  cursor: default
+
+h1
+  font-size: 2.75rem
+  font-weight: 700
+  margin: 0 0 0.1em
+  white-space: initial
+
+h2
+  font-size: 1.7rem
+  font-weight: 400
+
+h3
+  font-size: 1.3rem
+  font-weight: 400
+
+p
+  font-size: 1rem
+  font-weight: 400
+  line-height: 1.5
+  cursor: default
+  margin: 0
+
+@media (max-width: 369px)
+  h3
+    font-size: 1.08rem
+  p
+    font-size: 0.9rem
+
+img
+  display: block
+  max-width: 100%
+
+a
+  color: $color-link
+  text-decoration: none
+a:visited
+  color: $color-link-visited
+a:hover,
+a:focus
+  text-decoration: underline

@@ -9,6 +9,7 @@ import ConvertTextPageContainer from './components/ConvertTextPageContainer';
 import Footer from './components/Footer';
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles/styles.sass';
+import './styles/recipe-and-step-lists.sass';
 
 // TODO: Refactor to functional component
 class App extends React.Component {
@@ -145,10 +146,7 @@ class App extends React.Component {
                 <main className="content-container">
                     <Switch>
                         <Route exact path="/convert">
-                            <PageTitle
-                                title="Convert Text"
-                                includeHr={true}
-                            />
+                            <PageTitle title="Convert Text" includeHr={true}/>
                             <ConvertTextPageContainer/>
                         </Route>
 
@@ -162,18 +160,13 @@ class App extends React.Component {
                         </Route>
 
                         <Route exact path="/">
-                            <PageTitle
-                                title="Breadsheet"
-                                includeHr={true}
-                            />
+                            <PageTitle title="Breadsheet" includeHr={true}/>
                             <RecipeListContainer
                                 allRecipes={this.state.allRecipes}
                                 addRecipeToState={this.addRecipeToState}
                                 deleteRecipe={this.deleteRecipe}
                             />
-                            <AddRecipe
-                                addRecipeToState={this.addRecipeToState}
-                            />
+                            <AddRecipe addRecipeToState={this.addRecipeToState}/>
                         </Route>
                     </Switch>
                 </main>

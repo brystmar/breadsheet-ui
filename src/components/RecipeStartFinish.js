@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker/es';
+import "../styles/start-finish.sass"
 
 // TODO: Refactor to functional component
 class RecipeStartFinish extends React.Component {
@@ -128,6 +129,7 @@ class RecipeStartFinish extends React.Component {
                         Save
                     </button>
                 </div>
+
                 <span ref={this.refSaveText} className="start-finish-save-confirmation animation">
                     ✔
                 </span>

@@ -1,0 +1,141 @@
+@import "variables"
+
+
+.btn
+  height: 2.5em
+  width: 7em
+  text-align: center
+  margin: 0
+  border-radius: 0.2em
+  cursor: pointer
+  outline: none !important  // To override settings from packages w/bootstrap
+  box-shadow: none !important  // To override settings from packages w/bootstrap
+  transition: all 0.2s
+.btn:disabled
+  opacity: 0.5
+  border: none
+.btn:disabled:active,
+.btn:disabled:focus,
+.btn:disabled:hover
+  opacity: 0.5
+  border: none
+
+.btn-default
+  background: $color-gray-light
+  color: $color-on-light
+  border: 1px solid $color-border
+.btn-default:focus,
+.btn-default:hover
+  background: $color-gray
+  border: 1px solid $color-border-darker
+.btn-default:active
+  border: 2px solid $color-border-darker
+
+.btn-default-reverse
+  background: $color-gray-darker
+  color: $color-lightest
+  border: 1px solid $color-border-darker
+  img
+    transition: all 0.2s
+    filter: invert(97%) sepia(69%) saturate(201%) hue-rotate(209deg) brightness(112%) contrast(86%)
+.btn-default-reverse:focus,
+.btn-default-reverse:hover
+  background: $color-gray-dark
+  color: $color-text-dark
+  border: 1px solid $color-border
+  img
+    filter: invert(0%) sepia(1%) saturate(5017%) hue-rotate(319deg) brightness(93%) contrast(86%)
+.btn-default-reverse:active
+  border: 2px solid $color-border-darker
+
+.btn-edit-mode
+  height: 2.25em
+  width: 2.5em
+  border: 1px solid $color-border-lighter
+  background: #eeeeee
+  //text-align: center
+  .icon-button
+    height: 60%
+    //text-align: center
+    //border: 1px solid black
+    //display: inherit
+    //margin-top: 3px
+    filter: brightness(0) saturate(100%) invert(54%) sepia(7%) saturate(0%) hue-rotate(226deg) brightness(92%) contrast(83%)
+    // SVG color conversion tool: https://codepen.io/sosuke/pen/Pjoqqp
+    //  -> Prefix with _brightness(0) saturate(100%)_ to ensure all SVGs start completely black.
+    //  -> Now we can set SVG color to #808080 gray.
+.btn-edit-mode:hover,
+.btn-edit-mode:focus
+  border-color: $color-border
+  background: #ddd
+.btn-edit-mode:active
+  background: #ccc
+  //border: 1px solid $color-5
+
+.btn-reset,
+.btn-cancel
+  //background: $color-7
+  //color: $color-text-light
+  margin: 0 0.25em
+
+.btn-save,
+.btn-submit,
+.btn-add
+  background: $color-5
+  color: $color-text-light
+  border: 1px solid $color-6
+  line-height: 1
+.btn-save:hover,
+.btn-save:focus,
+.btn-add:hover,
+.btn-add:focus
+  background: $color-6
+  color: $color-text-light
+  border: 1px solid $color-7
+.btn-save:active,
+.btn-add:active
+  border-color: $color-background
+
+.btn-add
+  //background: $color-2
+  //border: 1px solid $color-2
+  margin: 0
+  font-weight: 400
+  white-space: nowrap
+  height: 2em
+  width: 9em
+  display: flex
+  align-items: center
+  justify-content: center
+  .icon-add
+    background: inherit
+    margin-right: 0.2em
+    height: 1.1em
+//.btn-add:hover
+//  background: #ddddd9
+//  border-color: #ddddd9
+.btn-collapsed.btn-add
+  border-bottom-left-radius: 0
+  border-bottom-right-radius: 0
+
+.btn-submit
+  background-color: $color-nav-background
+  border-color: $color-nav-background
+.btn-submit:hover,
+.btn-submit:focus
+  background-color: #252525
+.btn-submit:active
+  border-color: white
+  
+.btn-delete
+  border: none
+  border-radius: 0.625em
+  height: 1em
+  width: 1em
+  margin: 0
+  display: flex
+  align-content: center
+  justify-content: center
+.btn-delete:hover,
+.btn-delete:focus
+  background: $color-background

@@ -1,0 +1,43 @@
+@import "variables"
+
+input,
+select,
+textarea
+  font-family: inherit
+  background: $color-background
+  color: $color-on-background
+  border: 1px solid $color-border
+  border-radius: 0.2em
+  margin: 0
+  cursor: text
+
+input:hover,
+input:focus,
+select:hover,
+select:focus,
+textarea:hover,
+textarea:focus
+  border: 1px solid $color-border-darker
+
+input[type="text"],
+input[type="number"],
+select
+  height: 2em
+
+input[type="text"]
+  padding: 0.5em 0.5em
+input[type="text"]:placeholder-shown
+  font-style: italic
+
+input[type="number"]
+  padding: 0 0.5em
+  width: max-content + 0.5em
+
+textarea
+  padding: 0.3em 0.5em
+textarea:disabled,
+textarea:read-only
+  background: $color-lightest
+
+select
+  padding: 0 0.2em

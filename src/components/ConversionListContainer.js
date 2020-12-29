@@ -1,6 +1,7 @@
 import React from 'react';
 import {MDBDataTable} from 'mdbreact';
 
+// TODO: Refactor to functional component
 class ConversionListContainer extends React.Component {
     constructor(props) {
         super(props);

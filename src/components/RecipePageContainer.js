@@ -1,6 +1,8 @@
 import React from 'react';
 import RecipePage from './RecipePage';
 import {useParams} from 'react-router-dom';
+import "../styles/add-recipe-or-step.sass";
+import "../styles/recipe-attributes.sass";
 
 // Middleware because I couldn't figure out how to grab the recipeId for
 //   a requested page without useParams.  A hash table would solve this!

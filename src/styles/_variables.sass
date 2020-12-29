@@ -1,0 +1,123 @@
+/*** Fonts ***/
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap")
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap")
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap")
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap")
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap")
+//@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap")
+$font-stack-primary: "Noto Sans", "IBM Plex Sans", "Roboto", sans-serif
+$font-stack-secondary: "Roboto Slab", serif
+$font-stack-mono: "Roboto Mono", "Courier New", monospace
+
+
+/*** Color Palette ***/
+
+$color-1: #c7c1ab
+$color-2: #ecece8
+$color-3: #f7ebdd
+$color-4: #dbb37e
+$color-5: #935614
+$color-6: #612c00
+$color-7: #370300
+$color-8: #160000
+
+$color-brown1: #d79922
+$color-brown2: #bc986a
+$color-brown3: #907163
+$color-brown4: #7e685a
+$color-brown5: #4f4a41
+$color-brown6: #844d36
+$color-brown7: #935614
+$color-brown8: #dbb37e
+
+$color-gray-lighter: #f4f4f0
+$color-gray-light: #ecece8
+$color-gray: #ddddd9
+$color-gray-dark: #babab6
+$color-gray-darker: #9a9a97
+
+$color-primary-complementary: #d56e00
+$color-primary-analogous-1: #00d1d5
+$color-primary-analogous-2: #0400d5
+$color-primary-triadic-1: #6e00d5
+$color-primary-triadic-2: #d50067
+
+
+/*** Default Colors ***/
+
+$color-text-light: #f5f5f5
+$color-text-dark: #121212
+$color-light-alt: #d1d7e0
+$color-lightest: #f8f8f8
+$color-background: #f8f8f8
+$color-nav-background: #160000
+$color-border: #979aa0
+$color-border-lighter: rgba(151,154,160,0.6)
+$color-border-darker: #696c72
+$color-link: #003fa3
+$color-link-visited: $color-link  // #0068d5
+
+$color-tooltip-background: #282c34
+$color-tooltip-text: #EEEEEE
+
+$color-secondary: #ccc
+$color-on-background: #121212
+$color-on-light: #241933
+$color-background-darker-1: #eee
+$color-background-darker-2: #ccc
+$color-background-darker-3: #aaa
+$color-danger: #B81F11
+$color-danger-light: #d78f8c
+$color-danger-dark: #8C180D
+$color-on-danger: #f5f5f5
+$color-on-danger-light: #121212
+$color-on-danger-dark: #f5f5f5
+
+
+/*** Page Layout ***/
+
+$header-height: 3em
+$footer-height: $header-height - 1em
+$app-max-width: 1200px
+
+
+/*** Debugging ***/
+
+.color-test
+  display: flex
+  justify-content: space-evenly
+  cursor: initial
+  span
+    width: 120px
+.test-border
+  background: $color-border
+  color: $color-text-dark
+  margin-top: 1em
+.test-border-2
+  background: $color-border-darker
+  color: $color-lightest
+.test1
+  background: $color-1
+.test2
+  background: $color-2
+.test3
+  background: $color-3
+.test4
+  background: $color-4
+.test5
+  background: $color-5
+.test6
+  background: $color-6
+  color: $color-text-light
+.test7
+  background: $color-7
+  color: $color-text-light
+.test8
+  background: $color-8
+  color: $color-text-light
+
+$border1: 1px solid black
+$border2: 1px solid red
+$border3: 1px solid lightblue
+$border4: 1px solid darkgreen
