@@ -19,47 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Added TODOs to all the class-based components">
-      <change afterPath="$PROJECT_DIR$/src/styles/_variables.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/_variables.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/_variables.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/add-recipe-or-step.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/add-recipe-or-step.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/add-recipe-or-step.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/buttons.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/buttons.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/buttons.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/html-tags.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/html-tags.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/html-tags.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/input-controls.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/input-controls.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/input-controls.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/nav.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/nav.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/nav.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/recipe-and-step-lists.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/recipe-and-step-lists.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/recipe-and-step-lists.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/recipe-attributes.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/recipe-attributes.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/recipe-attributes.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/start-finish.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/start-finish.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/start-finish.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/text-conversion.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/text-conversion.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/text-conversion.sass" afterDir="false" />
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="CSS overhaul, split by function">
+      <change afterPath="$PROJECT_DIR$/src/hooks/useTextConversion.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,12 +49,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Sass File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -245,14 +211,7 @@
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
       <workItem from="1607289539104" duration="10820000" />
-      <workItem from="1608579624429" duration="11127000" />
-    </task>
-    <task id="LOCAL-00055" summary="Finally figured out wtf was happening!  Stable once again!">
-      <created>1588555362506</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1588555362507</updated>
+      <workItem from="1608579624429" duration="18790000" />
     </task>
     <task id="LOCAL-00056" summary="Updated difficulty icons &amp; edit mode">
       <created>1589083289093</created>
@@ -590,7 +549,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609274698460</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="CSS overhaul, split by function">
+      <created>1609277613412</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1609277613412</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -615,7 +581,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Ready for prod deploy" />
     <MESSAGE value="SSL support" />
     <MESSAGE value="Removed bootstrap from everything but the convert page" />
     <MESSAGE value="Bootstrap completely removed!!! :D" />
@@ -640,6 +605,7 @@
     <MESSAGE value="First crack at AddStep" />
     <MESSAGE value="Minor changes pre-travel" />
     <MESSAGE value="Added TODOs to all the class-based components" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added TODOs to all the class-based components" />
+    <MESSAGE value="CSS overhaul, split by function" />
+    <option name="LAST_COMMIT_MESSAGE" value="CSS overhaul, split by function" />
   </component>
 </project>

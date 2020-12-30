@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker/es';
-import "../styles/start-finish.sass"
+import "../styles/start-finish.sass";
 
 // TODO: Refactor to functional component
 class RecipeStartFinish extends React.Component {

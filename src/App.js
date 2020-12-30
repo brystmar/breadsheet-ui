@@ -147,7 +147,7 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/convert">
                             <PageTitle title="Convert Text" includeHr={true}/>
-                            <ConvertTextPageContainer/>
+                            <ConvertTextPageContainer />
                         </Route>
 
                         <Route path="/:recipeId">

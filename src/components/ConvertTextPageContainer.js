@@ -1,75 +1,52 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ConvertTextControls from './ConvertTextControls';
 import ConversionListContainer from './ConversionListContainer';
-import LoadingIcon from "./LoadingIcon";
-import "../styles/text-conversion.sass"
+import "../styles/text-conversion.sass";
 
-// TODO: Refactor to functional component
-class ConvertTextPageContainer extends React.Component {
-    constructor(props) {
-        super(props);
+// TODO: Add imperial-to-metric weight conversion
+function ConvertTextPageContainer() {
+    let [textList, updateTextList] = useState({
+        ingredients: [],
+        directions: [],
+        hasData: false
+    });
 
-        this.state = {
-            repListIngredients: [],
-            repListDirections: [],
-            hasData: false
-        }
-        this.getReplacements = this.getReplacements.bind(this);
-    }
-
-    componentDidMount() {
-        // console.log(this.state);
-        this.getReplacements("ingredients");
-        this.getReplacements("directions");
-    }
-
-    getReplacements(scope) {
-        // Get the list of replacements
-        // console.log("Calling endpoint:", process.env.REACT_APP_BACKEND_URL + "/api/v1/replacements/" + scope)
-        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/replacements/" + scope)
+    function callTextConversionApi() {
+        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/replacements/all")
             .then(response => response.json())
             .then(result => {
                     if (result.message === "Success") {
-                        // console.log("Successfully retrieved list of", scope);
-                        if (scope === "ingredients") {
-                            this.setState({
-                                repListIngredients: result.data,
-                                hasData: true
-                            });
-                        } else if (scope === "directions") {
-                            this.setState({
-                                repListDirections: result.data,
-                                hasData: true
-                            });
-                        }
+                        updateTextList({
+                            ingredients: result.data.ingredients,
+                            directions: result.data.directions,
+                            hasData: true
+                        });
                     } else {
-                        console.log("Error retrieving", scope, "Replacements.");
+                        console.log("Error retrieving replacements.");
                         console.log(result.body);
                         return Promise.reject(result.status);
                     }
                 }
             )
-            .catch(rejection => console.log(rejection));
+            .catch(rejection => console.log("Caught error querying for replacements:", rejection));
     }
 
-    render() {
-        return (
-            <div className="text-conversion-container">
-                {this.state.hasData ?
-                    <>
-                        <ConvertTextControls ingredientsList={this.state.repListIngredients}
-                                             directionsList={this.state.repListDirections}
-                                             updateReplacementList={this.getReplacements}/>
-                        <br/>
-                        <ConversionListContainer ingredientsList={this.state.repListIngredients}
-                                                 directionsList={this.state.repListDirections}
-                                                 updateReplacementList={this.getReplacements}/>
-                    </> :
-                    <LoadingIcon cssClass="replacement-list-container"/>}
+    useEffect(callTextConversionApi, [])
 
-            </div>
-        )
-    }
+    return <div className="text-conversion-container">
+        <ConvertTextControls ingredientsList={textList.ingredients}
+                             directionsList={textList.directions}
+                             updateReplacementList={callTextConversionApi}
+                             hasData={textList.hasData}
+        />
+
+        <ConversionListContainer ingredientsList={textList.ingredients}
+                                 directionsList={textList.directions}
+                                 updateReplacementList={callTextConversionApi}
+                                 hasData={textList.hasData}
+        />
+
+    </div>
 }
 
 export default ConvertTextPageContainer;
