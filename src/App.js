@@ -1,12 +1,12 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import PageTitle from './components/PageTitle';
 import RecipeListContainer from './components/RecipeListContainer';
 import RecipePageContainer from './components/RecipePageContainer';
 import AddRecipe from './components/AddRecipe';
 import ConvertTextPageContainer from './components/ConvertTextPageContainer';
-import Footer from './components/Footer';
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles/styles.sass';
 import './styles/recipe-and-step-lists.sass';
@@ -140,9 +140,8 @@ class App extends React.Component {
     render() {
         return (
             <div className="app-container">
-                <header className="header-container">
-                    <Navbar/>
-                </header>
+                <Header/>
+
                 <main className="content-container">
                     <Switch>
                         <Route exact path="/convert">
