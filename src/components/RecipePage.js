@@ -149,7 +149,7 @@ class RecipePage extends React.Component {
             .catch(something => console.log("Caught:", something));
     }
 
-    addStepToRecipe(newStep, newStepLength) {
+    addStepToRecipe(newStep) {
         let updatedRecipe = this.state.recipeData;
 
         // Add a new step to the list
@@ -158,8 +158,8 @@ class RecipePage extends React.Component {
         // Sort by step.number
         updatedRecipe.steps.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
 
-        // Update the recipe length
-        updatedRecipe.length += newStepLength;
+        // Update the recipe length, which is newStep.then_wait
+        updatedRecipe.length += newStep.then_wait;
 
         this.saveUpdatedRecipe({
             recipeData: updatedRecipe,

@@ -31,6 +31,7 @@ function AddStepNew(props) {
     }
 
     function handleSubmit(step, event) {
+        // TODO: Replace validation with formik & yup
         // stepNumber validation
         if (step.number <= 0) {
             updateStep({number: props.nextStep})
@@ -50,7 +51,7 @@ function AddStepNew(props) {
 
         // Create an object that's congruent with the Step data model
         // TODO: Move then_wait logic into the useStep hook so we don't need
-        //  to create a new object that mirrors the data model
+        //       to create a new object that mirrors the data model
         let newStepObject = {
             step_id: uuid(),
             number: Number(step.number),
@@ -62,10 +63,9 @@ function AddStepNew(props) {
         console.log("New Step:", newStepObject);
 
         // Send this new step to the parent so it can update the backend
-        props.addStepToRecipe(newStepObject, newStepObject.then_wait);
+        props.addStepToRecipe(newStepObject);
         resetAddStepForm();
     }
-
 
     return (
         <div className="add-step-container">

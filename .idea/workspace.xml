@@ -19,11 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Starting to separate API calls from component display logic">
-      <change afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Separate header component">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,14 +209,7 @@
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
       <workItem from="1607289539104" duration="10820000" />
-      <workItem from="1608579624429" duration="30760000" />
-    </task>
-    <task id="LOCAL-00059" summary="Re-organized &amp; renamed a few things for clarity">
-      <created>1591548677972</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1591548677972</updated>
+      <workItem from="1608579624429" duration="31503000" />
     </task>
     <task id="LOCAL-00060" summary="Fully transitioned to SASS, ready to replace html tables w/CSS grid">
       <created>1596761848742</created>
@@ -555,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609628098472</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="Separate header component">
+      <created>1609628308857</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1609628308858</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -580,7 +579,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="More cleanup after removing Bootstrap" />
     <MESSAGE value="Cleaning up the Convert page" />
     <MESSAGE value="Fixed buttons on Convert page" />
     <MESSAGE value="Updated website metadata, headers, favicon stuff" />
@@ -605,6 +603,7 @@
     <MESSAGE value="Refactored ConvertTextPageContainer; need to finish its custom hook" />
     <MESSAGE value="Applied useEffect to ConvertTextPageContainer" />
     <MESSAGE value="Starting to separate API calls from component display logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Starting to separate API calls from component display logic" />
+    <MESSAGE value="Separate header component" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separate header component" />
   </component>
 </project>
