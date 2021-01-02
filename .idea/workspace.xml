@@ -19,11 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Refactored ConvertTextPageContainer; need to finish its custom hook">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Applied useEffect to ConvertTextPageContainer">
+      <change afterPath="$PROJECT_DIR$/src/services/textConversionApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/defaultValues.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/defaultValues.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useTextConversion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useTextConversion.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,14 +210,7 @@
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
       <workItem from="1607289539104" duration="10820000" />
-      <workItem from="1608579624429" duration="29797000" />
-    </task>
-    <task id="LOCAL-00057" summary="Updated difficulties &amp; icons">
-      <created>1590688246949</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1590688246949</updated>
+      <workItem from="1608579624429" duration="30527000" />
     </task>
     <task id="LOCAL-00058" summary="UI was cutting off text for ThenWaitHH/MM">
       <created>1591547899229</created>
@@ -556,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609309641704</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Applied useEffect to ConvertTextPageContainer">
+      <created>1609626564923</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1609626564923</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -581,7 +580,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Removed bootstrap from everything but the convert page" />
     <MESSAGE value="Bootstrap completely removed!!! :D" />
     <MESSAGE value="More cleanup after removing Bootstrap" />
     <MESSAGE value="Cleaning up the Convert page" />
@@ -606,6 +604,7 @@
     <MESSAGE value="Added TODOs to all the class-based components" />
     <MESSAGE value="CSS overhaul, split by function" />
     <MESSAGE value="Refactored ConvertTextPageContainer; need to finish its custom hook" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored ConvertTextPageContainer; need to finish its custom hook" />
+    <MESSAGE value="Applied useEffect to ConvertTextPageContainer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Applied useEffect to ConvertTextPageContainer" />
   </component>
 </project>
