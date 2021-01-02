@@ -6,4 +6,10 @@ let defaultStep = {
     note: ""
 }
 
-export {defaultStep};
+let defaultTextConversionState = {
+    ingredients: [],
+    directions: [],
+    hasData: false
+}
+
+export {defaultStep, defaultTextConversionState};

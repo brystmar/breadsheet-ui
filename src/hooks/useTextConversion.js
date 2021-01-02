@@ -1,27 +1,31 @@
 import {useReducer} from "react";
 
-function useTextConversion(endpoint) {
-    let [state, dispatch] = useReducer((state, action) => {
-        switch (action.type) {
-            case 'GET_TEXT_LIST': {
-                return 0
-            }
+// const reducer = (state, action) => {
+//     switch (action.type) {
+//         case 'GET_TEXT_LISTS': {
+//             return state
+//         }
+//
+//         case 'UPDATE_TEXT_LIST_ITEM': {
+//             // TODO: Build functionality to allow updating the replacement lists
+//             return state
+//         }
+//
+//         case 'RESET': {
+//             return defaultTextConversionState;
+//         }
+//
+//         default: {
+//             return state;
+//             // throw new Error("Invalid `action.type` in the useTextConversion reducer.");
+//         }
+//     }
+// }
 
-            case 'UPDATE_TEXT_LIST_ITEM': {
-                return 0
-            }
-
-            default: {
-                return 0
-            }
-        }
-    }, {
-        ingredients: [],
-        directions: [],
-        hasData: false
-    })
-
-    return [state, dispatch]
-}
-
-export default useTextConversion;
+// function useTextConversion() {
+//     const [state, dispatch] = useReducer(reducer, defaultTextConversionState)
+//
+//     return [state, dispatch]
+// }
+//
+// export default useTextConversion;

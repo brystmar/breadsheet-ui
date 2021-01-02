@@ -42,7 +42,7 @@ class App extends React.Component {
                 this.setState({
                     allRecipes: this.sortAllRecipes(result.data)
                 })
-                console.log(result.data);
+                // console.log("Recipes:", result.data);
             })
             .catch(error => console.log("Error retrieving data for all recipes:", error));
     }
