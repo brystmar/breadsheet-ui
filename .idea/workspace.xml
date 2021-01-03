@@ -19,10 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Separate header component">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Simplified some AddStep logic">
+      <change afterPath="$PROJECT_DIR$/src/hooks/useRecipe.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/BtnAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/BtnAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,14 +215,7 @@
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
       <workItem from="1607289539104" duration="10820000" />
-      <workItem from="1608579624429" duration="31503000" />
-    </task>
-    <task id="LOCAL-00060" summary="Fully transitioned to SASS, ready to replace html tables w/CSS grid">
-      <created>1596761848742</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1596761848742</updated>
+      <workItem from="1608579624429" duration="36327000" />
     </task>
     <task id="LOCAL-00061" summary="Recipe list uses basic grid">
       <created>1596769262393</created>
@@ -554,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609628308858</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="Simplified some AddStep logic">
+      <created>1609629051187</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1609629051188</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -579,7 +585,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Cleaning up the Convert page" />
     <MESSAGE value="Fixed buttons on Convert page" />
     <MESSAGE value="Updated website metadata, headers, favicon stuff" />
     <MESSAGE value="Moved recipe-level edit button to the attributes container" />
@@ -604,6 +609,7 @@
     <MESSAGE value="Applied useEffect to ConvertTextPageContainer" />
     <MESSAGE value="Starting to separate API calls from component display logic" />
     <MESSAGE value="Separate header component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Separate header component" />
+    <MESSAGE value="Simplified some AddStep logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified some AddStep logic" />
   </component>
 </project>

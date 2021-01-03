@@ -766,6 +766,10 @@ select {
   visibility: visible;
 }
 
+.hidden {
+  display: none;
+}
+
 /*** Active Elements ***/
 .footer-container {
   font-size: 0.8rem;
