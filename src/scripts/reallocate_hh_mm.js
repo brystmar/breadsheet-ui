@@ -4,7 +4,7 @@ function reallocate_hh_mm(event, providedHours, providedMinutes) {
     // Re-calculates hours/minutes when providedMinutes >= 60
     const {name, value} = event.target;
     const numValue = Number(value);
-    console.log("Reallocate hh/mm:", name, value, numValue);
+    // console.log("Start of reallocate_hh_mm:", name, value, numValue);
 
     // Re-allocate minutes if thenWaitMM value is >= 60
     if (name === "thenWaitMM" && numValue >= 60) {
@@ -22,13 +22,14 @@ function reallocate_hh_mm(event, providedHours, providedMinutes) {
                 thenWaitMM: pad(value)
             }
         } else {
+            // Ensures leading zeroes are removed from hours
             return {
-                thenWaitHH: pad(value),
+                thenWaitHH: numValue,
                 thenWaitMM: providedMinutes
             }
         }
     } else if (value.length >= 3 && value.toString().charAt(0) === "0") {
-        // Remove unnecessary leading zeroes
+        // Remove extra leading zeroes
         if (name === "thenWaitMM") {
             return {
                 thenWaitHH: providedHours,
@@ -40,11 +41,11 @@ function reallocate_hh_mm(event, providedHours, providedMinutes) {
                 thenWaitMM: providedMinutes
             }
         }
-    } else {
-        return {
-            thenWaitHH: providedHours,
-            thenWaitMM: providedMinutes
-        }
+    }
+    // console.log("Finished reallocate_hh_mm without a return.");
+    return {
+        thenWaitHH: providedHours,
+        thenWaitMM: providedMinutes
     }
 }
 

@@ -19,12 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="AddStep reducer works, but all events are happening twice">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="AddStep works, though it's still rendering multiple times">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/reallocate_hh_mm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/reallocate_hh_mm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,14 +211,7 @@
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
       <workItem from="1607289539104" duration="10820000" />
-      <workItem from="1608579624429" duration="46388000" />
-    </task>
-    <task id="LOCAL-00063" summary="Support for URLs in AddRecipe">
-      <created>1597015431811</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1597015431811</updated>
+      <workItem from="1608579624429" duration="50544000" />
     </task>
     <task id="LOCAL-00064" summary="Ready to tackle the Step page">
       <created>1597018797042</created>
@@ -556,7 +549,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609646950404</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="AddStep works, though it's still rendering multiple times">
+      <created>1609702648309</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1609702648309</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -581,7 +581,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Moved recipe-level edit button to the attributes container" />
     <MESSAGE value="Much improved Convert page, and fixed step list grid issues" />
     <MESSAGE value="Responsive tweaks for add recipe &amp; step forms" />
     <MESSAGE value="Start/finish component is now responsive" />
@@ -606,6 +605,7 @@
     <MESSAGE value="Simplified some AddStep logic" />
     <MESSAGE value="Moving AddStep logic to a reducer" />
     <MESSAGE value="AddStep reducer works, but all events are happening twice" />
-    <option name="LAST_COMMIT_MESSAGE" value="AddStep reducer works, but all events are happening twice" />
+    <MESSAGE value="AddStep works, though it's still rendering multiple times" />
+    <option name="LAST_COMMIT_MESSAGE" value="AddStep works, though it's still rendering multiple times" />
   </component>
 </project>

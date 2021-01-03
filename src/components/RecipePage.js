@@ -1,5 +1,4 @@
-// Details section displayed on the recipe-specific page.
-// Data: author, source, total time, difficulty, date added.
+// Layout for a recipe-specific page.
 import React from 'react';
 import PageTitle from './PageTitle';
 import RecipePageAttributes from './RecipePageAttributes';
@@ -156,7 +155,7 @@ class RecipePage extends React.Component {
 
         // Enforce unique step numbers
         if (updatedRecipe.steps.map((step) => step.number).includes(newStep.number)) {
-            console.log("Step number", newStep.number, "already exists");
+            // console.log("Step number", newStep.number, "already exists");
             return
         }
 

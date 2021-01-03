@@ -7,7 +7,7 @@ import reallocate_hh_mm from "../scripts/reallocate_hh_mm";
 
 function AddStep(props) {
     const [state, dispatch] = useStep(props.nextStep);
-    console.log(props);
+    // console.log(props);
 
     // Update nextStep when necessary
     useEffect(() => dispatch({
@@ -111,7 +111,7 @@ function AddStep(props) {
                                onChange={(event) =>
                                    dispatch({
                                        type: "HANDLE_HH_CHANGE",
-                                       payload: event.target.value
+                                       payload: Number(event.target.value)
                                    })}
                                onBlur={(event) => {
                                    dispatch({

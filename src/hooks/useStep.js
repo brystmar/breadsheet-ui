@@ -38,7 +38,7 @@ function stepReducer(state, action) {
                 note: state.note
             };
 
-            console.log("New Step:", newStepObject);
+            // console.log("New Step:", newStepObject);
 
             // Send this new step to the parent so it can update the backend
             action.payload.addStepToRecipe(newStepObject);
