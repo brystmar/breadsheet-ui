@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import BtnAdd from './buttons/BtnAdd';
 import BtnSubmit from './buttons/BtnSubmit';
 import {v4 as uuid} from 'uuid';
 import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
 
 function AddRecipeNew(props) {
-    function handleButtonToggle() {
-
-    }
+    // function handleButtonToggle() {}
 
     return (
         <div className="add-recipe-container">

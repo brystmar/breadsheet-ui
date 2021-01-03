@@ -12,7 +12,8 @@ function stepReducer(state, action) {
         }
 
         case 'HANDLE_SUBMIT': {
-            console.log("Start of dispatch HANDLE_SUBMIT");
+            // TODO: This is being called twice, adding a duplicate step each time
+            // console.log("Start of dispatch HANDLE_SUBMIT");
 
             // TODO: Replace validation with formik & yup
             // stepNumber validation
@@ -29,8 +30,6 @@ function stepReducer(state, action) {
             }
 
             // Create an object that's congruent with the Step data model
-            // TODO: Move then_wait logic into the useStep hook so we don't need
-            //       to create a new object that mirrors the data model
             let newStepObject = {
                 step_id: uuid(),
                 number: Number(state.number),
@@ -49,7 +48,7 @@ function stepReducer(state, action) {
         }
 
         case 'HANDLE_NUMBER_CHANGE': {
-            console.log("Called HANDLE_CHANGE w/action:", action);
+            // console.log("Called HANDLE_NUMBER_CHANGE w/action:", action);
             return {
                 ...state,
                 number: action.payload
@@ -57,7 +56,7 @@ function stepReducer(state, action) {
         }
 
         case 'HANDLE_TEXT_CHANGE': {
-            console.log("Called HANDLE_CHANGE w/action:", action);
+            // console.log("Called HANDLE_TEXT_CHANGE w/action:", action);
             return {
                 ...state,
                 text: action.payload
@@ -65,7 +64,7 @@ function stepReducer(state, action) {
         }
 
         case 'HANDLE_HH_CHANGE': {
-            console.log("Called HANDLE_CHANGE w/action:", action);
+            // console.log("Called HANDLE_HH_CHANGE w/action:", action);
             return {
                 ...state,
                 thenWaitHH: action.payload
@@ -73,7 +72,7 @@ function stepReducer(state, action) {
         }
 
         case 'HANDLE_MM_CHANGE': {
-            console.log("Called HANDLE_CHANGE w/action:", action);
+            // console.log("Called HANDLE_MM_CHANGE w/action:", action);
             return {
                 ...state,
                 thenWaitMM: action.payload
@@ -81,7 +80,7 @@ function stepReducer(state, action) {
         }
 
         case 'HANDLE_HHMM_CHANGE': {
-            console.log("Called HANDLE_CHANGE w/action:", action);
+            // console.log("Called HANDLE_HHMM_CHANGE w/action:", action);
             return {
                 ...state,
                 thenWaitHH: action.payload.thenWaitHH,
@@ -90,7 +89,7 @@ function stepReducer(state, action) {
         }
 
         case 'HANDLE_NOTE_CHANGE': {
-            console.log("Called HANDLE_CHANGE w/action:", action);
+            // console.log("Called HANDLE_NOTE_CHANGE w/action:", action);
             return {
                 ...state,
                 note: action.payload

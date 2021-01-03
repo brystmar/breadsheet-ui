@@ -19,15 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Moving AddStep logic to a reducer">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="AddStep reducer works, but all events are happening twice">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useStep.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/reallocate_hh_mm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/reallocate_hh_mm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,14 +211,7 @@
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
       <workItem from="1607289539104" duration="10820000" />
-      <workItem from="1608579624429" duration="43014000" />
-    </task>
-    <task id="LOCAL-00062" summary="Recipe list is basically done">
-      <created>1596951237773</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1596951237773</updated>
+      <workItem from="1608579624429" duration="46388000" />
     </task>
     <task id="LOCAL-00063" summary="Support for URLs in AddRecipe">
       <created>1597015431811</created>
@@ -559,7 +549,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609640208396</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="AddStep reducer works, but all events are happening twice">
+      <created>1609646950403</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1609646950404</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -584,7 +581,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Updated website metadata, headers, favicon stuff" />
     <MESSAGE value="Moved recipe-level edit button to the attributes container" />
     <MESSAGE value="Much improved Convert page, and fixed step list grid issues" />
     <MESSAGE value="Responsive tweaks for add recipe &amp; step forms" />
@@ -609,6 +605,7 @@
     <MESSAGE value="Separate header component" />
     <MESSAGE value="Simplified some AddStep logic" />
     <MESSAGE value="Moving AddStep logic to a reducer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moving AddStep logic to a reducer" />
+    <MESSAGE value="AddStep reducer works, but all events are happening twice" />
+    <option name="LAST_COMMIT_MESSAGE" value="AddStep reducer works, but all events are happening twice" />
   </component>
 </project>
