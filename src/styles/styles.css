@@ -767,7 +767,7 @@ select {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /*** Active Elements ***/

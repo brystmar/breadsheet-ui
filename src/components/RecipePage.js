@@ -63,9 +63,11 @@ class RecipePage extends React.Component {
     }
 
     toggleEditMode(newEditMode = !this.state.editMode) {
-        this.setState({
-            editMode: newEditMode
-        })
+        if (newEditMode !== this.state.editMode) {
+            this.setState({
+                editMode: !this.state.editMode
+            })
+        }
     }
 
     findHighestStep(stepList) {

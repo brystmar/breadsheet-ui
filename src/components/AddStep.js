@@ -1,46 +1,54 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import BtnAdd from './buttons/BtnAdd';
 import BtnSubmit from './buttons/BtnSubmit';
 import useStep from '../hooks/useStep';
-import {defaultStep} from '../data/defaultValues';
-// import {pad} from '../scripts/time_display_functions';
-// import {v4 as uuid} from 'uuid';
 import reallocate_hh_mm from "../scripts/reallocate_hh_mm";
 
 // TODO: Validate the new functional component
 function AddStep(props) {
-    const [newStep, updateStep, handleStepChange, handleSubmit] = useStep({
-        ...defaultStep,
-        number: props.nextStep
-    });
+    const [state, dispatch] = useStep(props.nextStep);
+
+    // Update nextStep when we receive the final props
+    useEffect(() => dispatch({
+        type: "UPDATE_STEP_NUMBER",
+        payload: props.nextStep
+    }), [props, dispatch])
 
     function enforceValidStepNumber(currentNumber) {
         // Replaces the step number in case the user deletes it
         if (currentNumber === ""
             || currentNumber.isNaN
             || Number(currentNumber) <= 0) {
-            updateStep({
-                number: props.nextStep
-            })
+            dispatch({
+                type: "UPDATE_STEP_NUMBER",
+                payload: {nextStepNumber: props.nextStep}
+            });
         }
     }
 
-    console.log("newStep:", newStep);
-
     return (
-        <div className={props.hidden ? "add-step-container hidden" : "add-step-container"}>
+        <div className="add-step-container">
             <BtnAdd btnText="New Step"
                     altText="Toggles display of the 'Add new step' form"
                     onClickFn={props.toggleEditMode}
             />
 
-            <form className="add-step-form"
+            <form className={props.hidden ? "add-step-form hidden" : "add-step-form"}
                   id="add-step-form"
                   onSubmit={(event) => {
-                      console.log("AddStep Form submitted!")
+                      console.log("AddStep Form submitted via BtnSubmit button.");
+
+                      // Don't refresh the page
+                      event.preventDefault();
 
                       // Call the submit function
-                      handleSubmit(event, newStep, props.addStepToRecipe, props.nextStep)
+                      dispatch({
+                          type: "HANDLE_SUBMIT",
+                          payload: {
+                              nextStepNumber: props.nextStep,
+                              addStepToRecipe: props.addStepToRecipe
+                          }
+                      });
 
                       // Ensure edit mode on the parent is false
                       props.toggleEditMode(false);
@@ -58,9 +66,13 @@ function AddStep(props) {
                                name="stepNumber"
                                id="number"
                                placeholder="#"
-                               value={newStep.number}
-                               onChange={handleStepChange}
-                               onBlur={() => enforceValidStepNumber(newStep.number)}
+                               value={state.number}
+                               onChange={(event) =>
+                                   dispatch({
+                                       type: "HANDLE_NUMBER_CHANGE",
+                                       payload: event.target.value
+                                   })}
+                               onBlur={() => enforceValidStepNumber(state.number)}
                                required={true}
                         />
                     </span>
@@ -75,8 +87,9 @@ function AddStep(props) {
                            name="text"
                            id="action"
                            placeholder="Mix the dough"
-                           value={newStep.text}
-                           onChange={handleStepChange}
+                           value={state.text}
+                           onChange={(event) =>
+                               dispatch({type: "HANDLE_TEXT_CHANGE", payload: event.target.value})}
                            required={true}
                     />
                 </span>
@@ -93,13 +106,18 @@ function AddStep(props) {
                                name="thenWaitHH"
                                id="then-wait-hh"
                                placeholder="h"
-                               value={newStep.thenWaitHH}
-                               onChange={handleStepChange}
-                               onBlur={(event) => reallocate_hh_mm(
-                                   event,
-                                   newStep.thenWaitHH,
-                                   newStep.thenWaitMM,
-                                   updateStep)}
+                               value={state.thenWaitHH}
+                               onChange={(event) =>
+                                   dispatch({
+                                       type: "HANDLE_HH_CHANGE",
+                                       payload: event.target.value
+                                   })}
+                               onBlur={(event) => {
+                                   dispatch({
+                                       type: "HANDLE_HHMM_CHANGE",
+                                       payload: reallocate_hh_mm(event, state.thenWaitHH, state.thenWaitMM)
+                                   })
+                               }}
                         />
                         <span className="then-wait-helper-text">hrs</span>
 
@@ -110,13 +128,18 @@ function AddStep(props) {
                                name="thenWaitMM"
                                id="then-wait-mm"
                                placeholder="m"
-                               value={newStep.thenWaitMM}
-                               onChange={handleStepChange}
-                               onBlur={(event) => reallocate_hh_mm(
-                                   event,
-                                   newStep.thenWaitHH,
-                                   newStep.thenWaitMM,
-                                   updateStep)}
+                               value={state.thenWaitMM}
+                               onChange={(event) =>
+                                   dispatch({
+                                       type: "HANDLE_MM_CHANGE",
+                                       payload: event.target.value
+                                   })}
+                               onBlur={(event) => {
+                                   dispatch({
+                                       type: "HANDLE_HHMM_CHANGE",
+                                       payload: reallocate_hh_mm(event, state.thenWaitHH, state.thenWaitMM)
+                                   })
+                               }}
                         />
                         <span className="then-wait-helper-text">min</span>
                     </span>
@@ -131,16 +154,16 @@ function AddStep(props) {
                            name="note"
                            id="note"
                            placeholder="Rest until size doubles, 2 to 4 hrs"
-                           value={newStep.note}
-                           onChange={handleStepChange}
+                           value={state.note}
+                           onChange={(event) =>
+                               dispatch({type: "HANDLE_NOTE_CHANGE", payload: event.target.value})}
                     />
                 </span>
 
                 <span className="add-step-form-group button-group">
                     <BtnSubmit btnName="saveNewStep"
                                btnText="Submit"
-                               disabled={newStep.hidden}
-                               onClickFn={handleSubmit(newStep)}
+                               disabled={state.hidden}
                     />
                 </span>
             </form>

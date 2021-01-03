@@ -1,17 +1,23 @@
-import {useReducer, useState} from 'react';
+import {useReducer} from 'react';
 import {v4 as uuid} from "uuid";
 import {defaultStep} from "../data/defaultValues";
 
 function stepReducer(state, action) {
     switch (action.type) {
-        case 'SUBMIT': {
-            console.log("Start of handleSubmit()");
+        case 'UPDATE_STEP_NUMBER': {
+            return {
+                ...state,
+                number: action.payload
+            }
+        }
+
+        case 'HANDLE_SUBMIT': {
+            console.log("Start of dispatch HANDLE_SUBMIT");
 
             // TODO: Replace validation with formik & yup
             // stepNumber validation
             if (state.number <= 0) {
-                updateStep({number: nextStepNumber})
-                return false;
+                return {...state, number: action.payload.nextStepNumber}
             }
 
             // Require values for step# and text/action
@@ -21,9 +27,6 @@ function stepReducer(state, action) {
                 || state.text.isNaN) {
                 return false;
             }
-
-            // Don't refresh the page
-            // event.preventDefault();
 
             // Create an object that's congruent with the Step data model
             // TODO: Move then_wait logic into the useStep hook so we don't need
@@ -39,32 +42,75 @@ function stepReducer(state, action) {
             console.log("New Step:", newStepObject);
 
             // Send this new step to the parent so it can update the backend
-            addStepToRecipe(newStepObject);
+            action.payload.addStepToRecipe(newStepObject);
 
             // Reset the form to its default
-            updateStep({...defaultStep, number: nextStepNumber})
+            return {...state, number: action.payload.nextStepNumber}
         }
 
-        case 'handleChange': {
-            updateStep({[event.target.name]: event.target.value})
+        case 'HANDLE_NUMBER_CHANGE': {
+            console.log("Called HANDLE_CHANGE w/action:", action);
+            return {
+                ...state,
+                number: action.payload
+            }
+        }
+
+        case 'HANDLE_TEXT_CHANGE': {
+            console.log("Called HANDLE_CHANGE w/action:", action);
+            return {
+                ...state,
+                text: action.payload
+            }
+        }
+
+        case 'HANDLE_HH_CHANGE': {
+            console.log("Called HANDLE_CHANGE w/action:", action);
+            return {
+                ...state,
+                thenWaitHH: action.payload
+            }
+        }
+
+        case 'HANDLE_MM_CHANGE': {
+            console.log("Called HANDLE_CHANGE w/action:", action);
+            return {
+                ...state,
+                thenWaitMM: action.payload
+            }
+        }
+
+        case 'HANDLE_HHMM_CHANGE': {
+            console.log("Called HANDLE_CHANGE w/action:", action);
+            return {
+                ...state,
+                thenWaitHH: action.payload.thenWaitHH,
+                thenWaitMM: action.payload.thenWaitMM
+            }
+        }
+
+        case 'HANDLE_NOTE_CHANGE': {
+            console.log("Called HANDLE_CHANGE w/action:", action);
+            return {
+                ...state,
+                note: action.payload
+            }
+        }
+
+        default: {
+            console.log("stepReducer was called w/invalid action.type:", action.type)
+            return state
         }
     }
 }
 
-function useStep(initialState) {
-    // TODO: Use a reducer instead of state
-    const [step, updateStep] = useState(initialState);
+function useStep(nextStepNumber) {
+    const [state, dispatch] = useReducer(stepReducer, {
+        ...defaultStep,
+        number: nextStepNumber
+    })
 
-    function handleChange(event) {
-        updateStep({[event.target.name]: event.target.value})
-    }
-
-    function handleSubmit(event, step, addStepToRecipe, nextStepNumber) {
-
-
-    }
-
-    return [step, updateStep, handleChange, handleSubmit]
+    return [state, dispatch]
 }
 
 export default useStep;
