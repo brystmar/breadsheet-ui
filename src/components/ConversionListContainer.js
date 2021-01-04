@@ -29,7 +29,8 @@ function ConversionListContainer(props) {
 
     return (
         <div className="replacement-list-container">
-            <h3 className="replacement-list-header"
+            <h3
+                className="replacement-list-header"
                 onClick={() => updateState({isCollapsed: !state.isCollapsed})}
             >
                 What's being replaced?
@@ -39,34 +40,37 @@ function ConversionListContainer(props) {
             >
                 <p className="toggle-replacements">
                     Replacements for
-                    <button name="scopeChange"
-                            className="btn btn-default-reverse btn-replacement-toggle"
-                            onClick={() => {
-                                if (state.scope === "ingredients") {
-                                    updateState({scope: "directions"})
-                                } else {
-                                    updateState({scope: "ingredients"})
-                                }
-                            }}
+                    <button
+                        name="scopeChange"
+                        className="btn btn-default-reverse btn-replacement-toggle"
+                        onClick={() => {
+                            if (state.scope === "ingredients") {
+                                updateState({scope: "directions"})
+                            } else {
+                                updateState({scope: "ingredients"})
+                            }
+                        }}
                     >
                         {state.scope === "ingredients" ? "Ingredients" : "Directions"}
-                        <img src="./icons/reverse-solid.svg"
-                             alt="Toggle the replacements list displayed"
-                             className="icon-on-btn"
+                        <img
+                            src="./icons/reverse-solid.svg"
+                            alt="Toggle the replacements list displayed"
+                            className="icon-on-btn"
                         />
                     </button>
                 </p>
 
-                <MDBDataTable scrollY
-                              striped
-                              small
-                              responsiveSm
-                              hover
-                              bordered
-                              maxHeight="600px"
-                              className="replacement-list-item"
-                              data={tableData}
-                              entries={12}
+                <MDBDataTable
+                    scrollY
+                    striped
+                    small
+                    responsiveSm
+                    hover
+                    bordered
+                    maxHeight="600px"
+                    className="replacement-list-item"
+                    data={tableData}
+                    entries={12}
                 />
             </span>
         </div>

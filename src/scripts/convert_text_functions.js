@@ -1,19 +1,18 @@
-// Helper functions related to the text conversion component
+// Helper functions for the text conversion components
 
-function convert_text_using_provided_list(text, replacement_list) {
+function convert_text_using_provided_list(text, replacementList) {
     // Accepts a text string and a list of object replacements (old & new values)
     // Returns a modified string
 
-    if (!replacement_list) {
+    if (!replacementList) {
         return text;
     }
 
-    for (let i = 0; i <= replacement_list.length - 1; i++) {
+    for (let i = 0; i <= replacementList.length - 1; i++) {
         // console.log("Working on:", replacement_list[i]['old']);
-        text = text.split(replacement_list[i]['old']).join(replacement_list[i]['new']);
+        text = text.split(replacementList[i]['old']).join(replacementList[i]['new']);
     }
 
-    // console.log("Ending convert_text_using_provided_list:", text);
     return text;
 }
 
@@ -24,50 +23,47 @@ function format_text_replacement_list_items(inputArray) {
     //   tabs with ⇥
 
     if (inputArray === []) {
-
-        return {}
+        return []
     }
 
     // For visibility, replace all spaces with · and newlines with ¶
-    let output = [];
-    let updated_old = "";
-    let updated_new = "";
-    // ⟶ LONG RIGHTWARDS ARROW, Unicode: U+27F6, UTF-8: E2 9F B6
+    let output = [], updatedFind, updatedReplace;
 
     // For each item in the array...
     for (let i = 0; i < inputArray.length; i++) {
-        updated_old = "";
-        updated_new = "";
+        updatedFind = "";
+        updatedReplace = "";
 
         // Replace these characters in the 'find' column
         for (let j = 0; j < inputArray[i]['old'].length; j++) {
             if (inputArray[i]['old'][j] === " ") {
-                updated_old += String.fromCharCode(183);
+                updatedFind += String.fromCharCode(183);
             } else if (inputArray[i]['old'][j] === "\n") {
-                updated_old += String.fromCharCode(182);
+                updatedFind += String.fromCharCode(182);
             } else if (inputArray[i]['old'][j] === "\t") {
-                updated_old += String.fromCharCode(8677);
+                updatedFind += String.fromCharCode(8677);
             } else {
-                updated_old += inputArray[i]['old'][j];
+                updatedFind += inputArray[i]['old'][j];
             }
         }
 
         // Ditto for the 'replace' column
         for (let k = 0; k < inputArray[i]['new'].length; k++) {
             if (inputArray[i]['new'][k] === " ") {
-                updated_new += String.fromCharCode(183);
+                updatedReplace += String.fromCharCode(183);
             } else if (inputArray[i]['new'][k] === "\n") {
-                updated_new += String.fromCharCode(182);
+                updatedReplace += String.fromCharCode(182);
             } else if (inputArray[i]['new'][k] === "\t") {
-                updated_new += String.fromCharCode(8677);
+                updatedReplace += String.fromCharCode(8677);
             } else {
-                updated_new += inputArray[i]['new'][k];
+                updatedReplace += inputArray[i]['new'][k];
             }
         }
 
         // Append to the array
-        output.push({old: updated_old, new: updated_new});
+        output.push({old: updatedFind, new: updatedReplace});
     }
+
     return output;
 }
 

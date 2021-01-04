@@ -19,15 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="ConvertTextControls is done!">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="ConversionListContainer is also done!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/defaultValues.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/defaultValues.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/convert_text_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/convert_text_functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,14 +210,7 @@
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
       <workItem from="1607289539104" duration="10820000" />
-      <workItem from="1608579624429" duration="61284000" />
-    </task>
-    <task id="LOCAL-00066" summary="Polishing up the step page">
-      <created>1597118609057</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1597118609057</updated>
+      <workItem from="1608579624429" duration="61774000" />
     </task>
     <task id="LOCAL-00067" summary="Smoother title transitions on page load">
       <created>1597450408491</created>
@@ -559,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609720199340</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="ConversionListContainer is also done!">
+      <created>1609725801153</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1609725801153</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -584,7 +580,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Start/finish component is now responsive" />
     <MESSAGE value="Optimizing step page responsive breakpoints for iPhone" />
     <MESSAGE value="Optimizations for mobile devices" />
     <MESSAGE value="Introduced a coding style guide" />
@@ -609,6 +604,7 @@
     <MESSAGE value="AddStep works, though it's still rendering multiple times" />
     <MESSAGE value="AddStep is good enough for now" />
     <MESSAGE value="ConvertTextControls is done!" />
-    <option name="LAST_COMMIT_MESSAGE" value="ConvertTextControls is done!" />
+    <MESSAGE value="ConversionListContainer is also done!" />
+    <option name="LAST_COMMIT_MESSAGE" value="ConversionListContainer is also done!" />
   </component>
 </project>
