@@ -1,6 +1,6 @@
 function getTextConversionData(updateState) {
     // Retrieves the full list of replacements for both ingredients and directions
-    console.log("Calling endpoint:", "/api/v1/replacements/all");
+    console.log("Calling endpoint: /api/v1/replacements/all");
 
     fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/replacements/all")
         .then(response => {

@@ -176,7 +176,8 @@ class ConversionListContainer extends React.Component {
 
 ConversionListContainer.defaultProps = {
     ingredientsList: [],
-    directionsList: []
+    directionsList: [],
+    hasData: false
 }
 
 export default ConversionListContainer;

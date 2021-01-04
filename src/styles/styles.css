@@ -444,6 +444,7 @@ select {
 .btn:disabled:hover {
   opacity: 0.5;
   border: none;
+  cursor: default;
 }
 
 .btn-default {
@@ -534,6 +535,12 @@ select {
 .btn-save:active,
 .btn-add:active {
   border-color: #f8f8f8;
+}
+
+.btn-save:disabled,
+.btn-submit:disabled,
+.btn-add:disabled {
+  background: #935614;
 }
 
 .btn-add {

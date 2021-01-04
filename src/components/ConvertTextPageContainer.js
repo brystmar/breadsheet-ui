@@ -9,7 +9,8 @@ import "../styles/text-conversion.sass";
 function ConvertTextPageContainer() {
     let [state, updateState] = useState(defaultTextConversionState);
 
-    useEffect(() => getTextConversionData(updateState), [])
+    useEffect(() => getTextConversionData(updateState),
+        [])
 
     return (
         <div className="text-conversion-container">

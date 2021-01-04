@@ -19,6 +19,8 @@
 .btn:disabled:hover
   opacity: 0.5
   border: none
+  //background-color: inherit
+  cursor: default
 
 .btn-default
   background: $color-gray-light
@@ -95,6 +97,10 @@
 .btn-save:active,
 .btn-add:active
   border-color: $color-background
+.btn-save:disabled,
+.btn-submit:disabled,
+.btn-add:disabled
+  background: $color-5
 
 .btn-add
   //background: $color-2

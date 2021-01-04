@@ -1,179 +1,153 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import convert_text_using_provided_list from '../scripts/convert_text_functions';
+import {defaultConvertTextState, convertTextPlaceholder} from "../data/defaultValues";
 
-// TODO: Refactor to functional component
-class ConvertTextControls extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            inputIngredients: "",
-            inputDirections: "",
-            outputIngredients: "",
-            outputDirections: "",
-            transition: false,
-            textboxRows: 8,
-            textboxCols: 8
-        }
+function ConvertTextControls(props) {
+    const [state, updateState] = useState(defaultConvertTextState);
 
-        this.handleChange = this.handleChange.bind(this);
-        this.clipboardConfirmation = this.clipboardConfirmation.bind(this);
-        this.resetForm = this.resetForm.bind(this);
-    }
-
-    handleChange(event) {
+    function handleChange(event) {
         const {name, value} = event.target;
 
-        if (this.props.ingredientsList === [] || this.state.directionsList === []) {
-            // Don't run functions until we have replacement data
-            this.setState({
+        if (!props.hasData) {
+            // If we don't have the replacement text lists, users can enter data but the app
+            //   won't try to convert anything.
+            updateState({
+                ...state,
                 [name]: value
+            })
+        } else if (name === "inputIngredients") {
+            updateState({
+                [name]: value,
+                outputIngredients: convert_text_using_provided_list(value, props.ingredientsList)
             });
-        } else {
-            // Convert the relevant text
-            if (name === "inputIngredients") {
-                this.setState({
-                    [name]: value,
-                    outputIngredients: convert_text_using_provided_list(value, this.props.ingredientsList)
-                });
-            } else if (name === "inputDirections") {
-                this.setState({
-                    [name]: value,
-                    outputDirections: convert_text_using_provided_list(value, this.props.directionsList)
-                })
-            }
+        } else if (name === "inputDirections") {
+            updateState({
+                [name]: value,
+                outputDirections: convert_text_using_provided_list(value, props.directionsList)
+            })
         }
     }
 
-    clipboardConfirmation() {
-        // Briefly display a confirmation that text was copied to the clipboard
-        //   Epic CSS animations, anyone? https://daneden.github.io/animate.css/
-        this.setState({
-            transition: !this.state.transition
-        })
-    }
+    return (
+        <div className="text-conversion-inputs-container">
+            <span className="text-conversion-group">
+                <label htmlFor="inputIngredients" className="text-conversion-label">
+                    Ingredients Input
+                </label>
+                <textarea
+                    name="inputIngredients"
+                    id="inputIngredients"
+                    className="text-conversion-box text-conversion-input"
+                    value={state.inputIngredients}
+                    placeholder={convertTextPlaceholder.inputIngredients}
+                    onChange={(event) => handleChange(event)}
+                    autoFocus={true}
+                    tabIndex={1}
+                    rows={state.textRows}
+                    cols={state.textCols}
+                />
+            </span>
 
-    resetForm() {
-        this.setState({
-            inputIngredients: "",
-            inputDirections: "",
-            outputIngredients: "",
-            outputDirections: "",
-            textboxRows: 8,
-            textboxCols: 10
-        })
-    }
+            <span className="text-conversion-group">
+                <label htmlFor="outputIngredients" className="text-conversion-label">
+                    Ingredients Output
+                </label>
+                <textarea
+                    name="outputIngredients"
+                    id="outputIngredients"
+                    className="text-conversion-box text-conversion-output"
+                    value={state.outputIngredients}
+                    placeholder={convertTextPlaceholder.outputIngredients}
+                    readOnly={true}
+                    rows={state.textRows}
+                    cols={state.textCols}
+                />
+            </span>
 
-    render() {
-        const inputIngredientsPlaceholder = "2.25 grams yeast\n1 1/2 teaspoons table salt...";
-        const outputIngredientsPlaceholder = "2¼ g yeast\n1½ tsp table salt...";
-        const inputDirectionsPlaceholder = "Preheat the oven to 350 degrees.\n\n" +
-            "Meanwhile, melt 3 tablespoons butter in a 12-inch skillet over medium heat...";
-        const outputDirectionsPlaceholder = "Preheat the oven to 350°.\n\n" +
-            "Meanwhile, melt 3 tbsp butter in a 12\" skillet over **medium** heat...";
+            <span className="text-conversion-group">
+                <label htmlFor="inputDirections" className="text-conversion-label">
+                    Directions Input
+                </label>
+                <textarea
+                    name="inputDirections"
+                    id="inputDirections"
+                    className="text-conversion-box text-conversion-input"
+                    value={state.inputDirections}
+                    placeholder={convertTextPlaceholder.inputDirections}
+                    onChange={(event) => handleChange(event)}
+                    tabIndex={2}
+                    rows={state.textRows}
+                    cols={state.textCols}
+                />
+            </span>
 
-        return (
-            <div className="text-conversion-inputs-container">
-                <span className="text-conversion-group">
-                    <label htmlFor="inputIngredients" className="text-conversion-label">
-                        Ingredients Input
-                    </label>
-                    <textarea name="inputIngredients"
-                              id="inputIngredients"
-                              className="text-conversion-box text-conversion-input"
-                              value={this.state.inputIngredients}
-                              placeholder={inputIngredientsPlaceholder}
-                              onChange={this.handleChange}
-                              autoFocus={true}
-                              tabIndex={1}
-                              rows={this.state.textboxRows}
-                              cols={this.state.textboxCols}/>
-                </span>
+            <span className="text-conversion-group">
+                <label htmlFor="outputDirections" className="text-conversion-label">
+                    Directions Output
+                </label>
+                <textarea
+                    name="outputDirections"
+                    id="outputDirections"
+                    className="text-conversion-box text-conversion-output"
+                    value={state.outputDirections}
+                    placeholder={convertTextPlaceholder.outputDirections}
+                    readOnly={true}
+                    rows={state.textRows}
+                    cols={state.textCols}
+                />
+            </span>
 
-                <span className="text-conversion-group">
-                    <label htmlFor="outputIngredients" className="text-conversion-label">
-                        Ingredients Output
-                    </label>
-                    <textarea name="outputIngredients"
-                              id="outputIngredients"
-                              className="text-conversion-box text-conversion-output"
-                              value={this.state.outputIngredients}
-                              placeholder={outputIngredientsPlaceholder}
-                              readOnly={true}
-                              rows={this.state.textboxRows}
-                              cols={this.state.textboxCols}/>
-                </span>
-
-                <span className="text-conversion-group">
-                    <label htmlFor="inputDirections" className="text-conversion-label">
-                        Directions Input
-                    </label>
-                    <textarea name="inputDirections"
-                              id="inputDirections"
-                              className="text-conversion-box text-conversion-input"
-                              value={this.state.inputDirections}
-                              placeholder={inputDirectionsPlaceholder}
-                              onChange={this.handleChange}
-                              tabIndex={2}
-                              rows={this.state.textboxRows}
-                              cols={this.state.textboxCols}/>
-                </span>
-
-                <span className="text-conversion-group">
-                    <label htmlFor="outputDirections" className="text-conversion-label">
-                        Directions Output
-                    </label>
-                    <textarea name="outputDirections"
-                              id="outputDirections"
-                              className="text-conversion-box text-conversion-output"
-                              value={this.state.outputDirections}
-                              placeholder={outputDirectionsPlaceholder}
-                              readOnly={true}
-                              rows={this.state.textboxRows}
-                              cols={this.state.textboxCols}/>
-                </span>
-
-                <span className="button-group">
-                    <CopyToClipboard
-                        text={(this.state.outputIngredients + "\n\n" + this.state.outputDirections).trim()}
-                        onCopy={this.clipboardConfirmation}>
-                        <button type="button"
-                                name="copyToClipboard"
-                                className="btn btn-save btn-clipboard"
-                                tabIndex={3}>
-                            Copy to Clipboard
-                        </button>
-                    </CopyToClipboard>
-
-                    <CSSTransition in={this.state.transition}
-                                   timeout={500}
-                                   classNames="clipboard-confirmation"
-                                   onEntered={this.clipboardConfirmation}>
-                        <span className="clipboard-confirmation">
-                            Copied!
-                        </span>
-                    </CSSTransition>
-                </span>
-
-                <span className="button-group">
-                    <button type="button"
-                            name="resetForm"
-                            className="btn btn-default btn-reset"
-                            onClick={this.resetForm}
-                            tabIndex={4}>
-                        Reset
+            <span className="button-group">
+                <CopyToClipboard
+                    text={(state.outputIngredients + "\n\n" + state.outputDirections).trim()}
+                    onCopy={() => updateState({transition: !state.transition})}
+                >
+                    <button
+                        type="button"
+                        name="copyToClipboard"
+                        className="btn btn-save btn-clipboard"
+                        tabIndex={3}
+                        disabled={state.hasData}
+                    >
+                        Copy to Clipboard
                     </button>
-                </span>
-            </div>
-        )
-    }
+                </CopyToClipboard>
+
+                {/*TODO: Now that I understand CSS, it's time to replace this module*/}
+                <CSSTransition
+                    in={state.transition}
+                    timeout={500}
+                    classNames="clipboard-confirmation"
+                    onEntered={() => updateState({transition: !state.transition})}
+                >
+                    <span className="clipboard-confirmation">
+                        Copied!
+                    </span>
+                </CSSTransition>
+            </span>
+
+            <span className="button-group">
+                <button
+                    type="button"
+                    name="resetForm"
+                    className="btn btn-default btn-reset"
+                    onClick={() => updateState(defaultConvertTextState)}
+                    tabIndex={4}
+                >
+                    Reset
+                </button>
+            </span>
+        </div>
+    )
 }
 
 ConvertTextControls.defaultProps = {
     ingredientsList: [],
-    directionsList: []
+    directionsList: [],
+    hasData: false
 }
 
 export default ConvertTextControls;
