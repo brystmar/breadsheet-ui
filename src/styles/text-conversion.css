@@ -133,6 +133,13 @@
 .text-conversion-container .dataTables_wrapper .dataTables_scrollHeadInner {
   padding-right: 0;
 }
+.text-conversion-container .dataTables_wrapper .dataTables_length.bs-select {
+  display: none;
+}
+.text-conversion-container .dataTables_wrapper .row .form-control-sm {
+  position: relative;
+  top: -36px;
+}
 .text-conversion-container .dataTables_wrapper .row .dataTables_info {
   font-style: italic;
   text-align: center;

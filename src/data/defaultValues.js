@@ -31,7 +31,14 @@ const convertTextPlaceholder = {
         "Meanwhile, melt 3 tbsp butter in a 12\" skillet over **medium** heat...",
 }
 
+const defaultConversionListContainerState = {
+    searchString: "",
+    scope: "ingredients",
+    isCollapsed: true
+}
+
 export {
     defaultStep, defaultTextConversionState,
-    defaultConvertTextState, convertTextPlaceholder
+    defaultConvertTextState, convertTextPlaceholder,
+    defaultConversionListContainerState
 };

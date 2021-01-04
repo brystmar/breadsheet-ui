@@ -60,7 +60,12 @@
       font-family: $font-stack-mono
     .dataTables_scrollHeadInner
       padding-right: 0
+    .dataTables_length.bs-select
+      display: none
     .row
+      .form-control-sm  // Move the search box up
+        position: relative
+        top: -36px
       .dataTables_info
         font-style: italic
         text-align: center
