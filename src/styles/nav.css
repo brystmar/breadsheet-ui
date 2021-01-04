@@ -1,0 +1,91 @@
+/*** Fonts ***/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+/*** Color Palette ***/
+/*** Default Colors ***/
+/*** Page Layout ***/
+/*** Debugging ***/
+.color-test {
+  display: flex;
+  justify-content: space-evenly;
+  cursor: initial;
+}
+.color-test span {
+  width: 120px;
+}
+
+.test-border {
+  background: #979aa0;
+  color: #121212;
+  margin-top: 1em;
+}
+
+.test-border-2 {
+  background: #696c72;
+  color: #f8f8f8;
+}
+
+.test1 {
+  background: #c7c1ab;
+}
+
+.test2 {
+  background: #ecece8;
+}
+
+.test3 {
+  background: #f7ebdd;
+}
+
+.test4 {
+  background: #dbb37e;
+}
+
+.test5 {
+  background: #935614;
+}
+
+.test6 {
+  background: #612c00;
+  color: #f5f5f5;
+}
+
+.test7 {
+  background: #370300;
+  color: #f5f5f5;
+}
+
+.test8 {
+  background: #160000;
+  color: #f5f5f5;
+}
+
+.header-container {
+  background: #160000;
+  color: #f5f5f5;
+  margin: 0;
+  padding: 0.25em 1em;
+  font-size: 1.5rem;
+}
+.header-container .nav-content {
+  text-align: center;
+}
+.header-container .nav-content .nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.header-container .nav-content .nav-link {
+  display: inline;
+  color: #f5f5f5;
+  text-decoration: none;
+}
+.header-container .nav-content .nav-link:hover,
+.header-container .nav-content .nav-link:focus {
+  color: #ffffff;
+}
+
+/*# sourceMappingURL=nav.css.map */

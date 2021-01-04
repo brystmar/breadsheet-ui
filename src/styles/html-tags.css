@@ -1,0 +1,148 @@
+/*** Fonts ***/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+/*** Color Palette ***/
+/*** Default Colors ***/
+/*** Page Layout ***/
+/*** Debugging ***/
+.color-test {
+  display: flex;
+  justify-content: space-evenly;
+  cursor: initial;
+}
+.color-test span {
+  width: 120px;
+}
+
+.test-border {
+  background: #979aa0;
+  color: #121212;
+  margin-top: 1em;
+}
+
+.test-border-2 {
+  background: #696c72;
+  color: #f8f8f8;
+}
+
+.test1 {
+  background: #c7c1ab;
+}
+
+.test2 {
+  background: #ecece8;
+}
+
+.test3 {
+  background: #f7ebdd;
+}
+
+.test4 {
+  background: #dbb37e;
+}
+
+.test5 {
+  background: #935614;
+}
+
+.test6 {
+  background: #612c00;
+  color: #f5f5f5;
+}
+
+.test7 {
+  background: #370300;
+  color: #f5f5f5;
+}
+
+.test8 {
+  background: #160000;
+  color: #f5f5f5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 819px) {
+  html {
+    font-size: 0.9rem;
+    transition: font-size 350ms linear;
+  }
+}
+body {
+  font-family: "Noto Sans", "IBM Plex Sans", "Roboto", sans-serif;
+  font-variant: slashed-zero;
+  font-weight: 400;
+  color: #121212;
+  line-height: 1.5;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-align: left;
+  cursor: default;
+}
+
+h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin: 0 0 0.1em;
+  white-space: initial;
+}
+
+h2 {
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  cursor: default;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: #003fa3;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #0068d5;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=html-tags.css.map */

@@ -1,0 +1,125 @@
+@import "variables"
+
+
+.text-conversion-container
+  margin: 1em 0
+  .text-conversion-group
+    display: inline
+    .text-conversion-label
+      display: inline-block
+      text-align: left
+      margin-bottom: 0.25em
+      //border: 1px solid red
+      width: 90%
+    .text-conversion-box
+      height: 90%
+      width: 90%
+  .text-conversion-inputs-container
+    display: grid
+    grid-template: 4fr 4fr 1fr / 1fr 1fr
+    grid-gap: 1em
+  .button-group
+    .btn-clipboard
+      width: 12em
+
+  .clipboard-confirmation
+    visibility: hidden
+    display: flex
+    justify-content: center
+    margin: 4px 0 0 8px
+    color: $color-7
+  .clipboard-confirmation-enter
+    visibility: visible
+    opacity: 1
+  .clipboard-confirmation-enter-active
+    opacity: 0
+    transition: opacity 1s
+
+  .replacement-list-container
+    margin: 1.5em 0
+    background: $color-2
+    border: 1px solid $color-border
+    border-radius: 5px
+    padding: 1em
+    text-align: left
+    .replacement-list-header
+      cursor: default
+      margin-bottom: 1em
+    .btn-replacement-toggle
+      width: 9em
+      margin-left: 0.35em
+      .icon-on-btn
+        display: inline-block
+        margin-left: 0.25em
+        max-width: 20px
+        max-height: 20px
+
+  .dataTables_wrapper
+    padding: 0 1em
+    .dataTables_scroll
+      font-family: $font-stack-mono
+    .dataTables_scrollHeadInner
+      padding-right: 0
+    .dataTables_length.bs-select
+      display: none
+    .row
+      .form-control-sm  // Move the search box up
+        position: relative
+        top: -36px
+      .dataTables_info
+        font-style: italic
+        text-align: center
+        margin: 0.5em 0
+      .dataTables_paginate
+        a
+          cursor: pointer
+          color: $color-link-visited
+        a:visited
+          color: $color-link-visited
+        a:hover
+          text-decoration: none
+          color: $color-link
+        .active
+          padding: 0
+          border-bottom: 2px solid $color-link-visited
+        ul
+          display: flex
+          justify-content: center
+          padding: 0
+          margin: 0
+        li
+          list-style: none
+          margin: 0 0.1em
+        li:first-child
+          .page-link
+            span
+              margin-right: 0.25em
+            span::before
+              content: "<-"
+              margin-right: 0.25em
+              visibility: visible
+        li:last-child
+          .page-link
+            span
+              margin-left: 0.25em
+            span::after
+              content: "->"
+              margin-left: 0.25em
+              visibility: visible
+
+@media (max-width: 569px)
+  .text-conversion-container
+    *
+      transition: all 0.35s
+    .replacement-list-container
+      display: none
+    .text-conversion-inputs-container
+      grid-template: 1fr / auto
+      grid-gap: 0.75em
+      .button-group
+        .btn-clipboard,
+        .btn-reset
+          min-width: 15em
+          min-height: 3em
+    .clipboard-confirmation
+      display: none

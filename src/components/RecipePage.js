@@ -1,5 +1,4 @@
-// Details section displayed on the recipe-specific page.
-// Data: author, source, total time, difficulty, date added.
+// Layout for a recipe-specific page.
 import React from 'react';
 import PageTitle from './PageTitle';
 import RecipePageAttributes from './RecipePageAttributes';
@@ -7,6 +6,7 @@ import RecipeStartFinish from './RecipeStartFinish';
 import StepContainer from './StepContainer';
 import AddStep from './AddStep';
 
+// TODO: Refactor to functional component
 class RecipePage extends React.Component {
     constructor(props) {
         super(props);
@@ -62,9 +62,11 @@ class RecipePage extends React.Component {
     }
 
     toggleEditMode(newEditMode = !this.state.editMode) {
-        this.setState({
-            editMode: newEditMode
-        })
+        if (newEditMode !== this.state.editMode) {
+            this.setState({
+                editMode: !this.state.editMode
+            })
+        }
     }
 
     findHighestStep(stepList) {
@@ -148,8 +150,14 @@ class RecipePage extends React.Component {
             .catch(something => console.log("Caught:", something));
     }
 
-    addStepToRecipe(newStep, newStepLength) {
+    addStepToRecipe(newStep) {
         let updatedRecipe = this.state.recipeData;
+
+        // Enforce unique step numbers
+        if (updatedRecipe.steps.map((step) => step.number).includes(newStep.number)) {
+            // console.log("Step number", newStep.number, "already exists");
+            return
+        }
 
         // Add a new step to the list
         updatedRecipe.steps.push(newStep);
@@ -157,8 +165,8 @@ class RecipePage extends React.Component {
         // Sort by step.number
         updatedRecipe.steps.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
 
-        // Update the recipe length
-        updatedRecipe.length += newStepLength;
+        // Update the recipe length, which is newStep.then_wait
+        updatedRecipe.length += newStep.then_wait;
 
         this.saveUpdatedRecipe({
             recipeData: updatedRecipe,
@@ -191,25 +199,30 @@ class RecipePage extends React.Component {
     }
 
     render() {
+        // console.log("Rendering RecipePage");
+        // console.log(this.props);
+
         return (
             <div className="recipe-detail-summary">
                 <PageTitle title={this.state.recipeData.name}
-                           includeHr={true}/>
-                {/*TODO: Move the title to the header bar */}
+                           includeHr={true}
+                />
 
                 <RecipePageAttributes difficulty={this.state.recipeData.difficulty}
                                       source={this.state.recipeData.source}
                                       author={this.state.recipeData.author}
                                       url={this.state.recipeData.url ? this.state.recipeData.url : ""}
                                       length={this.state.recipeData.length}
-                                      toggleEditMode={this.toggleEditMode}/>
+                                      toggleEditMode={this.toggleEditMode}
+                />
 
                 <RecipeStartFinish start_time={this.state.recipeData.start_time}
                                    solve_for_start={this.state.recipeData.solve_for_start}
                                    length={this.state.recipeData.length}
                                    handleUpdateStartTime={this.handleUpdateStartTime}
                                    handleStartFinishToggle={this.handleStartFinishToggle}
-                                   saveRecipe={this.handleSaveRecipe}/>
+                                   saveRecipe={this.handleSaveRecipe}
+                />
 
                 <StepContainer steps={this.state.recipeData.steps}
                                start_time={this.state.recipeData.start_time}
@@ -219,12 +232,14 @@ class RecipePage extends React.Component {
                                toggleEditMode={this.toggleEditMode}
                                hasData={this.state.hasData}
                                handleStepLengthChange={this.handleStepLengthChange}
-                               deleteStep={this.deleteStep}/>
+                               deleteStep={this.deleteStep}
+                />
 
                 <AddStep nextStep={this.state.nextStep}
                          addStepToRecipe={this.addStepToRecipe}
                          hidden={!this.state.editMode}
-                         toggleEditMode={this.toggleEditMode}/>
+                         toggleEditMode={this.toggleEditMode}
+                />
 
             </div>
         )
@@ -235,7 +250,15 @@ RecipePage.defaultProps = {
     recipeId: 0,
     recipeData: {
         id: 0,
-        difficulty: "Intermediate"
+        difficulty: "Intermediate",
+        steps: [
+            {
+                step_id: 0,
+                number: 0,
+                text: "",
+                then_wait: 0
+            }
+        ],
     },
     hasData: false
 }

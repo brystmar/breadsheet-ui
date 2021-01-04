@@ -1,0 +1,137 @@
+@import "variables"
+
+
+.add-recipe-container,
+.add-step-container
+  padding: 1em
+  text-align: left
+  margin-top: 0.5em
+  border-radius: 3px
+  min-width: 280px
+  display: flex
+  flex-direction: column
+  width: 100%
+  .add-recipe-form,
+  .add-step-form
+    background: $color-2
+    border: 1px solid $color-6
+    border-radius: 0 5px 5px 5px
+    padding: 1em
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: center
+    .button-group
+      text-align: left
+    .add-recipe-form-group,
+    .add-step-form-group
+      padding: 0.25em
+      display: flex
+      align-items: center
+      min-width: 500px
+      width: 100%
+      .add-recipe-form-label
+        margin: auto 0.25em auto
+        min-width: 140px
+      .add-recipe-form-input-group
+        white-space: nowrap
+        min-width: 180px
+        width: 80%
+        display: flex
+        align-items: center
+      .picklist-group
+        max-width: max-content
+        .input-picklist
+          min-width: 180px
+          width: 180px
+          margin-right: 0.3em
+        .difficulty-icon
+          min-width: 50px
+
+      .add-step-form-label
+        margin: auto 0.25em auto
+        min-width: 110px
+        width: 10%
+      .add-step-form-input-group
+        white-space: nowrap
+        min-width: 200px
+        width: 90%
+      .then-wait-helper-text
+        //font-style: italic
+        opacity: 0.6
+        margin-left: 0.25em
+        margin-right: 0.5em
+
+#name
+  max-width: 280px
+#author,
+#source
+  max-width: 200px
+#url
+  width: 100%
+
+#action
+  max-width: 258px
+#note
+  max-width: 400px
+
+@media (max-width: 599px)
+  .add-recipe-container,
+  .add-step-container
+    padding: 0.25em
+    .add-recipe-form,
+    .add-step-form
+      .add-recipe-form-group,
+      .add-step-form-group
+        width: 100%
+        min-width: unset
+        .add-recipe-form-label
+          width: 15%
+          min-width: 120px
+        .add-step-form-label
+          width: 8%
+          min-width: 100px
+
+@media (max-width: 494px)
+  .content-container
+    .add-recipe-container,
+    .add-step-container
+      .add-recipe-form,
+      .add-step-form
+        padding: 0.5em
+        .add-recipe-form-group,
+        .add-step-form-group
+          flex-direction: column
+          justify-content: flex-start
+          align-items: flex-start
+          .add-recipe-form-label,
+          .add-step-form-label
+            margin-left: 0
+            margin-bottom: 0.3em
+          .add-step-form-input-group
+            margin-bottom: 0.3em
+          .add-recipe-form-input-group
+            margin-bottom: 0.3em
+  #note
+    max-width: 310px
+
+
+@media (max-width: 410px)
+  .content-container
+    margin-left: 0.25em
+    margin-right: 0.25em
+    .add-recipe-form,
+    .add-step-form
+      margin: 0 0 0.15em
+      padding: 0.15em
+      .add-recipe-form-group,
+      .add-step-form-group
+        .add-recipe-form-input-group,
+        .add-step-form-input-group
+          width: 100%
+          min-width: unset
+          .difficulty-icon
+            min-width: 50px
+        .btn-submit
+          margin-top: 0.3em
+          width: 100%

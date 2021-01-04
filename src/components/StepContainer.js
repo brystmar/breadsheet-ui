@@ -32,7 +32,7 @@ function BuildStepComponentList(props) {
             // console.log("SfS = true |", stepList[i].number, moment(stepStartTime).toISOString());
 
             stepComponentList.push(
-                <StepListItem key={stepList[i].number}
+                <StepListItem key={stepList[i].step_id}
                               step_id={stepList[i].step_id}
                               when={stepStartTime}
                               stepNumber={stepList[i].number}
@@ -60,7 +60,7 @@ function BuildStepComponentList(props) {
             stepFinishTime -= stepList[i].then_wait * 1000;  // Convert milliseconds to seconds for JS
 
             stepComponentList.push(
-                <StepListItem key={stepList[i].number}
+                <StepListItem key={stepList[i].step_id}
                               step_id={stepList[i].step_id}
                               when={stepFinishTime}
                               stepNumber={stepList[i].number}

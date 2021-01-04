@@ -1,15 +1,17 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import PageTitle from './components/PageTitle';
 import RecipeListContainer from './components/RecipeListContainer';
 import RecipePageContainer from './components/RecipePageContainer';
 import AddRecipe from './components/AddRecipe';
 import ConvertTextPageContainer from './components/ConvertTextPageContainer';
-import Footer from './components/Footer';
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles/styles.sass';
+import './styles/recipe-and-step-lists.sass';
 
+// TODO: Refactor to functional component
 class App extends React.Component {
     constructor() {
         super();
@@ -40,7 +42,7 @@ class App extends React.Component {
                 this.setState({
                     allRecipes: this.sortAllRecipes(result.data)
                 })
-                console.log(result.data);
+                // console.log("Recipes:", result.data);
             })
             .catch(error => console.log("Error retrieving data for all recipes:", error));
     }
@@ -138,16 +140,13 @@ class App extends React.Component {
     render() {
         return (
             <div className="app-container">
-                <header className="header-container">
-                    <Navbar/>
-                </header>
+                <Header/>
+
                 <main className="content-container">
                     <Switch>
                         <Route exact path="/convert">
-                            <PageTitle
-                                title="Convert Recipe Text"
-                                includeHr={true}/>
-                            <ConvertTextPageContainer/>
+                            <PageTitle title="Convert Text" includeHr={true}/>
+                            <ConvertTextPageContainer />
                         </Route>
 
                         <Route path="/:recipeId">
@@ -155,20 +154,18 @@ class App extends React.Component {
                                 allRecipes={this.state.allRecipes}
                                 updateOneRecipe={this.updateOneRecipe}
                                 updateRecipeLength={this.updateRecipeLength}
-                                updateMasterRecipeList={this.getAllRecipes}/>
+                                updateMasterRecipeList={this.getAllRecipes}
+                            />
                         </Route>
 
                         <Route exact path="/">
-                            <PageTitle
-                                title="Recipes"
-                                includeHr={true}/>
-                            {/*TODO: Edit button right-justified, opposite the title */}
+                            <PageTitle title="Breadsheet" includeHr={true}/>
                             <RecipeListContainer
                                 allRecipes={this.state.allRecipes}
                                 addRecipeToState={this.addRecipeToState}
-                                deleteRecipe={this.deleteRecipe}/>
-                            <AddRecipe
-                                addRecipeToState={this.addRecipeToState}/>
+                                deleteRecipe={this.deleteRecipe}
+                            />
+                            <AddRecipe addRecipeToState={this.addRecipeToState}/>
                         </Route>
                     </Switch>
                 </main>

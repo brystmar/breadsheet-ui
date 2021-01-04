@@ -19,10 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Cleaned up button inconsistencies.  My color palettes still need tons of work.">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="ConversionListContainer is also done!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/convert_text_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/convert_text_functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,19 +47,31 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="Sass File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="6517abe5-002c-42cc-9ad0-f836f9a7c26d" />
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="hiddenUrls">
@@ -97,7 +110,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript&#10;TEXT" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="list.type.of.created.stylesheet" value="Sass" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -113,7 +126,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -196,119 +209,8 @@
       <workItem from="1605057546866" duration="1423000" />
       <workItem from="1606005557553" duration="1977000" />
       <workItem from="1606110107876" duration="93000" />
-      <workItem from="1607289539104" duration="4615000" />
-    </task>
-    <task id="LOCAL-00051" summary="Readme update">
-      <created>1588141429476</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1588141429476</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Moved Recipe fetch to the top-level App component">
-      <created>1588493777159</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1588493777159</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Now pointing to Prod backend">
-      <created>1588494953933</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1588494953933</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Post-merge commit w/updated fetch">
-      <created>1588495699203</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1588495699203</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Finally figured out wtf was happening!  Stable once again!">
-      <created>1588555362506</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1588555362507</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Updated difficulty icons &amp; edit mode">
-      <created>1589083289093</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1589083289093</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Updated difficulties &amp; icons">
-      <created>1590688246949</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1590688246949</updated>
-    </task>
-    <task id="LOCAL-00058" summary="UI was cutting off text for ThenWaitHH/MM">
-      <created>1591547899229</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1591547899230</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Re-organized &amp; renamed a few things for clarity">
-      <created>1591548677972</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1591548677972</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Fully transitioned to SASS, ready to replace html tables w/CSS grid">
-      <created>1596761848742</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1596761848742</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Recipe list uses basic grid">
-      <created>1596769262393</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1596769262393</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Recipe list is basically done">
-      <created>1596951237773</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1596951237773</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Support for URLs in AddRecipe">
-      <created>1597015431811</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1597015431811</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Ready to tackle the Step page">
-      <created>1597018797042</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1597018797042</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Step page is mostly done">
-      <created>1597028850488</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1597028850488</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Polishing up the step page">
-      <created>1597118609057</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1597118609057</updated>
+      <workItem from="1607289539104" duration="10820000" />
+      <workItem from="1608579624429" duration="61774000" />
     </task>
     <task id="LOCAL-00067" summary="Smoother title transitions on page load">
       <created>1597450408491</created>
@@ -541,7 +443,119 @@
       <option name="project" value="LOCAL" />
       <updated>1607321454815</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Prep for the hook refactor">
+      <created>1607889465065</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1607889465065</updated>
+    </task>
+    <task id="LOCAL-00101" summary="First crack at AddStep">
+      <created>1607894981684</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1607894981684</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Minor changes pre-travel">
+      <created>1608099874172</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1608099874172</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Added TODOs to all the class-based components">
+      <created>1609274698460</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1609274698460</updated>
+    </task>
+    <task id="LOCAL-00104" summary="CSS overhaul, split by function">
+      <created>1609277613412</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1609277613412</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Refactored ConvertTextPageContainer; need to finish its custom hook">
+      <created>1609309641704</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1609309641704</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Applied useEffect to ConvertTextPageContainer">
+      <created>1609626564923</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1609626564923</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Starting to separate API calls from component display logic">
+      <created>1609628098472</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1609628098472</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Separate header component">
+      <created>1609628308857</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1609628308858</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Simplified some AddStep logic">
+      <created>1609629051187</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1609629051188</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Moving AddStep logic to a reducer">
+      <created>1609640208396</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1609640208396</updated>
+    </task>
+    <task id="LOCAL-00111" summary="AddStep reducer works, but all events are happening twice">
+      <created>1609646950403</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1609646950404</updated>
+    </task>
+    <task id="LOCAL-00112" summary="AddStep works, though it's still rendering multiple times">
+      <created>1609702648309</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1609702648309</updated>
+    </task>
+    <task id="LOCAL-00113" summary="AddStep is good enough for now">
+      <created>1609714920898</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1609714920898</updated>
+    </task>
+    <task id="LOCAL-00114" summary="ConvertTextControls is done!">
+      <created>1609720199340</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1609720199340</updated>
+    </task>
+    <task id="LOCAL-00115" summary="ConversionListContainer is also done!">
+      <created>1609725801153</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1609725801153</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -566,22 +580,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Improved grid display for media queries; updated add recipe/step." />
-    <MESSAGE value="Consolidated SASS files, more work on the add recipe/step forms." />
-    <MESSAGE value="Add recipe form is properly responsive" />
-    <MESSAGE value="Add step form is properly responsive" />
-    <MESSAGE value="Ready for prod deploy" />
-    <MESSAGE value="SSL support" />
-    <MESSAGE value="Removed bootstrap from everything but the convert page" />
-    <MESSAGE value="Bootstrap completely removed!!! :D" />
-    <MESSAGE value="More cleanup after removing Bootstrap" />
-    <MESSAGE value="Cleaning up the Convert page" />
-    <MESSAGE value="Fixed buttons on Convert page" />
-    <MESSAGE value="Updated website metadata, headers, favicon stuff" />
-    <MESSAGE value="Moved recipe-level edit button to the attributes container" />
-    <MESSAGE value="Much improved Convert page, and fixed step list grid issues" />
-    <MESSAGE value="Responsive tweaks for add recipe &amp; step forms" />
-    <MESSAGE value="Start/finish component is now responsive" />
     <MESSAGE value="Optimizing step page responsive breakpoints for iPhone" />
     <MESSAGE value="Optimizations for mobile devices" />
     <MESSAGE value="Introduced a coding style guide" />
@@ -591,25 +589,22 @@
     <MESSAGE value="Updated readme" />
     <MESSAGE value="Hide debugging UI elements; don't allow conversion without data." />
     <MESSAGE value="Cleaned up button inconsistencies.  My color palettes still need tons of work." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up button inconsistencies.  My color palettes still need tons of work." />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598846840164">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state x="735" y="341" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1598846840164" />
-    <state x="100" y="123" width="1794" height="929" key="DiffContextDialog" timestamp="1607320028998">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state x="100" y="123" width="1794" height="929" key="DiffContextDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607320028998" />
-    <state x="777" y="297" key="RollbackChangesDialog" timestamp="1606007954864">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state x="777" y="297" key="RollbackChangesDialog/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1606007954864" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2" timestamp="1607321457453">
-      <screen x="0" y="23" width="1994" height="1129" />
-    </state>
-    <state x="-1345" y="340" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@-1920.23.1920.1177" timestamp="1602961046770" />
-    <state x="597" y="327" key="Vcs.Push.Dialog.v2/-1920.23.1920.1177/0.23.1994.1129@0.23.1994.1129" timestamp="1607321457453" />
+    <MESSAGE value="Prep for the hook refactor" />
+    <MESSAGE value="First crack at AddStep" />
+    <MESSAGE value="Minor changes pre-travel" />
+    <MESSAGE value="Added TODOs to all the class-based components" />
+    <MESSAGE value="CSS overhaul, split by function" />
+    <MESSAGE value="Refactored ConvertTextPageContainer; need to finish its custom hook" />
+    <MESSAGE value="Applied useEffect to ConvertTextPageContainer" />
+    <MESSAGE value="Starting to separate API calls from component display logic" />
+    <MESSAGE value="Separate header component" />
+    <MESSAGE value="Simplified some AddStep logic" />
+    <MESSAGE value="Moving AddStep logic to a reducer" />
+    <MESSAGE value="AddStep reducer works, but all events are happening twice" />
+    <MESSAGE value="AddStep works, though it's still rendering multiple times" />
+    <MESSAGE value="AddStep is good enough for now" />
+    <MESSAGE value="ConvertTextControls is done!" />
+    <MESSAGE value="ConversionListContainer is also done!" />
+    <option name="LAST_COMMIT_MESSAGE" value="ConversionListContainer is also done!" />
   </component>
 </project>
