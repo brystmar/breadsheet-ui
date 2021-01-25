@@ -13,7 +13,7 @@ function ConvertTextControls(props) {
 
         if (!props.hasData) {
             // If we don't have the replacement text lists, users can enter data but the app
-            //   won't try to convert anything.
+            // won't try to convert anything.
             updateState({
                 ...state,
                 [name]: value

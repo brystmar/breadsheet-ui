@@ -19,11 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="ConversionListContainer is also done!">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Formatting for text conversion functions">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/convert_text_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/convert_text_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/start-finish.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/start-finish.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/start-finish.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/start-finish.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/start-finish.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/start-finish.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +131,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -211,6 +216,11 @@
       <workItem from="1606110107876" duration="93000" />
       <workItem from="1607289539104" duration="10820000" />
       <workItem from="1608579624429" duration="61774000" />
+      <workItem from="1610239034814" duration="388000" />
+      <workItem from="1610239444900" duration="227000" />
+      <workItem from="1610240274290" duration="1214000" />
+      <workItem from="1610387816845" duration="129000" />
+      <workItem from="1610839635461" duration="3303000" />
     </task>
     <task id="LOCAL-00067" summary="Smoother title transitions on page load">
       <created>1597450408491</created>

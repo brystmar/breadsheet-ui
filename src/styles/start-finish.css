@@ -140,6 +140,40 @@
   transform: translateY(200%) translateX(-400%);
 }
 
+.react-datepicker__header {
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+}
+
+.react-datepicker__header--time {
+  border-top-left-radius: 0.3rem !important;
+}
+
+.react-datepicker__today-button {
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.react-datepicker__time-container--with-today-button {
+  right: -6.68em !important;
+  top: 1.78em !important;
+}
+
+.react-datepicker__time {
+  height: 190px !important;
+  overflow: hidden;
+  border-bottom-left-radius: 0.3rem !important;
+}
+
+.react-datepicker-time__header,
+.react-datepicker__current-month {
+  cursor: default;
+}
+
+.react-datepicker__today-button:hover {
+  background-color: #e8e8e8;
+}
+
 @media (max-width: 399px) {
   .start-finish-container .start-finish-contents {
     transition: all 0.4s;

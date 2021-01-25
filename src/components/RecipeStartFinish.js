@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import DatePicker from 'react-datepicker/es';
+import DatePicker from 'react-datepicker';
 import "../styles/start-finish.sass";
 
 // TODO: Refactor to functional component
