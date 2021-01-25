@@ -31,6 +31,7 @@ function AddStep(props) {
         <div className="add-step-container">
             <BtnAdd btnText="New Step"
                     altText="Toggles display of the 'Add new step' form"
+                    isCollapsed={!props.hidden}
                     onClickFn={props.toggleEditMode}
             />
 

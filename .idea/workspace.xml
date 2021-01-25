@@ -19,16 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Formatting for text conversion functions">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Added some needed polish to the datepicker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/start-finish.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/start-finish.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/start-finish.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/start-finish.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/start-finish.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/start-finish.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,14 +214,7 @@
       <workItem from="1610239444900" duration="227000" />
       <workItem from="1610240274290" duration="1214000" />
       <workItem from="1610387816845" duration="129000" />
-      <workItem from="1610839635461" duration="3303000" />
-    </task>
-    <task id="LOCAL-00067" summary="Smoother title transitions on page load">
-      <created>1597450408491</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1597450408491</updated>
+      <workItem from="1610839635461" duration="4260000" />
     </task>
     <task id="LOCAL-00068" summary="Convert page needs a ton of cleanup work">
       <created>1597451908577</created>
@@ -565,7 +552,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609725801153</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="Added some needed polish to the datepicker">
+      <created>1611545903722</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1611545903723</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -590,7 +584,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Optimizing step page responsive breakpoints for iPhone" />
     <MESSAGE value="Optimizations for mobile devices" />
     <MESSAGE value="Introduced a coding style guide" />
     <MESSAGE value="Installed prop-types" />
@@ -615,6 +608,7 @@
     <MESSAGE value="AddStep is good enough for now" />
     <MESSAGE value="ConvertTextControls is done!" />
     <MESSAGE value="ConversionListContainer is also done!" />
-    <option name="LAST_COMMIT_MESSAGE" value="ConversionListContainer is also done!" />
+    <MESSAGE value="Added some needed polish to the datepicker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some needed polish to the datepicker" />
   </component>
 </project>
