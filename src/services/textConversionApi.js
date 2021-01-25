@@ -1,4 +1,4 @@
-function getTextConversionData(updateState) {
+export function getTextConversionData(updateState) {
     // Retrieves the full list of replacements for both ingredients and directions
     console.log("Calling endpoint: /api/v1/replacements/all");
 
@@ -16,12 +16,11 @@ function getTextConversionData(updateState) {
             if (result.message === "Success") {
                 updateState({
                     ingredients: result.data.ingredients,
-                    directions: result.data.directions,
-                    hasData: true
+                    directions:  result.data.directions,
+                    hasData:     true
                 })
             } else {
-                console.log("Retrieved replacement text data, but unable to parse",
-                    result.data)
+                console.log("Retrieved replacement text data, but unable to parse", result.data)
                 return Promise.reject(result.body);
             }
         })
@@ -30,5 +29,3 @@ function getTextConversionData(updateState) {
             return Promise.reject(rejection.status)
         });
 }
-
-export {getTextConversionData};

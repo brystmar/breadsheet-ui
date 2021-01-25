@@ -3,16 +3,12 @@ import BtnAdd from './buttons/BtnAdd';
 import BtnSubmit from './buttons/BtnSubmit';
 import { v4 as uuid } from 'uuid';
 import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
+import { defaultRecipe } from "../data/defaultValues";
+
 
 function AddRecipeNew(props) {
-    const [ state, updateState ] = useState({
-        name:       "",
-        difficulty: "Beginner",
-        author:     "",
-        source:     "",
-        url:        ""
-    })
-    const [isHidden, toggleIsHidden] = useState(props.hidden)
+    const [ state, updateState ] = useState(defaultRecipe)
+    const [ isHidden, toggleIsHidden ] = useState(props.hidden)
 
     function handleChange() {
         // TODO: Modify function
@@ -50,7 +46,7 @@ function AddRecipeNew(props) {
                                 placeholder="Neapolitan Pizza Dough"
                                 value={state.name}
                                 onChange={(event) =>
-                                    updateState({name: event.target.value})}
+                                    updateState({ name: event.target.value, ...state })}
                                 required={true}
                             />
                         </span>

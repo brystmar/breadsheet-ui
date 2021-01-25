@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
-import {CSSTransition} from 'react-transition-group';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
-import {convert_text_using_provided_list} from '../scripts/convert_text_functions';
-import {defaultConvertTextState, convertTextPlaceholder} from "../data/defaultValues";
+import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { convert_text_using_provided_list } from '../scripts/convert_text_functions';
+import { defaultConvertTextState, convertTextPlaceholder } from "../data/defaultValues";
 
 
 function ConvertTextControls(props) {
-    const [state, updateState] = useState(defaultConvertTextState);
+    const [ state, updateState ] = useState(defaultConvertTextState);
 
     function handleChange(event) {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
 
         if (!props.hasData) {
             // If we don't have the replacement text lists, users can enter data but the app
@@ -20,12 +20,14 @@ function ConvertTextControls(props) {
             })
         } else if (name === "inputIngredients") {
             updateState({
-                [name]: value,
+                ...state,
+                [name]:            value,
                 outputIngredients: convert_text_using_provided_list(value, props.ingredientsList)
             });
         } else if (name === "inputDirections") {
             updateState({
-                [name]: value,
+                ...state,
+                [name]:           value,
                 outputDirections: convert_text_using_provided_list(value, props.directionsList)
             })
         }
@@ -103,7 +105,7 @@ function ConvertTextControls(props) {
             <span className="button-group">
                 <CopyToClipboard
                     text={(state.outputIngredients + "\n\n" + state.outputDirections).trim()}
-                    onCopy={() => updateState({transition: !state.transition})}
+                    onCopy={() => updateState({transition: !state.transition, ...state})}
                 >
                     <button
                         type="button"
@@ -121,7 +123,7 @@ function ConvertTextControls(props) {
                     in={state.transition}
                     timeout={500}
                     classNames="clipboard-confirmation"
-                    onEntered={() => updateState({transition: !state.transition})}
+                    onEntered={() => updateState({ transition: !state.transition, ...state })}
                 >
                     <span className="clipboard-confirmation">
                         Copied!
@@ -146,8 +148,8 @@ function ConvertTextControls(props) {
 
 ConvertTextControls.defaultProps = {
     ingredientsList: [],
-    directionsList: [],
-    hasData: false
+    directionsList:  [],
+    hasData:         false
 }
 
 export default ConvertTextControls;
