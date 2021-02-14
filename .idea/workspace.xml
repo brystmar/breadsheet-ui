@@ -19,13 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Started working on AddRecipe; added missing prop to the add button on AddStep">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Fixed a bug with text conversion state">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/defaultValues.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/defaultValues.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/textConversionApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/textConversionApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,14 +214,9 @@
       <workItem from="1610239444900" duration="227000" />
       <workItem from="1610240274290" duration="1214000" />
       <workItem from="1610387816845" duration="129000" />
-      <workItem from="1610839635461" duration="5858000" />
-    </task>
-    <task id="LOCAL-00069" summary="Added start/finish tooltip">
-      <created>1597547508993</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1597547508993</updated>
+      <workItem from="1610839635461" duration="6435000" />
+      <workItem from="1612049105478" duration="1285000" />
+      <workItem from="1613334395429" duration="3077000" />
     </task>
     <task id="LOCAL-00070" summary="Fixed PageTitle border, added titles to difficulty icons">
       <created>1597548109491</created>
@@ -562,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611546965469</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="Fixed a bug with text conversion state">
+      <created>1611548495393</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1611548495393</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -587,7 +586,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Introduced a coding style guide" />
     <MESSAGE value="Installed prop-types" />
     <MESSAGE value="Added more space between ingredients &amp; directions output" />
     <MESSAGE value="Fixed tooltip hover alignment; hid the edit button." />
@@ -612,6 +610,7 @@
     <MESSAGE value="ConversionListContainer is also done!" />
     <MESSAGE value="Added some needed polish to the datepicker" />
     <MESSAGE value="Started working on AddRecipe; added missing prop to the add button on AddStep" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started working on AddRecipe; added missing prop to the add button on AddStep" />
+    <MESSAGE value="Fixed a bug with text conversion state" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug with text conversion state" />
   </component>
 </project>
