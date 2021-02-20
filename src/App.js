@@ -44,7 +44,7 @@ class App extends React.Component {
                 })
                 // console.log("Recipes:", result.data);
             })
-            .catch(error => console.log("Error retrieving data for all recipes:", error));
+            .catch(error => console.error("Error retrieving data for all recipes.", error));
     }
 
     sortAllRecipes(recipeList) {
@@ -85,7 +85,7 @@ class App extends React.Component {
                 this.deleteRecipeFromState(recipe_id);
                 this.addRecipeToState(recipeResponse.data);
             })
-            .catch(error => console.log("PUT failed:", error));
+            .catch(error => console.error("PUT request failed.", error));
     }
 
     deleteRecipe(recipe_id) {
@@ -102,11 +102,11 @@ class App extends React.Component {
                     this.deleteRecipeFromState(recipe_id)
                     console.log("Delete successful");
                 } else {
-                    console.log("Delete failed, details:", response.body);
+                    console.log("Delete request failed, details:", response.body);
                     return Promise.reject(response.statusText)
                 }
             })
-            .catch(error => console.log("Delete failed:", error));
+            .catch(error => console.error("Delete request failed.", error));
     }
 
     deleteRecipeFromState(recipe_id) {

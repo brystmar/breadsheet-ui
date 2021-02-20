@@ -24,8 +24,8 @@ export function getTextConversionData(updateState) {
                 return Promise.reject(result.body);
             }
         })
-        .catch(rejection => {
-            console.log("Caught error querying for replacements:", rejection)
-            return Promise.reject(rejection.status)
+        .catch(error => {
+            console.error("Error in requesting replacements.", error)
+            return Promise.reject(error.status)
         });
 }

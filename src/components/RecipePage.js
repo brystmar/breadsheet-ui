@@ -58,7 +58,7 @@ class RecipePage extends React.Component {
                     return Promise.reject(result.status);
                 }
             })
-            .catch(rejection => console.log(rejection));
+            .catch(error => console.error("getRecipeData request failed.", error));
     }
 
     toggleEditMode(newEditMode = !this.state.editMode) {
@@ -134,8 +134,7 @@ class RecipePage extends React.Component {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    console.log("Error updating the recipe in the database.");
-                    console.log(response.body);
+                    console.log("Error updating the recipe in the database.", response.body);
                     return Promise.reject(response.statusText);
                 }
             })
@@ -147,7 +146,7 @@ class RecipePage extends React.Component {
                 // Update the master recipe list in App.js
                 this.props.updateMasterRecipeList();
             })
-            .catch(something => console.log("Caught:", something));
+            .catch(error => console.error("Error in saveUpdatedRecipe request.", error));
     }
 
     addStepToRecipe(newStep) {

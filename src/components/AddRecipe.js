@@ -48,7 +48,7 @@ export default function AddRecipe(props) {
                 // Update state of the App --> RecipeListContainer using the provided function
                 props.addRecipeToState(result.data);
             })
-            .catch(error => console.log("Error submitting new recipe:", error))
+            .catch(error => console.error("Error submitting new recipe.", error))
     }
 
     return (

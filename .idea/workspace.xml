@@ -19,10 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Fixed a bug with text conversion state">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="AddRecipe now uses hooks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/textConversionApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/textConversionApi.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +127,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -216,14 +218,9 @@
       <workItem from="1610387816845" duration="129000" />
       <workItem from="1610839635461" duration="6435000" />
       <workItem from="1612049105478" duration="1285000" />
-      <workItem from="1613334395429" duration="3077000" />
-    </task>
-    <task id="LOCAL-00070" summary="Fixed PageTitle border, added titles to difficulty icons">
-      <created>1597548109491</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1597548109491</updated>
+      <workItem from="1613334395429" duration="7230000" />
+      <workItem from="1613606894298" duration="361000" />
+      <workItem from="1613852779706" duration="334000" />
     </task>
     <task id="LOCAL-00071" summary="Plenty of work left on responsive tables">
       <created>1597636882634</created>
@@ -561,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611548495393</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="AddRecipe now uses hooks">
+      <created>1613338908782</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1613338908783</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -586,7 +590,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Installed prop-types" />
     <MESSAGE value="Added more space between ingredients &amp; directions output" />
     <MESSAGE value="Fixed tooltip hover alignment; hid the edit button." />
     <MESSAGE value="Updated readme" />
@@ -611,6 +614,7 @@
     <MESSAGE value="Added some needed polish to the datepicker" />
     <MESSAGE value="Started working on AddRecipe; added missing prop to the add button on AddStep" />
     <MESSAGE value="Fixed a bug with text conversion state" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug with text conversion state" />
+    <MESSAGE value="AddRecipe now uses hooks" />
+    <option name="LAST_COMMIT_MESSAGE" value="AddRecipe now uses hooks" />
   </component>
 </project>
