@@ -19,11 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="AddRecipe now uses hooks">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Updated logging approach for fetch errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/textConversionApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/textConversionApi.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -220,14 +218,7 @@
       <workItem from="1612049105478" duration="1285000" />
       <workItem from="1613334395429" duration="7230000" />
       <workItem from="1613606894298" duration="361000" />
-      <workItem from="1613852779706" duration="334000" />
-    </task>
-    <task id="LOCAL-00071" summary="Plenty of work left on responsive tables">
-      <created>1597636882634</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1597636882634</updated>
+      <workItem from="1613852779706" duration="7282000" />
     </task>
     <task id="LOCAL-00072" summary="Media queries work for the main page">
       <created>1597714175183</created>
@@ -565,7 +556,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613338908783</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="Updated logging approach for fetch errors">
+      <created>1613853139920</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1613853139921</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -590,7 +588,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Added more space between ingredients &amp; directions output" />
     <MESSAGE value="Fixed tooltip hover alignment; hid the edit button." />
     <MESSAGE value="Updated readme" />
     <MESSAGE value="Hide debugging UI elements; don't allow conversion without data." />
@@ -615,6 +612,7 @@
     <MESSAGE value="Started working on AddRecipe; added missing prop to the add button on AddStep" />
     <MESSAGE value="Fixed a bug with text conversion state" />
     <MESSAGE value="AddRecipe now uses hooks" />
-    <option name="LAST_COMMIT_MESSAGE" value="AddRecipe now uses hooks" />
+    <MESSAGE value="Updated logging approach for fetch errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated logging approach for fetch errors" />
   </component>
 </project>

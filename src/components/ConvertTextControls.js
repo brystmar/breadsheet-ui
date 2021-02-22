@@ -33,6 +33,9 @@ function ConvertTextControls(props) {
         }
     }
 
+    // TODO: Convert to lowercase if entry is all uppercase
+    // TODO: Fix the `Copied!` CSS transition
+
     return (
         <div className="text-conversion-inputs-container">
             <span className="text-conversion-group">
