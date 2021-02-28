@@ -5,7 +5,7 @@ import { convert_text_using_provided_list } from '../scripts/convert_text_functi
 import { defaultConvertTextState, convertTextPlaceholder } from "../data/defaultValues";
 
 
-function ConvertTextControls(props) {
+export default function ConvertTextControls(props) {
     const [ state, updateState ] = useState(defaultConvertTextState);
 
     function handleChange(event) {
@@ -108,7 +108,7 @@ function ConvertTextControls(props) {
             <span className="button-group">
                 <CopyToClipboard
                     text={(state.outputIngredients + "\n\n" + state.outputDirections).trim()}
-                    onCopy={() => updateState({transition: !state.transition, ...state})}
+                    onCopy={() => updateState({ transition: !state.transition, ...state })}
                 >
                     <button
                         type="button"
@@ -154,5 +154,3 @@ ConvertTextControls.defaultProps = {
     directionsList:  [],
     hasData:         false
 }
-
-export default ConvertTextControls;

@@ -19,10 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Updated logging approach for fetch errors">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Refactored async text conversion request">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/textConversionApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/textConversionApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/textConversionApi.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,14 +219,8 @@
       <workItem from="1612049105478" duration="1285000" />
       <workItem from="1613334395429" duration="7230000" />
       <workItem from="1613606894298" duration="361000" />
-      <workItem from="1613852779706" duration="7282000" />
-    </task>
-    <task id="LOCAL-00072" summary="Media queries work for the main page">
-      <created>1597714175183</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1597714175183</updated>
+      <workItem from="1613852779706" duration="9573000" />
+      <workItem from="1614544190826" duration="1457000" />
     </task>
     <task id="LOCAL-00073" summary="Working on color palette">
       <created>1598112018139</created>
@@ -563,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613853139921</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="Refactored async text conversion request">
+      <created>1613963185709</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1613963185709</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -588,7 +590,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Fixed tooltip hover alignment; hid the edit button." />
     <MESSAGE value="Updated readme" />
     <MESSAGE value="Hide debugging UI elements; don't allow conversion without data." />
     <MESSAGE value="Cleaned up button inconsistencies.  My color palettes still need tons of work." />
@@ -613,6 +614,7 @@
     <MESSAGE value="Fixed a bug with text conversion state" />
     <MESSAGE value="AddRecipe now uses hooks" />
     <MESSAGE value="Updated logging approach for fetch errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated logging approach for fetch errors" />
+    <MESSAGE value="Refactored async text conversion request" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored async text conversion request" />
   </component>
 </project>
