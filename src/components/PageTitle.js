@@ -1,6 +1,6 @@
-import React from 'react';
-import LoadingIcon from './LoadingIcon';
-import Footer from "./Footer";
+import React from "react";
+import LoadingIcon from "./LoadingIcon";
+
 
 export default function PageTitle(props) {
     return (

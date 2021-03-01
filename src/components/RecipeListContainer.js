@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import RecipeListItem from './RecipeListItem';
-import seconds_to_string from '../scripts/time_display_functions';
-import ListHeaderRow from './ListHeaderRow';
+import React, { useState } from "react";
+import RecipeListItem from "./RecipeListItem";
+import seconds_to_string from "../helpers/time_display_functions";
+import ListHeaderRow from "./ListHeaderRow";
+
 
 export default function RecipeListContainer(props) {
     const [ editMode, toggleEditMode ] = useState(false)

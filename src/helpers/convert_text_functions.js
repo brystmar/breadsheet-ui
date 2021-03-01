@@ -10,6 +10,13 @@ export function convert_text_using_provided_list(text, replacementList) {
 
     for (let i = 0; i <= replacementList.length - 1; i++) {
         // console.log("Working on:", replacement_list[i]['old']);
+
+        if (text === text.toUpperCase()) {
+            // If the entire block is in uppercase, convert everything to lowercase
+            //  *Glares angrily at 177milkstreet.com*
+            text = text.toLowerCase()
+        }
+
         text = text.split(replacementList[i]['old']).join(replacementList[i]['new']);
     }
 

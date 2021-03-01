@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import ConvertTextControls from './ConvertTextControls';
-import ConversionListContainer from './ConversionListContainer';
+import React, { useState, useEffect } from "react";
+import ConvertTextControls from "./ConvertTextControls";
+import ConversionListContainer from "./ConversionListContainer";
 import { defaultTextConversionState } from "../data/defaultValues";
 import "../styles/text-conversion.sass";
 

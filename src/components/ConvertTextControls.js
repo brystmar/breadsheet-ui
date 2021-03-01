@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { convert_text_using_provided_list } from "../scripts/convert_text_functions";
+import { convert_text_using_provided_list } from "../helpers/convert_text_functions";
 import { defaultConvertTextState, convertTextPlaceholder } from "../data/defaultValues";
 
 
@@ -33,7 +33,6 @@ export default function ConvertTextControls(props) {
         }
     }
 
-    // TODO: Convert to lowercase if entry is all uppercase
     // TODO: Fix the `Copied!` CSS transition
 
     return (
