@@ -109,6 +109,7 @@ export default class RecipePage extends React.Component {
     }
 
     handleUpdateStartTime(newStartTime) {
+        console.log(`Called handleUpStartTime w/${newStartTime}`);
         let newRecipeData = this.state.recipeData;
         newRecipeData.start_time = newStartTime;
 
