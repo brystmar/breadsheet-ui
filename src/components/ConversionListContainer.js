@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MDBDataTable } from "mdbreact";
-import { format_text_replacement_list_items } from "../scripts/convert_text_functions"
+import { format_text_replacement_list_items } from "../helpers/convert_text_functions"
 import { defaultConversionListContainerState } from "../data/defaultValues";
 
 

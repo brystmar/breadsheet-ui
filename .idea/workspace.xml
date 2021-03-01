@@ -22,15 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Updated code spacing &amp; style defaults">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Handling for all-uppercase text conversion inputs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PageTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/convert_text_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/convert_text_functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,14 +222,7 @@
       <workItem from="1613334395429" duration="7230000" />
       <workItem from="1613606894298" duration="361000" />
       <workItem from="1613852779706" duration="9573000" />
-      <workItem from="1614544190826" duration="4681000" />
-    </task>
-    <task id="LOCAL-00075" summary="Improved grid display for media queries; updated add recipe/step.">
-      <created>1598218332580</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1598218332580</updated>
+      <workItem from="1614544190826" duration="4880000" />
     </task>
     <task id="LOCAL-00076" summary="Consolidated SASS files, more work on the add recipe/step forms.">
       <created>1598241227565</created>
@@ -572,7 +560,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614560734906</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="Handling for all-uppercase text conversion inputs">
+      <created>1614563990195</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1614563990195</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -597,7 +592,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Cleaned up button inconsistencies.  My color palettes still need tons of work." />
     <MESSAGE value="Prep for the hook refactor" />
     <MESSAGE value="First crack at AddStep" />
     <MESSAGE value="Minor changes pre-travel" />
@@ -622,6 +616,7 @@
     <MESSAGE value="Refactored async text conversion request" />
     <MESSAGE value="Moved async getTextConversionData() back into the container file" />
     <MESSAGE value="Updated code spacing &amp; style defaults" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated code spacing &amp; style defaults" />
+    <MESSAGE value="Handling for all-uppercase text conversion inputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Handling for all-uppercase text conversion inputs" />
   </component>
 </project>
