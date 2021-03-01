@@ -6,6 +6,7 @@ import RecipeStartFinish from "./RecipeStartFinish";
 import StepContainer from "./StepContainer";
 import AddStep from "./AddStep";
 
+
 // TODO: Refactor to functional component
 export default class RecipePage extends React.Component {
     constructor(props) {

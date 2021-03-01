@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import map_difficulty_to_icon from "../scripts/map_difficulty_to_icon";
+import map_difficulty_to_icon from "../helpers/map_difficulty_to_icon";
 import AttrSource from "./attributes/AttrSource";
+
 
 export default function RecipeListItem(props) {
     return (
-        <div
-            className={props.highlight ? "recipe-list-row list-row-highlighted" : "recipe-list-row"}
-        >
+        <div className={"recipe-list-row".concat(props.highlight ? " list-row-highlighted" : "")}>
             <span className="recipe-list-cell col-name">
                 <Link to={`/${props.recipe_id}`}>{props.name}</Link>
             </span>
@@ -30,12 +29,10 @@ export default function RecipeListItem(props) {
                 extraClassString="recipe-list-cell col-source"
             />
 
-            {props.hidden ?
-                "" :
+            {props.hidden ? null :
                 <span className="recipe-list-cell col-button icon-cell">
                     <button
-                        className="btn-delete"
-                        onClick={() => props.deleteRecipe(props.recipe_id)}
+                        className="btn-delete" onClick={() => props.deleteRecipe(props.recipe_id)}
                     >
                         <img
                             alt="Delete this recipe"

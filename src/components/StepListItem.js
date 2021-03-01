@@ -1,6 +1,6 @@
-import React from 'react';
-import { seconds_to_hhmm, pad } from '../helpers/time_display_functions';
-import Moment from 'react-moment';
+import React from "react";
+import { seconds_to_hhmm, pad } from "../helpers/time_display_functions";
+import Moment from "react-moment";
 
 
 // TODO: Refactor to functional component

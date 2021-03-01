@@ -22,10 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Handling for all-uppercase text conversion inputs">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Fixed a few broken imports">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,14 +226,7 @@
       <workItem from="1613334395429" duration="7230000" />
       <workItem from="1613606894298" duration="361000" />
       <workItem from="1613852779706" duration="9573000" />
-      <workItem from="1614544190826" duration="4880000" />
-    </task>
-    <task id="LOCAL-00076" summary="Consolidated SASS files, more work on the add recipe/step forms.">
-      <created>1598241227565</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1598241227565</updated>
+      <workItem from="1614544190826" duration="8064000" />
     </task>
     <task id="LOCAL-00077" summary="Add recipe form is properly responsive">
       <created>1598292009701</created>
@@ -567,7 +564,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614563990195</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="Fixed a few broken imports">
+      <created>1614564204050</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1614564204050</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -592,7 +596,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Prep for the hook refactor" />
     <MESSAGE value="First crack at AddStep" />
     <MESSAGE value="Minor changes pre-travel" />
     <MESSAGE value="Added TODOs to all the class-based components" />
@@ -617,6 +620,7 @@
     <MESSAGE value="Moved async getTextConversionData() back into the container file" />
     <MESSAGE value="Updated code spacing &amp; style defaults" />
     <MESSAGE value="Handling for all-uppercase text conversion inputs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Handling for all-uppercase text conversion inputs" />
+    <MESSAGE value="Fixed a few broken imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a few broken imports" />
   </component>
 </project>
