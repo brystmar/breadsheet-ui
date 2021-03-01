@@ -29,19 +29,21 @@ export default function ConvertTextPageContainer() {
                         })
                         replacementsPromise.resolve("Replacements updated successfully.");
                     } else {
-                        console.log("Retrieved replacement text data, but unable to parse", result.data);
+                        console.log("Retrieved replacement text data, but unable to parse.", result.data);
                         replacementsPromise.reject(result.body);
                     }
                 } else {
                     console.error("Error requesting replacements.", replacementsPromise.status,
                         replacementsPromise.statusText);
+                    replacementsPromise.reject(replacementsPromise.statusText);
                 }
             } catch (error) {
                 console.error(error);
             }
         }
 
-        getTextConversionData();
+        const getTextConversionPromise = getTextConversionData();
+        console.log(`Returned Promise from getTextConversionData(): ${getTextConversionPromise}`)
     }, [])
 
     return (

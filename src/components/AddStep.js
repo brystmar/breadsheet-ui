@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import BtnAdd from './buttons/BtnAdd';
-import BtnSubmit from './buttons/BtnSubmit';
-import useStep from '../hooks/useStep';
+import React, { useEffect } from "react";
+import BtnAdd from "./buttons/BtnAdd";
+import BtnSubmit from "./buttons/BtnSubmit";
+import useStep from "../hooks/useStep";
 import reallocate_hh_mm from "../scripts/reallocate_hh_mm";
 
 

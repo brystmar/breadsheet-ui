@@ -1,6 +1,6 @@
 // Helper functions for the text conversion components
 
-function convert_text_using_provided_list(text, replacementList) {
+export function convert_text_using_provided_list(text, replacementList) {
     // Accepts a text string and a list of object replacements (old & new values)
     // Returns a modified string
 
@@ -16,7 +16,7 @@ function convert_text_using_provided_list(text, replacementList) {
     return text;
 }
 
-function format_text_replacement_list_items(inputArray) {
+export function format_text_replacement_list_items(inputArray) {
     // To make whitespace replacements easier to identify, this function replaces:
     //   spaces with ·
     //   newlines with ¶
@@ -61,10 +61,8 @@ function format_text_replacement_list_items(inputArray) {
         }
 
         // Append to the array
-        output.push({old: updatedFind, new: updatedReplace});
+        output.push({ old: updatedFind, new: updatedReplace });
     }
 
     return output;
 }
-
-export {convert_text_using_provided_list, format_text_replacement_list_items};

@@ -1,6 +1,6 @@
-import {useReducer} from 'react';
-import {v4 as uuid} from "uuid";
-import {defaultStep} from "../data/defaultValues";
+import { useReducer } from 'react';
+import { v4 as uuid } from "uuid";
+import { defaultStep } from "../data/defaultValues";
 
 function stepReducer(state, action) {
     switch (action.type) {
@@ -18,7 +18,7 @@ function stepReducer(state, action) {
             // TODO: Replace validation with formik & yup
             // stepNumber validation
             if (state.number <= 0) {
-                return {...state, number: action.payload.nextStepNumber}
+                return { ...state, number: action.payload.nextStepNumber }
             }
 
             // Require values for step# and text/action
@@ -31,11 +31,11 @@ function stepReducer(state, action) {
 
             // Create an object that's congruent with the Step data model
             let newStepObject = {
-                step_id: uuid(),
-                number: Number(state.number),
-                text: state.text,
+                step_id:   uuid(),
+                number:    Number(state.number),
+                text:      state.text,
                 then_wait: (Number(state.thenWaitHH) * 3600) + (Number(state.thenWaitMM) * 60),
-                note: state.note
+                note:      state.note
             };
 
             // console.log("New Step:", newStepObject);
@@ -44,7 +44,7 @@ function stepReducer(state, action) {
             action.payload.addStepToRecipe(newStepObject);
 
             // Reset the form to its default
-            return {...state, number: action.payload.nextStepNumber}
+            return { ...state, number: action.payload.nextStepNumber }
         }
 
         case 'HANDLE_NUMBER_CHANGE': {
@@ -103,13 +103,11 @@ function stepReducer(state, action) {
     }
 }
 
-function useStep(nextStepNumber) {
-    const [state, dispatch] = useReducer(stepReducer, {
+export default function useStep(nextStepNumber) {
+    const [ state, dispatch ] = useReducer(stepReducer, {
         ...defaultStep,
         number: nextStepNumber
     })
 
-    return [state, dispatch]
+    return [ state, dispatch ]
 }
-
-export default useStep;

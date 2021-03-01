@@ -3,7 +3,8 @@ import seconds_to_string from '../scripts/time_display_functions';
 import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
 import AttrSource from './attributes/AttrSource';
 
-function RecipePageAttributes(props) {
+
+export default function RecipePageAttributes(props) {
     return (
         <div className="recipe-attributes-and-button-container">
             <div className="recipe-attributes-container">
@@ -30,9 +31,11 @@ function RecipePageAttributes(props) {
 
                 <div className="recipe-attribute attr-source">
                     <h3 className="attribute-label">Source</h3>
-                    <AttrSource name={props.source}
-                                url={props.url}
-                                extraClassString="attribute-value"/>
+                    <AttrSource
+                        name={props.source}
+                        url={props.url}
+                        extraClassString="attribute-value"
+                    />
                 </div>
             </div>
             {/*<div className="edit-button-container">*/}
@@ -45,10 +48,8 @@ function RecipePageAttributes(props) {
 
 RecipePageAttributes.defaultProps = {
     difficulty: "Intermediate",
-    author: "",
-    source: "",
-    url: "",
-    length: 0
+    author:     "",
+    source:     "",
+    url:        "",
+    length:     0
 }
-
-export default RecipePageAttributes;

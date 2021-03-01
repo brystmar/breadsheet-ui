@@ -1,4 +1,4 @@
-# breadsheet: A scheduling tool for homemade bread and pizza
+# Breadsheet: A scheduling tool for homemade bread and pizza
 
 ## How is this different from a recipe?
 Breadsheet adds a handy scheduling tool to your recipes, helping you fit long recipes into your day.
@@ -16,7 +16,7 @@ Although you love sourdough, you're also aware it can be challenging to properly
 
 But wait, this is `$(DateJoke).getCurrentYear()`.  There _must_ be a better way!
 
-Enter [breadsheet](http://breadsheet.com): A scheduling tool that calculates the start & finish times for each step within your recipe, and makes it easy to adjust when those steps should start or finish.  Focus on the bread; leave the scheduling to [breadsheet](http://breadsheet.com).
+Enter [Breadsheet](http://breadsheet.com): A scheduling tool that calculates the start & finish times for each step within your recipe, and makes it easy to adjust when those steps should start or finish.  Focus on the bread; leave the scheduling to [Breadsheet](http://breadsheet.com).
 
 ## Attribution
 Using icons from:

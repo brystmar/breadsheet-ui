@@ -19,11 +19,41 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Refactored async text conversion request">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Moved async getTextConversionData() back into the container file">
+      <change afterPath="$PROJECT_DIR$/src/helpers/map_difficulty_to_icon.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BreadsheetLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BreadsheetLogo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/textConversionApi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListHeaderRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListHeaderRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoadingIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoadingIcon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/attributes/AttrSource.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/attributes/AttrSource.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/convert_text_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/convert_text_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/map_difficulty_to_icon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/reallocate_hh_mm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/reallocate_hh_mm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/time_display_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/time_display_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,14 +250,7 @@
       <workItem from="1613334395429" duration="7230000" />
       <workItem from="1613606894298" duration="361000" />
       <workItem from="1613852779706" duration="9573000" />
-      <workItem from="1614544190826" duration="1457000" />
-    </task>
-    <task id="LOCAL-00073" summary="Working on color palette">
-      <created>1598112018139</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1598112018139</updated>
+      <workItem from="1614544190826" duration="2806000" />
     </task>
     <task id="LOCAL-00074" summary="Updated font stack, adjusted recipe attribute display">
       <created>1598119220696</created>
@@ -565,7 +588,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613963185709</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="Moved async getTextConversionData() back into the container file">
+      <created>1614546322295</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1614546322295</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -590,7 +620,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Updated readme" />
     <MESSAGE value="Hide debugging UI elements; don't allow conversion without data." />
     <MESSAGE value="Cleaned up button inconsistencies.  My color palettes still need tons of work." />
     <MESSAGE value="Prep for the hook refactor" />
@@ -615,6 +644,7 @@
     <MESSAGE value="AddRecipe now uses hooks" />
     <MESSAGE value="Updated logging approach for fetch errors" />
     <MESSAGE value="Refactored async text conversion request" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored async text conversion request" />
+    <MESSAGE value="Moved async getTextConversionData() back into the container file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved async getTextConversionData() back into the container file" />
   </component>
 </project>

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import BtnAdd from './buttons/BtnAdd';
-import BtnSubmit from './buttons/BtnSubmit';
-import { v4 as uuid } from 'uuid';
-import map_difficulty_to_icon from '../scripts/map_difficulty_to_icon';
+import React, { useState } from "react";
+import BtnAdd from "./buttons/BtnAdd";
+import BtnSubmit from "./buttons/BtnSubmit";
+import { v4 as uuid } from "uuid";
+import map_difficulty_to_icon from "../scripts/map_difficulty_to_icon";
 import { defaultRecipe } from "../data/defaultValues";
 
 

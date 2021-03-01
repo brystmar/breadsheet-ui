@@ -1,8 +1,8 @@
 // Helper functions to tweak the display of various time-based elements
 
-function seconds_to_string(seconds, IncludeDays = false,
-                           IncludeHours = true,
-                           IncludeMinutes = true) {
+export default function seconds_to_string(seconds, IncludeDays = false,
+                                          IncludeHours = true,
+                                          IncludeMinutes = true) {
     // Converts a raw number of seconds (int) to a human-readable string
     //   in days, hours, and/or minutes.
 
@@ -77,16 +77,16 @@ function seconds_to_string(seconds, IncludeDays = false,
     return result;
 }
 
-function seconds_to_hhmm(seconds) {
+export function seconds_to_hhmm(seconds) {
     // Input: a raw number of seconds (int)
     // Output: a zero-padded number of hours (str), and a zero-padded number of minutes (str).
     let hours = Math.floor(seconds / 3600);
     let minutes = Math.floor((seconds - (hours * 3600)) / 60);
 
-    return [pad(hours, 2), pad(minutes, 2)];
+    return [ pad(hours, 2), pad(minutes, 2) ];
 }
 
-function pad(input, desiredLength = 2) {
+export function pad(input, desiredLength = 2) {
     // Adds zero-padding to single-digit numbers, up to the specified length
     input = input.toString();
     while (input.length < desiredLength) {
@@ -94,6 +94,3 @@ function pad(input, desiredLength = 2) {
     }
     return input;
 }
-
-export default seconds_to_string;
-export {seconds_to_hhmm, pad};

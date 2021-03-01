@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-function ListHeaderRow(props) {
+export default function ListHeaderRow(props) {
     const columns = props.colTitles.map((title, index) => {
         // For each column, apply a unique class name based on the column's title
         // Truncate any spaces or punctuation in the title to simplify the classes
@@ -19,9 +19,7 @@ function ListHeaderRow(props) {
 }
 
 ListHeaderRow.defaultProps = {
-    for: "recipe",
-    colTitles: [""],
+    for:          "recipe",
+    colTitles:    [ "" ],
     onClickParam: true
 }
-
-export default ListHeaderRow;

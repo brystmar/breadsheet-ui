@@ -4,12 +4,12 @@ import DatePicker from 'react-datepicker';
 import "../styles/start-finish.sass";
 
 // TODO: Refactor to functional component
-class RecipeStartFinish extends React.Component {
+export default class RecipeStartFinish extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            startTime: new Date(0).getTime(),
-            finishTime: new Date(0).getTime(),
+            startTime:     new Date(0).getTime(),
+            finishTime:    new Date(0).getTime(),
             solveForStart: true
         };
 
@@ -22,8 +22,8 @@ class RecipeStartFinish extends React.Component {
     componentDidMount() {
         // Initialize state from inherited props
         this.setState({
-            startTime: moment(this.props.start_time).valueOf(),
-            finishTime: moment(this.props.start_time).add(this.props.length, 'seconds').valueOf(),
+            startTime:     moment(this.props.start_time).valueOf(),
+            finishTime:    moment(this.props.start_time).add(this.props.length, 'seconds').valueOf(),
             solveForStart: this.props.solve_for_start
         })
     }
@@ -35,8 +35,8 @@ class RecipeStartFinish extends React.Component {
         if (this.props !== nextProps) {
             // console.log("SCU: yes (props)");
             this.setState({
-                startTime: moment(nextProps.start_time).valueOf(),
-                finishTime: moment(nextProps.start_time).add(nextProps.length, 'seconds').valueOf(),
+                startTime:     moment(nextProps.start_time).valueOf(),
+                finishTime:    moment(nextProps.start_time).add(nextProps.length, 'seconds').valueOf(),
                 solveForStart: nextProps.solve_for_start
             })
 
@@ -59,7 +59,7 @@ class RecipeStartFinish extends React.Component {
             newStartTime = newDate.getTime();
 
             this.setState({
-                startTime: newStartTime,
+                startTime:  newStartTime,
                 finishTime: newStartTime + (this.props.length * 1000),
             });
         } else {
@@ -67,7 +67,7 @@ class RecipeStartFinish extends React.Component {
             newStartTime = newDate.getTime() - (this.props.length * 1000);
 
             this.setState({
-                startTime: newStartTime,
+                startTime:  newStartTime,
                 finishTime: newDate.getTime(),
             });
         }
@@ -96,12 +96,15 @@ class RecipeStartFinish extends React.Component {
         return (
             <div className="start-finish-container">
                 <div className="start-finish-contents">
-                    <span className="start-finish-toggle-container"
-                          title="Toggle solving for start/finish time">
+                    <span
+                        className="start-finish-toggle-container"
+                        title="Toggle solving for start/finish time"
+                    >
                         <button
                             type="button"
                             className="btn btn-start-finish-toggle"
-                            onClick={this.handleStartFinishToggle}>
+                            onClick={this.handleStartFinishToggle}
+                        >
                             {this.state.solveForStart ? "Start at:" : "Finish at:"}
                         </button>
                     </span>
@@ -119,13 +122,16 @@ class RecipeStartFinish extends React.Component {
                             timeCaption="Time"
                             todayButton="Today"
                             useWeekdaysShort={true}
-                            dateFormat="MMM dd, yyyy HH:mm"/>
+                            dateFormat="MMM dd, yyyy HH:mm"
+                        />
                     </span>
 
-                    <button type="button"
-                            name="updateRecipe"
-                            className="btn btn-save"
-                            onClick={this.handleSave}>
+                    <button
+                        type="button"
+                        name="updateRecipe"
+                        className="btn btn-save"
+                        onClick={this.handleSave}
+                    >
                         Save
                     </button>
                 </div>
@@ -137,5 +143,3 @@ class RecipeStartFinish extends React.Component {
         )
     }
 }
-
-export default RecipeStartFinish;

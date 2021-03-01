@@ -1,15 +1,15 @@
 import React from 'react';
-import {seconds_to_hhmm, pad} from '../scripts/time_display_functions';
+import { seconds_to_hhmm, pad } from '../scripts/time_display_functions';
 import Moment from 'react-moment';
 
 // TODO: Refactor to functional component
-class StepListItem extends React.Component {
+export default class StepListItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             thenWaitHH: pad(0),
             thenWaitMM: pad(0),
-            thenWait: 0
+            thenWait:   0
         };
 
         this.padValue = this.padValue.bind(this);
@@ -17,12 +17,12 @@ class StepListItem extends React.Component {
     }
 
     componentDidMount() {
-        let [hours, minutes] = seconds_to_hhmm(this.props.then_wait);
+        let [ hours, minutes ] = seconds_to_hhmm(this.props.then_wait);
 
         this.setState({
             thenWaitHH: pad(hours),
             thenWaitMM: pad(minutes),
-            thenWait: this.props.then_wait
+            thenWait:   this.props.then_wait
         })
     }
 
@@ -46,7 +46,7 @@ class StepListItem extends React.Component {
     }
 
     handleChange(event) {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
         this.setState({
             [name]: Number(value)
         });
@@ -65,7 +65,7 @@ class StepListItem extends React.Component {
     padValue(event) {
         // Adds zero-padding to single digit numbers.
         // Also re-calculates hours & minutes if ThenWaitMM >= 60.
-        const {name, value} = event.target;
+        const { name, value } = event.target;
         const numValue = Number(value);
 
         // Re-allocate minutes if ThenWaitMM value is >= 60
@@ -110,23 +110,27 @@ class StepListItem extends React.Component {
                 </span>
 
                 <span className="step-list-cell col-then">
-                    <input type="number"
-                           min="00"
-                           max="99"
-                           name="thenWaitHH"
-                           value={this.state.thenWaitHH}
-                           onChange={this.handleChange}
-                           onBlur={this.padValue}
-                           className="then-wait-hh-input"/>
+                    <input
+                        type="number"
+                        min="00"
+                        max="99"
+                        name="thenWaitHH"
+                        value={this.state.thenWaitHH}
+                        onChange={this.handleChange}
+                        onBlur={this.padValue}
+                        className="then-wait-hh-input"
+                    />
                     :
-                    <input type="number"
-                           min="00"
-                           max="59"
-                           name="thenWaitMM"
-                           value={this.state.thenWaitMM}
-                           onChange={this.handleChange}
-                           onBlur={this.padValue}
-                           className="then-wait-mm-input"/>
+                    <input
+                        type="number"
+                        min="00"
+                        max="59"
+                        name="thenWaitMM"
+                        value={this.state.thenWaitMM}
+                        onChange={this.handleChange}
+                        onBlur={this.padValue}
+                        className="then-wait-mm-input"
+                    />
                 </span>
 
                 <span className="step-list-cell col-note">
@@ -138,12 +142,10 @@ class StepListItem extends React.Component {
 }
 
 StepListItem.defaultProps = {
-    step_id: 0,
+    step_id:    0,
     stepNumber: 0,
-    text: "",
-    then_wait: 0,
-    note: "",
-    hidden: true
+    text:       "",
+    then_wait:  0,
+    note:       "",
+    hidden:     true
 }
-
-export default StepListItem;

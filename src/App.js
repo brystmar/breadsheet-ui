@@ -1,23 +1,24 @@
-import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import PageTitle from './components/PageTitle';
-import RecipeListContainer from './components/RecipeListContainer';
-import RecipePageContainer from './components/RecipePageContainer';
-import AddRecipe from './components/AddRecipe';
-import ConvertTextPageContainer from './components/ConvertTextPageContainer';
-import 'react-datepicker/dist/react-datepicker.css';
-import './styles/styles.sass';
-import './styles/recipe-and-step-lists.sass';
+import PageTitle from "./components/PageTitle";
+import RecipeListContainer from "./components/RecipeListContainer";
+import RecipePageContainer from "./components/RecipePageContainer";
+import AddRecipe from "./components/AddRecipe";
+import ConvertTextPageContainer from "./components/ConvertTextPageContainer";
+import "react-datepicker/dist/react-datepicker.css";
+import "./styles/styles.sass";
+import "./styles/recipe-and-step-lists.sass";
+
 
 // TODO: Refactor to functional component
-class App extends React.Component {
+export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
             allRecipes: [],
-            hasData: false
+            hasData:    false
         }
 
         this.getAllRecipes = this.getAllRecipes.bind(this);
@@ -69,7 +70,7 @@ class App extends React.Component {
         // console.log(updatedRecipe);
         fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id, {
             method: "PUT",
-            body: JSON.stringify(updatedRecipe)
+            body:   JSON.stringify(updatedRecipe)
         })
             .then(response => {
                 if (response.ok) {
@@ -140,12 +141,12 @@ class App extends React.Component {
     render() {
         return (
             <div className="app-container">
-                <Header/>
+                <Header />
 
                 <main className="content-container">
                     <Switch>
                         <Route exact path="/convert">
-                            <PageTitle title="Convert Text" includeHr={true}/>
+                            <PageTitle title="Convert Text" includeHr={true} />
                             <ConvertTextPageContainer />
                         </Route>
 
@@ -159,21 +160,19 @@ class App extends React.Component {
                         </Route>
 
                         <Route exact path="/">
-                            <PageTitle title="Breadsheet" includeHr={true}/>
+                            <PageTitle title="Breadsheet" includeHr={true} />
                             <RecipeListContainer
                                 allRecipes={this.state.allRecipes}
                                 addRecipeToState={this.addRecipeToState}
                                 deleteRecipe={this.deleteRecipe}
                             />
-                            <AddRecipe addRecipeToState={this.addRecipeToState}/>
+                            <AddRecipe addRecipeToState={this.addRecipeToState} />
                         </Route>
                     </Switch>
                 </main>
 
-                <Footer/>
+                <Footer />
             </div>
         )
     }
 }
-
-export default App;

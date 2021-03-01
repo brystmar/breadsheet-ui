@@ -1,6 +1,7 @@
 import {useState} from 'react';
 
-function useRecipe(initialState) {
+
+export default function useRecipe(initialState) {
     const [recipe, updateRecipe] = useState(initialState);
 
     function handleChange(event) {
@@ -9,5 +10,3 @@ function useRecipe(initialState) {
 
     return [recipe, updateRecipe, handleChange]
 }
-
-export default useRecipe;

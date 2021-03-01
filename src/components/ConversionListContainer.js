@@ -1,42 +1,43 @@
-import React, {useState} from 'react';
-import {MDBDataTable} from 'mdbreact';
-import {format_text_replacement_list_items} from '../scripts/convert_text_functions'
-import {defaultConversionListContainerState} from "../data/defaultValues";
+import React, { useState } from "react";
+import { MDBDataTable } from "mdbreact";
+import { format_text_replacement_list_items } from "../scripts/convert_text_functions"
+import { defaultConversionListContainerState } from "../data/defaultValues";
 
 
-function ConversionListContainer(props) {
-    const [state, updateState] = useState(defaultConversionListContainerState);
+export default function ConversionListContainer(props) {
+    const [ state, updateState ] = useState(defaultConversionListContainerState);
 
     let tableData = {
         columns: [
             {
                 label: "Find",
                 field: "old",
-                sort: "asc",
+                sort:  "asc",
                 width: 210
             },
             {
                 label: "Replace",
                 field: "new",
-                sort: "asc",
+                sort:  "asc",
                 width: 210
             }
         ],
-        rows: state.scope === "ingredients" ?
-            format_text_replacement_list_items(props.ingredientsList) :
-            format_text_replacement_list_items(props.directionsList)
+        rows:    state.scope === "ingredients" ?
+                     format_text_replacement_list_items(props.ingredientsList) :
+                     format_text_replacement_list_items(props.directionsList)
     }
 
     return (
         <div className="replacement-list-container">
             <h3
                 className="replacement-list-header"
-                onClick={() => updateState({isCollapsed: !state.isCollapsed})}
+                onClick={() => updateState({ isCollapsed: !state.isCollapsed })}
             >
                 What's being replaced?
             </h3>
-            <span className={state.isCollapsed ? "replacement-list-content hidden" :
-                "replacement-list-content"}
+            <span
+                className={state.isCollapsed ? "replacement-list-content hidden" :
+                    "replacement-list-content"}
             >
                 <p className="toggle-replacements">
                     Replacements for
@@ -45,9 +46,9 @@ function ConversionListContainer(props) {
                         className="btn btn-default-reverse btn-replacement-toggle"
                         onClick={() => {
                             if (state.scope === "ingredients") {
-                                updateState({scope: "directions"})
+                                updateState({ scope: "directions" })
                             } else {
-                                updateState({scope: "ingredients"})
+                                updateState({ scope: "ingredients" })
                             }
                         }}
                     >
@@ -79,8 +80,6 @@ function ConversionListContainer(props) {
 
 ConversionListContainer.defaultProps = {
     ingredientsList: [],
-    directionsList: [],
-    hasData: false
+    directionsList:  [],
+    hasData:         false
 }
-
-export default ConversionListContainer;

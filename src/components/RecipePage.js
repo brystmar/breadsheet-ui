@@ -1,21 +1,21 @@
 // Layout for a recipe-specific page.
-import React from 'react';
-import PageTitle from './PageTitle';
-import RecipePageAttributes from './RecipePageAttributes';
-import RecipeStartFinish from './RecipeStartFinish';
-import StepContainer from './StepContainer';
-import AddStep from './AddStep';
+import React from "react";
+import PageTitle from "./PageTitle";
+import RecipePageAttributes from "./RecipePageAttributes";
+import RecipeStartFinish from "./RecipeStartFinish";
+import StepContainer from "./StepContainer";
+import AddStep from "./AddStep";
 
 // TODO: Refactor to functional component
-class RecipePage extends React.Component {
+export default class RecipePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             recipeData: this.props.recipeData,
-            hasData: this.props.hasData,
-            hasSteps: false,
-            nextStep: 1,
-            editMode: false
+            hasData:    this.props.hasData,
+            hasSteps:   false,
+            nextStep:   1,
+            editMode:   false
         };
 
         this.findHighestStep = this.findHighestStep.bind(this);
@@ -48,9 +48,9 @@ class RecipePage extends React.Component {
                 if (result.message === "Success") {
                     this.setState({
                         recipeData: result.data,
-                        hasData: true,
-                        hasSteps: result.data.steps.length > 0,
-                        nextStep: this.findHighestStep(result.data.steps) + 1
+                        hasData:    true,
+                        hasSteps:   result.data.steps.length > 0,
+                        nextStep:   this.findHighestStep(result.data.steps) + 1
                     });
                 } else {
                     console.log("Error retrieving recipe data from backend.");
@@ -127,7 +127,7 @@ class RecipePage extends React.Component {
 
         fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + updatedRecipe.recipeData.id, {
             method: "PUT",
-            body: JSON.stringify(updatedRecipe.recipeData)
+            body:   JSON.stringify(updatedRecipe.recipeData)
         })
             .then(response => {
                 // console.log("PUT response:", response.ok ? "Success" : "Error", response.status);
@@ -169,9 +169,9 @@ class RecipePage extends React.Component {
 
         this.saveUpdatedRecipe({
             recipeData: updatedRecipe,
-            hasData: true,
-            hasSteps: true,
-            nextStep: this.findHighestStep(updatedRecipe.steps) + 1
+            hasData:    true,
+            hasSteps:   true,
+            nextStep:   this.findHighestStep(updatedRecipe.steps) + 1
         })
     }
 
@@ -189,8 +189,8 @@ class RecipePage extends React.Component {
         // Update the backend, then update state
         this.saveUpdatedRecipe({
             recipeData: newRecipeData,
-            hasSteps: newRecipeData.steps.length > 0,
-            nextStep: this.findHighestStep(newRecipeData.steps) + 1
+            hasSteps:   newRecipeData.steps.length > 0,
+            nextStep:   this.findHighestStep(newRecipeData.steps) + 1
         });
 
         // Update the length on the main recipe table
@@ -203,41 +203,46 @@ class RecipePage extends React.Component {
 
         return (
             <div className="recipe-detail-summary">
-                <PageTitle title={this.state.recipeData.name}
-                           includeHr={true}
+                <PageTitle
+                    title={this.state.recipeData.name}
+                    includeHr={true}
                 />
 
-                <RecipePageAttributes difficulty={this.state.recipeData.difficulty}
-                                      source={this.state.recipeData.source}
-                                      author={this.state.recipeData.author}
-                                      url={this.state.recipeData.url ? this.state.recipeData.url : ""}
-                                      length={this.state.recipeData.length}
-                                      toggleEditMode={this.toggleEditMode}
+                <RecipePageAttributes
+                    difficulty={this.state.recipeData.difficulty}
+                    source={this.state.recipeData.source}
+                    author={this.state.recipeData.author}
+                    url={this.state.recipeData.url ? this.state.recipeData.url : ""}
+                    length={this.state.recipeData.length}
+                    toggleEditMode={this.toggleEditMode}
                 />
 
-                <RecipeStartFinish start_time={this.state.recipeData.start_time}
-                                   solve_for_start={this.state.recipeData.solve_for_start}
-                                   length={this.state.recipeData.length}
-                                   handleUpdateStartTime={this.handleUpdateStartTime}
-                                   handleStartFinishToggle={this.handleStartFinishToggle}
-                                   saveRecipe={this.handleSaveRecipe}
+                <RecipeStartFinish
+                    start_time={this.state.recipeData.start_time}
+                    solve_for_start={this.state.recipeData.solve_for_start}
+                    length={this.state.recipeData.length}
+                    handleUpdateStartTime={this.handleUpdateStartTime}
+                    handleStartFinishToggle={this.handleStartFinishToggle}
+                    saveRecipe={this.handleSaveRecipe}
                 />
 
-                <StepContainer steps={this.state.recipeData.steps}
-                               start_time={this.state.recipeData.start_time}
-                               solve_for_start={this.state.recipeData.solve_for_start}
-                               length={this.state.recipeData.length}
-                               hidden={!this.state.editMode}
-                               toggleEditMode={this.toggleEditMode}
-                               hasData={this.state.hasData}
-                               handleStepLengthChange={this.handleStepLengthChange}
-                               deleteStep={this.deleteStep}
+                <StepContainer
+                    steps={this.state.recipeData.steps}
+                    start_time={this.state.recipeData.start_time}
+                    solve_for_start={this.state.recipeData.solve_for_start}
+                    length={this.state.recipeData.length}
+                    hidden={!this.state.editMode}
+                    toggleEditMode={this.toggleEditMode}
+                    hasData={this.state.hasData}
+                    handleStepLengthChange={this.handleStepLengthChange}
+                    deleteStep={this.deleteStep}
                 />
 
-                <AddStep nextStep={this.state.nextStep}
-                         addStepToRecipe={this.addStepToRecipe}
-                         hidden={!this.state.editMode}
-                         toggleEditMode={this.toggleEditMode}
+                <AddStep
+                    nextStep={this.state.nextStep}
+                    addStepToRecipe={this.addStepToRecipe}
+                    hidden={!this.state.editMode}
+                    toggleEditMode={this.toggleEditMode}
                 />
 
             </div>
@@ -246,20 +251,18 @@ class RecipePage extends React.Component {
 }
 
 RecipePage.defaultProps = {
-    recipeId: 0,
+    recipeId:   0,
     recipeData: {
-        id: 0,
+        id:         0,
         difficulty: "Intermediate",
-        steps: [
+        steps:      [
             {
-                step_id: 0,
-                number: 0,
-                text: "",
+                step_id:   0,
+                number:    0,
+                text:      "",
                 then_wait: 0
             }
         ],
     },
-    hasData: false
+    hasData:    false
 }
-
-export default RecipePage;

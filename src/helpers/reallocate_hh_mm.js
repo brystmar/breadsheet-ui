@@ -1,8 +1,9 @@
-import {pad} from "./time_display_functions";
+import { pad } from "./time_display_functions";
 
-function reallocate_hh_mm(event, providedHours, providedMinutes) {
+
+export default function reallocate_hh_mm(event, providedHours, providedMinutes) {
     // Re-calculates hours/minutes when providedMinutes >= 60
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     const numValue = Number(value);
     // console.log("Start of reallocate_hh_mm:", name, value, numValue);
 
@@ -48,5 +49,3 @@ function reallocate_hh_mm(event, providedHours, providedMinutes) {
         thenWaitMM: providedMinutes
     }
 }
-
-export default reallocate_hh_mm;
