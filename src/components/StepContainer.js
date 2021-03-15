@@ -73,6 +73,7 @@ function BuildStepComponentList(props) {
                     then_wait={stepList[i].then_wait}
                     note={stepList[i].note}
                     hidden={props.hidden}
+                    highlight={i % 2 === 0}
                     deleteStep={props.deleteStep}
                     handleStepLengthChange={props.handleStepLengthChange}
                 />);

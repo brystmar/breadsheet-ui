@@ -22,11 +22,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Refactored RecipeStartFinish w/hooks">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Discovered broken things in RSF, need to simplify it further">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepContainer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,14 +227,8 @@
       <workItem from="1613334395429" duration="7230000" />
       <workItem from="1613606894298" duration="361000" />
       <workItem from="1613852779706" duration="9573000" />
-      <workItem from="1614544190826" duration="12240000" />
-    </task>
-    <task id="LOCAL-00078" summary="Add step form is properly responsive">
-      <created>1598301978536</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1598301978536</updated>
+      <workItem from="1614544190826" duration="18736000" />
+      <workItem from="1615754937685" duration="3425000" />
     </task>
     <task id="LOCAL-00079" summary="Ready for prod deploy">
       <created>1598303364862</created>
@@ -568,7 +566,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614571046645</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="Discovered broken things in RSF, need to simplify it further">
+      <created>1614576038287</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1614576038287</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -593,7 +598,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Minor changes pre-travel" />
     <MESSAGE value="Added TODOs to all the class-based components" />
     <MESSAGE value="CSS overhaul, split by function" />
     <MESSAGE value="Refactored ConvertTextPageContainer; need to finish its custom hook" />
@@ -618,6 +622,7 @@
     <MESSAGE value="Handling for all-uppercase text conversion inputs" />
     <MESSAGE value="Fixed a few broken imports" />
     <MESSAGE value="Refactored RecipeStartFinish w/hooks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored RecipeStartFinish w/hooks" />
+    <MESSAGE value="Discovered broken things in RSF, need to simplify it further" />
+    <option name="LAST_COMMIT_MESSAGE" value="Discovered broken things in RSF, need to simplify it further" />
   </component>
 </project>

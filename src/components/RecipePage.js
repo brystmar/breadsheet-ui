@@ -48,6 +48,7 @@ export default class RecipePage extends React.Component {
             .then(result => {
                 if (result.message === "Success") {
                     this.setState({
+                        ...this.state,
                         recipeData: result.data,
                         hasData:    true,
                         hasSteps:   result.data.steps.length > 0,
@@ -65,6 +66,7 @@ export default class RecipePage extends React.Component {
     toggleEditMode(newEditMode = !this.state.editMode) {
         if (newEditMode !== this.state.editMode) {
             this.setState({
+                ...this.state,
                 editMode: !this.state.editMode
             })
         }
@@ -95,6 +97,7 @@ export default class RecipePage extends React.Component {
         newRecipe.length = newLength;
 
         this.setState({
+            ...this.state,
             recipeData: newRecipe
         })
     }
@@ -104,6 +107,7 @@ export default class RecipePage extends React.Component {
         newRecipeData.solve_for_start = !newRecipeData.solve_for_start;
 
         this.setState({
+            ...this.state,
             recipeData: newRecipeData
         })
     }
@@ -114,6 +118,7 @@ export default class RecipePage extends React.Component {
         newRecipeData.start_time = newStartTime;
 
         this.setState({
+            ...this.state,
             recipeData: newRecipeData
         })
     }

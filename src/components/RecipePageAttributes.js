@@ -1,7 +1,7 @@
-import React from 'react';
-import seconds_to_string from '../helpers/time_display_functions';
-import map_difficulty_to_icon from '../helpers/map_difficulty_to_icon';
-import AttrSource from './attributes/AttrSource';
+import React from "react";
+import seconds_to_string from "../helpers/time_display_functions";
+import map_difficulty_to_icon from "../helpers/map_difficulty_to_icon";
+import AttrSource from "./attributes/AttrSource";
 
 
 export default function RecipePageAttributes(props) {

@@ -6,7 +6,8 @@ import "../styles/text-conversion.sass";
 
 
 // TODO: Parse ingredients by section (ex: ignore "Equipment"), then into qty/unit/ingredient/prep
-//  Add imperial-to-metric weight conversion
+//  Add imperial-to-metric weight conversion, perhaps even for specific ingredients?
+//  See https://www.kingarthurbaking.com/learn/ingredient-weight-chart
 export default function ConvertTextPageContainer() {
     let [ state, updateState ] = useState(defaultTextConversionState);
 
