@@ -21,6 +21,11 @@ export default function AddRecipe(props) {
         // Don't refresh the page
         event.preventDefault();
 
+        if (!state.name || state.name === "") {
+            // Recipe name can't be null
+            return
+        }
+
         let newRecipe = {
             name:       state.name,
             difficulty: state.difficulty,
