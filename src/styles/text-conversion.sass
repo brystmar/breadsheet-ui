@@ -1,6 +1,43 @@
 @import "variables"
 
 
+.icon-on-btn
+  display: inline-block
+  margin-left: 0.25em
+  max-width: 20px
+  max-height: 20px
+
+#confirmation-container
+  display: inline-block
+  position: relative
+
+#confirmation:after
+  top: 100%
+  text-align: center
+  display: flex
+  flex-direction: column
+  justify-content: center
+  height: 0
+  width: 100%
+  opacity: 0
+  position: absolute
+  overflow: hidden
+  pointer-events: none
+  border: 1px solid $color-6
+  border-radius: inherit
+  left: 0
+  content: "✔"
+  z-index: 999
+  color: $color-6
+  background: $color-gray-light
+  transition: height 0.28s cubic-bezier(0, 1.13, 0.93, 0.82), top 0.28s cubic-bezier(0, 1.13, 0.93, 0.82)
+
+//#confirmation:after
+#confirmation.checkmark:after
+  top: 0
+  height: 100%
+  opacity: 1
+
 .text-conversion-container
   margin: 1em 0
   .text-conversion-group
@@ -19,9 +56,11 @@
     grid-template: 4fr 4fr 1fr / 1fr 1fr
     grid-gap: 1em
   .button-group
-    min-height: 68px
+    min-height: 4.25em
     .btn-clipboard
       width: 12em
+    .checkmark
+      //background-color: $color-4
 
   .clipboard-confirmation
     visibility: visible
@@ -45,11 +84,6 @@
     .btn-replacement-toggle
       width: 9em
       margin-left: 0.35em
-      .icon-on-btn
-        display: inline-block
-        margin-left: 0.25em
-        max-width: 20px
-        max-height: 20px
 
   .dataTables_wrapper
     padding: 0 1em

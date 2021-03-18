@@ -33,12 +33,10 @@ export default function ConvertTextControls(props) {
     }
 
     useEffect(() => {
-        // TODO: Replace this show/hide text with a pure-CSS button animation
-        // Briefly show the "Copied!" confirmation after the Copy button is clicked
         if (showConfirmation) {
             const timeout = setTimeout(() => {
                 updateShowConfirmation(false)
-            }, 1500)
+            }, 750)
 
             return () => clearTimeout(timeout)
         }
@@ -118,18 +116,20 @@ export default function ConvertTextControls(props) {
                     text={(state.outputIngredients + "\n" + state.outputDirections).trim()}
                     onCopy={() => updateShowConfirmation(true)}
                 >
-                    <button
-                        type="button"
-                        name="copyToClipboard"
-                        className="btn btn-save btn-clipboard"
-                        tabIndex={3}
-                        disabled={state.hasData}
-                    >
-                        Copy to Clipboard
-                    </button>
+                    <span id="confirmation-container">
+                        <button
+                            type="button"
+                            id="confirmation"
+                            name="copyToClipboard"
+                            className={!showConfirmation ? "btn btn-save btn-clipboard" :
+                                "btn btn-save btn-clipboard checkmark"}
+                            tabIndex={3}
+                            disabled={state.hasData}
+                        >
+                            {!showConfirmation ? "Copy to Clipboard" : ""}
+                        </button>
+                    </span>
                 </CopyToClipboard>
-
-                {showConfirmation ? <span className={"clipboard-confirmation"}>Copied!</span> : ""}
             </span>
 
             <span className="button-group">

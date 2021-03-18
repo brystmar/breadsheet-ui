@@ -8,9 +8,12 @@
   margin: 0
   border-radius: 0.2em
   cursor: pointer
-  outline: none !important  // To override settings from packages w/bootstrap
+  //outline: none !important  // To override settings from packages w/bootstrap
   box-shadow: none !important  // To override settings from packages w/bootstrap
-  transition: all 200ms ease-in-out
+  transition: background-color 200ms ease-in-out, opacity 200ms ease-in-out, color 200ms ease-in-out, height 200ms ease-in-out, width 200ms ease-in-out
+.btn:focus
+  outline: 1px dashed $color-border !important
+  outline-offset: 1px
 .btn:disabled
   opacity: 0.5
   border: none
@@ -76,8 +79,6 @@
 
 .btn-reset,
 .btn-cancel
-  //background: $color-7
-  //color: $color-text-light
   margin: 0 0.25em
 
 .btn-save,
@@ -88,9 +89,7 @@
   border: 1px solid $color-6
   line-height: 1
 .btn-save:hover,
-.btn-save:focus,
-.btn-add:hover,
-.btn-add:focus
+.btn-add:hover
   background: $color-6
   color: $color-text-light
   border: 1px solid $color-7

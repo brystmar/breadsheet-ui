@@ -22,14 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Fixed the RecipeStartFinish bug">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Simplified the clipboard copy animation">
+      <change afterPath="$PROJECT_DIR$/public/icons/check.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/defaultValues.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/defaultValues.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/buttons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/buttons.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.sass" afterDir="false" />
@@ -117,7 +116,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript&#10;TEXT" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="CSS&#10;JavaScript&#10;TEXT" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="Sass" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -230,14 +229,7 @@
       <workItem from="1613606894298" duration="361000" />
       <workItem from="1613852779706" duration="9573000" />
       <workItem from="1614544190826" duration="18736000" />
-      <workItem from="1615754937685" duration="13442000" />
-    </task>
-    <task id="LOCAL-00080" summary="SSL support">
-      <created>1598399273036</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1598399273036</updated>
+      <workItem from="1615754937685" duration="20763000" />
     </task>
     <task id="LOCAL-00081" summary="Removed bootstrap from everything but the convert page">
       <created>1598488126657</created>
@@ -575,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615766432335</updated>
     </task>
-    <option name="localTasksCounter" value="129" />
+    <task id="LOCAL-00129" summary="Simplified the clipboard copy animation">
+      <created>1616034833068</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1616034833068</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -600,7 +599,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="CSS overhaul, split by function" />
     <MESSAGE value="Refactored ConvertTextPageContainer; need to finish its custom hook" />
     <MESSAGE value="Applied useEffect to ConvertTextPageContainer" />
     <MESSAGE value="Starting to separate API calls from component display logic" />
@@ -625,6 +623,7 @@
     <MESSAGE value="Refactored RecipeStartFinish w/hooks" />
     <MESSAGE value="Discovered broken things in RSF, need to simplify it further" />
     <MESSAGE value="Fixed the RecipeStartFinish bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the RecipeStartFinish bug" />
+    <MESSAGE value="Simplified the clipboard copy animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified the clipboard copy animation" />
   </component>
 </project>
