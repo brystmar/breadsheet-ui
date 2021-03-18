@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { CSSTransition } from "react-transition-group";
+import React, { useState, useEffect } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { convert_text_using_provided_list } from "../helpers/convert_text_functions";
 import { defaultConvertTextState, convertTextPlaceholder } from "../data/defaultValues";
@@ -7,13 +6,13 @@ import { defaultConvertTextState, convertTextPlaceholder } from "../data/default
 
 export default function ConvertTextControls(props) {
     const [ state, updateState ] = useState(defaultConvertTextState);
+    const [ showConfirmation, updateShowConfirmation ] = useState(false);
 
     function handleChange(event) {
         const { name, value } = event.target;
 
         if (!props.hasData) {
-            // If we don't have the replacement text lists, users can enter data but the app
-            // won't try to convert anything.
+            // Prevent conversion if we don't have the replacement text data
             updateState({
                 ...state,
                 [name]: value
@@ -33,7 +32,17 @@ export default function ConvertTextControls(props) {
         }
     }
 
-    // TODO: Fix the `Copied!` CSS transition
+    useEffect(() => {
+        // TODO: Replace this show/hide text with a pure-CSS button animation
+        // Briefly show the "Copied!" confirmation after the Copy button is clicked
+        if (showConfirmation) {
+            const timeout = setTimeout(() => {
+                updateShowConfirmation(false)
+            }, 1500)
+
+            return () => clearTimeout(timeout)
+        }
+    }, [ showConfirmation ])
 
     return (
         <div className="text-conversion-inputs-container">
@@ -106,8 +115,8 @@ export default function ConvertTextControls(props) {
 
             <span className="button-group">
                 <CopyToClipboard
-                    text={(state.outputIngredients + "\n\n" + state.outputDirections).trim()}
-                    onCopy={() => updateState({ transition: !state.transition, ...state })}
+                    text={(state.outputIngredients + "\n" + state.outputDirections).trim()}
+                    onCopy={() => updateShowConfirmation(true)}
                 >
                     <button
                         type="button"
@@ -120,17 +129,7 @@ export default function ConvertTextControls(props) {
                     </button>
                 </CopyToClipboard>
 
-                {/*TODO: Now that I understand CSS, it's time to replace this module*/}
-                <CSSTransition
-                    in={state.transition}
-                    timeout={500}
-                    classNames="clipboard-confirmation"
-                    onEntered={() => updateState({ transition: !state.transition, ...state })}
-                >
-                    <span className="clipboard-confirmation">
-                        Copied!
-                    </span>
-                </CSSTransition>
+                {showConfirmation ? <span className={"clipboard-confirmation"}>Copied!</span> : ""}
             </span>
 
             <span className="button-group">

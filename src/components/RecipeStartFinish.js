@@ -5,11 +5,10 @@ import "../styles/start-finish.sass";
 
 
 export default function RecipeStartFinish(props) {
-    const propsData = `/PROPS/ s4s: ${props.solve_for_start}, len: ${props.length}, s_time: ${props.start_time}`;
-    console.log(propsData);
+    // const propsData = `/PROPS/ s4s: ${props.solve_for_start}, len: ${props.length}, s_time: ${props.start_time}`;
+    // console.log(propsData);
 
     function convertToFinish(startTime) {
-        console.log(`Starting convertToFinish for: ${startTime}, ${typeof (startTime)}, & length: ${props.length}.`)
         if (typeof (startTime) !== typeof (new Date(0).getTime())) {
             console.error(`cTF: Incorrect data type provided -- ${typeof (startTime)}.`)
             return startTime
@@ -35,8 +34,7 @@ export default function RecipeStartFinish(props) {
     }, [ props.start_time, props.length ])
 
     function handleDateChange(newDate) {
-        console.log("Called handleDateChange(" + newDate.getTime() + ").");
-
+        // Easier to understand as its own function
         let newStartTime = newDate.getTime();
 
         if (props.solve_for_start) {
@@ -47,10 +45,8 @@ export default function RecipeStartFinish(props) {
             });
         } else {
             // User modified finishTime, so determine the new startTime
-            newStartTime = newStartTime - (props.length * 1000);
-
             updateState({
-                startTime:  newStartTime,
+                startTime:  newStartTime - (props.length * 1000),
                 finishTime: newDate.getTime()
             });
         }
@@ -74,7 +70,6 @@ export default function RecipeStartFinish(props) {
                         {props.solve_for_start ? "Start at:" : "Finish at:"}
                     </button>
                 </span>
-                <button onClick={() => console.log(propsData)}>Log</button>
 
                 <span className="start-finish-datepicker">
                     <DatePicker

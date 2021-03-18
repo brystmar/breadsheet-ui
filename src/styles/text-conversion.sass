@@ -19,21 +19,18 @@
     grid-template: 4fr 4fr 1fr / 1fr 1fr
     grid-gap: 1em
   .button-group
+    min-height: 68px
     .btn-clipboard
       width: 12em
 
   .clipboard-confirmation
-    visibility: hidden
+    visibility: visible
+    opacity: 1
     display: flex
     justify-content: center
     margin: 4px 0 0 8px
     color: $color-7
-  .clipboard-confirmation-enter
-    visibility: visible
-    opacity: 1
-  .clipboard-confirmation-enter-active
-    opacity: 0
-    transition: opacity 1s
+    animation: 1500ms fade forwards
 
   .replacement-list-container
     margin: 1.5em 0
@@ -107,10 +104,18 @@
               margin-left: 0.25em
               visibility: visible
 
+@keyframes fade
+  from
+    visibility: visible
+    opacity: 1
+  to
+    visibility: hidden
+    opacity: 0
+
 @media (max-width: 569px)
   .text-conversion-container
     *
-      transition: all 0.35s
+      transition: all 350ms
     .replacement-list-container
       display: none
     .text-conversion-inputs-container

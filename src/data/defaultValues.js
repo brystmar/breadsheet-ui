@@ -25,7 +25,6 @@ export const defaultConvertTextState = {
     inputDirections:   "",
     outputIngredients: "",
     outputDirections:  "",
-    transition:        false,
     textRows:          8,
     textCols:          8
 }

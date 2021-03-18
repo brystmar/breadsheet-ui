@@ -28,7 +28,6 @@ export default function ConvertTextPageContainer() {
                             directions:  result.data.directions,
                             hasData:     true
                         })
-                        replacementsPromise.resolve("Replacements updated successfully.");
                     } else {
                         console.log("Retrieved replacement text data, but unable to parse.", result.data);
                         replacementsPromise.reject(result.body);
@@ -43,8 +42,9 @@ export default function ConvertTextPageContainer() {
             }
         }
 
-        const getTextConversionPromise = getTextConversionData();
-        console.log(`Returned Promise from getTextConversionData(): ${getTextConversionPromise}`)
+        getTextConversionData();
+        // const getTextConversionPromise = getTextConversionData();
+        // console.log(`Returned Promise from getTextConversionData(): ${getTextConversionPromise}`)
     }, [])
 
     return (

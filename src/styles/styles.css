@@ -431,7 +431,7 @@ select {
   cursor: pointer;
   outline: none !important;
   box-shadow: none !important;
-  transition: all 0.2s;
+  transition: all 200ms ease-in-out;
 }
 
 .btn:disabled {
@@ -469,7 +469,7 @@ select {
   border: 1px solid #696c72;
 }
 .btn-default-reverse img {
-  transition: all 0.2s;
+  transition: filter 201ms linear;
   filter: invert(97%) sepia(69%) saturate(201%) hue-rotate(209deg) brightness(112%) contrast(86%);
 }
 

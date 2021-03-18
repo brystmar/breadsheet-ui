@@ -84,23 +84,20 @@
   grid-template: 4fr 4fr 1fr/1fr 1fr;
   grid-gap: 1em;
 }
+.text-conversion-container .button-group {
+  min-height: 68px;
+}
 .text-conversion-container .button-group .btn-clipboard {
   width: 12em;
 }
 .text-conversion-container .clipboard-confirmation {
-  visibility: hidden;
+  visibility: visible;
+  opacity: 1;
   display: flex;
   justify-content: center;
   margin: 4px 0 0 8px;
   color: #370300;
-}
-.text-conversion-container .clipboard-confirmation-enter {
-  visibility: visible;
-  opacity: 1;
-}
-.text-conversion-container .clipboard-confirmation-enter-active {
-  opacity: 0;
-  transition: opacity 1s;
+  animation: 1500ms fade forwards;
 }
 .text-conversion-container .replacement-list-container {
   margin: 1.5em 0;
@@ -187,9 +184,19 @@
   visibility: visible;
 }
 
+@keyframes fade {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
 @media (max-width: 569px) {
   .text-conversion-container * {
-    transition: all 0.35s;
+    transition: all 350ms;
   }
   .text-conversion-container .replacement-list-container {
     display: none;
