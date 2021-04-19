@@ -38,24 +38,6 @@ export default function AddStep(props) {
             <form
                 className={props.hidden ? "add-step-form hidden" : "add-step-form"}
                 id="add-step-form"
-                onSubmit={(event) => {
-                    console.log("AddStep Form submitted via BtnSubmit button.");
-
-                    // Don't refresh the page
-                    event.preventDefault();
-
-                    // Call the submit function
-                    dispatch({
-                        type:    "HANDLE_SUBMIT",
-                        payload: {
-                            nextStepNumber:  props.nextStep,
-                            addStepToRecipe: props.addStepToRecipe
-                        }
-                    });
-
-                    // Ensure edit mode on the parent is false
-                    props.toggleEditMode(false);
-                }}
             >
                 <span className="add-step-form-group">
                     <label htmlFor="number" className="add-step-form-label">
@@ -170,11 +152,28 @@ export default function AddStep(props) {
 
                 <span className="add-step-form-group button-group">
                     <button
-                        type="submit"
+                        type="button"
                         name="saveNewStep"
                         className="btn btn-submit"
-                        disabled={props.disabled}
-                        onClick={props.onClickFn}
+                        disabled={props.hidden}
+                        onClick={(event) => {
+                            console.log("AddStep Form submitted via BtnSubmit button.");
+
+                            // Don't refresh the page
+                            event.preventDefault();
+
+                            // Call the submit function
+                            dispatch({
+                                type:    "HANDLE_SUBMIT",
+                                payload: {
+                                    nextStepNumber:  props.nextStep,
+                                    addStepToRecipe: props.addStepToRecipe
+                                }
+                            });
+
+                            // Ensure edit mode on the parent is false
+                            props.toggleEditMode(false);
+                        }}
                     >
                         Submit
                     </button>

@@ -25,13 +25,24 @@ export default function AddRecipe(props) {
             return
         }
 
+        // Build the new object, starting with the required attributes
         let newRecipe = {
             name:       state.name,
             difficulty: state.difficulty,
-            author:     state.author,
-            source:     state.source,
-            url:        state.url,
             id:         uuid()
+        }
+
+        // Only include the optional attributes when provided
+        if (state.author) {
+            newRecipe.author = state.author;
+        }
+
+        if (state.source) {
+            newRecipe.source = state.source;
+        }
+
+        if (state.url) {
+            newRecipe.url = state.url;
         }
 
         // Reset form fields to their defaults

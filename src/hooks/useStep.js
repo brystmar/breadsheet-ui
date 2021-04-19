@@ -34,9 +34,13 @@ function stepReducer(state, action) {
                 step_id:   uuid(),
                 number:    Number(state.number),
                 text:      state.text,
-                then_wait: (Number(state.thenWaitHH) * 3600) + (Number(state.thenWaitMM) * 60),
-                note:      state.note
+                then_wait: (Number(state.thenWaitHH) * 3600) + (Number(state.thenWaitMM) * 60)
             };
+
+            // Only include the `note` attribute if a value was provided
+            if (state.note) {
+                newStepObject.note = state.note;
+            }
 
             // console.log("New Step:", newStepObject);
 

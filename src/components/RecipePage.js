@@ -117,6 +117,7 @@ export default function RecipePage(props) {
         props.updateOneRecipe(recipe.data.id, recipe.data);
     }
 
+    // TODO: This async/await saveUpdatedRecipe code should replace the code on App.js
     // async function saveUpdatedRecipe(recipeToSave) {
     //     Save/update this recipe in the database
     //     console.log("Calling endpoint: [PUT]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + updatedrecipe.data.id);
@@ -169,19 +170,8 @@ export default function RecipePage(props) {
         // Update the recipe length by adding then_wait from the new step
         newRecipe.length += newStep.then_wait;
 
-        // Update local state
-        updateRecipe({
-            data:     newRecipe,
-            hasData:  true,
-            hasSteps: true,
-            nextStep: findHighestStep(newRecipe.steps) + 1
-        })
-
-        // Update the length on the main recipe table
-        props.updateRecipeLength(newRecipe.id, newRecipe.length);
-
         // Update this recipe in the database
-        props.updateOneRecipe(newRecipe.data.id, newRecipe);
+        props.updateOneRecipe(newRecipe.id, newRecipe);
     }
 
     function deleteStep(stepId, stepLength) {
@@ -204,7 +194,7 @@ export default function RecipePage(props) {
         props.updateRecipeLength(newRecipe.id, newRecipe.length);
 
         // Update this recipe in the database
-        props.updateOneRecipe(newRecipe.data.id, newRecipe);
+        props.updateOneRecipe(newRecipe.id, newRecipe);
     }
 
     return (
