@@ -22,9 +22,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Replaced the show/hide confirmation with a simple button transition">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Basic validation on the AddRecipe form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coding-style-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/coding-style-guide.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/BtnSubmit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useStep.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +133,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -222,14 +228,10 @@
       <workItem from="1613606894298" duration="361000" />
       <workItem from="1613852779706" duration="9573000" />
       <workItem from="1614544190826" duration="18736000" />
-      <workItem from="1615754937685" duration="21157000" />
-    </task>
-    <task id="LOCAL-00082" summary="Bootstrap completely removed!!! :D">
-      <created>1598495984578</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1598495984578</updated>
+      <workItem from="1615754937685" duration="23492000" />
+      <workItem from="1617751365849" duration="403000" />
+      <workItem from="1618766976778" duration="17000" />
+      <workItem from="1618767025110" duration="11958000" />
     </task>
     <task id="LOCAL-00083" summary="More cleanup after removing Bootstrap">
       <created>1598563347799</created>
@@ -567,7 +569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616042311982</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="Basic validation on the AddRecipe form">
+      <created>1616042550902</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1616042550902</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -592,7 +601,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Applied useEffect to ConvertTextPageContainer" />
     <MESSAGE value="Starting to separate API calls from component display logic" />
     <MESSAGE value="Separate header component" />
     <MESSAGE value="Simplified some AddStep logic" />
@@ -617,6 +625,7 @@
     <MESSAGE value="Fixed the RecipeStartFinish bug" />
     <MESSAGE value="Simplified the clipboard copy animation" />
     <MESSAGE value="Replaced the show/hide confirmation with a simple button transition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Replaced the show/hide confirmation with a simple button transition" />
+    <MESSAGE value="Basic validation on the AddRecipe form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic validation on the AddRecipe form" />
   </component>
 </project>

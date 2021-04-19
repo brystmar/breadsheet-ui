@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import BtnAdd from "./buttons/BtnAdd";
-import BtnSubmit from "./buttons/BtnSubmit";
 import useStep from "../hooks/useStep";
 import reallocate_hh_mm from "../helpers/reallocate_hh_mm";
 
@@ -170,11 +169,15 @@ export default function AddStep(props) {
                 </span>
 
                 <span className="add-step-form-group button-group">
-                    <BtnSubmit
-                        btnName="saveNewStep"
-                        btnText="Submit"
-                        disabled={state.hidden}
-                    />
+                    <button
+                        type="submit"
+                        name="saveNewStep"
+                        className="btn btn-submit"
+                        disabled={props.disabled}
+                        onClick={props.onClickFn}
+                    >
+                        Submit
+                    </button>
                 </span>
             </form>
         </div>

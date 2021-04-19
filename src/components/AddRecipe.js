@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import BtnAdd from "./buttons/BtnAdd";
-import BtnSubmit from "./buttons/BtnSubmit";
 import { v4 as uuid } from "uuid";
 import map_difficulty_to_icon from "../helpers/map_difficulty_to_icon";
 import { defaultRecipe } from "../data/defaultValues";
@@ -157,13 +156,16 @@ export default function AddRecipe(props) {
                         </span>
 
                     <span className="add-recipe-form-group button-group">
-                            <BtnSubmit
-                                btnName="saveNewRecipe"
-                                btnText="Submit"
-                                disabled={state.hidden}
-                                onClickFn={handleSubmit}
-                            />
-                        </span>
+                        <button
+                            type="submit"
+                            name="saveNewRecipe"
+                            className="btn btn-submit"
+                            disabled={isHidden}
+                            onClick={handleSubmit}
+                        >
+                            Submit
+                        </button>
+                    </span>
                 </form>
             }
         </div>

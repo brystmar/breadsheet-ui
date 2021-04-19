@@ -213,15 +213,12 @@ Whenever there are more than 2 components which are logically similar, create a 
 Yes:
 ```
 /src/components/buttons/BtnAdd.js
-/src/components/buttons/BtnSubmit.js
 /src/components/buttons/BtnSubtract.js
 ```
 
 No:
 ```
-/src/components/BtnAdd.js
-/src/components/BtnSubmit.js
-/src/components/BtnSubtract.js
+
 ```
 
 Vanilla JS functions should be grouped into logically separated files and saved in the `/src/scripts/` folder.

@@ -12,8 +12,8 @@ function stepReducer(state, action) {
         }
 
         case 'HANDLE_SUBMIT': {
-            // TODO: This is being called twice, adding a duplicate step each time
-            // console.log("Start of dispatch HANDLE_SUBMIT");
+            // TODO: Determine why this is being called twice, which adds a duplicate step each time
+            console.log("Start of dispatch HANDLE_SUBMIT");
 
             // TODO: Replace validation with formik & yup
             // stepNumber validation
@@ -97,7 +97,7 @@ function stepReducer(state, action) {
         }
 
         default: {
-            console.log("stepReducer was called w/invalid action.type:", action.type)
+            console.log(`stepReducer was called w/invalid action.type: ${action.type}`)
             return state
         }
     }

@@ -1,82 +1,63 @@
 // Layout for a recipe-specific page.
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PageTitle from "./PageTitle";
 import RecipePageAttributes from "./RecipePageAttributes";
 import RecipeStartFinish from "./RecipeStartFinish";
 import StepContainer from "./StepContainer";
 import AddStep from "./AddStep";
 
+export default function RecipePage(props) {
+    // Including the full recipe object in local state here because:
+    //  - upstream, it's one item in a list of recipes
+    //  - downstream, it's broken into smaller parts
+    const [ recipe, updateRecipe ] = useState({
+        data:     props.recipeData,
+        hasData:  props.hasData,
+        hasSteps: props.recipeData.steps ? props.recipeData.steps.length > 0 : false,
+        nextStep: props.recipeData.steps ? findHighestStep(props.recipeData.steps) + 1 : 1
+    })
 
-// TODO: Refactor to functional component
-export default class RecipePage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            recipeData: this.props.recipeData,
-            hasData:    this.props.hasData,
-            hasSteps:   false,
-            nextStep:   1,
-            editMode:   false
-        };
+    // Tracks whether the app is currently in edit mode
+    const [ editMode, toggleEditMode ] = useState(false);
 
-        this.findHighestStep = this.findHighestStep.bind(this);
-        this.handleStepLengthChange = this.handleStepLengthChange.bind(this);
-        this.handleStartFinishToggle = this.handleStartFinishToggle.bind(this);
-        this.handleUpdateStartTime = this.handleUpdateStartTime.bind(this);
-        this.handleSaveRecipe = this.handleSaveRecipe.bind(this);
-        this.saveUpdatedRecipe = this.saveUpdatedRecipe.bind(this);
-        this.addStepToRecipe = this.addStepToRecipe.bind(this);
-        this.deleteStep = this.deleteStep.bind(this);
-        this.toggleEditMode = this.toggleEditMode.bind(this);
-        this.getRecipeData = this.getRecipeData.bind(this);
-    }
+    // TODO: Only retrieve recipe data from the backend when necessary
+    useEffect(() => {
+        async function getRecipeData(recipeId) {
+            const recipeApi = `${process.env.REACT_APP_BACKEND_URL}/api/v1/recipe/${recipeId}`;
 
-    componentDidMount() {
-        this.getRecipeData(this.props.recipeId);
-    }
+            try {
+                // Request recipe from the backend
+                const updatedRecipeResponse = await fetch(recipeApi);
+                // Parse the response into json
+                const updatedRecipeData = await updatedRecipeResponse.json();
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.recipeId !== this.props.recipeId) {
-            this.getRecipeData(this.props.recipeId);
+                // Update local state
+                updateRecipe({
+                    data:     updatedRecipeData.data,
+                    hasData:  true,
+                    hasSteps: updatedRecipeData.data.steps ?
+                                  updatedRecipeData.data.steps.length > 0 : false,
+                    nextStep: updatedRecipeData.data.steps ?
+                                  findHighestStep(updatedRecipeData.data.steps) + 1 : 1
+                })
+            } catch (error) {
+                console.error(`Error in getRecipeData request: ${error}`);
+            }
         }
-    }
 
-    getRecipeData(recipe_id) {
-        // console.log("Calling endpoint: [GET]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id)
-        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + recipe_id)
-            .then(response => response.json())
-            .then(result => {
-                if (result.message === "Success") {
-                    this.setState({
-                        ...this.state,
-                        recipeData: result.data,
-                        hasData:    true,
-                        hasSteps:   result.data.steps.length > 0,
-                        nextStep:   this.findHighestStep(result.data.steps) + 1
-                    });
-                } else {
-                    console.log("Error retrieving recipe data from backend.");
-                    console.log(result.body);
-                    return Promise.reject(result.status);
-                }
-            })
-            .catch(error => console.error("getRecipeData request failed.", error));
-    }
-
-    toggleEditMode(newEditMode = !this.state.editMode) {
-        if (newEditMode !== this.state.editMode) {
-            this.setState({
-                ...this.state,
-                editMode: !this.state.editMode
-            })
+        // Don't call the backend unless there's a real recipe_id to retrieve
+        if (props.recipeId.toString() !== "0") {
+            getRecipeData(props.recipeId);
         }
-    }
+    }, [ props.recipeId ])
 
-    findHighestStep(stepList) {
-        // From a list of provided steps, return the highest step number (int)
+    function findHighestStep(stepList) {
+        // Given a list of steps, return the highest step number as `int`
         let highestStep = 0;
+
         if (stepList.length > 0) {
             stepList.forEach((step) => {
+                // Iterate through steps, updating highestStep when we find a higher step
                 if (step.number > highestStep) {
                     highestStep = step.number
                 }
@@ -85,179 +66,196 @@ export default class RecipePage extends React.Component {
         return highestStep;
     }
 
-    handleStepLengthChange(event, stepNumber, newThenWait) {
+    // TODO: Consolidate handleStepLengthChange, handleStartFinishToggle, handleUpdateStartTime
+    //  into a single update function
+    function handleStepLengthChange(event, stepNumber, newThenWait) {
+        // When the length of any step changes, the total recipe length must be updated
         // console.log("Called RDS.handleStepLengthChange(" + stepNumber + ").");
-        let newRecipe = this.state.recipeData;
+
+        let newRecipe = recipe.data;
         let newLength = 0;
 
+        // Update then_wait for the relevant step
         newRecipe.steps[stepNumber - 1].then_wait = newThenWait;
 
         // Re-calculate the total recipe length
         newRecipe.steps.forEach(step => newLength += step.then_wait);
         newRecipe.length = newLength;
 
-        this.setState({
-            ...this.state,
-            recipeData: newRecipe
+        // Replace the recipe object in local state
+        updateRecipe({
+            ...recipe,
+            data: newRecipe
         })
     }
 
-    handleStartFinishToggle() {
-        let newRecipeData = this.state.recipeData;
-        newRecipeData.solve_for_start = !newRecipeData.solve_for_start;
+    function handleStartFinishToggle() {
+        // Toggle the recipe `bool` solve_for_start
+        let newRecipe = recipe.data;
+        newRecipe.solve_for_start = !newRecipe.solve_for_start;
 
-        this.setState({
-            ...this.state,
-            recipeData: newRecipeData
+        updateRecipe({
+            ...recipe,
+            data: newRecipe
         })
     }
 
-    handleUpdateStartTime(newStartTime) {
-        console.log(`Called handleUpStartTime w/${newStartTime}`);
-        let newRecipeData = this.state.recipeData;
-        newRecipeData.start_time = newStartTime;
+    function handleUpdateStartTime(newStartTime) {
+        // Update the recipe's start time with the provided value
+        // console.log(`Called handleUpStartTime w/${newStartTime}`);
+        let newRecipe = recipe.data;
+        newRecipe.start_time = newStartTime;
 
-        this.setState({
-            ...this.state,
-            recipeData: newRecipeData
+        updateRecipe({
+            ...recipe,
+            data: newRecipe
         })
     }
 
-    handleSaveRecipe() {
-        console.log("Called handleSaveRecipe w/data:", this.state.recipeData);
-        this.props.updateOneRecipe(this.state.recipeData.id, this.state.recipeData);
+    function handleSaveRecipe() {
+        console.log(`Called handleSaveRecipe w/data: ${recipe.data}`);
+        props.updateOneRecipe(recipe.data.id, recipe.data);
     }
 
-    saveUpdatedRecipe(updatedRecipe) {
-        // Update this recipe (and the component's state) in the database
-        // console.log("Calling endpoint: [PUT]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + updatedRecipe.recipeData.id);
+    // async function saveUpdatedRecipe(recipeToSave) {
+    //     Save/update this recipe in the database
+    //     console.log("Calling endpoint: [PUT]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + updatedrecipe.data.id);
+    //
+    //     const recipeApi = `${process.env.REACT_APP_BACKEND_URL}/api/v1/recipe/${recipeToSave.recipeData.id}`;
+    //     const fetchParams = {
+    //         method: "PUT",
+    //         body:   JSON.stringify(recipeToSave.recipeData)
+    //     }
+    //
+    //     try {
+    //         // Make the PUT request
+    //         const updatedRecipeResponse = await fetch(recipeApi, fetchParams);
+    //         // Parse the response into json
+    //         const updatedRecipeData = await updatedRecipeResponse.json();
+    //
+    //         // Response body contains the updated recipe
+    //         // Update local state
+    //         updateRecipe({
+    //             data:     updatedRecipeData.data,
+    //             hasData:  true,
+    //             hasSteps: updatedRecipeData.data.steps ?
+    //                           updatedRecipeData.data.steps.length > 0 : false,
+    //             nextStep: updatedRecipeData.data.steps ?
+    //                           findHighestStep(updatedRecipeData.data.steps) + 1 : 1
+    //         })
+    //
+    //         // Update this recipe in the master list on App.js
+    //         props.updateOneRecipe(recipeToSave.data.id, recipeToSave);
+    //     } catch (error) {
+    //         console.error(`Error in saveUpdatedRecipe request: ${error}`);
+    //     }
+    // }
 
-        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + updatedRecipe.recipeData.id, {
-            method: "PUT",
-            body:   JSON.stringify(updatedRecipe.recipeData)
-        })
-            .then(response => {
-                // console.log("PUT response:", response.ok ? "Success" : "Error", response.status);
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    console.log("Error updating the recipe in the database.", response.body);
-                    return Promise.reject(response.statusText);
-                }
-            })
-            .then(() => {
-                // Update state with the new recipe (and step) data
-                console.log("Recipe updated successfully.");
-                this.setState(updatedRecipe);
-
-                // Update the master recipe list in App.js
-                this.props.updateMasterRecipeList();
-            })
-            .catch(error => console.error("Error in saveUpdatedRecipe request.", error));
-    }
-
-    addStepToRecipe(newStep) {
-        let updatedRecipe = this.state.recipeData;
+    function addStepToRecipe(newStep) {
+        let newRecipe = recipe.data;
 
         // Enforce unique step numbers
-        if (updatedRecipe.steps.map((step) => step.number).includes(newStep.number)) {
-            // console.log("Step number", newStep.number, "already exists");
+        if (newRecipe.steps.map((step) => step.number).includes(newStep.number)) {
+            console.log(`Step #${newStep.number} already exists`);
             return
         }
 
-        // Add a new step to the list
-        updatedRecipe.steps.push(newStep);
+        // Add this new step to the list
+        newRecipe.steps.push(newStep);
 
         // Sort by step.number
-        updatedRecipe.steps.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
+        newRecipe.steps.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
 
-        // Update the recipe length, which is newStep.then_wait
-        updatedRecipe.length += newStep.then_wait;
+        // Update the recipe length by adding then_wait from the new step
+        newRecipe.length += newStep.then_wait;
 
-        this.saveUpdatedRecipe({
-            recipeData: updatedRecipe,
-            hasData:    true,
-            hasSteps:   true,
-            nextStep:   this.findHighestStep(updatedRecipe.steps) + 1
+        // Update local state
+        updateRecipe({
+            data:     newRecipe,
+            hasData:  true,
+            hasSteps: true,
+            nextStep: findHighestStep(newRecipe.steps) + 1
         })
-    }
-
-    deleteStep(stepId, stepLength) {
-        // Create a new representation of recipeData
-        let newRecipeData = this.state.recipeData;
-        newRecipeData.steps = newRecipeData.steps.filter(
-            function (terminator) {
-                return terminator.step_id !== stepId
-            });
-
-        // Subtract the step's length from the updated recipe
-        newRecipeData.length -= stepLength;
-
-        // Update the backend, then update state
-        this.saveUpdatedRecipe({
-            recipeData: newRecipeData,
-            hasSteps:   newRecipeData.steps.length > 0,
-            nextStep:   this.findHighestStep(newRecipeData.steps) + 1
-        });
 
         // Update the length on the main recipe table
-        this.props.updateRecipeLength(newRecipeData.id, newRecipeData.length);
+        props.updateRecipeLength(newRecipe.id, newRecipe.length);
+
+        // Update this recipe in the database
+        props.updateOneRecipe(newRecipe.data.id, newRecipe);
     }
 
-    render() {
-        // console.log("Rendering RecipePage");
-        // console.log(this.props);
+    function deleteStep(stepId, stepLength) {
+        // Create a new representation of recipeData
+        let newRecipe = recipe.data;
+        newRecipe.steps = newRecipe.steps.filter((step) => step.step_id !== stepId);
 
-        return (
-            <div className="recipe-detail-summary">
-                <PageTitle
-                    title={this.state.recipeData.name}
-                    includeHr={true}
-                />
+        // Subtract the step's length from the updated recipe
+        newRecipe.length -= stepLength;
 
-                <RecipePageAttributes
-                    difficulty={this.state.recipeData.difficulty}
-                    source={this.state.recipeData.source}
-                    author={this.state.recipeData.author}
-                    url={this.state.recipeData.url ? this.state.recipeData.url : ""}
-                    length={this.state.recipeData.length}
-                    toggleEditMode={this.toggleEditMode}
-                />
+        // Update local state
+        updateRecipe({
+            data:     newRecipe,
+            hasData:  true,
+            hasSteps: true,
+            nextStep: findHighestStep(newRecipe.steps) + 1
+        })
 
-                <RecipeStartFinish
-                    start_time={this.state.recipeData.start_time}
-                    solve_for_start={this.state.recipeData.solve_for_start}
-                    length={this.state.recipeData.length}
-                    handleUpdateStartTime={this.handleUpdateStartTime}
-                    handleStartFinishToggle={this.handleStartFinishToggle}
-                    saveRecipe={this.handleSaveRecipe}
-                />
+        // Update the length on the main recipe table
+        props.updateRecipeLength(newRecipe.id, newRecipe.length);
 
-                <StepContainer
-                    steps={this.state.recipeData.steps}
-                    start_time={this.state.recipeData.start_time}
-                    solve_for_start={this.state.recipeData.solve_for_start}
-                    length={this.state.recipeData.length}
-                    hidden={!this.state.editMode}
-                    toggleEditMode={this.toggleEditMode}
-                    hasData={this.state.hasData}
-                    handleStepLengthChange={this.handleStepLengthChange}
-                    deleteStep={this.deleteStep}
-                />
-
-                <AddStep
-                    nextStep={this.state.nextStep}
-                    addStepToRecipe={this.addStepToRecipe}
-                    hidden={!this.state.editMode}
-                    toggleEditMode={this.toggleEditMode}
-                />
-
-            </div>
-        )
+        // Update this recipe in the database
+        props.updateOneRecipe(newRecipe.data.id, newRecipe);
     }
+
+    return (
+        <div className="recipe-detail-summary">
+            <PageTitle
+                title={recipe.data.name}
+                includeHr={true}
+            />
+
+            <RecipePageAttributes
+                difficulty={recipe.data.difficulty}
+                source={recipe.data.source}
+                author={recipe.data.author}
+                url={recipe.data.url ? recipe.data.url : ""}
+                length={recipe.data.length}
+                toggleEditMode={toggleEditMode}
+            />
+
+            <RecipeStartFinish
+                start_time={recipe.data.start_time}
+                solve_for_start={recipe.data.solve_for_start}
+                length={recipe.data.length}
+                handleUpdateStartTime={handleUpdateStartTime}
+                handleStartFinishToggle={handleStartFinishToggle}
+                saveRecipe={handleSaveRecipe}
+            />
+
+            <StepContainer
+                steps={recipe.data.steps}
+                start_time={recipe.data.start_time}
+                solve_for_start={recipe.data.solve_for_start}
+                length={recipe.data.length}
+                hidden={!editMode}
+                toggleEditMode={toggleEditMode}
+                hasData={recipe.hasData}
+                handleStepLengthChange={handleStepLengthChange}
+                deleteStep={deleteStep}
+            />
+
+            <AddStep
+                nextStep={recipe.nextStep}
+                addStepToRecipe={addStepToRecipe}
+                hidden={!editMode}
+                toggleEditMode={toggleEditMode}
+            />
+        </div>
+    )
 }
 
 RecipePage.defaultProps = {
+    hasData:    false,
     recipeId:   0,
     recipeData: {
         id:         0,
@@ -270,6 +268,5 @@ RecipePage.defaultProps = {
                 then_wait: 0
             }
         ],
-    },
-    hasData:    false
+    }
 }
