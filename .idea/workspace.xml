@@ -22,12 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Refactored RecipePage to a functional component">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Fixed issues with null handling">
+      <change afterPath="$PROJECT_DIR$/src/AppFn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddStep.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useStep.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +110,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="CSS&#10;JavaScript&#10;TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="list.type.of.created.stylesheet" value="Sass" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -142,16 +139,17 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/components" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/styles" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components/attributes" />
       <recent name="$PROJECT_DIR$/src/components/buttons" />
       <recent name="$PROJECT_DIR$/public/icons" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -228,14 +226,7 @@
       <workItem from="1615754937685" duration="23492000" />
       <workItem from="1617751365849" duration="403000" />
       <workItem from="1618766976778" duration="17000" />
-      <workItem from="1618767025110" duration="14055000" />
-    </task>
-    <task id="LOCAL-00084" summary="Cleaning up the Convert page">
-      <created>1598660809252</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1598660809252</updated>
+      <workItem from="1618767025110" duration="17095000" />
     </task>
     <task id="LOCAL-00085" summary="Fixed buttons on Convert page">
       <created>1598664684126</created>
@@ -573,7 +564,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618791191983</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="Fixed issues with null handling">
+      <created>1618793660779</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1618793660779</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -598,7 +596,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Separate header component" />
     <MESSAGE value="Simplified some AddStep logic" />
     <MESSAGE value="Moving AddStep logic to a reducer" />
     <MESSAGE value="AddStep reducer works, but all events are happening twice" />
@@ -623,6 +620,7 @@
     <MESSAGE value="Replaced the show/hide confirmation with a simple button transition" />
     <MESSAGE value="Basic validation on the AddRecipe form" />
     <MESSAGE value="Refactored RecipePage to a functional component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored RecipePage to a functional component" />
+    <MESSAGE value="Fixed issues with null handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issues with null handling" />
   </component>
 </project>
