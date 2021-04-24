@@ -3,7 +3,7 @@ import BtnAdd from "./buttons/BtnAdd";
 import { v4 as uuid } from "uuid";
 import map_difficulty_to_icon from "../helpers/map_difficulty_to_icon";
 import { defaultRecipe } from "../data/defaultValues";
-
+import { breadsheetApis } from "../data/endpoints";
 
 export default function AddRecipe(props) {
     const [ state, updateState ] = useState(defaultRecipe)
@@ -49,8 +49,9 @@ export default function AddRecipe(props) {
         updateState(defaultRecipe);
 
         // POST new recipe to the backend
-        console.log("Calling endpoint: [POST]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes")
-        fetch(process.env.REACT_APP_BACKEND_URL + "/api/v1/recipes", {
+        // TODO: When adding a single recipe, why are we POSTing to the "all" endpoint?
+        console.log(`Calling endpoint: [POST] ${breadsheetApis.recipes.all}`)
+        fetch(breadsheetApis.recipes.all, {
             method: "POST",
             body:   JSON.stringify(newRecipe)
         })

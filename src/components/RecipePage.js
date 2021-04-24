@@ -1,5 +1,6 @@
 // Layout for a recipe-specific page.
 import React, { useState, useEffect } from "react";
+import { breadsheetApis } from "../data/endpoints";
 import PageTitle from "./PageTitle";
 import RecipePageAttributes from "./RecipePageAttributes";
 import RecipeStartFinish from "./RecipeStartFinish";
@@ -23,7 +24,7 @@ export default function RecipePage(props) {
     // TODO: Only retrieve recipe data from the backend when necessary
     useEffect(() => {
         async function getRecipeData(recipeId) {
-            const recipeApi = `${process.env.REACT_APP_BACKEND_URL}/api/v1/recipe/${recipeId}`;
+            const recipeApi = `${breadsheetApis.recipes.single}/${recipeId}`;
 
             try {
                 // Request recipe from the backend

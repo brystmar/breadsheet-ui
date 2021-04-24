@@ -29,6 +29,7 @@ export default function App() {
 
     const recipeListApi = `${process.env.REACT_APP_BACKEND_URL}/api/v1/recipes"`;
 
+    //
     useEffect(() => {
         // Declare the async function for retrieving recipes
         async function getAllRecipes() {

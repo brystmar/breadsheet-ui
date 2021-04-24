@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { defaultTextConversionState } from "../data/defaultValues";
+import { breadsheetApis } from "../data/endpoints";
 import ConvertTextControls from "./ConvertTextControls";
 import ConversionListContainer from "./ConversionListContainer";
-import { defaultTextConversionState } from "../data/defaultValues";
 import "../styles/text-conversion.sass";
-
 
 // TODO: Parse ingredients by section (ex: ignore "Equipment"), then into qty/unit/ingredient/prep
 //  Add imperial-to-metric weight conversion, perhaps even for specific ingredients?
@@ -14,11 +14,10 @@ export default function ConvertTextPageContainer() {
     useEffect(() => {
         async function getTextConversionData() {
             // Retrieve the full list of replacements for both ingredients and directions
-            const replacementsEndpoint = process.env.REACT_APP_BACKEND_URL + "/api/v1/replacements/all";
-            console.log(`Calling endpoint: ${replacementsEndpoint}`);
+            console.log(`Calling endpoint: ${breadsheetApis.replacements.all}`);
 
             try {
-                const replacementsPromise = await fetch(replacementsEndpoint);
+                const replacementsPromise = await fetch(breadsheetApis.replacements.all);
                 if (replacementsPromise.ok) {
                     const result = await replacementsPromise.json();
 
