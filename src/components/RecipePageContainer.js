@@ -6,14 +6,14 @@ import "../styles/recipe-attributes.sass";
 
 // Middleware because I couldn't figure out how to grab the recipeId for
 //   a requested page without useParams.  A hash table would solve this!
-// TODO: Make allRecipes a hash table instead of a list
+// TODO: Make recipeList a hash table instead of a list
 export default function RecipePageContainer(props) {
     let { recipeId } = useParams();
     let recipeDeets = {};
 
-    for (let i = 0; i < props.allRecipes.length; i++) {
-        if (props.allRecipes[i].id === { recipeId }) {
-            recipeDeets = props.allRecipes[i];
+    for (let i = 0; i < props.recipeList.length; i++) {
+        if (props.recipeList[i].id === { recipeId }) {
+            recipeDeets = props.recipeList[i];
             break;
         }
     }
@@ -21,7 +21,7 @@ export default function RecipePageContainer(props) {
     return <RecipePage
         recipeId={recipeId}
         recipeData={recipeDeets}
-        hasData={!!recipeDeets.id}
+        hasData={props.hasData}
         updateOneRecipe={props.updateOneRecipe}
         updateRecipeLength={props.updateRecipeLength}
         updateMasterRecipeList={props.updateMasterRecipeList}
@@ -29,6 +29,6 @@ export default function RecipePageContainer(props) {
 }
 
 RecipePageContainer.defaultProps = {
-    allRecipes: [ { id: "" } ],
+    recipeList: [ { id: "" } ],
     hasData:    false
 }

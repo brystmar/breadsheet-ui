@@ -6,7 +6,7 @@ import ListHeaderRow from "./ListHeaderRow";
 
 export default function RecipeListContainer(props) {
     const [ editMode, toggleEditMode ] = useState(false)
-    const recipeComponentList = props.allRecipes.map((recipe, index) =>
+    const recipeComponentList = props.recipeList.map((recipe, index) =>
         <RecipeListItem
             key={index}
             recipe_id={recipe.id}
@@ -41,7 +41,7 @@ export default function RecipeListContainer(props) {
 }
 
 RecipeListContainer.defaultProps = {
-    allRecipes: [ {
+    recipeList: [ {
         recipe_id:    0,
         date_created: ""
     } ]

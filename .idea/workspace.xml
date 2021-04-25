@@ -22,13 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Partway through converting App.js into a functional component">
-      <change afterPath="$PROJECT_DIR$/src/data/endpoints.js" afterDir="false" />
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Moved all endpoint definitions to a global const">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppFn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppFn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppFn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageContainer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,14 +230,7 @@
       <workItem from="1615754937685" duration="23492000" />
       <workItem from="1617751365849" duration="403000" />
       <workItem from="1618766976778" duration="17000" />
-      <workItem from="1618767025110" duration="17969000" />
-    </task>
-    <task id="LOCAL-00086" summary="Updated website metadata, headers, favicon stuff">
-      <created>1598845228320</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1598845228320</updated>
+      <workItem from="1618767025110" duration="22737000" />
     </task>
     <task id="LOCAL-00087" summary="Moved recipe-level edit button to the attributes container">
       <created>1598847758698</created>
@@ -575,7 +568,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619296748105</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="Moved all endpoint definitions to a global const">
+      <created>1619297609328</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1619297609328</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -600,7 +600,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Moving AddStep logic to a reducer" />
     <MESSAGE value="AddStep reducer works, but all events are happening twice" />
     <MESSAGE value="AddStep works, though it's still rendering multiple times" />
     <MESSAGE value="AddStep is good enough for now" />
@@ -625,6 +624,7 @@
     <MESSAGE value="Refactored RecipePage to a functional component" />
     <MESSAGE value="Fixed issues with null handling" />
     <MESSAGE value="Partway through converting App.js into a functional component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Partway through converting App.js into a functional component" />
+    <MESSAGE value="Moved all endpoint definitions to a global const" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved all endpoint definitions to a global const" />
   </component>
 </project>

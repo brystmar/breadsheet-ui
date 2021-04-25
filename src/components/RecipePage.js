@@ -118,41 +118,6 @@ export default function RecipePage(props) {
         props.updateOneRecipe(recipe.data.id, recipe.data);
     }
 
-    // TODO: This async/await saveUpdatedRecipe code should replace the code on App.js
-    // async function saveUpdatedRecipe(recipeToSave) {
-    //     Save/update this recipe in the database
-    //     console.log("Calling endpoint: [PUT]", process.env.REACT_APP_BACKEND_URL + "/api/v1/recipe/" + updatedrecipe.data.id);
-    //
-    //     const recipeApi = `${process.env.REACT_APP_BACKEND_URL}/api/v1/recipe/${recipeToSave.recipeData.id}`;
-    //     const fetchParams = {
-    //         method: "PUT",
-    //         body:   JSON.stringify(recipeToSave.recipeData)
-    //     }
-    //
-    //     try {
-    //         // Make the PUT request
-    //         const updatedRecipeResponse = await fetch(recipeApi, fetchParams);
-    //         // Parse the response into json
-    //         const updatedRecipeData = await updatedRecipeResponse.json();
-    //
-    //         // Response body contains the updated recipe
-    //         // Update local state
-    //         updateRecipe({
-    //             data:     updatedRecipeData.data,
-    //             hasData:  true,
-    //             hasSteps: updatedRecipeData.data.steps ?
-    //                           updatedRecipeData.data.steps.length > 0 : false,
-    //             nextStep: updatedRecipeData.data.steps ?
-    //                           findHighestStep(updatedRecipeData.data.steps) + 1 : 1
-    //         })
-    //
-    //         // Update this recipe in the master list on App.js
-    //         props.updateOneRecipe(recipeToSave.data.id, recipeToSave);
-    //     } catch (error) {
-    //         console.error(`Error in saveUpdatedRecipe request: ${error}`);
-    //     }
-    // }
-
     function addStepToRecipe(newStep) {
         let newRecipe = recipe.data;
 
