@@ -173,7 +173,7 @@ export default function App() {
                     </Route>
 
                     <Route exact path="/">
-                        <PageTitle title="Breadsheet" includeHr={true} />
+                        <PageTitle title="Recipes" includeHr={true} />
                         <RecipeListContainer
                             recipeList={recipeList}
                             addRecipeToState={addRecipeToState}

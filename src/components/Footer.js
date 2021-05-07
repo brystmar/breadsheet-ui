@@ -1,5 +1,5 @@
-import React from 'react';
-import BreadsheetLogo from './BreadsheetLogo';
+import React from "react";
+import BreadsheetLogo from "./BreadsheetLogo";
 
 export default function Footer() {
     return (

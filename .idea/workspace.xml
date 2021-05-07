@@ -22,13 +22,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Moved all endpoint definitions to a global const">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Finished the App.js hooks refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppFn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePageContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipePageContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/buttons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/buttons.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,14 +232,9 @@
       <workItem from="1615754937685" duration="23492000" />
       <workItem from="1617751365849" duration="403000" />
       <workItem from="1618766976778" duration="17000" />
-      <workItem from="1618767025110" duration="22737000" />
-    </task>
-    <task id="LOCAL-00087" summary="Moved recipe-level edit button to the attributes container">
-      <created>1598847758698</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1598847758698</updated>
+      <workItem from="1618767025110" duration="23747000" />
+      <workItem from="1619756250398" duration="2449000" />
+      <workItem from="1620358563668" duration="283000" />
     </task>
     <task id="LOCAL-00088" summary="Much improved Convert page, and fixed step list grid issues">
       <created>1599007343617</created>
@@ -575,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619297609328</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="Finished the App.js hooks refactor">
+      <created>1619317048806</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1619317048806</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -600,7 +604,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="AddStep reducer works, but all events are happening twice" />
     <MESSAGE value="AddStep works, though it's still rendering multiple times" />
     <MESSAGE value="AddStep is good enough for now" />
     <MESSAGE value="ConvertTextControls is done!" />
@@ -625,6 +628,7 @@
     <MESSAGE value="Fixed issues with null handling" />
     <MESSAGE value="Partway through converting App.js into a functional component" />
     <MESSAGE value="Moved all endpoint definitions to a global const" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved all endpoint definitions to a global const" />
+    <MESSAGE value="Finished the App.js hooks refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished the App.js hooks refactor" />
   </component>
 </project>
