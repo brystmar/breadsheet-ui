@@ -26,7 +26,8 @@ export const defaultConvertTextState = {
     outputIngredients: "",
     outputDirections:  "",
     textRows:          8,
-    textCols:          8
+    textCols:          8,
+    hasData:           false
 }
 
 export const convertTextPlaceholder = {

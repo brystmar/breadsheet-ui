@@ -22,15 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Finished the App.js hooks refactor">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Standardized some formatting &amp; default values">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/buttons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/buttons.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/defaultValues.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/defaultValues.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,9 +71,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="6517abe5-002c-42cc-9ad0-f836f9a7c26d" />
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="hiddenUrls">
@@ -133,7 +125,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -234,14 +226,10 @@
       <workItem from="1618766976778" duration="17000" />
       <workItem from="1618767025110" duration="23747000" />
       <workItem from="1619756250398" duration="2449000" />
-      <workItem from="1620358563668" duration="283000" />
-    </task>
-    <task id="LOCAL-00088" summary="Much improved Convert page, and fixed step list grid issues">
-      <created>1599007343617</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1599007343617</updated>
+      <workItem from="1620358563668" duration="334000" />
+      <workItem from="1625524891543" duration="288000" />
+      <workItem from="1628384882116" duration="624000" />
+      <workItem from="1628457662815" duration="922000" />
     </task>
     <task id="LOCAL-00089" summary="Responsive tweaks for add recipe &amp; step forms">
       <created>1599013940554</created>
@@ -579,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619317048806</updated>
     </task>
-    <option name="localTasksCounter" value="137" />
+    <task id="LOCAL-00137" summary="Standardized some formatting &amp; default values">
+      <created>1620358880599</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1620358880599</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -604,7 +599,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="AddStep works, though it's still rendering multiple times" />
     <MESSAGE value="AddStep is good enough for now" />
     <MESSAGE value="ConvertTextControls is done!" />
     <MESSAGE value="ConversionListContainer is also done!" />
@@ -629,6 +623,7 @@
     <MESSAGE value="Partway through converting App.js into a functional component" />
     <MESSAGE value="Moved all endpoint definitions to a global const" />
     <MESSAGE value="Finished the App.js hooks refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished the App.js hooks refactor" />
+    <MESSAGE value="Standardized some formatting &amp; default values" />
+    <option name="LAST_COMMIT_MESSAGE" value="Standardized some formatting &amp; default values" />
   </component>
 </project>

@@ -32,6 +32,7 @@ export default function ConvertTextControls(props) {
         }
     }
 
+    // Timeout for displaying the copy-to-clipboard confirmation
     useEffect(() => {
         if (showConfirmation) {
             const timeout = setTimeout(() => {
@@ -41,6 +42,15 @@ export default function ConvertTextControls(props) {
             return () => clearTimeout(timeout)
         }
     }, [ showConfirmation ])
+
+    // When hasData flips to true, convert any text already in the input boxes
+    useEffect(() => {
+        updateState({
+            ...state,
+            outputIngredients: convert_text_using_provided_list(state.inputIngredients, props.ingredientsList),
+            outputDirections:  convert_text_using_provided_list(state.inputDirections, props.directionsList)
+        })
+    }, [ state.hasData, props.ingredientsList, props.directionsList ])
 
     return (
         <div className="text-conversion-inputs-container">
@@ -113,7 +123,7 @@ export default function ConvertTextControls(props) {
 
             <span className="button-group">
                 <CopyToClipboard
-                    text={(state.outputIngredients + "\n" + state.outputDirections).trim()}
+                    text={(state.outputIngredients + "\n" + state.outputDirections).trim() + "\n"}
                     onCopy={() => updateShowConfirmation(true)}
                 >
                     <span id="confirmation-container">
