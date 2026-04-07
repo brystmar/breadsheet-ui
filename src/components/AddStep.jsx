@@ -4,15 +4,15 @@ import useStep from "../hooks/useStep";
 import reallocate_hh_mm from "../helpers/reallocate_hh_mm";
 
 
-export default function AddStep(props) {
-    const [ state, dispatch ] = useStep(props.nextStep);
+export default function AddStep({ hidden = true, nextStep = 0, addStepToRecipe, toggleEditMode }) {
+    const [ state, dispatch ] = useStep(nextStep);
     // console.log(props);
 
     // Update nextStep when necessary
     useEffect(() => dispatch({
         type:    "UPDATE_STEP_NUMBER",
-        payload: props.nextStep
-    }), [ props.nextStep, dispatch ])
+        payload: nextStep
+    }), [ nextStep, dispatch ])
 
     function enforceValidStepNumber(currentNumber) {
         // Replaces the step number in case the user deletes it
@@ -31,12 +31,12 @@ export default function AddStep(props) {
             <BtnAdd
                 btnText="New Step"
                 altText="Toggles display of the 'Add new step' form"
-                isCollapsed={!props.hidden}
-                onClickFn={props.toggleEditMode}
+                isCollapsed={!hidden}
+                onClickFn={toggleEditMode}
             />
 
             <form
-                className={props.hidden ? "add-step-form hidden" : "add-step-form"}
+                className={hidden ? "add-step-form hidden" : "add-step-form"}
                 id="add-step-form"
             >
                 <span className="add-step-form-group">
@@ -155,7 +155,7 @@ export default function AddStep(props) {
                         type="button"
                         name="saveNewStep"
                         className="btn btn-submit"
-                        disabled={props.hidden}
+                        disabled={hidden}
                         onClick={(event) => {
                             console.log("AddStep Form submitted via BtnSubmit button.");
 
@@ -166,13 +166,13 @@ export default function AddStep(props) {
                             dispatch({
                                 type:    "HANDLE_SUBMIT",
                                 payload: {
-                                    nextStepNumber:  props.nextStep,
-                                    addStepToRecipe: props.addStepToRecipe
+                                    nextStepNumber:  nextStep,
+                                    addStepToRecipe: addStepToRecipe
                                 }
                             });
 
                             // Ensure edit mode on the parent is false
-                            props.toggleEditMode(false);
+                            toggleEditMode(false);
                         }}
                     >
                         Submit
@@ -183,7 +183,4 @@ export default function AddStep(props) {
     )
 }
 
-AddStep.defaultProps = {
-    hidden:   true,
-    nextStep: 0
-}
+

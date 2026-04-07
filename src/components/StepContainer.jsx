@@ -3,16 +3,16 @@ import StepListItem from './StepListItem';
 import ListHeaderRow from './ListHeaderRow';
 
 
-export default function StepContainer(props) {
+export default function StepContainer({ hidden = true, hasData = false, steps = [], toggleEditMode, onClickParam, start_time, solve_for_start, length, deleteStep, handleStepLengthChange }) {
     return (
         <div className="step-list-container">
             <ListHeaderRow
                 for="step"
                 colTitles={[ "Step", "When", "Action", "Then Wait", "Note" ]}
-                onClickFn={props.toggleEditMode}
-                onClickParam={props.hidden}
+                onClickFn={toggleEditMode}
+                onClickParam={hidden}
             />
-            {BuildStepComponentList(props)}
+            {BuildStepComponentList({ hidden, hasData, steps, toggleEditMode, start_time, solve_for_start, length, deleteStep, handleStepLengthChange })}
         </div>
     )
 }
@@ -87,8 +87,4 @@ function BuildStepComponentList(props) {
     return stepComponentList;
 }
 
-StepContainer.defaultProps = {
-    hidden:  true,
-    hasData: false,
-    steps:   []
-}
+

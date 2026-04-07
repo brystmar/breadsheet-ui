@@ -4,9 +4,9 @@ import seconds_to_string from "../helpers/time_display_functions";
 import ListHeaderRow from "./ListHeaderRow";
 
 
-export default function RecipeListContainer(props) {
+export default function RecipeListContainer({ recipeList = [{ recipe_id: 0, date_created: "" }], addRecipeToState, deleteRecipe }) {
     const [ editMode, toggleEditMode ] = useState(false)
-    const recipeComponentList = props.recipeList.map((recipe, index) =>
+    const recipeComponentList = recipeList.map((recipe, index) =>
         <RecipeListItem
             key={index}
             recipe_id={recipe.id}
@@ -23,7 +23,7 @@ export default function RecipeListContainer(props) {
             hidden={!editMode}
             // Used to add a class to alternating rows for table-like background stripes
             highlight={index % 2 === 0}
-            deleteRecipe={props.deleteRecipe}
+            deleteRecipe={deleteRecipe}
         />
     );
 
@@ -40,9 +40,4 @@ export default function RecipeListContainer(props) {
     )
 }
 
-RecipeListContainer.defaultProps = {
-    recipeList: [ {
-        recipe_id:    0,
-        date_created: ""
-    } ]
-}
+
