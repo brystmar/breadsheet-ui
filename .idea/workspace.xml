@@ -23,80 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Add CLAUDE.md">
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.test.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddRecipe.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AddStep.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/BreadsheetLogo.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Footer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Header.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ListHeaderRow.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoadingIcon.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navbar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PageTitle.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecipeListContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecipeListItem.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecipePage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecipePageContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecipeStartFinish.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/StepContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/StepListItem.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/attributes/AttrSource.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/buttons/BtnAdd.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/buttons/BtnCancel.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/map_difficulty_to_icon.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/reallocate_hh_mm.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/time_display_functions.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useStep.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CLAUDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/CLAUDE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BreadsheetLogo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ListHeaderRow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoadingIcon.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PageTitle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeListContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipePageContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/attributes/AttrSource.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/BtnAdd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/BtnCancel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buttons/BtnEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/BtnEdit.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/endpoints.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/endpoints.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/convert_text_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/convert_text_functions.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/map_difficulty_to_icon.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/reallocate_hh_mm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/time_display_functions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useStep.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +107,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "react17-update",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
