@@ -4,14 +4,14 @@ import { convert_text_using_provided_list } from "../helpers/convert_text_functi
 import { defaultConvertTextState, convertTextPlaceholder } from "../data/defaultValues";
 
 
-export default function ConvertTextControls(props) {
+export default function ConvertTextControls({ ingredientsList = [], directionsList = [], hasData = false }) {
     const [ state, updateState ] = useState(defaultConvertTextState);
     const [ showConfirmation, updateShowConfirmation ] = useState(false);
 
     function handleChange(event) {
         const { name, value } = event.target;
 
-        if (!props.hasData) {
+        if (!hasData) {
             // Prevent conversion if we don't have the replacement text data
             updateState({
                 ...state,
@@ -21,13 +21,13 @@ export default function ConvertTextControls(props) {
             updateState({
                 ...state,
                 [name]:            value,
-                outputIngredients: convert_text_using_provided_list(value, props.ingredientsList)
+                outputIngredients: convert_text_using_provided_list(value, ingredientsList)
             });
         } else if (name === "inputDirections") {
             updateState({
                 ...state,
                 [name]:           value,
-                outputDirections: convert_text_using_provided_list(value, props.directionsList)
+                outputDirections: convert_text_using_provided_list(value, directionsList)
             })
         }
     }
@@ -47,10 +47,10 @@ export default function ConvertTextControls(props) {
     useEffect(() => {
         updateState({
             ...state,
-            outputIngredients: convert_text_using_provided_list(state.inputIngredients, props.ingredientsList),
-            outputDirections:  convert_text_using_provided_list(state.inputDirections, props.directionsList)
+            outputIngredients: convert_text_using_provided_list(state.inputIngredients, ingredientsList),
+            outputDirections:  convert_text_using_provided_list(state.inputDirections, directionsList)
         })
-    }, [ state.hasData, props.ingredientsList, props.directionsList ])
+    }, [ state.hasData, ingredientsList, directionsList ])
 
     return (
         <div className="text-conversion-inputs-container">
@@ -157,8 +157,4 @@ export default function ConvertTextControls(props) {
     )
 }
 
-ConvertTextControls.defaultProps = {
-    ingredientsList: [],
-    directionsList:  [],
-    hasData:         false
-}
+

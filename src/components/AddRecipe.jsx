@@ -5,9 +5,9 @@ import map_difficulty_to_icon from "../helpers/map_difficulty_to_icon";
 import { defaultRecipe } from "../data/defaultValues";
 import { breadsheetApis } from "../data/endpoints";
 
-export default function AddRecipe(props) {
+export default function AddRecipe({ hidden = true, addRecipeToState }) {
     const [ state, updateState ] = useState(defaultRecipe)
-    const [ isHidden, toggleIsHidden ] = useState(props.hidden)
+    const [ isHidden, toggleIsHidden ] = useState(hidden)
 
     function handleChange(event) {
         updateState({
@@ -62,7 +62,7 @@ export default function AddRecipe(props) {
             .then(result => {
                 // console.log("New recipe saved:", result.data);
                 // Update state of the App --> RecipeListContainer using the provided function
-                props.addRecipeToState(result.data);
+                addRecipeToState(result.data);
             })
             .catch(error => console.error("Error submitting new recipe.", error))
     }
@@ -184,11 +184,4 @@ export default function AddRecipe(props) {
     )
 }
 
-AddRecipe.defaultProps = {
-    name:       "",
-    difficulty: "Beginner",
-    author:     "",
-    source:     "",
-    url:        "",
-    hidden:     true
-}
+

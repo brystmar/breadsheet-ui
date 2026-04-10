@@ -4,35 +4,35 @@ import map_difficulty_to_icon from "../helpers/map_difficulty_to_icon";
 import AttrSource from "./attributes/AttrSource";
 
 
-export default function RecipeListItem(props) {
+export default function RecipeListItem({ recipe_id = 0, name = "", author = "", source = "", url = "", difficulty = "Beginner", solve_for_start = true, length = 0, hidden = true, highlight = true, deleteRecipe }) {
     return (
-        <div className={"recipe-list-row".concat(props.highlight ? " list-row-highlighted" : "")}>
+        <div className={"recipe-list-row".concat(highlight ? " list-row-highlighted" : "")}>
             <span className="recipe-list-cell col-name">
-                <Link to={`/${props.recipe_id}`}>{props.name}</Link>
+                <Link to={`/${recipe_id}`}>{name}</Link>
             </span>
 
             <span className="recipe-list-cell col-difficulty">
-                {map_difficulty_to_icon(props.difficulty)}
+                {map_difficulty_to_icon(difficulty)}
             </span>
 
             <span className="recipe-list-cell col-length">
-                {props.length}
+                {length}
             </span>
 
             <span className="recipe-list-cell col-author">
-                {props.author ? props.author : "--"}
+                {author ? author : "--"}
             </span>
 
             <AttrSource
-                name={props.source}
-                url={props.url}
+                name={source}
+                url={url}
                 extraClassString="recipe-list-cell col-source"
             />
 
-            {props.hidden ? null :
+            {hidden ? null :
                 <span className="recipe-list-cell col-button icon-cell">
                     <button
-                        className="btn-delete" onClick={() => props.deleteRecipe(props.recipe_id)}
+                        className="btn-delete" onClick={() => deleteRecipe(recipe_id)}
                     >
                         <img
                             alt="Delete this recipe"
@@ -45,17 +45,4 @@ export default function RecipeListItem(props) {
             }
         </div>
     )
-}
-
-RecipeListItem.defaultProps = {
-    recipe_id:       0,
-    name:            "",
-    author:          "",
-    source:          "",
-    url:             "",
-    difficulty:      "Beginner",
-    solve_for_start: true,
-    length:          0,
-    hidden:          true,
-    highlight:       true
 }

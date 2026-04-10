@@ -4,28 +4,28 @@
 
 React front end for **Breadsheet** — a scheduling tool for long, multi-step recipes (sourdough, pizza, etc.). Helps home cooks visualize step start/finish times and adjust windows to fit their schedule. Front end only; communicates with the `breadsheet` Python/Flask backend via REST API.
 
-- **Live site:** http://breadsheet.com
+- **Live site:** http://breadsheet.com (SSL upgrade pending)
 - **Deployment:** Portainer stack on Intel NUC 13i5 LXC (local) or Google Cloud Storage bucket (public)
 
 ## Tech Stack
 
-- **Framework:** React 17 (JavaScript, ES6+)
+- **Framework:** React 19 (JavaScript, ES6+)
 - **Styling:** SASS (indented syntax)
-- **UI library:** MDBReact (Material Design for Bootstrap React)
-- **Date/time:** moment + moment-timezone, react-datepicker, react-moment
-- **Routing:** react-router-dom v5
+- **Date/time:** moment + moment-timezone, react-datepicker
+- **Routing:** react-router-dom v6
 - **Misc:** loglevel + loglevel-plugin-remote, react-copy-to-clipboard, uuid, prop-types
-- **Testing:** @testing-library/react, @testing-library/jest-dom
-- **Build:** react-scripts (Create React App)
+- **Testing:** @testing-library/react, @testing-library/jest-dom, Vitest
+- **Build:** Vite + @vitejs/plugin-react
 - **Package manager:** npm
 
 ## Local Development
 
 ```bash
 npm install       # Install dependencies
-npm start         # Dev server at http://localhost:3000
-npm run build     # Production build → /build
-npm test          # Run test suite
+npm start         # Dev server at http://localhost:3000 (via Vite)
+npm run build     # Production build → /dist
+npm run preview   # Serve the production build locally
+npm test          # Run test suite (Vitest)
 ```
 
 ## Project Structure
@@ -109,8 +109,8 @@ The full style guide lives at `coding-style-guide.md` in the repo root. Key rule
 
 ## Deployment Notes
 
-- Build with `npm run build`, then serve the `/build` folder from a container or GCS bucket
-- API base URL configured via `REACT_APP_API_URL` environment variable
+- Build with `npm run build`, then serve the `/dist` folder from a container or GCS bucket
+- API base URL configured via `VITE_BACKEND_URL` environment variable (see `.env` / `.env.development`)
 - Portainer manages the Docker container on the local NUC; rebuild the image after each production build
 
 ## Notes for Claude

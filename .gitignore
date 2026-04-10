@@ -153,6 +153,7 @@ sketch
 
 # production
 /build
+/dist
 
 # Local SSL
 /.cert

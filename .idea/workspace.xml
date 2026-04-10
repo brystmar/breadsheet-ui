@@ -22,9 +22,81 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Standardized some formatting &amp; default values">
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Add CLAUDE.md">
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.test.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AddRecipe.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AddStep.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/BreadsheetLogo.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ConversionListContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ConvertTextControls.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Footer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Header.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ListHeaderRow.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoadingIcon.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navbar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PageTitle.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RecipeListContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RecipeListItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RecipePage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RecipePageAttributes.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RecipePageContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RecipeStartFinish.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StepContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StepListItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/attributes/AttrSource.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/buttons/BtnAdd.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/buttons/BtnCancel.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/map_difficulty_to_icon.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/reallocate_hh_mm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/time_display_functions.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useStep.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLAUDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/CLAUDE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddRecipe.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddStep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BreadsheetLogo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConversionListContainer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextControls.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ConvertTextPageContainer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListHeaderRow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoadingIcon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageTitle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeListContainer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeListItem.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageAttributes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipePageContainer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeStartFinish.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepContainer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepListItem.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/attributes/AttrSource.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/BtnAdd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/BtnCancel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/buttons/BtnEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buttons/BtnEdit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/endpoints.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/endpoints.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/convert_text_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/convert_text_functions.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/map_difficulty_to_icon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/reallocate_hh_mm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/time_display_functions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useStep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/text-conversion.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/text-conversion.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,11 +178,13 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
-    "git-widget-placeholder": "master",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "react17-update",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.npm start.executor": "Run",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -154,8 +228,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.31033.139" />
-        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
+        <option value="bundled-js-predefined-d6986cc7102b-3bd3a6803838-JavaScript-PY-261.22158.340" />
+        <option value="bundled-python-sdk-b63d5a1f7c97-b61e75351b1f-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.22158.340" />
       </set>
     </attachedChunks>
   </component>
@@ -225,7 +299,8 @@
       <workItem from="1628384882116" duration="624000" />
       <workItem from="1628457662815" duration="922000" />
       <workItem from="1771217365600" duration="1022000" />
-      <workItem from="1774049000375" duration="32000" />
+      <workItem from="1774049000375" duration="73000" />
+      <workItem from="1775516752148" duration="6588000" />
     </task>
     <task id="LOCAL-00089" summary="Responsive tweaks for add recipe &amp; step forms">
       <created>1599013940554</created>
@@ -570,7 +645,7 @@
       <option name="project" value="LOCAL" />
       <updated>1620358880599</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <option name="localTasksCounter" value="139" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -593,7 +668,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
-    <MESSAGE value="AddStep is good enough for now" />
     <MESSAGE value="ConvertTextControls is done!" />
     <MESSAGE value="ConversionListContainer is also done!" />
     <MESSAGE value="Added some needed polish to the datepicker" />
@@ -618,6 +692,7 @@
     <MESSAGE value="Moved all endpoint definitions to a global const" />
     <MESSAGE value="Finished the App.js hooks refactor" />
     <MESSAGE value="Standardized some formatting &amp; default values" />
-    <option name="LAST_COMMIT_MESSAGE" value="Standardized some formatting &amp; default values" />
+    <MESSAGE value="Add CLAUDE.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add CLAUDE.md" />
   </component>
 </project>

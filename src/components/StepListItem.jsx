@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import { seconds_to_hhmm, pad } from "../helpers/time_display_functions";
-import Moment from "react-moment";
 
 
-export default function StepListItem(props) {
+export default function StepListItem({ step_id = 0, stepNumber = 0, text = "", then_wait = 0, note = "", hidden = true, when, highlight, deleteStep, handleStepLengthChange }) {
     const [ state, updateState ] = useState({
         thenWaitHH: "00",
         thenWaitMM: "00"
     })
 
     useEffect(() => {
-        let [ hours, minutes ] = seconds_to_hhmm(props.then_wait);
+        let [ hours, minutes ] = seconds_to_hhmm(then_wait);
 
         updateState({
             thenWaitHH: pad(hours),
             thenWaitMM: pad(minutes)
         })
-    }, [ props.then_wait ])
+    }, [ then_wait ])
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -28,11 +28,11 @@ export default function StepListItem(props) {
 
         // If a thenWaitXX value changes, update the state on RecipePage
         if (name === "thenWaitHH") {
-            props.handleStepLengthChange(event, props.stepNumber,
+            handleStepLengthChange(event, stepNumber,
                 (value * 3600) + (state.thenWaitMM * 60));
 
         } else if (name === "thenWaitMM") {
-            props.handleStepLengthChange(event, props.stepNumber,
+            handleStepLengthChange(event, stepNumber,
                 (state.thenWaitHH * 3600) + (value * 60));
         }
     }
@@ -67,17 +67,17 @@ export default function StepListItem(props) {
     }
 
     return (
-        <div className={"step-list-row".concat(props.highlight ? " list-row-highlighted" : "")}>
+        <div className={"step-list-row".concat(highlight ? " list-row-highlighted" : "")}>
             <span className="step-list-cell right-justify col-step">
-                {props.stepNumber.toString().concat(".")}
+                {stepNumber.toString().concat(".")}
             </span>
 
             <span className="step-list-cell col-when">
-                <Moment format="ddd HH:mm">{props.when}</Moment>
+                {moment(when).format("ddd HH:mm")}
             </span>
 
             <span className="step-list-cell col-action">
-                {props.text}
+                {text}
             </span>
 
             <span className="step-list-cell col-then">
@@ -105,17 +105,8 @@ export default function StepListItem(props) {
             </span>
 
             <span className="step-list-cell col-note">
-                {props.note}
+                {note}
             </span>
         </div>
     )
-}
-
-StepListItem.defaultProps = {
-    step_id:    0,
-    stepNumber: 0,
-    text:       "",
-    then_wait:  0,
-    note:       "",
-    hidden:     true
 }

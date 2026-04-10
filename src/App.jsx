@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { breadsheetApis } from "./data/endpoints";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -156,13 +156,15 @@ export default function App() {
             <Header />
 
             <main className="content-container">
-                <Switch>
-                    <Route exact path="/convert">
-                        <PageTitle title="Convert Text" includeHr={true} />
-                        <ConvertTextPageContainer />
-                    </Route>
+                <Routes>
+                    <Route path="/convert" element={
+                        <>
+                            <PageTitle title="Convert Text" includeHr={true} />
+                            <ConvertTextPageContainer />
+                        </>
+                    } />
 
-                    <Route path="/:recipeId">
+                    <Route path="/:recipeId" element={
                         <RecipePageContainer
                             recipeList={recipeList}
                             hasData={hasData}
@@ -170,18 +172,20 @@ export default function App() {
                             updateRecipeLength={updateRecipeLength}
                             updateMasterRecipeList={isDataStale}
                         />
-                    </Route>
+                    } />
 
-                    <Route exact path="/">
-                        <PageTitle title="Recipes" includeHr={true} />
-                        <RecipeListContainer
-                            recipeList={recipeList}
-                            addRecipeToState={addRecipeToState}
-                            deleteRecipe={deleteRecipe}
-                        />
-                        <AddRecipe addRecipeToState={addRecipeToState} />
-                    </Route>
-                </Switch>
+                    <Route path="/" element={
+                        <>
+                            <PageTitle title="Recipes" includeHr={true} />
+                            <RecipeListContainer
+                                recipeList={recipeList}
+                                addRecipeToState={addRecipeToState}
+                                deleteRecipe={deleteRecipe}
+                            />
+                            <AddRecipe addRecipeToState={addRecipeToState} />
+                        </>
+                    } />
+                </Routes>
             </main>
 
             <Footer />

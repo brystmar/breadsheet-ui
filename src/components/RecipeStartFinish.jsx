@@ -4,8 +4,8 @@ import DatePicker from "react-datepicker";
 import "../styles/start-finish.sass";
 
 
-export default function RecipeStartFinish(props) {
-    // const propsData = `/PROPS/ s4s: ${props.solve_for_start}, len: ${props.length}, s_time: ${props.start_time}`;
+export default function RecipeStartFinish({ solve_for_start = true, start_time = new Date(0).getTime(), length = 0, handleUpdateStartTime, handleStartFinishToggle, saveRecipe }) {
+    // const propsData = `/PROPS/ s4s: ${solve_for_start}, len: ${length}, s_time: ${start_time}`;
     // console.log(propsData);
 
     function convertToFinish(startTime) {
@@ -14,45 +14,45 @@ export default function RecipeStartFinish(props) {
             return startTime
         }
 
-        return moment(startTime).add(props.length, 'seconds').valueOf();
+        return moment(startTime).add(length, 'seconds').valueOf();
     }
 
     // TODO: Need to simplify by completely removing finishTime from this component.
     //  Only thing that should be in local state is startTime.
     const [ state, updateState ] = useState({
-        startTime:  moment(props.start_time).valueOf(),
-        finishTime: convertToFinish(props.start_time)
+        startTime:  moment(start_time).valueOf(),
+        finishTime: convertToFinish(start_time)
     });
 
     const refSaveText = useRef(null);
 
     useEffect(() => {
         updateState({
-            startTime:  moment(props.start_time).valueOf(),
-            finishTime: convertToFinish(props.start_time)
+            startTime:  moment(start_time).valueOf(),
+            finishTime: convertToFinish(start_time)
         })
-    }, [ props.start_time, props.length ])
+    }, [ start_time, length ])
 
     function handleDateChange(newDate) {
         // Easier to understand as its own function
         let newStartTime = newDate.getTime();
 
-        if (props.solve_for_start) {
+        if (solve_for_start) {
             // User modified startTime, so determine the new finishTime
             updateState({
                 startTime:  newStartTime,
-                finishTime: newStartTime + (props.length * 1000)
+                finishTime: newStartTime + (length * 1000)
             });
         } else {
             // User modified finishTime, so determine the new startTime
             updateState({
-                startTime:  newStartTime - (props.length * 1000),
+                startTime:  newStartTime - (length * 1000),
                 finishTime: newDate.getTime()
             });
         }
 
         // Update state on RecipePage with the new start time
-        props.handleUpdateStartTime(newStartTime);
+        handleUpdateStartTime(newStartTime);
     }
 
     return (
@@ -65,15 +65,15 @@ export default function RecipeStartFinish(props) {
                     <button
                         type="button"
                         className="btn btn-start-finish-toggle"
-                        onClick={() => props.handleStartFinishToggle()}
+                        onClick={() => handleStartFinishToggle()}
                     >
-                        {props.solve_for_start ? "Start at:" : "Finish at:"}
+                        {solve_for_start ? "Start at:" : "Finish at:"}
                     </button>
                 </span>
 
                 <span className="start-finish-datepicker">
                     <DatePicker
-                        selected={props.solve_for_start ? state.startTime : state.finishTime}
+                        selected={solve_for_start ? state.startTime : state.finishTime}
                         onChange={handleDateChange}
                         className="start-finish-datepicker"
                         showTimeSelect
@@ -90,7 +90,7 @@ export default function RecipeStartFinish(props) {
                     type="button"
                     name="updateRecipe"
                     className="btn btn-save"
-                    onClick={() => props.saveRecipe()}
+                    onClick={() => saveRecipe()}
                 > Save
                 </button>
             </div>
@@ -102,8 +102,4 @@ export default function RecipeStartFinish(props) {
     )
 }
 
-RecipeStartFinish.defaultProps = {
-    solve_for_start: true,
-    start_time:      new Date(0).getTime(),
-    length:          0
-}
+

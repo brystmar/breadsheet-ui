@@ -1,31 +1,14 @@
 import React, { useState } from "react";
-import { MDBDataTable } from "mdbreact";
 import { format_text_replacement_list_items } from "../helpers/convert_text_functions"
 import { defaultConversionListContainerState } from "../data/defaultValues";
 
 
-export default function ConversionListContainer(props) {
+export default function ConversionListContainer({ ingredientsList = [], directionsList = [], hasData = false }) {
     const [ state, updateState ] = useState(defaultConversionListContainerState);
 
-    let tableData = {
-        columns: [
-            {
-                label: "Find",
-                field: "old",
-                sort:  "asc",
-                width: 210
-            },
-            {
-                label: "Replace",
-                field: "new",
-                sort:  "asc",
-                width: 210
-            }
-        ],
-        rows:    state.scope === "ingredients" ?
-                     format_text_replacement_list_items(props.ingredientsList) :
-                     format_text_replacement_list_items(props.directionsList)
-    }
+    const rows = state.scope === "ingredients" ?
+        format_text_replacement_list_items(ingredientsList) :
+        format_text_replacement_list_items(directionsList)
 
     return (
         <div className="replacement-list-container">
@@ -61,25 +44,25 @@ export default function ConversionListContainer(props) {
                     </button>
                 </p>
 
-                <MDBDataTable
-                    scrollY
-                    striped
-                    small
-                    responsiveSm
-                    hover
-                    bordered
-                    maxHeight="600px"
-                    className="replacement-list-item"
-                    data={tableData}
-                    entries={12}
-                />
+                <div className="replacement-list-scroll">
+                    <table className="replacement-list-item">
+                        <thead>
+                            <tr>
+                                <th>Find</th>
+                                <th>Replace</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rows.map((row, index) => (
+                                <tr key={index} className={index % 2 === 0 ? "replacement-row-even" : ""}>
+                                    <td>{row.old}</td>
+                                    <td>{row.new}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </span>
         </div>
     )
-}
-
-ConversionListContainer.defaultProps = {
-    ingredientsList: [],
-    directionsList:  [],
-    hasData:         false
 }

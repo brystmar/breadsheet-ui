@@ -85,58 +85,27 @@
       width: 9em
       margin-left: 0.35em
 
-  .dataTables_wrapper
-    padding: 0 1em
-    .dataTables_scroll
-      font-family: $font-stack-mono
-    .dataTables_scrollHeadInner
-      padding-right: 0
-    .dataTables_length.bs-select
-      display: none
-    .row
-      .form-control-sm  // Move the search box up
-        position: relative
-        top: -36px
-      .dataTables_info
-        font-style: italic
-        text-align: center
-        margin: 0.5em 0
-      .dataTables_paginate
-        a
-          cursor: pointer
-          color: $color-link-visited
-        a:visited
-          color: $color-link-visited
-        a:hover
-          text-decoration: none
-          color: $color-link
-        .active
-          padding: 0
-          border-bottom: 2px solid $color-link-visited
-        ul
-          display: flex
-          justify-content: center
-          padding: 0
-          margin: 0
-        li
-          list-style: none
-          margin: 0 0.1em
-        li:first-child
-          .page-link
-            span
-              margin-right: 0.25em
-            span::before
-              content: "<-"
-              margin-right: 0.25em
-              visibility: visible
-        li:last-child
-          .page-link
-            span
-              margin-left: 0.25em
-            span::after
-              content: "->"
-              margin-left: 0.25em
-              visibility: visible
+  .replacement-list-scroll
+    max-height: 600px
+    overflow-y: auto
+    font-family: $font-stack-mono
+    .replacement-list-item
+      width: 100%
+      border-collapse: collapse
+      border: 1px solid $color-border
+      font-size: 0.9em
+      th
+        background: $color-1
+        color: $color-text-dark
+        padding: 0.4em 0.75em
+        text-align: left
+        position: sticky
+        top: 0
+      td
+        padding: 0.3em 0.75em
+        border-bottom: 1px solid $color-border
+      .replacement-row-even td
+        background: $color-2
 
 @keyframes fade
   from

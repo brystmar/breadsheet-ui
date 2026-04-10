@@ -7,15 +7,21 @@ import RecipeStartFinish from "./RecipeStartFinish";
 import StepContainer from "./StepContainer";
 import AddStep from "./AddStep";
 
-export default function RecipePage(props) {
+const defaultRecipeData = {
+    id:         0,
+    difficulty: "Intermediate",
+    steps:      [{ step_id: 0, number: 0, text: "", then_wait: 0 }],
+}
+
+export default function RecipePage({ hasData = false, recipeId = 0, recipeData = defaultRecipeData, updateOneRecipe, updateRecipeLength, updateMasterRecipeList }) {
     // Including the full recipe object in local state here because:
     //  - upstream, it's one item in a list of recipes
     //  - downstream, it's broken into smaller parts
     const [ recipe, updateRecipe ] = useState({
-        data:     props.recipeData,
-        hasData:  props.hasData,
-        hasSteps: props.recipeData.steps ? props.recipeData.steps.length > 0 : false,
-        nextStep: props.recipeData.steps ? findHighestStep(props.recipeData.steps) + 1 : 1
+        data:     recipeData,
+        hasData:  hasData,
+        hasSteps: recipeData.steps ? recipeData.steps.length > 0 : false,
+        nextStep: recipeData.steps ? findHighestStep(recipeData.steps) + 1 : 1
     })
 
     // Tracks whether the app is currently in edit mode
@@ -47,10 +53,10 @@ export default function RecipePage(props) {
         }
 
         // Don't call the backend unless there's a real recipe_id to retrieve
-        if (props.recipeId.toString() !== "0") {
-            getRecipeData(props.recipeId);
+        if (recipeId.toString() !== "0") {
+            getRecipeData(recipeId);
         }
-    }, [ props.recipeId ])
+    }, [ recipeId ])
 
     function findHighestStep(stepList) {
         // Given a list of steps, return the highest step number as `int`
@@ -115,7 +121,7 @@ export default function RecipePage(props) {
 
     function handleSaveRecipe() {
         console.log(`Called handleSaveRecipe w/data: ${recipe.data}`);
-        props.updateOneRecipe(recipe.data.id, recipe.data);
+        updateOneRecipe(recipe.data.id, recipe.data);
     }
 
     function addStepToRecipe(newStep) {
@@ -137,7 +143,7 @@ export default function RecipePage(props) {
         newRecipe.length += newStep.then_wait;
 
         // Update this recipe in the database
-        props.updateOneRecipe(newRecipe.id, newRecipe);
+        updateOneRecipe(newRecipe.id, newRecipe);
     }
 
     function deleteStep(stepId, stepLength) {
@@ -157,10 +163,10 @@ export default function RecipePage(props) {
         })
 
         // Update the length on the main recipe table
-        props.updateRecipeLength(newRecipe.id, newRecipe.length);
+        updateRecipeLength(newRecipe.id, newRecipe.length);
 
         // Update this recipe in the database
-        props.updateOneRecipe(newRecipe.id, newRecipe);
+        updateOneRecipe(newRecipe.id, newRecipe);
     }
 
     return (
@@ -210,19 +216,4 @@ export default function RecipePage(props) {
     )
 }
 
-RecipePage.defaultProps = {
-    hasData:    false,
-    recipeId:   0,
-    recipeData: {
-        id:         0,
-        difficulty: "Intermediate",
-        steps:      [
-            {
-                step_id:   0,
-                number:    0,
-                text:      "",
-                then_wait: 0
-            }
-        ],
-    }
-}
+
