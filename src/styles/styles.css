@@ -8,86 +8,6 @@
 /*** Default Colors ***/
 /*** Page Layout ***/
 /*** Debugging ***/
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
-.color-test {
-  display: flex;
-  justify-content: space-evenly;
-  cursor: initial;
-}
-.color-test span {
-  width: 120px;
-}
-
-.test-border {
-  background: #979aa0;
-  color: #121212;
-  margin-top: 1em;
-}
-
-.test-border-2 {
-  background: #696c72;
-  color: #f8f8f8;
-}
-
-.test1 {
-  background: #c7c1ab;
-}
-
-.test2 {
-  background: #ecece8;
-}
-
-.test3 {
-  background: #f7ebdd;
-}
-
-.test4 {
-  background: #dbb37e;
-}
-
-.test5 {
-  background: #935614;
-}
-
-.test6 {
-  background: #612c00;
-  color: #f5f5f5;
-}
-
-.test7 {
-  background: #370300;
-  color: #f5f5f5;
-}
-
-.test8 {
-  background: #160000;
-  color: #f5f5f5;
-}
-
-/*** Fonts ***/
-/*** Color Palette ***/
-/*** Default Colors ***/
-/*** Page Layout ***/
-/*** Debugging ***/
 .color-test {
   display: flex;
   justify-content: space-evenly;
@@ -225,7 +145,6 @@ p {
   h3 {
     font-size: 1.08rem;
   }
-
   p {
     font-size: 0.9rem;
   }
@@ -247,66 +166,6 @@ a:visited {
 a:hover,
 a:focus {
   text-decoration: underline;
-}
-
-/*** Fonts ***/
-/*** Color Palette ***/
-/*** Default Colors ***/
-/*** Page Layout ***/
-/*** Debugging ***/
-.color-test {
-  display: flex;
-  justify-content: space-evenly;
-  cursor: initial;
-}
-.color-test span {
-  width: 120px;
-}
-
-.test-border {
-  background: #979aa0;
-  color: #121212;
-  margin-top: 1em;
-}
-
-.test-border-2 {
-  background: #696c72;
-  color: #f8f8f8;
-}
-
-.test1 {
-  background: #c7c1ab;
-}
-
-.test2 {
-  background: #ecece8;
-}
-
-.test3 {
-  background: #f7ebdd;
-}
-
-.test4 {
-  background: #dbb37e;
-}
-
-.test5 {
-  background: #935614;
-}
-
-.test6 {
-  background: #612c00;
-  color: #f5f5f5;
-}
-
-.test7 {
-  background: #370300;
-  color: #f5f5f5;
-}
-
-.test8 {
-  background: #160000;
-  color: #f5f5f5;
 }
 
 input,
@@ -360,66 +219,6 @@ textarea:read-only {
 
 select {
   padding: 0 0.2em;
-}
-
-/*** Fonts ***/
-/*** Color Palette ***/
-/*** Default Colors ***/
-/*** Page Layout ***/
-/*** Debugging ***/
-.color-test {
-  display: flex;
-  justify-content: space-evenly;
-  cursor: initial;
-}
-.color-test span {
-  width: 120px;
-}
-
-.test-border {
-  background: #979aa0;
-  color: #121212;
-  margin-top: 1em;
-}
-
-.test-border-2 {
-  background: #696c72;
-  color: #f8f8f8;
-}
-
-.test1 {
-  background: #c7c1ab;
-}
-
-.test2 {
-  background: #ecece8;
-}
-
-.test3 {
-  background: #f7ebdd;
-}
-
-.test4 {
-  background: #dbb37e;
-}
-
-.test5 {
-  background: #935614;
-}
-
-.test6 {
-  background: #612c00;
-  color: #f5f5f5;
-}
-
-.test7 {
-  background: #370300;
-  color: #f5f5f5;
-}
-
-.test8 {
-  background: #160000;
-  color: #f5f5f5;
 }
 
 .btn {
@@ -596,66 +395,6 @@ select {
   background: #f8f8f8;
 }
 
-/*** Fonts ***/
-/*** Color Palette ***/
-/*** Default Colors ***/
-/*** Page Layout ***/
-/*** Debugging ***/
-.color-test {
-  display: flex;
-  justify-content: space-evenly;
-  cursor: initial;
-}
-.color-test span {
-  width: 120px;
-}
-
-.test-border {
-  background: #979aa0;
-  color: #121212;
-  margin-top: 1em;
-}
-
-.test-border-2 {
-  background: #696c72;
-  color: #f8f8f8;
-}
-
-.test1 {
-  background: #c7c1ab;
-}
-
-.test2 {
-  background: #ecece8;
-}
-
-.test3 {
-  background: #f7ebdd;
-}
-
-.test4 {
-  background: #dbb37e;
-}
-
-.test5 {
-  background: #935614;
-}
-
-.test6 {
-  background: #612c00;
-  color: #f5f5f5;
-}
-
-.test7 {
-  background: #370300;
-  color: #f5f5f5;
-}
-
-.test8 {
-  background: #160000;
-  color: #f5f5f5;
-}
-
 .header-container {
   background: #160000;
   color: #f5f5f5;
@@ -805,7 +544,6 @@ select {
   .icon-bread {
     animation: spinning-bread infinite 20s linear;
   }
-
   .start-finish-save-confirmation {
     animation: 1 ease-in 2s linear;
   }

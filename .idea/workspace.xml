@@ -22,9 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Update gitignore">
-      <change afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a14e82ed-d9d6-4b35-9ca6-42c4842f6785" name="Default Changelist" comment="Deploy script v1.0">
+      <change beforePath="$PROJECT_DIR$/src/styles/buttons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/buttons.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/html-tags.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/html-tags.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/input-controls.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/input-controls.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/nav.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/nav.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -574,7 +579,7 @@
       <option name="project" value="LOCAL" />
       <updated>1620358880599</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -597,7 +602,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
-    <MESSAGE value="ConversionListContainer is also done!" />
     <MESSAGE value="Added some needed polish to the datepicker" />
     <MESSAGE value="Started working on AddRecipe; added missing prop to the add button on AddStep" />
     <MESSAGE value="Fixed a bug with text conversion state" />
@@ -622,6 +626,7 @@
     <MESSAGE value="Standardized some formatting &amp; default values" />
     <MESSAGE value="Add CLAUDE.md" />
     <MESSAGE value="Update gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update gitignore" />
+    <MESSAGE value="Deploy script v1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deploy script v1.0" />
   </component>
 </project>

@@ -214,7 +214,6 @@
   .recipe-list-container .recipe-list-row .col-button {
     display: none;
   }
-
   .step-list-container .step-list-row {
     grid-template: 1fr/minmax(min-content, 5em) minmax(max-content, 7.5em) minmax(11em, 0.85fr) minmax(max-content, 9em) 2.2fr;
     grid-template-areas: "step                      when                        action                then                      note";
@@ -231,7 +230,6 @@
   .recipe-list-container .recipe-list-row .col-source {
     display: none;
   }
-
   .step-list-container .step-list-row {
     padding: 0.4em 0;
   }
@@ -259,7 +257,6 @@
   .recipe-list-container .recipe-list-row .col-author {
     display: none;
   }
-
   .step-list-container .step-list-row {
     grid-template: 1fr/2.75em minmax(max-content, 6.5em) minmax(9.5em, 0.85fr) minmax(max-content, 9em) 2fr;
     grid-template-areas: "step    when                        action                then                      note";
@@ -271,7 +268,7 @@
     grid-template-areas: "name  diff  len";
   }
   .recipe-list-container .recipe-list-row .col-note,
-.recipe-list-container .recipe-list-row .col-author {
+  .recipe-list-container .recipe-list-row .col-author {
     display: none;
   }
   .recipe-list-container .recipe-list-row .col-button {
@@ -286,7 +283,6 @@
   .recipe-list-container .recipe-list-row .col-difficulty {
     display: none;
   }
-
   .step-list-container .step-list-row {
     grid-template: 1fr/2.75em minmax(max-content, 6.5em) 1fr minmax(max-content, 9em);
     grid-template-areas: "step    when                        action  then";
@@ -310,11 +306,9 @@
   .nav-content {
     font-size: 1.1rem;
   }
-
   .list-header .col-action {
     min-width: 80px;
   }
-
   .step-list-container .step-list-row {
     grid-template: 1fr/2.75em 5.7rem 1fr minmax(max-content, 9em);
     grid-template-areas: "step    when    action  then";
@@ -324,7 +318,6 @@
   .nav-content {
     font-size: 1.08rem;
   }
-
   .recipe-list-row {
     grid-template: 1fr/1fr;
     grid-template-areas: "name";
@@ -332,18 +325,15 @@
   .recipe-list-row .col-length {
     display: none;
   }
-
   .list-header .col-step {
     visibility: hidden;
     margin: 0;
     padding: 0;
   }
-
   .col-step {
     min-width: 30px;
     width: 30px;
   }
-
   .col-action {
     min-width: 80px;
   }

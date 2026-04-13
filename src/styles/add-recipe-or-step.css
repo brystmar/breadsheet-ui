@@ -224,102 +224,101 @@
 
 @media (max-width: 599px) {
   .add-recipe-container,
-.add-step-container {
+  .add-step-container {
     padding: 0.25em;
   }
   .add-recipe-container .add-recipe-form .add-recipe-form-group,
-.add-recipe-container .add-recipe-form .add-step-form-group,
-.add-recipe-container .add-step-form .add-recipe-form-group,
-.add-recipe-container .add-step-form .add-step-form-group,
-.add-step-container .add-recipe-form .add-recipe-form-group,
-.add-step-container .add-recipe-form .add-step-form-group,
-.add-step-container .add-step-form .add-recipe-form-group,
-.add-step-container .add-step-form .add-step-form-group {
+  .add-recipe-container .add-recipe-form .add-step-form-group,
+  .add-recipe-container .add-step-form .add-recipe-form-group,
+  .add-recipe-container .add-step-form .add-step-form-group,
+  .add-step-container .add-recipe-form .add-recipe-form-group,
+  .add-step-container .add-recipe-form .add-step-form-group,
+  .add-step-container .add-step-form .add-recipe-form-group,
+  .add-step-container .add-step-form .add-step-form-group {
     width: 100%;
     min-width: unset;
   }
   .add-recipe-container .add-recipe-form .add-recipe-form-group .add-recipe-form-label,
-.add-recipe-container .add-recipe-form .add-step-form-group .add-recipe-form-label,
-.add-recipe-container .add-step-form .add-recipe-form-group .add-recipe-form-label,
-.add-recipe-container .add-step-form .add-step-form-group .add-recipe-form-label,
-.add-step-container .add-recipe-form .add-recipe-form-group .add-recipe-form-label,
-.add-step-container .add-recipe-form .add-step-form-group .add-recipe-form-label,
-.add-step-container .add-step-form .add-recipe-form-group .add-recipe-form-label,
-.add-step-container .add-step-form .add-step-form-group .add-recipe-form-label {
+  .add-recipe-container .add-recipe-form .add-step-form-group .add-recipe-form-label,
+  .add-recipe-container .add-step-form .add-recipe-form-group .add-recipe-form-label,
+  .add-recipe-container .add-step-form .add-step-form-group .add-recipe-form-label,
+  .add-step-container .add-recipe-form .add-recipe-form-group .add-recipe-form-label,
+  .add-step-container .add-recipe-form .add-step-form-group .add-recipe-form-label,
+  .add-step-container .add-step-form .add-recipe-form-group .add-recipe-form-label,
+  .add-step-container .add-step-form .add-step-form-group .add-recipe-form-label {
     width: 15%;
     min-width: 120px;
   }
   .add-recipe-container .add-recipe-form .add-recipe-form-group .add-step-form-label,
-.add-recipe-container .add-recipe-form .add-step-form-group .add-step-form-label,
-.add-recipe-container .add-step-form .add-recipe-form-group .add-step-form-label,
-.add-recipe-container .add-step-form .add-step-form-group .add-step-form-label,
-.add-step-container .add-recipe-form .add-recipe-form-group .add-step-form-label,
-.add-step-container .add-recipe-form .add-step-form-group .add-step-form-label,
-.add-step-container .add-step-form .add-recipe-form-group .add-step-form-label,
-.add-step-container .add-step-form .add-step-form-group .add-step-form-label {
+  .add-recipe-container .add-recipe-form .add-step-form-group .add-step-form-label,
+  .add-recipe-container .add-step-form .add-recipe-form-group .add-step-form-label,
+  .add-recipe-container .add-step-form .add-step-form-group .add-step-form-label,
+  .add-step-container .add-recipe-form .add-recipe-form-group .add-step-form-label,
+  .add-step-container .add-recipe-form .add-step-form-group .add-step-form-label,
+  .add-step-container .add-step-form .add-recipe-form-group .add-step-form-label,
+  .add-step-container .add-step-form .add-step-form-group .add-step-form-label {
     width: 8%;
     min-width: 100px;
   }
 }
 @media (max-width: 494px) {
   .content-container .add-recipe-container .add-recipe-form,
-.content-container .add-recipe-container .add-step-form,
-.content-container .add-step-container .add-recipe-form,
-.content-container .add-step-container .add-step-form {
+  .content-container .add-recipe-container .add-step-form,
+  .content-container .add-step-container .add-recipe-form,
+  .content-container .add-step-container .add-step-form {
     padding: 0.5em;
   }
   .content-container .add-recipe-container .add-recipe-form .add-recipe-form-group,
-.content-container .add-recipe-container .add-recipe-form .add-step-form-group,
-.content-container .add-recipe-container .add-step-form .add-recipe-form-group,
-.content-container .add-recipe-container .add-step-form .add-step-form-group,
-.content-container .add-step-container .add-recipe-form .add-recipe-form-group,
-.content-container .add-step-container .add-recipe-form .add-step-form-group,
-.content-container .add-step-container .add-step-form .add-recipe-form-group,
-.content-container .add-step-container .add-step-form .add-step-form-group {
+  .content-container .add-recipe-container .add-recipe-form .add-step-form-group,
+  .content-container .add-recipe-container .add-step-form .add-recipe-form-group,
+  .content-container .add-recipe-container .add-step-form .add-step-form-group,
+  .content-container .add-step-container .add-recipe-form .add-recipe-form-group,
+  .content-container .add-step-container .add-recipe-form .add-step-form-group,
+  .content-container .add-step-container .add-step-form .add-recipe-form-group,
+  .content-container .add-step-container .add-step-form .add-step-form-group {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
   }
   .content-container .add-recipe-container .add-recipe-form .add-recipe-form-group .add-recipe-form-label,
-.content-container .add-recipe-container .add-recipe-form .add-recipe-form-group .add-step-form-label,
-.content-container .add-recipe-container .add-recipe-form .add-step-form-group .add-recipe-form-label,
-.content-container .add-recipe-container .add-recipe-form .add-step-form-group .add-step-form-label,
-.content-container .add-recipe-container .add-step-form .add-recipe-form-group .add-recipe-form-label,
-.content-container .add-recipe-container .add-step-form .add-recipe-form-group .add-step-form-label,
-.content-container .add-recipe-container .add-step-form .add-step-form-group .add-recipe-form-label,
-.content-container .add-recipe-container .add-step-form .add-step-form-group .add-step-form-label,
-.content-container .add-step-container .add-recipe-form .add-recipe-form-group .add-recipe-form-label,
-.content-container .add-step-container .add-recipe-form .add-recipe-form-group .add-step-form-label,
-.content-container .add-step-container .add-recipe-form .add-step-form-group .add-recipe-form-label,
-.content-container .add-step-container .add-recipe-form .add-step-form-group .add-step-form-label,
-.content-container .add-step-container .add-step-form .add-recipe-form-group .add-recipe-form-label,
-.content-container .add-step-container .add-step-form .add-recipe-form-group .add-step-form-label,
-.content-container .add-step-container .add-step-form .add-step-form-group .add-recipe-form-label,
-.content-container .add-step-container .add-step-form .add-step-form-group .add-step-form-label {
+  .content-container .add-recipe-container .add-recipe-form .add-recipe-form-group .add-step-form-label,
+  .content-container .add-recipe-container .add-recipe-form .add-step-form-group .add-recipe-form-label,
+  .content-container .add-recipe-container .add-recipe-form .add-step-form-group .add-step-form-label,
+  .content-container .add-recipe-container .add-step-form .add-recipe-form-group .add-recipe-form-label,
+  .content-container .add-recipe-container .add-step-form .add-recipe-form-group .add-step-form-label,
+  .content-container .add-recipe-container .add-step-form .add-step-form-group .add-recipe-form-label,
+  .content-container .add-recipe-container .add-step-form .add-step-form-group .add-step-form-label,
+  .content-container .add-step-container .add-recipe-form .add-recipe-form-group .add-recipe-form-label,
+  .content-container .add-step-container .add-recipe-form .add-recipe-form-group .add-step-form-label,
+  .content-container .add-step-container .add-recipe-form .add-step-form-group .add-recipe-form-label,
+  .content-container .add-step-container .add-recipe-form .add-step-form-group .add-step-form-label,
+  .content-container .add-step-container .add-step-form .add-recipe-form-group .add-recipe-form-label,
+  .content-container .add-step-container .add-step-form .add-recipe-form-group .add-step-form-label,
+  .content-container .add-step-container .add-step-form .add-step-form-group .add-recipe-form-label,
+  .content-container .add-step-container .add-step-form .add-step-form-group .add-step-form-label {
     margin-left: 0;
     margin-bottom: 0.3em;
   }
   .content-container .add-recipe-container .add-recipe-form .add-recipe-form-group .add-step-form-input-group,
-.content-container .add-recipe-container .add-recipe-form .add-step-form-group .add-step-form-input-group,
-.content-container .add-recipe-container .add-step-form .add-recipe-form-group .add-step-form-input-group,
-.content-container .add-recipe-container .add-step-form .add-step-form-group .add-step-form-input-group,
-.content-container .add-step-container .add-recipe-form .add-recipe-form-group .add-step-form-input-group,
-.content-container .add-step-container .add-recipe-form .add-step-form-group .add-step-form-input-group,
-.content-container .add-step-container .add-step-form .add-recipe-form-group .add-step-form-input-group,
-.content-container .add-step-container .add-step-form .add-step-form-group .add-step-form-input-group {
+  .content-container .add-recipe-container .add-recipe-form .add-step-form-group .add-step-form-input-group,
+  .content-container .add-recipe-container .add-step-form .add-recipe-form-group .add-step-form-input-group,
+  .content-container .add-recipe-container .add-step-form .add-step-form-group .add-step-form-input-group,
+  .content-container .add-step-container .add-recipe-form .add-recipe-form-group .add-step-form-input-group,
+  .content-container .add-step-container .add-recipe-form .add-step-form-group .add-step-form-input-group,
+  .content-container .add-step-container .add-step-form .add-recipe-form-group .add-step-form-input-group,
+  .content-container .add-step-container .add-step-form .add-step-form-group .add-step-form-input-group {
     margin-bottom: 0.3em;
   }
   .content-container .add-recipe-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group,
-.content-container .add-recipe-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group,
-.content-container .add-recipe-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group,
-.content-container .add-recipe-container .add-step-form .add-step-form-group .add-recipe-form-input-group,
-.content-container .add-step-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group,
-.content-container .add-step-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group,
-.content-container .add-step-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group,
-.content-container .add-step-container .add-step-form .add-step-form-group .add-recipe-form-input-group {
+  .content-container .add-recipe-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group,
+  .content-container .add-recipe-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group,
+  .content-container .add-recipe-container .add-step-form .add-step-form-group .add-recipe-form-input-group,
+  .content-container .add-step-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group,
+  .content-container .add-step-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group,
+  .content-container .add-step-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group,
+  .content-container .add-step-container .add-step-form .add-step-form-group .add-recipe-form-input-group {
     margin-bottom: 0.3em;
   }
-
   #note {
     max-width: 310px;
   }
@@ -330,35 +329,35 @@
     margin-right: 0.25em;
   }
   .content-container .add-recipe-form,
-.content-container .add-step-form {
+  .content-container .add-step-form {
     margin: 0 0 0.15em;
     padding: 0.15em;
   }
   .content-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group,
-.content-container .add-recipe-form .add-recipe-form-group .add-step-form-input-group,
-.content-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group,
-.content-container .add-recipe-form .add-step-form-group .add-step-form-input-group,
-.content-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group,
-.content-container .add-step-form .add-recipe-form-group .add-step-form-input-group,
-.content-container .add-step-form .add-step-form-group .add-recipe-form-input-group,
-.content-container .add-step-form .add-step-form-group .add-step-form-input-group {
+  .content-container .add-recipe-form .add-recipe-form-group .add-step-form-input-group,
+  .content-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group,
+  .content-container .add-recipe-form .add-step-form-group .add-step-form-input-group,
+  .content-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group,
+  .content-container .add-step-form .add-recipe-form-group .add-step-form-input-group,
+  .content-container .add-step-form .add-step-form-group .add-recipe-form-input-group,
+  .content-container .add-step-form .add-step-form-group .add-step-form-input-group {
     width: 100%;
     min-width: unset;
   }
   .content-container .add-recipe-form .add-recipe-form-group .add-recipe-form-input-group .difficulty-icon,
-.content-container .add-recipe-form .add-recipe-form-group .add-step-form-input-group .difficulty-icon,
-.content-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group .difficulty-icon,
-.content-container .add-recipe-form .add-step-form-group .add-step-form-input-group .difficulty-icon,
-.content-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group .difficulty-icon,
-.content-container .add-step-form .add-recipe-form-group .add-step-form-input-group .difficulty-icon,
-.content-container .add-step-form .add-step-form-group .add-recipe-form-input-group .difficulty-icon,
-.content-container .add-step-form .add-step-form-group .add-step-form-input-group .difficulty-icon {
+  .content-container .add-recipe-form .add-recipe-form-group .add-step-form-input-group .difficulty-icon,
+  .content-container .add-recipe-form .add-step-form-group .add-recipe-form-input-group .difficulty-icon,
+  .content-container .add-recipe-form .add-step-form-group .add-step-form-input-group .difficulty-icon,
+  .content-container .add-step-form .add-recipe-form-group .add-recipe-form-input-group .difficulty-icon,
+  .content-container .add-step-form .add-recipe-form-group .add-step-form-input-group .difficulty-icon,
+  .content-container .add-step-form .add-step-form-group .add-recipe-form-input-group .difficulty-icon,
+  .content-container .add-step-form .add-step-form-group .add-step-form-input-group .difficulty-icon {
     min-width: 50px;
   }
   .content-container .add-recipe-form .add-recipe-form-group .btn-submit,
-.content-container .add-recipe-form .add-step-form-group .btn-submit,
-.content-container .add-step-form .add-recipe-form-group .btn-submit,
-.content-container .add-step-form .add-step-form-group .btn-submit {
+  .content-container .add-recipe-form .add-step-form-group .btn-submit,
+  .content-container .add-step-form .add-recipe-form-group .btn-submit,
+  .content-container .add-step-form .add-step-form-group .btn-submit {
     margin-top: 0.3em;
     width: 100%;
   }

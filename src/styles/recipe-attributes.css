@@ -112,7 +112,6 @@
   .recipe-attributes-container {
     grid-gap: 0.5em 1.25em;
   }
-
   .edit-button-container {
     display: none;
   }
@@ -129,11 +128,11 @@
     grid-gap: 0.4em;
   }
   .recipe-attributes-and-button-container .recipe-attributes-container .attr-author .attribute-label,
-.recipe-attributes-and-button-container .recipe-attributes-container .attr-source .attribute-label {
+  .recipe-attributes-and-button-container .recipe-attributes-container .attr-source .attribute-label {
     margin-right: 1em;
   }
   .recipe-attributes-and-button-container .recipe-attributes-container .attribute-label,
-.recipe-attributes-and-button-container .recipe-attributes-container .attribute-value {
+  .recipe-attributes-and-button-container .recipe-attributes-container .attribute-value {
     flex-grow: 0;
   }
 }
