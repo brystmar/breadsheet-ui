@@ -29,7 +29,7 @@ export function format_text_replacement_list_items(inputArray) {
     //   newlines with ¶
     //   tabs with ⇥
 
-    if (inputArray === []) {
+    if (!inputArray.length) {
         return []
     }
 

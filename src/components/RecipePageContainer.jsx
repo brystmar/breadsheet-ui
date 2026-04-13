@@ -12,7 +12,7 @@ export default function RecipePageContainer({ recipeList = [{ id: "" }], hasData
     let recipeDeets = {};
 
     for (let i = 0; i < recipeList.length; i++) {
-        if (recipeList[i].id === { recipeId }) {
+        if (recipeList[i].id === recipeId) {
             recipeDeets = recipeList[i];
             break;
         }
