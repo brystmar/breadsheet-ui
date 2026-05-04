@@ -14,7 +14,7 @@
 		"react-dom": "^19.0.0",
 "react-router-dom": "^6.30.0",
 		"react-transition-group": "^4.4.5",
-		"uuid": "^11.1.0"
+		"uuid": "^14.0.0"
 	},
 	"scripts": {
 		"start": "vite",
