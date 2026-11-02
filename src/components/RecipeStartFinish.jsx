@@ -35,7 +35,8 @@ export default function RecipeStartFinish({ solve_for_start = true, start_time =
 
     function handleDateChange(newDate) {
         // Easier to understand as its own function
-        let newStartTime = newDate.getTime();
+        // When solving for the finish time, the picked date is the finish, so back out the recipe length
+        let newStartTime = solve_for_start ? newDate.getTime() : newDate.getTime() - (length * 1000);
 
         if (solve_for_start) {
             // User modified startTime, so determine the new finishTime
@@ -46,7 +47,7 @@ export default function RecipeStartFinish({ solve_for_start = true, start_time =
         } else {
             // User modified finishTime, so determine the new startTime
             updateState({
-                startTime:  newStartTime - (length * 1000),
+                startTime:  newStartTime,
                 finishTime: newDate.getTime()
             });
         }
@@ -73,7 +74,7 @@ export default function RecipeStartFinish({ solve_for_start = true, start_time =
 
                 <span className="start-finish-datepicker">
                     <DatePicker
-                        selected={solve_for_start ? state.startTime : state.finishTime}
+                        selected={new Date(solve_for_start ? state.startTime : state.finishTime)}
                         onChange={handleDateChange}
                         className="start-finish-datepicker"
                         showTimeSelect
