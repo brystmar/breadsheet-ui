@@ -109,6 +109,7 @@ The full style guide lives at `coding-style-guide.md` in the repo root. Key rule
 ### SASS
 
 - **Indented syntax** — no braces, no semicolons
+- Components import the `.sass` files directly and Vite compiles them; don't create or commit compiled `.css` files in `src/styles/` (they're gitignored)
 - Variables at the top, in order: **Fonts → Color palette → Layout defaults**
 - Variable names: lowercase, hyphen-separated, operative word first (`$color-primary`, not `$primary-color`)
 - Hex codes: lowercase

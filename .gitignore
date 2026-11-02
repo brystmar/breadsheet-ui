@@ -159,6 +159,10 @@ sketch
 /build
 /dist
 
+# compiled SASS (Vite compiles the .sass files itself; these come from an IDE file watcher)
+/src/styles/*.css
+/src/styles/*.css.map
+
 # Local SSL
 /.cert
 
