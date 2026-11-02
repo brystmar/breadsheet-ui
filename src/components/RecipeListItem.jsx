@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import map_difficulty_to_icon from "../helpers/map_difficulty_to_icon";
 import AttrSource from "./attributes/AttrSource";
 
