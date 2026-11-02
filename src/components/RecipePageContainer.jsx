@@ -1,6 +1,6 @@
 import React from 'react';
 import RecipePage from './RecipePage';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import "../styles/add-recipe-or-step.sass";
 import "../styles/recipe-attributes.sass";
 
