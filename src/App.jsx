@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router";
+import React, { useState, useEffect, useRef } from "react";
+import { Routes, Route, useLocation } from "react-router";
 import { breadsheetApis } from "./data/endpoints";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -26,6 +26,22 @@ export default function App() {
     // Toggle passed down to child components, allowing them to trigger a data refresh when needed
     // Dependency variable for the useEffect --> getAllRecipes function
     const [ isDataStale, toggleIsDataStale ] = useState(false);
+
+    // Count client-side route changes in GoatCounter
+    // The script counts the initial page load itself, so only count when the path changes.
+    // Tracking the last counted path (instead of a first-render flag) keeps StrictMode's
+    // double-run effects from counting the initial load twice.
+    const location = useLocation()
+    const currentPath = location.pathname + location.search
+    const lastCountedPath = useRef(currentPath)
+
+    useEffect(() => {
+        if (currentPath === lastCountedPath.current) return
+        lastCountedPath.current = currentPath
+
+        // Guard against the script being blocked or not loaded yet
+        window.goatcounter?.count?.({ path: currentPath })
+    }, [ currentPath ])
 
     // Retrieve the data for all recipes from the backend
     useEffect(() => {
