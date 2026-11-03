@@ -134,6 +134,9 @@ The full style guide lives at `coding-style-guide.md` in the repo root. Key rule
 - Portainer manages the Docker container on the local NUC; rebuild the image after each production build
 - The host's Node version only affects local builds; Docker images pin their own Node base image
 
+## Second Rise spec
+The source of truth is `../breadsheet-hass/docs/second-rise-feature.md`, in the sibling checkout. Read it before planning or executing any Second Rise work. Never copy it into this repo; if it needs changes, say so and stop.
+
 ## Notes for Claude
 
 - The style guide at `coding-style-guide.md` is authoritative — follow it exactly
