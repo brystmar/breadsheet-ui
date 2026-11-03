@@ -4,12 +4,12 @@
 
 React front end for **Breadsheet** — a scheduling tool for long, multi-step recipes (sourdough, pizza, etc.). Helps home cooks visualize step start/finish times and adjust windows to fit their schedule. Front end only; communicates with the `breadsheet` Python/Flask backend via REST API.
 
-- **Live site:** http://breadsheet.com (SSL upgrade pending)
-- **Deployment:** Portainer stack on Intel NUC 13i5 LXC (local) or Google Cloud Storage bucket (public)
+- **Live site:** https://breadsheet.com
+- **Deployment:** Google Cloud Storage bucket
 
 ## Tech Stack
 
-Versions as of the Nov 2026 dependency upgrade (Second Rise backlog item 1b).
+Versions as of the Nov 2026 dependency upgrade ([Second Rise](https://github.com/brystmar/breadsheet-hass/blob/main/docs/second-rise-feature.md) backlog item 1b).
 
 | Area | Package | Version |
 |---|---|---|
