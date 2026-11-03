@@ -9,7 +9,7 @@ React front end for **Breadsheet** — a scheduling tool for long, multi-step re
 
 ## Tech Stack
 
-Versions as of the Nov 2026 dependency upgrade ([Second Rise](https://github.com/brystmar/breadsheet/blob/main/docs/second-rise-feature.md) backlog item 1b).
+Versions as of the Nov 2026 dependency upgrade ([Second Rise](https://github.com/brystmar/breadsheet/blob/main/docs/second-rise.md) backlog item 1b).
 
 | Area | Package | Version |
 |---|---|---|
@@ -135,7 +135,7 @@ The full style guide lives at `coding-style-guide.md` in the repo root. Key rule
 - The host's Node version only affects local builds; Docker images pin their own Node base image
 
 ## Second Rise spec
-The source of truth is `../breadsheet/docs/second-rise-feature.md`, in the sibling checkout. Read it before planning or executing any Second Rise work. Never copy it into this repo; if it needs changes, say so and stop.
+The source of truth is `../breadsheet/docs/second-rise.md`, in the sibling checkout. Read it before planning or executing any Second Rise work. Never copy it into this repo; if it needs changes, say so and stop.
 
 ## Notes for Claude
 
