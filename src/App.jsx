@@ -65,7 +65,7 @@ export default function App() {
                 }
             }
 
-            console.info("Retrieving list of recipes via App.useEffect")
+            console.debug("Retrieving list of recipes via App.useEffect")
             getAllRecipes();
         },
         // The function for updating `isDataStale` gets passed down to children,
