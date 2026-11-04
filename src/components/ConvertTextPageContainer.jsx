@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { defaultTextConversionState } from "../data/defaultValues";
 import { breadsheetApis } from "../data/endpoints";
+import { apiFetch } from "../data/api_fetch";
 import ConvertTextControls from "./ConvertTextControls";
 import ConversionListContainer from "./ConversionListContainer";
 import "../styles/text-conversion.sass";
@@ -17,7 +18,7 @@ export default function ConvertTextPageContainer() {
             console.log(`Calling endpoint: ${breadsheetApis.replacements.all}`);
 
             try {
-                const replacementsPromise = await fetch(breadsheetApis.replacements.all);
+                const replacementsPromise = await apiFetch(breadsheetApis.replacements.all);
                 if (replacementsPromise.ok) {
                     const result = await replacementsPromise.json();
 
