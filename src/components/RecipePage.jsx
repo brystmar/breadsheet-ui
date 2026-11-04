@@ -1,6 +1,7 @@
 // Layout for a recipe-specific page.
 import React, { useState, useEffect } from "react";
 import { breadsheetApis } from "../data/endpoints";
+import { apiFetch } from "../data/api_fetch";
 import PageTitle from "./PageTitle";
 import RecipePageAttributes from "./RecipePageAttributes";
 import RecipeStartFinish from "./RecipeStartFinish";
@@ -34,7 +35,7 @@ export default function RecipePage({ hasData = false, recipeId = 0, recipeData =
 
             try {
                 // Request recipe from the backend
-                const updatedRecipeResponse = await fetch(recipeApi);
+                const updatedRecipeResponse = await apiFetch(recipeApi);
                 // Parse the response into json
                 const updatedRecipeData = await updatedRecipeResponse.json();
 

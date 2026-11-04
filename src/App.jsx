@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router";
 import { breadsheetApis } from "./data/endpoints";
+import { apiFetch } from "./data/api_fetch";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PageTitle from "./components/PageTitle";
@@ -51,7 +52,7 @@ export default function App() {
                     console.debug(`Calling endpoint: ${breadsheetApis.recipes.all}`);
 
                     // Make the GET request
-                    const recipeListRequest = await fetch(breadsheetApis.recipes.all);
+                    const recipeListRequest = await apiFetch(breadsheetApis.recipes.all);
 
                     // Parse the response, which is a list of recipe objects
                     const recipeListResponse = await recipeListRequest.json();
@@ -114,7 +115,7 @@ export default function App() {
 
             // Make the PUT request
             console.debug(`Calling endpoint: ${breadsheetApis.recipes.single}/${recipeId}`);
-            const updateRecipeRequest = await fetch(`${breadsheetApis.recipes.single}/${recipeId}`, requestArgs);
+            const updateRecipeRequest = await apiFetch(`${breadsheetApis.recipes.single}/${recipeId}`, requestArgs);
 
             // Parse the response
             const updateRecipeResponse = await updateRecipeRequest.json();
@@ -138,7 +139,7 @@ export default function App() {
 
             // Make the DELETE request
             console.debug(`Calling endpoint: ${breadsheetApis.recipes.single}/${recipeId}`);
-            const deleteRecipeRequest = await fetch(`${breadsheetApis.recipes.single}/${recipeId}`, requestArgs);
+            const deleteRecipeRequest = await apiFetch(`${breadsheetApis.recipes.single}/${recipeId}`, requestArgs);
 
             // Parse the response
             const deleteRecipeResponse = await deleteRecipeRequest.json();
