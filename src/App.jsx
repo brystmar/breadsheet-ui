@@ -9,7 +9,7 @@ import RecipeListContainer from "./components/RecipeListContainer";
 import RecipePageContainer from "./components/RecipePageContainer";
 import AddRecipe from "./components/AddRecipe";
 import ConvertTextPageContainer from "./components/ConvertTextPageContainer";
-import FormSignup from "./components/identity/FormSignup";
+import FormRegister from "./components/identity/FormRegister";
 import FormSignin from "./components/identity/FormSignin";
 import KeyLink from "./components/identity/KeyLink";
 import LinkDevice from "./components/identity/LinkDevice";
@@ -189,7 +189,7 @@ export default function App() {
                     <Route path="/k" element={<KeyLink />} />
 
                     {/* Identity screens (M2). At M1 these paths fall through to the recipe route, as before. */}
-                    {atLeast("m2") && <Route path="/signup" element={<FormSignup />} />}
+                    {atLeast("m2") && <Route path="/register" element={<FormRegister />} />}
                     {atLeast("m2") && <Route path="/signin" element={<FormSignin />} />}
                     {atLeast("m2") && <Route path="/devices" element={<LinkDevice />} />}
 

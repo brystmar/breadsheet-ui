@@ -5,7 +5,7 @@
 
 .identity-page
   max-width: 34em
-  margin: 1em auto
+  margin: 1em auto 3.5em  // room above the footer
   line-height: 1.45
   text-align: left  // the site centers text on phones; forms and lists read better left-aligned
   .identity-heading
@@ -22,9 +22,6 @@
     background: $color-gray-lighter
   .identity-list
     padding-left: 1.2em
-  .btn-submit
-    width: auto
-    padding: 0 1.2em
 
 .identity-form
   display: flex
@@ -35,9 +32,20 @@
     font-weight: bold
   input
     max-width: 22em
-  .btn-submit
+  .btn-primary
     align-self: flex-start
     margin-top: 0.4em
+
+// Username rules: red until met, then green
+.username-checks
+  margin: 0.1em 0 0.3em
+  padding-left: 1.2em
+  font-size: 0.9rem
+  .username-check
+    color: $color-danger
+    transition: color 150ms ease-in-out
+  .username-check.met
+    color: $color-success
 
 .save-key-value
   display: flex

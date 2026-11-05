@@ -1,21 +1,28 @@
 import React from "react"
 import { act, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
+import { MemoryRouter, Route, Routes } from "react-router"
 import FooterFeatureLevel from "./FooterFeatureLevel"
 import useFeatureLevel, { AtFeatureLevel, FeatureLevelProvider } from "../hooks/useFeatureLevel"
 
 const STORAGE_KEY = "breadsheet.featureLevel"
 
 
-// The toggle plus something gated at M2, as the app will use them
-function renderToggle() {
+// The toggle plus something gated at M2, as the app will use them, starting at `path`
+function renderToggle(path = "/") {
     return render(
-        <FeatureLevelProvider>
-            <FooterFeatureLevel />
-            <AtFeatureLevel min="m2" fallback={<p>Classic app</p>}>
-                <p>Second Rise preview</p>
-            </AtFeatureLevel>
-        </FeatureLevelProvider>
+        <MemoryRouter initialEntries={[ path ]}>
+            <FeatureLevelProvider>
+                <FooterFeatureLevel />
+                <AtFeatureLevel min="m2" fallback={<p>Classic app</p>}>
+                    <p>Second Rise preview</p>
+                </AtFeatureLevel>
+                <Routes>
+                    <Route path="/" element={<p>Homepage</p>} />
+                    <Route path="/register" element={<p>Register page</p>} />
+                </Routes>
+            </FeatureLevelProvider>
+        </MemoryRouter>
     )
 }
 
@@ -48,6 +55,21 @@ describe("FooterFeatureLevel", () => {
 
         await userEvent.click(screen.getByRole("button", { name: "M1" }))
         expect(screen.getByText("Classic app")).toBeInTheDocument()
+    })
+
+    test("switching back to M1 returns to the homepage", async () => {
+        window.localStorage.setItem(STORAGE_KEY, "m2")
+        renderToggle("/register")
+        expect(screen.getByText("Register page")).toBeInTheDocument()
+
+        await userEvent.click(screen.getByRole("button", { name: "M1" }))
+        expect(screen.getByText("Homepage")).toBeInTheDocument()
+    })
+
+    test("switching to M2 stays on the current page", async () => {
+        renderToggle("/register")
+        await userEvent.click(screen.getByRole("button", { name: "M2" }))
+        expect(screen.getByText("Register page")).toBeInTheDocument()
     })
 
     test("follows a change made in another tab", () => {

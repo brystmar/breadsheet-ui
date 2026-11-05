@@ -1,17 +1,22 @@
-// Usernames and keys for signup and sign-in (breadsheet#26 is the server side).
+// Usernames and keys for registration and sign-in (breadsheet#26 is the server side).
 // The key is the user's only credential: keep it in component state only. Never put it in
 // localStorage, a URL path, a query string, or the console.
 
-// Same rules as the server; it also blocks reserved names and has the final say
-const USERNAME_PATTERN = /^[A-Za-z0-9][A-Za-z0-9_-]{2,29}$/
+// The username rules, shown as a live checklist while typing. Same rules as the server, which also
+// blocks reserved names and has the final say.
+export function usernameChecks(username) {
+    const name = username.trim()
+    return [
+        { label: "3 to 30 characters long", met: name.length >= 3 && name.length <= 30 },
+        { label: "Only letters, numbers, underscores, and hyphens", met: /^[A-Za-z0-9_-]+$/.test(name) },
+        { label: "Starts with a letter", met: /^[A-Za-z]/.test(name) }
+    ]
+}
 
-export const USERNAME_RULES = "3 to 30 characters: letters, numbers, underscores, and hyphens, " +
-    "starting with a letter or number."
 
-
-// Why this username can't be used, or null when it looks fine
-export function usernameProblem(username) {
-    return USERNAME_PATTERN.test(username.trim()) ? null : `Usernames are ${USERNAME_RULES}`
+// True when the username meets every rule
+export function usernameIsValid(username) {
+    return usernameChecks(username).every((check) => check.met)
 }
 
 

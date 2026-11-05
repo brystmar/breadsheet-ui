@@ -12,7 +12,7 @@ export default function Navbar() {
                 </li>
             </ul>
 
-            {/* Sign up, sign in, and the signed-in user (M2) */}
+            {/* Register, sign in, and the signed-in user (M2) */}
             <AtFeatureLevel min="m2">
                 <NavAccount />
             </AtFeatureLevel>

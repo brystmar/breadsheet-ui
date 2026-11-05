@@ -82,22 +82,26 @@
 
 .btn-save,
 .btn-submit,
-.btn-add
+.btn-add,
+.btn-primary
   background: $color-5
   color: $color-text-light
   border: 1px solid $color-6
   line-height: 1
 .btn-save:hover,
-.btn-add:hover
+.btn-add:hover,
+.btn-primary:hover
   background: $color-6
   color: $color-text-light
   border: 1px solid $color-7
 .btn-save:active,
-.btn-add:active
+.btn-add:active,
+.btn-primary:active
   border-color: $color-background
 .btn-save:disabled,
 .btn-submit:disabled,
-.btn-add:disabled
+.btn-add:disabled,
+.btn-primary:disabled
   background: $color-5
 
 .btn-add
@@ -118,6 +122,15 @@
 //.btn-add:hover
 //  background: #ddddd9
 //  border-color: #ddddd9
+
+// A form's main action, styled exactly like the New Recipe button (colors above, size here)
+.btn-primary
+  font-weight: 400
+  white-space: nowrap
+  height: 2em
+  width: auto
+  min-width: 9em
+  padding: 0 1.2em
 .btn-collapsed.btn-add
   border-bottom-left-radius: 0
   border-bottom-right-radius: 0

@@ -3,28 +3,27 @@ import { Link, useNavigate } from "react-router"
 import SaveKey from "./SaveKey"
 import useSession from "../../hooks/useSession"
 import { signUp } from "../../data/session_api"
-import { describeWait, USERNAME_RULES, usernameProblem } from "../../helpers/identity"
+import { describeWait, usernameChecks, usernameIsValid } from "../../helpers/identity"
 
 
-// /signup: pick a username, then save the key (shown once)
-export default function FormSignup() {
+// /register: pick a username, then save the key (shown once)
+export default function FormRegister() {
     const { signedIn } = useSession()
     const navigate = useNavigate()
 
     const [ username, setUsername ] = useState("")
-    const [ touched, setTouched ] = useState(false)
     const [ submitting, setSubmitting ] = useState(false)
     const [ error, setError ] = useState(null)
 
     // Held only here, in memory, until the user continues
     const [ created, setCreated ] = useState(null)
 
-    const problem = usernameProblem(username)
+    const checks = usernameChecks(username)
+    const valid = usernameIsValid(username)
 
     async function handleSubmit(event) {
         event.preventDefault()
-        setTouched(true)
-        if (problem || submitting) return
+        if (!valid || submitting) return
 
         setSubmitting(true)
         setError(null)
@@ -54,14 +53,14 @@ export default function FormSignup() {
 
     return (
         <section className="identity-page">
-            <h2 className="identity-heading">Sign up</h2>
+            <h2 className="identity-heading">Register</h2>
             <p className="identity-hint">
                 No email or password: Breadsheet gives you a key instead. Whoever has the key is you.
             </p>
 
             <form className="identity-form" onSubmit={handleSubmit} noValidate>
-                <label className="identity-label" htmlFor="signup-username">Username</label>
-                <input id="signup-username"
+                <label className="identity-label" htmlFor="register-username">Username</label>
+                <input id="register-username"
                        type="text"
                        name="username"
                        value={username}
@@ -69,18 +68,23 @@ export default function FormSignup() {
                        autoCapitalize="none"
                        spellCheck={false}
                        maxLength={30}
-                       aria-invalid={touched && Boolean(problem)}
-                       aria-describedby="signup-username-hint"
-                       onChange={(event) => setUsername(event.target.value)}
-                       onBlur={() => setTouched(true)} />
-                <p id="signup-username-hint" className={touched && problem ? "identity-error" : "identity-hint"}>
-                    {touched && problem ? problem : `Usernames are ${USERNAME_RULES}`}
-                </p>
+                       aria-describedby="register-username-checks"
+                       onChange={(event) => setUsername(event.target.value)} />
+
+                {/* Each rule turns from red to green as it's met */}
+                <ul id="register-username-checks" className="username-checks">
+                    {checks.map((check) => (
+                        <li key={check.label} className={check.met ? "username-check met" : "username-check"}>
+                            <span className="sr-only">{check.met ? "Done: " : "Not yet: "}</span>
+                            {check.label}
+                        </li>
+                    ))}
+                </ul>
 
                 {error && <p className="identity-error" role="alert">{error}</p>}
 
-                <button type="submit" className="btn btn-submit" disabled={submitting}>
-                    {submitting ? "Creating…" : "Sign up"}
+                <button type="submit" className="btn btn-primary" disabled={!valid || submitting}>
+                    {submitting ? "Registering…" : "Register"}
                 </button>
             </form>
 
