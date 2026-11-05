@@ -39,7 +39,8 @@ npm run preview   # Serve the production build locally
 npm test          # Run test suite (Vitest, watch mode; `npx vitest run` for a single pass)
 ```
 
-- Dev mode reads `.env.development` (backend at `http://127.0.0.1:5000`); build, preview, and tests read `.env` (production backend)
+- Dev mode reads `.env.development` (backend at `http://localhost:5050`: run the backend with `BOUND_PORT=5050`, since macOS AirPlay holds 5000); build, preview, and tests read `.env` (production backend)
+- Use `localhost`, not `127.0.0.1`, for both the UI and the backend: browsers treat them as different sites, so the session cookie wouldn't be sent
 - npm 11 skips install scripts for `fsevents` and `@parcel/watcher` and warns about it; both are optional and the build doesn't need them
 
 ## Project Structure
@@ -144,6 +145,14 @@ Second Rise work ships to production hidden, then a milestone is released by cha
 - Gate every new milestone screen, route, and control: `<AtFeatureLevel min="m2">…</AtFeatureLevel>`, or `useFeatureLevel().atLeast("m2")` in logic. At `m1`, the app must behave exactly as before.
 - Key-link sign-in (`/k`) must work at any level: a link opened on a new device starts at the default.
 - Releasing a milestone: set `DEFAULT_LEVEL` to it and drop levels nobody should pick anymore (a saved level that no longer exists falls back to the default). Rolling back: set the default back.
+
+### Identity (M2)
+Key-based sign-in against `/api/v2/users` and `/api/v2/session` (backend: breadsheet#26).
+- Screens in `src/components/identity/`: `/signup` (then the one-time save-your-key screen), `/signin` (paste a key), `/k` (key link), `/devices`, and `NavAccount` in the header. All gated at M2 except `/k`.
+- `src/data/session_api.js` makes the calls and returns `{ ok, data }` or `{ ok: false, code, message, retryAfter }`; `useSession()` (`SessionProvider` in `src/index.jsx`) holds the signed-in user and only calls the API at M2.
+- Key links are `/k#<key>`: the key is in the fragment, which never reaches a server. `KeyLink` removes it from the address bar and history before signing in, then turns on M2 for that browser.
+- **The key is the user's only credential.** Keep it in component state only: never `localStorage`/`sessionStorage`, a URL path or query, the console, or analytics. GoatCounter skips `/k` (the `path` callback in `index.html` and the route counter in `App.jsx`).
+- The session cookie is `HttpOnly`, so the UI can't see it; ask `useSession()` instead.
 
 ## Notes for Claude
 

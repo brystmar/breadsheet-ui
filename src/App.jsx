@@ -9,6 +9,11 @@ import RecipeListContainer from "./components/RecipeListContainer";
 import RecipePageContainer from "./components/RecipePageContainer";
 import AddRecipe from "./components/AddRecipe";
 import ConvertTextPageContainer from "./components/ConvertTextPageContainer";
+import FormSignup from "./components/identity/FormSignup";
+import FormSignin from "./components/identity/FormSignin";
+import KeyLink from "./components/identity/KeyLink";
+import LinkDevice from "./components/identity/LinkDevice";
+import useFeatureLevel from "./hooks/useFeatureLevel";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles/styles.sass";
 import "./styles/recipe-and-step-lists.sass";
@@ -28,6 +33,9 @@ export default function App() {
     // Dependency variable for the useEffect --> getAllRecipes function
     const [ isDataStale, toggleIsDataStale ] = useState(false);
 
+    // Which milestone's screens to show (see helpers/feature_levels.js)
+    const { atLeast } = useFeatureLevel()
+
     // Count client-side route changes in GoatCounter
     // The script counts the initial page load itself, so only count when the path changes.
     // Tracking the last counted path (instead of a first-render flag) keeps StrictMode's
@@ -39,6 +47,9 @@ export default function App() {
     useEffect(() => {
         if (currentPath === lastCountedPath.current) return
         lastCountedPath.current = currentPath
+
+        // Key links are never counted (index.html skips them on page load, too)
+        if (location.pathname === "/k") return
 
         // Guard against the script being blocked or not loaded yet
         window.goatcounter?.count?.({ path: currentPath })
@@ -174,6 +185,14 @@ export default function App() {
 
             <main className="content-container">
                 <Routes>
+                    {/* Key links sign in at every feature level: a new device starts at the default */}
+                    <Route path="/k" element={<KeyLink />} />
+
+                    {/* Identity screens (M2). At M1 these paths fall through to the recipe route, as before. */}
+                    {atLeast("m2") && <Route path="/signup" element={<FormSignup />} />}
+                    {atLeast("m2") && <Route path="/signin" element={<FormSignin />} />}
+                    {atLeast("m2") && <Route path="/devices" element={<LinkDevice />} />}
+
                     <Route path="/convert" element={
                         <>
                             <PageTitle title="Convert Text" includeHr={true} />

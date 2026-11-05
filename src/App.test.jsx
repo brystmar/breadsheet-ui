@@ -3,12 +3,15 @@ import { render, act } from "@testing-library/react";
 import { MemoryRouter, useNavigate } from "react-router";
 import App from "./App";
 import { FeatureLevelProvider } from "./hooks/useFeatureLevel";
+import { SessionProvider } from "./hooks/useSession";
 
 test("renders without crashing", () => {
     render(
         <MemoryRouter>
             <FeatureLevelProvider>
-                <App />
+                <SessionProvider>
+                    <App />
+                </SessionProvider>
             </FeatureLevelProvider>
         </MemoryRouter>
     );
@@ -30,7 +33,9 @@ describe("GoatCounter route tracking", () => {
         render(
             <MemoryRouter initialEntries={[ "/" ]}>
                 <FeatureLevelProvider>
-                    <App />
+                    <SessionProvider>
+                        <App />
+                    </SessionProvider>
                 </FeatureLevelProvider>
                 <CaptureNavigate />
             </MemoryRouter>
