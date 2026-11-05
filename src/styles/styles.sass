@@ -110,10 +110,39 @@
     margin-left: 0.2em
     height: 1em
 
+.footer-feature-level
+  margin-left: auto
+  display: flex
+  align-items: center
+  gap: 0.2em
+  .footer-feature-level-label
+    margin-right: 0.15em
+  .footer-feature-level-option
+    font: inherit
+    padding: 0 0.35em
+    border: 1px solid $color-border-lighter
+    border-radius: 3px
+    background: transparent
+    color: inherit
+    cursor: pointer
+  .footer-feature-level-option.selected
+    border-color: $color-border-darker
+    background: $color-gray-light
+    font-weight: bold
+  .footer-feature-level-option:focus-visible
+    outline: 2px solid $color-link
+    outline-offset: 1px
+
 @media (max-width: 494px)
   .footer-container
     justify-content: center
+    flex-wrap: wrap
     transition: all 0.35s
+  .footer-feature-level
+    margin-left: 0
+    flex-basis: 100%
+    justify-content: center
+    margin-top: 0.5em
 
 @media (prefers-reduced-motion: no-preference)
   .icon-bread

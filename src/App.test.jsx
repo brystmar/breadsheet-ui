@@ -2,11 +2,14 @@ import React from "react";
 import { render, act } from "@testing-library/react";
 import { MemoryRouter, useNavigate } from "react-router";
 import App from "./App";
+import { FeatureLevelProvider } from "./hooks/useFeatureLevel";
 
 test("renders without crashing", () => {
     render(
         <MemoryRouter>
-            <App />
+            <FeatureLevelProvider>
+                <App />
+            </FeatureLevelProvider>
         </MemoryRouter>
     );
 });
@@ -26,7 +29,9 @@ describe("GoatCounter route tracking", () => {
     function renderApp() {
         render(
             <MemoryRouter initialEntries={[ "/" ]}>
-                <App />
+                <FeatureLevelProvider>
+                    <App />
+                </FeatureLevelProvider>
                 <CaptureNavigate />
             </MemoryRouter>
         )
