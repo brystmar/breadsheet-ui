@@ -1,14 +1,36 @@
-import { describeWait, keyFromHash, keyLinkUrl, usernameProblem } from "./identity"
+import { describeWait, keyFromHash, keyLinkUrl, usernameChecks, usernameIsValid } from "./identity"
 
 
-describe("usernameProblem", () => {
-    test.each([ "abc", "Thomas_B", "bread-head", "9lives", "a".repeat(30), "  padded  " ])("%s is fine", (name) => {
-        expect(usernameProblem(name)).toBeNull()
+describe("username rules", () => {
+    const met = (name) => usernameChecks(name).map((check) => check.met)
+
+    test("the three rules, in order", () => {
+        expect(usernameChecks("").map((check) => check.label)).toEqual([
+            "3 to 30 characters long",
+            "Only letters, numbers, underscores, and hyphens",
+            "Starts with a letter"
+        ])
     })
 
-    test.each([ "ab", "a".repeat(31), "_abc", "-abc", "has space", "émile", "dot.name", "" ])("%s is rejected", (name) => {
-        expect(usernameProblem(name)).toMatch(/letters, numbers/)
+    test("nothing is met for an empty name", () => {
+        expect(met("")).toEqual([ false, false, false ])
     })
+
+    test("each rule is checked on its own", () => {
+        expect(met("ab")).toEqual([ false, true, true ])
+        expect(met("9lives")).toEqual([ true, true, false ])
+        expect(met("has space")).toEqual([ true, false, true ])
+        expect(met("a".repeat(31))).toEqual([ false, true, true ])
+    })
+
+    test.each([ "abc", "Thomas_B", "bread-head", "baker9", "a".repeat(30), "  padded  " ])("%s is valid", (name) => {
+        expect(usernameIsValid(name)).toBe(true)
+    })
+
+    test.each([ "ab", "a".repeat(31), "_abc", "-abc", "9lives", "42", "has space", "émile", "dot.name", "" ])(
+        "%s is not", (name) => {
+            expect(usernameIsValid(name)).toBe(false)
+        })
 })
 
 

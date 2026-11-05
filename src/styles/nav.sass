@@ -37,6 +37,10 @@
     font-size: 0.9rem
     .nav-account-user
       font-weight: bold
+    // A thin pipe between links: "Register | Sign in"
+    > * + *
+      border-left: 1px solid rgba(255, 255, 255, 0.45)
+      padding-left: 0.8em
     .nav-account-link
       color: $color-text-light
       text-decoration: none

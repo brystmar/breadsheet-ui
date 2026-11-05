@@ -4,7 +4,7 @@ import useSession from "../../hooks/useSession"
 
 
 // /devices: how to sign in on another phone or computer. The key is never shown again after
-// signup, so this explains the options instead of displaying it.
+// registration, so this explains the options instead of displaying it.
 export default function LinkDevice() {
     const { user } = useSession()
 
@@ -13,7 +13,7 @@ export default function LinkDevice() {
             <h2 className="identity-heading">Use Breadsheet on another device</h2>
             {user && <p className="identity-hint">You're signed in here as <strong>{user.username}</strong>.</p>}
 
-            <p>To sign in on another phone or computer, use the key you saved when you signed up:</p>
+            <p>To sign in on another phone or computer, use the key you saved when you registered:</p>
             <ul className="identity-list">
                 <li>Open your saved <strong>sign-in link</strong> on that device, or</li>
                 <li>Scan your saved <strong>QR code</strong> with its camera, or</li>

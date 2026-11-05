@@ -63,27 +63,27 @@ describe("at M1 (today's app)", () => {
 
         await waitFor(() => expect(calls.some((c) => c.path === "/api/v1/recipes")).toBe(true))
         expect(calls.some((c) => c.path.startsWith("/api/v2/"))).toBe(false)
-        expect(screen.queryByRole("link", { name: "Sign up" })).not.toBeInTheDocument()
+        expect(screen.queryByRole("link", { name: "Register" })).not.toBeInTheDocument()
     })
 
-    test("/signup isn't an identity screen", () => {
+    test("/register isn't an identity screen", () => {
         fakeBackend({})
-        renderApp("/signup", null)
-        expect(screen.queryByRole("heading", { name: "Sign up" })).not.toBeInTheDocument()
+        renderApp("/register", null)
+        expect(screen.queryByRole("heading", { name: "Register" })).not.toBeInTheDocument()
     })
 })
 
 
-describe("signup", () => {
+describe("registration", () => {
     test("pick a username, then the key is shown once and must be saved before continuing", async () => {
         const calls = fakeBackend({
             "GET /api/v2/session": [ 401, { code: "not_signed_in", message: "Not signed in" } ],
             "POST /api/v2/users":  [ 201, { user: USER, key: KEY } ]
         })
-        renderApp("/signup")
+        renderApp("/register")
 
         await userEvent.type(await screen.findByLabelText("Username"), "Baker_1")
-        await userEvent.click(screen.getByRole("button", { name: "Sign up" }))
+        await userEvent.click(screen.getByRole("button", { name: "Register" }))
 
         // The save-your-key screen
         expect(await screen.findByRole("heading", { name: "Save your key, Baker_1" })).toBeInTheDocument()
@@ -111,10 +111,10 @@ describe("signup", () => {
         })
         const user = userEvent.setup()
         const writeText = vi.spyOn(navigator.clipboard, "writeText").mockResolvedValue()
-        renderApp("/signup")
+        renderApp("/register")
 
         await user.type(await screen.findByLabelText("Username"), "Baker_1")
-        await user.click(screen.getByRole("button", { name: "Sign up" }))
+        await user.click(screen.getByRole("button", { name: "Register" }))
         await user.click(await screen.findByRole("button", { name: "Copy" }))
 
         expect(writeText).toHaveBeenCalledWith(KEY)
@@ -122,14 +122,36 @@ describe("signup", () => {
         expect(screen.getByRole("button", { name: "Continue" })).toBeEnabled()
     })
 
-    test("an invalid username is explained and never sent", async () => {
+    test("the rules start red and turn green as they're met", async () => {
+        fakeBackend({ "GET /api/v2/session": [ 401, { code: "not_signed_in" } ] })
+        renderApp("/register")
+
+        const rule = (label) => screen.getByText(label).closest("li")
+        await screen.findByLabelText("Username")
+        for (const label of [ "3 to 30 characters long", "Only letters, numbers, underscores, and hyphens",
+                              "Starts with a letter" ]) {
+            expect(rule(label)).not.toHaveClass("met")
+        }
+        expect(screen.getByRole("button", { name: "Register" })).toBeDisabled()
+
+        await userEvent.type(screen.getByLabelText("Username"), "9a")
+        expect(rule("Only letters, numbers, underscores, and hyphens")).toHaveClass("met")
+        expect(rule("3 to 30 characters long")).not.toHaveClass("met")
+        expect(rule("Starts with a letter")).not.toHaveClass("met")
+
+        await userEvent.clear(screen.getByLabelText("Username"))
+        await userEvent.type(screen.getByLabelText("Username"), "Baker_1")
+        expect(screen.getAllByRole("listitem").filter((li) => li.classList.contains("met"))).toHaveLength(3)
+        expect(screen.getByRole("button", { name: "Register" })).toBeEnabled()
+    })
+
+    test("an invalid username is never sent", async () => {
         const calls = fakeBackend({ "GET /api/v2/session": [ 401, { code: "not_signed_in" } ] })
-        renderApp("/signup")
+        renderApp("/register")
 
-        await userEvent.type(await screen.findByLabelText("Username"), "no spaces")
-        await userEvent.click(screen.getByRole("button", { name: "Sign up" }))
+        await userEvent.type(await screen.findByLabelText("Username"), "9lives")
+        await userEvent.click(screen.getByRole("button", { name: "Register" }))
 
-        expect(screen.getByLabelText("Username")).toHaveAttribute("aria-invalid", "true")
         expect(calls.some((c) => c.path === "/api/v2/users")).toBe(false)
     })
 
@@ -138,10 +160,10 @@ describe("signup", () => {
             "GET /api/v2/session": [ 401, { code: "not_signed_in" } ],
             "POST /api/v2/users":  [ 409, { code: "username_taken", message: "That username is taken. Please pick another." } ]
         })
-        renderApp("/signup")
+        renderApp("/register")
 
         await userEvent.type(await screen.findByLabelText("Username"), "Baker_1")
-        await userEvent.click(screen.getByRole("button", { name: "Sign up" }))
+        await userEvent.click(screen.getByRole("button", { name: "Register" }))
 
         expect(await screen.findByRole("alert")).toHaveTextContent("That username is taken")
     })
@@ -234,10 +256,10 @@ test("the key never reaches the console or browser storage", async () => {
         "GET /api/v2/session":  [ 401, { code: "not_signed_in" } ],
         "POST /api/v2/users":   [ 201, { user: USER, key: KEY } ]
     })
-    renderApp("/signup")
+    renderApp("/register")
 
     await userEvent.type(await screen.findByLabelText("Username"), "Baker_1")
-    await userEvent.click(screen.getByRole("button", { name: "Sign up" }))
+    await userEvent.click(screen.getByRole("button", { name: "Register" }))
     await screen.findByLabelText("Your key")
 
     expect(logged.join("\n")).not.toContain(KEY)

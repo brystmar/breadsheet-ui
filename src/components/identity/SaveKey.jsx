@@ -3,7 +3,7 @@ import { QRCodeSVG } from "qrcode.react"
 import { downloadKeyFile, keyLinkUrl } from "../../helpers/identity"
 
 
-// Shown once, right after signup: the key as text, a QR code, and a link. Continue unlocks only
+// Shown once, right after registering: the key as text, a QR code, and a link. Continue unlocks only
 // after the key is copied, downloaded, or confirmed saved, since it can never be shown again.
 export default function SaveKey({ username, secretKey, onContinue }) {
     const [ copied, setCopied ] = useState(false)
@@ -69,7 +69,7 @@ export default function SaveKey({ username, secretKey, onContinue }) {
             </div>
 
             <button type="button"
-                    className="btn btn-submit"
+                    className="btn btn-primary"
                     disabled={!canContinue}
                     onClick={onContinue}>
                 Continue

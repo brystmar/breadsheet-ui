@@ -109,6 +109,8 @@ The full style guide lives at `coding-style-guide.md` in the repo root. Key rule
 
 ### SASS
 
+- A form's main action uses `btn btn-primary`, which shares the New Recipe button's (`btn-add`) colors and hover/active rules in `buttons.sass`. Don't use `btn-submit` for new screens: it's the older dark style.
+
 - **Indented syntax** — no braces, no semicolons
 - Components import the `.sass` files directly and Vite compiles them; don't create or commit compiled `.css` files in `src/styles/` (they're gitignored)
 - Variables at the top, in order: **Fonts → Color palette → Layout defaults**
@@ -142,13 +144,15 @@ The source of truth is `../breadsheet/docs/second-rise.md`, in the sibling check
 Second Rise work ships to production hidden, then a milestone is released by changing a default rather than by merging a branch (spec: Decisions, Release).
 - The footer's "Features: M1 · M2" control (`FooterFeatureLevel`) sets this browser's level, saved in `localStorage`. `m1` is today's app and the default.
 - Levels and the default live in `src/helpers/feature_levels.js`. `FeatureLevelProvider` (in `src/hooks/useFeatureLevel.jsx`) wraps the app in `src/index.jsx`; tests that render `App` must wrap it too.
+- Switching the toggle back to the default level returns to the homepage, since the current page may not exist there.
 - Gate every new milestone screen, route, and control: `<AtFeatureLevel min="m2">…</AtFeatureLevel>`, or `useFeatureLevel().atLeast("m2")` in logic. At `m1`, the app must behave exactly as before.
 - Key-link sign-in (`/k`) must work at any level: a link opened on a new device starts at the default.
 - Releasing a milestone: set `DEFAULT_LEVEL` to it and drop levels nobody should pick anymore (a saved level that no longer exists falls back to the default). Rolling back: set the default back.
 
 ### Identity (M2)
 Key-based sign-in against `/api/v2/users` and `/api/v2/session` (backend: breadsheet#26).
-- Screens in `src/components/identity/`: `/signup` (then the one-time save-your-key screen), `/signin` (paste a key), `/k` (key link), `/devices`, and `NavAccount` in the header. All gated at M2 except `/k`.
+- Screens in `src/components/identity/`: `/register` (a live username checklist, then the one-time save-your-key screen), `/signin` (paste a key), `/k` (key link), `/devices`, and `NavAccount` in the header ("Register | Sign in"). All gated at M2 except `/k`.
+- Usernames: 3 to 30 characters, only letters, numbers, `_` and `-`, starting with a letter (`usernameChecks()` in `src/helpers/identity.js` mirrors the server).
 - `src/data/session_api.js` makes the calls and returns `{ ok, data }` or `{ ok: false, code, message, retryAfter }`; `useSession()` (`SessionProvider` in `src/index.jsx`) holds the signed-in user and only calls the API at M2.
 - Key links are `/k#<key>`: the key is in the fragment, which never reaches a server. `KeyLink` removes it from the address bar and history before signing in, then turns on M2 for that browser.
 - **The key is the user's only credential.** Keep it in component state only: never `localStorage`/`sessionStorage`, a URL path or query, the console, or analytics. GoatCounter skips `/k` (the `path` callback in `index.html` and the route counter in `App.jsx`).

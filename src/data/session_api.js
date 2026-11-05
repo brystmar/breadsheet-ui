@@ -1,7 +1,7 @@
-// Signup and browser sessions (/api/v2/users and /api/v2/session).
+// Registration and browser sessions (/api/v2/users and /api/v2/session).
 // Every call resolves to { ok, status, data } on success or { ok: false, status, code, message } on
 // failure, using the API's error codes; network failures become code "network_error".
-// Never log what these return: signup responses contain the user's key.
+// Never log what these return: registration responses contain the user's key.
 import { apiFetch } from "./api_fetch"
 import { breadsheetApis } from "./endpoints"
 

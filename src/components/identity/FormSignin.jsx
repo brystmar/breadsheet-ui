@@ -61,12 +61,12 @@ export default function FormSignin() {
 
                 {error && <p className="identity-error" role="alert">{error}</p>}
 
-                <button type="submit" className="btn btn-submit" disabled={submitting || !key.trim()}>
+                <button type="submit" className="btn btn-primary" disabled={submitting || !key.trim()}>
                     {submitting ? "Signing in…" : "Sign in"}
                 </button>
             </form>
 
-            <p className="identity-hint">New here? <Link to="/signup">Sign up</Link></p>
+            <p className="identity-hint">New here? <Link to="/register">Register</Link></p>
         </section>
     )
 }

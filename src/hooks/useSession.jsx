@@ -32,7 +32,7 @@ export function SessionProvider({ children }) {
         return () => { cancelled = true }
     }, [ enabled ])
 
-    // Called after signup or sign-in succeeds
+    // Called after registering or signing in
     const signedIn = useCallback((newUser) => {
         setUser(newUser)
         setStatus("signedIn")
