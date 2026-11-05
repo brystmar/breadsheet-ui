@@ -6,5 +6,8 @@ export const breadsheetApis = {
     replacements: {
         all: `${import.meta.env.VITE_BACKEND_URL}/api/v1/replacements/all`,
         single: `${import.meta.env.VITE_BACKEND_URL}/api/v1/replacement`,
-    }
+    },
+    // v2 (Second Rise)
+    users: `${import.meta.env.VITE_BACKEND_URL}/api/v2/users`,
+    session: `${import.meta.env.VITE_BACKEND_URL}/api/v2/session`
 }

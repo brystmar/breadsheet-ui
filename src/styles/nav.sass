@@ -20,3 +20,41 @@
     .nav-link:hover,
     .nav-link:focus
       color: #ffffff
+
+
+/*** Account links (M2) ***/
+
+.header-container
+  position: relative
+  .nav-account
+    position: absolute
+    right: 1em
+    top: 50%
+    transform: translateY(-50%)
+    display: flex
+    align-items: center
+    gap: 0.8em
+    font-size: 0.9rem
+    .nav-account-user
+      font-weight: bold
+    .nav-account-link
+      color: $color-text-light
+      text-decoration: none
+    .nav-account-link:hover,
+    .nav-account-link:focus
+      text-decoration: underline
+    .nav-account-button
+      font: inherit
+      background: none
+      border: none
+      padding: 0
+      cursor: pointer
+
+@media (max-width: 494px)
+  .header-container
+    .nav-account
+      position: static
+      transform: none
+      justify-content: center
+      margin-top: 0.15em
+      font-size: 0.8rem

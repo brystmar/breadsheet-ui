@@ -1,0 +1,81 @@
+@use "variables" as *
+
+
+/*** Identity: signup, save your key, sign in, devices ***/
+
+.identity-page
+  max-width: 34em
+  margin: 1em auto
+  line-height: 1.45
+  text-align: left  // the site centers text on phones; forms and lists read better left-aligned
+  .identity-heading
+    margin: 0 0 0.5em
+  .identity-hint
+    font-size: 0.9rem
+    color: $color-brown5
+  .identity-error
+    font-size: 0.9rem
+    color: $color-danger
+  .identity-warning
+    padding: 0.6em 0.8em
+    border-left: 4px solid $color-danger
+    background: $color-gray-lighter
+  .identity-list
+    padding-left: 1.2em
+  .btn-submit
+    width: auto
+    padding: 0 1.2em
+
+.identity-form
+  display: flex
+  flex-direction: column
+  gap: 0.4em
+  margin: 1em 0
+  .identity-label
+    font-weight: bold
+  input
+    max-width: 22em
+  .btn-submit
+    align-self: flex-start
+    margin-top: 0.4em
+
+.save-key-value
+  display: flex
+  align-items: center
+  gap: 0.6em
+  margin: 1em 0
+  .key-text
+    font-size: 1.15rem
+    padding: 0.35em 0.6em
+    border: 1px solid $color-border
+    border-radius: 0.2em
+    background: $color-lightest
+    word-break: break-all
+
+.save-key-qr
+  display: flex
+  align-items: center
+  gap: 1em
+  svg
+    flex-shrink: 0
+
+.key-link
+  word-break: break-all
+
+.save-key-actions
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 1em
+  margin: 1em 0
+
+.identity-checkbox
+  display: flex
+  align-items: center
+  gap: 0.4em
+  cursor: pointer
+
+@media (max-width: 494px)
+  .save-key-qr
+    flex-direction: column
+    align-items: flex-start
