@@ -1,5 +1,6 @@
 import React from "react";
 import BreadsheetLogo from "./BreadsheetLogo";
+import FooterFeatureLevel from "./FooterFeatureLevel";
 
 export default function Footer() {
     return (
@@ -21,6 +22,8 @@ export default function Footer() {
             >
                 <BreadsheetLogo />
             </a>
+
+            <FooterFeatureLevel />
         </footer>
     )
 }
