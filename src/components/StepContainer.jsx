@@ -3,16 +3,14 @@ import StepListItem from './StepListItem';
 import ListHeaderRow from './ListHeaderRow';
 
 
-export default function StepContainer({ hidden = true, hasData = false, steps = [], toggleEditMode, onClickParam, start_time, solve_for_start, length, deleteStep, handleStepLengthChange }) {
+export default function StepContainer({ hasData = false, steps = [], start_time, solve_for_start, length, handleStepLengthChange }) {
     return (
         <div className="step-list-container">
             <ListHeaderRow
                 for="step"
                 colTitles={[ "Step", "When", "Action", "Then Wait", "Note" ]}
-                onClickFn={toggleEditMode}
-                onClickParam={hidden}
             />
-            {BuildStepComponentList({ hidden, hasData, steps, toggleEditMode, start_time, solve_for_start, length, deleteStep, handleStepLengthChange })}
+            {BuildStepComponentList({ hasData, steps, start_time, solve_for_start, length, handleStepLengthChange })}
         </div>
     )
 }
@@ -42,9 +40,7 @@ function BuildStepComponentList(props) {
                     text={stepList[i].text}
                     then_wait={stepList[i].then_wait}
                     note={stepList[i].note}
-                    hidden={props.hidden}
                     highlight={i % 2 === 0}
-                    deleteStep={props.deleteStep}
                     handleStepLengthChange={props.handleStepLengthChange}
                 />);
 
@@ -72,9 +68,7 @@ function BuildStepComponentList(props) {
                     text={stepList[i].text}
                     then_wait={stepList[i].then_wait}
                     note={stepList[i].note}
-                    hidden={props.hidden}
                     highlight={i % 2 === 0}
-                    deleteStep={props.deleteStep}
                     handleStepLengthChange={props.handleStepLengthChange}
                 />);
         }

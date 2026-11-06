@@ -3,7 +3,7 @@ import moment from "moment";
 import { seconds_to_hhmm, pad } from "../helpers/time_display_functions";
 
 
-export default function StepListItem({ step_id = 0, stepNumber = 0, text = "", then_wait = 0, note = "", hidden = true, when, highlight, deleteStep, handleStepLengthChange }) {
+export default function StepListItem({ step_id = 0, stepNumber = 0, text = "", then_wait = 0, note = "", when, highlight, handleStepLengthChange }) {
     const [ state, updateState ] = useState({
         thenWaitHH: "00",
         thenWaitMM: "00"

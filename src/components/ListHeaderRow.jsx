@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ListHeaderRow({ for: forProp = "recipe", colTitles = [""], onClickParam = true, onClickFn }) {
+export default function ListHeaderRow({ for: forProp = "recipe", colTitles = [""] }) {
     const columns = colTitles.map((title, index) => {
         // For each column, apply a unique class name based on the column's title
         // Truncate any spaces or punctuation in the title to simplify the classes

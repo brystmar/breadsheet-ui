@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import DatePicker from "react-datepicker";
 import "../styles/start-finish.sass";
 
 
-export default function RecipeStartFinish({ solve_for_start = true, start_time = new Date(0).getTime(), length = 0, handleUpdateStartTime, handleStartFinishToggle, saveRecipe }) {
+export default function RecipeStartFinish({ solve_for_start = true, start_time = new Date(0).getTime(), length = 0, handleUpdateStartTime, handleStartFinishToggle }) {
     // const propsData = `/PROPS/ s4s: ${solve_for_start}, len: ${length}, s_time: ${start_time}`;
     // console.log(propsData);
 
@@ -23,8 +23,6 @@ export default function RecipeStartFinish({ solve_for_start = true, start_time =
         startTime:  moment(start_time).valueOf(),
         finishTime: convertToFinish(start_time)
     });
-
-    const refSaveText = useRef(null);
 
     useEffect(() => {
         updateState({
@@ -86,19 +84,7 @@ export default function RecipeStartFinish({ solve_for_start = true, start_time =
                         dateFormat="MMM dd, yyyy HH:mm"
                     />
                 </span>
-
-                <button
-                    type="button"
-                    name="updateRecipe"
-                    className="btn btn-save"
-                    onClick={() => saveRecipe()}
-                > Save
-                </button>
             </div>
-
-            <span ref={refSaveText} className="start-finish-save-confirmation animation">
-                ✔
-            </span>
         </div>
     )
 }

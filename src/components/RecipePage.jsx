@@ -6,7 +6,6 @@ import PageTitle from "./PageTitle";
 import RecipePageAttributes from "./RecipePageAttributes";
 import RecipeStartFinish from "./RecipeStartFinish";
 import StepContainer from "./StepContainer";
-import AddStep from "./AddStep";
 
 const defaultRecipeData = {
     id:         0,
@@ -14,7 +13,7 @@ const defaultRecipeData = {
     steps:      [{ step_id: 0, number: 0, text: "", then_wait: 0 }],
 }
 
-export default function RecipePage({ hasData = false, recipeId = 0, recipeData = defaultRecipeData, updateOneRecipe, updateRecipeLength, updateMasterRecipeList }) {
+export default function RecipePage({ hasData = false, recipeId = 0, recipeData = defaultRecipeData, updateRecipeLength, updateMasterRecipeList }) {
     // Including the full recipe object in local state here because:
     //  - upstream, it's one item in a list of recipes
     //  - downstream, it's broken into smaller parts
@@ -24,9 +23,6 @@ export default function RecipePage({ hasData = false, recipeId = 0, recipeData =
         hasSteps: recipeData.steps ? recipeData.steps.length > 0 : false,
         nextStep: recipeData.steps ? findHighestStep(recipeData.steps) + 1 : 1
     })
-
-    // Tracks whether the app is currently in edit mode
-    const [ editMode, toggleEditMode ] = useState(false);
 
     // TODO: Only retrieve recipe data from the backend when necessary
     useEffect(() => {
@@ -120,56 +116,6 @@ export default function RecipePage({ hasData = false, recipeId = 0, recipeData =
         })
     }
 
-    function handleSaveRecipe() {
-        console.log(`Called handleSaveRecipe w/data: ${recipe.data}`);
-        updateOneRecipe(recipe.data.id, recipe.data);
-    }
-
-    function addStepToRecipe(newStep) {
-        let newRecipe = recipe.data;
-
-        // Enforce unique step numbers
-        if (newRecipe.steps.map((step) => step.number).includes(newStep.number)) {
-            console.log(`Step #${newStep.number} already exists`);
-            return
-        }
-
-        // Add this new step to the list
-        newRecipe.steps.push(newStep);
-
-        // Sort by step.number
-        newRecipe.steps.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
-
-        // Update the recipe length by adding then_wait from the new step
-        newRecipe.length += newStep.then_wait;
-
-        // Update this recipe in the database
-        updateOneRecipe(newRecipe.id, newRecipe);
-    }
-
-    function deleteStep(stepId, stepLength) {
-        // Create a new representation of recipeData
-        let newRecipe = recipe.data;
-        newRecipe.steps = newRecipe.steps.filter((step) => step.step_id !== stepId);
-
-        // Subtract the step's length from the updated recipe
-        newRecipe.length -= stepLength;
-
-        // Update local state
-        updateRecipe({
-            data:     newRecipe,
-            hasData:  true,
-            hasSteps: true,
-            nextStep: findHighestStep(newRecipe.steps) + 1
-        })
-
-        // Update the length on the main recipe table
-        updateRecipeLength(newRecipe.id, newRecipe.length);
-
-        // Update this recipe in the database
-        updateOneRecipe(newRecipe.id, newRecipe);
-    }
-
     return (
         <div className="recipe-detail-summary">
             <PageTitle
@@ -183,7 +129,6 @@ export default function RecipePage({ hasData = false, recipeId = 0, recipeData =
                 author={recipe.data.author}
                 url={recipe.data.url ? recipe.data.url : ""}
                 length={recipe.data.length}
-                toggleEditMode={toggleEditMode}
             />
 
             <RecipeStartFinish
@@ -192,7 +137,6 @@ export default function RecipePage({ hasData = false, recipeId = 0, recipeData =
                 length={recipe.data.length}
                 handleUpdateStartTime={handleUpdateStartTime}
                 handleStartFinishToggle={handleStartFinishToggle}
-                saveRecipe={handleSaveRecipe}
             />
 
             <StepContainer
@@ -200,18 +144,8 @@ export default function RecipePage({ hasData = false, recipeId = 0, recipeData =
                 start_time={recipe.data.start_time}
                 solve_for_start={recipe.data.solve_for_start}
                 length={recipe.data.length}
-                hidden={!editMode}
-                toggleEditMode={toggleEditMode}
                 hasData={recipe.hasData}
                 handleStepLengthChange={handleStepLengthChange}
-                deleteStep={deleteStep}
-            />
-
-            <AddStep
-                nextStep={recipe.nextStep}
-                addStepToRecipe={addStepToRecipe}
-                hidden={!editMode}
-                toggleEditMode={toggleEditMode}
             />
         </div>
     )

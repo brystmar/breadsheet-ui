@@ -68,3 +68,56 @@ describe("GoatCounter route tracking", () => {
         expect(() => act(() => navigate("/convert"))).not.toThrow()
     })
 })
+
+
+// breadsheet-ui#45: v1 recipe writes are off, so nothing offers to change a recipe
+describe("no recipe edit controls", () => {
+    const RECIPE = {
+        id: "r1", name: "Country Sourdough", difficulty: "Intermediate", solve_for_start: true,
+        length: 1800, start_time: 0, date_added: 0,
+        steps: [ { step_id: "s1", number: 1, text: "Mix", then_wait: 1800, note: null } ]
+    }
+
+    function renderAt(path) {
+        return render(
+            <MemoryRouter initialEntries={[ path ]}>
+                <FeatureLevelProvider>
+                    <SessionProvider>
+                        <App />
+                    </SessionProvider>
+                </FeatureLevelProvider>
+            </MemoryRouter>
+        )
+    }
+
+    let fetchMock
+
+    beforeEach(() => {
+        fetchMock = vi.fn(async (url) => ({
+            ok: true,
+            json: async () => ({ data: url.endsWith("/recipes") ? [ RECIPE ] : RECIPE })
+        }))
+        vi.stubGlobal("fetch", fetchMock)
+    })
+
+    afterEach(() => {
+        vi.unstubAllGlobals()
+    })
+
+    test("the recipe list has no add or delete buttons", async () => {
+        const { findByText, queryByRole } = renderAt("/")
+        await findByText("Country Sourdough")
+
+        expect(queryByRole("button", { name: /add/i })).toBeNull()
+        expect(queryByRole("button", { name: /delete/i })).toBeNull()
+    })
+
+    test("the recipe page has no Save button and never writes", async () => {
+        const { findAllByText, queryByRole } = renderAt("/r1")
+        await findAllByText("Mix")
+
+        expect(queryByRole("button", { name: /save/i })).toBeNull()
+        const methods = fetchMock.mock.calls.map(([ , options ]) => options?.method ?? "GET")
+        expect(methods.every((method) => method === "GET")).toBe(true)
+    })
+})

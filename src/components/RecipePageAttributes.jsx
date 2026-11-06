@@ -4,7 +4,7 @@ import map_difficulty_to_icon from "../helpers/map_difficulty_to_icon";
 import AttrSource from "./attributes/AttrSource";
 
 
-export default function RecipePageAttributes({ difficulty = "Intermediate", author = "", source = "", url = "", length = 0, toggleEditMode }) {
+export default function RecipePageAttributes({ difficulty = "Intermediate", author = "", source = "", url = "", length = 0 }) {
     return (
         <div className="recipe-attributes-and-button-container">
             <div className="recipe-attributes-container">
@@ -38,10 +38,6 @@ export default function RecipePageAttributes({ difficulty = "Intermediate", auth
                     />
                 </div>
             </div>
-            {/*<div className="edit-button-container">*/}
-            {/*    <BtnEdit onClickFn={props.toggleEditMode}/>*/}
-            {/*    /!*TODO: Button doesn't toggle off *!/*/}
-            {/*</div>*/}
         </div>
     )
 }
