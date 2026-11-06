@@ -19,7 +19,7 @@ Versions as of the Nov 2026 dependency upgrade ([Second Rise](https://github.com
 | Routing | react-router (v8 dropped the separate `react-router-dom` package) | 8.5 |
 | Date/time | moment | 2.31 |
 | Date picker | react-datepicker | 9.1 |
-| Misc | uuid, react-copy-to-clipboard | 14.0, 5.1 |
+| Misc | react-copy-to-clipboard | 5.1 |
 | Build | vite, @vitejs/plugin-react | 8.3 (Rolldown + Oxc), 6.2 |
 | Styling | sass (indented syntax, `@use` modules) | 1.107 |
 | Testing | vitest, jsdom, @testing-library/react, /dom, /jest-dom, /user-event | 5.1, 30.1, 16.3, 10.4, 7.0, 14.6 |
@@ -109,7 +109,7 @@ The full style guide lives at `coding-style-guide.md` in the repo root. Key rule
 
 ### SASS
 
-- A form's main action uses `btn btn-primary`, which shares the New Recipe button's (`btn-add`) colors and hover/active rules in `buttons.sass`. Don't use `btn-submit` for new screens: it's the older dark style.
+- A form's main action uses `btn btn-primary`, which shares the old New Recipe button's (`btn-add`) colors and hover/active rules in `buttons.sass`. Don't use `btn-submit` for new screens: it's the older dark style.
 
 - **Indented syntax** — no braces, no semicolons
 - Components import the `.sass` files directly and Vite compiles them; don't create or commit compiled `.css` files in `src/styles/` (they're gitignored)
@@ -152,6 +152,11 @@ Second Rise work ships to production hidden, then a milestone is released by cha
 ### Identity (M2)
 Key-based sign-in against `/api/v2/users` and `/api/v2/session` (backend: breadsheet#26).
 - Screens in `src/components/identity/`: `/register` (a live username checklist, then the one-time save-your-key screen), `/signin` (paste a key), `/k` (key link), `/devices`, and `NavAccount` in the header ("Register | Sign in"). All gated at M2 except `/k`.
+
+**Recipes are read-only** (breadsheet-ui#45): the backend's v1 recipe writes are off, so the UI has
+no add, edit, delete or Save controls. Start/finish times and step waits still change on the page,
+for planning, but aren't saved. Defaults are managed with the backend's admin key; personal
+recipe editing arrives with the M2 recipe screens (breadsheet-ui#31).
 - Usernames: 3 to 30 characters, only letters, numbers, `_` and `-`, starting with a letter (`usernameChecks()` in `src/helpers/identity.js` mirrors the server).
 - `src/data/session_api.js` makes the calls and returns `{ ok, data }` or `{ ok: false, code, message, retryAfter }`; `useSession()` (`SessionProvider` in `src/index.jsx`) holds the signed-in user and only calls the API at M2.
 - Key links are `/k#<key>`: the key is in the fragment, which never reaches a server. `KeyLink` removes it from the address bar and history before signing in, then turns on M2 for that browser.
