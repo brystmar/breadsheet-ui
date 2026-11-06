@@ -8,5 +8,7 @@ export default defineConfig({
         environment: "jsdom",
         setupFiles: ["./src/setupTests.js"],
         globals: true,
+        // Tests mock fetch, so any backend works; this keeps them independent of the git-ignored .env files
+        env: { VITE_BACKEND_URL: "http://backend.test" },
     },
 })

@@ -39,8 +39,9 @@ npm run preview   # Serve the production build locally
 npm test          # Run test suite (Vitest, watch mode; `npx vitest run` for a single pass)
 ```
 
-- Dev mode reads `.env.development` (backend at `http://localhost:5050`: run the backend with `BOUND_PORT=5050`, since macOS AirPlay holds 5000); build, preview, and tests read `.env` (production backend)
+- Dev mode reads `.env.development` (backend at `http://localhost:5050`: run the backend with `BOUND_PORT=5050`, since macOS AirPlay holds 5000); build and preview read `.env` (production backend). Tests use a placeholder backend set in `vite.config.js`, since they mock `fetch`
 - Use `localhost`, not `127.0.0.1`, for both the UI and the backend: browsers treat them as different sites, so the session cookie wouldn't be sent
+- CI (`.github/workflows/tests.yml`) runs `npm ci`, `npx vitest run` and `npm run build` on Node from `.nvmrc` for every PR and push to `main`. Dependabot (`.github/dependabot.yml`) opens monthly grouped npm and GitHub Actions updates, waiting 7 days after a release; when merging one, update the version table above
 - npm 11 skips install scripts for `fsevents` and `@parcel/watcher` and warns about it; both are optional and the build doesn't need them
 
 ## Project Structure
