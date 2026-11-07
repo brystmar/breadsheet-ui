@@ -152,7 +152,7 @@ Second Rise work ships to production hidden, then a milestone is released by cha
 
 ### Identity (M2)
 Key-based sign-in against `/api/v2/users` and `/api/v2/session` (backend: breadsheet#26).
-- Screens in `src/components/identity/`: `/register` (a live username checklist, then the one-time save-your-key screen), `/signin` (paste a key), `/k` (key link), `/devices`, and `NavAccount` in the header ("Register | Sign in"). All gated at M2 except `/k`.
+- Screens in `src/components/identity/`: `/register` (a live username checklist, then the one-time save-your-key screen), `/signin` (paste a key), `/k` (key link), `/profile` (who's signed in, plus a Devices section on signing in elsewhere; signed out → `/signin`), and `NavAccount` in the header ("Register | Sign in", or "username | Sign out" with the username linking to `/profile`). `/devices` redirects to `/profile`. All gated at M2 except `/k`.
 
 **Recipes are read-only** (breadsheet-ui#45): the backend's v1 recipe writes are off, so the UI has
 no add, edit, delete or Save controls. Start/finish times and step waits still change on the page,
