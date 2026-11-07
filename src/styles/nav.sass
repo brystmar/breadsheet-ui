@@ -37,10 +37,6 @@
     font-size: 0.9rem
     .nav-account-user
       font-weight: bold
-    // A thin pipe between links: "Register | Sign in"
-    > * + *
-      border-left: 1px solid rgba(255, 255, 255, 0.45)
-      padding-left: 0.8em
     .nav-account-link
       color: $color-text-light
       text-decoration: none
@@ -53,6 +49,11 @@
       border: none
       padding: 0
       cursor: pointer
+    // A thin pipe between links, buttons included: "Register | Sign in", "username | Sign out".
+    //   After the button reset above, and as specific, so the reset can't remove it.
+    > .nav-account-link + .nav-account-link
+      border-left: 1px solid rgba(255, 255, 255, 0.45)
+      padding-left: 0.8em
 
 @media (max-width: 494px)
   .header-container
