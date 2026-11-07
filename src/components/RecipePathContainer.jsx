@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { Link, Navigate, useParams } from "react-router"
 import { resolveRecipePath } from "../data/recipes_api"
-import { v2RecipeToPlan } from "../helpers/recipe_paths"
 import PageTitle from "./PageTitle"
-import RecipePage from "./RecipePage"
+import PlanPage from "./plan/PlanPage"
 import "../styles/recipe-attributes.sass"
 
 
@@ -50,9 +49,5 @@ export default function RecipePathContainer() {
         return <Navigate to={recipe.path} replace />
     }
 
-    // `recipeId` stays 0 so RecipePage doesn't fetch from v1
-    return <RecipePage key={recipe.id}
-                       recipeId={0}
-                       recipeData={v2RecipeToPlan(recipe)}
-                       hasData={true} />
+    return <PlanPage key={recipe.id} recipe={recipe} />
 }

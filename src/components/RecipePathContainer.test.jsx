@@ -4,7 +4,7 @@ import { MemoryRouter, useLocation } from "react-router"
 import App from "../App"
 import { FeatureLevelProvider } from "../hooks/useFeatureLevel"
 import { SessionProvider } from "../hooks/useSession"
-import { suffixFromRecipePath, v2RecipeToPlan } from "../helpers/recipe_paths"
+import { suffixFromRecipePath } from "../helpers/recipe_paths"
 
 const LEVEL_KEY = "breadsheet.featureLevel"
 
@@ -88,22 +88,6 @@ describe("suffixFromRecipePath", () => {
         expect(suffixFromRecipePath("shokupan")).toBeNull()
         expect(suffixFromRecipePath("bread-k7qx2")).toBeNull()
         expect(suffixFromRecipePath("bread-K7QX2M")).toBeNull()
-    })
-})
-
-
-describe("v2RecipeToPlan", () => {
-    test("maps v2 fields onto the plan view's shape", () => {
-        const plan = v2RecipeToPlan(DEFAULT_RECIPE, 1000)
-
-        expect(plan).toMatchObject({
-            id: "r-default", name: "Country Sourdough", author: "Ken Forkish", source: "", url: "",
-            length: 2400, solve_for_start: true, start_time: 1000
-        })
-        expect(plan.steps).toEqual([
-            { step_id: "s1", number: 1, text: "Mix the dough", then_wait: 1800, note: "Use warm water" },
-            { step_id: "s2", number: 2, text: "Shape", then_wait: 600, note: "" }
-        ])
     })
 })
 
