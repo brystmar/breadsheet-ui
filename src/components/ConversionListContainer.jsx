@@ -37,7 +37,7 @@ export default function ConversionListContainer({ ingredientsList = [], directio
                     >
                         {state.scope === "ingredients" ? "Ingredients" : "Directions"}
                         <img
-                            src="./icons/reverse-solid.svg"
+                            src="/icons/reverse-solid.svg"
                             alt="Toggle the replacements list displayed"
                             className="icon-on-btn"
                         />
