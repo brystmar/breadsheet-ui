@@ -9,6 +9,7 @@ export default function RecipeListContainer({ recipeList = [{ recipe_id: 0, date
         <RecipeListItem
             key={index}
             recipe_id={recipe.id}
+            path={recipe.path}
             name={recipe.name}
             author={recipe.author}
             source={recipe.source}

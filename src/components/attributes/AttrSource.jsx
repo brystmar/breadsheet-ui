@@ -14,7 +14,7 @@ export default function AttrSource({ name = "Abraham Lincoln", url = "https://en
             >
                 {name}
                 <img
-                    src="./icons/external-link-alt-solid.svg"
+                    src="/icons/external-link-alt-solid.svg"
                     alt="Link opens in a separate tab"
                     className="icon icon-ext-link"
                 />

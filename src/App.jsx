@@ -2,17 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router";
 import { breadsheetApis } from "./data/endpoints";
 import { apiFetch } from "./data/api_fetch";
+import { listRecipes } from "./data/recipes_api";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PageTitle from "./components/PageTitle";
 import RecipeListContainer from "./components/RecipeListContainer";
 import RecipePageContainer from "./components/RecipePageContainer";
+import RecipePathContainer from "./components/RecipePathContainer";
 import ConvertTextPageContainer from "./components/ConvertTextPageContainer";
 import FormRegister from "./components/identity/FormRegister";
 import FormSignin from "./components/identity/FormSignin";
 import KeyLink from "./components/identity/KeyLink";
 import Profile from "./components/identity/Profile";
 import useFeatureLevel from "./hooks/useFeatureLevel";
+import useSession from "./hooks/useSession";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles/styles.sass";
 import "./styles/recipe-and-step-lists.sass";
@@ -34,6 +37,11 @@ export default function App() {
 
     // Which milestone's screens to show (see helpers/feature_levels.js)
     const { atLeast } = useFeatureLevel()
+    const atM2 = atLeast("m2")
+
+    // From M2 the list includes the signed-in user's own recipes, so it reloads when that user changes
+    const { user } = useSession()
+    const listUserId = atM2 ? user?.id ?? null : null
 
     // Count client-side route changes in GoatCounter
     // The script counts the initial page load itself, so only count when the path changes.
@@ -54,8 +62,22 @@ export default function App() {
         window.goatcounter?.count?.({ path: currentPath })
     }, [ currentPath ])
 
-    // Retrieve the data for all recipes from the backend
+    // Retrieve the data for all recipes from the backend: v2 from M2 on (each recipe links to its
+    // public path), v1 before that
     useEffect(() => {
+            // M2: defaults plus the signed-in user's own recipes
+            async function getV2Recipes() {
+                const result = await listRecipes()
+                if (!result.ok) {
+                    console.error(`Error retrieving the recipe list: ${result.code}`)
+                    return
+                }
+
+                // The list shows `length`; v2 calls it `length_seconds`
+                updateRecipeList((result.data?.recipes ?? []).map((recipe) => ({ ...recipe, length: recipe.length_seconds })))
+                toggleHasData(true)
+            }
+
             // Declare an async function for retrieving recipes
             async function getAllRecipes() {
                 try {
@@ -77,11 +99,15 @@ export default function App() {
             }
 
             console.debug("Retrieving list of recipes via App.useEffect")
-            getAllRecipes();
+            if (atM2) {
+                getV2Recipes()
+            } else {
+                getAllRecipes();
+            }
         },
         // The function for updating `isDataStale` gets passed down to children,
         // allowing them to trigger a data refresh of all recipes when needed.
-        [ isDataStale ])
+        [ isDataStale, atM2, listUserId ])
 
     function updateRecipeLength(recipeId, newLength) {
         // Updates the length of a specified recipe in local state
@@ -124,7 +150,11 @@ export default function App() {
                         </>
                     } />
 
-                    <Route path="/:recipeId" element={
+                    {/* Public recipe URLs (M2): /recipes/<slug>, or /recipes/<slug>-<suffix> for personal recipes */}
+                    {atM2 && <Route path="/recipes/:recipePath" element={<RecipePathContainer />} />}
+
+                    {/* M1 opens recipes by internal id. From M2 those old URLs go to the homepage. */}
+                    <Route path="/:recipeId" element={atM2 ? <Navigate to="/" replace /> :
                         <RecipePageContainer
                             recipeList={recipeList}
                             hasData={hasData}

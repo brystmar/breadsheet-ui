@@ -8,6 +8,11 @@ export const breadsheetApis = {
         single: `${import.meta.env.VITE_BACKEND_URL}/api/v1/replacement`,
     },
     // v2 (Second Rise)
+    recipesV2: {
+        all:      `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes`,
+        bySlug:   `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes/by-slug`,
+        bySuffix: `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes/by-suffix`
+    },
     users: `${import.meta.env.VITE_BACKEND_URL}/api/v2/users`,
     session: `${import.meta.env.VITE_BACKEND_URL}/api/v2/session`
 }

@@ -4,11 +4,12 @@ import map_difficulty_to_icon from "../helpers/map_difficulty_to_icon";
 import AttrSource from "./attributes/AttrSource";
 
 
-export default function RecipeListItem({ recipe_id = 0, name = "", author = "", source = "", url = "", difficulty = "Beginner", solve_for_start = true, length = 0, highlight = true }) {
+// `path` is the recipe's public URL (v2, M2); v1 recipes have none and open by id
+export default function RecipeListItem({ recipe_id = 0, path = null, name = "", author = "", source = "", url = "", difficulty = "Beginner", solve_for_start = true, length = 0, highlight = true }) {
     return (
         <div className={"recipe-list-row".concat(highlight ? " list-row-highlighted" : "")}>
             <span className="recipe-list-cell col-name">
-                <Link to={`/${recipe_id}`}>{name}</Link>
+                <Link to={path || `/${recipe_id}`}>{name}</Link>
             </span>
 
             <span className="recipe-list-cell col-difficulty">
