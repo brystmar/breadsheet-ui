@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Routes, Route, useLocation } from "react-router";
+import { Routes, Route, Navigate, useLocation } from "react-router";
 import { breadsheetApis } from "./data/endpoints";
 import { apiFetch } from "./data/api_fetch";
 import Header from "./components/Header";
@@ -11,7 +11,7 @@ import ConvertTextPageContainer from "./components/ConvertTextPageContainer";
 import FormRegister from "./components/identity/FormRegister";
 import FormSignin from "./components/identity/FormSignin";
 import KeyLink from "./components/identity/KeyLink";
-import LinkDevice from "./components/identity/LinkDevice";
+import Profile from "./components/identity/Profile";
 import useFeatureLevel from "./hooks/useFeatureLevel";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles/styles.sass";
@@ -113,7 +113,9 @@ export default function App() {
                     {/* Identity screens (M2). At M1 these paths fall through to the recipe route, as before. */}
                     {atLeast("m2") && <Route path="/register" element={<FormRegister />} />}
                     {atLeast("m2") && <Route path="/signin" element={<FormSignin />} />}
-                    {atLeast("m2") && <Route path="/devices" element={<LinkDevice />} />}
+                    {atLeast("m2") && <Route path="/profile" element={<Profile />} />}
+                    {/* The old Devices page became the profile page; keep its links working */}
+                    {atLeast("m2") && <Route path="/devices" element={<Navigate to="/profile" replace />} />}
 
                     <Route path="/convert" element={
                         <>

@@ -247,6 +247,36 @@ describe("sign in and out", () => {
 })
 
 
+describe("profile (/profile)", () => {
+    test("the username in the header opens the profile, with no separate Devices link", async () => {
+        fakeBackend({ "GET /api/v2/session": [ 200, { user: USER } ] })
+        renderApp("/")
+
+        const profileLink = await screen.findByRole("link", { name: "Baker_1" })
+        expect(screen.queryByRole("link", { name: "Devices" })).not.toBeInTheDocument()
+        await userEvent.click(profileLink)
+
+        expect(await screen.findByRole("heading", { name: "Profile" })).toBeInTheDocument()
+        expect(screen.getByText(/You're signed in here as/)).toHaveTextContent("You're signed in here as Baker_1.")
+        expect(screen.getByRole("heading", { name: "Devices" })).toBeInTheDocument()
+        expect(screen.getByText(/You can use Breadsheet on a different device/)).toBeInTheDocument()
+    })
+
+    test("the old /devices link lands on the profile", async () => {
+        fakeBackend({ "GET /api/v2/session": [ 200, { user: USER } ] })
+        renderApp("/devices")
+        expect(await screen.findByRole("heading", { name: "Profile" })).toBeInTheDocument()
+    })
+
+    test("signed out, it goes to Sign in", async () => {
+        fakeBackend({ "GET /api/v2/session": [ 401, { code: "not_signed_in" } ] })
+        renderApp("/profile")
+        expect(await screen.findByLabelText("Your key")).toBeInTheDocument()
+        expect(screen.queryByRole("heading", { name: "Profile" })).not.toBeInTheDocument()
+    })
+})
+
+
 test("the key never reaches the console or browser storage", async () => {
     const logged = []
     for (const method of [ "log", "debug", "info", "warn", "error" ]) {

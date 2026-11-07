@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router"
 import useSession from "../../hooks/useSession"
 
 
-// Header links at M2: "Register | Sign in", or "username | Devices | Sign out" (separators are CSS)
+// Header links at M2: "Register | Sign in", or "username | Sign out", where the username opens /profile
+// (separators are CSS)
 export default function NavAccount() {
     const { user, status, signOut } = useSession()
     const navigate = useNavigate()
@@ -19,8 +20,9 @@ export default function NavAccount() {
         <div className="nav-account">
             {status === "signedIn" ? (
                 <>
-                    <span className="nav-account-user">{user.username}</span>
-                    <Link to="/devices" className="nav-account-link">Devices</Link>
+                    <Link to="/profile" className="nav-account-link nav-account-user" title="Your profile">
+                        {user.username}
+                    </Link>
                     <button type="button" className="nav-account-link nav-account-button" onClick={handleSignOut}>
                         Sign out
                     </button>
