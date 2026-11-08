@@ -1,4 +1,4 @@
-import { describeWait, keyFromHash, keyLinkUrl, usernameChecks, usernameIsValid } from "./identity"
+import { describeWait, keyFromHash, keyLinkUrl, usernameChecks, usernameHasTestPrefix, usernameIsValid } from "./identity"
 
 
 describe("username rules", () => {
@@ -31,6 +31,18 @@ describe("username rules", () => {
         "%s is not", (name) => {
             expect(usernameIsValid(name)).toBe(false)
         })
+})
+
+
+describe("the test- prefix", () => {
+    test.each([ "test-", "test-dev-01", "Test-Prod-01", "  TEST-me" ])("%s is reserved", (name) => {
+        expect(usernameHasTestPrefix(name)).toBe(true)
+        expect(usernameIsValid(name)).toBe(false)
+    })
+
+    test.each([ "test", "tester", "testy-baker", "my-test-loaf" ])("%s is fine", (name) => {
+        expect(usernameHasTestPrefix(name)).toBe(false)
+    })
 })
 
 

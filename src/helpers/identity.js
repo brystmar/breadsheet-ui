@@ -14,9 +14,18 @@ export function usernameChecks(username) {
 }
 
 
-// True when the username meets every rule
+// Test accounts (test-dev-NN, test-prod-NN) are made by the backend's `test-users` command, so signup
+// refuses this prefix in any case. The server checks too.
+export const TEST_USERNAME_PREFIX = "test-"
+
+export function usernameHasTestPrefix(username) {
+    return username.trim().toLowerCase().startsWith(TEST_USERNAME_PREFIX)
+}
+
+
+// True when the username meets every rule and doesn't use the reserved test- prefix
 export function usernameIsValid(username) {
-    return usernameChecks(username).every((check) => check.met)
+    return usernameChecks(username).every((check) => check.met) && !usernameHasTestPrefix(username)
 }
 
 
