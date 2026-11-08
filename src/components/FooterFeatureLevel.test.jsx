@@ -30,16 +30,26 @@ function renderToggle(path = "/") {
 describe("FooterFeatureLevel", () => {
     afterEach(() => window.localStorage.clear())
 
-    test("starts at M1 with M2 features hidden", () => {
+    test("starts at M2, the default, with M2 features shown", () => {
         renderToggle()
 
+        expect(screen.getByRole("button", { name: "M2" })).toHaveAttribute("aria-pressed", "true")
+        expect(screen.getByRole("button", { name: "M1" })).toHaveAttribute("aria-pressed", "false")
+        expect(screen.getByText("Second Rise preview")).toBeInTheDocument()
+        expect(window.localStorage.getItem(STORAGE_KEY)).toBeNull()  // nothing saved until someone picks
+    })
+
+    test("switching to M1 hides M2 features and remembers the choice", async () => {
+        renderToggle()
+        await userEvent.click(screen.getByRole("button", { name: "M1" }))
+
         expect(screen.getByRole("button", { name: "M1" })).toHaveAttribute("aria-pressed", "true")
-        expect(screen.getByRole("button", { name: "M2" })).toHaveAttribute("aria-pressed", "false")
         expect(screen.getByText("Classic app")).toBeInTheDocument()
-        expect(screen.queryByText("Second Rise preview")).not.toBeInTheDocument()
+        expect(window.localStorage.getItem(STORAGE_KEY)).toBe("m1")
     })
 
     test("switching to M2 shows M2 features and remembers the choice", async () => {
+        window.localStorage.setItem(STORAGE_KEY, "m1")
         renderToggle()
         await userEvent.click(screen.getByRole("button", { name: "M2" }))
 
@@ -67,6 +77,7 @@ describe("FooterFeatureLevel", () => {
     })
 
     test("switching to M2 stays on the current page", async () => {
+        window.localStorage.setItem(STORAGE_KEY, "m1")
         renderToggle("/register")
         await userEvent.click(screen.getByRole("button", { name: "M2" }))
         expect(screen.getByText("Register page")).toBeInTheDocument()
@@ -76,10 +87,10 @@ describe("FooterFeatureLevel", () => {
         renderToggle()
 
         act(() => {
-            window.localStorage.setItem(STORAGE_KEY, "m2")
-            window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY, newValue: "m2" }))
+            window.localStorage.setItem(STORAGE_KEY, "m1")
+            window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY, newValue: "m1" }))
         })
-        expect(screen.getByText("Second Rise preview")).toBeInTheDocument()
+        expect(screen.getByText("Classic app")).toBeInTheDocument()
     })
 
     test("is a labeled group for screen readers", () => {

@@ -1,8 +1,9 @@
 // Milestone feature levels: Second Rise work ships to production hidden, and this browser-only
-// setting decides which milestone's features the UI shows. `m1` is today's app.
+// setting decides which milestone's features the UI shows. M2 (Second Rise: accounts, bakes, community) is
+// the default since 2026-11-07; `m1` is the original app, still selectable from the footer.
 // Releasing a milestone means changing DEFAULT_LEVEL (and dropping levels nobody should pick anymore).
 export const FEATURE_LEVELS = [ "m1", "m2" ]
-export const DEFAULT_LEVEL = "m1"
+export const DEFAULT_LEVEL = "m2"
 
 const STORAGE_KEY = "breadsheet.featureLevel"
 

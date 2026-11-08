@@ -59,7 +59,7 @@ afterEach(() => {
 describe("at M1 (today's app)", () => {
     test("never asks the API about sessions and shows no account links", async () => {
         const calls = fakeBackend({})
-        renderApp("/", null)
+        renderApp("/", "m1")
 
         await waitFor(() => expect(calls.some((c) => c.path === "/api/v1/recipes")).toBe(true))
         expect(calls.some((c) => c.path.startsWith("/api/v2/"))).toBe(false)
@@ -68,7 +68,7 @@ describe("at M1 (today's app)", () => {
 
     test("/register isn't an identity screen", () => {
         fakeBackend({})
-        renderApp("/register", null)
+        renderApp("/register", "m1")
         expect(screen.queryByRole("heading", { name: "Register" })).not.toBeInTheDocument()
     })
 })

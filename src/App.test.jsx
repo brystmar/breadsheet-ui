@@ -71,6 +71,7 @@ describe("GoatCounter route tracking", () => {
 
 
 // breadsheet-ui#45: v1 recipe writes are off, so nothing offers to change a recipe
+// M1's recipe list and page (v1), now that M2 is the default
 describe("no recipe edit controls", () => {
     const RECIPE = {
         id: "r1", name: "Country Sourdough", difficulty: "Intermediate", solve_for_start: true,
@@ -79,6 +80,7 @@ describe("no recipe edit controls", () => {
     }
 
     function renderAt(path) {
+        window.localStorage.setItem("breadsheet.featureLevel", "m1")
         return render(
             <MemoryRouter initialEntries={[ path ]}>
                 <FeatureLevelProvider>
@@ -102,6 +104,7 @@ describe("no recipe edit controls", () => {
 
     afterEach(() => {
         vi.unstubAllGlobals()
+        window.localStorage.clear()
     })
 
     test("the recipe list has no add or delete buttons", async () => {

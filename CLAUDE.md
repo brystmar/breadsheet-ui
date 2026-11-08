@@ -143,9 +143,9 @@ The source of truth is `../breadsheet/docs/second-rise.md`, in the sibling check
 
 ### Milestone feature toggle
 Second Rise work ships to production hidden, then a milestone is released by changing a default rather than by merging a branch (spec: Decisions, Release).
-- The footer's "Features: M1 · M2" control (`FooterFeatureLevel`) sets this browser's level, saved in `localStorage`. `m1` is today's app and the default.
+- The footer's "Features: M1 · M2" control (`FooterFeatureLevel`) sets this browser's level, saved in `localStorage`. M2 is the default since 2026-11-07 (released); `m1` is the original app, still selectable. Only an explicit pick is saved, so visitors who never chose follow the default.
 - Levels and the default live in `src/helpers/feature_levels.js`. `FeatureLevelProvider` (in `src/hooks/useFeatureLevel.jsx`) wraps the app in `src/index.jsx`; tests that render `App` must wrap it too.
-- Switching the toggle back to the default level returns to the homepage, since the current page may not exist there.
+- Switching the toggle down a level (M2 to M1) returns to the homepage, since the current page may not exist there.
 - Gate every new milestone screen, route, and control: `<AtFeatureLevel min="m2">…</AtFeatureLevel>`, or `useFeatureLevel().atLeast("m2")` in logic. At `m1`, the app must behave exactly as before.
 - Key-link sign-in (`/k`) must work at any level: a link opened on a new device starts at the default.
 - Releasing a milestone: set `DEFAULT_LEVEL` to it and drop levels nobody should pick anymore (a saved level that no longer exists falls back to the default). Rolling back: set the default back.
