@@ -55,6 +55,19 @@
       border-left: 1px solid rgba(255, 255, 255, 0.45)
       padding-left: 0.8em
 
+/*** Community link (M2), on the left to balance the account links ***/
+
+.header-container
+  .nav-content .nav-link-secondary
+    position: absolute
+    left: 1em
+    top: 50%
+    transform: translateY(-50%)
+    font-size: 0.9rem
+  .nav-content .nav-link-secondary:hover,
+  .nav-content .nav-link-secondary:focus
+    text-decoration: underline
+
 @media (max-width: 494px)
   .header-container
     .nav-account
@@ -62,4 +75,10 @@
       transform: none
       justify-content: center
       margin-top: 0.15em
+      font-size: 0.8rem
+    .nav-content .nav-link-secondary
+      position: static
+      transform: none
+      display: block
+      margin-top: 0.1em
       font-size: 0.8rem

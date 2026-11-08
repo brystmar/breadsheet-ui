@@ -11,7 +11,8 @@ export const breadsheetApis = {
     recipesV2: {
         all:      `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes`,
         bySlug:   `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes/by-slug`,
-        bySuffix: `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes/by-suffix`
+        bySuffix: `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes/by-suffix`,
+        community: `${import.meta.env.VITE_BACKEND_URL}/api/v2/community/recipes`
     },
     bakes: {
         all:      `${import.meta.env.VITE_BACKEND_URL}/api/v2/bakes`,

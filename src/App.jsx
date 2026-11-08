@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router";
 import { breadsheetApis } from "./data/endpoints";
 import { apiFetch } from "./data/api_fetch";
-import { listRecipes } from "./data/recipes_api";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PageTitle from "./components/PageTitle";
@@ -11,17 +10,16 @@ import RecipePageContainer from "./components/RecipePageContainer";
 import RecipePathContainer from "./components/RecipePathContainer";
 import BakePathContainer from "./components/bake/BakePathContainer";
 import ActiveBakeBar from "./components/bake/ActiveBakeBar";
-import ActiveBakesList from "./components/bake/ActiveBakesList";
 import { ActiveBakesProvider } from "./hooks/useActiveBakes";
 import NewRecipePage from "./components/recipe/NewRecipePage";
-import NewRecipeLink from "./components/recipe/NewRecipeLink";
+import MyRecipesPage from "./components/recipes/MyRecipesPage";
+import CommunityPage from "./components/recipes/CommunityPage";
 import ConvertTextPageContainer from "./components/ConvertTextPageContainer";
 import FormRegister from "./components/identity/FormRegister";
 import FormSignin from "./components/identity/FormSignin";
 import KeyLink from "./components/identity/KeyLink";
 import Profile from "./components/identity/Profile";
 import useFeatureLevel from "./hooks/useFeatureLevel";
-import useSession from "./hooks/useSession";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles/styles.sass";
 import "./styles/recipe-and-step-lists.sass";
@@ -45,10 +43,6 @@ export default function App() {
     const { atLeast } = useFeatureLevel()
     const atM2 = atLeast("m2")
 
-    // From M2 the list includes the signed-in user's own recipes, so it reloads when that user changes
-    const { user } = useSession()
-    const listUserId = atM2 ? user?.id ?? null : null
-
     // Count client-side route changes in GoatCounter
     // The script counts the initial page load itself, so only count when the path changes.
     // Tracking the last counted path (instead of a first-render flag) keeps StrictMode's
@@ -68,22 +62,8 @@ export default function App() {
         window.goatcounter?.count?.({ path: currentPath })
     }, [ currentPath ])
 
-    // Retrieve the data for all recipes from the backend: v2 from M2 on (each recipe links to its
-    // public path), v1 before that
+    // Retrieve the data for all recipes from the backend (M1). From M2 the home page loads its own lists.
     useEffect(() => {
-            // M2: defaults plus the signed-in user's own recipes
-            async function getV2Recipes() {
-                const result = await listRecipes()
-                if (!result.ok) {
-                    console.error(`Error retrieving the recipe list: ${result.code}`)
-                    return
-                }
-
-                // The list shows `length`; v2 calls it `length_seconds`
-                updateRecipeList((result.data?.recipes ?? []).map((recipe) => ({ ...recipe, length: recipe.length_seconds })))
-                toggleHasData(true)
-            }
-
             // Declare an async function for retrieving recipes
             async function getAllRecipes() {
                 try {
@@ -104,16 +84,13 @@ export default function App() {
                 }
             }
 
+            if (atM2) return
             console.debug("Retrieving list of recipes via App.useEffect")
-            if (atM2) {
-                getV2Recipes()
-            } else {
-                getAllRecipes();
-            }
+            getAllRecipes();
         },
         // The function for updating `isDataStale` gets passed down to children,
         // allowing them to trigger a data refresh of all recipes when needed.
-        [ isDataStale, atM2, listUserId ])
+        [ isDataStale, atM2 ])
 
     function updateRecipeLength(recipeId, newLength) {
         // Updates the length of a specified recipe in local state
@@ -159,6 +136,7 @@ export default function App() {
                         } />
 
                         {/* Public recipe URLs (M2): /recipes/<slug>, or /recipes/<slug>-<suffix> for personal recipes */}
+                        {atM2 && <Route path="/community" element={<CommunityPage />} />}
                         {atM2 && <Route path="/recipes/new" element={<NewRecipePage />} />}
                         {atM2 && <Route path="/recipes/:recipePath" element={<RecipePathContainer />} />}
                         {atM2 && <Route path="/recipes/:recipePath/start" element={<RecipePathContainer view="start" />} />}
@@ -175,11 +153,10 @@ export default function App() {
                             />
                         } />
 
-                        <Route path="/" element={
+                        {/* M2: active bakes, your recipes, and the defaults; M1: the recipe table */}
+                        <Route path="/" element={atM2 ? <MyRecipesPage /> :
                             <>
-                                {atM2 && <ActiveBakesList />}
                                 <PageTitle title="Recipes" includeHr={true} />
-                                {atM2 && <NewRecipeLink />}
                                 <RecipeListContainer recipeList={recipeList} />
                             </>
                         } />

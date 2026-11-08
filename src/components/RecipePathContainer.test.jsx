@@ -94,7 +94,10 @@ describe("suffixFromRecipePath", () => {
 
 describe("public recipe URLs at M2", () => {
     test("the recipe list links to each recipe's public path", async () => {
-        fakeBackend({ "GET /api/v2/recipes": [ 200, { recipes: [ DEFAULT_RECIPE, PERSONAL_RECIPE ] } ] })
+        fakeBackend({
+            "GET /api/v2/session": [ 200, { user: { id: "u1", username: "Baker_1" } } ],
+            "GET /api/v2/recipes": [ 200, { recipes: [ DEFAULT_RECIPE, { ...PERSONAL_RECIPE, is_mine: true } ] } ]
+        })
         renderApp("/")
 
         expect(await screen.findByRole("link", { name: "Country Sourdough" }))
