@@ -5,11 +5,24 @@
 import { apiFetch } from "./api_fetch"
 
 
+const READS = [ "GET", "HEAD" ]
+
+
+// The API refuses state-changing requests without Content-Type: application/json (it forces a CORS
+// preflight, which guards against cross-site requests), so every one gets it, body or not
+function withJsonHeader(options) {
+    const method = (options.method || "GET").toUpperCase()
+    const headers = options.headers || {}
+    if (READS.includes(method) || Object.keys(headers).some((name) => name.toLowerCase() === "content-type")) return options
+    return { ...options, headers: { ...headers, "Content-Type": "application/json" } }
+}
+
+
 // Sends a request and normalizes the result
 export async function apiCall(url, options = {}) {
     let response
     try {
-        response = await apiFetch(url, options)
+        response = await apiFetch(url, withJsonHeader(options))
     } catch {
         return { ok: false, status: 0, code: "network_error",
                  message: "Breadsheet can't be reached right now. Check your connection and try again." }

@@ -279,3 +279,97 @@ describe("the recipe editor", () => {
         expect(calls.some(({ method, path }) => method === "DELETE" && path === "/api/v2/recipes/r-mine")).toBe(true)
     })
 })
+
+
+describe("publishing", () => {
+    test("publishes the saved recipe, then offers Unpublish", async () => {
+        const user = userEvent.setup()
+        const calls = fakeBackend(ownerRoutes({
+            "POST /api/v2/recipes/r-mine/publish":   [ 200, { recipe: { ...MINE, published_at: "2026-11-08T01:00:00+00:00" } } ],
+            "DELETE /api/v2/recipes/r-mine/publish": [ 204, null ]  // as the API answers
+        }))
+        renderAt(EDIT)
+
+        await user.click(await screen.findByRole("button", { name: "Publish to community" }))
+        expect(await screen.findByText(/Published to the community library/)).toBeInTheDocument()
+        await user.click(screen.getByRole("button", { name: "Unpublish" }))
+        expect(await screen.findByRole("button", { name: "Publish to community" })).toBeInTheDocument()
+        expect(calls.filter(({ path }) => path === "/api/v2/recipes/r-mine/publish").map(({ method }) => method)).toEqual([ "POST", "DELETE" ])
+    })
+
+    test("waits for unsaved changes to be saved", async () => {
+        const user = userEvent.setup()
+        fakeBackend(ownerRoutes())
+        renderAt(EDIT)
+
+        await user.type(await screen.findByLabelText(/^Author/), "s")
+        expect(screen.getByRole("button", { name: "Publish to community" })).toBeDisabled()
+        expect(screen.getByText("Save your changes first.")).toBeInTheDocument()
+    })
+
+    test("a recipe that can't be published yet says why, by field", async () => {
+        const user = userEvent.setup()
+        fakeBackend(ownerRoutes({ "POST /api/v2/recipes/r-mine/publish": [ 400, { code: "recipe_invalid",
+            message: "Check the recipe: Describe the step.", fields: { "steps[2].text": "Describe the step." } } ] }))
+        renderAt(EDIT)
+
+        await user.click(await screen.findByRole("button", { name: "Publish to community" }))
+        expect(await screen.findByText("This recipe can't be published yet. Check the recipe: Describe the step.")).toBeInTheDocument()
+        expect(screen.getAllByLabelText("Directions")[2]).toHaveAttribute("aria-invalid", "true")
+    })
+})
+
+
+describe("drafts and new recipes", () => {
+    const DRAFT = { ...MINE, is_draft: true, name: "", steps: [ { ...STEPS[0], text: "" } ] }
+
+    test("a draft can be saved again as a draft, or saved to go live", async () => {
+        const user = userEvent.setup()
+        const calls = fakeBackend(ownerRoutes({ "GET /api/v2/recipes/by-suffix/k7qx2m": [ 200, { recipe: DRAFT } ] }))
+        renderAt(EDIT)
+
+        expect(await screen.findByText(/Draft: only you can see it/)).toBeInTheDocument()
+        expect(screen.getByRole("button", { name: "Publish to community" })).toBeDisabled()
+        await user.type(screen.getByLabelText("Name"), "Rye")
+        await user.click(screen.getByRole("button", { name: "Save as draft" }))
+        await waitFor(() => expect(puts(calls)).toHaveLength(1))
+        expect(puts(calls)[0].body).toMatchObject({ name: "Rye", is_draft: true })
+
+        // Going live needs the step text
+        await user.click(await screen.findByRole("button", { name: "Save" }))
+        expect(screen.getByText("Describe the step.")).toBeInTheDocument()
+        expect(puts(calls)).toHaveLength(1)
+    })
+
+    test("New recipe starts blank and can be saved as a draft", async () => {
+        const user = userEvent.setup()
+        const created = { ...MINE, id: "r-new", path: "/recipes/recipe-n3wn3w", is_draft: true, name: "", steps: [] }
+        const calls = fakeBackend({
+            ...ownerRoutes(),
+            "POST /api/v2/recipes":                     [ 201, { recipe: created } ],
+            "GET /api/v2/recipes/by-slug/recipe-n3wn3w": NOT_FOUND,
+            "GET /api/v2/recipes/by-suffix/n3wn3w":      [ 200, { recipe: created } ]
+        })
+        renderAt("/")
+
+        await user.click(await screen.findByRole("link", { name: "+ New recipe" }))
+        expect(await screen.findByRole("heading", { name: "New recipe" })).toBeInTheDocument()
+        expect(screen.getAllByLabelText("Directions")).toHaveLength(1)
+        expect(screen.queryByRole("button", { name: "Delete recipe" })).toBeNull()
+        expect(screen.queryByRole("region", { name: "Community" })).toBeNull()
+
+        await user.type(screen.getAllByLabelText("Directions")[0], "Mix everything")
+        await user.click(screen.getByRole("button", { name: "Save as draft" }))
+        await waitFor(() => expect(screen.getByTestId("path")).toHaveTextContent("/recipes/recipe-n3wn3w/edit"))
+        const post = calls.find(({ method, path }) => method === "POST" && path === "/api/v2/recipes")
+        expect(post.body).toMatchObject({ name: "", is_draft: true, steps: [ { id: null, text: "Mix everything" } ] })
+    })
+
+    test("signed out, New recipe asks you to sign in", async () => {
+        fakeBackend({ "GET /api/v2/session": [ 401, { code: "not_signed_in" } ] })
+        renderAt("/recipes/new")
+
+        expect(await screen.findByRole("link", { name: "sign in" })).toBeInTheDocument()
+        expect(screen.queryByRole("button", { name: "Save" })).toBeNull()
+    })
+})

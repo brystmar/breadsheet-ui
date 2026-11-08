@@ -90,12 +90,13 @@ export function formBody(form, isDraft = false) {
 }
 
 
-// Problems the browser can catch before saving, keyed like the API's `fields`
-export function formProblems(form) {
+// Problems the browser can catch before saving, keyed like the API's `fields`. Drafts can leave the name
+// and step text blank, as the API allows.
+export function formProblems(form, { draft = false } = {}) {
     const problems = {}
-    if (!form.name.trim()) problems.name = "Give the recipe a name."
+    if (!form.name.trim() && !draft) problems.name = "Give the recipe a name."
     form.steps.forEach((step, i) => {
-        if (!step.text.trim()) problems[`steps[${i}].text`] = "Describe the step."
+        if (!step.text.trim() && !draft) problems[`steps[${i}].text`] = "Describe the step."
         if (step.min > step.max) problems[`steps[${i}].wait_max`] = "Can't be shorter than the minimum wait."
         if (Number.isNaN(handsOnSeconds(step.handsOn))) problems[`steps[${i}].active_seconds`] = "Enter whole minutes, or leave it blank if unknown."
     })

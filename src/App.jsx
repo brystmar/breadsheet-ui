@@ -13,6 +13,8 @@ import BakePathContainer from "./components/bake/BakePathContainer";
 import ActiveBakeBar from "./components/bake/ActiveBakeBar";
 import ActiveBakesList from "./components/bake/ActiveBakesList";
 import { ActiveBakesProvider } from "./hooks/useActiveBakes";
+import NewRecipePage from "./components/recipe/NewRecipePage";
+import NewRecipeLink from "./components/recipe/NewRecipeLink";
 import ConvertTextPageContainer from "./components/ConvertTextPageContainer";
 import FormRegister from "./components/identity/FormRegister";
 import FormSignin from "./components/identity/FormSignin";
@@ -157,6 +159,7 @@ export default function App() {
                         } />
 
                         {/* Public recipe URLs (M2): /recipes/<slug>, or /recipes/<slug>-<suffix> for personal recipes */}
+                        {atM2 && <Route path="/recipes/new" element={<NewRecipePage />} />}
                         {atM2 && <Route path="/recipes/:recipePath" element={<RecipePathContainer />} />}
                         {atM2 && <Route path="/recipes/:recipePath/start" element={<RecipePathContainer view="start" />} />}
                         {atM2 && <Route path="/recipes/:recipePath/edit" element={<RecipePathContainer view="edit" />} />}
@@ -176,6 +179,7 @@ export default function App() {
                             <>
                                 {atM2 && <ActiveBakesList />}
                                 <PageTitle title="Recipes" includeHr={true} />
+                                {atM2 && <NewRecipeLink />}
                                 <RecipeListContainer recipeList={recipeList} />
                             </>
                         } />
