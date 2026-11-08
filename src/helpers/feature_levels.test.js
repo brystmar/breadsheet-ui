@@ -9,9 +9,9 @@ describe("feature levels", () => {
         vi.restoreAllMocks()
     })
 
-    test("today's app is the default level", () => {
-        expect(DEFAULT_LEVEL).toBe("m1")
-        expect(FEATURE_LEVELS[0]).toBe("m1")
+    test("M2 is released: it's the default, and M1 is still there to pick", () => {
+        expect(DEFAULT_LEVEL).toBe("m2")
+        expect(FEATURE_LEVELS).toEqual([ "m1", "m2" ])
     })
 
     test("atLeast compares by milestone order", () => {

@@ -1,19 +1,20 @@
 import React from "react"
 import { useNavigate } from "react-router"
 import useFeatureLevel from "../hooks/useFeatureLevel"
-import { DEFAULT_LEVEL, FEATURE_LEVELS } from "../helpers/feature_levels"
+import { FEATURE_LEVELS } from "../helpers/feature_levels"
 
 
-// Footer control for previewing unreleased milestones, e.g. "Features: M1 · M2"
+// Footer control for choosing a milestone's features, e.g. "Features: M1 · M2"
 export default function FooterFeatureLevel() {
     const { level, setLevel } = useFeatureLevel()
     const navigate = useNavigate()
 
-    // Going back to the default level returns to the homepage, since the current page may not exist there
+    // Going down a level returns to the homepage, since the current page may not exist there
     function handleSelect(option) {
         if (option === level) return
+        const goingDown = FEATURE_LEVELS.indexOf(option) < FEATURE_LEVELS.indexOf(level)
         setLevel(option)
-        if (option === DEFAULT_LEVEL) navigate("/")
+        if (goingDown) navigate("/")
     }
 
     return (
