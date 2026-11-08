@@ -1,5 +1,6 @@
 // Sends a v2 API request and normalizes the result to { ok, status, data } on success or
-// { ok: false, status, code, message, retryAfter } on failure, using the API's error codes.
+// { ok: false, status, code, message, retryAfter, fields } on failure, using the API's error codes.
+// `fields` maps request fields (e.g. "steps[2].text") to what's wrong with each, when the API says.
 // Network failures become code "network_error".
 import { apiFetch } from "./api_fetch"
 
@@ -31,6 +32,7 @@ export async function apiCall(url, options = {}) {
         status:  response.status,
         code:    body?.code || "http_error",
         message: body?.message || "Something went wrong. Please try again.",
-        retryAfter
+        retryAfter,
+        fields:  body?.fields || null
     }
 }
