@@ -11,27 +11,3 @@ export function suffixFromRecipePath(recipePath = "") {
     const match = SUFFIX_PATTERN.exec(recipePath)
     return match ? match[1] : null
 }
-
-
-// Converts a v2 recipe into the shape the plan view (RecipePage) already uses.
-// v2 doesn't store plan-view state, so the plan starts now and solves for the finish time.
-export function v2RecipeToPlan(recipe, now = Date.now()) {
-    return {
-        id:              recipe.id,
-        name:            recipe.name,
-        author:          recipe.author || "",
-        source:          recipe.source || "",
-        url:             recipe.url || "",
-        difficulty:      recipe.difficulty,
-        length:          recipe.length_seconds || 0,
-        solve_for_start: true,
-        start_time:      now,
-        steps:           (recipe.steps || []).map((step) => ({
-            step_id:   step.id,
-            number:    step.position,
-            text:      step.text,
-            then_wait: step.then_wait ?? 0,
-            note:      step.note || ""
-        }))
-    }
-}

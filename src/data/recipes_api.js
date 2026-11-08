@@ -3,10 +3,28 @@ import { apiCall } from "./api_call"
 import { breadsheetApis } from "./endpoints"
 import { suffixFromRecipePath } from "../helpers/recipe_paths"
 
+const JSON_HEADERS = { "Content-Type": "application/json" }
+
 
 // Defaults plus the signed-in user's personal recipes; data is { recipes }
 export function listRecipes() {
     return apiCall(breadsheetApis.recipesV2.all)
+}
+
+
+// Replaces one of the user's own recipes with `body` (the full recipe); data is { recipe }
+export function updateRecipe(recipeId, body) {
+    return apiCall(`${breadsheetApis.recipesV2.all}/${recipeId}`, {
+        method:  "PUT",
+        headers: JSON_HEADERS,
+        body:    JSON.stringify(body)
+    })
+}
+
+
+// Copies any recipe the user can see into a new personal recipe ("Make it mine"); data is { recipe }
+export function copyRecipe(recipeId) {
+    return apiCall(`${breadsheetApis.recipesV2.all}/${recipeId}/copy`, { method: "POST", headers: JSON_HEADERS })
 }
 
 
