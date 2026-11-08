@@ -1,0 +1,241 @@
+@use "variables" as *
+
+// The recipe editor (breadsheet-ui#31): denser than the plan, since it's visited rarely
+
+
+.recipe-edit
+  max-width: 52em
+  margin: 0 auto
+  text-align: left
+
+.edit-back
+  margin: 0.5em 0 0
+  font-size: 0.9rem
+
+.edit-draft
+  margin: 0 0 0.75em
+  padding: 0.4em 0.75em
+  font-size: 0.875rem
+  background: $color-gray-light
+  border: 1px dashed $color-border
+  border-radius: 4px
+
+.edit-card
+  margin: 0 0 0.9em
+  padding: 0.75em 0.9em
+  background: #ffffff
+  border: 1px solid #b0b0ad
+  border-radius: 4px
+  h3
+    margin: 0 0 0.5em
+    font-size: 1rem
+    font-weight: 700
+
+.edit-grid
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(14em, 1fr))
+  gap: 0.6em 1em
+
+.edit-field
+  display: flex
+  flex-direction: column
+.edit-wide
+  grid-column: 1 / -1
+
+.edit-label
+  display: block
+  margin: 0.4em 0 0.2em
+  font-size: 0.8rem
+  font-weight: 700
+  color: $color-brown5
+
+.edit-optional
+  font-weight: 400
+
+.edit-input
+  width: 100%
+  min-height: 2.4em
+  padding: 0.3em 0.5em
+  font: inherit
+  box-sizing: border-box
+  background: #ffffff
+  border: 1px solid $color-border
+  border-radius: 3px
+textarea.edit-input
+  min-height: 3em
+  resize: vertical
+
+.edit-input.invalid
+  border-color: $color-danger
+  box-shadow: 0 0 0 1px $color-danger
+
+.edit-field-error
+  display: block
+  margin-top: 0.2em
+  font-size: 0.8rem
+  font-weight: 700
+  color: $color-danger
+
+.edit-hint
+  margin: 0.3em 0
+  font-size: 0.8rem
+  color: $color-brown5
+
+.edit-choice
+  display: flex
+  gap: 1.25em
+  label
+    display: flex
+    align-items: center
+    gap: 0.35em
+
+.edit-prereqs
+  margin: 0.6em 0 0
+  padding: 0.5em 0.75em
+  border: 1px solid $color-gray
+  border-radius: 4px
+  legend
+    padding: 0 0.3em
+    font-size: 0.875rem
+    font-weight: 700
+  label
+    display: flex
+    align-items: center
+    gap: 0.4em
+    padding: 0.15em 0
+
+
+/*** Steps ***/
+
+.edit-steps-head
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: space-between
+  gap: 0.5em
+  h3
+    margin: 0
+
+.edit-level
+  display: flex
+  button
+    min-height: 36px
+    padding: 0 1em
+    font: inherit
+    font-size: 0.875rem
+    color: $color-text-dark
+    background: $color-gray-light
+    border: 1px solid $color-border
+    cursor: pointer
+  button:first-child
+    border-radius: 3px 0 0 3px
+  button:last-child
+    border-left: 0
+    border-radius: 0 3px 3px 0
+  button[aria-pressed="true"]
+    font-weight: 700
+    color: $color-text-light
+    background: $color-brown5
+
+.edit-steps
+  margin: 0.5em 0
+  padding: 0
+  list-style: none
+
+.edit-step
+  padding: 0.6em 0 0.8em
+  border-top: 1px solid $color-gray
+
+.edit-step-head
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 0.5em
+
+.edit-step-number
+  font-weight: 700
+
+.edit-step-tools
+  display: flex
+  gap: 0.3em
+  .btn
+    width: auto
+    min-width: 2.2em
+    height: 2em
+    padding: 0 0.6em
+    font: inherit
+    font-size: 0.8rem
+
+.edit-step-waits
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  gap: 0.25em 1.25em
+
+.edit-wait
+  display: flex
+  flex-direction: column
+
+.edit-minutes
+  width: 6em
+.edit-presence
+  width: auto
+
+.edit-step-warnings
+  margin: 0.4em 0 0
+  padding-left: 1.2em
+  font-size: 0.8rem
+  color: #8a5200
+
+.recipe-edit .edit-add-step
+  width: auto
+  padding: 0.45em 1em
+  font: inherit
+  white-space: nowrap
+
+
+/*** Save and delete ***/
+
+.edit-message
+  margin: 0 0 0.6em
+  padding: 0.5em 0.75em
+  font-size: 0.9rem
+  color: $color-danger
+  background: #fff4f2
+  border: 1px solid $color-danger-light
+  border-radius: 4px
+
+.edit-actions
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 0.75em
+  margin-bottom: 1em
+  .btn
+    width: auto
+    min-height: 44px
+    padding: 0 1.2em
+    font: inherit
+    font-weight: 700
+    border-radius: 4px
+
+.recipe-edit .edit-save:disabled
+  opacity: 0.55
+  cursor: default
+
+.edit-status
+  flex: 1
+  font-size: 0.875rem
+  color: $color-brown5
+
+.recipe-edit .edit-delete
+  color: #ffffff
+  background: $color-danger
+  border: 1px solid $color-danger-dark
+  cursor: pointer
+
+.edit-confirm
+  p
+    margin: 0 0 0.6em
+  .edit-actions
+    margin: 0

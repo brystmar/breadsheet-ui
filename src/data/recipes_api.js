@@ -12,6 +12,18 @@ export function listRecipes() {
 }
 
 
+// The prep recipes the user can see (defaults plus their own), for picking prerequisites; data is { recipes }
+export function listPrepRecipes() {
+    return apiCall(`${breadsheetApis.recipesV2.all}?category=prep`)
+}
+
+
+// Deletes one of the user's own recipes; their bakes from it keep running from their copies
+export function deleteRecipe(recipeId) {
+    return apiCall(`${breadsheetApis.recipesV2.all}/${recipeId}`, { method: "DELETE" })
+}
+
+
 // Replaces one of the user's own recipes with `body` (the full recipe); data is { recipe }
 export function updateRecipe(recipeId, body) {
     return apiCall(`${breadsheetApis.recipesV2.all}/${recipeId}`, {

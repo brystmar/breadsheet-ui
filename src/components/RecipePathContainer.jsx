@@ -4,11 +4,12 @@ import { resolveRecipePath } from "../data/recipes_api"
 import PageTitle from "./PageTitle"
 import PlanPage from "./plan/PlanPage"
 import StartBakePage from "./bake/StartBakePage"
+import RecipeEditPage from "./recipe/RecipeEditPage"
 import "../styles/recipe-attributes.sass"
 
 
-// The recipe page at its public URL (/recipes/<slug> or /recipes/<slug>-<suffix>, M2), or its
-// Start bake screen at that URL plus /start (`view="start"`).
+// The recipe page at its public URL (/recipes/<slug> or /recipes/<slug>-<suffix>, M2), its Start bake
+// screen at that URL plus /start (`view="start"`), or its editor at /edit (`view="edit"`, owners only).
 // Resolves the URL to a recipe, redirects renamed or differently-cased URLs to the current path,
 // and shows a not-found page when nothing matches.
 export default function RecipePathContainer({ view = "plan" }) {
@@ -48,11 +49,15 @@ export default function RecipePathContainer({ view = "plan" }) {
 
     // A renamed personal recipe (or a differently-cased URL) moves to its current path
     const { recipe } = response.data
-    const suffix = view === "start" ? "/start" : ""
+    const suffix = view === "plan" ? "" : `/${view}`
     if (recipe.path !== `/recipes/${recipePath}`) {
         return <Navigate to={recipe.path + suffix} replace state={location.state} />
     }
 
-    return view === "start" ? <StartBakePage key={recipe.id} recipe={recipe} /> :
-        <PlanPage key={recipe.id} recipe={recipe} />
+    if (view === "start") return <StartBakePage key={recipe.id} recipe={recipe} />
+    if (view === "edit") {
+        // Only the owner edits; everyone else gets the plan, with "Make it mine"
+        return recipe.is_mine ? <RecipeEditPage key={recipe.id} recipe={recipe} /> : <Navigate to={recipe.path} replace />
+    }
+    return <PlanPage key={recipe.id} recipe={recipe} />
 }

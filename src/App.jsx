@@ -159,6 +159,7 @@ export default function App() {
                         {/* Public recipe URLs (M2): /recipes/<slug>, or /recipes/<slug>-<suffix> for personal recipes */}
                         {atM2 && <Route path="/recipes/:recipePath" element={<RecipePathContainer />} />}
                         {atM2 && <Route path="/recipes/:recipePath/start" element={<RecipePathContainer view="start" />} />}
+                        {atM2 && <Route path="/recipes/:recipePath/edit" element={<RecipePathContainer view="edit" />} />}
                         {atM2 && <Route path="/bakes/:suffix" element={<BakePathContainer />} />}
 
                         {/* M1 opens recipes by internal id. From M2 those old URLs go to the homepage. */}

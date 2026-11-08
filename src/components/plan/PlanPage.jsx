@@ -83,6 +83,20 @@ export default function PlanPage({ recipe }) {
                                   url={recipe.url || ""}
                                   length={total} />
 
+            {editable &&
+                <p className="plan-edit-link"><Link to={`${recipe.path}/edit`}>Edit recipe</Link></p>}
+
+            {/* Prerequisites: a reminder with links, never enforced */}
+            {(recipe.prerequisites || []).length > 0 &&
+                <div className="plan-prereqs">
+                    <span className="plan-prereqs-label">Before you start:</span>{" "}
+                    {recipe.prerequisites.length > 1 && "any one of "}
+                    {recipe.prerequisites.map((prereq, i) =>
+                        <React.Fragment key={prereq.id}>
+                            {i > 0 && ", "}<Link to={prereq.path}>{prereq.name}</Link>
+                        </React.Fragment>)}
+                </div>}
+
             <PlanStartFinish solveForStart={solveForStart}
                              start={start}
                              finish={finish}

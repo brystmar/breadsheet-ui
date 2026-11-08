@@ -38,7 +38,7 @@ describe("session_api", () => {
             { code: "rate_limited", message: "Too many" }, { "Retry-After": "806" })))
 
         expect(await signIn("x".repeat(22))).toEqual(
-            { ok: false, status: 429, code: "rate_limited", message: "Too many", retryAfter: 806 })
+            { ok: false, status: 429, code: "rate_limited", message: "Too many", retryAfter: 806, fields: null })
     })
 
     test("a failure without a JSON body still has a message", async () => {
