@@ -145,6 +145,39 @@ describe("registration", () => {
         expect(screen.getByRole("button", { name: "Register" })).toBeEnabled()
     })
 
+    test("the test- prefix is reserved", async () => {
+        const calls = fakeBackend({ "GET /api/v2/session": [ 401, { code: "not_signed_in" } ] })
+        renderApp("/register")
+
+        const input = await screen.findByLabelText("Username")
+        const reserved = () => screen.queryByText((_, el) => el?.tagName === "P"
+            && el.textContent === "The test- prefix is reserved")
+
+        await userEvent.type(input, "test")
+        expect(reserved()).not.toBeInTheDocument()
+        expect(screen.getByRole("button", { name: "Register" })).toBeEnabled()
+
+        await userEvent.type(input, "-baker")
+        expect(reserved()).toBeInTheDocument()
+        expect(reserved()).toHaveClass("identity-error")
+        expect(input).toHaveAttribute("aria-invalid", "true")
+        expect(screen.getByRole("button", { name: "Register" })).toBeDisabled()
+        await userEvent.type(input, "{Enter}")
+        expect(calls.filter((call) => call.method === "POST")).toEqual([])
+
+        // Any case counts, as on the server
+        await userEvent.clear(input)
+        await userEvent.type(input, "TEST-Prod-01")
+        expect(reserved()).toBeInTheDocument()
+
+        // Changing the prefix clears it
+        await userEvent.clear(input)
+        await userEvent.type(input, "tester-01")
+        expect(reserved()).not.toBeInTheDocument()
+        expect(input).not.toHaveAttribute("aria-invalid")
+        expect(screen.getByRole("button", { name: "Register" })).toBeEnabled()
+    })
+
     test("an invalid username is never sent", async () => {
         const calls = fakeBackend({ "GET /api/v2/session": [ 401, { code: "not_signed_in" } ] })
         renderApp("/register")

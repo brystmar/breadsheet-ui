@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router"
 import SaveKey from "./SaveKey"
 import useSession from "../../hooks/useSession"
 import { signUp } from "../../data/session_api"
-import { describeWait, usernameChecks, usernameIsValid } from "../../helpers/identity"
+import { TEST_USERNAME_PREFIX, describeWait, usernameChecks, usernameHasTestPrefix, usernameIsValid }
+    from "../../helpers/identity"
 
 
 // /register: pick a username, then save the key (shown once)
@@ -20,6 +21,7 @@ export default function FormRegister() {
 
     const checks = usernameChecks(username)
     const valid = usernameIsValid(username)
+    const testPrefix = usernameHasTestPrefix(username)
 
     async function handleSubmit(event) {
         event.preventDefault()
@@ -68,7 +70,9 @@ export default function FormRegister() {
                        autoCapitalize="none"
                        spellCheck={false}
                        maxLength={30}
-                       aria-describedby="register-username-checks"
+                       aria-describedby={testPrefix ? "register-username-checks register-username-reserved"
+                                                    : "register-username-checks"}
+                       aria-invalid={testPrefix || undefined}
                        onChange={(event) => setUsername(event.target.value)} />
 
                 {/* Each rule turns from red to green as it's met */}
@@ -80,6 +84,13 @@ export default function FormRegister() {
                         </li>
                     ))}
                 </ul>
+
+                {/* Shown until the name stops starting with test- (only the backend makes test users) */}
+                {testPrefix && (
+                    <p id="register-username-reserved" className="identity-error" role="alert">
+                        The <code>{TEST_USERNAME_PREFIX}</code> prefix is reserved
+                    </p>
+                )}
 
                 {error && <p className="identity-error" role="alert">{error}</p>}
 
