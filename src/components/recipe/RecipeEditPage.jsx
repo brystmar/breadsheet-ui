@@ -3,41 +3,56 @@ import { Link, useLocation, useNavigate } from "react-router"
 import PageTitle from "../PageTitle"
 import EditStepRow from "./EditStepRow"
 import useActiveBakes from "../../hooks/useActiveBakes"
-import { deleteRecipe, listPrepRecipes, updateRecipe } from "../../data/recipes_api"
+import { createRecipe, deleteRecipe, listPrepRecipes, publishRecipe, unpublishRecipe, updateRecipe } from "../../data/recipes_api"
 import { blankStep, DIFFICULTIES, formBody, formProblems, recipeForm } from "../../helpers/recipe_form"
 import "../../styles/plan-view.sass"
 import "../../styles/recipe-edit.sass"
 
 
-// The recipe editor (M2, breadsheet-ui#31), for the owner of a personal recipe. Everything saves together
-// with Save; a failed save keeps the changes in the form and says so.
-export default function RecipeEditPage({ recipe }) {
+// A new recipe starts as one blank step
+const NEW_RECIPE = { name: "", category: "bread", detail_level: "simple", difficulty: "Beginner", is_draft: true, steps: [] }
+
+function initialForm(recipe) {
+    const form = recipeForm(recipe || NEW_RECIPE)
+    return recipe ? form : { ...form, steps: [ blankStep() ] }
+}
+
+
+// The recipe editor (M2, breadsheet-ui#31), for the owner of a personal recipe, or a new one when `recipe`
+// is null. Everything saves together; a failed save keeps the changes in the form and says so. New recipes
+// and drafts can be saved as a draft (incomplete is fine) or saved to go live.
+export default function RecipeEditPage({ recipe = null }) {
+    const isNew = recipe === null
     const navigate = useNavigate()
     const location = useLocation()
     const { bakes } = useActiveBakes()
 
     const [ saved, setSaved ] = useState(recipe)
-    const [ form, setForm ] = useState(() => recipeForm(recipe))
-    const [ baseline, setBaseline ] = useState(() => JSON.stringify(formBody(recipeForm(recipe), recipe.is_draft)))
+    const [ form, setForm ] = useState(() => initialForm(recipe))
+    const [ baseline, setBaseline ] = useState(() => JSON.stringify(formBody(initialForm(recipe), recipe?.is_draft ?? true)))
     const [ errors, setErrors ] = useState({})
     const [ message, setMessage ] = useState(null)
     const [ status, setStatus ] = useState(location.state?.saved ? "saved" : "idle")
     const [ prepRecipes, setPrepRecipes ] = useState([])
     const [ confirmDelete, setConfirmDelete ] = useState(false)
+    const [ publishing, setPublishing ] = useState(false)
+    const [ publishMessage, setPublishMessage ] = useState(null)
 
-    const body = formBody(form, saved.is_draft)
+    const isDraft = saved ? saved.is_draft : true
+    const recipeId = saved?.id ?? null
+    const body = formBody(form, isDraft)
     const dirty = JSON.stringify(body) !== baseline
     const detailed = form.detailLevel === "detailed"
-    const bakesFromIt = bakes.filter((bake) => bake.recipe_id === recipe.id).length
+    const bakesFromIt = bakes.filter((bake) => recipeId && bake.recipe_id === recipeId).length
 
     // The prep recipes this one can list as prerequisites
     useEffect(() => {
         let current = true
         listPrepRecipes().then((result) => {
-            if (current && result.ok) setPrepRecipes((result.data?.recipes ?? []).filter((prep) => prep.id !== recipe.id))
+            if (current && result.ok) setPrepRecipes((result.data?.recipes ?? []).filter((prep) => prep.id !== recipeId))
         })
         return () => { current = false }
-    }, [ recipe.id ])
+    }, [ recipeId ])
 
     // Closing the tab with unsaved changes asks first
     useEffect(() => {
@@ -74,9 +89,9 @@ export default function RecipeEditPage({ recipe }) {
         change({ prerequisites: chosen ? form.prerequisites.filter((x) => x !== id) : [ ...form.prerequisites, id ] })
     }
 
-    async function save(event) {
-        event.preventDefault()
-        const problems = formProblems(form)
+    // Saves the form: as a draft (`asDraft`, incomplete is fine), or live
+    async function save(asDraft) {
+        const problems = formProblems(form, { draft: asDraft })
         if (Object.keys(problems).length) {
             setErrors(problems)
             setMessage("Check the highlighted fields, then save again.")
@@ -85,7 +100,8 @@ export default function RecipeEditPage({ recipe }) {
 
         setStatus("saving")
         setMessage(null)
-        const result = await updateRecipe(recipe.id, body)
+        const request = formBody(form, asDraft)
+        const result = isNew ? await createRecipe(request) : await updateRecipe(recipeId, request)
         if (!result.ok) {
             setStatus("idle")
             setErrors(result.fields || {})
@@ -100,12 +116,33 @@ export default function RecipeEditPage({ recipe }) {
         setBaseline(JSON.stringify(formBody(fresh, updated.is_draft)))
         setErrors({})
         setStatus("saved")
-        // A rename moves the recipe to a new URL
-        if (updated.path !== recipe.path) navigate(`${updated.path}/edit`, { replace: true, state: { saved: true } })
+        // A new recipe, or a rename, moves to the recipe's own URL
+        if (isNew || updated.path !== recipe.path) navigate(`${updated.path}/edit`, { replace: true, state: { saved: true } })
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        save(false)
+    }
+
+    // Publishing shares the recipe as saved, so it waits until changes are saved
+    async function togglePublished() {
+        setPublishing(true)
+        setPublishMessage(null)
+        const publish = !saved.published_at
+        const result = publish ? await publishRecipe(recipeId) : await unpublishRecipe(recipeId)
+        setPublishing(false)
+        if (result.ok) {
+            // Publishing answers with the recipe; unpublishing answers 204 with no body
+            setSaved(publish ? result.data.recipe : { ...saved, published_at: null })
+            return
+        }
+        if (result.fields) setErrors(result.fields)
+        setPublishMessage(publish ? `This recipe can't be published yet. ${result.message}` : result.message)
     }
 
     async function remove() {
-        const result = await deleteRecipe(recipe.id)
+        const result = await deleteRecipe(recipeId)
         if (result.ok) {
             setBaseline(JSON.stringify(body))  // nothing left to lose
             navigate("/", { replace: true })
@@ -119,15 +156,21 @@ export default function RecipeEditPage({ recipe }) {
     const prepChoices = useMemo(() => {
         // Keep any chosen prerequisite listed even if the list hasn't loaded
         const known = new Set(prepRecipes.map((prep) => prep.id))
-        const missing = (saved.prerequisites || []).filter((prep) => !known.has(prep.id))
+        const missing = (saved?.prerequisites || []).filter((prep) => !known.has(prep.id))
         return [ ...prepRecipes, ...missing ]
-    }, [ prepRecipes, saved.prerequisites ])
+    }, [ prepRecipes, saved?.prerequisites ])
 
     return (
-        <form className="recipe-edit" onSubmit={save} noValidate>
-            <p className="edit-back"><Link to={saved.path}>← Back to the plan</Link></p>
-            <PageTitle title="Edit recipe" includeHr={true} />
-            {saved.is_draft && <p className="edit-draft">Draft: only you can see it, and it can't be baked yet.</p>}
+        <form className="recipe-edit" onSubmit={handleSubmit} noValidate>
+            <p className="edit-back">
+                {isNew ? <Link to="/">← Recipes</Link> : <Link to={saved.path}>← Back to the plan</Link>}
+            </p>
+            <PageTitle title={isNew ? "New recipe" : "Edit recipe"} includeHr={true} />
+            {isDraft &&
+                <p className="edit-draft">
+                    {isNew ? "Save as a draft to finish it later; only you can see drafts, and they can't be baked." :
+                        "Draft: only you can see it, and it can't be baked yet. Save takes it live."}
+                </p>}
 
             <section className="edit-card" aria-labelledby="edit-details">
                 <h3 id="edit-details">Details</h3>
@@ -221,16 +264,43 @@ export default function RecipeEditPage({ recipe }) {
                 {fieldError("steps") && <span className="edit-field-error">{fieldError("steps")}</span>}
             </section>
 
+            {!isNew &&
+                <section className="edit-card edit-community" aria-labelledby="edit-community">
+                    <h3 id="edit-community">Community</h3>
+                    {saved.published_at ?
+                        <p className="edit-hint">
+                            Published to the community library. Anyone can find it and make it theirs, and your edits show
+                            there right away. Unpublishing doesn't affect copies people already made.
+                        </p> :
+                        <p className="edit-hint">
+                            {isDraft ? "Drafts can't be published. Save it to take it live first." :
+                                "Share it in the community library, where anyone can find it and make it theirs."}
+                        </p>}
+                    <div className="edit-actions">
+                        <button type="button" className="btn btn-default"
+                                disabled={publishing || dirty || (isDraft && !saved.published_at)}
+                                onClick={togglePublished}>
+                            {saved.published_at ? "Unpublish" : "Publish to community"}
+                        </button>
+                        {dirty && <span className="edit-hint">Save your changes first.</span>}
+                    </div>
+                    {publishMessage && <p className="edit-message" role="alert">{publishMessage}</p>}
+                </section>}
+
             {message && <p className="edit-message" role="alert">{message}</p>}
 
             <div className="edit-actions">
-                <button type="submit" className="btn btn-primary edit-save" disabled={status === "saving" || !dirty}>
+                <button type="submit" className="btn btn-primary edit-save"
+                        disabled={status === "saving" || (!dirty && !(isDraft && !isNew))}>
                     {status === "saving" ? "Saving…" : "Save"}
                 </button>
+                {isDraft &&
+                    <button type="button" className="btn btn-default" disabled={status === "saving" || !dirty}
+                            onClick={() => save(true)}>Save as draft</button>}
                 <span className="edit-status" role="status">
                     {status === "saved" && !dirty ? "Saved." : dirty ? "Unsaved changes" : ""}
                 </span>
-                {!confirmDelete &&
+                {!isNew && !confirmDelete &&
                     <button type="button" className="btn edit-delete" onClick={() => setConfirmDelete(true)}>Delete recipe</button>}
             </div>
 

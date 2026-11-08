@@ -24,6 +24,24 @@ export function deleteRecipe(recipeId) {
 }
 
 
+// Creates a personal recipe from scratch (a draft when `is_draft`); data is { recipe }
+export function createRecipe(body) {
+    return apiCall(breadsheetApis.recipesV2.all, { method: "POST", headers: JSON_HEADERS, body: JSON.stringify(body) })
+}
+
+
+// Shares one of the user's own recipes in the community library; it must pass validation. data is { recipe }
+export function publishRecipe(recipeId) {
+    return apiCall(`${breadsheetApis.recipesV2.all}/${recipeId}/publish`, { method: "POST", headers: JSON_HEADERS })
+}
+
+
+// Takes a recipe out of the community library; copies already made are unaffected. Answers 204, no body.
+export function unpublishRecipe(recipeId) {
+    return apiCall(`${breadsheetApis.recipesV2.all}/${recipeId}/publish`, { method: "DELETE" })
+}
+
+
 // Replaces one of the user's own recipes with `body` (the full recipe); data is { recipe }
 export function updateRecipe(recipeId, body) {
     return apiCall(`${breadsheetApis.recipesV2.all}/${recipeId}`, {
