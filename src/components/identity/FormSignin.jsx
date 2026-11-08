@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link, useNavigate } from "react-router"
+import { Link, useLocation, useNavigate } from "react-router"
 import useSession from "../../hooks/useSession"
 import { signIn } from "../../data/session_api"
 import { describeWait } from "../../helpers/identity"
@@ -14,10 +14,18 @@ export function signInErrorMessage(result) {
 }
 
 
+// Where to go after signing in: back to the page that sent you here (same site only), else home
+export function returnPath(state) {
+    const from = state?.from
+    return typeof from === "string" && from.startsWith("/") && !from.startsWith("//") ? from : "/"
+}
+
+
 // /signin: paste a key, for when you have the key's text but not its link
 export default function FormSignin() {
     const { signedIn } = useSession()
     const navigate = useNavigate()
+    const location = useLocation()
 
     const [ key, setKey ] = useState("")
     const [ submitting, setSubmitting ] = useState(false)
@@ -35,7 +43,7 @@ export default function FormSignin() {
         if (result.ok) {
             setKey("")
             signedIn(result.data.user)
-            navigate("/")
+            navigate(returnPath(location.state))
             return
         }
         setError(signInErrorMessage(result))

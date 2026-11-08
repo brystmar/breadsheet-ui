@@ -9,6 +9,7 @@ import PageTitle from "./components/PageTitle";
 import RecipeListContainer from "./components/RecipeListContainer";
 import RecipePageContainer from "./components/RecipePageContainer";
 import RecipePathContainer from "./components/RecipePathContainer";
+import BakePathContainer from "./components/bake/BakePathContainer";
 import ConvertTextPageContainer from "./components/ConvertTextPageContainer";
 import FormRegister from "./components/identity/FormRegister";
 import FormSignin from "./components/identity/FormSignin";
@@ -152,6 +153,8 @@ export default function App() {
 
                     {/* Public recipe URLs (M2): /recipes/<slug>, or /recipes/<slug>-<suffix> for personal recipes */}
                     {atM2 && <Route path="/recipes/:recipePath" element={<RecipePathContainer />} />}
+                    {atM2 && <Route path="/recipes/:recipePath/start" element={<RecipePathContainer view="start" />} />}
+                    {atM2 && <Route path="/bakes/:suffix" element={<BakePathContainer />} />}
 
                     {/* M1 opens recipes by internal id. From M2 those old URLs go to the homepage. */}
                     <Route path="/:recipeId" element={atM2 ? <Navigate to="/" replace /> :
