@@ -1,0 +1,322 @@
+@use "variables" as *
+
+// The bake view (breadsheet-ui#33): one column on phones; on desktop the timeline sits to the right
+
+$color-current: $color-3
+$color-complete: #2e7d32
+$color-complete-dark: #1f5a23
+
+
+.bake-view
+  max-width: 34em
+  margin: 0 auto
+  text-align: left
+
+// Phones: the timeline comes after what's next, before alerts and ending the bake
+@media (max-width: 1023px)
+  .bake-layout
+    display: flex
+    flex-direction: column
+  .bake-main
+    display: contents
+  .bake-timeline-section
+    order: 1
+    margin-bottom: 0.9em
+  .bake-alerts,
+  .bake-end,
+  .bake-confirm
+    order: 2
+
+@media (min-width: 1024px)
+  .bake-view
+    max-width: 68em
+  .bake-layout
+    display: grid
+    grid-template-columns: minmax(22em, 30em) 1fr
+    gap: 1.5em
+    align-items: start
+
+.bake-back
+  margin: 0.5em 0 0
+  font-size: 0.9rem
+
+.bake-meta
+  margin: 0 0 0.75em
+  font-size: 0.9rem
+  color: $color-brown5
+  font-variant-numeric: tabular-nums
+
+.bake-offline,
+.bake-problem
+  margin: 0 0 0.75em
+  padding: 0.5em 0.75em
+  font-size: 0.875rem
+  border-radius: 4px
+
+.bake-offline
+  color: $color-brown5
+  background: $color-gray-light
+  border: 1px solid #b0b0ad
+
+.bake-problem
+  color: $color-danger
+  background: #fff4f2
+  border: 1px solid $color-danger-light
+
+.bake-card
+  margin: 0 0 0.9em
+  padding: 0.8em 0.9em
+  background: #ffffff
+  border: 1px solid #b0b0ad
+  border-radius: 4px
+  h3
+    margin: 0.1em 0 0.3em
+    font-size: 1.15rem
+    font-weight: 700
+
+.bake-eyebrow
+  margin: 0
+  font-size: 0.8rem
+  font-weight: 700
+  letter-spacing: 0.02em
+  text-transform: uppercase
+  color: $color-brown5
+
+.bake-note
+  margin: 0 0 0.5em
+  font-size: 0.9rem
+
+.bake-times
+  margin: 0.35em 0
+  font-size: 0.875rem
+  color: $color-brown5
+  font-variant-numeric: tabular-nums
+
+.bake-current
+  background: $color-current
+  border-color: $color-4
+
+.bake-progress
+  height: 8px
+  margin: 0.5em 0 0.25em
+  overflow: hidden
+  background: #ffffff
+  border: 1px solid $color-4
+  border-radius: 4px
+  span
+    display: block
+    height: 100%
+    background: $color-5
+
+.bake-view .bake-done
+  width: 100%
+  min-height: 52px
+  margin-top: 0.5em
+  font: inherit
+  font-size: 1.1rem
+  font-weight: 700
+  color: $color-text-light
+  background: $color-5
+  border: 1px solid $color-6
+  border-radius: 4px
+  cursor: pointer
+
+.bake-sync
+  margin: 0.4em 0 0
+  font-size: 0.8rem
+  color: $color-brown5
+  text-align: center
+
+// The text on the left, the countdown on the right, both centered vertically
+.bake-next
+  display: grid
+  grid-template-columns: 1fr auto
+  align-items: center
+  column-gap: 1em
+  .bake-done,
+  .bake-sync
+    grid-column: 1 / -1
+
+.bake-countdown
+  margin: 0
+  font-size: 2rem
+  font-weight: 700
+  font-variant-numeric: tabular-nums
+  color: $color-6
+
+.bake-skip-next
+  font-size: 0.875rem
+
+.bake-ended
+  h3
+    margin-top: 0
+  p
+    margin: 0
+    font-size: 0.9rem
+.bake-ended.finished
+  border-color: $color-complete
+.bake-ended.canceled,
+.bake-ended.expired
+  background: $color-gray-light
+
+
+/*** Alerts ***/
+
+.bake-alert-options
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 0.6em
+
+.bake-alert
+  position: relative
+  padding: 0.5em 0.6em
+  border: 1px solid #b0b0ad
+  border-radius: 4px
+  label
+    display: flex
+    align-items: center
+    gap: 0.4em
+    font-weight: 700
+.bake-alert.fancy
+  border: 2px solid transparent
+  background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(135deg, #d79922, #c86dd7, #00a3d5) border-box
+  opacity: 0.6
+
+.bake-tip
+  display: none
+  position: absolute
+  left: 0
+  bottom: calc(100% + 6px)
+  z-index: 2
+  width: max-content
+  max-width: 16em
+  padding: 3px 8px
+  font-size: 0.8rem
+  font-weight: 400
+  color: $color-tooltip-text
+  background: $color-tooltip-background
+  border-radius: 5px
+.bake-tip.shown
+  display: block
+
+.bake-export
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 0.4em 1em
+  margin-top: 0.75em
+  .btn
+    width: auto
+    padding: 0.5em 1em
+    font: inherit
+
+.bake-hint
+  margin: 0
+  font-size: 0.8rem
+  color: $color-brown5
+
+
+/*** Ending the bake: Cancel (red) left, Complete (green) right ***/
+
+.bake-end
+  display: flex
+  justify-content: space-between
+  gap: 0.75em
+  margin: 0.25em 0 1em
+  .btn
+    width: auto
+    min-height: 44px
+    padding: 0 1.2em
+    font: inherit
+    font-weight: 700
+    border-radius: 4px
+    cursor: pointer
+
+.bake-view .bake-cancel
+  color: #ffffff
+  background: $color-danger
+  border: 1px solid $color-danger-dark
+
+.bake-view .bake-complete
+  color: #ffffff
+  background: $color-complete
+  border: 1px solid $color-complete-dark
+.bake-view .bake-complete:disabled
+  opacity: 0.5
+  cursor: not-allowed
+
+.bake-confirm
+  p
+    margin: 0 0 0.6em
+  .bake-end
+    margin-bottom: 0
+
+
+/*** Timeline ***/
+
+.bake-timeline-section
+  h3
+    margin: 0 0 0.4em
+    font-size: 1rem
+    font-weight: 700
+
+.bake-timeline
+  margin: 0
+  padding: 0
+  list-style: none
+
+.bake-step
+  display: grid
+  grid-template-columns: 6.5em 1fr auto
+  align-items: baseline
+  column-gap: 0.75em
+  padding: 0.45em 0.4em
+  font-size: 0.95rem
+  border-bottom: 1px solid $color-gray
+
+.bake-step-time
+  font-variant-numeric: tabular-nums
+  white-space: nowrap
+
+.bake-step-note
+  display: block
+  font-size: 0.8rem
+  color: $color-brown5
+
+.bake-step-mark
+  font-size: 0.8rem
+  white-space: nowrap
+  color: $color-brown5
+
+.bake-step.current
+  font-weight: 700
+  background: $color-current
+  .bake-step-mark
+    color: $color-6
+
+.bake-step.done,
+.bake-step.skipped,
+.bake-step.not-done
+  color: #5f5f5c
+
+.bake-step.done .bake-step-mark
+  font-weight: 700
+  color: $color-success
+
+.bake-step.skipped .bake-step-text
+  text-decoration: line-through
+
+// Desktop: a Skip button on each upcoming step
+.bake-step-skip
+  display: none
+
+@media (min-width: 1024px)
+  .bake-step
+    grid-template-columns: 6.5em 1fr auto 4em
+  .bake-view .bake-step-skip
+    display: block
+    grid-column: 4
+    width: auto
+    padding: 0.2em 0.6em
+    font: inherit
+    font-size: 0.8rem
