@@ -10,6 +10,9 @@ import RecipeListContainer from "./components/RecipeListContainer";
 import RecipePageContainer from "./components/RecipePageContainer";
 import RecipePathContainer from "./components/RecipePathContainer";
 import BakePathContainer from "./components/bake/BakePathContainer";
+import ActiveBakeBar from "./components/bake/ActiveBakeBar";
+import ActiveBakesList from "./components/bake/ActiveBakesList";
+import { ActiveBakesProvider } from "./hooks/useActiveBakes";
 import ConvertTextPageContainer from "./components/ConvertTextPageContainer";
 import FormRegister from "./components/identity/FormRegister";
 import FormSignin from "./components/identity/FormSignin";
@@ -129,53 +132,57 @@ export default function App() {
     }
 
     return (
-        <div className="app-container">
-            <Header />
+        <ActiveBakesProvider>
+            <div className="app-container">
+                <Header />
+                {atM2 && <ActiveBakeBar />}
 
-            <main className="content-container">
-                <Routes>
-                    {/* Key links sign in at every feature level: a new device starts at the default */}
-                    <Route path="/k" element={<KeyLink />} />
+                <main className="content-container">
+                    <Routes>
+                        {/* Key links sign in at every feature level: a new device starts at the default */}
+                        <Route path="/k" element={<KeyLink />} />
 
-                    {/* Identity screens (M2). At M1 these paths fall through to the recipe route, as before. */}
-                    {atLeast("m2") && <Route path="/register" element={<FormRegister />} />}
-                    {atLeast("m2") && <Route path="/signin" element={<FormSignin />} />}
-                    {atLeast("m2") && <Route path="/profile" element={<Profile />} />}
-                    {/* The old Devices page became the profile page; keep its links working */}
-                    {atLeast("m2") && <Route path="/devices" element={<Navigate to="/profile" replace />} />}
+                        {/* Identity screens (M2). At M1 these paths fall through to the recipe route, as before. */}
+                        {atLeast("m2") && <Route path="/register" element={<FormRegister />} />}
+                        {atLeast("m2") && <Route path="/signin" element={<FormSignin />} />}
+                        {atLeast("m2") && <Route path="/profile" element={<Profile />} />}
+                        {/* The old Devices page became the profile page; keep its links working */}
+                        {atLeast("m2") && <Route path="/devices" element={<Navigate to="/profile" replace />} />}
 
-                    <Route path="/convert" element={
-                        <>
-                            <PageTitle title="Convert Text" includeHr={true} />
-                            <ConvertTextPageContainer />
-                        </>
-                    } />
+                        <Route path="/convert" element={
+                            <>
+                                <PageTitle title="Convert Text" includeHr={true} />
+                                <ConvertTextPageContainer />
+                            </>
+                        } />
 
-                    {/* Public recipe URLs (M2): /recipes/<slug>, or /recipes/<slug>-<suffix> for personal recipes */}
-                    {atM2 && <Route path="/recipes/:recipePath" element={<RecipePathContainer />} />}
-                    {atM2 && <Route path="/recipes/:recipePath/start" element={<RecipePathContainer view="start" />} />}
-                    {atM2 && <Route path="/bakes/:suffix" element={<BakePathContainer />} />}
+                        {/* Public recipe URLs (M2): /recipes/<slug>, or /recipes/<slug>-<suffix> for personal recipes */}
+                        {atM2 && <Route path="/recipes/:recipePath" element={<RecipePathContainer />} />}
+                        {atM2 && <Route path="/recipes/:recipePath/start" element={<RecipePathContainer view="start" />} />}
+                        {atM2 && <Route path="/bakes/:suffix" element={<BakePathContainer />} />}
 
-                    {/* M1 opens recipes by internal id. From M2 those old URLs go to the homepage. */}
-                    <Route path="/:recipeId" element={atM2 ? <Navigate to="/" replace /> :
-                        <RecipePageContainer
-                            recipeList={recipeList}
-                            hasData={hasData}
-                            updateRecipeLength={updateRecipeLength}
-                            updateMasterRecipeList={isDataStale}
-                        />
-                    } />
+                        {/* M1 opens recipes by internal id. From M2 those old URLs go to the homepage. */}
+                        <Route path="/:recipeId" element={atM2 ? <Navigate to="/" replace /> :
+                            <RecipePageContainer
+                                recipeList={recipeList}
+                                hasData={hasData}
+                                updateRecipeLength={updateRecipeLength}
+                                updateMasterRecipeList={isDataStale}
+                            />
+                        } />
 
-                    <Route path="/" element={
-                        <>
-                            <PageTitle title="Recipes" includeHr={true} />
-                            <RecipeListContainer recipeList={recipeList} />
-                        </>
-                    } />
-                </Routes>
-            </main>
+                        <Route path="/" element={
+                            <>
+                                {atM2 && <ActiveBakesList />}
+                                <PageTitle title="Recipes" includeHr={true} />
+                                <RecipeListContainer recipeList={recipeList} />
+                            </>
+                        } />
+                    </Routes>
+                </main>
 
-            <Footer />
-        </div>
+                <Footer />
+            </div>
+        </ActiveBakesProvider>
     )
 }

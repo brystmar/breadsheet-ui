@@ -34,6 +34,7 @@ export function cachedBake(suffix) {
 }
 
 export function rememberBake(bake) {
+    if (!bake?.suffix) return
     writeJson(cacheKey(bake.suffix), bake)
 }
 
@@ -46,7 +47,9 @@ const retryable = (result) => result.status === 0 || result.status === 408 || re
 // Done and Skip taps record their time, show at once, queue, and retry with backoff (honoring
 // Retry-After) until the server confirms. Check-offs are idempotent, so a late retry lands exactly
 // as an on-time one would have.
-export default function useBakeSync(initialBake) {
+// `onSynced(bake)` hears about each copy confirmed by the server. A new `initialBake` (say, from a refreshed
+// list) replaces the server copy when no taps are waiting.
+export default function useBakeSync(initialBake, { onSynced } = {}) {
     const bakeId = initialBake.id
     const [ serverBake, setServerBake ] = useState(initialBake)
     const [ queue, setQueue ] = useState(() => readJson(queueKey(bakeId), []))
@@ -71,9 +74,17 @@ export default function useBakeSync(initialBake) {
         writeJson(queueKey(bakeId), queue.length ? queue : null)
     }, [ bakeId, queue ])
 
+    const onSyncedRef = useRef(onSynced)
+    onSyncedRef.current = onSynced
+
+    useEffect(() => {
+        if (!queueRef.current.length) setServerBake(initialBake)
+    }, [ initialBake ])
+
     const accept = useCallback((bake) => {
         rememberBake(bake)
         setServerBake(bake)
+        onSyncedRef.current?.(bake)
     }, [])
 
     // Sends the oldest queued tap; the effect below sends the next once it's confirmed

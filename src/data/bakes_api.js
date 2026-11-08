@@ -59,3 +59,9 @@ export function cancelBake(bakeId) {
 export function getBake(bakeId) {
     return apiCall(`${breadsheetApis.bakes.all}/${bakeId}`)
 }
+
+
+// The signed-in user's active bakes (up to three), with schedules; data is { bakes }
+export function listActiveBakes() {
+    return apiCall(breadsheetApis.bakes.all)
+}

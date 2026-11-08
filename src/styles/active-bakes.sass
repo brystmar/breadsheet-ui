@@ -1,0 +1,169 @@
+@use "variables" as *
+
+// The active bake bar and the home page's active bakes list (breadsheet-ui#33)
+
+
+/*** Active bake bar: under the header on every page but the bake view ***/
+
+.active-bake-bar
+  color: $color-text-light
+  background: $color-6
+  border-bottom: 3px solid $color-4
+  text-align: left
+
+.bar-inner
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 10px 20px
+  max-width: 1200px
+  margin: 0 auto
+  padding: 10px 14px
+  box-sizing: border-box
+
+.bar-link
+  display: flex
+  flex: 1 1 260px
+  flex-direction: column
+  gap: 3px
+  min-width: 0
+  color: $color-text-light
+  text-decoration: none
+
+.bar-link:hover .bar-step,
+.bar-link:focus-visible .bar-step
+  text-decoration: underline
+
+.bar-eyebrow
+  overflow: hidden
+  font-size: 0.75rem
+  font-weight: 700
+  letter-spacing: 0.06em
+  text-transform: uppercase
+  text-overflow: ellipsis
+  white-space: nowrap
+  color: $color-4
+
+.bar-step
+  font-size: 1.05rem
+  font-weight: 700
+
+.bar-progress-row
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 4px 10px
+  font-size: 0.8rem
+
+.bar-progress
+  flex: 1 1 120px
+  max-width: 280px
+  height: 6px
+  overflow: hidden
+  background: #8a4a1a
+  border-radius: 3px
+  span
+    display: block
+    height: 100%
+    background: $color-4
+
+.bar-times
+  font-variant-numeric: tabular-nums
+  white-space: nowrap
+
+.bar-next
+  font-size: 0.8rem
+  color: $color-gray-light
+
+.bar-actions
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 6px 12px
+
+.bar-done
+  min-height: 44px
+  padding: 0 16px
+  font: inherit
+  font-weight: 700
+  white-space: nowrap
+  color: $color-7
+  background: $color-3
+  border: 1px solid $color-4
+  border-radius: 3px
+  cursor: pointer
+
+.bar-sync,
+.bar-more
+  font-size: 0.8rem
+  color: $color-gray-light
+
+.bar-more
+  text-decoration: underline
+
+.bar-problem
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 14px 8px
+  font-size: 0.8rem
+  color: $color-3
+
+
+/*** Active bakes on the home page ***/
+
+.active-bakes
+  margin: 0.75em 0 1.25em
+  text-align: left
+  h2
+    margin: 0 0 0.4em
+    font-size: 1.25rem
+  ul
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(17em, 1fr))
+    gap: 0.6em
+    margin: 0
+    padding: 0
+    list-style: none
+
+.active-bake-card
+  display: grid
+  grid-template-columns: 1fr auto
+  gap: 0.2em 0.75em
+  height: 100%
+  padding: 0.7em 0.8em
+  box-sizing: border-box
+  color: $color-text-dark
+  text-decoration: none
+  background: #ffffff
+  border: 1px solid #b0b0ad
+  border-left: 4px solid $color-5
+  border-radius: 4px
+
+.active-bake-card:hover,
+.active-bake-card:focus-visible
+  background: $color-3
+
+.active-bake-name
+  font-weight: 700
+
+.active-bake-status
+  font-size: 0.75rem
+  font-weight: 700
+  white-space: nowrap
+  color: $color-6
+.active-bake-status.not_started
+  color: $color-brown5
+
+.active-bake-step,
+.active-bake-ends
+  grid-column: 1 / -1
+  font-size: 0.85rem
+  font-variant-numeric: tabular-nums
+
+.active-bake-ends
+  color: $color-brown5
+
+.active-bakes-limit
+  margin: 0.5em 0 0
+  font-size: 0.85rem
+  color: $color-brown5

@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Link } from "react-router"
 import PageTitle from "../PageTitle"
 import useBakeSync from "../../hooks/useBakeSync"
+import useNow from "../../hooks/useNow"
 import { bakeProgress, formatCountdown, formatLength, timelineMs } from "../../helpers/bake"
 import { downloadIcs } from "../../helpers/ics"
 import { formatClockInZone, formatInZone, formatStepTimeInZone } from "../../helpers/zoned"
 import "../../styles/bake-view.sass"
-
-const TICK_MS = 10 * 1000
-
-
-// The current time, updated every few seconds for countdowns and progress
-function useNow() {
-    const [ now, setNow ] = useState(() => Date.now())
-    useEffect(() => {
-        const id = setInterval(() => setNow(Date.now()), TICK_MS)
-        return () => clearInterval(id)
-    }, [])
-    return now
-}
-
 
 function statusLine(bake, progress) {
     const zone = bake.time_zone
