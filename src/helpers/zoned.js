@@ -84,3 +84,10 @@ export function formatStepTimeInZone(ms, zone) {
     const wall = wallFields(ms, zone)
     return `${DAYS[wall.weekday]} ${pad(wall.hour)}:${pad(wall.minute)}`
 }
+
+
+// "08:35" in `zone`
+export function formatClockInZone(ms, zone) {
+    const wall = wallFields(ms, zone)
+    return `${pad(wall.hour)}:${pad(wall.minute)}`
+}

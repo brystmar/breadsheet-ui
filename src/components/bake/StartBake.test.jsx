@@ -147,7 +147,7 @@ describe("Start bake", () => {
         expect(downloads).toHaveLength(1)
         expect(await downloads[0].text()).toContain("UID:b4k3x9-1@breadsheet.com")
         expect(await screen.findByRole("heading", { name: "Country Loaf" })).toBeInTheDocument()
-        expect(screen.getByRole("button", { name: "Export again" })).toBeInTheDocument()
+        expect(screen.getByRole("button", { name: "Export again (.ics)" })).toBeInTheDocument()
     })
 
     test("can skip the ICS download", async () => {

@@ -1,10 +1,9 @@
 @use "variables" as *
 
-// Start bake (breadsheet-ui#32) and the placeholder bake page
+// Start bake (breadsheet-ui#32)
 
 
-.start-bake,
-.bake-page
+.start-bake
   max-width: 34em
   margin: 0 auto
   text-align: left
@@ -172,41 +171,3 @@
 
 .alert-tip.shown
   display: block
-
-
-/*** Bake page (placeholder until breadsheet-ui#33) ***/
-
-.bake-zone
-  color: $color-brown5
-
-.bake-timeline
-  margin: 0.75em 0
-  padding: 0
-  list-style: none
-  li
-    display: grid
-    grid-template-columns: 7.5em 1fr
-    gap: 0.75em
-    padding: 0.35em 0.4em
-    border-bottom: 1px solid $color-gray
-  li.done
-    color: $color-brown5
-  li.skipped
-    color: #6f6f6c
-    .bake-timeline-text
-      text-decoration: line-through
-
-.bake-timeline-time
-  font-variant-numeric: tabular-nums
-  white-space: nowrap
-
-.bake-export
-  display: flex
-  flex-wrap: wrap
-  align-items: center
-  gap: 0.5em 1em
-  margin: 0.75em 0
-  .btn
-    width: auto
-    padding: 0.5em 1em
-    font: inherit

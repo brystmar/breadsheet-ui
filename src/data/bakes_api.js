@@ -24,3 +24,38 @@ export function newIdempotencyKey() {
     if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID()
     return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`
 }
+
+
+const JSON_POST = { method: "POST", headers: { "Content-Type": "application/json" } }
+
+// Checks off a step at `completedAt` (ISO); first write wins, so retries are safe. data is { bake }.
+export function completeStep(bakeId, position, completedAt) {
+    return apiCall(`${breadsheetApis.bakes.all}/${bakeId}/steps/${position}/complete`,
+                   { ...JSON_POST, body: JSON.stringify({ completed_at: completedAt }) })
+}
+
+
+// Skips a step at `skippedAt` (ISO); first write wins. data is { bake }.
+export function skipStep(bakeId, position, skippedAt) {
+    return apiCall(`${breadsheetApis.bakes.all}/${bakeId}/steps/${position}/skip`,
+                   { ...JSON_POST, body: JSON.stringify({ skipped_at: skippedAt }) })
+}
+
+
+// Finishes a bake now, checking off any steps left; data is { bake }
+export function completeBake(bakeId, completedAt) {
+    return apiCall(`${breadsheetApis.bakes.all}/${bakeId}/complete`,
+                   { ...JSON_POST, body: JSON.stringify({ completed_at: completedAt }) })
+}
+
+
+// Ends a bake without finishing it; data is { bake }
+export function cancelBake(bakeId) {
+    return apiCall(`${breadsheetApis.bakes.all}/${bakeId}/cancel`, { ...JSON_POST, body: "{}" })
+}
+
+
+// One of the signed-in user's bakes by internal id; data is { bake }
+export function getBake(bakeId) {
+    return apiCall(`${breadsheetApis.bakes.all}/${bakeId}`)
+}
