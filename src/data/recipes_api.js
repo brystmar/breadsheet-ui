@@ -6,9 +6,26 @@ import { suffixFromRecipePath } from "../helpers/recipe_paths"
 const JSON_HEADERS = { "Content-Type": "application/json" }
 
 
-// Defaults plus the signed-in user's personal recipes; data is { recipes }
-export function listRecipes() {
-    return apiCall(breadsheetApis.recipesV2.all)
+// "?q=rye&category=bread", leaving out what's blank
+function listQuery({ q = "", category = "" } = {}) {
+    const params = new URLSearchParams()
+    if (q.trim()) params.set("q", q.trim())
+    if (category) params.set("category", category)
+    const query = params.toString()
+    return query ? `?${query}` : ""
+}
+
+
+// Defaults plus the signed-in user's personal recipes (drafts included), optionally filtered by name
+// and category; data is { recipes }
+export function listRecipes(filters) {
+    return apiCall(`${breadsheetApis.recipesV2.all}${listQuery(filters)}`)
+}
+
+
+// Published community recipes for everyone, newest first, optionally filtered; data is { recipes }
+export function listCommunityRecipes(filters) {
+    return apiCall(`${breadsheetApis.recipesV2.community}${listQuery(filters)}`)
 }
 
 

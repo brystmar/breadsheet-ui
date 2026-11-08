@@ -1,0 +1,138 @@
+@use "variables" as *
+
+// My recipes and the community library (breadsheet-ui#39)
+
+
+.recipe-lists
+  text-align: left
+  h2
+    margin: 1em 0 0.3em
+    font-size: 1.2rem
+
+.recipe-lists-intro
+  margin: 0 0 0.75em
+  font-size: 0.9rem
+  color: $color-brown5
+
+.recipe-lists-toolbar
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: space-between
+  gap: 0.5em 1em
+  margin: 0.5em 0
+
+.recipe-lists-links
+  display: flex
+  gap: 1em
+  font-weight: 700
+
+.recipe-filters
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 0.5em
+
+.recipe-search
+  width: 16em
+  max-width: 100%
+  min-height: 2.4em
+  padding: 0 0.6em
+  font: inherit
+  box-sizing: border-box
+  border: 1px solid $color-border
+  border-radius: 3px
+
+.recipe-category-filter
+  display: flex
+  button
+    min-height: 2.4em
+    padding: 0 0.9em
+    font: inherit
+    font-size: 0.875rem
+    color: $color-text-dark
+    background: $color-gray-light
+    border: 1px solid $color-border
+    cursor: pointer
+  button + button
+    border-left: 0
+  button:first-child
+    border-radius: 3px 0 0 3px
+  button:last-child
+    border-radius: 0 3px 3px 0
+  button[aria-pressed="true"]
+    font-weight: 700
+    color: $color-text-light
+    background: $color-brown5
+
+.recipe-lists-empty,
+.recipe-lists-error
+  margin: 0.3em 0
+  font-size: 0.9rem
+.recipe-lists-empty
+  color: $color-brown5
+.recipe-lists-error
+  color: $color-danger
+
+.recipe-list
+  margin: 0
+  padding: 0
+  list-style: none
+
+.recipe-row
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 0.5em 1em
+  padding: 0.5em 0.4em
+  border-bottom: 1px solid $color-gray
+.recipe-row:nth-child(odd)
+  background: $color-gray-light
+
+.recipe-row-main
+  display: flex
+  flex-wrap: wrap
+  align-items: baseline
+  gap: 0.15em 0.5em
+  min-width: 0
+
+.recipe-row-name
+  font-weight: 700
+
+.recipe-row-details
+  flex-basis: 100%
+  font-size: 0.8rem
+  color: $color-brown5
+
+.recipe-badge
+  padding: 0 0.4em
+  font-size: 0.7rem
+  font-weight: 700
+  text-transform: uppercase
+  letter-spacing: 0.04em
+  border-radius: 3px
+.recipe-badge.draft
+  color: $color-brown5
+  border: 1px dashed $color-border
+.recipe-badge.published,
+.recipe-badge.yours
+  color: $color-6
+  background: $color-3
+  border: 1px solid $color-4
+
+.recipe-row-action
+  flex-shrink: 0
+
+.recipe-lists .make-it-mine
+  display: inline-block
+  width: auto
+  padding: 0.35em 0.8em
+  font: inherit
+  font-size: 0.85rem
+  white-space: nowrap
+  text-decoration: none
+
+.make-it-mine-error
+  display: block
+  font-size: 0.75rem
+  color: $color-danger
