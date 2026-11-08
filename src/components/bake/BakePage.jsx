@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Link } from "react-router"
 import PageTitle from "../PageTitle"
 import useBakeSync from "../../hooks/useBakeSync"
+import { recordIcsExport } from "../../data/bakes_api"
 import useNow from "../../hooks/useNow"
 import useStepNotifications from "../../hooks/useStepNotifications"
 import { bakeProgress, formatCountdown, formatLength, timelineMs } from "../../helpers/bake"
@@ -198,7 +199,7 @@ export default function BakePage({ bake: initialBake, offline = false }) {
                         </div>
                         <NotificationSwitch notifications={notifications} running={running} />
                         <div className="bake-export">
-                            <button type="button" className="btn btn-default" onClick={() => downloadIcs(bake)}>Export again (.ics)</button>
+                            <button type="button" className="btn btn-default" onClick={() => { downloadIcs(bake); recordIcsExport(bake) }}>Export again (.ics)</button>
                             <p className="bake-hint">Calendar events do not update after export.</p>
                         </div>
                     </section>

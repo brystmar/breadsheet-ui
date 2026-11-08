@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router"
 import DatePicker from "react-datepicker"
 import PageTitle from "../PageTitle"
 import useSession from "../../hooks/useSession"
-import { newIdempotencyKey, startBake } from "../../data/bakes_api"
+import { newIdempotencyKey, recordIcsExport, startBake } from "../../data/bakes_api"
 import { effectiveWait, nextQuarterHour, planStep, stepTimes } from "../../helpers/plan"
 import { downloadIcs } from "../../helpers/ics"
 import { browserTimeZone, formatInZone, instantToWallDate, timeZoneOptions, wallTimeToInstant } from "../../helpers/zoned"
@@ -104,7 +104,10 @@ export default function StartBakePage({ recipe }) {
             return
         }
         const { bake } = result.data
-        if (exportIcs) downloadIcs(bake)
+        if (exportIcs) {
+            downloadIcs(bake)
+            recordIcsExport(bake)
+        }
         navigate(bake.path)
     }
 

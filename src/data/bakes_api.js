@@ -65,3 +65,15 @@ export function getBake(bakeId) {
 export function listActiveBakes() {
     return apiCall(breadsheetApis.bakes.all)
 }
+
+
+// Records that a bake's schedule was downloaded as calendar events, for usage metrics (breadsheet#34).
+// The export happens entirely in the browser, so this is the only way the server hears of it. Best effort:
+// a failure is ignored and never gets in the baker's way.
+export function recordIcsExport(bake) {
+    return apiCall(breadsheetApis.events, {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ type: "ics_exported", bake_id: bake.id })
+    }).catch(() => null)
+}
