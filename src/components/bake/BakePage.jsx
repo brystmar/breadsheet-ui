@@ -3,10 +3,32 @@ import { Link } from "react-router"
 import PageTitle from "../PageTitle"
 import useBakeSync from "../../hooks/useBakeSync"
 import useNow from "../../hooks/useNow"
+import useStepNotifications from "../../hooks/useStepNotifications"
 import { bakeProgress, formatCountdown, formatLength, timelineMs } from "../../helpers/bake"
 import { downloadIcs } from "../../helpers/ics"
 import { formatClockInZone, formatInZone, formatStepTimeInZone } from "../../helpers/zoned"
 import "../../styles/bake-view.sass"
+
+// In-tab notifications: turn on (asking the browser), turn off, or say why they can't run
+function NotificationSwitch({ notifications, running }) {
+    const { permission, enabled, turnOn, turnOff } = notifications
+    if (permission === "unsupported" || !running) return null
+
+    return (
+        <div className="bake-notify">
+            {permission === "denied" ?
+                <p className="bake-hint">Notifications are blocked for breadsheet in this browser's settings.</p> :
+                enabled ? <>
+                    <p className="bake-hint">This tab will notify you when each step is due, while it stays open.</p>
+                    <button type="button" className="btn-link" onClick={turnOff}>Turn off</button>
+                </> : <>
+                    <button type="button" className="btn btn-default" onClick={turnOn}>Notify me in this tab</button>
+                    <p className="bake-hint">A browser notification when each step is due, while this tab stays open.</p>
+                </>}
+        </div>
+    )
+}
+
 
 function statusLine(bake, progress) {
     const zone = bake.time_zone
@@ -45,6 +67,7 @@ function timelineMark(step, index, bake, progress) {
 export default function BakePage({ bake: initialBake, offline = false }) {
     const sync = useBakeSync(initialBake)
     const { bake } = sync
+    const notifications = useStepNotifications(bake)
     const now = useNow()
     const [ confirm, setConfirm ] = useState(null)
     const [ tip, setTip ] = useState(null)
@@ -173,6 +196,7 @@ export default function BakePage({ bake: initialBake, offline = false }) {
                                 </span>
                             </div>
                         </div>
+                        <NotificationSwitch notifications={notifications} running={running} />
                         <div className="bake-export">
                             <button type="button" className="btn btn-default" onClick={() => downloadIcs(bake)}>Export again (.ics)</button>
                             <p className="bake-hint">Calendar events do not update after export.</p>
