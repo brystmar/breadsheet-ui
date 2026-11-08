@@ -11,6 +11,14 @@ const KEY = "AbCdEfGhIjKlMnOpQrStUv"
 const USER = { id: "01a1-user", username: "Baker_1", created_at: "2026-11-05T00:00:00+00:00" }
 
 
+// Unlisted routes: username checks answer "available" in the real shape; anything else gets an empty list
+function defaultRoute(method, path) {
+    const checked = path.match(/^\/api\/v2\/usernames\/(.+)$/)
+    if (method === "GET" && checked) return [ 200, { username: decodeURIComponent(checked[1]), available: true } ]
+    return [ 200, { data: [] } ]
+}
+
+
 // A fake backend: routes by method and path, records every call
 function fakeBackend(routes) {
     const calls = []
@@ -18,7 +26,7 @@ function fakeBackend(routes) {
         const method = options.method || "GET"
         const path = new URL(url, "http://test").pathname
         calls.push({ method, path, body: options.body, href: window.location.href })
-        const [ status, body, headers = {} ] = routes[`${method} ${path}`] || [ 200, { data: [] } ]
+        const [ status, body, headers = {} ] = routes[`${method} ${path}`] || defaultRoute(method, path)
         return {
             status,
             ok:      status >= 200 && status < 300,
@@ -198,7 +206,85 @@ describe("registration", () => {
         await userEvent.type(await screen.findByLabelText("Username"), "Baker_1")
         await userEvent.click(screen.getByRole("button", { name: "Register" }))
 
-        expect(await screen.findByRole("alert")).toHaveTextContent("That username is taken")
+        // Taken between the check and the click: the answer moves to the availability line
+        expect(await screen.findByText("That username is taken. Please pick another.")).toHaveClass("identity-error")
+        expect(screen.getByRole("button", { name: "Register" })).toBeDisabled()
+    })
+})
+
+
+// breadsheet-ui#62: the server says whether a name is available before Register
+describe("username availability", () => {
+    const TAKEN = { username: "BreadHead", available: false, code: "username_taken",
+                    message: "That username is taken. Please pick another." }
+
+    async function setUp(routes = {}) {
+        const calls = fakeBackend({ "GET /api/v2/session": [ 401, { code: "not_signed_in" } ], ...routes })
+        renderApp("/register")
+        const input = await screen.findByLabelText("Username")
+        const checks = () => calls.filter((call) => call.path.startsWith("/api/v2/usernames/")).map((call) => call.path)
+        return { input, checks }
+    }
+
+    test("a pause in typing checks the name once, and shows it's available", async () => {
+        const { input, checks } = await setUp()
+        await userEvent.type(input, "Baker_1")
+        expect(await screen.findByText("✓ Available")).toBeInTheDocument()
+        expect(checks()).toEqual([ "/api/v2/usernames/Baker_1" ])
+        expect(screen.getByRole("button", { name: "Register" })).toBeEnabled()
+    })
+
+    test("a taken name shows the server's message and disables Register", async () => {
+        const { input } = await setUp({ "GET /api/v2/usernames/BreadHead": [ 200, TAKEN ] })
+        await userEvent.type(input, "BreadHead")
+        expect(await screen.findByText(TAKEN.message)).toHaveClass("identity-error")
+        expect(input).toHaveAttribute("aria-invalid", "true")
+        expect(screen.getByRole("button", { name: "Register" })).toBeDisabled()
+
+        // Changing the name clears it
+        await userEvent.type(input, "2")
+        expect(screen.queryByText(TAKEN.message)).not.toBeInTheDocument()
+        expect(await screen.findByText("✓ Available")).toBeInTheDocument()
+        expect(screen.getByRole("button", { name: "Register" })).toBeEnabled()
+    })
+
+    test("leaving the field checks right away", async () => {
+        const { input, checks } = await setUp()
+        await userEvent.type(input, "Baker_1")
+        await userEvent.tab()
+        expect(checks()).toEqual([ "/api/v2/usernames/Baker_1" ])  // before the typing pause
+        expect(await screen.findByText("✓ Available")).toBeInTheDocument()
+    })
+
+    test("names that fail the local rules or use test- are never sent", async () => {
+        const { input, checks } = await setUp()
+        await userEvent.type(input, "9x")
+        await userEvent.tab()
+        await userEvent.clear(input)
+        await userEvent.type(input, "test-baker")
+        await userEvent.tab()
+        await new Promise((resolve) => setTimeout(resolve, 700))
+        expect(checks()).toEqual([])
+    })
+
+    test("a failed check doesn't block Register", async () => {
+        const { input } = await setUp({ "GET /api/v2/usernames/Baker_1": [ 429, { code: "rate_limited", message: "Wait." }, { "Retry-After": "30" } ] })
+        await userEvent.type(input, "Baker_1")
+        await userEvent.tab()
+        await waitFor(() => expect(screen.queryByText("Checking…")).not.toBeInTheDocument())
+        expect(screen.queryByText("✓ Available")).not.toBeInTheDocument()
+        expect(screen.getByRole("button", { name: "Register" })).toBeEnabled()
+    })
+
+    test("each name is checked once, even when it comes back", async () => {
+        const { input, checks } = await setUp()
+        await userEvent.type(input, "Baker_1")
+        await screen.findByText("✓ Available")
+        await userEvent.type(input, "{Backspace}")
+        await screen.findByText("✓ Available")
+        await userEvent.type(input, "1")
+        expect(screen.getByText("✓ Available")).toBeInTheDocument()
+        expect(checks()).toEqual([ "/api/v2/usernames/Baker_1", "/api/v2/usernames/Baker_" ])
     })
 })
 
