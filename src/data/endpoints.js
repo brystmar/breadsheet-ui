@@ -18,6 +18,7 @@ export const breadsheetApis = {
         all:      `${import.meta.env.VITE_BACKEND_URL}/api/v2/bakes`,
         bySuffix: `${import.meta.env.VITE_BACKEND_URL}/api/v2/bakes/by-suffix`
     },
+    events: `${import.meta.env.VITE_BACKEND_URL}/api/v2/events`,
     users:`${import.meta.env.VITE_BACKEND_URL}/api/v2/users`,
     session: `${import.meta.env.VITE_BACKEND_URL}/api/v2/session`
 }

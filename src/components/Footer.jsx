@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 import BreadsheetLogo from "./BreadsheetLogo";
 import FooterFeatureLevel from "./FooterFeatureLevel";
 
@@ -22,6 +23,7 @@ export default function Footer() {
             >
                 <BreadsheetLogo />
             </a>
+            <Link to="/privacy" className="footer-link footer-privacy">Privacy</Link>
 
             <FooterFeatureLevel />
         </footer>

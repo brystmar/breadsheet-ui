@@ -18,6 +18,7 @@ import ConvertTextPageContainer from "./components/ConvertTextPageContainer";
 import FormRegister from "./components/identity/FormRegister";
 import FormSignin from "./components/identity/FormSignin";
 import KeyLink from "./components/identity/KeyLink";
+import PrivacyPage from "./components/PrivacyPage";
 import Profile from "./components/identity/Profile";
 import useFeatureLevel from "./hooks/useFeatureLevel";
 import "react-datepicker/dist/react-datepicker.css";
@@ -120,6 +121,9 @@ export default function App() {
                     <Routes>
                         {/* Key links sign in at every feature level: a new device starts at the default */}
                         <Route path="/k" element={<KeyLink />} />
+
+                        {/* What breadsheet collects, at every feature level (breadsheet#34) */}
+                        <Route path="/privacy" element={<PrivacyPage />} />
 
                         {/* Identity screens (M2). At M1 these paths fall through to the recipe route, as before. */}
                         {atLeast("m2") && <Route path="/register" element={<FormRegister />} />}

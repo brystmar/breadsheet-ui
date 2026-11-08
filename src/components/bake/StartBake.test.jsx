@@ -146,13 +146,16 @@ describe("Start bake", () => {
 
         expect(downloads).toHaveLength(1)
         expect(await downloads[0].text()).toContain("UID:b4k3x9-1@breadsheet.com")
+        // The server hears about the export, for usage metrics
+        await waitFor(() => expect(calls.find(({ method, path }) => method === "POST" && path === "/api/v2/events")?.body)
+            .toEqual({ type: "ics_exported", bake_id: "b1" }))
         expect(await screen.findByRole("heading", { name: "Country Loaf" })).toBeInTheDocument()
         expect(screen.getByRole("button", { name: "Export again (.ics)" })).toBeInTheDocument()
     })
 
     test("can skip the ICS download", async () => {
         const user = userEvent.setup()
-        fakeBackend(signedInRoutes())
+        const calls = fakeBackend(signedInRoutes())
         renderAt("/recipes/country-loaf/start")
 
         await user.click(await screen.findByRole("checkbox", { name: "Export calendar events as ICS" }))
@@ -160,6 +163,7 @@ describe("Start bake", () => {
         await user.click(screen.getByRole("button", { name: "Start bake" }))
         await waitFor(() => expect(screen.getByTestId("path")).toHaveTextContent("/bakes/b4k3x9"))
         expect(downloads).toHaveLength(0)
+        expect(calls.some(({ path }) => path === "/api/v2/events")).toBe(false)
     })
 
     test("can begin partway through", async () => {

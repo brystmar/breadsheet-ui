@@ -249,3 +249,22 @@ describe("the bake view", () => {
         expect(screen.getByRole("button", { name: "Export again (.ics)" })).toBeInTheDocument()
     })
 })
+
+
+describe("Export again", () => {
+    test("downloads the schedule and tells the server, for usage metrics", async () => {
+        const user = userEvent.setup()
+        const downloads = []
+        vi.stubGlobal("URL", Object.assign(URL, { createObjectURL: vi.fn((blob) => { downloads.push(blob); return "blob:ics" }),
+                                                  revokeObjectURL: vi.fn() }))
+        const click = vi.spyOn(HTMLAnchorElement.prototype, "click").mockImplementation(() => {})
+        const calls = fakeBackend(routesFor(runningBake(), { "POST /api/v2/events": [ 204, null ] }))
+        renderBake()
+
+        await user.click(await screen.findByRole("button", { name: "Export again (.ics)" }))
+        expect(downloads).toHaveLength(1)
+        await waitFor(() => expect(posts(calls).map(({ path, body }) => [ path, body ]))
+            .toEqual([ [ "/api/v2/events", { type: "ics_exported", bake_id: "bake-1" } ] ]))
+        click.mockRestore()
+    })
+})
