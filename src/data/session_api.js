@@ -1,4 +1,4 @@
-// Registration and browser sessions (/api/v2/users and /api/v2/session).
+// Registration, username checks, and browser sessions (/api/v2/users, /api/v2/usernames, /api/v2/session).
 // Every call resolves to { ok, status, data } on success or { ok: false, status, code, message } on
 // failure, using the API's error codes; network failures become code "network_error".
 // Never log what these return: registration responses contain the user's key.
@@ -15,6 +15,13 @@ export function signUp(username) {
         headers: JSON_HEADERS,
         body:    JSON.stringify({ username })
     })
+}
+
+
+// Whether signup would accept this username right now (breadsheet#83); data is
+// { username, available: true } or { username, available: false, code, message }
+export function checkUsername(username) {
+    return call(`${breadsheetApis.usernames}/${encodeURIComponent(username)}`)
 }
 
 

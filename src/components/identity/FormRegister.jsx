@@ -1,10 +1,14 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router"
 import SaveKey from "./SaveKey"
 import useSession from "../../hooks/useSession"
-import { signUp } from "../../data/session_api"
+import { checkUsername, signUp } from "../../data/session_api"
 import { TEST_USERNAME_PREFIX, describeWait, usernameChecks, usernameHasTestPrefix, usernameIsValid }
     from "../../helpers/identity"
+
+
+// How long typing must pause before the username is checked with the server
+export const CHECK_DELAY_MS = 500
 
 
 // /register: pick a username, then save the key (shown once)
@@ -22,10 +26,43 @@ export default function FormRegister() {
     const checks = usernameChecks(username)
     const valid = usernameIsValid(username)
     const testPrefix = usernameHasTestPrefix(username)
+    const name = username.trim()
+
+    // Server answers per name (breadsheet-ui#62): { status: "checking" | "available" | "unavailable", message }.
+    // A failed check leaves no answer, so it never blocks: signup has the final say.
+    const [ answers, setAnswers ] = useState({})
+    const answer = valid ? answers[name] : undefined
+
+    async function check(candidate) {
+        if (answers[candidate]) return
+        setAnswers((known) => ({ ...known, [candidate]: { status: "checking" } }))
+        const result = await checkUsername(candidate)
+        setAnswers((known) => {
+            const next = { ...known }
+            if (result.ok && result.data?.available === true) next[candidate] = { status: "available" }
+            else if (result.ok && result.data?.available === false) {
+                next[candidate] = { status: "unavailable", message: result.data.message }
+            } else delete next[candidate]
+            return next
+        })
+    }
+
+    // Check once typing pauses, but only names that already pass the local rules
+    useEffect(() => {
+        if (!valid || answers[name]) return
+        const timer = setTimeout(() => check(name), CHECK_DELAY_MS)
+        return () => clearTimeout(timer)
+    }, [ name, valid ])  // eslint-disable-line react-hooks/exhaustive-deps
+
+    function handleBlur() {
+        if (valid) check(name)
+    }
+
+    const unavailable = answer?.status === "unavailable"
 
     async function handleSubmit(event) {
         event.preventDefault()
-        if (!valid || submitting) return
+        if (!valid || unavailable || submitting) return
 
         setSubmitting(true)
         setError(null)
@@ -37,6 +74,11 @@ export default function FormRegister() {
             return
         }
 
+        if (result.code === "username_taken" || result.code === "username_invalid") {
+            // Taken since the check (or never checked): show it where the check's answer goes
+            setAnswers((known) => ({ ...known, [username.trim()]: { status: "unavailable", message: result.message } }))
+            return
+        }
         setError(result.code === "rate_limited"
             ? `Too many new accounts from this network. Try again in ${describeWait(result.retryAfter)}.`
             : result.message)
@@ -71,8 +113,9 @@ export default function FormRegister() {
                        spellCheck={false}
                        maxLength={30}
                        aria-describedby={testPrefix ? "register-username-checks register-username-reserved"
-                                                    : "register-username-checks"}
-                       aria-invalid={testPrefix || undefined}
+                                                    : "register-username-checks register-username-availability"}
+                       aria-invalid={testPrefix || unavailable || undefined}
+                       onBlur={handleBlur}
                        onChange={(event) => setUsername(event.target.value)} />
 
                 {/* Each rule turns from red to green as it's met */}
@@ -92,9 +135,16 @@ export default function FormRegister() {
                     </p>
                 )}
 
+                {/* The server's answer for this exact name (breadsheet-ui#62) */}
+                <p id="register-username-availability" className="username-availability" aria-live="polite">
+                    {answer?.status === "checking" && <span className="identity-hint">Checking…</span>}
+                    {answer?.status === "available" && <span className="available">✓ Available</span>}
+                    {unavailable && <span className="identity-error">{answer.message}</span>}
+                </p>
+
                 {error && <p className="identity-error" role="alert">{error}</p>}
 
-                <button type="submit" className="btn btn-primary" disabled={!valid || submitting}>
+                <button type="submit" className="btn btn-primary" disabled={!valid || unavailable || submitting}>
                     {submitting ? "Registering…" : "Register"}
                 </button>
             </form>
