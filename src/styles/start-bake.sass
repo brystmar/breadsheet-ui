@@ -1,0 +1,212 @@
+@use "variables" as *
+
+// Start bake (breadsheet-ui#32) and the placeholder bake page
+
+
+.start-bake,
+.bake-page
+  max-width: 34em
+  margin: 0 auto
+  text-align: left
+
+.start-bake-back
+  margin: 0.5em 0 0
+  font-size: 0.9rem
+
+.start-bake-recipe
+  margin: 0 0 0.75em
+  font-weight: 700
+
+.start-bake-card
+  margin: 0 0 0.9em
+  padding: 0.75em 0.9em
+  background: #ffffff
+  border: 1px solid #b0b0ad
+  border-radius: 4px
+  h3
+    margin: 0 0 0.5em
+    font-size: 1rem
+    font-weight: 700
+  p, ul
+    margin: 0.25em 0
+  li
+    margin: 0.2em 0
+
+.start-bake-prereqs
+  background: $color-3
+  border-color: $color-4
+
+.start-bake-anchor
+  display: flex
+  margin-bottom: 0.6em
+  button
+    flex: 1
+    min-height: 44px
+    font: inherit
+    color: $color-text-dark
+    background: $color-gray-light
+    border: 1px solid $color-border
+    cursor: pointer
+  button:first-child
+    border-radius: 3px 0 0 3px
+  button:last-child
+    border-left: 0
+    border-radius: 0 3px 3px 0
+  button[aria-pressed="true"]
+    font-weight: 700
+    color: $color-text-light
+    background: $color-brown5
+
+.start-bake-label
+  display: block
+  margin: 0.5em 0 0.2em
+  font-size: 0.875rem
+  color: $color-brown5
+
+.start-bake-input
+  width: 100%
+  min-height: 44px
+  padding: 0 0.6em
+  font: inherit
+  font-variant-numeric: tabular-nums
+  background: #ffffff
+  border: 1px solid $color-border
+  border-radius: 3px
+  box-sizing: border-box
+
+.start-bake .react-datepicker-wrapper
+  display: block
+  width: 100%
+
+.start-bake-summary
+  margin: 0.6em 0 0.25em
+  font-size: 0.9rem
+  font-variant-numeric: tabular-nums
+
+.start-bake-hint
+  margin: 0.4em 0
+  font-size: 0.8rem
+  color: $color-brown5
+
+.start-bake-error
+  margin: 0.5em 0
+  font-size: 0.9rem
+  color: $color-danger
+
+.start-bake-signin
+  margin: 0.5em 0
+  font-size: 0.9rem
+
+.start-bake .start-bake-submit
+  width: 100%
+  min-height: 48px
+  font: inherit
+  font-weight: 700
+
+
+/*** Alert options: plain Simple, sparkly (but disabled) Fancy ***/
+
+.start-bake-alerts
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 0.6em
+
+@media (max-width: 479px)
+  .start-bake-alerts
+    grid-template-columns: 1fr
+
+.alert-option
+  position: relative
+  display: flex
+  flex-direction: column
+  gap: 0.4em
+  padding: 0.6em 0.7em
+  border-radius: 4px
+
+.alert-choice
+  display: flex
+  align-items: center
+  gap: 0.4em
+
+.alert-title
+  font-weight: 700
+
+// Deliberately plain-jane: system font, thin gray border, no color
+.alert-simple
+  font-family: system-ui, sans-serif
+  border: 1px solid #b0b0ad
+  .alert-ics
+    display: flex
+    align-items: center
+    gap: 0.4em
+    font-size: 0.875rem
+
+// A soft gradient border; dimmed and still until Home Assistant arrives (M3)
+.alert-fancy
+  border: 2px solid transparent
+  background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(135deg, #d79922, #c86dd7, #00a3d5) border-box
+  opacity: 0.55
+  cursor: not-allowed
+  .alert-desc
+    font-size: 0.8rem
+    color: $color-brown5
+
+.alert-tip
+  display: none
+  position: absolute
+  left: 0.7em
+  bottom: calc(100% + 6px)
+  z-index: 2
+  white-space: nowrap
+  padding: 3px 8px
+  font-size: 0.8rem
+  color: $color-tooltip-text
+  background: $color-tooltip-background
+  border-radius: 5px
+
+.alert-fancy:hover,
+.alert-fancy:focus-within
+  opacity: 0.7
+  .alert-tip
+    display: block
+
+.alert-tip.shown
+  display: block
+
+
+/*** Bake page (placeholder until breadsheet-ui#33) ***/
+
+.bake-zone
+  color: $color-brown5
+
+.bake-timeline
+  margin: 0.75em 0
+  padding: 0
+  list-style: none
+  li
+    display: grid
+    grid-template-columns: 7.5em 1fr
+    gap: 0.75em
+    padding: 0.35em 0.4em
+    border-bottom: 1px solid $color-gray
+  li.done
+    color: $color-brown5
+  li.skipped
+    color: #6f6f6c
+    .bake-timeline-text
+      text-decoration: line-through
+
+.bake-timeline-time
+  font-variant-numeric: tabular-nums
+  white-space: nowrap
+
+.bake-export
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 0.5em 1em
+  margin: 0.75em 0
+  .btn
+    width: auto
+    padding: 0.5em 1em
+    font: inherit

@@ -13,6 +13,10 @@ export const breadsheetApis = {
         bySlug:   `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes/by-slug`,
         bySuffix: `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes/by-suffix`
     },
-    users: `${import.meta.env.VITE_BACKEND_URL}/api/v2/users`,
+    bakes: {
+        all:      `${import.meta.env.VITE_BACKEND_URL}/api/v2/bakes`,
+        bySuffix: `${import.meta.env.VITE_BACKEND_URL}/api/v2/bakes/by-suffix`
+    },
+    users:`${import.meta.env.VITE_BACKEND_URL}/api/v2/users`,
     session: `${import.meta.env.VITE_BACKEND_URL}/api/v2/session`
 }

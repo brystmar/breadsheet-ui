@@ -26,7 +26,7 @@ export default function PlanStartFinish({ solveForStart, start, finish, onToggle
                         todayButton="Today"
                         dateFormat="MMM d, yyyy HH:mm" />
 
-            {/* Room for the Start bake button (breadsheet-ui#32, part 2) */}
+            {/* Start bake, right after the date box */}
             <span className="plan-start-finish-action">{children}</span>
 
             <span className="plan-other-label">{solveForStart ? "Finish at:" : "Start at:"}</span>

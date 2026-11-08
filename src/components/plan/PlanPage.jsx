@@ -7,7 +7,7 @@ import PlanStepRow from "./PlanStepRow"
 import useRecipeSaver from "../../hooks/useRecipeSaver"
 import useSession from "../../hooks/useSession"
 import { copyRecipe } from "../../data/recipes_api"
-import { nextQuarterHour, planStep, recipeBody, stepTimes } from "../../helpers/plan"
+import { effectiveWait, nextQuarterHour, planStep, recipeBody, stepTimes } from "../../helpers/plan"
 import "../../styles/plan-view.sass"
 
 
@@ -50,6 +50,16 @@ export default function PlanPage({ recipe }) {
         setSolveForStart(!solveForStart)
     }
 
+    // Opens Start bake with this plan's anchor and waits; signed-out bakers sign in first
+    function openStartBake() {
+        const startPath = `${recipe.path}/start`
+        if (sessionStatus === "signedOut") {
+            navigate("/signin", { state: { from: startPath } })
+            return
+        }
+        navigate(startPath, { state: { solveForStart, anchor, waits: steps.map(effectiveWait) } })
+    }
+
     // Copies the recipe into the user's own collection and opens the copy
     async function makeItMine() {
         setCopying(true)
@@ -77,7 +87,12 @@ export default function PlanPage({ recipe }) {
                              start={start}
                              finish={finish}
                              onToggle={toggleAnchor}
-                             onAnchorChange={setAnchor} />
+                             onAnchorChange={setAnchor}>
+                <button type="button" className="btn btn-primary plan-start-bake" onClick={openStartBake}
+                        disabled={recipe.is_draft || steps.length === 0}>
+                    Start bake
+                </button>
+            </PlanStartFinish>
 
             {/* Waits change only on the user's own recipes */}
             {!editable &&
