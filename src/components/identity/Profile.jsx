@@ -1,10 +1,11 @@
 import React from "react"
 import { Link, Navigate } from "react-router"
+import HomeAssistant from "./HomeAssistant"
 import useSession from "../../hooks/useSession"
 
 
-// /profile, opened from the username in the header: who's signed in here, and how to use Breadsheet on
-// another device. The key is never shown again after registration, so this explains the options instead.
+// /profile, opened from the username in the header: who's signed in here, how to use Breadsheet on
+// another device, and pairing Home Assistant (breadsheet-ui#29). The key is never shown again after registration, so this explains the options instead.
 export default function Profile() {
     const { user, status } = useSession()
 
@@ -28,6 +29,8 @@ export default function Profile() {
                 Each device stays signed in for a year from its last visit. Signing out on one device doesn't
                 affect the others.
             </p>
+
+            <HomeAssistant />
         </section>
     )
 }

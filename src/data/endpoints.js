@@ -21,5 +21,7 @@ export const breadsheetApis = {
     events: `${import.meta.env.VITE_BACKEND_URL}/api/v2/events`,
     users:`${import.meta.env.VITE_BACKEND_URL}/api/v2/users`,
     usernames: `${import.meta.env.VITE_BACKEND_URL}/api/v2/usernames`,
-    session: `${import.meta.env.VITE_BACKEND_URL}/api/v2/session`
+    session: `${import.meta.env.VITE_BACKEND_URL}/api/v2/session`,
+    pairingCodes: `${import.meta.env.VITE_BACKEND_URL}/api/v2/pairing-codes`,
+    connections: `${import.meta.env.VITE_BACKEND_URL}/api/v2/connections`
 }
