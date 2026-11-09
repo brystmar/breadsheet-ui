@@ -28,6 +28,8 @@
   .admin-row-meta
     font-size: 0.85rem
     color: $color-brown5
+  .admin-ok
+    color: $color-success
   .admin-tag
     margin-left: 0.5em
     padding: 0.05em 0.45em
@@ -35,3 +37,75 @@
     border-radius: 3px
     font-size: 0.75rem
     color: $color-brown5
+
+.admin-nav
+  display: flex
+  gap: 0.4em
+  margin-bottom: 0.6em
+  .admin-nav-link
+    padding: 0.2em 0.7em
+    border: 1px solid $color-border-lighter
+    border-radius: 999px
+    font-size: 0.9rem
+    text-decoration: none
+    color: inherit
+  .admin-nav-link.active
+    background: $color-gray-light
+    border-color: $color-border-darker
+    font-weight: bold
+
+.admin-page
+  .admin-filters
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 0.5em 1em
+    input[type="search"]
+      flex: 1 1 14em
+      max-width: 22em
+  .admin-user
+    align-items: center
+  // Name and details on the left, actions on the right (wrapping below on narrow screens)
+  .admin-user-main
+    flex: 1 1 20em
+    min-width: 0
+    display: flex
+    flex-wrap: wrap
+    align-items: baseline
+    gap: 0.2em 0.4em
+    .admin-row-meta
+      flex-basis: 100%
+    .admin-tag
+      margin-left: 0
+  .admin-actions,
+  .admin-rename
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 0.5em
+  .admin-rename input
+    max-width: 14em
+  .admin-confirm
+    flex-basis: 100%
+    p
+      margin: 0.3em 0 0.6em
+  .admin-danger
+    color: #ffffff
+    background: $color-danger
+    border: 1px solid $color-danger-dark
+  .admin-metric
+    margin: 1.4em 0
+    h3
+      margin: 0
+  .admin-table-scroll
+    overflow-x: auto
+  .admin-table
+    border-collapse: collapse
+    font-size: 0.9rem
+    th,
+    td
+      padding: 0.25em 0.8em 0.25em 0
+      text-align: left
+      border-bottom: 1px solid $color-gray
+    td
+      font-variant-numeric: tabular-nums

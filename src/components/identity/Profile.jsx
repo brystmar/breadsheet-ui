@@ -33,7 +33,7 @@ export default function Profile() {
             {user.is_admin &&
                 <>
                     <h3 className="identity-subheading">Admin</h3>
-                    <p><Link to="/admin/recipes">Default recipes</Link>: edit, add, and archive the recipes everyone sees.</p>
+                    <p><Link to="/admin">Admin</Link>: default recipes, users, and metrics.</p>
                 </>}
 
             <HomeAssistant />

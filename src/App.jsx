@@ -23,6 +23,8 @@ import Profile from "./components/identity/Profile";
 import AdminRoute from "./components/admin/AdminRoute";
 import AdminRecipesPage from "./components/admin/AdminRecipesPage";
 import AdminRecipeEdit from "./components/admin/AdminRecipeEdit";
+import AdminUsersPage from "./components/admin/AdminUsersPage";
+import AdminMetricsPage from "./components/admin/AdminMetricsPage";
 import useFeatureLevel from "./hooks/useFeatureLevel";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles/styles.sass";
@@ -140,6 +142,8 @@ export default function App() {
                         {atM2 && <Route path="/admin/recipes" element={<AdminRoute><AdminRecipesPage /></AdminRoute>} />}
                         {atM2 && <Route path="/admin/recipes/new" element={<AdminRoute><AdminRecipeEdit /></AdminRoute>} />}
                         {atM2 && <Route path="/admin/recipes/:recipeId" element={<AdminRoute><AdminRecipeEdit /></AdminRoute>} />}
+                        {atM2 && <Route path="/admin/users" element={<AdminRoute><AdminUsersPage /></AdminRoute>} />}
+                        {atM2 && <Route path="/admin/metrics" element={<AdminRoute><AdminMetricsPage /></AdminRoute>} />}
 
                         <Route path="/convert" element={
                             <>
