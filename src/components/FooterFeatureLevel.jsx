@@ -19,7 +19,7 @@ export default function FooterFeatureLevel() {
 
     return (
         <div className="footer-feature-level" role="group" aria-label="Feature level">
-            <span className="footer-feature-level-label">Features:</span>
+            <span className="sr-only">Features:</span>
 
             {FEATURE_LEVELS.map((option) => (
                 <button key={option}
