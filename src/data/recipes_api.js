@@ -89,3 +89,35 @@ export async function resolveRecipePath(recipePath) {
 
     return apiCall(`${breadsheetApis.recipesV2.bySuffix}/${suffix}`)
 }
+
+
+// One recipe by id (defaults open for anyone, archived ones included); data is { recipe }
+export function getRecipe(recipeId) {
+    return apiCall(`${breadsheetApis.recipesV2.all}/${encodeURIComponent(recipeId)}`)
+}
+
+
+// Admin (breadsheet#86, breadsheet-ui#65): every default, archived ones last; data is { recipes }
+export function listAdminRecipes() {
+    return apiCall(breadsheetApis.recipesV2.admin)
+}
+
+
+// Admin: create a default recipe (never a draft); data is { recipe }
+export function createAdminRecipe(body) {
+    return apiCall(breadsheetApis.recipesV2.admin, { method: "POST", headers: JSON_HEADERS, body: JSON.stringify(body) })
+}
+
+
+// Admin: replace a default recipe; its slug never changes; data is { recipe }
+export function updateAdminRecipe(recipeId, body) {
+    return apiCall(`${breadsheetApis.recipesV2.admin}/${recipeId}`, {
+        method: "PUT", headers: JSON_HEADERS, body: JSON.stringify(body)
+    })
+}
+
+
+// Admin: archive a default (204, no body); there's no unarchive
+export function archiveAdminRecipe(recipeId) {
+    return apiCall(`${breadsheetApis.recipesV2.admin}/${recipeId}`, { method: "DELETE" })
+}

@@ -30,6 +30,12 @@ export default function Profile() {
                 affect the others.
             </p>
 
+            {user.is_admin &&
+                <>
+                    <h3 className="identity-subheading">Admin</h3>
+                    <p><Link to="/admin/recipes">Default recipes</Link>: edit, add, and archive the recipes everyone sees.</p>
+                </>}
+
             <HomeAssistant />
         </section>
     )

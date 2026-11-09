@@ -12,6 +12,7 @@ export const breadsheetApis = {
         all:      `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes`,
         bySlug:   `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes/by-slug`,
         bySuffix: `${import.meta.env.VITE_BACKEND_URL}/api/v2/recipes/by-suffix`,
+        admin:    `${import.meta.env.VITE_BACKEND_URL}/api/v2/admin/recipes`,
         community: `${import.meta.env.VITE_BACKEND_URL}/api/v2/community/recipes`
     },
     bakes: {
