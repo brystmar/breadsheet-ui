@@ -3,7 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router"
 import PageTitle from "../PageTitle"
 import EditStepRow from "./EditStepRow"
 import useActiveBakes from "../../hooks/useActiveBakes"
-import { createRecipe, deleteRecipe, listPrepRecipes, publishRecipe, unpublishRecipe, updateRecipe } from "../../data/recipes_api"
+import { archiveAdminRecipe, createAdminRecipe, createRecipe, deleteRecipe, listPrepRecipes, publishRecipe, unpublishRecipe,
+         updateAdminRecipe, updateRecipe } from "../../data/recipes_api"
 import { blankStep, DIFFICULTIES, formBody, formProblems, recipeForm } from "../../helpers/recipe_form"
 import "../../styles/plan-view.sass"
 import "../../styles/recipe-edit.sass"
@@ -12,8 +13,8 @@ import "../../styles/recipe-edit.sass"
 // A new recipe starts as one blank step
 const NEW_RECIPE = { name: "", category: "bread", detail_level: "simple", difficulty: "Beginner", is_draft: true, steps: [] }
 
-function initialForm(recipe) {
-    const form = recipeForm(recipe || NEW_RECIPE)
+function initialForm(recipe, admin = false) {
+    const form = recipeForm(recipe || { ...NEW_RECIPE, is_draft: !admin })
     return recipe ? form : { ...form, steps: [ blankStep() ] }
 }
 
@@ -21,15 +22,17 @@ function initialForm(recipe) {
 // The recipe editor (M2, breadsheet-ui#31), for the owner of a personal recipe, or a new one when `recipe`
 // is null. Everything saves together; a failed save keeps the changes in the form and says so. New recipes
 // and drafts can be saved as a draft (incomplete is fine) or saved to go live.
-export default function RecipeEditPage({ recipe = null }) {
+// With `admin` (breadsheet-ui#65) it edits a default recipe through the admin endpoints instead: defaults are
+// never drafts and aren't published, prerequisites must be defaults, and Archive replaces Delete.
+export default function RecipeEditPage({ recipe = null, admin = false }) {
     const isNew = recipe === null
     const navigate = useNavigate()
     const location = useLocation()
     const { bakes } = useActiveBakes()
 
     const [ saved, setSaved ] = useState(recipe)
-    const [ form, setForm ] = useState(() => initialForm(recipe))
-    const [ baseline, setBaseline ] = useState(() => JSON.stringify(formBody(initialForm(recipe), recipe?.is_draft ?? true)))
+    const [ form, setForm ] = useState(() => initialForm(recipe, admin))
+    const [ baseline, setBaseline ] = useState(() => JSON.stringify(formBody(initialForm(recipe, admin), recipe?.is_draft ?? !admin)))
     const [ errors, setErrors ] = useState({})
     const [ message, setMessage ] = useState(null)
     const [ status, setStatus ] = useState(location.state?.saved ? "saved" : "idle")
@@ -38,7 +41,7 @@ export default function RecipeEditPage({ recipe = null }) {
     const [ publishing, setPublishing ] = useState(false)
     const [ publishMessage, setPublishMessage ] = useState(null)
 
-    const isDraft = saved ? saved.is_draft : true
+    const isDraft = admin ? false : saved ? saved.is_draft : true
     const recipeId = saved?.id ?? null
     const body = formBody(form, isDraft)
     const dirty = JSON.stringify(body) !== baseline
@@ -49,10 +52,11 @@ export default function RecipeEditPage({ recipe = null }) {
     useEffect(() => {
         let current = true
         listPrepRecipes().then((result) => {
-            if (current && result.ok) setPrepRecipes((result.data?.recipes ?? []).filter((prep) => prep.id !== recipeId))
+            if (current && result.ok) setPrepRecipes((result.data?.recipes ?? []).filter((prep) =>
+                prep.id !== recipeId && (!admin || prep.scope === "default")))
         })
         return () => { current = false }
-    }, [ recipeId ])
+    }, [ recipeId, admin ])
 
     // Closing the tab with unsaved changes asks first
     useEffect(() => {
@@ -101,7 +105,8 @@ export default function RecipeEditPage({ recipe = null }) {
         setStatus("saving")
         setMessage(null)
         const request = formBody(form, asDraft)
-        const result = isNew ? await createRecipe(request) : await updateRecipe(recipeId, request)
+        const result = admin ? (isNew ? await createAdminRecipe(request) : await updateAdminRecipe(recipeId, request)) :
+            isNew ? await createRecipe(request) : await updateRecipe(recipeId, request)
         if (!result.ok) {
             setStatus("idle")
             setErrors(result.fields || {})
@@ -117,7 +122,9 @@ export default function RecipeEditPage({ recipe = null }) {
         setErrors({})
         setStatus("saved")
         // A new recipe, or a rename, moves to the recipe's own URL
-        if (isNew || updated.path !== recipe.path) navigate(`${updated.path}/edit`, { replace: true, state: { saved: true } })
+        if (admin) {
+            if (isNew) navigate(`/admin/recipes/${updated.id}`, { replace: true, state: { saved: true } })
+        } else if (isNew || updated.path !== recipe.path) navigate(`${updated.path}/edit`, { replace: true, state: { saved: true } })
     }
 
     function handleSubmit(event) {
@@ -142,10 +149,10 @@ export default function RecipeEditPage({ recipe = null }) {
     }
 
     async function remove() {
-        const result = await deleteRecipe(recipeId)
+        const result = admin ? await archiveAdminRecipe(recipeId) : await deleteRecipe(recipeId)
         if (result.ok) {
             setBaseline(JSON.stringify(body))  // nothing left to lose
-            navigate("/", { replace: true })
+            navigate(admin ? "/admin/recipes" : "/", { replace: true })
         } else {
             setConfirmDelete(false)
             setMessage(result.message)
@@ -163,9 +170,14 @@ export default function RecipeEditPage({ recipe = null }) {
     return (
         <form className="recipe-edit" onSubmit={handleSubmit} noValidate>
             <p className="edit-back">
-                {isNew ? <Link to="/">← Recipes</Link> : <Link to={saved.path}>← Back to the plan</Link>}
+                {admin ? <Link to="/admin/recipes">← Default recipes</Link> :
+                    isNew ? <Link to="/">← Recipes</Link> : <Link to={saved.path}>← Back to the plan</Link>}
             </p>
-            <PageTitle title={isNew ? "New recipe" : "Edit recipe"} includeHr={true} />
+            <PageTitle title={admin ? (isNew ? "New default recipe" : "Edit default recipe") : isNew ? "New recipe" : "Edit recipe"}
+                       includeHr={true} />
+            {admin && !isNew && saved.archived_at &&
+                <p className="edit-draft">Archived: hidden from every list, but it still opens by its link.</p>}
+            {admin && !isNew && <p className="edit-hint"><Link to={saved.path}>Open its plan view</Link></p>}
             {isDraft &&
                 <p className="edit-draft">
                     {isNew ? "Save as a draft to finish it later; only you can see drafts, and they can't be baked." :
@@ -264,7 +276,7 @@ export default function RecipeEditPage({ recipe = null }) {
                 {fieldError("steps") && <span className="edit-field-error">{fieldError("steps")}</span>}
             </section>
 
-            {!isNew &&
+            {!isNew && !admin &&
                 <section className="edit-card edit-community" aria-labelledby="edit-community">
                     <h3 id="edit-community">Community</h3>
                     {saved.published_at ?
@@ -300,19 +312,23 @@ export default function RecipeEditPage({ recipe = null }) {
                 <span className="edit-status" role="status">
                     {status === "saved" && !dirty ? "Saved." : dirty ? "Unsaved changes" : ""}
                 </span>
-                {!isNew && !confirmDelete &&
-                    <button type="button" className="btn edit-delete" onClick={() => setConfirmDelete(true)}>Delete recipe</button>}
+                {!isNew && !confirmDelete && !(admin && saved.archived_at) &&
+                    <button type="button" className="btn edit-delete" onClick={() => setConfirmDelete(true)}>
+                        {admin ? "Archive recipe" : "Delete recipe"}
+                    </button>}
             </div>
 
             {confirmDelete &&
                 <div className="edit-card edit-confirm" role="alertdialog" aria-labelledby="confirm-delete">
                     <p id="confirm-delete">
-                        Delete this recipe? This can't be undone. Copies people made from it keep working.
-                        {bakesFromIt > 0 && ` Your ${bakesFromIt === 1 ? "bake" : `${bakesFromIt} bakes`} from it will keep running.`}
+                        {admin ? "Archive this default? It leaves every list, but its link, copies, and bakes keep working. " +
+                                 "There's no unarchive here." :
+                            "Delete this recipe? This can't be undone. Copies people made from it keep working."}
+                        {!admin && bakesFromIt > 0 && ` Your ${bakesFromIt === 1 ? "bake" : `${bakesFromIt} bakes`} from it will keep running.`}
                     </p>
                     <div className="edit-actions">
                         <button type="button" className="btn btn-default" onClick={() => setConfirmDelete(false)}>Keep it</button>
-                        <button type="button" className="btn edit-delete" onClick={remove}>Delete recipe</button>
+                        <button type="button" className="btn edit-delete" onClick={remove}>{admin ? "Archive recipe" : "Delete recipe"}</button>
                     </div>
                 </div>}
         </form>

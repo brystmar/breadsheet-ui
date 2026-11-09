@@ -15,8 +15,9 @@ import "../../styles/plan-view.sass"
 // each change saves to the recipe. Anyone else sees the waits grayed out, with "Make it mine" to copy it.
 export default function PlanPage({ recipe }) {
     const navigate = useNavigate()
-    const { status: sessionStatus } = useSession()
+    const { status: sessionStatus, user } = useSession()
     const editable = recipe.is_mine === true
+    const adminEditable = recipe.scope === "default" && user?.is_admin === true
 
     const [ steps, setSteps ] = useState(() => (recipe.steps || []).map(planStep))
     const [ solveForStart, setSolveForStart ] = useState(true)
@@ -85,6 +86,8 @@ export default function PlanPage({ recipe }) {
 
             {editable &&
                 <p className="plan-edit-link"><Link to={`${recipe.path}/edit`}>Edit recipe</Link></p>}
+            {adminEditable &&
+                <p className="plan-edit-link"><Link to={`/admin/recipes/${recipe.id}`}>Edit default</Link></p>}
 
             {/* Prerequisites: a reminder with links, never enforced */}
             {(recipe.prerequisites || []).length > 0 &&

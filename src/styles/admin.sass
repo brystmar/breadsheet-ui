@@ -1,0 +1,37 @@
+@use "variables" as *
+
+
+/*** Admin pages (breadsheet-ui#65) ***/
+
+.admin-page
+  max-width: 44em
+  margin: 1em auto 3.5em
+  text-align: left
+  .admin-hint
+    font-size: 0.9rem
+    color: $color-brown5
+  .admin-error
+    color: $color-danger
+  .admin-list
+    list-style: none
+    margin: 1em 0
+    padding: 0
+  .admin-row
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    gap: 0.3em 1em
+    padding: 0.55em 0
+    border-bottom: 1px solid $color-gray
+  .admin-row.archived a
+    color: $color-gray-darker
+  .admin-row-meta
+    font-size: 0.85rem
+    color: $color-brown5
+  .admin-tag
+    margin-left: 0.5em
+    padding: 0.05em 0.45em
+    border: 1px solid $color-border-lighter
+    border-radius: 3px
+    font-size: 0.75rem
+    color: $color-brown5

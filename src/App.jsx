@@ -20,6 +20,9 @@ import FormSignin from "./components/identity/FormSignin";
 import KeyLink from "./components/identity/KeyLink";
 import PrivacyPage from "./components/PrivacyPage";
 import Profile from "./components/identity/Profile";
+import AdminRoute from "./components/admin/AdminRoute";
+import AdminRecipesPage from "./components/admin/AdminRecipesPage";
+import AdminRecipeEdit from "./components/admin/AdminRecipeEdit";
 import useFeatureLevel from "./hooks/useFeatureLevel";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles/styles.sass";
@@ -131,6 +134,12 @@ export default function App() {
                         {atLeast("m2") && <Route path="/profile" element={<Profile />} />}
                         {/* The old Devices page became the profile page; keep its links working */}
                         {atLeast("m2") && <Route path="/devices" element={<Navigate to="/profile" replace />} />}
+
+                        {/* Admin (breadsheet-ui#65): signed-in admins only; everyone else goes home */}
+                        {atM2 && <Route path="/admin" element={<Navigate to="/admin/recipes" replace />} />}
+                        {atM2 && <Route path="/admin/recipes" element={<AdminRoute><AdminRecipesPage /></AdminRoute>} />}
+                        {atM2 && <Route path="/admin/recipes/new" element={<AdminRoute><AdminRecipeEdit /></AdminRoute>} />}
+                        {atM2 && <Route path="/admin/recipes/:recipeId" element={<AdminRoute><AdminRecipeEdit /></AdminRoute>} />}
 
                         <Route path="/convert" element={
                             <>
