@@ -97,3 +97,70 @@
   .save-key-qr
     flex-direction: column
     align-items: flex-start
+
+
+/*** Home Assistant on /profile (breadsheet-ui#29) ***/
+
+.home-assistant
+  margin-top: 1.6em
+  > p
+    margin: 0 0 0.7em
+  > .btn-primary
+    margin-top: 0.2em
+  .under-construction
+    margin-left: 0.5em
+    padding: 0.15em 0.55em
+    border: 1px dashed $color-brown6
+    border-radius: 0.3em
+    font-size: 0.75rem
+    font-weight: normal
+    text-transform: uppercase
+    letter-spacing: 0.05em
+    color: $color-brown6
+    background: repeating-linear-gradient(-45deg, $color-3, $color-3 6px, $color-gray-lighter 6px, $color-gray-lighter 12px)
+    vertical-align: middle
+  .pairing-success
+    color: $color-success
+    font-weight: bold
+  .pairing-code-card
+    margin: 0.8em 0
+    padding: 0.8em 1em
+    border: 1px solid $color-border
+    border-radius: 0.4em
+    background: $color-gray-lighter
+  .pairing-code
+    margin: 0 0 0.4em
+    font-family: $font-stack-mono
+    font-size: 2rem
+    letter-spacing: 0.12em
+  .pairing-actions
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 0.8em
+  .connections-heading
+    margin: 1.4em 0 0.4em
+  .connections-list
+    list-style: none
+    margin: 0
+    padding: 0
+  .connection
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    gap: 0.6em
+    padding: 0.6em 0
+    border-bottom: 1px solid $color-gray
+  .connection-details
+    display: flex
+    flex-direction: column
+  .edit-confirm
+    flex-basis: 100%
+    p
+      margin: 0 0 0.6em
+  .connection-revoke
+    color: #ffffff
+    background: $color-danger
+    border: 1px solid $color-danger-dark
+    cursor: pointer

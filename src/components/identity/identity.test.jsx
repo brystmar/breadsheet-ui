@@ -1,5 +1,5 @@
 import React from "react"
-import { render, screen, waitFor } from "@testing-library/react"
+import { render, screen, waitFor, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { MemoryRouter } from "react-router"
 import App from "../../App"
@@ -11,10 +11,12 @@ const KEY = "AbCdEfGhIjKlMnOpQrStUv"
 const USER = { id: "01a1-user", username: "Baker_1", created_at: "2026-11-05T00:00:00+00:00" }
 
 
-// Unlisted routes: username checks answer "available" in the real shape; anything else gets an empty list
+// Unlisted routes: username checks answer "available" and connections are empty, in the real shapes;
+// anything else gets an empty list. A route may be a function, for answers that change between calls.
 function defaultRoute(method, path) {
     const checked = path.match(/^\/api\/v2\/usernames\/(.+)$/)
     if (method === "GET" && checked) return [ 200, { username: decodeURIComponent(checked[1]), available: true } ]
+    if (method === "GET" && path === "/api/v2/connections") return [ 200, { connections: [] } ]
     return [ 200, { data: [] } ]
 }
 
@@ -26,7 +28,8 @@ function fakeBackend(routes) {
         const method = options.method || "GET"
         const path = new URL(url, "http://test").pathname
         calls.push({ method, path, body: options.body, href: window.location.href })
-        const [ status, body, headers = {} ] = routes[`${method} ${path}`] || defaultRoute(method, path)
+        const route = routes[`${method} ${path}`]
+        const [ status, body, headers = {} ] = (typeof route === "function" ? route() : route) || defaultRoute(method, path)
         return {
             status,
             ok:      status >= 200 && status < 300,
@@ -392,6 +395,140 @@ describe("profile (/profile)", () => {
         renderApp("/profile")
         expect(await screen.findByLabelText("Your key")).toBeInTheDocument()
         expect(screen.queryByRole("heading", { name: "Profile" })).not.toBeInTheDocument()
+    })
+})
+
+
+// breadsheet-ui#29: pairing Home Assistant and its connections, on /profile
+describe("Home Assistant on the profile", () => {
+    const SIGNED_IN = { "GET /api/v2/session": [ 200, { user: USER } ] }
+    const KITCHEN = { id: "0193-kitchen", label: "Kitchen HA", scopes: [ "recipes:read" ],
+                      created_at: "2026-11-01T18:00:00+00:00", last_used_at: "2026-11-07T09:00:00+00:00" }
+    const CABIN = { id: "0193-cabin", label: "Cabin", scopes: [ "recipes:read" ],
+                    created_at: "2026-11-02T18:00:00+00:00", last_used_at: null }
+    const inMinutes = (minutes) => new Date(Date.now() + minutes * 60_000).toISOString()
+
+    test("it's marked under construction and has an anchor for pairing links", async () => {
+        fakeBackend(SIGNED_IN)
+        renderApp("/profile")
+        const heading = await screen.findByRole("heading", { name: /Home Assistant/ })
+        expect(heading).toHaveTextContent("Under construction")
+        expect(heading.closest("section")).toHaveAttribute("id", "home-assistant")
+        expect(await screen.findByText("No Home Assistant connected yet.")).toBeInTheDocument()
+    })
+
+    test("lists connections with when they were paired and last used", async () => {
+        fakeBackend({ ...SIGNED_IN, "GET /api/v2/connections": [ 200, { connections: [ CABIN, KITCHEN ] } ] })
+        renderApp("/profile")
+        await screen.findByText("Cabin")
+        const rows = screen.getAllByRole("listitem").filter((li) => li.classList.contains("connection"))
+        expect(rows.map((li) => li.querySelector("strong").textContent)).toEqual([ "Cabin", "Kitchen HA" ])
+        expect(rows[0]).toHaveTextContent("Not used yet")
+        expect(rows[1]).toHaveTextContent(/Last used Nov \d, 2026/)
+    })
+
+    test("gets a code, shows it with a countdown, and copies it", async () => {
+        const calls = fakeBackend({ ...SIGNED_IN,
+                                    "POST /api/v2/pairing-codes": [ 201, { code: "7KQ2-M9XD", expires_at: inMinutes(10) } ] })
+        const writeText = vi.spyOn(navigator.clipboard, "writeText").mockResolvedValue()
+        renderApp("/profile")
+
+        await userEvent.click(await screen.findByRole("button", { name: "Get a pairing code" }))
+        expect(await screen.findByText("7KQ2-M9XD")).toHaveClass("pairing-code")
+        expect(screen.getByText(/Expires in (10:00|9:5\d)/)).toBeInTheDocument()
+        const post = calls.find((call) => call.method === "POST" && call.path === "/api/v2/pairing-codes")
+        expect(post).toBeTruthy()
+
+        await userEvent.click(screen.getByRole("button", { name: "Copy" }))
+        expect(writeText).toHaveBeenCalledWith("7KQ2-M9XD")
+        expect(screen.getByRole("button", { name: "Copied" })).toBeInTheDocument()
+        expect(screen.getByRole("button", { name: "Get a new code" })).toBeInTheDocument()
+    })
+
+    test("an expired code says so and offers a new one", async () => {
+        fakeBackend({ ...SIGNED_IN,
+                      "POST /api/v2/pairing-codes": [ 201, { code: "7KQ2-M9XD", expires_at: new Date(Date.now() + 1200).toISOString() } ] })
+        renderApp("/profile")
+        await userEvent.click(await screen.findByRole("button", { name: "Get a pairing code" }))
+        expect(await screen.findByText("7KQ2-M9XD")).toBeInTheDocument()
+        expect(await screen.findByText("This code expired.", {}, { timeout: 3000 })).toBeInTheDocument()
+        expect(screen.queryByText("7KQ2-M9XD")).not.toBeInTheDocument()
+        expect(screen.getByRole("button", { name: "Get a new code" })).toBeEnabled()
+    })
+
+    test("notices when Home Assistant pairs, then stops looking", async () => {
+        vi.useFakeTimers({ shouldAdvanceTime: true })
+        try {
+            let paired = false
+            const calls = fakeBackend({
+                ...SIGNED_IN,
+                "GET /api/v2/connections": () => [ 200, { connections: paired ? [ CABIN, KITCHEN ] : [ KITCHEN ] } ],
+                "POST /api/v2/pairing-codes": [ 201, { code: "7KQ2-M9XD", expires_at: inMinutes(10) } ]
+            })
+            const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
+            renderApp("/profile")
+            await screen.findByText("Kitchen HA")
+            await user.click(screen.getByRole("button", { name: "Get a pairing code" }))
+            await screen.findByText("7KQ2-M9XD")
+
+            await vi.advanceTimersByTimeAsync(5000)   // no pairing yet: the code stays
+            expect(screen.getByText("7KQ2-M9XD")).toBeInTheDocument()
+
+            paired = true
+            await vi.advanceTimersByTimeAsync(5000)
+            expect(await screen.findByText("✓ Paired with Cabin")).toBeInTheDocument()
+            expect(screen.queryByText("7KQ2-M9XD")).not.toBeInTheDocument()
+            expect(screen.getByText("Cabin")).toBeInTheDocument()
+
+            const lists = () => calls.filter((call) => call.path === "/api/v2/connections").length
+            const before = lists()
+            await vi.advanceTimersByTimeAsync(20_000)
+            expect(lists()).toBe(before)
+        } finally {
+            vi.useRealTimers()
+        }
+    })
+
+    test("revoking asks first, warns about assistants, and removes the row", async () => {
+        const calls = fakeBackend({ ...SIGNED_IN,
+                                    "GET /api/v2/connections": [ 200, { connections: [ KITCHEN ] } ],
+                                    "DELETE /api/v2/connections/0193-kitchen": [ 204, null ] })
+        renderApp("/profile")
+        await screen.findByText("Kitchen HA")
+
+        await userEvent.click(screen.getByRole("button", { name: "Revoke" }))
+        const dialog = screen.getByRole("alertdialog")
+        expect(dialog).toHaveTextContent("Revoke Kitchen HA? Home Assistant loses access right away, along with any AI assistants connected through it.")
+        await userEvent.click(screen.getByRole("button", { name: "Keep it" }))
+        expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument()
+        expect(calls.some((call) => call.method === "DELETE")).toBe(false)
+
+        await userEvent.click(screen.getByRole("button", { name: "Revoke" }))
+        await userEvent.click(within(screen.getByRole("alertdialog")).getByRole("button", { name: "Revoke" }))
+        expect(await screen.findByText("No Home Assistant connected yet.")).toBeInTheDocument()
+        expect(calls.filter((call) => call.method === "DELETE").map((call) => call.path)).toEqual([ "/api/v2/connections/0193-kitchen" ])
+    })
+
+    test("a connection already revoked elsewhere just disappears", async () => {
+        fakeBackend({ ...SIGNED_IN,
+                      "GET /api/v2/connections": [ 200, { connections: [ KITCHEN ] } ],
+                      "DELETE /api/v2/connections/0193-kitchen": [ 404, { code: "not_found", message: "Not found." } ] })
+        renderApp("/profile")
+        await userEvent.click(await screen.findByRole("button", { name: "Revoke" }))
+        await userEvent.click(within(screen.getByRole("alertdialog")).getByRole("button", { name: "Revoke" }))
+        expect(await screen.findByText("No Home Assistant connected yet.")).toBeInTheDocument()
+        expect(screen.queryByRole("alert")).not.toBeInTheDocument()
+    })
+
+    test("failures show the server's message", async () => {
+        fakeBackend({ ...SIGNED_IN,
+                      "GET /api/v2/connections": [ 503, { code: "service_unavailable", message: "Breadsheet is busy. Try again in a minute." } ],
+                      "POST /api/v2/pairing-codes": [ 401, { code: "not_signed_in", message: "Sign in to do that." } ] })
+        renderApp("/profile")
+        expect(await screen.findByText(/Breadsheet is busy/)).toBeInTheDocument()
+        expect(screen.getByRole("button", { name: "Try again" })).toBeInTheDocument()
+        await userEvent.click(screen.getByRole("button", { name: "Get a pairing code" }))
+        expect(await screen.findByText("Sign in to do that.")).toBeInTheDocument()
     })
 })
 
