@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { cancelBake, completeBake, completeStep, getBake, skipStep } from "../data/bakes_api"
+import { cancelBake, changeAlertMode, completeBake, completeStep, getBake, skipStep } from "../data/bakes_api"
 import { applyAction } from "../helpers/bake"
 
 const MAX_BACKOFF_MS = 60 * 1000
@@ -166,8 +166,17 @@ export default function useBakeSync(initialBake, { onSynced } = {}) {
         else setProblem(result.message)
     }, [ bakeId, accept ])
 
+    // Switching alerts needs the server too; returns the result so the caller can explain a refusal
+    const changeAlerts = useCallback(async (mode) => {
+        setProblem(null)
+        const result = await changeAlertMode(bakeId, mode)
+        if (mounted.current && result.ok) accept(result.data.bake)
+        return result
+    }, [ bakeId, accept ])
+
     return {
         bake,
+        changeAlerts,
         pending: queue.length > 0,
         problem,
         checkOff: (position) => record("complete", position),

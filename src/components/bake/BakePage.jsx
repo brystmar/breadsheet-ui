@@ -72,6 +72,20 @@ export default function BakePage({ bake: initialBake, offline = false }) {
     const now = useNow()
     const [ confirm, setConfirm ] = useState(null)
     const [ tip, setTip ] = useState(null)
+    const [ alertProblem, setAlertProblem ] = useState(null)  // { needsPairing } or { message }
+    const [ switchingAlerts, setSwitchingAlerts ] = useState(false)
+
+    // Simple or Fancy can change while the bake runs; Fancy needs a paired Home Assistant (breadsheet-ui#40)
+    async function switchAlerts(mode) {
+        if (mode === sync.bake.alert_mode || switchingAlerts) return
+        setAlertProblem(null)
+        setSwitchingAlerts(true)
+        const result = await sync.changeAlerts(mode)
+        setSwitchingAlerts(false)
+        if (!result.ok) {
+            setAlertProblem(result.code === "fancy_requires_ha" ? { needsPairing: true } : { message: result.message })
+        }
+    }
 
     const zone = bake.time_zone
     const running = bake.status !== "completed"
@@ -176,7 +190,8 @@ export default function BakePage({ bake: initialBake, offline = false }) {
                                  onClick={() => setTip(tip === "simple" ? null : "simple")}>
                                 <label>
                                     <input type="radio" name="bake_alert_mode" value="simple"
-                                           checked={bake.alert_mode === "simple"} readOnly disabled={!running} />
+                                           checked={bake.alert_mode === "simple"} disabled={!running || switchingAlerts}
+                                           onChange={() => switchAlerts("simple")} />
                                     Simple
                                 </label>
                                 <span id="tip-simple" role="tooltip" className={tip === "simple" ? "bake-tip shown" : "bake-tip"}>
@@ -189,14 +204,21 @@ export default function BakePage({ bake: initialBake, offline = false }) {
                                  onClick={() => setTip(tip === "fancy" ? null : "fancy")}>
                                 <label>
                                     <input type="radio" name="bake_alert_mode" value="fancy"
-                                           checked={bake.alert_mode === "fancy"} disabled readOnly />
-                                    <span aria-hidden="true">✨ </span>Fancy
+                                           checked={bake.alert_mode === "fancy"} disabled={!running || switchingAlerts}
+                                           onChange={() => switchAlerts("fancy")} />
+                                    <span aria-hidden="true" className="sparkle">✨</span> Fancy
                                 </label>
                                 <span id="tip-fancy" role="tooltip" className={tip === "fancy" ? "bake-tip shown" : "bake-tip"}>
-                                    Live Activities on your phone through Home Assistant. Coming soon!
+                                    Lock-screen updates on your phone through Home Assistant
                                 </span>
                             </div>
                         </div>
+                        {alertProblem?.needsPairing &&
+                            <p className="bake-alert-problem" role="status">
+                                Fancy alerts need Home Assistant. <Link to="/profile#home-assistant">Pair Home
+                                Assistant</Link> on your profile, then switch this bake to Fancy.
+                            </p>}
+                        {alertProblem?.message && <p className="bake-alert-problem" role="alert">{alertProblem.message}</p>}
                         <NotificationSwitch notifications={notifications} running={running} />
                         <div className="bake-export">
                             <button type="button" className="btn btn-default" onClick={() => { downloadIcs(bake); recordIcsExport(bake) }}>Export again (.ics)</button>

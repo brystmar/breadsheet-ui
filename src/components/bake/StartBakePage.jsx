@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Link, useLocation, useNavigate } from "react-router"
 import DatePicker from "react-datepicker"
 import PageTitle from "../PageTitle"
 import useSession from "../../hooks/useSession"
 import { newIdempotencyKey, recordIcsExport, startBake } from "../../data/bakes_api"
+import { listConnections } from "../../data/connections_api"
 import { effectiveWait, nextQuarterHour, planStep, stepTimes } from "../../helpers/plan"
 import { downloadIcs } from "../../helpers/ics"
 import { browserTimeZone, formatInZone, instantToWallDate, timeZoneOptions, wallTimeToInstant } from "../../helpers/zoned"
@@ -47,7 +48,9 @@ export default function StartBakePage({ recipe }) {
     const [ wall, setWall ] = useState(() => instantToWallDate(planned.anchor ?? nextQuarterHour(), ownZone))
     const [ startIndex, setStartIndex ] = useState(0)
     const [ exportIcs, setExportIcs ] = useState(true)
+    const [ alertMode, setAlertMode ] = useState("simple")
     const [ showFancyTip, setShowFancyTip ] = useState(false)
+    const [ hasHomeAssistant, setHasHomeAssistant ] = useState(null)  // null until known
     const [ submitting, setSubmitting ] = useState(false)
     const [ error, setError ] = useState(null)
 
@@ -68,7 +71,20 @@ export default function StartBakePage({ recipe }) {
 
     const signedIn = sessionStatus === "signedIn"
     const signInState = { from: location.pathname }
-    const canStart = signedIn && !recipe.is_draft && steps.length > 0 && !submitting
+
+    // Fancy alerts need a paired Home Assistant (breadsheet-ui#40). If the check fails, let the server decide.
+    useEffect(() => {
+        if (!signedIn) return
+        let current = true
+        listConnections().then((result) => {
+            const connections = result.ok ? result.data?.connections : null
+            if (current) setHasHomeAssistant(Array.isArray(connections) ? connections.length > 0 : true)
+        })
+        return () => { current = false }
+    }, [ signedIn ])
+    const needsPairing = alertMode === "fancy" && hasHomeAssistant === false
+
+    const canStart = signedIn && !recipe.is_draft && steps.length > 0 && !submitting && !needsPairing
 
     // Switching between Start at and Finish at keeps the schedule where it is
     const pickAnchor = changed((toStart) => {
@@ -89,7 +105,7 @@ export default function StartBakePage({ recipe }) {
             anchor_type:   solveForStart ? "start" : "finish",
             anchor_time:   new Date(anchor).toISOString(),
             time_zone:     zone,
-            alert_mode:    "simple",
+            alert_mode:    alertMode,
             start_at_step: steps[startIndex].position,
             ...(waits.length ? { waits } : {})
         }
@@ -100,11 +116,12 @@ export default function StartBakePage({ recipe }) {
         setSubmitting(false)
 
         if (!result.ok) {
-            setError(result.message)
+            if (result.code === "fancy_requires_ha") setHasHomeAssistant(false)  // the pairing prompt explains it
+            else setError(result.message)
             return
         }
         const { bake } = result.data
-        if (exportIcs) {
+        if (alertMode === "simple" && exportIcs) {
             downloadIcs(bake)
             recordIcsExport(bake)
         }
@@ -182,32 +199,39 @@ export default function StartBakePage({ recipe }) {
                 <div className="start-bake-alerts" role="radiogroup" aria-labelledby="start-bake-alerts">
                     <div className="alert-option alert-simple">
                         <label className="alert-choice">
-                            <input type="radio" name="alert_mode" value="simple" checked readOnly />
+                            <input type="radio" name="alert_mode" value="simple" checked={alertMode === "simple"}
+                                   onChange={() => changed(setAlertMode)("simple")} />
                             <span className="alert-title">Simple</span>
                         </label>
                         <label className="alert-ics">
-                            <input type="checkbox" checked={exportIcs}
+                            <input type="checkbox" checked={exportIcs} disabled={alertMode !== "simple"}
                                    onChange={(event) => setExportIcs(event.target.checked)} />
                             Export calendar events as ICS
                         </label>
                     </div>
 
-                    {/* Fancy needs Home Assistant (M3); until then it's shown but can't be picked */}
                     <div className="alert-option alert-fancy"
-                         tabIndex={0}
-                         aria-describedby="fancy-tip"
-                         onClick={() => setShowFancyTip(!showFancyTip)}
-                         onBlur={() => setShowFancyTip(false)}>
+                         onMouseEnter={() => setShowFancyTip(true)}
+                         onMouseLeave={() => setShowFancyTip(false)}>
                         <label className="alert-choice">
-                            <input type="radio" name="alert_mode" value="fancy" disabled />
-                            <span className="alert-title"><span aria-hidden="true">✨ </span>Fancy</span>
+                            <input type="radio" name="alert_mode" value="fancy" checked={alertMode === "fancy"}
+                                   aria-describedby="fancy-tip"
+                                   onFocus={() => setShowFancyTip(true)}
+                                   onBlur={() => setShowFancyTip(false)}
+                                   onChange={() => changed(setAlertMode)("fancy")} />
+                            <span className="alert-title"><span aria-hidden="true" className="sparkle">✨</span> Fancy</span>
                         </label>
                         <span className="alert-desc">Phone alerts through Home Assistant</span>
                         <span id="fancy-tip" role="tooltip" className={showFancyTip ? "alert-tip shown" : "alert-tip"}>
-                            Coming soon!
+                            Lock-screen updates on your phone through Home Assistant
                         </span>
                     </div>
                 </div>
+                {needsPairing &&
+                    <p className="start-bake-pair" role="status">
+                        Fancy alerts need Home Assistant. <Link to="/profile#home-assistant">Pair Home Assistant</Link> on
+                        your profile, then come back to start this bake.
+                    </p>}
             </section>
 
             {!signedIn && sessionStatus !== "loading" &&
@@ -220,7 +244,7 @@ export default function StartBakePage({ recipe }) {
             <button type="submit" className="btn btn-primary start-bake-submit" disabled={!canStart}>
                 {submitting ? "Starting…" : "Start bake"}
             </button>
-            {exportIcs &&
+            {alertMode === "simple" && exportIcs &&
                 <p className="start-bake-hint">
                     Downloads the schedule as calendar events. Calendar events do not update after export.
                 </p>}

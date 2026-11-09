@@ -48,6 +48,14 @@ export default function HomeAssistant() {
 
     useEffect(() => { load() }, [ load ])
 
+    // "Pair Home Assistant" links from the bake pages land here (/profile#home-assistant). The router doesn't
+    // scroll to fragments, so this does.
+    useEffect(() => {
+        if (window.location.hash === "#home-assistant") {
+            document.getElementById("home-assistant")?.scrollIntoView?.({ block: "start" })
+        }
+    }, [])
+
     const live = pairing !== null && now < pairing.expiresAt
 
     // The countdown
@@ -115,15 +123,12 @@ export default function HomeAssistant() {
     return (
         <section id="home-assistant" className="home-assistant" aria-labelledby="home-assistant-heading">
             <h3 id="home-assistant-heading" className="identity-subheading">
-                Home Assistant <span className="under-construction">Under construction</span>
+                Home Assistant
             </h3>
             <p>
                 Pair Home Assistant to get bake alerts on your phone. In Home Assistant, add the Breadsheet
-                integration and enter a pairing code from here.
-            </p>
-            <p className="identity-hint">
-                The Breadsheet integration for Home Assistant isn't available yet, so there's nowhere to enter a
-                pairing code. This is here early for testing.
+                integration from the Marketplace and enter a pairing code from here
+                (<a href="https://github.com/brystmar/breadsheet-hass#readme">setup guide</a>).
             </p>
 
             {pairedLabel && <p className="pairing-success" role="status">✓ Paired with {pairedLabel}</p>}
