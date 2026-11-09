@@ -12,6 +12,15 @@
   margin: 0 auto
   max-width: 1200px
   text-align: center
+  // Keeps the footer at the bottom of the window on short pages
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+  .content-container
+    flex: 1 0 auto
+  // Auto side margins would shrink-wrap a flex item, so the header keeps its full width
+  .header-container
+    width: 100%
 
 .header-container,
 .content-container,
@@ -101,23 +110,50 @@
 
 .footer-container
   font-size: 0.8rem
-  margin: 1em
+  margin: 1em 1em 0
+  padding: 0.7em 0 1em
+  border-top: 1px solid $color-gray
   cursor: default
   display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 0.4em 1em
   opacity: 0.75
-  .footer-link
-    margin-left: 0.35em
+  a
+    color: inherit
+    text-decoration: none
+  a:hover,
+  a:focus-visible
+    text-decoration: underline
+  .footer-brand
+    display: inline-flex
+    align-items: center
+    gap: 0.35em
+    font-weight: bold
   .icon-bread
-    margin-left: 0.2em
     height: 1em
+  .footer-links
+    margin-left: auto
+    display: flex
+    align-items: center
+    gap: 0.4em
+
+// Narrow screens: the same items, centered on two short lines
+@media (max-width: 569px)
+  .footer-container
+    justify-content: center
+    .footer-links
+      margin-left: 0
+    .footer-feature-level
+      padding-left: 0
+      border-left: none
 
 .footer-feature-level
-  margin-left: auto
   display: flex
   align-items: center
   gap: 0.2em
-  .footer-feature-level-label
-    margin-right: 0.15em
+  padding-left: 1em
+  border-left: 1px solid $color-gray
   .footer-feature-level-option
     font: inherit
     padding: 0 0.35em
