@@ -49,6 +49,15 @@ export function completeBake(bakeId, completedAt) {
 }
 
 
+// Changes a bake's alert mode ("simple" or "fancy"); data is { bake }. Fancy without a paired Home Assistant is
+// 409 fancy_requires_ha.
+export function changeAlertMode(bakeId, alertMode) {
+    return apiCall(`${breadsheetApis.bakes.all}/${bakeId}`,
+                   { method: "PATCH", headers: { "Content-Type": "application/json" },
+                     body: JSON.stringify({ alert_mode: alertMode }) })
+}
+
+
 // Ends a bake without finishing it; data is { bake }
 export function cancelBake(bakeId) {
     return apiCall(`${breadsheetApis.bakes.all}/${bakeId}/cancel`, { ...JSON_POST, body: "{}" })

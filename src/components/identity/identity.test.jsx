@@ -408,11 +408,12 @@ describe("Home Assistant on the profile", () => {
                     created_at: "2026-11-02T18:00:00+00:00", last_used_at: null }
     const inMinutes = (minutes) => new Date(Date.now() + minutes * 60_000).toISOString()
 
-    test("it's marked under construction and has an anchor for pairing links", async () => {
+    test("it has an anchor for pairing links and points to the setup guide", async () => {
         fakeBackend(SIGNED_IN)
         renderApp("/profile")
         const heading = await screen.findByRole("heading", { name: /Home Assistant/ })
-        expect(heading).toHaveTextContent("Under construction")
+        expect(heading).not.toHaveTextContent("Under construction")
+        expect(screen.getByRole("link", { name: "setup guide" })).toHaveAttribute("href", "https://github.com/brystmar/breadsheet-hass#readme")
         expect(heading.closest("section")).toHaveAttribute("id", "home-assistant")
         expect(await screen.findByText("No Home Assistant connected yet.")).toBeInTheDocument()
     })

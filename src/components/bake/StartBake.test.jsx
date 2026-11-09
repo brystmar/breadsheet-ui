@@ -49,12 +49,15 @@ function fakeBackend(routes) {
     return calls
 }
 
+const KITCHEN_HA = { id: "c1", label: "Kitchen", scopes: [], created_at: "2026-11-09T18:00:00+00:00", last_used_at: null }
+
 function signedInRoutes(extra = {}) {
     return {
         "GET /api/v2/session":                     [ 200, { user: USER } ],
         "GET /api/v2/recipes/by-slug/country-loaf": [ 200, { recipe: RECIPE } ],
         "POST /api/v2/bakes":                       [ 201, { bake: BAKE } ],
         "GET /api/v2/bakes/by-suffix/b4k3x9":       [ 200, { bake: BAKE } ],
+        "GET /api/v2/connections":                  [ 200, { connections: [ KITCHEN_HA ] } ],
         ...extra
     }
 }
@@ -191,15 +194,45 @@ describe("Start bake", () => {
         expect(new Date(posts(calls)[0].body.anchor_time).getUTCMinutes() % 15).toBe(0)
     })
 
-    test("Fancy is shown but can't be picked", async () => {
+    test("Fancy starts a Fancy bake when Home Assistant is paired, without a calendar download", async () => {
         const user = userEvent.setup()
-        fakeBackend(signedInRoutes())
+        const calls = fakeBackend(signedInRoutes())
         renderAt("/recipes/country-loaf/start")
 
         expect(await screen.findByRole("radio", { name: "Simple" })).toBeChecked()
-        expect(screen.getByRole("radio", { name: /Fancy/ })).toBeDisabled()
-        await user.click(screen.getByText("Phone alerts through Home Assistant"))
-        expect(screen.getByRole("tooltip")).toHaveTextContent("Coming soon!")
+        await user.hover(screen.getByText("Phone alerts through Home Assistant"))
+        expect(screen.getByRole("tooltip")).toHaveTextContent("Lock-screen updates on your phone through Home Assistant")
+        await user.click(screen.getByRole("radio", { name: /Fancy/ }))
+        expect(screen.getByRole("checkbox", { name: "Export calendar events as ICS" })).toBeDisabled()
+        await user.click(screen.getByRole("button", { name: "Start bake" }))
+
+        await waitFor(() => expect(posts(calls)).toHaveLength(1))
+        expect(posts(calls)[0].body.alert_mode).toBe("fancy")
+        expect(downloads).toEqual([])
+    })
+
+    test("Fancy without Home Assistant leads to pairing first", async () => {
+        const user = userEvent.setup()
+        const calls = fakeBackend(signedInRoutes({ "GET /api/v2/connections": [ 200, { connections: [] } ] }))
+        renderAt("/recipes/country-loaf/start")
+
+        await user.click(await screen.findByRole("radio", { name: /Fancy/ }))
+        expect(await screen.findByRole("link", { name: "Pair Home Assistant" })).toHaveAttribute("href", "/profile#home-assistant")
+        expect(screen.getByRole("button", { name: "Start bake" })).toBeDisabled()
+        await user.click(screen.getByRole("radio", { name: "Simple" }))
+        expect(screen.queryByRole("link", { name: "Pair Home Assistant" })).not.toBeInTheDocument()
+        expect(posts(calls)).toEqual([])
+    })
+
+    test("if the server says Home Assistant is needed, the pairing prompt explains it", async () => {
+        const user = userEvent.setup()
+        fakeBackend(signedInRoutes({ "POST /api/v2/bakes": [ 409, { code: "fancy_requires_ha", message: "Fancy alerts need Home Assistant." } ] }))
+        renderAt("/recipes/country-loaf/start")
+
+        await user.click(await screen.findByRole("radio", { name: /Fancy/ }))
+        await user.click(screen.getByRole("button", { name: "Start bake" }))
+        expect(await screen.findByRole("link", { name: "Pair Home Assistant" })).toBeInTheDocument()
+        expect(screen.queryByRole("alert")).not.toBeInTheDocument()
     })
 
     test("a refused start says why and stays put", async () => {

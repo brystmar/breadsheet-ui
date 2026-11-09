@@ -237,16 +237,31 @@ describe("the bake view", () => {
         expect(screen.getByText("In progress · step 1 of 4")).toBeInTheDocument()
     })
 
-    test("alerts show the bake's mode, with Fancy coming soon, and Export again", async () => {
+    test("alerts show the bake's mode and switch to Fancy, with Export again", async () => {
         const user = userEvent.setup()
-        fakeBackend(routesFor(runningBake()))
+        const bake = runningBake()
+        const calls = fakeBackend(routesFor(bake, { "PATCH /api/v2/bakes/bake-1": [ 200, { bake: { ...bake, alert_mode: "fancy" } } ] }))
         renderBake()
 
         expect(await screen.findByRole("radio", { name: "Simple" })).toBeChecked()
-        expect(screen.getByRole("radio", { name: /Fancy/ })).toBeDisabled()
         await user.hover(screen.getByText("Fancy"))
-        expect(screen.getByText(/Coming soon!/)).toHaveClass("shown")
+        expect(screen.getByText("Lock-screen updates on your phone through Home Assistant")).toHaveClass("shown")
+        await user.click(screen.getByRole("radio", { name: /Fancy/ }))
+
+        await waitFor(() => expect(screen.getByRole("radio", { name: /Fancy/ })).toBeChecked())
+        const patch = calls.find(({ method }) => method === "PATCH")
+        expect(patch.body).toEqual({ alert_mode: "fancy" })
         expect(screen.getByRole("button", { name: "Export again (.ics)" })).toBeInTheDocument()
+    })
+
+    test("switching to Fancy without Home Assistant links to pairing", async () => {
+        const user = userEvent.setup()
+        fakeBackend(routesFor(runningBake(), { "PATCH /api/v2/bakes/bake-1": [ 409, { code: "fancy_requires_ha", message: "Fancy alerts need Home Assistant." } ] }))
+        renderBake()
+
+        await user.click(await screen.findByRole("radio", { name: /Fancy/ }))
+        expect(await screen.findByRole("link", { name: /Pair\s+Home\s+Assistant/ })).toHaveAttribute("href", "/profile#home-assistant")
+        expect(screen.getByRole("radio", { name: "Simple" })).toBeChecked()
     })
 })
 
