@@ -42,6 +42,7 @@ export default function PrivacyPage() {
                 <li>Creating, copying, publishing, unpublishing, or deleting a recipe</li>
                 <li>Starting, completing, or canceling a bake, and checking off or skipping a step</li>
                 <li>Downloading a bake's calendar events</li>
+                <li>An admin resetting your key, which happens only when you ask</li>
             </ul>
             <p>
                 Each event records your account's id, which recipe or bake it was about, and whether it came from

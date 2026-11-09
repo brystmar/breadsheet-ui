@@ -24,5 +24,7 @@ export const breadsheetApis = {
     usernames: `${import.meta.env.VITE_BACKEND_URL}/api/v2/usernames`,
     session: `${import.meta.env.VITE_BACKEND_URL}/api/v2/session`,
     pairingCodes: `${import.meta.env.VITE_BACKEND_URL}/api/v2/pairing-codes`,
-    connections: `${import.meta.env.VITE_BACKEND_URL}/api/v2/connections`
+    connections: `${import.meta.env.VITE_BACKEND_URL}/api/v2/connections`,
+    adminUsers: `${import.meta.env.VITE_BACKEND_URL}/api/v2/admin/users`,
+    adminMetrics: `${import.meta.env.VITE_BACKEND_URL}/api/v2/admin/metrics`
 }

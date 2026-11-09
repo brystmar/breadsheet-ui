@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router"
+import AdminNav from "./AdminNav"
 import PageTitle from "../PageTitle"
 import { listAdminRecipes } from "../../data/recipes_api"
 import "../../styles/admin.sass"
@@ -22,7 +23,7 @@ export default function AdminRecipesPage() {
 
     return (
         <section className="admin-page">
-            <p className="admin-back"><Link to="/profile">← Profile</Link></p>
+            <AdminNav />
             <PageTitle title="Default recipes" includeHr={true} />
             <p className="admin-hint">
                 Everyone sees these. Edits go live as soon as you save; copies people already made don't change.
