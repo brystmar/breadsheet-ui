@@ -8,6 +8,7 @@ const MAX_BACKOFF_MS = 60 * 1000
 // Remembered per bake in this browser, so a queued tap survives a reload during an outage
 const queueKey = (bakeId) => `breadsheet.bakeQueue.${bakeId}`
 const cacheKey = (suffix) => `breadsheet.bake.${suffix}`
+const idKey = (bakeId) => `breadsheet.bakeSuffix.${bakeId}`
 
 function readJson(key, fallback) {
     try {
@@ -36,6 +37,14 @@ export function cachedBake(suffix) {
 export function rememberBake(bake) {
     if (!bake?.suffix) return
     writeJson(cacheKey(bake.suffix), bake)
+    if (bake.id) writeJson(idKey(bake.id), bake.suffix)  // Home Assistant's panel finds bakes by id
+}
+
+
+// The last copy of a bake by its internal id (Home Assistant's panel, breadsheet-hass#5)
+export function cachedBakeById(bakeId) {
+    const suffix = readJson(idKey(bakeId), null)
+    return suffix ? cachedBake(suffix) : null
 }
 
 

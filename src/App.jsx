@@ -21,6 +21,7 @@ import KeyLink from "./components/identity/KeyLink";
 import PrivacyPage from "./components/PrivacyPage";
 import Profile from "./components/identity/Profile";
 import AdminRoute from "./components/admin/AdminRoute";
+import PanelPage from "./components/bake/PanelPage";
 import AdminRecipesPage from "./components/admin/AdminRecipesPage";
 import AdminRecipeEdit from "./components/admin/AdminRecipeEdit";
 import AdminUsersPage from "./components/admin/AdminUsersPage";
@@ -61,8 +62,8 @@ export default function App() {
         if (currentPath === lastCountedPath.current) return
         lastCountedPath.current = currentPath
 
-        // Key links are never counted (index.html skips them on page load, too)
-        if (location.pathname === "/k") return
+        // Key links and Home Assistant's panel are never counted (index.html skips them on page load, too)
+        if (location.pathname === "/k" || location.pathname.startsWith("/panel")) return
 
         // Guard against the script being blocked or not loaded yet
         window.goatcounter?.count?.({ path: currentPath })
@@ -114,6 +115,17 @@ export default function App() {
 
         // Replace the recipeList in local state
         updateRecipeList(newRecipeList);
+    }
+
+    // Home Assistant's sidebar panel (breadsheet-hass#5): just the bake view, without the site's header and
+    // footer, at any feature level
+    if (location.pathname === "/panel" || location.pathname.startsWith("/panel/")) {
+        return (
+            <Routes>
+                <Route path="/panel" element={<PanelPage />} />
+                <Route path="/panel/:bakeId" element={<PanelPage />} />
+            </Routes>
+        )
     }
 
     return (

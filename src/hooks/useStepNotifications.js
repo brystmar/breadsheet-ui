@@ -84,10 +84,11 @@ function notify(bake, step) {
 
 // { permission, enabled, turnOn(), turnOff() }. Notifications run only while enabled: permission granted
 // and not turned off in this browser.
-export default function useStepNotifications(bake) {
+// `off`: never notify (Home Assistant's panel, where Home Assistant sends the alerts)
+export default function useStepNotifications(bake, { off = false } = {}) {
     const [ permission, setPermission ] = useState(permissionNow)
     const [ preference, setPreference ] = useState(() => readStorage(PREFERENCE_KEY, "on"))
-    const enabled = permission === "granted" && preference !== "off"
+    const enabled = !off && permission === "granted" && preference !== "off"
 
     useEffect(() => {
         if (!enabled) return

@@ -65,10 +65,12 @@ function timelineMark(step, index, bake, progress) {
 
 // The bake view (M2, breadsheet-ui#33): the step in progress, what's next, the timeline, alerts, and
 // ending the bake. No edit fields. Taps work offline; see useBakeSync.
-export default function BakePage({ bake: initialBake, offline = false }) {
+// `embedded`: inside Home Assistant's sidebar panel (breadsheet-hass#5), without links that need the site's session
+// and without in-tab notifications (Home Assistant sends the alerts)
+export default function BakePage({ bake: initialBake, offline = false, embedded = false }) {
     const sync = useBakeSync(initialBake)
     const { bake } = sync
-    const notifications = useStepNotifications(bake)
+    const notifications = useStepNotifications(bake, { off: embedded })
     const now = useNow()
     const [ confirm, setConfirm ] = useState(null)
     const [ tip, setTip ] = useState(null)
@@ -114,7 +116,7 @@ export default function BakePage({ bake: initialBake, offline = false }) {
 
     return (
         <section className="bake-view">
-            <p className="bake-back"><Link to="/">← Active bakes</Link></p>
+            <p className="bake-back"><Link to={embedded ? "/panel" : "/"}>← Active bakes</Link></p>
             <PageTitle title={bake.name} includeHr={true} />
 
             {offline &&
@@ -125,7 +127,7 @@ export default function BakePage({ bake: initialBake, offline = false }) {
                 <p className="bake-meta">This recipe was deleted. The bake keeps running from its copy.</p> :
                 <p className="bake-meta">
                     {statusLine(bake, progress)}
-                    {bake.recipe_path && <> · <Link to={bake.recipe_path}>View recipe</Link></>}
+                    {bake.recipe_path && !embedded && <> · <Link to={bake.recipe_path}>View recipe</Link></>}
                 </p>}
             {bake.recipe_deleted && <p className="bake-meta">{statusLine(bake, progress)}</p>}
 
@@ -219,7 +221,7 @@ export default function BakePage({ bake: initialBake, offline = false }) {
                                 Assistant</Link> on your profile, then switch this bake to Fancy.
                             </p>}
                         {alertProblem?.message && <p className="bake-alert-problem" role="alert">{alertProblem.message}</p>}
-                        <NotificationSwitch notifications={notifications} running={running} />
+                        {!embedded && <NotificationSwitch notifications={notifications} running={running} />}
                         <div className="bake-export">
                             <button type="button" className="btn btn-default" onClick={() => { downloadIcs(bake); recordIcsExport(bake) }}>Export again (.ics)</button>
                             <p className="bake-hint">Calendar events do not update after export.</p>

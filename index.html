@@ -20,9 +20,11 @@
 	<div id="root"></div>
 	<script type="module" src="/src/index.jsx"></script>
 	<!-- GoatCounter: cookieless traffic analytics; App.jsx counts client-side route changes.
-	     Key-link pages (/k) are never counted: a `path` callback that returns null sends nothing. -->
+	     Key-link pages (/k) and Home Assistant's panel (/panel, whose referrer is the user's Home Assistant) are
+	     never counted: a `path` callback that returns null sends nothing. -->
 	<script>
-		window.goatcounter = { path: function (p) { return location.pathname === "/k" ? null : p } }
+		window.goatcounter = { path: function (p) {
+			return location.pathname === "/k" || location.pathname.startsWith("/panel") ? null : p } }
 	</script>
 	<script data-goatcounter="https://brystmar.goatcounter.com/count"
 	        async src="//gc.zgo.at/count.js"></script>
