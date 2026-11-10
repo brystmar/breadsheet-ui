@@ -17,6 +17,13 @@ export function listConnections() {
 }
 
 
+// Renames a connection (breadsheet#97); data is { connection }. 400 label_invalid for a blank or over-60-character
+// name, 404 not_found when it's been revoked.
+export function renameConnection(id, label) {
+    return call(`${breadsheetApis.connections}/${encodeURIComponent(id)}`, { method: "PATCH", body: JSON.stringify({ label }) })
+}
+
+
 // Revokes a connection: 204 (data null), or 404 not_found when it's already gone
 export function revokeConnection(id) {
     return call(`${breadsheetApis.connections}/${encodeURIComponent(id)}`, { method: "DELETE" })
