@@ -230,7 +230,7 @@ export default function BakePage({ bake: initialBake, offline = false, embedded 
 
                     {running && confirm === null &&
                         <div className="bake-end">
-                            <button type="button" className="btn bake-cancel" onClick={() => setConfirm("cancel")}>Cancel bake</button>
+                            <button type="button" className="btn btn-danger" onClick={() => setConfirm("cancel")}>Cancel bake</button>
                             <button type="button" className="btn bake-complete" disabled={sync.pending}
                                     onClick={() => setConfirm("complete")}>Complete</button>
                         </div>}
@@ -251,7 +251,7 @@ export default function BakePage({ bake: initialBake, offline = false, embedded 
                         <div className="bake-card bake-confirm" role="alertdialog" aria-labelledby="confirm-cancel">
                             <p id="confirm-cancel">Cancel this bake? Steps you haven't done stay unchecked, and alerts stop.</p>
                             <div className="bake-end">
-                                <button type="button" className="btn bake-cancel" onClick={() => confirmAndRun(sync.cancel)}>
+                                <button type="button" className="btn btn-danger" onClick={() => confirmAndRun(sync.cancel)}>
                                     Cancel bake
                                 </button>
                                 <button type="button" className="btn btn-default" onClick={() => setConfirm(null)}>Keep baking</button>

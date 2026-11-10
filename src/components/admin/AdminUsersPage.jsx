@@ -165,7 +165,7 @@ export default function AdminUsersPage() {
                                     <button type="button" className="btn btn-default"
                                             onClick={() => { setRenaming(u.id); setConfirming(null) }}>Rename</button>
                                     {u.id !== me?.id &&
-                                        <button type="button" className="btn btn-default"
+                                        <button type="button" className="btn btn-danger"
                                                 onClick={() => { setConfirming(u.id); setRenaming(null); setResetError(null) }}>
                                             Reset key
                                         </button>}
@@ -182,7 +182,7 @@ export default function AdminUsersPage() {
                                         <button type="button" className="btn btn-default" onClick={() => setConfirming(null)}>
                                             Keep it
                                         </button>
-                                        <button type="button" className="btn admin-danger" disabled={resetting}
+                                        <button type="button" className="btn btn-danger" disabled={resetting}
                                                 onClick={() => reset(u)}>
                                             {resetting ? "Resetting…" : "Reset key"}
                                         </button>

@@ -189,14 +189,14 @@ export default function HomeAssistant() {
                                         <button type="button" className="btn btn-default" onClick={() => setConfirming(null)}>
                                             Keep it
                                         </button>
-                                        <button type="button" className="btn connection-revoke" disabled={revoking}
+                                        <button type="button" className="btn btn-danger" disabled={revoking}
                                                 onClick={() => revoke(connection.id)}>
                                             {revoking ? "Revoking…" : "Revoke"}
                                         </button>
                                     </div>
                                 </div>
                             ) : (
-                                <button type="button" className="btn btn-default"
+                                <button type="button" className="btn btn-danger"
                                         onClick={() => { setConfirming(connection.id); setRevokeError(null) }}>
                                     Revoke
                                 </button>
