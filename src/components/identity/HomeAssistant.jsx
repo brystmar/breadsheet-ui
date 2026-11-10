@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react"
-import { createPairingCode, listConnections, revokeConnection } from "../../data/connections_api"
+import { createPairingCode, listConnections, renameConnection, revokeConnection } from "../../data/connections_api"
 
 // While a pairing code is showing, how often to look for the new connection
 export const PAIRING_POLL_MS = 5000
+
+// The server's limit on a connection's name (breadsheet#97)
+const MAX_LABEL = 60
 
 
 // "9:05" for 545 seconds left
@@ -17,8 +20,63 @@ function day(iso) {
 }
 
 
-// The Home Assistant section of /profile (breadsheet-ui#29): get a pairing code, and list and revoke
-// connections. The id is the target for "pair Home Assistant first" links (breadsheet-ui#40).
+// What the server will save: trimmed, with runs of spaces made one
+function cleanLabel(text) {
+    return text.split(/\s+/).filter(Boolean).join(" ")
+}
+
+
+// Whether two connections would look the same in the list
+function hasDuplicateNames(connections) {
+    const names = connections.map((connection) => connection.label.toLowerCase())
+    return new Set(names).size < names.length
+}
+
+
+// Rename one connection inline (breadsheet-ui#73). Enter saves, Escape cancels. A connection revoked in another tab
+// (404) is passed to onGone, so the list drops it.
+function FormRenameConnection({ connection, onRenamed, onGone, onCancel }) {
+    const [ text, setText ] = useState(connection.label)
+    const [ saving, setSaving ] = useState(false)
+    const [ error, setError ] = useState(null)
+    const label = cleanLabel(text)
+
+    async function save(event) {
+        event.preventDefault()
+        setSaving(true)
+        setError(null)
+        const result = await renameConnection(connection.id, label)
+        setSaving(false)
+        if (result.ok) onRenamed(result.data.connection)
+        else if (result.status === 404) onGone(connection.id)
+        else setError(result.message)
+    }
+
+    return (
+        <form className="connection-rename" onSubmit={save} noValidate>
+            <label className="sr-only" htmlFor={`rename-${connection.id}`}>New name for {connection.label}</label>
+            <input id={`rename-${connection.id}`}
+                   type="text"
+                   value={text}
+                   maxLength={MAX_LABEL}
+                   autoFocus={true}
+                   onChange={(event) => setText(event.target.value)}
+                   onKeyDown={(event) => { if (event.key === "Escape") onCancel() }} />
+            <div className="pairing-actions">
+                <button type="submit" className="btn btn-primary"
+                        disabled={saving || !label || label === connection.label}>
+                    {saving ? "Saving…" : "Save"}
+                </button>
+                <button type="button" className="btn btn-default" onClick={onCancel}>Cancel</button>
+            </div>
+            {error && <p className="identity-error" role="alert">{error}</p>}
+        </form>
+    )
+}
+
+
+// The Home Assistant section of /profile (breadsheet-ui#29): get a pairing code, and list, rename (breadsheet-ui#73)
+// and revoke connections. The id is the target for "pair Home Assistant first" links (breadsheet-ui#40).
 export default function HomeAssistant() {
     const [ connections, setConnections ] = useState(null)  // null until the first load
     const [ loadError, setLoadError ] = useState(null)
@@ -34,6 +92,20 @@ export default function HomeAssistant() {
     const [ confirming, setConfirming ] = useState(null)  // the connection id awaiting confirmation
     const [ revoking, setRevoking ] = useState(false)
     const [ revokeError, setRevokeError ] = useState(null)
+    const [ renaming, setRenaming ] = useState(null)  // the connection id being renamed; one row at a time
+
+    // Replaces a renamed connection in the list
+    function renamed(updated) {
+        setConnections((current) => current.map((connection) => connection.id === updated.id ? updated : connection))
+        setRenaming(null)
+    }
+
+    // Drops a connection that's already gone (revoked in another tab)
+    function gone(id) {
+        setConnections((current) => current.filter((connection) => connection.id !== id))
+        setRenaming(null)
+        setConfirming(null)
+    }
 
     const load = useCallback(async () => {
         const result = await listConnections()
@@ -113,8 +185,7 @@ export default function HomeAssistant() {
         setRevoking(false)
         // 404: already revoked (maybe in another tab), so it's gone either way
         if (result.ok || result.status === 404) {
-            setConnections((current) => current.filter((connection) => connection.id !== id))
-            setConfirming(null)
+            gone(id)
             return
         }
         setRevokeError(result.message)
@@ -172,13 +243,18 @@ export default function HomeAssistant() {
                     {connections.map((connection) => (
                         <li key={connection.id} className="connection">
                             <div className="connection-details">
-                                <strong>{connection.label}</strong>
+                                {renaming === connection.id ?
+                                    <FormRenameConnection connection={connection}
+                                                          onRenamed={renamed}
+                                                          onGone={gone}
+                                                          onCancel={() => setRenaming(null)} /> :
+                                    <strong>{connection.label}</strong>}
                                 <span className="identity-hint">
                                     Paired {day(connection.created_at)} ·{" "}
                                     {connection.last_used_at ? `Last used ${day(connection.last_used_at)}` : "Not used yet"}
                                 </span>
                             </div>
-                            {confirming === connection.id ? (
+                            {renaming === connection.id ? null : confirming === connection.id ? (
                                 <div className="edit-confirm" role="alertdialog" aria-labelledby={`revoke-${connection.id}`}>
                                     <p id={`revoke-${connection.id}`}>
                                         Revoke {connection.label}? Home Assistant loses access right away, along with
@@ -196,14 +272,23 @@ export default function HomeAssistant() {
                                     </div>
                                 </div>
                             ) : (
-                                <button type="button" className="btn btn-danger"
-                                        onClick={() => { setConfirming(connection.id); setRevokeError(null) }}>
-                                    Revoke
-                                </button>
+                                <div className="pairing-actions">
+                                    <button type="button" className="btn btn-default"
+                                            onClick={() => { setRenaming(connection.id); setConfirming(null) }}>
+                                        Rename
+                                    </button>
+                                    <button type="button" className="btn btn-danger"
+                                            onClick={() => { setConfirming(connection.id); setRenaming(null); setRevokeError(null) }}>
+                                        Revoke
+                                    </button>
+                                </div>
                             )}
                         </li>
                     ))}
                 </ul>
+            )}
+            {connections && hasDuplicateNames(connections) && (
+                <p className="identity-hint">Two connections have the same name. Rename one to tell them apart.</p>
             )}
         </section>
     )

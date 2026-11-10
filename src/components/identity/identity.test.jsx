@@ -521,6 +521,92 @@ describe("Home Assistant on the profile", () => {
         expect(screen.queryByRole("alert")).not.toBeInTheDocument()
     })
 
+    test("Revoke is red, and Rename isn't", async () => {
+        fakeBackend({ ...SIGNED_IN, "GET /api/v2/connections": [ 200, { connections: [ KITCHEN ] } ] })
+        renderApp("/profile")
+        expect(await screen.findByRole("button", { name: "Revoke" })).toHaveClass("btn-danger")
+        expect(screen.getByRole("button", { name: "Rename" })).toHaveClass("btn-default")
+        await userEvent.click(screen.getByRole("button", { name: "Revoke" }))
+        expect(within(screen.getByRole("alertdialog")).getByRole("button", { name: "Revoke" })).toHaveClass("btn-danger")
+        expect(screen.getByRole("button", { name: "Keep it" })).toHaveClass("btn-default")
+    })
+
+    // breadsheet-ui#73
+    test("renames a connection inline, sending the cleaned-up name", async () => {
+        const calls = fakeBackend({ ...SIGNED_IN,
+                                    "GET /api/v2/connections": [ 200, { connections: [ KITCHEN ] } ],
+                                    "PATCH /api/v2/connections/0193-kitchen": [ 200, { connection: { ...KITCHEN, label: "Cabin kitchen" } } ] })
+        renderApp("/profile")
+        await userEvent.click(await screen.findByRole("button", { name: "Rename" }))
+        const input = screen.getByRole("textbox", { name: "New name for Kitchen HA" })
+        expect(input).toHaveValue("Kitchen HA")
+        expect(input).toHaveAttribute("maxLength", "60")
+        expect(screen.getByRole("button", { name: "Save" })).toBeDisabled()  // unchanged
+        expect(screen.queryByRole("button", { name: "Revoke" })).not.toBeInTheDocument()
+
+        await userEvent.clear(input)
+        await userEvent.type(input, "  Cabin   kitchen {Enter}")
+        expect(await screen.findByText("Cabin kitchen")).toBeInTheDocument()
+        expect(screen.queryByRole("textbox")).not.toBeInTheDocument()
+        const patch = calls.find((call) => call.method === "PATCH")
+        expect(patch.path).toBe("/api/v2/connections/0193-kitchen")
+        expect(JSON.parse(patch.body)).toEqual({ label: "Cabin kitchen" })
+    })
+
+    test("a blank name can't be saved, and Escape or Cancel leaves it alone", async () => {
+        const calls = fakeBackend({ ...SIGNED_IN, "GET /api/v2/connections": [ 200, { connections: [ KITCHEN ] } ] })
+        renderApp("/profile")
+        await userEvent.click(await screen.findByRole("button", { name: "Rename" }))
+        await userEvent.clear(screen.getByRole("textbox"))
+        await userEvent.type(screen.getByRole("textbox"), "   ")
+        expect(screen.getByRole("button", { name: "Save" })).toBeDisabled()
+
+        await userEvent.keyboard("{Escape}")
+        expect(screen.queryByRole("textbox")).not.toBeInTheDocument()
+        expect(screen.getByText("Kitchen HA")).toBeInTheDocument()
+
+        await userEvent.click(screen.getByRole("button", { name: "Rename" }))
+        await userEvent.click(screen.getByRole("button", { name: "Cancel" }))
+        expect(screen.queryByRole("textbox")).not.toBeInTheDocument()
+        expect(calls.some((call) => call.method === "PATCH")).toBe(false)
+    })
+
+    test("a refused rename keeps the form open with the server's message", async () => {
+        fakeBackend({ ...SIGNED_IN,
+                      "GET /api/v2/connections": [ 200, { connections: [ KITCHEN ] } ],
+                      "PATCH /api/v2/connections/0193-kitchen": [ 503, { code: "service_unavailable", message: "Breadsheet is busy. Try again in a minute." } ] })
+        renderApp("/profile")
+        await userEvent.click(await screen.findByRole("button", { name: "Rename" }))
+        await userEvent.type(screen.getByRole("textbox"), " 2")
+        await userEvent.click(screen.getByRole("button", { name: "Save" }))
+        expect(await screen.findByRole("alert")).toHaveTextContent("Breadsheet is busy")
+        expect(screen.getByRole("textbox")).toHaveValue("Kitchen HA 2")
+    })
+
+    test("renaming a connection revoked elsewhere drops it", async () => {
+        fakeBackend({ ...SIGNED_IN,
+                      "GET /api/v2/connections": [ 200, { connections: [ KITCHEN ] } ],
+                      "PATCH /api/v2/connections/0193-kitchen": [ 404, { code: "not_found", message: "That connection doesn't exist." } ] })
+        renderApp("/profile")
+        await userEvent.click(await screen.findByRole("button", { name: "Rename" }))
+        await userEvent.type(screen.getByRole("textbox"), " 2{Enter}")
+        expect(await screen.findByText("No Home Assistant connected yet.")).toBeInTheDocument()
+    })
+
+    test("same-named connections get a hint until one is renamed", async () => {
+        fakeBackend({ ...SIGNED_IN,
+                      "GET /api/v2/connections": [ 200, { connections: [ { ...CABIN, label: "Home" }, { ...KITCHEN, label: "home" } ] } ],
+                      "PATCH /api/v2/connections/0193-cabin": [ 200, { connection: { ...CABIN, label: "Cabin" } } ] })
+        renderApp("/profile")
+        const hint = "Two connections have the same name. Rename one to tell them apart."
+        expect(await screen.findByText(hint)).toBeInTheDocument()
+        await userEvent.click(screen.getAllByRole("button", { name: "Rename" })[0])
+        await userEvent.clear(screen.getByRole("textbox"))
+        await userEvent.type(screen.getByRole("textbox"), "Cabin{Enter}")
+        expect(await screen.findByText("Cabin")).toBeInTheDocument()
+        expect(screen.queryByText(hint)).not.toBeInTheDocument()
+    })
+
     test("failures show the server's message", async () => {
         fakeBackend({ ...SIGNED_IN,
                       "GET /api/v2/connections": [ 503, { code: "service_unavailable", message: "Breadsheet is busy. Try again in a minute." } ],
