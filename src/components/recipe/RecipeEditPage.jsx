@@ -313,7 +313,7 @@ export default function RecipeEditPage({ recipe = null, admin = false }) {
                     {status === "saved" && !dirty ? "Saved." : dirty ? "Unsaved changes" : ""}
                 </span>
                 {!isNew && !confirmDelete && !(admin && saved.archived_at) &&
-                    <button type="button" className="btn edit-delete" onClick={() => setConfirmDelete(true)}>
+                    <button type="button" className="btn btn-danger" onClick={() => setConfirmDelete(true)}>
                         {admin ? "Archive recipe" : "Delete recipe"}
                     </button>}
             </div>
@@ -328,7 +328,7 @@ export default function RecipeEditPage({ recipe = null, admin = false }) {
                     </p>
                     <div className="edit-actions">
                         <button type="button" className="btn btn-default" onClick={() => setConfirmDelete(false)}>Keep it</button>
-                        <button type="button" className="btn edit-delete" onClick={remove}>{admin ? "Archive recipe" : "Delete recipe"}</button>
+                        <button type="button" className="btn btn-danger" onClick={remove}>{admin ? "Archive recipe" : "Delete recipe"}</button>
                     </div>
                 </div>}
         </form>

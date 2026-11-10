@@ -104,6 +104,22 @@
 .btn-primary:disabled
   background: $color-5
 
+// Anything that deletes, revokes, cancels or resets (breadsheet-ui#72); the way back out stays btn-default
+.btn-danger
+  background: $color-danger
+  color: $color-text-light
+  border: 1px solid $color-danger-dark
+  line-height: 1
+.btn-danger:focus,
+.btn-danger:hover
+  background: $color-danger-dark
+  color: $color-text-light
+  border: 1px solid $color-danger-dark
+.btn-danger:active
+  border-color: $color-background
+.btn-danger:disabled
+  background: $color-danger
+
 .btn-add
   //background: $color-2
   //border: 1px solid $color-2
