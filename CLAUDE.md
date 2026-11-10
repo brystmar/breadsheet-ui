@@ -150,6 +150,13 @@ Second Rise work ships to production hidden, then a milestone is released by cha
 - Key-link sign-in (`/k`) must work at any level: a link opened on a new device starts at the default.
 - Releasing a milestone: set `DEFAULT_LEVEL` to it and drop levels nobody should pick anymore (a saved level that no longer exists falls back to the default). Rolling back: set the default back.
 
+### Home Assistant's panel (M3)
+`/panel` and `/panel/<bake id>` (breadsheet-hass#5) render outside the site's layout, at any feature level, inside
+Home Assistant's sidebar panel. The page reads a panel token from `#t=<token>` (`src/data/panel_token.js`), removes
+it from the address bar, keeps it in memory only, and `apiFetch` sends it as `Authorization: Bearer`. Panel tokens
+work for bakes only and expire after 12 hours. `BakePage` takes `embedded` (no View recipe link, no in-tab
+notifications). GoatCounter never counts `/panel` (its referrer would be the user's Home Assistant).
+
 ### Identity (M2)
 Key-based sign-in against `/api/v2/users` and `/api/v2/session` (backend: breadsheet#26).
 - Screens in `src/components/identity/`: `/register` (a live username checklist, then the one-time save-your-key screen), `/signin` (paste a key), `/k` (key link), `/profile` (who's signed in, plus a Devices section on signing in elsewhere; signed out → `/signin`), and `NavAccount` in the header ("Register | Sign in", or "username | Sign out" with the username linking to `/profile`). `/devices` redirects to `/profile`. All gated at M2 except `/k`.

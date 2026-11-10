@@ -338,3 +338,24 @@ $color-complete-dark: #1f5a23
     padding: 0.2em 0.6em
     font: inherit
     font-size: 0.8rem
+
+
+/*** Home Assistant's panel (breadsheet-hass#5) ***/
+
+.panel-message,
+.panel-list
+  padding-top: 1em
+
+.panel-list
+  ul
+    list-style: none
+    padding: 0
+  li
+    display: flex
+    flex-direction: column
+    gap: 0.2em
+    padding: 0.6em 0
+    border-bottom: 1px solid #dcdcd8
+  .panel-next
+    font-size: 0.85rem
+    color: $color-brown5
