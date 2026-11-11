@@ -9,8 +9,8 @@ export default function Footer() {
     return (
         <footer className="footer-container">
             <Link to="/" className="footer-brand">
-                <BreadsheetLogo />
                 Breadsheet
+                <BreadsheetLogo />
             </Link>
 
             <div className="footer-links">

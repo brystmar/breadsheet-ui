@@ -20,7 +20,7 @@ export default function CommunityPage() {
         <section className="recipe-lists">
             <PageTitle title="Community library" includeHr={true} />
             <p className="recipe-lists-intro">
-                Recipes bakers have shared. Make one yours to change its waits and bake it your way; the original stays as it is.
+                Recipes shared by other bread enthusiasts! Save a copy to your recipe book to adjust its timings.
             </p>
 
             <div className="recipe-lists-toolbar">
@@ -31,7 +31,7 @@ export default function CommunityPage() {
             {search.status === "error" && <p className="recipe-lists-error" role="alert">{search.message}</p>}
             {search.status === "ready" && search.recipes.length === 0 &&
                 <p className="recipe-lists-empty">
-                    {filtering ? "No community recipes match." : "Nobody has shared a recipe yet. Publish one of yours from its edit page."}
+                    {filtering ? "No community recipes match." : "Nobody has shared a recipe yet. Publish one of yours from the edit page."}
                 </p>}
 
             <ul className="recipe-list" aria-label="Community recipes">

@@ -39,12 +39,12 @@ export default function MyRecipesPage() {
 
             {signedIn &&
                 <section aria-labelledby="mine-heading">
-                    <h2 id="mine-heading">Your recipes</h2>
+                    <h2 id="mine-heading">Your Recipes</h2>
                     {search.status === "ready" && mine.length === 0 &&
                         <p className="recipe-lists-empty">
-                            {filtering ? "None of your recipes match." :
-                                <>None yet. Make one of the recipes below yours, <Link to="/recipes/new">start a new one</Link>, or
-                                    browse the <Link to="/community">community library</Link>.</>}
+                            {filtering ? "You don't have any yet." :
+                                <>None yet. Make one of these recipes yours, <Link to="/recipes/new">create a new one</Link>, or
+                                    browse recipes from the <Link to="/community">community</Link>.</>}
                         </p>}
                     <ul className="recipe-list" aria-label="Your recipes">
                         {mine.map((recipe) => <RecipeRow key={recipe.id} recipe={recipe} />)}
@@ -53,7 +53,7 @@ export default function MyRecipesPage() {
 
             <section aria-label="Breadsheet recipes">
                 {/* Signed out, these are the only recipes, under the page's own title */}
-                {signedIn && <h2>Breadsheet recipes</h2>}
+                {signedIn && <h2>Breadsheet Recipes</h2>}
                 {search.status === "ready" && defaults.length === 0 &&
                     <p className="recipe-lists-empty">No recipes match.</p>}
                 <ul className="recipe-list" aria-label="Breadsheet recipes">

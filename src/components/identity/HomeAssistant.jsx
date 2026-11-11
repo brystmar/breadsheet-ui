@@ -193,13 +193,11 @@ export default function HomeAssistant() {
 
     return (
         <section id="home-assistant" className="home-assistant" aria-labelledby="home-assistant-heading">
-            <h3 id="home-assistant-heading" className="identity-subheading">
+            <h2 id="home-assistant-heading" className="identity-subheading">
                 Home Assistant
-            </h3>
+            </h2>
             <p>
-                Pair Home Assistant to get bake alerts on your phone. In Home Assistant, add the Breadsheet
-                integration from the Marketplace and enter a pairing code from here
-                (<a href="https://github.com/brystmar/breadsheet-hass#readme">setup guide</a>).
+                <a href="https://github.com/brystmar/breadsheet-hass#readme">Pair with Home Assistant</a> to get live step alerts on your phone's lock screen.
             </p>
 
             {pairedLabel && <p className="pairing-success" role="status">✓ Paired with {pairedLabel}</p>}
@@ -229,7 +227,7 @@ export default function HomeAssistant() {
                 {requesting ? "Getting a code…" : pairing ? "Get a new code" : "Get a pairing code"}
             </button>
 
-            <h4 className="connections-heading">Connections</h4>
+            <h3 className="connections-heading">Connections</h3>
             {loadError && (
                 <p className="identity-error" role="alert">
                     {loadError} <button type="button" className="btn btn-default" onClick={load}>Try again</button>

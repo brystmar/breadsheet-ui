@@ -9,11 +9,11 @@ export default function PrivacyPage() {
         <article className="privacy-page">
             <PageTitle title="Privacy" includeHr={true} />
             <p className="privacy-lead">
-                Breadsheet collects as little as it can to run the site and learn whether it's useful. It has no ads,
+                Breadsheet collects as little info as needed to run the site and gauge the usefulness of features. It has no ads,
                 sells nothing, and shares nothing.
             </p>
 
-            <h2>What breadsheet collects</h2>
+            <h2>What Breadsheet Collects</h2>
             <h3>Visits</h3>
             <p>
                 Page views are counted with <a href="https://www.goatcounter.com" target="_blank" rel="noopener noreferrer">GoatCounter</a>:
@@ -35,37 +35,37 @@ export default function PrivacyPage() {
                 everyone, with your username.
             </p>
 
-            <h3>What you do in breadsheet</h3>
-            <p>To see which features are used, breadsheet records events like these, each with the time it happened:</p>
+            <h3>What You Oo In Breadsheet</h3>
+            <p>To help us determine the usefulness of features, breadsheet records these events:</p>
             <ul>
-                <li>Signing up or signing in</li>
+                <li>Registration and signing in</li>
                 <li>Creating, copying, publishing, unpublishing, or deleting a recipe</li>
-                <li>Starting, completing, or canceling a bake, and checking off or skipping a step</li>
-                <li>Downloading a bake's calendar events</li>
-                <li>An admin resetting your key, which happens only when you ask</li>
+                <li>Starting, completing, or canceling a scheduled recipe</li>
+                <li>Checking off or skipping a step</li>
+                <li>Downloading a scheduled recipe's calendar events</li>
             </ul>
             <p>
                 Each event records your account's id, which recipe or bake it was about, and whether it came from
-                the website, Home Assistant, or an assistant (with the assistant's name, if it gives one). A
+                the website, Home Assistant, or an agent (with the agent's name, when provided). A
                 check-off also records how many seconds early or late it was.
             </p>
 
-            <h2>What breadsheet doesn't collect</h2>
+            <h2>What Breadsheet Doesn't Collect</h2>
             <ul>
-                <li>Your IP address or browser details in its own records</li>
-                <li>Anything you type into events: they hold ids, times, and numbers only</li>
+                <li>Your IP address or browser details</li>
+                <li>Anything you type into events</li>
                 <li>Tracking cookies, advertising ids, or data from other sites</li>
             </ul>
             <p>
-                The services that host breadsheet (Cloudflare and Google Cloud) see standard request details, like
+                The services that host breadsheet (Cloudflare, Google Cloud, Neon) see standard request details, like
                 IP addresses, to deliver the site, and keep their own logs for a limited time. Breadsheet doesn't
-                copy them into its records.
+                record these.
             </p>
 
-            <h2>When you delete things</h2>
+            <h2>When You Delete Things</h2>
             <p>
-                Deleting a recipe removes it, but its events keep the deleted recipe's id, so counts like "most
-                copied" stay accurate. Bakes keep their own copy of a recipe's steps. If your account is deleted,
+                Deleting a recipe removes it, although its events retain the deleted recipe's id so metrics like "most
+                copied" stay accurate. Scheduled recipes keep their own copy of a recipe's steps. If your account is deleted,
                 your id is removed from every event.
             </p>
 

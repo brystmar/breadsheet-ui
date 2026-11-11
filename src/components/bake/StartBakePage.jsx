@@ -206,7 +206,7 @@ export default function StartBakePage({ recipe }) {
                         <label className="alert-ics">
                             <input type="checkbox" checked={exportIcs} disabled={alertMode !== "simple"}
                                    onChange={(event) => setExportIcs(event.target.checked)} />
-                            Export calendar events as ICS
+                            Export ICS calendar events
                         </label>
                     </div>
 
@@ -221,16 +221,16 @@ export default function StartBakePage({ recipe }) {
                                    onChange={() => changed(setAlertMode)("fancy")} />
                             <span className="alert-title"><span aria-hidden="true" className="sparkle">✨</span> Fancy</span>
                         </label>
-                        <span className="alert-desc">Phone alerts through Home Assistant</span>
+                        <span className="alert-desc">Live activities via Home Assistant</span>
                         <span id="fancy-tip" role="tooltip" className={showFancyTip ? "alert-tip shown" : "alert-tip"}>
-                            Lock-screen updates on your phone through Home Assistant
+                            Steps display as live activities on your phone's lock screen
                         </span>
                     </div>
                 </div>
                 {needsPairing &&
                     <p className="start-bake-pair" role="status">
-                        Fancy alerts need Home Assistant. <Link to="/profile#home-assistant">Pair Home Assistant</Link> on
-                        your profile, then come back to start this bake.
+                        Fancy alerts require Home Assistant. <Link to="/profile#home-assistant">Pair Home Assistant</Link> on
+                        your profile first, then come back to start this recipe.
                     </p>}
             </section>
 
@@ -246,7 +246,7 @@ export default function StartBakePage({ recipe }) {
             </button>
             {alertMode === "simple" && exportIcs &&
                 <p className="start-bake-hint">
-                    Downloads the schedule as calendar events. Calendar events do not update after export.
+                    Downloads the step schedule as static calendar events.
                 </p>}
         </form>
     )

@@ -116,14 +116,13 @@ export default function PlanPage({ recipe }) {
                 <div className="plan-copy-note">
                     {sessionStatus === "signedIn" ?
                         <>
-                            <p>This recipe isn't yours. To change its waits or ranges, save a copy to your recipes first.</p>
+                            <p>Save a copy to your recipe book to adjust its schedule.</p>
                             <button type="button" className="btn btn-primary" onClick={makeItMine} disabled={copying}>
-                                Make it mine
+                                Save
                             </button>
                         </> :
                         <p>
-                            To change this recipe's waits or ranges, <Link to="/register">register</Link> or <Link to="/signin">sign in</Link>,
-                            then make it yours.
+                            To adjust this recipe's schedule, <Link to="/register">register</Link> or <Link to="/signin">sign in</Link> first.
                         </p>}
                     {copyError && <p className="plan-error" role="alert">{copyError}</p>}
                 </div>}
