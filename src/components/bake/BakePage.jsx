@@ -111,7 +111,7 @@ export default function BakePage({ bake: initialBake, offline = false, embedded 
         percent = current.wait_chosen > 0 ? Math.min(100, Math.max(0, Math.round(elapsed / current.wait_chosen * 100))) : 100
     }
 
-    const doneLabel = progress.nextIsLast ? "Done, finish bake" : "Done, start next"
+    const doneLabel = progress.nextIsLast ? "Finish Recipe" : "Done With This Step"
     const syncNote = sync.pending && <p className="bake-sync" role="status">Saved, will sync</p>
 
     return (
@@ -151,7 +151,7 @@ export default function BakePage({ bake: initialBake, offline = false, embedded 
                                 <span style={{ width: `${percent}%` }} />
                             </div>
                             <p className="bake-times">
-                                Started {formatClockInZone(Date.parse(current.completed_at), zone)} · {formatLength(elapsed)} in
+                                Started {formatClockInZone(Date.parse(current.completed_at), zone)} · {formatLength(elapsed)} elapsed
                                 · {left >= 0 ? `${formatLength(left)} left` : `${formatLength(-left)} over`}
                             </p>
                             {next &&
