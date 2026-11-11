@@ -48,7 +48,9 @@ export default function StartBakePage({ recipe }) {
     const [ wall, setWall ] = useState(() => instantToWallDate(planned.anchor ?? nextQuarterHour(), ownZone))
     const [ startIndex, setStartIndex ] = useState(0)
     const [ exportIcs, setExportIcs ] = useState(true)
-    const [ alertMode, setAlertMode ] = useState("fancy")
+    // Simple until we know Home Assistant is paired; then Fancy, unless the baker already picked one
+    const [ alertMode, setAlertMode ] = useState("simple")
+    const pickedAlertMode = useRef(false)
     const [ showFancyTip, setShowFancyTip ] = useState(false)
     const [ hasHomeAssistant, setHasHomeAssistant ] = useState(null)  // null until known
     const [ submitting, setSubmitting ] = useState(false)
@@ -78,7 +80,10 @@ export default function StartBakePage({ recipe }) {
         let current = true
         listConnections().then((result) => {
             const connections = result.ok ? result.data?.connections : null
-            if (current) setHasHomeAssistant(Array.isArray(connections) ? connections.length > 0 : true)
+            if (!current) return
+            const paired = Array.isArray(connections) ? connections.length > 0 : true
+            setHasHomeAssistant(paired)
+            if (paired && Array.isArray(connections) && !pickedAlertMode.current) setAlertMode("fancy")
         })
         return () => { current = false }
     }, [ signedIn ])
@@ -133,7 +138,7 @@ export default function StartBakePage({ recipe }) {
     return (
         <form className="start-bake" onSubmit={handleStart}>
             <p className="start-bake-back"><Link to={recipe.path}>← Back to the plan</Link></p>
-            <PageTitle title="Start bake" includeHr={true} />
+            <PageTitle title="Start Recipe" includeHr={true} />
             <p className="start-bake-recipe">{recipe.name}</p>
 
             {prerequisites.length > 0 &&
@@ -200,6 +205,7 @@ export default function StartBakePage({ recipe }) {
                     <div className="alert-option alert-simple">
                         <label className="alert-choice">
                             <input type="radio" name="alert_mode" value="simple" checked={alertMode === "simple"}
+                                   onClick={() => { pickedAlertMode.current = true }}
                                    onChange={() => changed(setAlertMode)("simple")} />
                             <span className="alert-title">Simple</span>
                         </label>
@@ -218,6 +224,7 @@ export default function StartBakePage({ recipe }) {
                                    aria-describedby="fancy-tip"
                                    onFocus={() => setShowFancyTip(true)}
                                    onBlur={() => setShowFancyTip(false)}
+                                   onClick={() => { pickedAlertMode.current = true }}
                                    onChange={() => changed(setAlertMode)("fancy")} />
                             <span className="alert-title"><span aria-hidden="true" className="sparkle">✨</span> Fancy</span>
                         </label>
@@ -236,13 +243,13 @@ export default function StartBakePage({ recipe }) {
 
             {!signedIn && sessionStatus !== "loading" &&
                 <p className="start-bake-signin">
-                    To start a bake, <Link to="/signin" state={signInState}>sign in</Link> or <Link to="/register">register</Link>.
+                    To start a recipe, <Link to="/signin" state={signInState}>sign in</Link> or <Link to="/register">register</Link>.
                 </p>}
-            {recipe.is_draft && <p className="start-bake-hint">Drafts can't be baked. Save it as a finished recipe first.</p>}
+            {recipe.is_draft && <p className="start-bake-hint">Drafts can't be started. Save it as a finished recipe first.</p>}
             {error && <p className="start-bake-error" role="alert">{error}</p>}
 
-            <button type="submit" className="btn btn-primary start-bake-submit" disabled={!canStart}>
-                {submitting ? "Starting…" : "Start bake"}
+            <button type="submit" className="btn btn-success start-bake-submit" disabled={!canStart}>
+                {submitting ? "Starting…" : "Start Recipe"}
             </button>
             {alertMode === "simple" && exportIcs &&
                 <p className="start-bake-hint">

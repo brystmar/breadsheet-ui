@@ -90,7 +90,7 @@ describe("my recipes", () => {
         fakeBackend(signedIn({ "GET /api/v2/recipes": [ 200, { recipes: [ SOURDOUGH ] } ] }))
         renderAt("/")
 
-        expect(await screen.findByText(/None yet\. Make one of the recipes below yours/)).toBeInTheDocument()
+        expect(await screen.findByText(/None yet\. Make one of these recipes yours/)).toBeInTheDocument()
     })
 
     test("Make it mine copies a default and opens the copy", async () => {
@@ -142,12 +142,13 @@ describe("my recipes", () => {
 
 
 describe("the community library", () => {
-    test("is linked from the header and the home page", async () => {
+    test("is linked from the home page, not the header", async () => {
         const user = userEvent.setup()
         fakeBackend(signedOut())
         renderAt("/")
 
-        await user.click(within(screen.getByRole("navigation")).getByRole("link", { name: "Community" }))
+        expect(within(screen.getByRole("navigation")).queryByRole("link", { name: "Community" })).toBeNull()
+        await user.click(await screen.findByRole("link", { name: "Community library" }))
         expect(await screen.findByRole("heading", { name: "Community library" })).toBeInTheDocument()
         expect(screen.getByTestId("path")).toHaveTextContent("/community")
     })

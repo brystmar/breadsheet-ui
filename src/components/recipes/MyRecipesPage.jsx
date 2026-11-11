@@ -42,7 +42,7 @@ export default function MyRecipesPage() {
                     <h2 id="mine-heading">Your Recipes</h2>
                     {search.status === "ready" && mine.length === 0 &&
                         <p className="recipe-lists-empty">
-                            {filtering ? "You don't have any yet." :
+                            {filtering ? "None of your recipes match." :
                                 <>None yet. Make one of these recipes yours, <Link to="/recipes/new">create a new one</Link>, or
                                     browse recipes from the <Link to="/community">community</Link>.</>}
                         </p>}

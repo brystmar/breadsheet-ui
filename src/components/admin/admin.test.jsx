@@ -100,7 +100,7 @@ describe("who sees admin", () => {
     test("only admins get the Admin link on the profile", async () => {
         fakeBackend(adminRoutes())
         const { unmount } = renderAt("/profile")
-        await userEvent.click(await screen.findByRole("link", { name: "Admin" }))
+        await userEvent.click(await screen.findByRole("link", { name: "admin console" }))
         expect(await screen.findByRole("heading", { name: "Default recipes" })).toBeInTheDocument()
         expect(within(screen.getByRole("navigation", { name: "Admin" })).getAllByRole("link").map((a) => a.textContent))
             .toEqual([ "Recipes", "Users", "Metrics" ])
@@ -108,9 +108,9 @@ describe("who sees admin", () => {
 
         fakeBackend({ "GET /api/v2/session": [ 200, { user: BAKER } ] })
         renderAt("/profile")
-        await screen.findByRole("heading", { name: "Profile" })
+        await screen.findByRole("heading", { name: "Devices" })
         expect(screen.queryByRole("heading", { name: "Admin" })).not.toBeInTheDocument()
-        expect(screen.queryByRole("link", { name: "Admin" })).not.toBeInTheDocument()
+        expect(screen.queryByRole("link", { name: "admin console" })).not.toBeInTheDocument()
     })
 
     test("admins get Edit default on a default's plan view; others don't", async () => {
@@ -136,7 +136,7 @@ describe("the default recipes list", () => {
         const rows = screen.getAllByRole("listitem").filter((li) => li.classList.contains("admin-row"))
         expect(rows.map((li) => within(li).getByRole("link").textContent)).toEqual([ "Country Sourdough", "Old Bagels" ])
         expect(rows[1]).toHaveTextContent("Archived")
-        expect(rows[0]).toHaveTextContent("Bread · Simple · 2 steps")
+        expect(rows[0]).toHaveTextContent("Bread · Intermediate · 2 steps")
         expect(screen.getByRole("link", { name: "New default recipe" })).toHaveAttribute("href", "/admin/recipes/new")
     })
 })

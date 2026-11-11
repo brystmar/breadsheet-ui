@@ -152,8 +152,42 @@ textarea.edit-input
   justify-content: space-between
   gap: 0.5em
 
+// The whole space between "Step n" and the tools collapses or expands the step
+.edit-step-toggle
+  display: flex
+  flex: 1 1 auto
+  align-items: baseline
+  gap: 0.5em
+  min-width: 0
+  margin: 0
+  padding: 0.3em 0
+  font: inherit
+  color: inherit
+  text-align: left
+  background: none
+  border: none
+  cursor: pointer
+.edit-step-toggle:focus-visible
+  outline: 1px dashed $color-border
+  outline-offset: 2px
+
+.edit-step-chevron
+  width: 0.8em
+  color: $color-brown5
+
 .edit-step-number
   font-weight: 700
+  white-space: nowrap
+
+.edit-step-summary
+  overflow: hidden
+  font-size: 0.875rem
+  color: $color-brown5
+  white-space: nowrap
+  text-overflow: ellipsis
+
+.edit-step.collapsed
+  padding-bottom: 0.6em
 
 .edit-step-tools
   display: flex

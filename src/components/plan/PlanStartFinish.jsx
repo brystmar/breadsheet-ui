@@ -26,7 +26,7 @@ export default function PlanStartFinish({ solveForStart, start, finish, onToggle
                         todayButton="Today"
                         dateFormat="MMM d, yyyy HH:mm" />
 
-            {/* Start bake, right after the date box */}
+            {/* Start Recipe, right after the date box */}
             <span className="plan-start-finish-action">{children}</span>
 
             <span className="plan-other-label">{solveForStart ? "Finish at:" : "Start at:"}</span>

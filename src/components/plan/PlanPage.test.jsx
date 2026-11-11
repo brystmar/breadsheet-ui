@@ -238,7 +238,7 @@ describe("the plan view on someone else's recipe", () => {
         const calls = fakeBackend(routes)
         renderAt("/recipes/country-loaf")
 
-        await user.click(await screen.findByRole("button", { name: "Make it mine" }))
+        await user.click(await screen.findByRole("button", { name: "Make It Mine" }))
         await waitFor(() => expect(screen.getByTestId("path")).toHaveTextContent("/recipes/country-loaf-k7qx2m"))
         expect(calls.some(({ method, path }) => method === "POST" && path === "/api/v2/recipes/r-default/copy")).toBe(true)
         expect(await screen.findByLabelText("step 1 Then Wait")).toBeEnabled()
@@ -250,7 +250,7 @@ describe("the plan view on someone else's recipe", () => {
 
         expect(await screen.findByRole("link", { name: "register" })).toHaveAttribute("href", "/register")
         expect(screen.getByRole("link", { name: "sign in" })).toHaveAttribute("href", "/signin")
-        expect(screen.queryByRole("button", { name: "Make it mine" })).toBeNull()
+        expect(screen.queryByRole("button", { name: "Make It Mine" })).toBeNull()
     })
 })
 

@@ -43,7 +43,8 @@ function fakeBackend(routes) {
         const method = options.method || "GET"
         const path = new URL(url, "http://test").pathname
         calls.push({ method, path, headers: options.headers || {}, body: options.body ? JSON.parse(options.body) : null })
-        const [ status, body ] = routes[`${method} ${path}`] || [ 200, { recipes: [] } ]
+        const route = routes[`${method} ${path}`]  // a function answers later, for slow responses
+        const [ status, body ] = (typeof route === "function" ? await route() : route) || [ 200, { recipes: [] } ]
         return { status, ok: status >= 200 && status < 300, json: async () => body, headers: { get: () => null } }
     }))
     return calls
@@ -108,8 +109,8 @@ describe("Start bake", () => {
         fakeBackend(signedInRoutes())
         renderAt("/recipes/country-loaf")
 
-        await user.click(await screen.findByRole("button", { name: "Start bake" }))
-        expect(await screen.findByRole("heading", { name: "Start bake" })).toBeInTheDocument()
+        await user.click(await screen.findByRole("button", { name: "Start Recipe" }))
+        expect(await screen.findByRole("heading", { name: "Start Recipe" })).toBeInTheDocument()
         expect(screen.getByTestId("path")).toHaveTextContent("/recipes/country-loaf/start")
         expect(screen.getByRole("button", { name: "Start at" })).toHaveAttribute("aria-pressed", "true")
     })
@@ -119,7 +120,7 @@ describe("Start bake", () => {
         fakeBackend({ ...signedInRoutes(), "GET /api/v2/session": [ 401, { code: "not_signed_in" } ] })
         renderAt("/recipes/country-loaf")
 
-        await user.click(await screen.findByRole("button", { name: "Start bake" }))
+        await user.click(await screen.findByRole("button", { name: "Start Recipe" }))
         expect(screen.getByTestId("path")).toHaveTextContent("/signin")
         expect(JSON.parse(screen.getByTestId("path").dataset.state)).toEqual({ from: "/recipes/country-loaf/start" })
     })
@@ -134,10 +135,12 @@ describe("Start bake", () => {
 
     test("starts a Simple bake with an idempotency key, downloads the ICS, and opens the bake", async () => {
         const user = userEvent.setup()
-        const calls = fakeBackend(signedInRoutes())
+        const calls = fakeBackend(signedInRoutes({ "GET /api/v2/connections": [ 200, { connections: [] } ] }))
         renderAt("/recipes/country-loaf/start")
 
-        await user.click(await screen.findByRole("button", { name: "Start bake" }))
+        // No Home Assistant paired: Simple is the default
+        expect(await screen.findByRole("radio", { name: "Simple" })).toBeChecked()
+        await user.click(screen.getByRole("button", { name: "Start Recipe" }))
         await waitFor(() => expect(screen.getByTestId("path")).toHaveTextContent("/bakes/b4k3x9"))
 
         const [ post ] = posts(calls)
@@ -161,9 +164,9 @@ describe("Start bake", () => {
         const calls = fakeBackend(signedInRoutes())
         renderAt("/recipes/country-loaf/start")
 
-        await user.click(await screen.findByRole("checkbox", { name: "Export calendar events as ICS" }))
+        await user.click(await screen.findByRole("checkbox", { name: "Export ICS calendar events" }))
         expect(screen.queryByText(/Downloads the schedule/)).toBeNull()
-        await user.click(screen.getByRole("button", { name: "Start bake" }))
+        await user.click(screen.getByRole("button", { name: "Start Recipe" }))
         await waitFor(() => expect(screen.getByTestId("path")).toHaveTextContent("/bakes/b4k3x9"))
         expect(downloads).toHaveLength(0)
         expect(calls.some(({ path }) => path === "/api/v2/events")).toBe(false)
@@ -176,7 +179,7 @@ describe("Start bake", () => {
 
         await user.selectOptions(await screen.findByLabelText("Begin at step"), "3. Bake")
         expect(screen.getByText("Steps 1–2 will be marked skipped, and the bake begins at step 3.")).toBeInTheDocument()
-        await user.click(screen.getByRole("button", { name: "Start bake" }))
+        await user.click(screen.getByRole("button", { name: "Start Recipe" }))
         await waitFor(() => expect(posts(calls)).toHaveLength(1))
         expect(posts(calls)[0].body.start_at_step).toBe(3)
     })
@@ -187,28 +190,40 @@ describe("Start bake", () => {
         renderAt("/recipes/country-loaf/start")
 
         await user.selectOptions(await screen.findByLabelText("Time zone"), "Asia/Tokyo")
-        await user.click(screen.getByRole("button", { name: "Start bake" }))
+        await user.click(screen.getByRole("button", { name: "Start Recipe" }))
         await waitFor(() => expect(posts(calls)).toHaveLength(1))
         expect(posts(calls)[0].body.time_zone).toBe("Asia/Tokyo")
         // A quarter-hour wall time in Tokyo (UTC+9, no DST) is a quarter-hour instant
         expect(new Date(posts(calls)[0].body.anchor_time).getUTCMinutes() % 15).toBe(0)
     })
 
-    test("Fancy starts a Fancy bake when Home Assistant is paired, without a calendar download", async () => {
+    test("with Home Assistant paired, Fancy is the default and starts a Fancy bake without a calendar download", async () => {
         const user = userEvent.setup()
         const calls = fakeBackend(signedInRoutes())
         renderAt("/recipes/country-loaf/start")
 
-        expect(await screen.findByRole("radio", { name: "Simple" })).toBeChecked()
-        await user.hover(screen.getByText("Phone alerts through Home Assistant"))
-        expect(screen.getByRole("tooltip")).toHaveTextContent("Lock-screen updates on your phone through Home Assistant")
-        await user.click(screen.getByRole("radio", { name: /Fancy/ }))
-        expect(screen.getByRole("checkbox", { name: "Export calendar events as ICS" })).toBeDisabled()
-        await user.click(screen.getByRole("button", { name: "Start bake" }))
+        await waitFor(() => expect(screen.getByRole("radio", { name: /Fancy/ })).toBeChecked())
+        await user.hover(screen.getByText("Live activities via Home Assistant"))
+        expect(screen.getByRole("tooltip")).toHaveTextContent("Steps display as live activities on your phone's lock screen")
+        expect(screen.getByRole("checkbox", { name: "Export ICS calendar events" })).toBeDisabled()
+        await user.click(screen.getByRole("button", { name: "Start Recipe" }))
 
         await waitFor(() => expect(posts(calls)).toHaveLength(1))
         expect(posts(calls)[0].body.alert_mode).toBe("fancy")
         expect(downloads).toEqual([])
+    })
+
+    test("a choice made before Home Assistant is known isn't overridden", async () => {
+        const user = userEvent.setup()
+        let answer
+        const connections = new Promise((resolve) => { answer = resolve })
+        fakeBackend(signedInRoutes({ "GET /api/v2/connections": () => connections }))
+        renderAt("/recipes/country-loaf/start")
+
+        await user.click(await screen.findByRole("radio", { name: "Simple" }))
+        answer([ 200, { connections: [ KITCHEN_HA ] } ])
+        await new Promise((resolve) => setTimeout(resolve, 50))
+        expect(screen.getByRole("radio", { name: "Simple" })).toBeChecked()
     })
 
     test("Fancy without Home Assistant leads to pairing first", async () => {
@@ -218,7 +233,7 @@ describe("Start bake", () => {
 
         await user.click(await screen.findByRole("radio", { name: /Fancy/ }))
         expect(await screen.findByRole("link", { name: "Pair Home Assistant" })).toHaveAttribute("href", "/profile#home-assistant")
-        expect(screen.getByRole("button", { name: "Start bake" })).toBeDisabled()
+        expect(screen.getByRole("button", { name: "Start Recipe" })).toBeDisabled()
         await user.click(screen.getByRole("radio", { name: "Simple" }))
         expect(screen.queryByRole("link", { name: "Pair Home Assistant" })).not.toBeInTheDocument()
         expect(posts(calls)).toEqual([])
@@ -230,7 +245,7 @@ describe("Start bake", () => {
         renderAt("/recipes/country-loaf/start")
 
         await user.click(await screen.findByRole("radio", { name: /Fancy/ }))
-        await user.click(screen.getByRole("button", { name: "Start bake" }))
+        await user.click(screen.getByRole("button", { name: "Start Recipe" }))
         expect(await screen.findByRole("link", { name: "Pair Home Assistant" })).toBeInTheDocument()
         expect(screen.queryByRole("alert")).not.toBeInTheDocument()
     })
@@ -241,7 +256,7 @@ describe("Start bake", () => {
             message: "You can have up to 3 bakes going at once. Finish or cancel one first." } ] }))
         renderAt("/recipes/country-loaf/start")
 
-        await user.click(await screen.findByRole("button", { name: "Start bake" }))
+        await user.click(await screen.findByRole("button", { name: "Start Recipe" }))
         expect(await screen.findByRole("alert")).toHaveTextContent("up to 3 bakes")
         expect(screen.getByTestId("path")).toHaveTextContent("/recipes/country-loaf/start")
         expect(downloads).toHaveLength(0)
@@ -252,7 +267,7 @@ describe("Start bake", () => {
         const calls = fakeBackend(signedInRoutes({ "POST /api/v2/bakes": [ 503, { code: "service_unavailable" } ] }))
         renderAt("/recipes/country-loaf/start")
 
-        const start = await screen.findByRole("button", { name: "Start bake" })
+        const start = await screen.findByRole("button", { name: "Start Recipe" })
         await user.click(start)
         await screen.findByRole("alert")
         await user.click(start)
@@ -265,6 +280,6 @@ describe("Start bake", () => {
         renderAt("/recipes/country-loaf/start")
 
         expect(await screen.findByRole("link", { name: "sign in" })).toBeInTheDocument()
-        expect(screen.getByRole("button", { name: "Start bake" })).toBeDisabled()
+        expect(screen.getByRole("button", { name: "Start Recipe" })).toBeDisabled()
     })
 })

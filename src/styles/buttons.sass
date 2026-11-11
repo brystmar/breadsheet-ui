@@ -120,6 +120,34 @@
 .btn-danger:disabled
   background: $color-danger
 
+// Starting something: Start Recipe (breadsheet-ui#72's green counterpart to btn-danger)
+.btn-success
+  background: $color-success
+  color: $color-text-light
+  border: 1px solid $color-success-dark
+  line-height: 1
+.btn-success:focus,
+.btn-success:hover
+  background: $color-success-dark
+  color: $color-text-light
+  border: 1px solid $color-success-dark
+.btn-success:active
+  border-color: $color-background
+.btn-success:disabled
+  background: $color-success
+
+// Links styled as buttons keep the button's text color, not the link blue
+a.btn-primary,
+a.btn-danger,
+a.btn-success
+  color: $color-text-light
+  text-decoration: none
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  width: auto
+  padding: 0 1em
+
 .btn-add
   //background: $color-2
   //border: 1px solid $color-2

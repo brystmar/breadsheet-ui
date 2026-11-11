@@ -105,23 +105,24 @@ export default function PlanPage({ recipe }) {
                              finish={finish}
                              onToggle={toggleAnchor}
                              onAnchorChange={setAnchor}>
-                <button type="button" className="btn btn-primary plan-start-bake" onClick={openStartBake}
+                <button type="button" className="btn btn-success plan-start-bake" onClick={openStartBake}
                         disabled={recipe.is_draft || steps.length === 0}>
-                    Start bake
+                    Start Recipe
                 </button>
             </PlanStartFinish>
 
             {/* Waits change only on the user's own recipes */}
             {!editable &&
-                <div className="plan-copy-note">
+                <div className="plan-copy">
+                    {/* The outline wraps only the text; the button sits just outside it */}
                     {sessionStatus === "signedIn" ?
                         <>
-                            <p>Save a copy to your recipe book to adjust its schedule.</p>
+                            <p className="plan-copy-note">Save a copy to your recipe book to adjust its schedule.</p>
                             <button type="button" className="btn btn-primary" onClick={makeItMine} disabled={copying}>
-                                Save
+                                {copying ? "Copying…" : "Make It Mine"}
                             </button>
                         </> :
-                        <p>
+                        <p className="plan-copy-note">
                             To adjust this recipe's schedule, <Link to="/register">register</Link> or <Link to="/signin">sign in</Link> first.
                         </p>}
                     {copyError && <p className="plan-error" role="alert">{copyError}</p>}

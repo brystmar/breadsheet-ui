@@ -39,8 +39,8 @@ describe("the privacy page", () => {
     test("says what's collected and what isn't", () => {
         renderAt("/privacy", "m2")
 
-        expect(screen.getByRole("heading", { name: "What breadsheet collects" })).toBeInTheDocument()
-        expect(screen.getByRole("heading", { name: "What breadsheet doesn't collect" })).toBeInTheDocument()
+        expect(screen.getByRole("heading", { name: "What Breadsheet Collects" })).toBeInTheDocument()
+        expect(screen.getByRole("heading", { name: "What Breadsheet Doesn't Collect" })).toBeInTheDocument()
         expect(screen.getByText(/never stores your key itself/)).toBeInTheDocument()
         expect(screen.getByText(/your id is removed from every event/)).toBeInTheDocument()
     })

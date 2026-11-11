@@ -104,7 +104,7 @@ describe("in-tab notifications", () => {
         expect(await screen.findByText(/This tab will notify you when each step is due/)).toBeInTheDocument()
         await waitFor(() => expect(shown).toHaveLength(1))
         expect(shown[0]).toMatchObject({ title: "Time for: Autolyse", body: "Country Loaf · step 2 of 3 · then wait 30m",
-                                         tag: `breadsheet-${SUFFIX}` })
+                                         tag: `breadsheet-${SUFFIX}`, silent: true })
 
         // Checking again (a tab coming back into view) doesn't repeat it
         await act(async () => { document.dispatchEvent(new Event("visibilitychange")) })
