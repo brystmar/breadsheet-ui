@@ -48,7 +48,7 @@ export default function StartBakePage({ recipe }) {
     const [ wall, setWall ] = useState(() => instantToWallDate(planned.anchor ?? nextQuarterHour(), ownZone))
     const [ startIndex, setStartIndex ] = useState(0)
     const [ exportIcs, setExportIcs ] = useState(true)
-    const [ alertMode, setAlertMode ] = useState("simple")
+    const [ alertMode, setAlertMode ] = useState("fancy")
     const [ showFancyTip, setShowFancyTip ] = useState(false)
     const [ hasHomeAssistant, setHasHomeAssistant ] = useState(null)  // null until known
     const [ submitting, setSubmitting ] = useState(false)
