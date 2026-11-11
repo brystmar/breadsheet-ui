@@ -95,7 +95,7 @@ describe("the bake view", () => {
         expect(await screen.findByText("In progress · step 1 of 4")).toBeInTheDocument()
         expect(screen.getByRole("heading", { name: "Feed the levain" })).toBeInTheDocument()
         expect(screen.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "50")
-        expect(screen.getByText(/1h in · 1h left/)).toBeInTheDocument()
+        expect(screen.getByText(/1h elapsed · 1h left/)).toBeInTheDocument()
         expect(screen.getByRole("heading", { name: "Autolyse" })).toBeInTheDocument()
         expect(screen.getByText(/lasts 30m/)).toBeInTheDocument()
         expect(screen.getByLabelText(/^Starts in (00:59|01:00)$/)).toBeInTheDocument()
@@ -112,7 +112,7 @@ describe("the bake view", () => {
         renderBake()
 
         const before = Date.now()
-        await user.click(await screen.findByRole("button", { name: "Done, start next" }))
+        await user.click(await screen.findByRole("button", { name: "Done With This Step" }))
         expect(await screen.findByText("In progress · step 2 of 4")).toBeInTheDocument()
         await waitFor(() => expect(posts(calls)).toHaveLength(1))
         expect(Date.parse(posts(calls)[0].body.completed_at)).toBeGreaterThanOrEqual(before)
@@ -128,7 +128,7 @@ describe("the bake view", () => {
         }))
         renderBake()
 
-        await user.click(await screen.findByRole("button", { name: "Done, start next" }))
+        await user.click(await screen.findByRole("button", { name: "Done With This Step" }))
         expect(screen.getByText("In progress · step 2 of 4")).toBeInTheDocument()
         expect(await screen.findByText("Saved, will sync")).toBeInTheDocument()
         expect(JSON.parse(window.localStorage.getItem("breadsheet.bakeQueue.bake-1"))).toHaveLength(1)
@@ -155,14 +155,14 @@ describe("the bake view", () => {
         expect(within(screen.getByRole("list", { name: "Timeline steps" })).getByText("Skipped")).toBeInTheDocument()
     })
 
-    test("the last step left reads Done, finish bake", async () => {
+    test("the last step left reads Finish Recipe", async () => {
         const bake = runningBake()
         const almost = [ 2, 3 ].reduce((current, position) =>
             applyAction(current, { type: "complete", position, at: new Date().toISOString() }), bake)
         fakeBackend(routesFor(almost))
         renderBake()
 
-        expect(await screen.findByRole("button", { name: "Done, finish bake" })).toBeInTheDocument()
+        expect(await screen.findByRole("button", { name: "Finish Recipe" })).toBeInTheDocument()
     })
 
     test("before the first check-off, Start now begins the bake", async () => {
@@ -219,7 +219,7 @@ describe("the bake view", () => {
             [ 409, { code: "bake_completed", message: "That bake is already over." } ] }))
         renderBake()
 
-        await user.click(await screen.findByRole("button", { name: "Done, start next" }))
+        await user.click(await screen.findByRole("button", { name: "Done With This Step" }))
         expect(await screen.findByRole("alert")).toHaveTextContent("That bake is already over.")
         expect(await screen.findByText("In progress · step 1 of 4")).toBeInTheDocument()
     })

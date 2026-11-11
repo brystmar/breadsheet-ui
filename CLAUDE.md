@@ -112,6 +112,7 @@ The full style guide lives at `coding-style-guide.md` in the repo root. Key rule
 
 - A form's main action uses `btn btn-primary`, which shares the old New Recipe button's (`btn-add`) colors and hover/active rules in `buttons.sass`. Don't use `btn-submit` for new screens: it's the older dark style.
 - Anything that deletes, revokes, cancels or resets uses `btn btn-danger` (red, also in `buttons.sass`), both the first button and the one that confirms it. The way back out ("Keep it", "Keep baking") stays `btn-default`. Don't give components red buttons of their own.
+- Starting something (Start Recipe) uses `btn btn-success` (green, `$color-success`). Links styled as buttons (`a.btn-primary` and the like) keep the button's text color, not link blue.
 
 - **Indented syntax** — no braces, no semicolons
 - Components import the `.sass` files directly and Vite compiles them; don't create or commit compiled `.css` files in `src/styles/` (they're gitignored)

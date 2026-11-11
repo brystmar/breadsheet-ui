@@ -378,23 +378,21 @@ describe("profile (/profile)", () => {
         expect(screen.queryByRole("link", { name: "Devices" })).not.toBeInTheDocument()
         await userEvent.click(profileLink)
 
-        expect(await screen.findByRole("heading", { name: "Profile" })).toBeInTheDocument()
-        expect(screen.getByText(/You're signed in here as/)).toHaveTextContent("You're signed in here as Baker_1.")
-        expect(screen.getByRole("heading", { name: "Devices" })).toBeInTheDocument()
-        expect(screen.getByText(/You can use Breadsheet on a different device/)).toBeInTheDocument()
+        expect(await screen.findByRole("heading", { name: "Devices" })).toBeInTheDocument()
+        expect(screen.getByText(/Three ways to use Breadsheet on a different device/)).toBeInTheDocument()
     })
 
     test("the old /devices link lands on the profile", async () => {
         fakeBackend({ "GET /api/v2/session": [ 200, { user: USER } ] })
         renderApp("/devices")
-        expect(await screen.findByRole("heading", { name: "Profile" })).toBeInTheDocument()
+        expect(await screen.findByRole("heading", { name: "Devices" })).toBeInTheDocument()
     })
 
     test("signed out, it goes to Sign in", async () => {
         fakeBackend({ "GET /api/v2/session": [ 401, { code: "not_signed_in" } ] })
         renderApp("/profile")
         expect(await screen.findByLabelText("Your key")).toBeInTheDocument()
-        expect(screen.queryByRole("heading", { name: "Profile" })).not.toBeInTheDocument()
+        expect(screen.queryByRole("heading", { name: "Devices" })).not.toBeInTheDocument()
     })
 })
 
@@ -408,12 +406,12 @@ describe("Home Assistant on the profile", () => {
                     created_at: "2026-11-02T18:00:00+00:00", last_used_at: null }
     const inMinutes = (minutes) => new Date(Date.now() + minutes * 60_000).toISOString()
 
-    test("it has an anchor for pairing links and points to the setup guide", async () => {
+    test("it has an anchor for pairing links and links to the setup guide", async () => {
         fakeBackend(SIGNED_IN)
         renderApp("/profile")
         const heading = await screen.findByRole("heading", { name: /Home Assistant/ })
         expect(heading).not.toHaveTextContent("Under construction")
-        expect(screen.getByRole("link", { name: "setup guide" })).toHaveAttribute("href", "https://github.com/brystmar/breadsheet-hass#readme")
+        expect(screen.getByRole("link", { name: "Pair with Home Assistant" })).toHaveAttribute("href", "https://github.com/brystmar/breadsheet-hass#readme")
         expect(heading.closest("section")).toHaveAttribute("id", "home-assistant")
         expect(await screen.findByText("No Home Assistant connected yet.")).toBeInTheDocument()
     })

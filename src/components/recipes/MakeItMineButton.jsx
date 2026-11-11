@@ -28,7 +28,7 @@ export default function MakeItMineButton({ recipe, returnTo = "/" }) {
         <span className="make-it-mine-wrap">
             <button type="button" className="btn btn-default make-it-mine" disabled={copying}
                     aria-label={`Make ${recipe.name || "this recipe"} mine`} onClick={copy}>
-                {copying ? "Copying…" : "Make it mine"}
+                {copying ? "Copying…" : "Make It Mine"}
             </button>
             {error && <span className="make-it-mine-error" role="alert">{error}</span>}
         </span>

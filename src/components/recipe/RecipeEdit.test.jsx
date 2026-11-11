@@ -103,7 +103,7 @@ describe("the plan view links to the editor", () => {
         renderAt("/recipes/country-loaf/edit")
 
         await waitFor(() => expect(screen.getByTestId("path")).toHaveTextContent(/^\/recipes\/country-loaf$/))
-        expect(await screen.findByRole("button", { name: "Make it mine" })).toBeInTheDocument()
+        expect(await screen.findByRole("button", { name: "Make It Mine" })).toBeInTheDocument()
         expect(screen.queryByRole("link", { name: "Edit recipe" })).toBeNull()
     })
 })
@@ -201,6 +201,41 @@ describe("the recipe editor", () => {
 
         await waitFor(() => expect(puts(calls)).toHaveLength(1))
         expect(puts(calls)[0].body.steps.map((step) => [ step.id, step.text ])).toEqual([ [ "s2", "Mix" ], [ null, "Cool" ], [ "s3", "Bake" ] ])
+    })
+
+    test("a step collapses into its header row and opens again, keeping its fields", async () => {
+        const user = userEvent.setup()
+        const calls = fakeBackend(ownerRoutes())
+        renderAt(EDIT)
+
+        const toggle = await screen.findByRole("button", { name: /^Step 1/ })
+        expect(toggle).toHaveAttribute("aria-expanded", "true")
+        expect(screen.getAllByLabelText("Directions")).toHaveLength(3)
+
+        await user.click(toggle)
+        expect(toggle).toHaveAttribute("aria-expanded", "false")
+        expect(toggle).toHaveTextContent("Step 1Feed the levain · 07:00")
+        expect(screen.getAllByLabelText("Directions")[0]).not.toBeVisible()  // step 1's fields are hidden
+        expect(screen.getAllByLabelText("Directions")[1]).toBeVisible()
+        expect(screen.getByRole("button", { name: "Remove step 1" })).toBeInTheDocument()
+
+        await user.click(toggle)
+        expect(screen.getAllByLabelText("Directions")[0]).toBeVisible()
+        expect(screen.getAllByLabelText("Directions")[0]).toHaveValue("Feed the levain")
+        await user.click(screen.getByRole("button", { name: "Save" }))
+        expect(puts(calls)).toHaveLength(0)  // collapsing isn't a change
+    })
+
+    test("a collapsed step with an error opens itself", async () => {
+        const user = userEvent.setup()
+        fakeBackend(ownerRoutes())
+        renderAt(EDIT)
+
+        await user.clear((await screen.findAllByLabelText("Directions"))[0])
+        await user.click(screen.getByRole("button", { name: /^Step 1/ }))
+        await user.click(screen.getByRole("button", { name: "Save" }))
+        expect(await screen.findByText("Describe the step.")).toBeVisible()
+        expect(screen.getByRole("button", { name: /^Step 1/ })).toHaveAttribute("aria-expanded", "true")
     })
 
     test("catches a missing name or step text before saving", async () => {

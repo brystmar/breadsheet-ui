@@ -41,8 +41,9 @@ export default function AdminRecipesPage() {
                                 {recipe.archived_at && <span className="admin-tag">Archived</span>}
                             </span>
                             <span className="admin-row-meta">
-                                {recipe.category === "prep" ? "Prep" : "Bread"} · {recipe.detail_level === "detailed" ? "Detailed" : "Simple"}
+                                {recipe.category === "prep" ? "Prep" : "Bread"} · {recipe.difficulty}
                                 {" · "}{recipe.step_count} {recipe.step_count === 1 ? "step" : "steps"}
+                                {recipe.detail_level === "detailed" && " · Detailed"}
                             </span>
                         </li>)}
                 </ul>}

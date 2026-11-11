@@ -129,7 +129,7 @@ describe("the active bake bar", () => {
         const bar = await screen.findByRole("region", { name: "Active bake" })
         expect(bar).toHaveTextContent("Baking · Country Loaf")
         expect(bar).toHaveTextContent("Step 1 of 3: Feed the levain")
-        expect(bar).toHaveTextContent("1h in · 1h left")
+        expect(bar).toHaveTextContent("1h elapsed · 1h left")
         expect(bar).toHaveTextContent("Next: Autolyse · 30m")
         expect(within(bar).getByRole("progressbar")).toHaveAttribute("aria-valuenow", "50")
 
@@ -149,9 +149,9 @@ describe("the active bake bar", () => {
         renderAt("/convert")
 
         const bar = await screen.findByRole("region", { name: "Active bake" })
-        await user.click(within(bar).getByRole("button", { name: "Done, start next" }))
+        await user.click(within(bar).getByRole("button", { name: "Done With This Step" }))
         expect(bar).toHaveTextContent("Step 2 of 3: Autolyse")
-        expect(within(bar).getByRole("button", { name: "Done, finish bake" })).toBeInTheDocument()
+        expect(within(bar).getByRole("button", { name: "Finish Recipe" })).toBeInTheDocument()
         await waitFor(() => expect(calls.filter(({ method }) => method === "POST")).toHaveLength(1))
         expect(screen.getByTestId("path")).toHaveTextContent("/convert")
     })

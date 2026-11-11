@@ -35,7 +35,7 @@ export default function PrivacyPage() {
                 everyone, with your username.
             </p>
 
-            <h3>What You Oo In Breadsheet</h3>
+            <h3>What You Do In Breadsheet</h3>
             <p>To help us determine the usefulness of features, breadsheet records these events:</p>
             <ul>
                 <li>Registration and signing in</li>

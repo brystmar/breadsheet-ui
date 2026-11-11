@@ -73,7 +73,9 @@ function notify(bake, step) {
     const notification = new window.Notification(`Time for: ${step.text}`, {
         body: `${bake.name} · step ${step.position} of ${bake.steps.length}` +
             (step.wait_chosen ? ` · then wait ${formatLength(step.wait_chosen)}` : ""),
-        tag: `breadsheet-${bake.suffix}`
+        tag: `breadsheet-${bake.suffix}`,
+        // No sound: the system chime was unwelcome. Browsers that ignore `silent` still use the OS's own setting
+        silent: true
     })
     notification.onclick = () => {
         window.focus()

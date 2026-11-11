@@ -58,7 +58,7 @@ function BarFor({ initialBake, others, onSynced }) {
                     <span style={{ width: `${percent}%` }} />
                 </span>
                 <span className="bar-times">
-                    {formatLength(elapsed)} in · {left >= 0 ? `${formatLength(left)} left` : `${formatLength(-left)} over`}
+                    {formatLength(elapsed)} elapsed · {left >= 0 ? `${formatLength(left)} left` : `${formatLength(-left)} over`}
                 </span>
             </span>
             <span className="bar-next">
@@ -82,7 +82,7 @@ function BarFor({ initialBake, others, onSynced }) {
                 <div className="bar-actions">
                     {current && next &&
                         <button type="button" className="bar-done" onClick={() => sync.checkOff(next.position)}>
-                            {progress.nextIsLast ? "Done, finish bake" : "Done, start next"}
+                            {progress.nextIsLast ? "Finish Recipe" : "Done With This Step"}
                         </button>}
                     {sync.pending && <span className="bar-sync" role="status">Saved, will sync</span>}
                     {others > 0 && <Link to="/" className="bar-more">+{others} more</Link>}
